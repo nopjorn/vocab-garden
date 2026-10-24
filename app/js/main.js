@@ -451,7 +451,8 @@ async function registerServiceWorker() {
     if (updating) location.reload();
   });
   try {
-    const registration = await navigator.serviceWorker.register("sw.js");
+    // updateViaCache: "none" ให้เบราว์เซอร์โหลด sw.js และ version.js จาก server ทุกครั้งที่เช็ค ไม่ใช้ HTTP cache
+    const registration = await navigator.serviceWorker.register("sw.js", { updateViaCache: "none" });
     if (registration.waiting && navigator.serviceWorker.controller) showUpdate(registration.waiting);
     // แอปที่เปิดจากหน้าจอโฮมมักถูกพักไว้แทนการเปิดใหม่ จึงต้องเช็คเวอร์ชันใหม่เองตอนกลับมาใช้
     const checkForUpdate = () => registration.update().catch(() => {});

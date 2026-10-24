@@ -36,3 +36,47 @@ test("a backup from an older version without startLevel still imports", () => {
   assert.equal(count, 0);
   assert.deepEqual(storage.loadSettings(), { newPerDay: 20, startLevel: 1 });
 });
+
+test("addReview counts reviews per day and survives a reload", () => {
+  const store = fakeStore();
+  const storage = createStorage(store);
+  storage.addReview(100);
+  storage.addReview(100);
+  storage.addReview(101);
+  assert.deepEqual(createStorage(store).loadHistory(), { 100: 2, 101: 1 });
+});
+
+test("addReview drops history older than about a year", () => {
+  const storage = createStorage(fakeStore());
+  storage.saveHistory({ 1: 5, 599: 2, 600: 3 });
+  storage.addReview(1000);
+  assert.deepEqual(storage.loadHistory(), { 600: 3, 1000: 1 });
+});
+
+test("a corrupt history falls back to empty", () => {
+  for (const days of [[1, 2], { 5: -1 }, { 5: 1.5 }, { x: 1 }]) {
+    const store = fakeStore({ "vg:history": JSON.stringify({ schema: 1, days }) });
+    assert.deepEqual(createStorage(store).loadHistory(), {}, JSON.stringify(days));
+  }
+});
+
+test("history is exported, imported, and kept when an old backup has none", () => {
+  const source = createStorage(fakeStore());
+  source.addReview(50);
+  const backup = JSON.parse(JSON.stringify(source.exportData("0.6.0")));
+  assert.deepEqual(backup.history, { 50: 1 });
+
+  const target = createStorage(fakeStore());
+  target.importData(backup);
+  assert.deepEqual(target.loadHistory(), { 50: 1 });
+
+  target.importData({ app: "vocab-garden", schema: 1, cards: {} });
+  assert.deepEqual(target.loadHistory(), { 50: 1 });
+});
+
+test("reset clears the history too", () => {
+  const storage = createStorage(fakeStore());
+  storage.addReview(7);
+  storage.reset();
+  assert.deepEqual(storage.loadHistory(), {});
+});

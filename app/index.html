@@ -24,6 +24,7 @@
     <!-- บนมือถือแถบเมนูนี้อยู่ด้านล่างจอ บนจอกว้างอยู่ในแถบด้านบน -->
     <nav class="tabbar" aria-label="เมนูหลัก">
       <a href="#/" data-tab="home"><span class="tab-icon" aria-hidden="true">🏠</span><span>หน้าหลัก</span></a>
+      <a href="#/garden" data-tab="garden"><span class="tab-icon" aria-hidden="true">🌳</span><span>สวน</span></a>
       <a href="#/settings" data-tab="settings"><span class="tab-icon" aria-hidden="true">⚙️</span><span>ตั้งค่า</span></a>
       <a href="#/about" data-tab="about"><span class="tab-icon" aria-hidden="true">ℹ️</span><span>เกี่ยวกับ</span></a>
     </nav>
@@ -46,6 +47,7 @@
           <div>
             <p id="greeting" class="hero-greeting">สวัสดี 👋</p>
             <h1 class="hero-title">วันนี้มาปลูกคำศัพท์กัน</h1>
+            <p id="streak" class="hero-streak" hidden></p>
           </div>
           <div id="garden-ring" class="ring" role="img" aria-label="คำในสวน">
             <div class="ring-inner"><strong id="garden-count">0</strong><span>คำในสวน</span></div>
@@ -119,6 +121,24 @@
         <p id="done-summary" class="muted"></p>
         <a href="#/" class="button primary wide">กลับไปดูสวน 🌳</a>
       </div>
+    </section>
+
+    <section id="view-garden" hidden>
+      <h1>สวนของฉัน 🌳</h1>
+
+      <div class="stat-cards">
+        <div class="stat-card"><strong id="g-streak">0</strong><span>🔥 วันติดต่อกัน</span></div>
+        <div class="stat-card"><strong id="g-best">0</strong><span>🏆 สถิติสูงสุด</span></div>
+        <div class="stat-card"><strong id="g-total">0</strong><span>🔁 ทวนทั้งหมด</span></div>
+      </div>
+
+      <h2>ต้นไม้ในสวน</h2>
+      <ul id="g-stages" class="stage-rows"></ul>
+
+      <h2>7 วันที่ผ่านมา</h2>
+      <div id="g-week" class="week" role="img"></div>
+      <p id="g-empty" class="muted small">ยังไม่มีประวัติการทวน ลองท่องศัพท์สักรอบ แล้วสถิติจะมาขึ้นที่นี่
+        (ประวัตินับตั้งแต่เวอร์ชัน 0.6.0 เป็นต้นไป)</p>
     </section>
 
     <section id="view-settings" hidden>

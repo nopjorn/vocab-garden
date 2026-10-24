@@ -2,9 +2,10 @@ import { LEVELS, levelTitle, loadWords } from "./data.js";
 import { canSpeak, speak } from "./speech.js";
 import { AGAIN, GOOD, HARD, STAGES, buildQueue, dayNumber, grade, knownCard, stageOf } from "./srs.js";
 import { NEW_PER_DAY_CHOICES, createStorage } from "./storage.js";
+import { recentDays, stageCounts, streakOf, totalReviews } from "./stats.js";
 import { isNewer, parseSwVersion } from "./update.js";
 
-const VIEWS = ["loading", "error", "home", "study", "done", "settings", "about"];
+const VIEWS = ["loading", "error", "home", "study", "done", "garden", "settings", "about"];
 const REQUEUE_GAP = 3; // คำที่ตอบ "ยังจำไม่ได้" จะกลับมาอีกครั้งหลังการ์ดใบอื่นอีก 3 ใบ
 const SWIPE_DISTANCE = 90; // ปัดเกินกี่ px ถึงนับเป็นการให้คะแนน
 const SWIPE_PREVIEW = 40; // ปัดเกินกี่ px ถึงเริ่มขึ้นป้ายบนการ์ด
@@ -145,6 +146,9 @@ function renderHome() {
   $("garden-count").textContent = planted;
   $("garden-ring").style.setProperty("--p", translated.length ? (planted / translated.length) * 100 : 0);
   $("garden-ring").setAttribute("aria-label", `ปลูกแล้ว ${planted} จาก ${translated.length} คำ`);
+  const { current } = streakOf(storage.loadHistory(), dayNumber());
+  $("streak").hidden = current === 0;
+  $("streak").textContent = `🔥 ท่องต่อเนื่อง ${current} วัน`;
   $("garden-total").textContent = `แปลแล้ว ${translated.length.toLocaleString()} / ${state.words.length.toLocaleString()} คำ`;
 
   $("levels").replaceChildren(...LEVELS.map(levelItem));
@@ -218,6 +222,7 @@ function answer(rating) {
 
   state.cards[word.headword] = card;
   storage.saveCards(state.cards);
+  storage.addReview(session.day);
   if (isNew) storage.saveNewCount(session.day, storage.newCountToday(session.day) + 1);
   session.answered += 1;
 
@@ -244,6 +249,7 @@ function markKnown() {
   const word = session.queue.shift();
   state.cards[word.headword] = knownCard(state.cards[word.headword], session.day);
   storage.saveCards(state.cards);
+  storage.addReview(session.day);
   session.answered += 1;
   session.learned.add(word.headword);
   toast(`${word.headword} ข้ามไปเป็นต้นไม้ใหญ่แล้ว 🌳`);
@@ -327,6 +333,45 @@ function finishSession() {
   show("done");
 }
 
+// ---------- สวนของฉัน ----------
+
+function renderGarden() {
+  const days = storage.loadHistory();
+  const today = dayNumber();
+  const { current, best } = streakOf(days, today);
+  $("g-streak").textContent = current;
+  $("g-best").textContent = best;
+  $("g-total").textContent = totalReviews(days).toLocaleString();
+
+  const stages = stageCounts(translatedWords(), state.cards);
+  const total = stages.reduce((sum, stage) => sum + stage.count, 0);
+  $("g-stages").replaceChildren(
+    ...stages.map((stage) => {
+      const row = el("li", "stage-row");
+      const bar = el("div", "stage-bar");
+      const fill = el("span", `seg seg-${stage.id}`);
+      fill.style.width = `${total ? (stage.count / total) * 100 : 0}%`;
+      bar.append(fill);
+      row.append(el("span", "stage-name", `${stage.emoji} ${stage.label}`), bar, el("strong", "stage-count", stage.count));
+      return row;
+    }),
+  );
+
+  const week = recentDays(days, today, 7);
+  const peak = Math.max(1, ...week.map((entry) => entry.count));
+  $("g-week").replaceChildren(
+    ...week.map((entry) => {
+      const column = el("div", `week-col${entry.day === today ? " today" : ""}`);
+      const bar = el("div", "week-bar");
+      bar.style.height = `${Math.max(entry.count ? 8 : 3, (entry.count / peak) * 100)}%`;
+      column.append(el("span", "week-count", entry.count || ""), bar, el("span", "week-label", entry.label));
+      return column;
+    }),
+  );
+  $("g-week").setAttribute("aria-label", `ทวน 7 วันล่าสุด: ${week.map((entry) => entry.count).join(", ")} ครั้ง`);
+  $("g-empty").hidden = totalReviews(days) > 0;
+}
+
 // ---------- ตั้งค่า ----------
 
 function renderSettings() {
@@ -395,7 +440,10 @@ function route() {
     return;
   }
   state.session = null;
-  if (page === "settings") {
+  if (page === "garden") {
+    renderGarden();
+    show("garden");
+  } else if (page === "settings") {
     renderSettings();
     show("settings");
   } else if (page === "about") {

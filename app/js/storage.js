@@ -21,6 +21,7 @@ export const DEFAULT_SETTINGS = {
   speechRate: 0.9,
   theme: "auto",
   textSize: "normal",
+  sound: false,
 };
 export const LAST_LEVEL = 28;
 export const NEW_PER_DAY_CHOICES = [5, 10, 20];
@@ -106,6 +107,7 @@ export function createStorage(store = globalThis.localStorage) {
         speechRate: pick(SPEECH_RATE_CHOICES, saved.speechRate, DEFAULT_SETTINGS.speechRate),
         theme: pick(THEME_CHOICES, saved.theme, DEFAULT_SETTINGS.theme),
         textSize: pick(TEXT_SIZE_CHOICES, saved.textSize, DEFAULT_SETTINGS.textSize),
+        sound: saved.sound === true,
       };
     },
     saveSettings(settings) {

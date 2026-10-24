@@ -1,5 +1,8 @@
 import { LEVELS, levelTitle, loadWords } from "./data.js";
+import { comboMessage, growthSummary, nextCombo, recordGrowth, stageMove, wordList } from "./celebrate.js";
+import { launchConfetti } from "./confetti.js";
 import { canSpeak, speak } from "./speech.js";
+import { playSfx } from "./sfx.js";
 import { AGAIN, GOOD, HARD, STAGES, buildQueue, dayNumber, grade, knownCard, stageOf } from "./srs.js";
 import { NEW_PER_DAY_CHOICES, SPEECH_RATE_CHOICES, TEXT_SIZE_CHOICES, THEME_CHOICES, createStorage } from "./storage.js";
 import { entriesSince, inlineParts, parseChangelog } from "./changelog.js";
@@ -59,6 +62,11 @@ function applyAppearance() {
 
 function speakWord(text) {
   speak(text, state.settings.speechRate);
+}
+
+// เสียงประกอบ (เล่นเมื่อเปิดในตั้งค่าเท่านั้น)
+function fx(name) {
+  playSfx(name, state.settings.sound);
 }
 
 function toast(message) {
@@ -186,8 +194,9 @@ function startSession(level = null) {
     location.hash = "#/";
     return;
   }
-  state.session = { day, queue, total: queue.length, answered: 0, learned: new Set() };
+  state.session = { day, queue, total: queue.length, answered: 0, learned: new Set(), combo: 0, bestCombo: 0, grown: new Map() };
   show("study");
+  renderCombo();
   showCard();
 }
 
@@ -239,17 +248,54 @@ function flip() {
   $("grades").hidden = false;
 }
 
+// คอมโบ: ตอบ "พอจำได้" / "จำได้แม่น" ติดกันกี่ใบ แสดงตั้งแต่ใบที่ 2
+function renderCombo() {
+  const box = $("combo");
+  const combo = state.session ? state.session.combo : 0;
+  box.hidden = combo < 2;
+  if (combo < 2) return;
+  box.textContent = `🔥 ${combo}`;
+  box.classList.remove("pop");
+  void box.offsetWidth; // ให้แอนิเมชันเล่นใหม่ทุกครั้ง
+  box.classList.add("pop");
+}
+
+// ฉลองหลังตอบแต่ละใบ: คอมโบ และต้นไม้โตขึ้นระยะ (ต้นอ่อนโตเป็นกำลังโตหรือต้นไม้ใหญ่ ขึ้นป้ายบอก)
+function celebrate(word, before, after, rating) {
+  const session = state.session;
+  session.combo = nextCombo(session.combo, rating);
+  session.bestCombo = Math.max(session.bestCombo, session.combo);
+  renderCombo();
+
+  const move = stageMove(before, after);
+  if (move) recordGrowth(session.grown, word.headword, move);
+  if (move && move.toIndex >= 2) {
+    toast(`${word.headword} โตเป็น ${move.stage.emoji} ${move.stage.label} แล้ว`);
+    fx("grow");
+    return;
+  }
+  const message = comboMessage(session.combo);
+  if (message) {
+    toast(message);
+    fx("combo");
+  } else if (rating !== AGAIN) {
+    fx("correct");
+  }
+}
+
 function answer(rating) {
   const session = state.session;
   const word = session.queue.shift();
-  const isNew = !state.cards[word.headword];
-  const card = grade(state.cards[word.headword], rating, session.day);
+  const before = state.cards[word.headword];
+  const isNew = !before;
+  const card = grade(before, rating, session.day);
 
   state.cards[word.headword] = card;
   storage.saveCards(state.cards);
   storage.addReview(session.day);
   if (isNew) storage.saveNewCount(session.day, storage.newCountToday(session.day) + 1);
   session.answered += 1;
+  celebrate(word, before, card, rating);
 
   if (card.ivl === 0) {
     session.queue.splice(Math.min(REQUEUE_GAP, session.queue.length), 0, word);
@@ -272,7 +318,10 @@ function nextCard() {
 function markKnown() {
   const session = state.session;
   const word = session.queue.shift();
-  state.cards[word.headword] = knownCard(state.cards[word.headword], session.day);
+  const before = state.cards[word.headword];
+  state.cards[word.headword] = knownCard(before, session.day);
+  const move = stageMove(before, state.cards[word.headword]);
+  if (move) recordGrowth(session.grown, word.headword, move);
   storage.saveCards(state.cards);
   storage.addReview(session.day);
   session.answered += 1;
@@ -352,10 +401,22 @@ function bindSwipe() {
 }
 
 function finishSession() {
-  const { answered, learned } = state.session;
+  const { answered, learned, bestCombo, grown } = state.session;
   $("done-summary").textContent = `วันนี้ทวนไป ${answered} ครั้ง รดน้ำต้นไม้ไป ${learned.size} ต้น 🌱`;
+
+  const summary = growthSummary(grown);
+  const lines = [];
+  if (summary.planted > 0) lines.push(`🌱 ปลูกใหม่ ${summary.planted} ต้น`);
+  if (summary.growing.length > 0) lines.push(`🌿 โตเป็นกำลังโต: ${wordList(summary.growing)}`);
+  if (summary.trees.length > 0) lines.push(`🌳 โตเป็นต้นไม้ใหญ่: ${wordList(summary.trees)}`);
+  if (bestCombo >= 3) lines.push(`🔥 คอมโบสูงสุด ${bestCombo} ใบติด`);
+  $("done-growth").replaceChildren(...lines.map((line) => el("li", "", line)));
+  $("done-growth").hidden = lines.length === 0;
+
   state.session = null;
   show("done");
+  launchConfetti();
+  fx("finish");
 }
 
 // ---------- สวนของฉัน ----------
@@ -509,6 +570,7 @@ function renderSettings() {
   fillSelect($("theme"), THEME_CHOICES, state.settings.theme, THEME_LABELS);
   fillSelect($("text-size"), TEXT_SIZE_CHOICES, state.settings.textSize, TEXT_SIZE_LABELS);
   $("auto-speak").checked = state.settings.autoSpeak;
+  $("sound-fx").checked = state.settings.sound;
   $("sound-panel").hidden = !canSpeak();
   $("sound-heading").hidden = !canSpeak();
   const select = $("new-per-day");
@@ -652,6 +714,10 @@ function bindEvents() {
   $("speech-rate").addEventListener("change", (event) => {
     updateSetting({ speechRate: Number(event.target.value) });
     speakWord("Hello, welcome to Vocab Garden");
+  });
+  $("sound-fx").addEventListener("change", (event) => {
+    updateSetting({ sound: event.target.checked });
+    fx("combo"); // ลองฟังทันทีที่เปิด (การแตะเป็นการกระทำของผู้ใช้ เบราว์เซอร์จึงยอมให้เล่นเสียง)
   });
   $("speech-test").addEventListener("click", () => speakWord("Hello, welcome to Vocab Garden"));
   $("theme").addEventListener("change", (event) => updateSetting({ theme: event.target.value }));

@@ -34,7 +34,7 @@ OFFICIAL_SITE = "https://www.newgeneralservicelist.com"
 UNOFFICIAL_DOMAIN = "newgeneralservicelist" + ".org"
 
 # ไฟล์ที่ต้องมีเครดิต NGSL ครบ (SOURCE.md ของทุกเวอร์ชันถูกรวมให้อัตโนมัติ)
-ATTRIBUTION_FILES = ["README.md", "app/data/LICENSE"]
+ATTRIBUTION_FILES = ["README.md", "app/data/LICENSE", "app/index.html"]
 
 CHECKSUM_LINE_RE = re.compile(r"^([0-9a-f]{64})  (\S+)$", re.MULTILINE)
 

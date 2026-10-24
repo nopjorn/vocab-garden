@@ -22,6 +22,7 @@ class CheckNgslTest(unittest.TestCase):
         self.write_source_note()
         self.write("README.md", "# test\n\n" + CREDIT)
         self.write("app/data/LICENSE", CREDIT)
+        self.write("app/index.html", f"<p>{CREDIT}</p>")
 
     def write(self, rel, text):
         path = self.root / rel
@@ -75,6 +76,10 @@ class CheckNgslTest(unittest.TestCase):
     def test_detects_missing_data_license(self):
         (self.root / "app/data/LICENSE").unlink()
         self.assertErrorMentions("ไม่พบ app/data/LICENSE")
+
+    def test_detects_missing_credit_on_about_page(self):
+        self.write("app/index.html", "<p>Vocab Garden</p>")
+        self.assertErrorMentions("app/index.html ไม่มีข้อความเครดิตทางการ")
 
     def test_detects_missing_official_site(self):
         self.write("README.md", f"> {check_ngsl.OFFICIAL_ATTRIBUTION}\n\n{check_ngsl.LICENSE_URL}\n")

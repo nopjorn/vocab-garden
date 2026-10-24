@@ -60,6 +60,7 @@ python3 scripts/versioning.py check --base-ref origin/main
 python3 scripts/check_ngsl.py
 python3 scripts/validate_data.py
 python3 -m unittest discover -s tests
+node --test tests/js/*.test.mjs
 ```
 
 ## ข้อ 4: แนวทางเขียนโค้ด

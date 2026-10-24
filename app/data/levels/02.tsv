@@ -1,101 +1,101 @@
 rank	headword	forms	meanings	example_en	example_th	note
-101	last	lasts, lasted, lasting				
-102	child	children				
-103	tell	tells, told, telling				
-104	really					
-105	call	calls, called, calling				
-106	before					
-107	company	companies				
-108	through					
-109	down	downs, downed, downing				
-110	show	shows, showed, showing, shown				
-111	life					
-112	man	mans, manned, manning, men				
-113	change	changes, changed, changing				
-114	place	places, placed, placing				
-115	long	longs, longed, longing, longer, longest				
-116	between					
-117	feel	feels, felt, feeling, feelings				
-118	too					
-119	still	stills, stilled, stilling, stiller, stillest				
-120	problem	problems				
-121	write	writes, wrote, writing, written, writings				
-122	same					
-123	lot	lots				
-124	great	greater, greatest, greats				
-125	try	tries, tried, trying				
-126	leave	leaves, left, leaved, leaving, leavings				
-127	number	numbers, numbered, numbering, numberings				
-128	both					
-129	own	owns, owned, owning				
-130	part	parts, parted, parting				
-131	point	points, pointed, pointing				
-132	little	littler, littlest				
-133	help	helps, helped, helping, helpings				
-134	ask	asks, asked, asking				
-135	meet	meets, meeting, met, meetings				
-136	start	starts, started, starting				
-137	talk	talks, talked, talking				
-138	something					
-139	put	puts, putted, putting				
-140	another					
-141	become	becomes, became, becoming				
-142	interest	interests, interested, interesting				
-143	country	countries				
-144	old	older, oldest, olds				
-145	each					
-146	school	schools, schooled, schooling, schoolings				
-147	late	later, latest				
-148	high	higher, highest, highs				
-149	different					
-150	off	offs, offed, offing				
-151	next					
-152	end	ends, ended, ending				
-153	live	lives, lived, living				
-154	why					
-155	while	whiles, whiled, whiling				
-156	world	worlds				
-157	week	weeks				
-158	play	plays, played, playing				
-159	might	mightn, mighta				
-160	must	mustn, musta				
-161	home	homes, homed, homing				
-162	never					
-163	include	includes, included, including				
-164	course	courses, coursed, coursing				
-165	house	houses, housed, housing, housings				
-166	report	reports, reported, reporting				
-167	group	groups, grouped, grouping				
-168	case	cases, cased, casing, casings				
-169	woman	women				
-170	around					
-171	book	books, booked, booking, bookings				
-172	family	families				
-173	seem	seems, seemed, seeming				
-174	let	lets, letting, lemme, lettings				
-175	again					
-176	kind	kinds, kinder, kindest				
-177	keep	keeps, keeping, kept				
-178	hear	hears, heard, hearing, hearings				
-179	system	systems				
-180	every					
-181	question	questions, questioned, questioning, questionings				
-182	during					
-183	always					
-184	big	bigger, biggest				
-185	set	sets, setting, settings				
-186	small	smaller, smallest				
-187	study	studies, studied, studying				
-188	follow	follows, followed, following, followings				
-189	begin	begins, began, beginning, begun, beginnings				
-190	important					
-191	since					
-192	run	runs, ran, running				
-193	under					
-194	turn	turns, turned, turning				
-195	few	fewer, fewest				
-196	bring	brings, brought, bringing				
-197	early	earlier, earliest				
-198	hand	hands, handed, handing				
-199	state	states, stated, stating				
-200	move	moves, moved, moving				
+101	last	lasts, lasted, lasting	adj: สุดท้าย, ล่าสุด | v: ยืดเวลาไปได้, ใช้ได้นาน | adv: ครั้งสุดท้าย	This is the last bus tonight.	นี่คือรถเมล์เที่ยวสุดท้ายของคืนนี้	
+102	child	children	n: เด็ก, ลูก	The child is playing in the garden.	เด็กกำลังเล่นอยู่ในสวน	พหูพจน์คือ children
+103	tell	tells, told, telling	v: บอก, เล่า, สั่ง	Please tell me your name.	ช่วยบอกชื่อของคุณหน่อย	รูปอดีตคือ told
+104	really		adv: จริง ๆ, จริงจัง	I really like this song.	ฉันชอบเพลงนี้จริง ๆ	
+105	call	calls, called, calling	v: โทรหา, เรียก, ตั้งชื่อ | n: การโทร, การเรียก	I will call you tonight.	คืนนี้ฉันจะโทรหาคุณ	
+106	before		prep: ก่อน | conj: ก่อนที่ | adv: มาก่อน	Wash your hands before dinner.	ล้างมือก่อนกินข้าวเย็น	
+107	company	companies	n: บริษัท, เพื่อน, การมีเพื่อน	My brother works for a big company.	พี่ชายของฉันทำงานที่บริษัทใหญ่แห่งหนึ่ง	
+108	through		prep: ผ่าน, ทะลุ, ตลอด | adv: ผ่านไป	We walked through the park.	เราเดินผ่านสวนสาธารณะ	
+109	down	downs, downed, downing	adv: ลงไป, ข้างล่าง | prep: ลง, ตามลง | adj: ซึมเศร้า, ใช้ไม่ได้	Please sit down.	เชิญนั่งลงครับ	
+110	show	shows, showed, showing, shown	v: แสดง, ให้ดู, ชี้ให้เห็น | n: การแสดง, รายการ	Can you show me the way?	ช่วยบอกทางให้ฉันหน่อยได้ไหม	รูปอดีตคือ showed ส่วนรูป pp. คือ shown
+111	life		n: ชีวิต, ความเป็นอยู่	Life is better with friends.	ชีวิตจะดีขึ้นเมื่อมีเพื่อน	พหูพจน์คือ lives
+112	man	mans, manned, manning, men	n: ผู้ชาย, มนุษย์ | v: ประจำการ	That man is my teacher.	ผู้ชายคนนั้นเป็นครูของฉัน	พหูพจน์คือ men
+113	change	changes, changed, changing	v: เปลี่ยน, แลก | n: การเปลี่ยนแปลง, เงินทอน	I want to change my plan.	ฉันอยากเปลี่ยนแผน	
+114	place	places, placed, placing	n: สถานที่, ที่ | v: วาง, ใส่	This is a quiet place.	ที่นี่เป็นสถานที่เงียบสงบ	
+115	long	longs, longed, longing, longer, longest	adj: ยาว, นาน | adv: นาน | v: โหยหา	It was a long day.	เป็นวันที่ยาวนาน	รูปเปรียบเทียบคือ longer และ longest
+116	between		prep: ระหว่าง	I sit between my mom and my dad.	ฉันนั่งระหว่างแม่กับพ่อ	
+117	feel	feels, felt, feeling, feelings	v: รู้สึก, สัมผัส | n: ความรู้สึก	I feel happy today.	วันนี้ฉันรู้สึกมีความสุข	รูปอดีตคือ felt
+118	too		adv: ด้วย, เกินไป	This soup is too hot.	ซุปนี้ร้อนเกินไป	too ที่แปลว่า ด้วย มักวางท้ายประโยค ส่วน too ที่แปลว่า เกินไป วางหน้าคำคุณศัพท์
+119	still	stills, stilled, stilling, stiller, stillest	adv: ยัง, ยังคง | adj: นิ่ง, สงบ	Is he still at work?	เขายังอยู่ที่ทำงานไหม	
+120	problem	problems	n: ปัญหา, ข้อสงสัย	We have a problem with the car.	เรามีปัญหากับรถ	
+121	write	writes, wrote, writing, written, writings	v: เขียน, แต่ง	Please write your name here.	กรุณาเขียนชื่อของคุณที่นี่	รูปอดีตคือ wrote ส่วนรูป pp. คือ written
+122	same		adj: เหมือนกัน, เดียวกัน | pron: สิ่งเดียวกัน	We go to the same school.	เราไปโรงเรียนเดียวกัน	มักมี the นำหน้า เช่น the same
+123	lot	lots	n: จำนวนมาก, ล็อต, ที่ดินแปลงหนึ่ง	She has a lot of friends.	เธอมีเพื่อนมากมาย	สำนวน a lot of แปลว่า มากมาย และ lots of ก็ใช้ได้เหมือนกัน
+124	great	greater, greatest, greats	adj: ยอดเยี่ยม, ยิ่งใหญ่, ดีมาก | n: ผู้ยิ่งใหญ่	That was a great movie.	นั่นเป็นหนังที่ยอดเยี่ยมมาก	
+125	try	tries, tried, trying	v: พยายาม, ลอง | n: ความพยายาม	Let me try this one.	ให้ฉันลองอันนี้นะ	
+126	leave	leaves, left, leaved, leaving, leavings	v: ออกจาก, จากไป, ทิ้งไว้ | n: การลา, วันลา	I leave home at seven.	ฉันออกจากบ้านตอนเจ็ดโมง	รูปอดีตคือ left ซึ่งเป็นคนละคำกับ left ที่แปลว่า ซ้าย (อยู่ในการ์ด left)
+127	number	numbers, numbered, numbering, numberings	n: ตัวเลข, หมายเลข, จำนวน | v: นับ, ใส่เลข	What is your phone number?	เบอร์โทรศัพท์ของคุณคืออะไร	
+128	both		det: ทั้งสอง | pron: ทั้งสองคน	Both of my parents are teachers.	พ่อแม่ของฉันทั้งสองคนเป็นครู	
+129	own	owns, owned, owning	adj: ของตัวเอง | v: เป็นเจ้าของ	He has his own room.	เขามีห้องเป็นของตัวเอง	
+130	part	parts, parted, parting	n: ส่วน, ชิ้นส่วน, บทบาท | v: แยกจากกัน	This is the best part of the day.	นี่คือช่วงที่ดีที่สุดของวัน	
+131	point	points, pointed, pointing	n: จุด, ประเด็น, คะแนน | v: ชี้	Please point to the right picture.	กรุณาชี้ไปที่รูปที่ถูกต้อง	
+132	little	littler, littlest	adj: เล็ก, น้อย | det: นิดหน่อย | adv: นิดหน่อย	I have a little time.	ฉันมีเวลานิดหน่อย	a little ใช้กับคำนับไม่ได้ เช่น a little water ส่วน few ใช้กับคำนับได้
+133	help	helps, helped, helping, helpings	v: ช่วย, ช่วยเหลือ | n: ความช่วยเหลือ	Can you help me with this bag?	ช่วยฉันถือกระเป๋าใบนี้หน่อยได้ไหม	
+134	ask	asks, asked, asking	v: ถาม, ขอ	May I ask a question?	ขอถามคำถามหน่อยได้ไหม	
+135	meet	meets, meeting, met, meetings	v: พบ, เจอ, รู้จัก | n: การแข่งขัน	Nice to meet you.	ยินดีที่ได้รู้จัก	รูปอดีตคือ met
+136	start	starts, started, starting	v: เริ่ม, เริ่มต้น | n: จุดเริ่มต้น	The class will start at nine.	ชั้นเรียนจะเริ่มตอนเก้าโมง	
+137	talk	talks, talked, talking	v: พูด, คุย | n: การพูดคุย, การบรรยาย	We talk every day.	เราคุยกันทุกวัน	
+138	something		pron: บางสิ่ง, อะไรบางอย่าง	I want to eat something sweet.	ฉันอยากกินอะไรหวาน ๆ	adj ที่ขยาย something วางหลังคำนี้ เช่น something sweet
+139	put	puts, putted, putting	v: วาง, ใส่, ตั้ง	Please put the book on the table.	กรุณาวางหนังสือไว้บนโต๊ะ	รูปอดีตและ pp. ยังเป็น put เหมือนเดิม
+140	another		det: อีกอัน, อีกคน | pron: อีกสิ่งหนึ่ง	Can I have another cup of tea?	ขอชาอีกถ้วยได้ไหม	
+141	become	becomes, became, becoming	v: กลายเป็น, เป็น	She wants to become a doctor.	เธออยากเป็นหมอ	รูปอดีตคือ became ส่วนรูป pp. คือ become
+142	interest	interests, interested, interesting	n: ความสนใจ, ดอกเบี้ย | v: ทำให้สนใจ	I have an interest in music.	ฉันสนใจเรื่องดนตรี	
+143	country	countries	n: ประเทศ, ชนบท	Thailand is a beautiful country.	ไทยเป็นประเทศที่สวยงาม	
+144	old	older, oldest, olds	adj: แก่, เก่า, เก่าแก่	My house is very old.	บ้านของฉันเก่ามาก	รูปเปรียบเทียบคือ older และ oldest
+145	each		det: แต่ละ | pron: แต่ละคน, แต่ละอัน	Each student has a book.	นักเรียนแต่ละคนมีหนังสือหนึ่งเล่ม	each other แปลว่า กันและกัน
+146	school	schools, schooled, schooling, schoolings	n: โรงเรียน, สถาบัน | v: ฝึกสอน	My sister goes to school by bus.	น้องสาวของฉันไปโรงเรียนด้วยรถเมล์	
+147	late	later, latest	adj: สาย, ดึก | adv: สาย, ช้า	I am sorry I am late.	ขอโทษที่มาสาย	later = ภายหลัง และ latest = ล่าสุด
+148	high	higher, highest, highs	adj: สูง, มาก | adv: สูง	The mountain is very high.	ภูเขาลูกนี้สูงมาก	
+149	different		adj: ต่างกัน, แตกต่าง	My phone is different from yours.	โทรศัพท์ของฉันไม่เหมือนของคุณ	ใช้ different from ว่า ต่างจาก...
+150	off	offs, offed, offing	adv: ออกไป, ปิด | prep: ออกจาก | adj: ปิด, ไม่ได้ใช้	Please turn off the light.	กรุณาปิดไฟด้วย	turn off แปลว่า ปิด (เครื่องใช้ไฟฟ้า)
+151	next		adj: ถัดไป, ต่อไป | adv: ครั้งต่อไป, จากนั้น	See you next week.	แล้วพบกันสัปดาห์หน้า	
+152	end	ends, ended, ending	n: จุดจบ, ปลาย | v: จบ, สิ้นสุด	The movie ends at ten.	หนังจบตอนสี่ทุ่ม	
+153	live	lives, lived, living	v: อาศัย, อยู่, มีชีวิต | adj: สด, ถ่ายทอดสด	I live in Bangkok.	ฉันอาศัยอยู่ในกรุงเทพฯ	live ที่เป็น adj. (สด, ถ่ายทอดสด) ออกเสียง ไลฟ์ ส่วน v. ออกเสียง ลิฟ
+154	why		adv: ทำไม	Why are you so tired?	ทำไมคุณถึงเหนื่อยขนาดนั้น	
+155	while	whiles, whiled, whiling	conj: ขณะที่, ในขณะเดียวกัน, แต่ | n: ช่วงเวลา	I read a book while I wait.	ฉันอ่านหนังสือระหว่างรอ	
+156	world	worlds	n: โลก, โลกใบนี้	She wants to travel around the world.	เธออยากเดินทางรอบโลก	
+157	week	weeks	n: สัปดาห์	I go to the gym twice a week.	ฉันไปยิมสัปดาห์ละสองครั้ง	
+158	play	plays, played, playing	v: เล่น, แสดง, เปิด | n: การเล่น, ละคร	The children play in the yard.	เด็ก ๆ เล่นกันในลานบ้าน	
+159	might	mightn, mighta	modal: อาจจะ, บางที	It might rain tomorrow.	พรุ่งนี้ฝนอาจจะตก	might ใช้พูดถึงความเป็นไปได้ที่น้อยกว่า may และเป็นรูปอดีตของ may
+160	must	mustn, musta	modal: ต้อง, จำเป็นต้อง, คงต้อง	You must wear a seat belt.	คุณต้องคาดเข็มขัดนิรภัย	รูปปฏิเสธ mustn't แปลว่า ห้าม ไม่ใช่ ไม่จำเป็น
+161	home	homes, homed, homing	n: บ้าน, ที่อยู่ | adv: กลับบ้าน, ที่บ้าน	I go home after work.	ฉันกลับบ้านหลังเลิกงาน	go home ไม่ต้องใส่ to
+162	never		adv: ไม่เคย	I have never been to Japan.	ฉันไม่เคยไปญี่ปุ่น	
+163	include	includes, included, including	v: รวม, มี...อยู่ด้วย	The price includes breakfast.	ราคานี้รวมอาหารเช้าแล้ว	
+164	course	courses, coursed, coursing	n: หลักสูตร, วิชา, เส้นทาง	I take an English course.	ฉันเรียนคอร์สภาษาอังกฤษ	of course แปลว่า แน่นอน
+165	house	houses, housed, housing, housings	n: บ้าน, ตัวบ้าน | v: ให้ที่พัก	We bought a new house.	เราซื้อบ้านหลังใหม่	
+166	report	reports, reported, reporting	n: รายงาน, ข่าว | v: รายงาน, แจ้ง	I need to write a report.	ฉันต้องเขียนรายงาน	
+167	group	groups, grouped, grouping	n: กลุ่ม, วง | v: จัดกลุ่ม	Our group has five people.	กลุ่มของเรามีห้าคน	
+168	case	cases, cased, casing, casings	n: กรณี, คดี, ตู้ใส่ของ	In this case, we can go.	ในกรณีนี้ เราไปได้	in case แปลว่า เผื่อไว้, ในกรณีที่
+169	woman	women	n: ผู้หญิง	That woman is a famous singer.	ผู้หญิงคนนั้นเป็นนักร้องชื่อดัง	พหูพจน์คือ women
+170	around		adv: รอบ ๆ, ประมาณ | prep: รอบ, แถว ๆ	There are many shops around here.	แถวนี้มีร้านค้ามากมาย	
+171	book	books, booked, booking, bookings	n: หนังสือ | v: จอง	I read a book every night.	ฉันอ่านหนังสือทุกคืน	
+172	family	families	n: ครอบครัว, ตระกูล	My family lives in Chiang Mai.	ครอบครัวของฉันอาศัยอยู่ที่เชียงใหม่	
+173	seem	seems, seemed, seeming	v: ดูเหมือน, ดูท่า	You seem tired today.	วันนี้คุณดูเหนื่อย ๆ	
+174	let	lets, letting, lemme, lettings	v: ให้, อนุญาตให้, ปล่อย	Let me help you.	ให้ฉันช่วยคุณนะ	Let's แปลว่า ให้เราไปทำ... กัน เช่น Let's go
+175	again		adv: อีกครั้ง, อีก	Please say that again.	ช่วยพูดอีกครั้งนะ	
+176	kind	kinds, kinder, kindest	n: ชนิด, ประเภท | adj: ใจดี, เมตตา	What kind of food do you like?	คุณชอบอาหารประเภทไหน	
+177	keep	keeps, keeping, kept	v: เก็บไว้, รักษา, ทำต่อไป	Please keep this secret.	กรุณาเก็บเรื่องนี้เป็นความลับ	รูปอดีตคือ kept
+178	hear	hears, heard, hearing, hearings	v: ได้ยิน, ฟัง	I can hear music.	ฉันได้ยินเสียงเพลง	รูปอดีตคือ heard
+179	system	systems	n: ระบบ	The school has a new system.	โรงเรียนมีระบบใหม่	
+180	every		det: ทุก, ทุก ๆ	I drink water every day.	ฉันดื่มน้ำทุกวัน	every + คำนามเอกพจน์ เช่น every day
+181	question	questions, questioned, questioning, questionings	n: คำถาม, ปัญหา | v: ตั้งคำถาม, สงสัย	I have a question.	ฉันมีคำถาม	
+182	during		prep: ระหว่าง, ตลอด	I slept during the flight.	ฉันหลับระหว่างอยู่บนเครื่องบิน	during ตามด้วยคำนาม ส่วน while ตามด้วยประโยค
+183	always		adv: เสมอ, ตลอดเวลา	She always smiles.	เธอยิ้มอยู่เสมอ	
+184	big	bigger, biggest	adj: ใหญ่, สำคัญ	That is a big dog.	นั่นเป็นหมาตัวใหญ่	
+185	set	sets, setting, settings	v: ตั้ง, วาง, กำหนด | n: ชุด, ฉาก	Please set the table.	ช่วยจัดโต๊ะอาหารด้วย	รูปอดีตและ pp. ยังเป็น set เหมือนเดิม
+186	small	smaller, smallest	adj: เล็ก, น้อย	We live in a small town.	เราอาศัยอยู่ในเมืองเล็ก ๆ	
+187	study	studies, studied, studying	v: เรียน, ศึกษา | n: การเรียน, การศึกษา	I study English at night.	ฉันเรียนภาษาอังกฤษตอนกลางคืน	
+188	follow	follows, followed, following, followings	v: ตาม, เดินตาม, ทำตาม	Please follow me.	กรุณาตามฉันมา	
+189	begin	begins, began, beginning, begun, beginnings	v: เริ่ม, เริ่มต้น	The show begins at eight.	การแสดงเริ่มตอนสองทุ่ม	รูปอดีตคือ began ส่วนรูป pp. คือ begun
+190	important		adj: สำคัญ	Sleep is important for your health.	การนอนหลับสำคัญต่อสุขภาพของคุณ	
+191	since		conj: ตั้งแต่, เพราะ | prep: ตั้งแต่ | adv: ตั้งแต่นั้นมา	I have lived here since 2020.	ฉันอาศัยอยู่ที่นี่ตั้งแต่ปี 2020	
+192	run	runs, ran, running	v: วิ่ง, ดำเนินการ, เดินเครื่อง | n: การวิ่ง	I run in the park every morning.	ฉันวิ่งในสวนทุกเช้า	รูปอดีตคือ ran
+193	under		prep: ใต้, ต่ำกว่า, ภายใต้ | adv: ข้างล่าง	The cat is under the table.	แมวอยู่ใต้โต๊ะ	
+194	turn	turns, turned, turning	v: เลี้ยว, หมุน, กลายเป็น | n: ตา, การเลี้ยว	Turn left at the corner.	เลี้ยวซ้ายตรงหัวมุม	
+195	few	fewer, fewest	det: ไม่กี่, น้อย | pron: ไม่กี่คน	Only a few people came.	มีคนมาแค่ไม่กี่คน	a few = มีอยู่บ้าง ส่วน few ไม่มี a = มีน้อยจนแทบไม่มี
+196	bring	brings, brought, bringing	v: นำมา, พามา	Please bring your book.	กรุณานำหนังสือมาด้วย	รูปอดีตคือ brought
+197	early	earlier, earliest	adj: เช้า, ต้น | adv: เร็ว, แต่เช้า	I get up early.	ฉันตื่นแต่เช้า	
+198	hand	hands, handed, handing	n: มือ, ลายมือ | v: ส่งให้	Please raise your hand.	กรุณายกมือขึ้น	
+199	state	states, stated, stating	n: รัฐ, สถานะ, ภาวะ | v: กล่าว, ระบุ	California is a large state.	แคลิฟอร์เนียเป็นรัฐขนาดใหญ่	
+200	move	moves, moved, moving	v: ขยับ, ย้าย, ทำให้ซาบซึ้ง | n: การเคลื่อนไหว, การย้าย	We move to a new house next month.	เดือนหน้าเราจะย้ายไปบ้านหลังใหม่	

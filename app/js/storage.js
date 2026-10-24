@@ -11,6 +11,7 @@ const KEYS = {
   seenVersion: "vg:seen-version",
   rest: "vg:rest",
   notes: "vg:notes",
+  games: "vg:games",
 };
 const HISTORY_KEEP_DAYS = 400; // เก็บประวัติการทวนรายวันย้อนหลังไม่เกินนี้
 export const SPEECH_RATE_CHOICES = [0.7, 0.9, 1.1]; // ช้า / ปกติ / เร็ว
@@ -88,6 +89,19 @@ function validNotes(notes) {
     }
   }
   return clean;
+}
+
+// ข้อมูลเกม { days: { [เลขวัน]: จำนวนรอบที่เล่น }, best: { [ชื่อเกม]: สถิติ } } ส่วนที่ผิดรูปแบบถูกตัดทิ้ง
+function validGames(games) {
+  if (games === null || typeof games !== "object" || Array.isArray(games)) return null;
+  const days = validHistory(games.days) || {};
+  const best = {};
+  if (games.best && typeof games.best === "object" && !Array.isArray(games.best)) {
+    for (const [name, value] of Object.entries(games.best)) {
+      if (/^[a-z]{1,20}$/.test(name) && Number.isFinite(value) && value > 0) best[name] = value;
+    }
+  }
+  return { days, best };
 }
 
 // สถานะวันพัก { bank, run, upTo, frozen } (ดู habit.js) ต้องเป็นจำนวนเต็มทั้งหมด
@@ -196,6 +210,27 @@ export function createStorage(store = globalThis.localStorage) {
       write(KEYS.daily, { day: today, newCount: this.loadDaily(today).newCount, goalDone: true });
     },
 
+    // เกมในแท็บ "เล่น": วันที่เล่น (นับเป็นวันท่องต่อเนื่อง) และสถิติดีที่สุดของแต่ละเกม
+    loadGames() {
+      return validGames(read(KEYS.games, null)) || { days: {}, best: {} };
+    },
+    addGamePlay(today) {
+      const games = this.loadGames();
+      games.days[today] = (games.days[today] || 0) + 1;
+      Object.keys(games.days).forEach((day) => {
+        if (Number(day) < today - HISTORY_KEEP_DAYS) delete games.days[day];
+      });
+      write(KEYS.games, games);
+    },
+    // เก็บสถิติของเกม ถ้า better(ใหม่, เดิม) เป็นจริงหรือยังไม่มีสถิติ คืน true เมื่อเป็นสถิติใหม่
+    saveBest(name, value, better = (a, b) => a < b) {
+      const games = this.loadGames();
+      if (name in games.best && !better(value, games.best[name])) return false;
+      games.best[name] = value;
+      write(KEYS.games, games);
+      return true;
+    },
+
     // โน้ตช่วยจำของผู้ใช้ (เขียนเองต่อคำ)
     loadNotes() {
       return validNotes(read(KEYS.notes, null)) || {};
@@ -229,6 +264,7 @@ export function createStorage(store = globalThis.localStorage) {
         history: this.loadHistory(),
         rest: this.loadRest(),
         notes: this.loadNotes(),
+        games: this.loadGames(),
       };
     },
     // คืนจำนวนคำที่นำเข้า หรือโยน Error ถ้าไฟล์ไม่ถูกต้อง
@@ -252,6 +288,9 @@ export function createStorage(store = globalThis.localStorage) {
       // ไฟล์สำรองเก่า (ก่อน v0.15.0) ไม่มีโน้ต ให้คงโน้ตเดิมไว้
       const notes = data.notes === undefined ? null : validNotes(data.notes);
       if (notes) write(KEYS.notes, notes);
+      // ไฟล์สำรองเก่า (ก่อน v0.16.0) ไม่มีข้อมูลเกม ให้คงของเดิมไว้
+      const games = data.games === undefined ? null : validGames(data.games);
+      if (games) write(KEYS.games, games);
       return Object.keys(cards).length;
     },
 

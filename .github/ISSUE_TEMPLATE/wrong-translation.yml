@@ -1,0 +1,41 @@
+name: แจ้งคำแปลผิด
+description: คำแปล ชนิดคำ หรือประโยคตัวอย่างบนการ์ดไม่ถูกต้อง
+title: "แจ้งคำแปลผิด: "
+labels: ["translation"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ขอบคุณที่ช่วยให้คำแปลดีขึ้นค่ะ 🌱 ถ้ากดมาจากปุ่ม 🚩 ในแอป ข้อมูลของคำจะถูกกรอกไว้ให้แล้ว
+  - type: input
+    id: word
+    attributes:
+      label: คำที่แจ้ง
+      placeholder: "work (อันดับ 67, ด่าน 01)"
+    validations:
+      required: true
+  - type: textarea
+    id: current
+    attributes:
+      label: คำแปลและประโยคตัวอย่างในแอปตอนนี้
+    validations:
+      required: false
+  - type: textarea
+    id: problem
+    attributes:
+      label: ผิดตรงไหน และควรเป็นอย่างไร
+      description: ถ้ามีคำแปลหรือประโยคที่แนะนำ เขียนมาได้เลย (ต้องแต่งเอง ห้ามคัดลอกจากพจนานุกรมหรือเว็บอื่น)
+    validations:
+      required: true
+  - type: input
+    id: version
+    attributes:
+      label: เวอร์ชันของแอป
+      description: ดูได้ข้างชื่อแอปหรือในหน้าเกี่ยวกับ
+  - type: checkboxes
+    id: license
+    attributes:
+      label: การอนุญาต
+      options:
+        - label: ฉันยินยอมให้ข้อเสนอแนะนี้ถูกนำไปปรับใช้ในชุดข้อมูลภายใต้ CC BY-SA 4.0
+          required: true

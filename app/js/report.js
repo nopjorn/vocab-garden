@@ -2,18 +2,15 @@
 
 export const REPO_URL = "https://github.com/nopjorn/vocab-garden";
 
+// ฟอร์มอยู่ที่ .github/ISSUE_TEMPLATE/wrong-translation.yml ชื่อพารามิเตอร์ต้องตรงกับ id ของช่องในฟอร์ม
 export function issueUrl(word, version) {
   const meanings = word.senses.map((sense) => `${sense.pos}: ${sense.text}`).join(" | ");
-  const body = [
-    `**คำที่แจ้ง:** ${word.headword} (อันดับ ${word.rank}, ด่าน ${word.level})`,
-    `**คำแปลในแอป:** ${meanings}`,
-    `**ประโยคตัวอย่าง:** ${word.exampleEn} / ${word.exampleTh}`,
-    `**เวอร์ชัน:** Vocab Garden v${version} · NGSL 1.2`,
-    "",
-    "### ผิดตรงไหน และควรเป็นอย่างไร",
-    "<!-- เขียนต่อจากบรรทัดนี้ได้เลยค่ะ -->",
-    "",
-  ].join("\n");
-  const query = new URLSearchParams({ title: `แจ้งคำแปลผิด: ${word.headword}`, body });
+  const query = new URLSearchParams({
+    template: "wrong-translation.yml",
+    title: `แจ้งคำแปลผิด: ${word.headword}`,
+    word: `${word.headword} (อันดับ ${word.rank}, ด่าน ${word.level})`,
+    current: `${meanings}\n${word.exampleEn}\n${word.exampleTh}`,
+    version: `v${version} · NGSL 1.2`,
+  });
   return `${REPO_URL}/issues/new?${query}`;
 }

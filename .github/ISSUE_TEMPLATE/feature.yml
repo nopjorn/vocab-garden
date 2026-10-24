@@ -1,0 +1,19 @@
+name: เสนอฟีเจอร์
+description: อยากให้แอปทำอะไรเพิ่ม
+title: "ฟีเจอร์: "
+labels: ["enhancement"]
+body:
+  - type: textarea
+    id: idea
+    attributes:
+      label: อยากได้อะไร
+    validations:
+      required: true
+  - type: textarea
+    id: why
+    attributes:
+      label: ช่วยให้การท่องศัพท์ดีขึ้นอย่างไร
+  - type: markdown
+    attributes:
+      value: |
+        โปรเจคนี้ใช้ NGSL เป็นหลัก ไอเดียที่ต้องใช้ข้อมูลหรือเสียงจากแหล่งอื่น ต้องเป็นแหล่งที่ license เข้ากันได้ (CC0 / CC BY / CC BY-SA) ค่ะ

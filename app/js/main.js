@@ -5,6 +5,7 @@ import { NEW_PER_DAY_CHOICES, SPEECH_RATE_CHOICES, TEXT_SIZE_CHOICES, THEME_CHOI
 import { entriesSince, inlineParts, parseChangelog } from "./changelog.js";
 import { issueUrl } from "./report.js";
 import { recentDays, stageCounts, streakOf, totalReviews } from "./stats.js";
+import { SUPPORT_LINKS } from "./support.js";
 import { isNewer, parseSwVersion } from "./update.js";
 
 const VIEWS = ["loading", "error", "home", "study", "done", "garden", "settings", "about", "changelog"];
@@ -452,6 +453,24 @@ async function maybeShowWhatsNew() {
   $("whatsnew-ok").focus();
 }
 
+// ---------- สนับสนุนโครงการ ----------
+
+// แสดงเฉพาะเมื่อมีลิงก์ช่องทางสนับสนุน เป็นลิงก์ออกไปภายนอกเท่านั้น
+function renderSupport() {
+  const visible = SUPPORT_LINKS.length > 0;
+  $("support").hidden = !visible;
+  $("support-heading").hidden = !visible;
+  $("support-links").replaceChildren(
+    ...SUPPORT_LINKS.map((link) => {
+      const anchor = el("a", "button", link.label);
+      anchor.href = link.url;
+      anchor.target = "_blank";
+      anchor.rel = "noopener noreferrer";
+      return anchor;
+    }),
+  );
+}
+
 // ---------- ตั้งค่า ----------
 
 const SPEECH_RATE_LABELS = { 0.7: "ช้า", 0.9: "ปกติ", 1.1: "เร็ว" };
@@ -789,6 +808,7 @@ $("speak-word").hidden = !canSpeak();
 $("speak-example").hidden = !canSpeak();
 navigator.storage?.persist?.();
 applyAppearance();
+renderSupport();
 lockZoomInInstalledApp();
 $("check-update").onclick = () => checkForNewVersion({ manual: true });
 document.addEventListener("visibilitychange", () => {

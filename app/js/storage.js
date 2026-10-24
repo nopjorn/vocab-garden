@@ -101,7 +101,20 @@ function validGames(games) {
       if (/^[a-z]{1,20}$/.test(name) && Number.isFinite(value) && value > 0) best[name] = value;
     }
   }
-  return { days, best };
+  const result = { days, best };
+  // เกมทายคำปริศนาของวันนี้ และสถิติรวม (มีเมื่อเคยเล่นเท่านั้น)
+  const w = games.wordle;
+  if (
+    w && Number.isInteger(w.day) && /^[a-z]{5}$/.test(w.answer) && Array.isArray(w.guesses) && w.guesses.length <= 6 &&
+    w.guesses.every((guess) => /^[a-z]{5}$/.test(guess)) && ["playing", "won", "lost"].includes(w.status)
+  ) {
+    result.wordle = { day: w.day, answer: w.answer, guesses: w.guesses, status: w.status };
+  }
+  const t = games.wordleStats;
+  if (t && ["played", "won", "streak", "best"].every((key) => Number.isInteger(t[key]) && t[key] >= 0) && (t.lastWon === null || Number.isInteger(t.lastWon))) {
+    result.wordleStats = { played: t.played, won: t.won, streak: t.streak, best: t.best, lastWon: t.lastWon };
+  }
+  return result;
 }
 
 // สถานะวันพัก { bank, run, upTo, frozen } (ดู habit.js) ต้องเป็นจำนวนเต็มทั้งหมด
@@ -221,6 +234,20 @@ export function createStorage(store = globalThis.localStorage) {
         if (Number(day) < today - HISTORY_KEEP_DAYS) delete games.days[day];
       });
       write(KEYS.games, games);
+    },
+    // เกมทายคำปริศนา: สถานะของวันนี้ (วันอื่น = null) และสถิติรวม
+    loadWordle(today) {
+      const saved = this.loadGames().wordle;
+      return saved && saved.day === today ? saved : null;
+    },
+    saveWordle(wordle) {
+      write(KEYS.games, { ...this.loadGames(), wordle });
+    },
+    loadWordleStats() {
+      return this.loadGames().wordleStats || { played: 0, won: 0, streak: 0, best: 0, lastWon: null };
+    },
+    saveWordleStats(wordleStats) {
+      write(KEYS.games, { ...this.loadGames(), wordleStats });
     },
     // เก็บสถิติของเกม ถ้า better(ใหม่, เดิม) เป็นจริงหรือยังไม่มีสถิติ คืน true เมื่อเป็นสถิติใหม่
     saveBest(name, value, better = (a, b) => a < b) {

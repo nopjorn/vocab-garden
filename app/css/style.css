@@ -1688,31 +1688,53 @@ html[data-text-size="large"] {
 }
 
 .plot {
-  margin-bottom: 16px;
+  margin-bottom: 10px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
 }
 
 .plot-head {
-  margin: 0 0 8px;
-  font-size: 1rem;
+  display: grid;
+  gap: 4px;
+  padding: 12px 14px;
+  cursor: pointer;
+  list-style: none;
+}
+
+.plot-head::-webkit-details-marker {
+  display: none;
+}
+
+.plot-head::after {
+  content: "▾";
+  position: absolute;
+  right: 14px;
+  color: var(--muted);
+}
+
+.plot-head {
+  position: relative;
+}
+
+.plot[open] > .plot-head::after {
+  content: "▴";
 }
 
 .plot-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(44px, 1fr));
-  gap: 6px;
-  padding: 10px;
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
+  grid-template-columns: repeat(auto-fill, minmax(38px, 1fr));
+  gap: 4px;
+  padding: 0 12px 12px;
 }
 
 .plant {
   position: relative;
   display: grid;
   place-items: center;
-  min-height: 44px;
+  min-height: 40px;
   padding: 0;
-  font-size: 1.5rem;
+  font-size: 1.3rem;
   line-height: 1;
   background: var(--surface-2);
   border: 1px solid transparent;
@@ -2119,4 +2141,94 @@ html[data-text-size="large"] {
   .scramble-slots.shake {
     animation: wordle-shake 0.35s;
   }
+}
+
+
+/* ===== รายการที่ค้นเจอ / พับเก็บ / เหรียญ ===== */
+.match-list {
+  list-style: none;
+  margin: 0 0 16px;
+  padding: 0;
+  display: grid;
+  gap: 6px;
+}
+
+.match-item {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  width: 100%;
+  min-height: 44px;
+  padding: 8px 12px;
+  text-align: left;
+  color: var(--text);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  box-shadow: none;
+}
+
+.match-item .muted {
+  flex: 1;
+  min-width: 0;
+}
+
+.fold {
+  margin: 12px 0;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+}
+
+.fold > summary {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 4px 10px;
+  padding: 12px 14px;
+  cursor: pointer;
+}
+
+.fold > :not(summary) {
+  margin-left: 14px;
+  margin-right: 14px;
+}
+
+.fold-preview {
+  flex: 1 1 100%;
+  font-size: 1.15rem;
+  letter-spacing: 0.1em;
+}
+
+.medal-list {
+  list-style: none;
+  margin-bottom: 12px;
+  padding: 0;
+  display: grid;
+  gap: 6px;
+}
+
+.medal {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.medal-text {
+  display: grid;
+}
+
+.medal-emoji {
+  flex: none;
+  width: 2rem;
+  font-size: 1.6rem;
+  text-align: center;
+}
+
+.medal.locked {
+  opacity: 0.6;
+}
+
+.medal.locked .medal-emoji {
+  filter: grayscale(1);
 }

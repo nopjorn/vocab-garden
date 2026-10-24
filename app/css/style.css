@@ -16,9 +16,13 @@
   --brand-deep: #047857;
   --brand-soft: #d1fae5;
   --on-brand: #ffffff;
-  --hero-1: #10b981;
-  --hero-2: #0ea5a4;
-  --hero-3: #0891b2;
+  /* สีที่ใช้กับตัวอักษรและปุ่ม ต้องมีคอนทราสต์ ≥ 4.5 (tests/test_a11y.py ตรวจให้) */
+  --link: #047857;
+  --btn-bg: #047857;
+  --btn-shadow: #064e3b;
+  --hero-1: #047857;
+  --hero-2: #0f766e;
+  --hero-3: #0e7490;
 
   --again: #f43f5e;
   --again-deep: #be123c;
@@ -26,6 +30,12 @@
   --hard-deep: #b45309;
   --good: #10b981;
   --good-deep: #047857;
+  --again-bg: #be123c;
+  --again-shadow: #881337;
+  --hard-bg: #b45309;
+  --hard-shadow: #78350f;
+  --good-bg: #047857;
+  --good-shadow: #064e3b;
 
   --seed: #e5e7eb;
   --sprout: #a7f3d0;
@@ -44,7 +54,7 @@
 }
 
 @media (prefers-color-scheme: dark) {
-  :root {
+  :root:not([data-theme="light"]) {
     --bg: #07110d;
     --bg-glow-1: rgba(16, 185, 129, 0.16);
     --bg-glow-2: rgba(14, 165, 233, 0.1);
@@ -56,9 +66,10 @@
     --muted: #92a89c;
     --border: #213129;
     --brand-soft: #0f3a2b;
-    --hero-1: #059669;
-    --hero-2: #0d9488;
-    --hero-3: #0e7490;
+    --link: #6ee7b7;
+    --hero-1: #047857;
+    --hero-2: #0f766e;
+    --hero-3: #155e75;
     --seed: #2a3a33;
     --sprout: #1f6f52;
     --growing: #22b07d;
@@ -68,6 +79,33 @@
     --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.35);
     --shadow-lg: 0 20px 48px rgba(0, 0, 0, 0.45);
   }
+}
+
+/* ธีมมืดที่ผู้ใช้เลือกเอง (ตั้งค่า → ธีม) */
+:root[data-theme="dark"] {
+  --bg: #07110d;
+  --bg-glow-1: rgba(16, 185, 129, 0.16);
+  --bg-glow-2: rgba(14, 165, 233, 0.1);
+  --surface: #101c17;
+  --surface-2: #16251f;
+  --glass: rgba(16, 28, 23, 0.78);
+  --glass-solid: rgba(16, 28, 23, 0.95);
+  --text: #e8f5ee;
+  --muted: #92a89c;
+  --border: #213129;
+  --brand-soft: #0f3a2b;
+  --link: #6ee7b7;
+  --hero-1: #047857;
+  --hero-2: #0f766e;
+  --hero-3: #155e75;
+  --seed: #2a3a33;
+  --sprout: #1f6f52;
+  --growing: #22b07d;
+  --tree: #6ee7b7;
+  --warning-bg: #3b2f12;
+  --shadow-sm: none;
+  --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.35);
+  --shadow-lg: 0 20px 48px rgba(0, 0, 0, 0.45);
 }
 
 /* ===== Base ===== */
@@ -121,7 +159,7 @@ h2 {
 }
 
 a {
-  color: var(--brand-strong);
+  color: var(--link);
 }
 
 .muted {
@@ -138,7 +176,7 @@ a {
 }
 
 :focus-visible {
-  outline: 3px solid var(--brand);
+  outline: 3px solid var(--link);
   outline-offset: 2px;
 }
 
@@ -170,7 +208,7 @@ a {
 .version {
   font-size: 0.7rem;
   font-weight: 600;
-  color: var(--brand-strong);
+  color: var(--link);
   background: var(--brand-soft);
   padding: 1px 8px;
   border-radius: 999px;
@@ -195,15 +233,20 @@ a {
 }
 
 .tabbar a[aria-current="page"] {
-  color: var(--brand-deep);
+  color: var(--link);
   background: var(--brand-soft);
   font-weight: 700;
 }
 
 @media (prefers-color-scheme: dark) {
-  .tabbar a[aria-current="page"] {
+  :root:not([data-theme="light"]) .tabbar a[aria-current="page"] {
     color: var(--tree);
   }
+}
+
+/* ธีมมืดที่ผู้ใช้เลือกเอง (ตั้งค่า → ธีม) */
+:root[data-theme="dark"] .tabbar a[aria-current="page"] {
+  color: var(--tree);
 }
 
 /* มือถือ: เมนูลอยอยู่ด้านล่างจอ */
@@ -283,13 +326,13 @@ button:disabled {
 
 .primary {
   color: var(--on-brand);
-  background: linear-gradient(180deg, var(--brand), var(--brand-strong));
+  background: var(--btn-bg);
   border-color: transparent;
-  box-shadow: 0 4px 0 var(--brand-deep);
+  box-shadow: 0 4px 0 var(--btn-shadow);
 }
 
 .primary:active {
-  box-shadow: 0 0 0 var(--brand-deep);
+  box-shadow: 0 0 0 var(--btn-shadow);
   transform: translateY(4px);
 }
 
@@ -551,7 +594,7 @@ select {
 
 .level-pct {
   font-weight: 800;
-  color: var(--brand-strong);
+  color: var(--link);
 }
 
 .stagebar {
@@ -628,8 +671,8 @@ body.studying main {
 .close {
   display: grid;
   place-items: center;
-  width: 40px;
-  height: 40px;
+  width: 44px;
+  height: 44px;
   border-radius: 50%;
   background: var(--surface);
   border: 1px solid var(--border);
@@ -850,31 +893,58 @@ body.studying main {
 }
 
 @media (prefers-color-scheme: dark) {
-  .pos {
+  :root:not([data-theme="light"]) .pos {
     background: rgba(255, 255, 255, 0.08);
     color: #c7d2fe;
   }
 
-  .pos-n {
+  :root:not([data-theme="light"]) .pos-n {
     color: #7dd3fc;
   }
 
-  .pos-v {
+  :root:not([data-theme="light"]) .pos-v {
     color: #6ee7b7;
   }
 
-  .pos-adj {
+  :root:not([data-theme="light"]) .pos-adj {
     color: #f0abfc;
   }
 
-  .pos-adv {
+  :root:not([data-theme="light"]) .pos-adv {
     color: #fcd34d;
   }
 
-  .pos-pron,
-  .pos-det {
+  :root:not([data-theme="light"]) .pos-pron,
+  :root:not([data-theme="light"]) .pos-det {
     color: #fda4af;
   }
+}
+
+/* ธีมมืดที่ผู้ใช้เลือกเอง (ตั้งค่า → ธีม) */
+:root[data-theme="dark"] .pos {
+  background: rgba(255, 255, 255, 0.08);
+  color: #c7d2fe;
+}
+
+:root[data-theme="dark"] .pos-n {
+  color: #7dd3fc;
+}
+
+:root[data-theme="dark"] .pos-v {
+  color: #6ee7b7;
+}
+
+:root[data-theme="dark"] .pos-adj {
+  color: #f0abfc;
+}
+
+:root[data-theme="dark"] .pos-adv {
+  color: #fcd34d;
+}
+
+:root[data-theme="dark"] .pos-pron,
+:root[data-theme="dark"] .pos-det {
+  color: #fda4af;
 }
 
 .forms {
@@ -929,18 +999,18 @@ body.studying main {
 }
 
 .grade.again {
-  background: var(--again);
-  box-shadow: 0 4px 0 var(--again-deep);
+  background: var(--again-bg);
+  box-shadow: 0 4px 0 var(--again-shadow);
 }
 
 .grade.hard {
-  background: var(--hard);
-  box-shadow: 0 4px 0 var(--hard-deep);
+  background: var(--hard-bg);
+  box-shadow: 0 4px 0 var(--hard-shadow);
 }
 
 .grade.good {
-  background: var(--good);
-  box-shadow: 0 4px 0 var(--good-deep);
+  background: var(--good-bg);
+  box-shadow: 0 4px 0 var(--good-shadow);
 }
 
 .grade:active {
@@ -1106,7 +1176,7 @@ kbd {
 }
 
 .level.clickable:focus-visible {
-  outline: 3px solid var(--brand);
+  outline: 3px solid var(--link);
   outline-offset: 2px;
 }
 
@@ -1145,7 +1215,7 @@ kbd {
 .stat-card strong {
   font-size: 1.9rem;
   line-height: 1.1;
-  color: var(--brand-strong);
+  color: var(--link);
 }
 
 .stat-card span {
@@ -1223,7 +1293,7 @@ kbd {
 }
 
 .week-col.today .week-label {
-  color: var(--brand-strong);
+  color: var(--link);
   font-weight: 700;
 }
 
@@ -1263,7 +1333,7 @@ kbd {
 }
 
 .cl-version {
-  color: var(--brand-strong);
+  color: var(--link);
   font-weight: 800;
 }
 
@@ -1284,7 +1354,7 @@ kbd {
   padding: 1px 10px;
   font-size: 0.8rem;
   font-weight: 700;
-  color: var(--brand-deep);
+  color: var(--link);
   background: var(--brand-soft);
   border-radius: 999px;
 }
@@ -1308,4 +1378,32 @@ kbd {
   padding: 1px 5px;
   background: var(--surface-2);
   border-radius: 6px;
+}
+
+/* ===== การเข้าถึง ===== */
+html[data-text-size="large"] {
+  font-size: 118%;
+}
+
+.check {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 44px;
+  font-weight: 600;
+}
+
+.check input {
+  width: 22px;
+  height: 22px;
+  accent-color: var(--btn-bg);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0.01ms !important;
+    animation: none !important;
+  }
 }

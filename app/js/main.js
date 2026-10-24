@@ -1,7 +1,7 @@
 import { LEVELS, levelTitle, loadWords } from "./data.js";
 import { canSpeak, speak } from "./speech.js";
 import { AGAIN, GOOD, HARD, STAGES, buildQueue, dayNumber, grade, knownCard, stageOf } from "./srs.js";
-import { NEW_PER_DAY_CHOICES, createStorage } from "./storage.js";
+import { NEW_PER_DAY_CHOICES, SPEECH_RATE_CHOICES, TEXT_SIZE_CHOICES, THEME_CHOICES, createStorage } from "./storage.js";
 import { entriesSince, inlineParts, parseChangelog } from "./changelog.js";
 import { issueUrl } from "./report.js";
 import { recentDays, stageCounts, streakOf, totalReviews } from "./stats.js";
@@ -41,6 +41,23 @@ function show(view) {
     else tab.removeAttribute("aria-current");
   });
   window.scrollTo(0, 0);
+}
+
+// ธีม (ตามเครื่อง/สว่าง/มืด) และขนาดตัวอักษรตามการตั้งค่า
+function applyAppearance() {
+  const { theme, textSize } = state.settings;
+  const root = document.documentElement;
+  if (theme === "auto") delete root.dataset.theme;
+  else root.dataset.theme = theme;
+  if (textSize === "large") root.dataset.textSize = "large";
+  else delete root.dataset.textSize;
+
+  const dark = theme === "dark" || (theme === "auto" && matchMedia("(prefers-color-scheme: dark)").matches);
+  document.querySelector('meta[name="theme-color"]')?.setAttribute("content", dark ? "#07110d" : "#059669");
+}
+
+function speakWord(text) {
+  speak(text, state.settings.speechRate);
 }
 
 function toast(message) {
@@ -181,7 +198,9 @@ function showCard() {
   const word = currentWord();
   const { queue, total, learned } = state.session;
   $("study-progress").textContent = `เหลือ ${queue.length} ใบ`;
-  $("study-bar").style.width = `${(learned.size / total) * 100}%`;
+  const percent = Math.round((learned.size / total) * 100);
+  $("study-bar").style.width = `${percent}%`;
+  $("study-progressbar").setAttribute("aria-valuenow", percent);
   $("card-level").textContent = `${levelTitle(word.level)} · อันดับ ${word.rank}`;
   $("card-word").textContent = word.headword;
   $("card-hint").hidden = false;
@@ -203,6 +222,7 @@ function showCard() {
   $("card-note").textContent = word.note ? `💡 ${word.note}` : "";
   $("card-note").hidden = !word.note;
   $("report").href = issueUrl(word, self.VG_VERSION);
+  if (state.settings.autoSpeak) speakWord(word.headword);
   $("card").focus({ preventScroll: true });
 }
 
@@ -429,9 +449,31 @@ async function maybeShowWhatsNew() {
   $("whatsnew-title").textContent = `มีอะไรใหม่ใน v${self.VG_VERSION}`;
   $("whatsnew-body").replaceChildren(...entries.map(changelogEntry));
   $("whatsnew-dialog").hidden = false;
+  $("whatsnew-ok").focus();
 }
 
 // ---------- ตั้งค่า ----------
+
+const SPEECH_RATE_LABELS = { 0.7: "ช้า", 0.9: "ปกติ", 1.1: "เร็ว" };
+const THEME_LABELS = { auto: "ตามเครื่อง", light: "สว่าง", dark: "มืด" };
+const TEXT_SIZE_LABELS = { normal: "ปกติ", large: "ใหญ่" };
+
+function fillSelect(select, choices, current, labels) {
+  select.replaceChildren(
+    ...choices.map((choice) => {
+      const option = el("option", "", labels[choice]);
+      option.value = choice;
+      option.selected = choice === current;
+      return option;
+    }),
+  );
+}
+
+function updateSetting(change) {
+  state.settings = { ...state.settings, ...change };
+  storage.saveSettings(state.settings);
+  applyAppearance();
+}
 
 function renderSettings() {
   const levels = [...new Set(translatedWords().map((word) => word.level))].filter((level) => level !== "sup");
@@ -444,6 +486,12 @@ function renderSettings() {
       return option;
     }),
   );
+  fillSelect($("speech-rate"), SPEECH_RATE_CHOICES, state.settings.speechRate, SPEECH_RATE_LABELS);
+  fillSelect($("theme"), THEME_CHOICES, state.settings.theme, THEME_LABELS);
+  fillSelect($("text-size"), TEXT_SIZE_CHOICES, state.settings.textSize, TEXT_SIZE_LABELS);
+  $("auto-speak").checked = state.settings.autoSpeak;
+  $("sound-panel").hidden = !canSpeak();
+  $("sound-heading").hidden = !canSpeak();
   const select = $("new-per-day");
   select.replaceChildren(
     ...NEW_PER_DAY_CHOICES.map((count) => {
@@ -472,6 +520,7 @@ async function importBackup(file) {
     const count = storage.importData(JSON.parse(await file.text()));
     state.cards = storage.loadCards();
     state.settings = storage.loadSettings();
+    applyAppearance();
     renderSettings();
     toast(`นำเข้าความคืบหน้า ${count} คำเรียบร้อย`);
   } catch (error) {
@@ -484,6 +533,7 @@ function resetProgress() {
   storage.reset();
   state.cards = storage.loadCards();
   state.settings = storage.loadSettings();
+  applyAppearance();
   renderSettings();
   toast("ล้างความคืบหน้าแล้ว");
 }
@@ -535,15 +585,22 @@ function bindEvents() {
   });
   $("speak-word").addEventListener("click", (event) => {
     event.stopPropagation();
-    speak(currentWord().headword);
+    speakWord(currentWord().headword);
   });
   $("speak-example").addEventListener("click", (event) => {
     event.stopPropagation();
-    speak(currentWord().exampleEn);
+    speakWord(currentWord().exampleEn);
   });
   $("grades").addEventListener("click", (event) => {
     const button = event.target.closest("[data-grade]");
     if (button) answer(Number(button.dataset.grade));
+  });
+
+  // Esc ปิดหน้าต่างที่เด้งขึ้นมา (อัปเดต / มีอะไรใหม่)
+  document.addEventListener("keydown", (event) => {
+    if (event.key !== "Escape") return;
+    const open = document.querySelector(".modal:not([hidden])");
+    if (open) open.hidden = true;
   });
 
   document.addEventListener("keydown", (event) => {
@@ -572,6 +629,15 @@ function bindEvents() {
     storage.saveSettings(state.settings);
     toast(`คำใหม่จะมาจากด่าน ${state.settings.startLevel} เป็นต้นไป`);
   });
+  $("auto-speak").addEventListener("change", (event) => updateSetting({ autoSpeak: event.target.checked }));
+  $("speech-rate").addEventListener("change", (event) => {
+    updateSetting({ speechRate: Number(event.target.value) });
+    speakWord("Hello, welcome to Vocab Garden");
+  });
+  $("speech-test").addEventListener("click", () => speakWord("Hello, welcome to Vocab Garden"));
+  $("theme").addEventListener("change", (event) => updateSetting({ theme: event.target.value }));
+  $("text-size").addEventListener("change", (event) => updateSetting({ textSize: event.target.value }));
+  matchMedia("(prefers-color-scheme: dark)").addEventListener("change", applyAppearance);
   $("export").addEventListener("click", exportBackup);
   $("import").addEventListener("change", (event) => {
     const [file] = event.target.files;
@@ -613,6 +679,7 @@ function showUpdateDialog(next, apply) {
   $("update-dialog").hidden = false;
   $("update-now").disabled = false;
   $("update-now").textContent = "ดาวน์โหลดเวอร์ชันใหม่";
+  $("update-now").focus();
   $("update-now").onclick = () => {
     $("update-now").disabled = true;
     $("update-now").textContent = "กำลังอัปเดต…";
@@ -721,6 +788,7 @@ document.querySelectorAll(".app-version").forEach((node) => {
 $("speak-word").hidden = !canSpeak();
 $("speak-example").hidden = !canSpeak();
 navigator.storage?.persist?.();
+applyAppearance();
 lockZoomInInstalledApp();
 $("check-update").onclick = () => checkForNewVersion({ manual: true });
 document.addEventListener("visibilitychange", () => {

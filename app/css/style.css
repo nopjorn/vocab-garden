@@ -1921,3 +1921,128 @@ html[data-text-size="large"] {
 .tile:disabled {
   color: var(--text);
 }
+
+/* ===== ทายคำปริศนา ===== */
+.wordle-message {
+  min-height: 1.6em;
+  margin: 8px 0;
+  text-align: center;
+  font-weight: 600;
+}
+
+.wordle-board {
+  display: grid;
+  gap: 6px;
+  width: min(100%, 320px);
+  margin: 8px auto 14px;
+}
+
+.wordle-row {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 6px;
+}
+
+.wordle-cell {
+  display: grid;
+  place-items: center;
+  aspect-ratio: 1;
+  font-size: 1.7rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  color: var(--text);
+  background: var(--surface);
+  border: 2px solid var(--border);
+  border-radius: 10px;
+}
+
+.wordle-cell.typed {
+  border-color: var(--muted);
+}
+
+.wordle-cell.correct,
+.wordle-key.correct {
+  color: var(--on-brand);
+  background: var(--good-bg);
+  border-color: var(--good-bg);
+}
+
+.wordle-cell.present,
+.wordle-key.present {
+  color: var(--on-brand);
+  background: var(--hard-bg);
+  border-color: var(--hard-bg);
+}
+
+.wordle-cell.absent,
+.wordle-key.absent {
+  color: var(--muted);
+  background: var(--surface-2);
+  border-color: var(--surface-2);
+}
+
+/* ไม่ใช้สีอย่างเดียว: ถูกที่มีเครื่องหมายถูก มีแต่ผิดที่มีจุดที่มุม */
+.wordle-cell.correct {
+  box-shadow: inset 0 -4px 0 rgba(255, 255, 255, 0.45);
+}
+
+.wordle-cell.present {
+  border-style: dashed;
+  border-color: rgba(255, 255, 255, 0.7);
+}
+
+.wordle-keys {
+  display: grid;
+  gap: 6px;
+  width: 100%;
+  max-width: 480px;
+  margin: 0 auto;
+}
+
+.wordle-key-row {
+  display: flex;
+  justify-content: center;
+  gap: 5px;
+}
+
+.wordle-key {
+  flex: 1;
+  min-width: 0;
+  min-height: 48px;
+  padding: 0;
+  font-size: 1rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--text);
+  background: var(--surface);
+  border: 2px solid var(--border);
+  border-radius: 8px;
+  box-shadow: none;
+}
+
+.wordle-key.wide-key {
+  flex: 1.6;
+  font-size: 0.85rem;
+  text-transform: none;
+}
+
+.wordle-key:disabled {
+  opacity: 0.6;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .wordle-row.shake {
+    animation: wordle-shake 0.35s;
+  }
+
+  @keyframes wordle-shake {
+    20%,
+    60% {
+      transform: translateX(-6px);
+    }
+    40%,
+    80% {
+      transform: translateX(6px);
+    }
+  }
+}

@@ -101,7 +101,7 @@ test("buildQuestion never quizzes a new card and gets harder as the tree grows",
   assert.equal(buildQuestion(POOL[0], undefined, POOL, seeded()), null);
   assert.equal(buildQuestion(POOL[0], CARD(2), POOL, seeded()).type, "choice");
   assert.equal(buildQuestion(POOL[0], CARD(10), POOL, seeded()).type, "cloze");
-  assert.equal(buildQuestion(POOL[0], CARD(40), POOL, seeded()).type, "cloze");
+  assert.equal(buildQuestion(POOL[0], CARD(40), POOL, seeded(), { typing: false }).type, "cloze");
   // ประโยคเติมไม่ได้ ก็ถามแบบเลือกคำแปลแทน
   const noBlank = word("tea", [], [sense("n", "ชา")], "I like coffee.");
   assert.equal(buildQuestion(noBlank, CARD(10), [...POOL, noBlank], seeded()).type, "choice");
@@ -116,7 +116,7 @@ test("every translated word in the real data gets a well-formed question", () =>
   let fallback = 0;
   for (const entry of words) {
     for (const ivl of [2, 30]) {
-      const question = buildQuestion(entry, CARD(ivl), words, seeded(entry.order ?? 1));
+      const question = buildQuestion(entry, CARD(ivl), words, seeded(entry.order ?? 1), { typing: false });
       if (!question) {
         fallback += 1; // ไม่มีความหมายที่เหมาะเป็นตัวเลือก (เช่น the) ใช้การ์ดพลิกแบบเดิม
         continue;
@@ -132,4 +132,61 @@ test("every translated word in the real data gets a well-formed question", () =>
   }
   assert.ok(cloze >= 150, `เติมคำได้ ${cloze} จาก ${words.length}`);
   assert.ok(fallback <= 10, `ใช้การ์ดพลิก ${fallback} ใบ`);
+});
+
+import { editDistance, gradeTyped, typeQuestion } from "../../app/js/quiz.js";
+import { AGAIN as AGAIN_RATING, GOOD as GOOD_RATING, HARD as HARD_RATING } from "../../app/js/srs.js";
+
+test("editDistance counts single-letter slips", () => {
+  assert.equal(editDistance("house", "house"), 0);
+  assert.equal(editDistance("hose", "house"), 1);
+  assert.equal(editDistance("housse", "house"), 1);
+  assert.equal(editDistance("hause", "house"), 1);
+  assert.equal(editDistance("hxuse", "mouse"), 2);
+});
+
+test("typeQuestion asks for the English word only when the Thai meaning points to one word", () => {
+  const question = typeQuestion(POOL[0], POOL);
+  assert.deepEqual(
+    [question.type, question.prompt, question.answerText, question.posLabel],
+    ["type", "ทำงาน", "work", "v"],
+  );
+  assert.deepEqual(question.accepted, ["work", "works", "worked", "working"]);
+  // มีอีกคำที่แปลทับกัน (job = ทำงาน) ตอบได้หลายคำ จึงไม่ถามแบบพิมพ์
+  assert.equal(typeQuestion(POOL[0], [...POOL, word("job", [], [sense("n", "งาน, ทำงาน")])]), null);
+  assert.equal(typeQuestion(word("be", [], [sense("v", "เป็น")]), POOL), null); // สั้นกว่า 3 ตัวอักษร
+  assert.equal(typeQuestion(word("the", [], [sense("det", "ไม่มีคำแปลตรงตัว")]), POOL), null);
+});
+
+test("gradeTyped: exact is good, hint or one slip is hard, anything else is again", () => {
+  const question = typeQuestion(POOL[3], POOL); // house, houses
+  assert.deepEqual(gradeTyped(question, "  House "), { result: "correct", rating: GOOD_RATING });
+  assert.deepEqual(gradeTyped(question, "houses."), { result: "correct", rating: GOOD_RATING });
+  assert.deepEqual(gradeTyped(question, "house", true), { result: "correct", rating: HARD_RATING });
+  assert.deepEqual(gradeTyped(question, "hause"), { result: "close", rating: HARD_RATING });
+  assert.deepEqual(gradeTyped(question, "home"), { result: "wrong", rating: AGAIN_RATING });
+  const short = typeQuestion(word("tea", [], [sense("n", "ชา")]), POOL);
+  assert.equal(gradeTyped(short, "tee").result, "wrong"); // คำสั้นไม่ให้ผิดได้
+});
+
+test("buildQuestion asks big trees to type, unless typing is turned off", () => {
+  assert.equal(buildQuestion(POOL[0], CARD(40), POOL, seeded(), { typing: true }).type, "type");
+  assert.equal(buildQuestion(POOL[0], CARD(40), POOL, seeded(), { typing: false }).type, "cloze");
+  assert.equal(buildQuestion(POOL[0], CARD(10), POOL, seeded(), { typing: true }).type, "cloze"); // 🌿 ยังเติมคำ
+  assert.equal(buildQuestion(POOL[0], CARD(2), POOL, seeded()).type, "choice");
+  // คำที่ตอบได้หลายคำ (แปลทับกัน) ใช้เติมคำแทน
+  const pool = [...POOL, word("job", [], [sense("n", "งาน, ทำงาน")])];
+  assert.equal(buildQuestion(POOL[0], CARD(40), pool, seeded()).type, "cloze");
+});
+
+test("real data: how many big trees can be asked by typing", () => {
+  const words = ["01", "02"]
+    .flatMap((level) => parseLevel(readFileSync(new URL(`../../app/data/levels/${level}.tsv`, import.meta.url), "utf8"), level))
+    .filter((entry) => entry.senses.length > 0);
+  const typeable = words.map((entry) => typeQuestion(entry, words)).filter(Boolean);
+  for (const question of typeable) {
+    assert.ok(question.accepted.includes(question.answerText.toLowerCase()), question.answerText);
+    assert.ok(question.prompt.length > 0);
+  }
+  assert.ok(typeable.length >= 60, `พิมพ์ได้ ${typeable.length} จาก ${words.length}`);
 });

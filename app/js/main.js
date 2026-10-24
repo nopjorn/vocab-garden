@@ -2,7 +2,7 @@ import { LEVELS, levelTitle, loadWords } from "./data.js";
 import { comboMessage, growthSummary, nextCombo, recordGrowth, stageMove, wordList } from "./celebrate.js";
 import { launchConfetti } from "./confetti.js";
 import { canSpeak, speak } from "./speech.js";
-import { buildQuestion } from "./quiz.js";
+import { buildQuestion, gradeTyped } from "./quiz.js";
 import { playSfx } from "./sfx.js";
 import { daysAway, goalProgress, settleRest } from "./habit.js";
 import { AGAIN, GOOD, HARD, STAGES, buildQueue, dayNumber, grade, isDue, knownCard, stageOf } from "./srs.js";
@@ -292,10 +292,10 @@ function showCard() {
   $("card-note").textContent = word.note ? `💡 ${word.note}` : "";
   $("card-note").hidden = !word.note;
   $("report").href = issueUrl(word, self.VG_VERSION);
-  state.session.quiz = quizFor(word);
-  renderQuiz(word);
-  if (state.settings.autoSpeak && state.session.quiz?.type !== "cloze") speakWord(word.headword);
   $("card").focus({ preventScroll: true });
+  state.session.quiz = quizFor(word);
+  renderQuiz(word); // ข้อพิมพ์ย้ายโฟกัสไปที่ช่องพิมพ์
+  if (state.settings.autoSpeak && !["cloze", "type"].includes(state.session.quiz?.type)) speakWord(word.headword);
 }
 
 // ---------- ทวนแบบผสม (เลือกคำแปล / เติมคำในประโยค) ----------
@@ -303,22 +303,33 @@ function showCard() {
 // คำถามของการ์ดใบนี้ (null = พลิกการ์ดแบบเดิม): ใช้เฉพาะโหมด "ผสมหลายแบบ" และกับคำที่เคยเห็นแล้ว
 function quizFor(word) {
   if (state.settings.quizMode !== "mixed") return null;
-  const question = buildQuestion(word, state.cards[word.headword], translatedWords());
-  return question && { ...question, answered: false, rating: null };
+  const question = buildQuestion(word, state.cards[word.headword], translatedWords(), Math.random, { typing: state.settings.quizTyping });
+  return question && { ...question, answered: false, rating: null, hinted: false };
 }
 
 function renderQuiz(word) {
   const quiz = state.session.quiz;
-  $("quiz-options").hidden = !quiz;
+  $("quiz-options").hidden = !quiz || quiz.type === "type";
+  $("quiz-type").hidden = quiz?.type !== "type";
   $("quiz-feedback").hidden = true;
   $("quiz-next").hidden = true;
   $("quiz-skip").hidden = !quiz;
   $("swipe-hint").hidden = Boolean(quiz); // ทวนแบบผสมไม่ปัดการ์ด
   $("flip").hidden = Boolean(quiz);
-  $("speak-word").hidden = quiz?.type === "cloze";
-  $("card-word").classList.toggle("sentence", quiz?.type === "cloze");
+  $("speak-word").hidden = quiz?.type === "cloze" || quiz?.type === "type";
+  $("card-word").classList.toggle("sentence", quiz?.type === "cloze" || quiz?.type === "type");
   if (!quiz) return;
 
+  if (quiz.type === "type") {
+    $("card-word").textContent = quiz.prompt;
+    $("card-hint").textContent = `พิมพ์คำภาษาอังกฤษ (${quiz.posLabel} · ${quiz.answerText.length} ตัวอักษร)`;
+    $("quiz-input").value = "";
+    $("quiz-input").disabled = false;
+    $("quiz-check").disabled = false;
+    $("quiz-hint").disabled = false;
+    $("quiz-input").focus({ preventScroll: true });
+    return;
+  }
   if (quiz.type === "cloze") {
     $("card-word").replaceChildren(quiz.before, el("span", "blank", "＿＿＿＿"), quiz.after);
     $("card-hint").textContent = `เติมคำที่หายไป · ${word.exampleTh}`;
@@ -339,13 +350,31 @@ function renderQuiz(word) {
   );
 }
 
+// จบคำถามหนึ่งข้อ: บอกผล เปิดด้านหลังการ์ด แล้วรอให้กด "ต่อไป"
+function settleQuiz(rating, message, good) {
+  const quiz = state.session.quiz;
+  quiz.answered = true;
+  quiz.rating = rating;
+  $("quiz-feedback").textContent = message;
+  $("quiz-feedback").classList.toggle("is-correct", good);
+  $("quiz-feedback").hidden = false;
+  $("quiz-skip").hidden = true;
+  flip();
+  $("quiz-next").hidden = false;
+  $("quiz-next").focus({ preventScroll: true });
+}
+
 // index = ตัวเลือกที่แตะ (-1 = กด "ไม่รู้ ดูคำตอบ") ตอบถูก = จำได้แม่น นอกนั้น = ยังจำไม่ได้
 function chooseOption(index) {
   const quiz = state.session?.quiz;
   if (!quiz || quiz.answered) return;
-  quiz.answered = true;
   const correct = index === quiz.answerIndex;
-  quiz.rating = correct ? GOOD : AGAIN;
+  if (quiz.type === "type") {
+    // ข้ามข้อพิมพ์ (กด "ไม่รู้")
+    revealTyped();
+    settleQuiz(AGAIN, `💡 คำตอบคือ ${quiz.answerText}`, false);
+    return;
+  }
 
   $("quiz-options")
     .querySelectorAll(".quiz-option")
@@ -355,13 +384,43 @@ function chooseOption(index) {
       button.classList.toggle("wrong", position === index && !correct);
     });
   if (quiz.type === "cloze") $("card-word").replaceChildren(quiz.before, el("span", "blank filled", quiz.answerText), quiz.after);
-  $("quiz-feedback").textContent = correct ? "✅ ถูกต้อง!" : `${index < 0 ? "💡" : "❌ ยังไม่ถูก"} คำตอบคือ ${quiz.answerText}`;
-  $("quiz-feedback").classList.toggle("is-correct", correct);
-  $("quiz-feedback").hidden = false;
-  $("quiz-skip").hidden = true;
-  flip();
-  $("quiz-next").hidden = false;
-  $("quiz-next").focus({ preventScroll: true });
+  settleQuiz(correct ? GOOD : AGAIN, correct ? "✅ ถูกต้อง!" : `${index < 0 ? "💡" : "❌ ยังไม่ถูก"} คำตอบคือ ${quiz.answerText}`, correct);
+}
+
+// ข้อพิมพ์: ล็อกช่องพิมพ์ แล้วเฉลยเป็นคำอังกฤษบนการ์ด
+function revealTyped() {
+  const quiz = state.session.quiz;
+  $("quiz-input").disabled = true;
+  $("quiz-check").disabled = true;
+  $("quiz-hint").disabled = true;
+  $("card-word").classList.remove("sentence");
+  $("card-word").textContent = quiz.answerText;
+  $("speak-word").hidden = false;
+}
+
+function submitTyped() {
+  const quiz = state.session?.quiz;
+  if (!quiz || quiz.type !== "type" || quiz.answered) return;
+  const text = $("quiz-input").value;
+  if (!text.trim()) return;
+  const { result, rating } = gradeTyped(quiz, text, quiz.hinted);
+  revealTyped();
+  const messages = {
+    correct: quiz.hinted ? "✅ ถูก (ใช้ตัวช่วยใบ้)" : "✅ ถูกต้อง!",
+    close: `🙂 เกือบถูก! สะกดว่า ${quiz.answerText}`,
+    wrong: `❌ ยังไม่ถูก คำตอบคือ ${quiz.answerText}`,
+  };
+  settleQuiz(rating, messages[result], result !== "wrong");
+}
+
+// ใบ้: บอกตัวอักษรแรก (ถ้าพิมพ์ถูกจะนับเป็น "พอจำได้")
+function hintTyped() {
+  const quiz = state.session?.quiz;
+  if (!quiz || quiz.type !== "type" || quiz.answered) return;
+  quiz.hinted = true;
+  $("quiz-hint").disabled = true;
+  $("card-hint").textContent = `ใบ้: ขึ้นต้นด้วย "${quiz.answerText[0]}" · ${quiz.answerText.length} ตัวอักษร`;
+  $("quiz-input").focus({ preventScroll: true });
 }
 
 function nextQuiz() {
@@ -709,6 +768,7 @@ function renderSettings() {
   fillSelect($("theme"), THEME_CHOICES, state.settings.theme, THEME_LABELS);
   fillSelect($("text-size"), TEXT_SIZE_CHOICES, state.settings.textSize, TEXT_SIZE_LABELS);
   fillSelect($("quiz-mode"), QUIZ_MODE_CHOICES, state.settings.quizMode, QUIZ_MODE_LABELS);
+  $("quiz-typing").checked = state.settings.quizTyping;
   fillSelect($("daily-goal"), DAILY_GOAL_CHOICES, state.settings.dailyGoal, DAILY_GOAL_LABELS);
   fillSelect($("review-cap"), REVIEW_CAP_CHOICES, state.settings.reviewCap, REVIEW_CAP_LABELS);
   $("auto-speak").checked = state.settings.autoSpeak;
@@ -801,6 +861,14 @@ function bindEvents() {
     if (button) chooseOption(Number(button.dataset.index));
   });
   $("quiz-skip").addEventListener("click", () => chooseOption(-1));
+  $("quiz-check").addEventListener("click", submitTyped);
+  $("quiz-hint").addEventListener("click", hintTyped);
+  $("quiz-input").addEventListener("keydown", (event) => {
+    if (event.key === "Enter") {
+      event.preventDefault();
+      submitTyped();
+    }
+  });
   $("quiz-next").addEventListener("click", nextQuiz);
   bindSwipe();
   $("flip").addEventListener("click", flip);
@@ -838,7 +906,7 @@ function bindEvents() {
     const quiz = state.session.quiz;
     if (quiz) {
       // ทวนแบบผสม: 1–4 เลือกคำตอบ เว้นวรรค/Enter ไปต่อ (ไม่ปัดการ์ด ไม่ให้คะแนนเอง)
-      if (!quiz.answered && /^[1-4]$/.test(event.key)) {
+      if (quiz.type !== "type" && !quiz.answered && /^[1-4]$/.test(event.key)) {
         if (Number(event.key) <= quiz.options.length) chooseOption(Number(event.key) - 1);
       } else if (quiz.answered && (event.key === " " || event.key === "Enter")) {
         event.preventDefault();
@@ -884,6 +952,7 @@ function bindEvents() {
   $("theme").addEventListener("change", (event) => updateSetting({ theme: event.target.value }));
   $("text-size").addEventListener("change", (event) => updateSetting({ textSize: event.target.value }));
   $("quiz-mode").addEventListener("change", (event) => updateSetting({ quizMode: event.target.value }));
+  $("quiz-typing").addEventListener("change", (event) => updateSetting({ quizTyping: event.target.checked }));
   $("daily-goal").addEventListener("change", (event) => {
     updateSetting({ dailyGoal: Number(event.target.value) });
     toast(`ตั้งเป้าหมายวันละ ${state.settings.dailyGoal} ครั้งแล้ว`);

@@ -1167,6 +1167,38 @@ kbd {
   box-shadow: 0 3px 0 var(--again-deep);
 }
 
+.quiz-type {
+  display: grid;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
+.quiz-type .row {
+  margin: 0;
+}
+
+.quiz-type .row button {
+  flex: 1;
+}
+
+#quiz-input {
+  width: 100%;
+  min-height: 56px;
+  padding: 10px 14px;
+  font: inherit;
+  font-size: 1.25rem; /* ไม่ต่ำกว่า 16px ไม่งั้น iPhone ซูมหน้าตอนแตะช่องพิมพ์ */
+  font-weight: 600;
+  text-align: center;
+  color: var(--text);
+  background: var(--surface);
+  border: 2px solid var(--border);
+  border-radius: var(--radius-sm);
+}
+
+#quiz-input:disabled {
+  opacity: 0.7;
+}
+
 .quiz-feedback {
   margin: 0 0 12px;
   text-align: center;

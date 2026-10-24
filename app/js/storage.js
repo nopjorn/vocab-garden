@@ -29,6 +29,7 @@ export const DEFAULT_SETTINGS = {
   dailyGoal: 10,
   reviewCap: 100,
   quizMode: "flip",
+  quizTyping: true,
 };
 export const LAST_LEVEL = 28;
 export const NEW_PER_DAY_CHOICES = [5, 10, 20];
@@ -131,6 +132,7 @@ export function createStorage(store = globalThis.localStorage) {
         dailyGoal: pick(DAILY_GOAL_CHOICES, saved.dailyGoal, DEFAULT_SETTINGS.dailyGoal),
         reviewCap: pick(REVIEW_CAP_CHOICES, saved.reviewCap, DEFAULT_SETTINGS.reviewCap),
         quizMode: pick(QUIZ_MODE_CHOICES, saved.quizMode, DEFAULT_SETTINGS.quizMode),
+        quizTyping: saved.quizTyping !== false,
       };
     },
     saveSettings(settings) {

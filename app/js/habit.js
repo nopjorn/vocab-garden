@@ -72,3 +72,12 @@ export function goalProgress(days, today, goal) {
   const done = days[today] || 0;
   return { done, goal, percent: Math.min(100, Math.round((done / goal) * 100)), reached: done >= goal };
 }
+
+// รวมวันที่ท่องกับวันที่เล่นเกมเข้าด้วยกัน (ใช้นับสตรีคและวันพัก) ไม่แก้ข้อมูลเดิม
+export function mergeDays(...sources) {
+  const merged = {};
+  for (const days of sources) {
+    for (const [day, count] of Object.entries(days)) merged[day] = (merged[day] || 0) + count;
+  }
+  return merged;
+}

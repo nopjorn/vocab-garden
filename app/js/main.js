@@ -5,7 +5,8 @@ import { canSpeak, speak } from "./speech.js";
 import { buildQuestion, gradeTyped } from "./quiz.js";
 import { playSfx } from "./sfx.js";
 import { LEECH_LAPSES, dueLabel, leechWords, matchesQuery, plantInfo, plotSummary } from "./garden.js";
-import { daysAway, goalProgress, settleRest } from "./habit.js";
+import { daysAway, goalProgress, mergeDays, settleRest } from "./habit.js";
+import { buildMatchRound, formatSeconds, isMatch, isNewBest } from "./match.js";
 import { AGAIN, GOOD, HARD, STAGES, buildQueue, dayNumber, grade, isDue, knownCard, stageOf } from "./srs.js";
 import {
   DAILY_GOAL_CHOICES,
@@ -24,8 +25,8 @@ import { recentDays, stageCounts, streakOf, totalReviews } from "./stats.js";
 import { SUPPORT_LINKS } from "./support.js";
 import { isNewer, parseSwVersion } from "./update.js";
 
-const VIEWS = ["loading", "error", "home", "study", "done", "garden", "settings", "about", "changelog"];
-const TAB_OF_VIEW = { changelog: "about" }; // หน้าที่ไม่มีแท็บของตัวเอง ให้ไฮไลต์แท็บนี้แทน
+const VIEWS = ["loading", "error", "home", "study", "done", "garden", "play", "match", "settings", "about", "changelog"];
+const TAB_OF_VIEW = { changelog: "about", match: "play" }; // หน้าที่ไม่มีแท็บของตัวเอง ให้ไฮไลต์แท็บนี้แทน
 const REQUEUE_GAP = 3; // คำที่ตอบ "ยังจำไม่ได้" จะกลับมาอีกครั้งหลังการ์ดใบอื่นอีก 3 ใบ
 const SWIPE_DISTANCE = 90; // ปัดเกินกี่ px ถึงนับเป็นการให้คะแนน
 const SWIPE_PREVIEW = 40; // ปัดเกินกี่ px ถึงเริ่มขึ้นป้ายบนการ์ด
@@ -184,9 +185,10 @@ function levelItem(level) {
 // คำนวณวันพักถึงปัจจุบัน (รันซ้ำได้ ผลเดิม) แล้วคืนประวัติกับสถานะวันพัก
 function refreshHabit(day) {
   const history = storage.loadHistory();
-  const { rest, usedNow, earned } = settleRest(history, storage.loadRest(), day);
+  const active = mergeDays(history, storage.loadGames().days); // วันที่ท่องหรือเล่นเกม นับเป็นวันท่องต่อเนื่อง
+  const { rest, usedNow, earned } = settleRest(active, storage.loadRest(), day);
   storage.saveRest(rest);
-  return { history, rest, usedNow, earned };
+  return { history, active, rest, usedNow, earned };
 }
 
 function announceRest({ usedNow, earned, rest }) {
@@ -223,7 +225,7 @@ function renderHome() {
       : "วันนี้ทวนครบแล้ว 🎉 พรุ่งนี้มาดูสวนกันใหม่นะ";
   $("backlog-note").hidden = !(queue.length > 0 && totalDue > dueCount);
   $("backlog-note").textContent = `📚 มีคำรอทวน ${totalDue} คำ วันนี้ทยอยทวนก่อน ${dueCount} ใบ (ค้างนานสุดก่อน) งดคำใหม่ชั่วคราวจนกว่าคำค้างจะเบาลง`;
-  const away = daysAway(habit.history, today);
+  const away = daysAway(habit.active, today);
   $("welcome-back").hidden = !(away >= 3 && totalDue > 0);
   $("welcome-back").textContent = `ยินดีต้อนรับกลับมา 🌱 ห่างไป ${away} วัน ไม่เป็นไรเลย ลิซ่าทยอยให้ทวนทีละส่วน เริ่มจากคำที่ค้างนานสุดก่อนนะ`;
 
@@ -237,7 +239,7 @@ function renderHome() {
   $("garden-count").textContent = planted;
   $("garden-ring").style.setProperty("--p", translated.length ? (planted / translated.length) * 100 : 0);
   $("garden-ring").setAttribute("aria-label", `ปลูกแล้ว ${planted} จาก ${translated.length} คำ`);
-  const { current } = streakOf(habit.history, today, habit.rest.frozen);
+  const { current } = streakOf(habit.active, today, habit.rest.frozen);
   $("streak").hidden = current === 0;
   $("streak").textContent = `🔥 ท่องต่อเนื่อง ${current} วัน${habit.rest.bank > 0 ? ` · 🧊 วันพัก ${habit.rest.bank}` : ""}`;
   announceRest(habit);
@@ -681,12 +683,108 @@ function finishSession() {
   fx("finish");
 }
 
+// ---------- เล่น (เกม) ----------
+
+function renderPlay() {
+  const best = storage.loadGames().best.match;
+  $("match-best").textContent = best ? `🏆 ดีที่สุด ${formatSeconds(best)}` : "";
+}
+
+const match = { round: null, open: [], matched: 0, moves: 0, startedAt: null, timer: null, locked: false };
+
+function stopMatchTimer() {
+  clearInterval(match.timer);
+  match.timer = null;
+}
+
+function renderMatchStats() {
+  const ms = match.startedAt ? Date.now() - match.startedAt : 0;
+  $("match-stats").textContent = `⏱ ${formatSeconds(ms)} · ${match.moves} ครั้ง`;
+}
+
+function startMatch() {
+  stopMatchTimer();
+  const round = buildMatchRound(translatedWords());
+  if (!round) {
+    toast("ยังมีคำที่แปลแล้วไม่พอสำหรับเกมนี้");
+    location.hash = "#/play";
+    return;
+  }
+  Object.assign(match, { round, open: [], matched: 0, moves: 0, startedAt: null, locked: false });
+  $("match-result").hidden = true;
+  $("match-board").hidden = false;
+  $("match-board").replaceChildren(
+    ...round.tiles.map((tile) => {
+      const button = el("button", `tile tile-${tile.lang}`, tile.text);
+      button.type = "button";
+      button.dataset.id = tile.id;
+      button.setAttribute("aria-pressed", "false");
+      if (tile.lang === "en") button.lang = "en";
+      return button;
+    }),
+  );
+  renderMatchStats();
+  show("match");
+}
+
+function tapTile(button) {
+  if (match.locked || button.disabled || match.open.includes(button)) return;
+  if (!match.startedAt) {
+    match.startedAt = Date.now();
+    match.timer = setInterval(renderMatchStats, 200);
+  }
+  button.classList.add("picked");
+  button.setAttribute("aria-pressed", "true");
+  match.open.push(button);
+  if (match.open.length < 2) return;
+
+  match.moves += 1;
+  const [first, second] = match.open.map((tile) => match.round.tiles.find((entry) => entry.id === tile.dataset.id));
+  const buttons = match.open;
+  match.open = [];
+  if (isMatch(first, second)) {
+    buttons.forEach((tile) => {
+      tile.classList.remove("picked");
+      tile.classList.add("matched");
+      tile.disabled = true;
+    });
+    match.matched += 1;
+    fx("correct");
+    if (match.matched === match.round.tiles.length / 2) finishMatch();
+  } else {
+    match.locked = true;
+    buttons.forEach((tile) => tile.classList.add("wrong"));
+    setTimeout(() => {
+      buttons.forEach((tile) => {
+        tile.classList.remove("picked", "wrong");
+        tile.setAttribute("aria-pressed", "false");
+      });
+      match.locked = false;
+    }, 600);
+  }
+  renderMatchStats();
+}
+
+function finishMatch() {
+  stopMatchTimer();
+  const ms = Date.now() - match.startedAt;
+  const isBest = isNewBest(storage.loadGames().best.match, ms);
+  if (isBest) storage.saveBest("match", ms);
+  storage.addGamePlay(dayNumber());
+  renderMatchStats();
+  $("match-summary").textContent = `${formatSeconds(ms)} · ${match.moves} ครั้ง${isBest ? " 🏆 สถิติใหม่!" : ""}`;
+  $("match-board").hidden = true;
+  $("match-result").hidden = false;
+  launchConfetti(isBest ? 48 : 24);
+  fx("finish");
+}
+
 // ---------- สวนของฉัน ----------
 
 function renderGarden() {
   const today = dayNumber();
-  const { history: days, rest } = refreshHabit(today);
-  const { current, best } = streakOf(days, today, rest.frozen);
+  const { history: days, active, rest } = refreshHabit(today);
+  const { current, best } = streakOf(active, today, rest.frozen);
   $("g-rest").textContent = `🧊 วันพักที่เก็บไว้: ${rest.bank} จาก 2 วัน`;
   $("g-streak").textContent = current;
   $("g-best").textContent = best;
@@ -1006,7 +1104,15 @@ function route() {
     return;
   }
   state.session = null;
-  if (page === "garden") {
+  stopMatchTimer();
+  if (page === "play" && argument === "match") {
+    startMatch();
+    return;
+  }
+  if (page === "play") {
+    renderPlay();
+    show("play");
+  } else if (page === "garden") {
     renderGarden();
     show("garden");
   } else if (page === "settings") {
@@ -1048,6 +1154,11 @@ function bindEvents() {
   $("flip").addEventListener("click", flip);
   $("know").addEventListener("click", markKnown);
   $("report").addEventListener("click", (event) => event.stopPropagation());
+  $("match-board").addEventListener("click", (event) => {
+    const button = event.target.closest(".tile");
+    if (button) tapTile(button);
+  });
+  $("match-again").addEventListener("click", startMatch);
   $("plots").addEventListener("click", (event) => {
     const button = event.target.closest(".plant");
     if (button) openWordDialog(state.words.find((entry) => entry.headword === button.dataset.headword));

@@ -33,6 +33,7 @@
     <nav class="tabbar" aria-label="เมนูหลัก">
       <a href="#/" data-tab="home"><span class="tab-icon" aria-hidden="true">🏠</span><span>หน้าหลัก</span></a>
       <a href="#/garden" data-tab="garden"><span class="tab-icon" aria-hidden="true">🌳</span><span>สวน</span></a>
+      <a href="#/play" data-tab="play"><span class="tab-icon" aria-hidden="true">🎮</span><span>เล่น</span></a>
       <a href="#/settings" data-tab="settings"><span class="tab-icon" aria-hidden="true">⚙️</span><span>ตั้งค่า</span></a>
       <a href="#/about" data-tab="about"><span class="tab-icon" aria-hidden="true">ℹ️</span><span>เกี่ยวกับ</span></a>
     </nav>
@@ -199,6 +200,36 @@
         (ประวัตินับตั้งแต่เวอร์ชัน 0.6.0 เป็นต้นไป)</p>
     </section>
 
+    <section id="view-play" hidden>
+      <h1>เล่น 🎮</h1>
+      <p class="muted small">เกมสั้น ๆ ที่ใช้คำที่แปลแล้ว เล่นแล้วนับเป็นวันท่องต่อเนื่อง 🔥 แต่ไม่เปลี่ยนวันทวนของคำและไม่นับเป็นเป้าหมายรายวัน</p>
+      <ul class="game-list">
+        <li>
+          <a class="game-card" href="#/play/match">
+            <span class="game-emoji" aria-hidden="true">🧩</span>
+            <span class="game-info"><strong>จับคู่คำ</strong><span class="muted small">จับคู่คำอังกฤษกับคำแปลไทย 6 คู่ให้เร็วที่สุด</span><span id="match-best" class="small"></span></span>
+          </a>
+        </li>
+      </ul>
+    </section>
+
+    <section id="view-match" hidden>
+      <div class="study-top">
+        <a href="#/play" class="close" aria-label="กลับไปหน้าเล่น">✕</a>
+        <strong class="game-title">🧩 จับคู่คำ</strong>
+        <span id="match-stats" class="muted small" role="timer"></span>
+      </div>
+      <p class="muted small center-text">แตะคำอังกฤษและคำแปลที่เป็นคู่กัน เวลาเริ่มนับเมื่อแตะแผ่นแรก</p>
+      <div id="match-board" class="match-board"></div>
+      <div id="match-result" class="done-card" hidden>
+        <p class="big-emoji celebrate" aria-hidden="true">🏁</p>
+        <h2>จับคู่ครบแล้ว!</h2>
+        <p id="match-summary" class="muted"></p>
+        <button type="button" id="match-again" class="primary wide">🔁 เล่นอีกรอบ</button>
+        <a href="#/play" class="button wide">กลับไปหน้าเล่น</a>
+      </div>
+    </section>
+
     <section id="view-changelog" hidden>
       <h1>มีอะไรใหม่ ✨</h1>
       <p class="muted small">ประวัติการเปลี่ยนแปลงของ Vocab Garden เวอร์ชันใหม่อยู่บนสุด</p>
@@ -343,7 +374,7 @@
 
       <h2>ความเป็นส่วนตัว</h2>
       <ul>
-        <li>ความคืบหน้า การตั้งค่า ประวัติการทวนรายวัน วันพักของสตรีค และโน้ตช่วยจำที่คุณเขียน เก็บอยู่ในเครื่องของคุณเท่านั้น (ที่ localStorage คีย์ขึ้นต้นด้วย <code>vg:</code>)
+        <li>ความคืบหน้า การตั้งค่า ประวัติการทวนรายวัน วันพักของสตรีค โน้ตช่วยจำที่คุณเขียน และสถิติเกม เก็บอยู่ในเครื่องของคุณเท่านั้น (ที่ localStorage คีย์ขึ้นต้นด้วย <code>vg:</code>)
           ไม่ถูกส่งออกไปที่ไหน</li>
         <li>ไม่มีการสมัครสมาชิก ไม่มีคุกกี้ ไม่มีโฆษณา และไม่มีเครื่องมือวิเคราะห์หรือติดตามผู้ใช้</li>
         <li>เสียงอ่านใช้บริการเสียงของเครื่องและเบราว์เซอร์ของคุณ บางเบราว์เซอร์อาจส่งข้อความที่อ่านไปประมวลผลกับผู้ให้บริการเสียงของเบราว์เซอร์นั้น

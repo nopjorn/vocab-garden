@@ -1,7 +1,7 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
 
-import { DEFAULT_SETTINGS, createStorage } from "../../app/js/storage.js";
+import { DEFAULT_SETTINGS, NOTE_MAX, createStorage } from "../../app/js/storage.js";
 
 function fakeStore(initial = {}) {
   const data = new Map(Object.entries(initial));
@@ -148,4 +148,39 @@ test("reset clears the rest days", () => {
   storage.saveRest({ bank: 1, run: 1, upTo: 5, frozen: [] });
   storage.reset();
   assert.equal(storage.loadRest(), null);
+});
+
+test("notes are saved per word, trimmed, capped, and deleted when empty", () => {
+  const storage = createStorage(fakeStore());
+  assert.deepEqual(storage.loadNotes(), {});
+  assert.deepEqual(storage.saveNote("house", "  บ้าน = เฮ้าส์  "), { house: "บ้าน = เฮ้าส์" });
+  storage.saveNote("work", "x".repeat(NOTE_MAX + 50));
+  assert.equal(storage.loadNotes().work.length, NOTE_MAX);
+  assert.deepEqual(storage.saveNote("house", "   "), { work: "x".repeat(NOTE_MAX) });
+});
+
+test("corrupt notes are cleaned up", () => {
+  const raw = JSON.stringify({ ok: "good", empty: "  ", num: 5, ["__proto__"]: "x", long: "y".repeat(500) });
+  const notes = createStorage(fakeStore({ "vg:notes": raw })).loadNotes();
+  assert.deepEqual(Object.keys(notes).sort(), ["long", "ok"]);
+  assert.equal(notes.long.length, NOTE_MAX);
+  for (const bad of ["[1]", '"text"', "7"]) {
+    assert.deepEqual(createStorage(fakeStore({ "vg:notes": bad })).loadNotes(), {});
+  }
+});
+
+test("notes travel in the backup, old backups keep the current notes, and reset clears them", () => {
+  const source = createStorage(fakeStore());
+  source.saveNote("house", "บ้าน");
+  const backup = JSON.parse(JSON.stringify(source.exportData("0.15.0")));
+  assert.deepEqual(backup.notes, { house: "บ้าน" });
+
+  const target = createStorage(fakeStore());
+  target.saveNote("old", "เดิม");
+  target.importData({ app: "vocab-garden", schema: 1, cards: {} });
+  assert.deepEqual(target.loadNotes(), { old: "เดิม" });
+  target.importData(backup);
+  assert.deepEqual(target.loadNotes(), { house: "บ้าน" });
+  target.reset();
+  assert.deepEqual(target.loadNotes(), {});
 });

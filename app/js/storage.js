@@ -10,12 +10,14 @@ const KEYS = {
   history: "vg:history",
   seenVersion: "vg:seen-version",
   rest: "vg:rest",
+  notes: "vg:notes",
 };
 const HISTORY_KEEP_DAYS = 400; // เก็บประวัติการทวนรายวันย้อนหลังไม่เกินนี้
 export const SPEECH_RATE_CHOICES = [0.7, 0.9, 1.1]; // ช้า / ปกติ / เร็ว
 export const THEME_CHOICES = ["auto", "light", "dark"];
 export const TEXT_SIZE_CHOICES = ["normal", "large"];
 export const QUIZ_MODE_CHOICES = ["flip", "mixed"]; // พลิกการ์ดแบบเดิม / ผสมหลายแบบตามระยะของต้นไม้
+export const NOTE_MAX = 200; // โน้ตช่วยจำยาวได้ไม่เกินกี่ตัวอักษร
 export const DAILY_GOAL_CHOICES = [10, 20, 30]; // เป้าหมายรายวัน (จำนวนครั้งที่ตอบ)
 export const REVIEW_CAP_CHOICES = [50, 100, 0]; // ทวนได้ไม่เกินกี่ครั้งต่อวัน (0 = ไม่จำกัด)
 export const DEFAULT_SETTINGS = {
@@ -74,6 +76,18 @@ function validHistory(days) {
     ([day, count]) => Number.isInteger(Number(day)) && Number.isInteger(count) && count >= 0,
   );
   return ok ? days : null;
+}
+
+// โน้ตช่วยจำ { [คำหลัก]: ข้อความ } เก็บเฉพาะข้อความที่ไม่ว่างและตัดให้ไม่เกิน NOTE_MAX (ไม่ใช่ object = null)
+function validNotes(notes) {
+  if (notes === null || typeof notes !== "object" || Array.isArray(notes)) return null;
+  const clean = {};
+  for (const [headword, text] of Object.entries(notes)) {
+    if (headword !== "__proto__" && headword.length <= 64 && typeof text === "string" && text.trim()) {
+      clean[headword] = text.trim().slice(0, NOTE_MAX);
+    }
+  }
+  return clean;
 }
 
 // สถานะวันพัก { bank, run, upTo, frozen } (ดู habit.js) ต้องเป็นจำนวนเต็มทั้งหมด
@@ -182,6 +196,20 @@ export function createStorage(store = globalThis.localStorage) {
       write(KEYS.daily, { day: today, newCount: this.loadDaily(today).newCount, goalDone: true });
     },
 
+    // โน้ตช่วยจำของผู้ใช้ (เขียนเองต่อคำ)
+    loadNotes() {
+      return validNotes(read(KEYS.notes, null)) || {};
+    },
+    // เก็บโน้ตของคำหนึ่ง (ข้อความว่าง = ลบโน้ต) คืนโน้ตทั้งหมดหลังบันทึก
+    saveNote(headword, text) {
+      const notes = this.loadNotes();
+      const clean = text.trim().slice(0, NOTE_MAX);
+      if (clean) notes[headword] = clean;
+      else delete notes[headword];
+      write(KEYS.notes, notes);
+      return notes;
+    },
+
     // วันพักกันสตรีคขาด (null = ยังไม่เคยคำนวณ)
     loadRest() {
       return validRest(read(KEYS.rest, null));
@@ -200,6 +228,7 @@ export function createStorage(store = globalThis.localStorage) {
         settings: this.loadSettings(),
         history: this.loadHistory(),
         rest: this.loadRest(),
+        notes: this.loadNotes(),
       };
     },
     // คืนจำนวนคำที่นำเข้า หรือโยน Error ถ้าไฟล์ไม่ถูกต้อง
@@ -220,6 +249,9 @@ export function createStorage(store = globalThis.localStorage) {
         if (rest) this.saveRest(rest);
         else target.removeItem(KEYS.rest);
       }
+      // ไฟล์สำรองเก่า (ก่อน v0.15.0) ไม่มีโน้ต ให้คงโน้ตเดิมไว้
+      const notes = data.notes === undefined ? null : validNotes(data.notes);
+      if (notes) write(KEYS.notes, notes);
       return Object.keys(cards).length;
     },
 

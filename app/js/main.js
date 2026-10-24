@@ -4,12 +4,13 @@ import { launchConfetti } from "./confetti.js";
 import { canSpeak, speak } from "./speech.js";
 import { buildQuestion, gradeTyped } from "./quiz.js";
 import { playSfx } from "./sfx.js";
-import { dueLabel, matchesQuery, plantInfo, plotSummary } from "./garden.js";
+import { LEECH_LAPSES, dueLabel, leechWords, matchesQuery, plantInfo, plotSummary } from "./garden.js";
 import { daysAway, goalProgress, settleRest } from "./habit.js";
 import { AGAIN, GOOD, HARD, STAGES, buildQueue, dayNumber, grade, isDue, knownCard, stageOf } from "./srs.js";
 import {
   DAILY_GOAL_CHOICES,
   NEW_PER_DAY_CHOICES,
+  NOTE_MAX,
   QUIZ_MODE_CHOICES,
   REVIEW_CAP_CHOICES,
   SPEECH_RATE_CHOICES,
@@ -35,6 +36,7 @@ const state = {
   words: [],
   cards: storage.loadCards(),
   settings: storage.loadSettings(),
+  notes: storage.loadNotes(),
   session: null,
 };
 
@@ -247,15 +249,31 @@ function renderHome() {
 
 // ---------- ท่องศัพท์ ----------
 
-function startSession(level = null) {
+// level = เรียนเฉพาะด่านนั้น · practice = "leech" ฝึกคำที่ลืมบ่อย (โหมดฝึกไม่เปลี่ยนวันทวน ไม่นับเป็นการทวน)
+function startSession(level = null, practice = null) {
   const day = dayNumber();
-  const queue = todayQueue(day, level);
+  const queue = practice === "leech" ? leechWords(translatedWords(), state.cards) : todayQueue(day, level);
   if (queue.length === 0) {
-    if (level) toast(`${levelTitle(level)} ไม่มีคำให้เรียนตอนนี้ ไว้ทวนใหม่วันหลังนะ`);
-    location.hash = "#/";
+    if (practice) toast("ยังไม่มีคำที่ลืมบ่อย เก่งมาก 🎉");
+    else if (level) toast(`${levelTitle(level)} ไม่มีคำให้เรียนตอนนี้ ไว้ทวนใหม่วันหลังนะ`);
+    location.hash = practice ? "#/garden" : "#/";
     return;
   }
-  state.session = { day, queue, total: queue.length, answered: 0, learned: new Set(), combo: 0, bestCombo: 0, grown: new Map(), quiz: null };
+  state.session = {
+    day,
+    queue,
+    total: queue.length,
+    answered: 0,
+    learned: new Set(),
+    combo: 0,
+    bestCombo: 0,
+    grown: new Map(),
+    quiz: null,
+    practice: Boolean(practice),
+    nudged: new Set(),
+  };
+  $("practice-note").hidden = !practice;
+  $("know").hidden = Boolean(practice);
   show("study");
   renderCombo();
   showCard();
@@ -292,11 +310,42 @@ function showCard() {
   $("card-example-th").textContent = word.exampleTh;
   $("card-note").textContent = word.note ? `💡 ${word.note}` : "";
   $("card-note").hidden = !word.note;
+  renderCardNote(word);
   $("report").href = issueUrl(word, self.VG_VERSION);
   $("card").focus({ preventScroll: true });
   state.session.quiz = quizFor(word);
   renderQuiz(word); // ข้อพิมพ์ย้ายโฟกัสไปที่ช่องพิมพ์
   if (state.settings.autoSpeak && !["cloze", "type"].includes(state.session.quiz?.type)) speakWord(word.headword);
+}
+
+// ---------- โน้ตช่วยจำ ----------
+
+function renderCardNote(word) {
+  const note = state.notes[word.headword];
+  $("card-mynote").hidden = !note;
+  $("card-mynote").textContent = note ? `📝 ${note}` : "";
+  $("edit-note").textContent = note ? "✏️ แก้โน้ตช่วยจำ" : "✏️ เพิ่มโน้ตช่วยจำ";
+}
+
+let noteWord = null;
+
+function openNoteDialog(word) {
+  noteWord = word;
+  $("note-word").textContent = word.headword;
+  $("note-text").value = state.notes[word.headword] || "";
+  $("note-count").textContent = `${$("note-text").value.length}/${NOTE_MAX}`;
+  $("note-delete").hidden = !state.notes[word.headword];
+  $("note-dialog").hidden = false;
+  $("note-text").focus();
+}
+
+function saveNote(text) {
+  state.notes = storage.saveNote(noteWord.headword, text);
+  $("note-dialog").hidden = true;
+  if (state.session && currentWord()?.headword === noteWord.headword) renderCardNote(noteWord);
+  if (!$("word-dialog").hidden) renderWordNote(noteWord);
+  if (!$("view-garden").hidden) renderLeeches();
+  toast(text.trim() ? "บันทึกโน้ตแล้ว 📝" : "ลบโน้ตแล้ว");
 }
 
 // ---------- ทวนแบบผสม (เลือกคำแปล / เติมคำในประโยค) ----------
@@ -480,24 +529,39 @@ function answer(rating) {
   const session = state.session;
   const word = session.queue.shift();
   const before = state.cards[word.headword];
-  const isNew = !before;
-  const card = grade(before, rating, session.day);
+  let card = before;
 
-  state.cards[word.headword] = card;
-  storage.saveCards(state.cards);
-  const count = storage.addReview(session.day);
-  if (isNew) storage.saveNewCount(session.day, storage.newCountToday(session.day) + 1);
-  session.answered += 1;
-  celebrate(word, before, card, rating);
-  checkGoal(session.day, count);
+  // โหมดฝึกไม่แตะความคืบหน้า ประวัติ หรือเป้าหมายของวัน
+  if (!session.practice) {
+    card = grade(before, rating, session.day);
+    state.cards[word.headword] = card;
+    storage.saveCards(state.cards);
+    const count = storage.addReview(session.day);
+    if (!before) storage.saveNewCount(session.day, storage.newCountToday(session.day) + 1);
+    session.answered += 1;
+    celebrate(word, before, card, rating);
+    checkGoal(session.day, count);
+    nudgeNote(word, card, rating);
+  } else {
+    session.answered += 1;
+    celebrate(word, before, card, rating);
+  }
 
-  if (card.ivl === 0) {
+  if (rating === AGAIN) {
     session.queue.splice(Math.min(REQUEUE_GAP, session.queue.length), 0, word);
   } else {
     session.learned.add(word.headword);
   }
 
   nextCard();
+}
+
+// ลืมคำเดิมซ้ำหลายครั้ง: ชวนเขียนโน้ตช่วยจำ (เตือนครั้งเดียวต่อคำต่อรอบ)
+function nudgeNote(word, card, rating) {
+  const session = state.session;
+  if (rating !== AGAIN || card.lapses < LEECH_LAPSES || state.notes[word.headword] || session.nudged.has(word.headword)) return;
+  session.nudged.add(word.headword);
+  toast(`${word.headword} ลืมบ่อย ลองเขียนโน้ตช่วยจำดูนะ ✏️ (ปุ่มอยู่ที่ด้านหลังการ์ด)`);
 }
 
 function nextCard() {
@@ -511,6 +575,7 @@ function nextCard() {
 // รู้อยู่แล้ว: ข้ามไปเป็นต้นไม้ใหญ่ทันที ไม่นับเป็นคำใหม่ของวันนี้
 function markKnown() {
   const session = state.session;
+  if (session.practice) return;
   const word = session.queue.shift();
   const before = state.cards[word.headword];
   state.cards[word.headword] = knownCard(before, session.day);
@@ -597,7 +662,9 @@ function bindSwipe() {
 
 function finishSession() {
   const { answered, learned, bestCombo, grown } = state.session;
-  $("done-summary").textContent = `วันนี้ทวนไป ${answered} ครั้ง รดน้ำต้นไม้ไป ${learned.size} ต้น 🌱`;
+  $("done-summary").textContent = state.session.practice
+    ? `ฝึกไป ${answered} ครั้ง จำได้ ${learned.size} คำ 🧠 (โหมดฝึกไม่เปลี่ยนวันทวน)`
+    : `วันนี้ทวนไป ${answered} ครั้ง รดน้ำต้นไม้ไป ${learned.size} ต้น 🌱`;
 
   const summary = growthSummary(grown);
   const lines = [];
@@ -653,6 +720,27 @@ function renderGarden() {
   $("g-week").setAttribute("aria-label", `ทวน 7 วันล่าสุด: ${week.map((entry) => entry.count).join(", ")} ครั้ง`);
   $("g-empty").hidden = totalReviews(days) > 0;
   renderPlots(today);
+  renderLeeches();
+}
+
+function renderLeeches() {
+  const leeches = leechWords(translatedWords(), state.cards, 12);
+  $("leech-section").hidden = leeches.length === 0;
+  $("leech-list").replaceChildren(
+    ...leeches.map((word) => {
+      const item = el("li");
+      const button = el("button", "leech-item");
+      button.type = "button";
+      button.dataset.headword = word.headword;
+      button.append(
+        el("strong", "", word.headword),
+        el("span", "muted", word.senses[0]?.text || ""),
+        el("span", "leech-count", `ลืม ${state.cards[word.headword].lapses} ครั้ง${state.notes[word.headword] ? " 📝" : ""}`),
+      );
+      item.append(button);
+      return item;
+    }),
+  );
 }
 
 // แปลงสวน: ด่านละแปลง คำละต้น ต้นที่ถึงเวลาทวนเหี่ยวจนกว่าจะรดน้ำ
@@ -702,6 +790,13 @@ function applyGardenSearch() {
   $("garden-found").textContent = query.trim() ? `พบ ${found} คำ` : "";
 }
 
+function renderWordNote(word) {
+  const note = state.notes[word.headword];
+  $("word-note").hidden = !note;
+  $("word-note").textContent = note ? `📝 ${note}` : "";
+  $("word-edit-note").textContent = note ? "✏️ แก้โน้ตช่วยจำ" : "✏️ เพิ่มโน้ตช่วยจำ";
+}
+
 function openWordDialog(word) {
   const today = dayNumber();
   const card = state.cards[word.headword];
@@ -722,6 +817,8 @@ function openWordDialog(word) {
   $("word-example-en").textContent = word.exampleEn;
   $("word-example-th").textContent = word.exampleTh;
   $("word-stats").textContent = card ? `ทวนไปแล้ว ${card.reps} ครั้ง · เคยลืม ${card.lapses} ครั้ง` : "";
+  renderWordNote(word);
+  $("word-edit-note").onclick = () => openNoteDialog(word);
   $("word-speak").hidden = !canSpeak();
   $("word-speak").onclick = () => speakWord(word.headword);
   $("word-dialog").hidden = false;
@@ -878,6 +975,7 @@ async function importBackup(file) {
     const count = storage.importData(JSON.parse(await file.text()));
     state.cards = storage.loadCards();
     state.settings = storage.loadSettings();
+    state.notes = storage.loadNotes();
     applyAppearance();
     renderSettings();
     toast(`นำเข้าความคืบหน้า ${count} คำเรียบร้อย`);
@@ -891,6 +989,7 @@ function resetProgress() {
   storage.reset();
   state.cards = storage.loadCards();
   state.settings = storage.loadSettings();
+  state.notes = storage.loadNotes();
   applyAppearance();
   renderSettings();
   toast("ล้างความคืบหน้าแล้ว");
@@ -902,8 +1001,8 @@ function route() {
   if (state.words.length === 0) return;
   const [page, argument] = (location.hash.replace(/^#\/?/, "") || "home").split("/");
   if (page === "study") {
-    const level = LEVELS.includes(argument) ? argument : null;
-    startSession(level);
+    if (argument === "leech") startSession(null, "leech");
+    else startSession(LEVELS.includes(argument) ? argument : null);
     return;
   }
   state.session = null;
@@ -954,6 +1053,22 @@ function bindEvents() {
     if (button) openWordDialog(state.words.find((entry) => entry.headword === button.dataset.headword));
   });
   $("garden-search").addEventListener("input", applyGardenSearch);
+  $("leech-list").addEventListener("click", (event) => {
+    const button = event.target.closest(".leech-item");
+    if (button) openWordDialog(state.words.find((entry) => entry.headword === button.dataset.headword));
+  });
+  $("edit-note").addEventListener("click", (event) => {
+    event.stopPropagation();
+    openNoteDialog(currentWord());
+  });
+  $("note-text").addEventListener("input", () => {
+    $("note-count").textContent = `${$("note-text").value.length}/${NOTE_MAX}`;
+  });
+  $("note-save").addEventListener("click", () => saveNote($("note-text").value));
+  $("note-delete").addEventListener("click", () => saveNote(""));
+  $("note-cancel").addEventListener("click", () => {
+    $("note-dialog").hidden = true;
+  });
   $("word-close").addEventListener("click", () => {
     $("word-dialog").hidden = true;
   });
@@ -982,13 +1097,14 @@ function bindEvents() {
   // Esc ปิดหน้าต่างที่เด้งขึ้นมา (อัปเดต / มีอะไรใหม่)
   document.addEventListener("keydown", (event) => {
     if (event.key !== "Escape") return;
-    const open = document.querySelector(".modal:not([hidden])");
+    const open = [...document.querySelectorAll(".modal:not([hidden])")].pop(); // ตัวบนสุด
     if (open) open.hidden = true;
   });
 
   document.addEventListener("keydown", (event) => {
     if (!state.session || event.altKey || event.ctrlKey || event.metaKey) return;
     if (event.target.closest("input, select, textarea")) return;
+    if (document.querySelector(".modal:not([hidden])")) return; // กำลังเปิดหน้าต่างอยู่ (เช่น โน้ตช่วยจำ)
     const quiz = state.session.quiz;
     if (quiz) {
       // ทวนแบบผสม: 1–4 เลือกคำตอบ เว้นวรรค/Enter ไปต่อ (ไม่ปัดการ์ด ไม่ให้คะแนนเอง)

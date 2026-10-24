@@ -40,3 +40,13 @@ export function plotSummary(words, cards, today) {
   }
   return { planted, wilted, total: words.length };
 }
+
+// คำที่ลืมบ่อย: เคยจำได้แล้วกลับลืมตั้งแต่ LEECH_LAPSES ครั้งขึ้นไป (ลืมมากสุดก่อน เท่ากันเรียงตามอันดับ NGSL)
+export const LEECH_LAPSES = 3;
+
+export function leechWords(words, cards, limit = 20) {
+  return words
+    .filter((word) => (cards[word.headword]?.lapses || 0) >= LEECH_LAPSES)
+    .sort((a, b) => cards[b.headword].lapses - cards[a.headword].lapses || a.order - b.order)
+    .slice(0, limit);
+}

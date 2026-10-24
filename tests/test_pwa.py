@@ -32,6 +32,13 @@ class ServiceWorkerTest(unittest.TestCase):
         self.assertIn("Array.from({ length: 28 }", source)
         self.assertEqual(len(list((APP / "data/levels").glob("*.tsv"))), 29)
 
+    def test_sw_version_matches_app_version(self):
+        # Safari ติดตั้ง service worker ใหม่ก็ต่อเมื่อไฟล์ sw.js เปลี่ยน
+        sw_version = re.search(r"^// sw-version: (\S+)$", (APP / "sw.js").read_text(encoding="utf-8"), re.M)
+        app_version = re.search(r'VG_VERSION = "([^"]+)"', (APP / "version.js").read_text(encoding="utf-8"))
+        self.assertIsNotNone(sw_version, "ใส่บรรทัด // sw-version: x.y.z ใน app/sw.js")
+        self.assertEqual(sw_version.group(1), app_version.group(1), "แก้ // sw-version ใน app/sw.js ให้ตรงกับ app/version.js")
+
 
 class ManifestTest(unittest.TestCase):
     def test_manifest_icons_exist(self):

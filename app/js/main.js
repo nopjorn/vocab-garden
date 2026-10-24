@@ -4,6 +4,7 @@ import { launchConfetti } from "./confetti.js";
 import { canSpeak, speak } from "./speech.js";
 import { buildQuestion, gradeTyped } from "./quiz.js";
 import { playSfx } from "./sfx.js";
+import { COMEBACK_DAYS, MEDALS, isEarlyBird, isPerfectRound, newMedals } from "./achievements.js";
 import { LEECH_LAPSES, dueLabel, leechWords, matchesQuery, plantInfo, plotSummary } from "./garden.js";
 import { daysAway, goalProgress, mergeDays, settleRest } from "./habit.js";
 import { buildMatchRound, formatSeconds, isMatch, isNewBest } from "./match.js";
@@ -241,6 +242,7 @@ function renderHome() {
   $("garden-count").textContent = planted;
   $("garden-ring").style.setProperty("--p", translated.length ? (planted / translated.length) * 100 : 0);
   $("garden-ring").setAttribute("aria-label", `ปลูกแล้ว ${planted} จาก ${translated.length} คำ`);
+  checkMedals();
   const { current } = streakOf(habit.active, today, habit.rest.frozen);
   $("streak").hidden = current === 0;
   $("streak").textContent = `🔥 ท่องต่อเนื่อง ${current} วัน${habit.rest.bank > 0 ? ` · 🧊 วันพัก ${habit.rest.bank}` : ""}`;
@@ -275,6 +277,8 @@ function startSession(level = null, practice = null) {
     quiz: null,
     practice: Boolean(practice),
     nudged: new Set(),
+    hadAgain: false,
+    away: practice ? null : daysAway(mergeDays(storage.loadHistory(), storage.loadGames().days), day),
   };
   $("practice-note").hidden = !practice;
   $("know").hidden = Boolean(practice);
@@ -345,6 +349,7 @@ function openNoteDialog(word) {
 
 function saveNote(text) {
   state.notes = storage.saveNote(noteWord.headword, text);
+  checkMedals();
   $("note-dialog").hidden = true;
   if (state.session && currentWord()?.headword === noteWord.headword) renderCardNote(noteWord);
   if (!$("word-dialog").hidden) renderWordNote(noteWord);
@@ -546,12 +551,14 @@ function answer(rating) {
     celebrate(word, before, card, rating);
     checkGoal(session.day, count);
     nudgeNote(word, card, rating);
+    checkMedals();
   } else {
     session.answered += 1;
     celebrate(word, before, card, rating);
   }
 
   if (rating === AGAIN) {
+    session.hadAgain = true;
     session.queue.splice(Math.min(REQUEUE_GAP, session.queue.length), 0, word);
   } else {
     session.learned.add(word.headword);
@@ -591,6 +598,7 @@ function markKnown() {
   session.learned.add(word.headword);
   toast(`${word.headword} ข้ามไปเป็นต้นไม้ใหญ่แล้ว 🌳`);
   checkGoal(session.day, count);
+  checkMedals();
   nextCard();
 }
 
@@ -679,10 +687,73 @@ function finishSession() {
   $("done-growth").replaceChildren(...lines.map((line) => el("li", "", line)));
   $("done-growth").hidden = lines.length === 0;
 
+  const { practice, answered: total, hadAgain, away } = state.session;
   state.session = null;
   show("done");
   launchConfetti();
   fx("finish");
+  if (!practice) {
+    checkMedals({
+      perfectRound: isPerfectRound(total, hadAgain),
+      earlyBird: isEarlyBird(new Date().getHours()),
+      comeback: away !== null && away >= COMEBACK_DAYS,
+    });
+  }
+}
+
+// ---------- เหรียญความสำเร็จ ----------
+
+// ข้อมูลที่ใช้ตัดสินเหรียญ ณ ตอนนี้ (events = เหตุการณ์ตอนจบรอบ)
+function medalContext(events = {}) {
+  const today = dayNumber();
+  const games = storage.loadGames();
+  const frozen = storage.loadRest()?.frozen || [];
+  const cards = translatedWords().map((word) => state.cards[word.headword]).filter(Boolean);
+  return {
+    planted: cards.length,
+    trees: cards.filter((card) => stageOf(card).id === "tree").length,
+    bestStreak: streakOf(mergeDays(storage.loadHistory(), games.days), today, frozen).best,
+    notes: Object.keys(state.notes).length,
+    gamePlays: Object.values(games.days).reduce((sum, count) => sum + count, 0),
+    wordleWins: games.wordleStats?.won || 0,
+    matchBest: games.best.match ?? null,
+    scrambleBest: games.best.scramble || 0,
+    ...events,
+  };
+}
+
+// ตรวจเหรียญใหม่ บันทึก และแจ้งในแอป (หน่วงเล็กน้อยไม่ให้ป้ายอื่นทับทันที)
+function checkMedals(events = {}) {
+  const fresh = newMedals(medalContext(events), storage.loadMedals());
+  if (fresh.length === 0) return;
+  storage.addMedals(
+    fresh.map((medal) => medal.id),
+    dayNumber(),
+  );
+  const names = fresh.map((medal) => `${medal.emoji} ${medal.title}`).join(", ");
+  setTimeout(() => {
+    toast(fresh.length === 1 ? `🏅 ได้เหรียญใหม่: ${names}` : `🏅 ได้เหรียญใหม่ ${fresh.length} เหรียญ: ${names}`);
+    fx("grow");
+  }, 1600);
+}
+
+function renderMedals() {
+  checkMedals();
+  const unlocked = storage.loadMedals();
+  const owned = MEDALS.filter((medal) => medal.id in unlocked);
+  $("medal-count").textContent = `${owned.length}/${MEDALS.length}`;
+  $("medal-preview").textContent = owned.map((medal) => medal.emoji).join("");
+  $("medal-list").replaceChildren(
+    ...MEDALS.map((medal) => {
+      const got = medal.id in unlocked;
+      const item = el("li", `medal${got ? "" : " locked"}`);
+      const text = el("span", "medal-text");
+      text.append(el("strong", "", medal.title), el("span", "muted small", medal.desc));
+      item.append(el("span", "medal-emoji", got ? medal.emoji : "🔒"), text);
+      item.setAttribute("aria-label", `${medal.title} ${got ? "ได้แล้ว" : "ยังไม่ได้"} ${medal.desc}`);
+      return item;
+    }),
+  );
 }
 
 // ---------- เล่น (เกม) ----------
@@ -828,6 +899,7 @@ function finishScramble() {
   const score = roundScore(scramble.results);
   const isBest = storage.saveBest("scramble", score, (next, best) => next > best);
   storage.addGamePlay(dayNumber());
+  checkMedals();
   const marks = { clean: "⭐", hint: "✅", skip: "❌" };
   $("scramble-marks").textContent = scramble.results.map((result) => marks[result]).join(" ");
   $("scramble-title").textContent = score === maxScore() ? "เต็มเลย! เก่งมาก 🎉" : "จบรอบแล้ว!";
@@ -943,6 +1015,7 @@ function submitWordle() {
   }
   storage.saveWordleStats(nextStats(storage.loadWordleStats(), wordle.day, won));
   storage.addGamePlay(wordle.day);
+  checkMedals();
   showWordleResult();
   if (won) {
     launchConfetti();
@@ -1061,6 +1134,7 @@ function finishMatch() {
   const isBest = isNewBest(storage.loadGames().best.match, ms);
   if (isBest) storage.saveBest("match", ms);
   storage.addGamePlay(dayNumber());
+  checkMedals();
   renderMatchStats();
   $("match-summary").textContent = `${formatSeconds(ms)} · ${match.moves} ครั้ง${isBest ? " 🏆 สถิติใหม่!" : ""}`;
   $("match-board").hidden = true;
@@ -1109,6 +1183,7 @@ function renderGarden() {
   $("g-empty").hidden = totalReviews(days) > 0;
   renderPlots(today);
   renderLeeches();
+  renderMedals();
 }
 
 function renderLeeches() {
@@ -1148,34 +1223,61 @@ function renderPlots(today) {
   $("water-note").textContent = wilted > 0 ? `💧 ${wilted} ต้นรอรดน้ำ (ถึงเวลาทวนแล้ว)` : "🌤️ ต้นไม้ทุกต้นชุ่มชื้นดี วันนี้ไม่ต้องรดน้ำ";
   $("water-go").hidden = wilted === 0;
 
+  // ด่านละแถวที่พับเก็บไว้ (บอกสรุปและแถบสี) แตะแล้วค่อยกางดูต้นไม้ จะได้ไม่กินพื้นที่
   const levels = [...new Set(translated.map((word) => word.level))];
+  const open = new Set([...$("plots").querySelectorAll("details[open]")].map((node) => node.dataset.level));
   $("plots").replaceChildren(
     ...levels.map((level) => {
       const words = translated.filter((word) => word.level === level);
       const summary = plotSummary(words, state.cards, today);
-      const plot = el("section", "plot");
+      const counts = Object.fromEntries(STAGES.map((stage) => [stage.id, 0]));
+      words.forEach((word) => {
+        counts[stageOf(state.cards[word.headword]).id] += 1;
+      });
+      const plot = el("details", "plot");
+      plot.dataset.level = level;
+      plot.open = open.has(level);
+      const head = el("summary", "plot-head");
+      head.append(el("strong", "", `${levelTitle(level)} · ปลูกแล้ว ${summary.planted}/${summary.total}`));
+      const stages = STAGES.slice(1).map((stage) => `${stage.emoji} ${counts[stage.id]}`).join("  ");
+      head.append(el("span", "muted small", `${stages}${summary.wilted ? `  💧 ${summary.wilted}` : ""}`));
+      const bar = el("div", "stagebar");
+      STAGES.slice(1).forEach((stage) => {
+        if (counts[stage.id] === 0) return;
+        const segment = el("span", `seg seg-${stage.id}`);
+        segment.style.width = `${(counts[stage.id] / words.length) * 100}%`;
+        bar.append(segment);
+      });
+      head.append(bar);
       const grid = el("div", "plot-grid");
       grid.append(...words.map((word) => plantButton(word, today)));
-      plot.append(el("h3", "plot-head", `${levelTitle(level)} · ปลูกแล้ว ${summary.planted}/${summary.total}`), grid);
+      plot.append(head, grid);
       return plot;
     }),
   );
   applyGardenSearch();
 }
 
-// ช่องค้นหา: ต้นที่ไม่ตรงจะจางลง
+// ช่องค้นหา: พิมพ์แล้วแสดงรายการคำที่ตรงแทนแปลง (ไม่ต้องไล่หาในตาราง)
 function applyGardenSearch() {
-  const query = $("garden-search").value;
-  let found = 0;
-  $("plots")
-    .querySelectorAll(".plant")
-    .forEach((button) => {
-      const word = state.words.find((entry) => entry.headword === button.dataset.headword);
-      const match = matchesQuery(word, query);
-      button.classList.toggle("dim", !match);
-      if (match) found += 1;
-    });
-  $("garden-found").textContent = query.trim() ? `พบ ${found} คำ` : "";
+  const query = $("garden-search").value.trim();
+  const today = dayNumber();
+  const matches = query ? translatedWords().filter((word) => matchesQuery(word, query)) : [];
+  $("plots").hidden = Boolean(query);
+  $("garden-matches").hidden = !query;
+  $("garden-matches").replaceChildren(
+    ...matches.slice(0, 40).map((word) => {
+      const info = plantInfo(state.cards[word.headword], today);
+      const item = el("li");
+      const button = el("button", `match-item${info.wilted ? " wilted" : ""}`);
+      button.type = "button";
+      button.dataset.headword = word.headword;
+      button.append(el("span", "match-emoji", info.stage.emoji), el("strong", "", word.headword), el("span", "muted", word.senses[0]?.text || ""));
+      item.append(button);
+      return item;
+    }),
+  );
+  $("garden-found").textContent = query ? (matches.length > 40 ? `พบ ${matches.length} คำ (แสดง 40 คำแรก)` : `พบ ${matches.length} คำ`) : "";
 }
 
 function renderWordNote(word) {
@@ -1502,6 +1604,10 @@ function bindEvents() {
     if (button) openWordDialog(state.words.find((entry) => entry.headword === button.dataset.headword));
   });
   $("garden-search").addEventListener("input", applyGardenSearch);
+  $("garden-matches").addEventListener("click", (event) => {
+    const button = event.target.closest(".match-item");
+    if (button) openWordDialog(state.words.find((entry) => entry.headword === button.dataset.headword));
+  });
   $("leech-list").addEventListener("click", (event) => {
     const button = event.target.closest(".leech-item");
     if (button) openWordDialog(state.words.find((entry) => entry.headword === button.dataset.headword));

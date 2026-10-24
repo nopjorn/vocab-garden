@@ -12,6 +12,7 @@ const KEYS = {
   rest: "vg:rest",
   notes: "vg:notes",
   games: "vg:games",
+  medals: "vg:medals",
 };
 const HISTORY_KEEP_DAYS = 400; // เก็บประวัติการทวนรายวันย้อนหลังไม่เกินนี้
 export const SPEECH_RATE_CHOICES = [0.7, 0.9, 1.1]; // ช้า / ปกติ / เร็ว
@@ -87,6 +88,16 @@ function validNotes(notes) {
     if (headword !== "__proto__" && headword.length <= 64 && typeof text === "string" && text.trim()) {
       clean[headword] = text.trim().slice(0, NOTE_MAX);
     }
+  }
+  return clean;
+}
+
+// เหรียญที่ได้แล้ว { [รหัสเหรียญ]: เลขวันที่ได้ } เหรียญไม่หาย แม้เงื่อนไขเปลี่ยนภายหลัง
+function validMedals(medals) {
+  if (medals === null || typeof medals !== "object" || Array.isArray(medals)) return null;
+  const clean = {};
+  for (const [id, day] of Object.entries(medals)) {
+    if (/^[a-z0-9-]{1,30}$/.test(id) && Number.isInteger(day)) clean[id] = day;
   }
   return clean;
 }
@@ -223,6 +234,20 @@ export function createStorage(store = globalThis.localStorage) {
       write(KEYS.daily, { day: today, newCount: this.loadDaily(today).newCount, goalDone: true });
     },
 
+    // เหรียญความสำเร็จ
+    loadMedals() {
+      return validMedals(read(KEYS.medals, null)) || {};
+    },
+    // บันทึกเหรียญใหม่ (ที่เคยได้แล้วไม่ถูกเขียนทับ) คืนเหรียญทั้งหมด
+    addMedals(ids, today) {
+      const medals = this.loadMedals();
+      ids.forEach((id) => {
+        if (!(id in medals)) medals[id] = today;
+      });
+      write(KEYS.medals, medals);
+      return medals;
+    },
+
     // เกมในแท็บ "เล่น": วันที่เล่น (นับเป็นวันท่องต่อเนื่อง) และสถิติดีที่สุดของแต่ละเกม
     loadGames() {
       return validGames(read(KEYS.games, null)) || { days: {}, best: {} };
@@ -292,6 +317,7 @@ export function createStorage(store = globalThis.localStorage) {
         rest: this.loadRest(),
         notes: this.loadNotes(),
         games: this.loadGames(),
+        medals: this.loadMedals(),
       };
     },
     // คืนจำนวนคำที่นำเข้า หรือโยน Error ถ้าไฟล์ไม่ถูกต้อง
@@ -318,6 +344,9 @@ export function createStorage(store = globalThis.localStorage) {
       // ไฟล์สำรองเก่า (ก่อน v0.16.0) ไม่มีข้อมูลเกม ให้คงของเดิมไว้
       const games = data.games === undefined ? null : validGames(data.games);
       if (games) write(KEYS.games, games);
+      // ไฟล์สำรองเก่า (ก่อน v0.19.0) ไม่มีเหรียญ ให้คงของเดิมไว้ ไฟล์ใหม่รวมเหรียญเข้ากับที่มีอยู่ (เหรียญไม่หาย)
+      const medals = data.medals === undefined ? null : validMedals(data.medals);
+      if (medals) write(KEYS.medals, { ...this.loadMedals(), ...medals });
       return Object.keys(cards).length;
     },
 

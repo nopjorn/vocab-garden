@@ -11,7 +11,17 @@ const KEYS = {
   seenVersion: "vg:seen-version",
 };
 const HISTORY_KEEP_DAYS = 400; // เก็บประวัติการทวนรายวันย้อนหลังไม่เกินนี้
-export const DEFAULT_SETTINGS = { newPerDay: 10, startLevel: 1 };
+export const SPEECH_RATE_CHOICES = [0.7, 0.9, 1.1]; // ช้า / ปกติ / เร็ว
+export const THEME_CHOICES = ["auto", "light", "dark"];
+export const TEXT_SIZE_CHOICES = ["normal", "large"];
+export const DEFAULT_SETTINGS = {
+  newPerDay: 10,
+  startLevel: 1,
+  autoSpeak: false,
+  speechRate: 0.9,
+  theme: "auto",
+  textSize: "normal",
+};
 export const LAST_LEVEL = 28;
 export const NEW_PER_DAY_CHOICES = [5, 10, 20];
 
@@ -88,7 +98,15 @@ export function createStorage(store = globalThis.localStorage) {
         Number.isInteger(saved.startLevel) && saved.startLevel >= 1 && saved.startLevel <= LAST_LEVEL
           ? saved.startLevel
           : DEFAULT_SETTINGS.startLevel;
-      return { ...DEFAULT_SETTINGS, newPerDay, startLevel };
+      const pick = (choices, value, fallback) => (choices.includes(value) ? value : fallback);
+      return {
+        newPerDay,
+        startLevel,
+        autoSpeak: saved.autoSpeak === true,
+        speechRate: pick(SPEECH_RATE_CHOICES, saved.speechRate, DEFAULT_SETTINGS.speechRate),
+        theme: pick(THEME_CHOICES, saved.theme, DEFAULT_SETTINGS.theme),
+        textSize: pick(TEXT_SIZE_CHOICES, saved.textSize, DEFAULT_SETTINGS.textSize),
+      };
     },
     saveSettings(settings) {
       write(KEYS.settings, settings);

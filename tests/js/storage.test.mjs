@@ -12,15 +12,22 @@ function fakeStore(initial = {}) {
   };
 }
 
-test("settings default to 10 new words a day starting from level 1", () => {
+test("settings default to 10 new words a day starting from level 1 with the system theme", () => {
   assert.deepEqual(createStorage(fakeStore()).loadSettings(), DEFAULT_SETTINGS);
-  assert.deepEqual(DEFAULT_SETTINGS, { newPerDay: 10, startLevel: 1 });
+  assert.deepEqual(DEFAULT_SETTINGS, {
+    newPerDay: 10,
+    startLevel: 1,
+    autoSpeak: false,
+    speechRate: 0.9,
+    theme: "auto",
+    textSize: "normal",
+  });
 });
 
 test("startLevel is saved and read back", () => {
   const storage = createStorage(fakeStore());
-  storage.saveSettings({ newPerDay: 5, startLevel: 2 });
-  assert.deepEqual(storage.loadSettings(), { newPerDay: 5, startLevel: 2 });
+  storage.saveSettings({ ...DEFAULT_SETTINGS, newPerDay: 5, startLevel: 2 });
+  assert.deepEqual(storage.loadSettings(), { ...DEFAULT_SETTINGS, newPerDay: 5, startLevel: 2 });
 });
 
 test("an invalid startLevel falls back to level 1", () => {
@@ -34,7 +41,7 @@ test("a backup from an older version without startLevel still imports", () => {
   const storage = createStorage(fakeStore());
   const count = storage.importData({ app: "vocab-garden", schema: 1, cards: {}, settings: { newPerDay: 20 } });
   assert.equal(count, 0);
-  assert.deepEqual(storage.loadSettings(), { newPerDay: 20, startLevel: 1 });
+  assert.deepEqual(storage.loadSettings(), { ...DEFAULT_SETTINGS, newPerDay: 20 });
 });
 
 test("addReview counts reviews per day and survives a reload", () => {
@@ -79,4 +86,17 @@ test("reset clears the history too", () => {
   storage.addReview(7);
   storage.reset();
   assert.deepEqual(storage.loadHistory(), {});
+});
+
+test("sound and appearance settings are saved and read back", () => {
+  const storage = createStorage(fakeStore());
+  const custom = { ...DEFAULT_SETTINGS, autoSpeak: true, speechRate: 0.7, theme: "dark", textSize: "large" };
+  storage.saveSettings(custom);
+  assert.deepEqual(storage.loadSettings(), custom);
+});
+
+test("invalid sound and appearance values fall back to the defaults", () => {
+  const saved = { autoSpeak: "yes", speechRate: 5, theme: "purple", textSize: "huge" };
+  const storage = createStorage(fakeStore({ "vg:settings": JSON.stringify(saved) }));
+  assert.deepEqual(storage.loadSettings(), DEFAULT_SETTINGS);
 });

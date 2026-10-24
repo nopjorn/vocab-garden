@@ -15,6 +15,14 @@
   <link rel="icon" href="icons/icon.svg" type="image/svg+xml">
   <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
   <link rel="stylesheet" href="css/style.css">
+  <script>
+    // ตั้งธีมและขนาดตัวอักษรก่อนวาดหน้า จะได้ไม่วาบสีผิดตอนเปิดแอป (ค่าจริงอ่านจากการตั้งค่า vg:settings)
+    try {
+      var saved = JSON.parse(localStorage.getItem("vg:settings") || "{}");
+      if (saved.theme === "light" || saved.theme === "dark") document.documentElement.dataset.theme = saved.theme;
+      if (saved.textSize === "large") document.documentElement.dataset.textSize = "large";
+    } catch (error) {}
+  </script>
   <script src="version.js"></script>
   <script type="module" src="js/main.js"></script>
 </head>
@@ -77,7 +85,7 @@
     <section id="view-study" hidden>
       <div class="study-top">
         <a href="#/" class="close" aria-label="ออกจากการท่องศัพท์">✕</a>
-        <div class="progress" aria-hidden="true"><div id="study-bar" class="progress-bar"></div></div>
+        <div id="study-progressbar" class="progress" role="progressbar" aria-label="ความคืบหน้าของรอบนี้" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><div id="study-bar" class="progress-bar"></div></div>
         <span id="study-progress" class="muted small"></span>
       </div>
 
@@ -163,6 +171,30 @@
         <select id="start-level"></select>
         <p class="tip small">รู้ศัพท์ด่านแรก ๆ อยู่แล้วใช่ไหม? เลือกด่านที่อยากเริ่ม คำใหม่จะมาจากด่านนี้เป็นต้นไป
           คำที่ถึงเวลาทวนยังมาตามปกติ และแตะที่ด่านในหน้าหลักเพื่อเรียนเฉพาะด่านนั้นได้เสมอ</p>
+      </div>
+
+      <h2 id="sound-heading">เสียงอ่าน</h2>
+      <div id="sound-panel" class="panel">
+        <label class="check"><input type="checkbox" id="auto-speak"> เล่นเสียงคำศัพท์อัตโนมัติเมื่อขึ้นการ์ดใหม่</label>
+        <p>
+          <label for="speech-rate">ความเร็วเสียง</label>
+          <select id="speech-rate"></select>
+          <button type="button" id="speech-test">🔊 ลองฟัง</button>
+        </p>
+        <p class="tip small">บางเครื่อง (เช่น iPhone) อาจต้องแตะหน้าจอหนึ่งครั้งก่อน เสียงจึงจะเล่นอัตโนมัติ
+          เสียงมาจากเครื่องของคุณ ถ้าไม่ได้ยินให้เช็คว่าไม่ได้ปิดเสียงเครื่องไว้</p>
+      </div>
+
+      <h2>หน้าตา</h2>
+      <div class="panel">
+        <p>
+          <label for="theme">ธีม</label>
+          <select id="theme"></select>
+        </p>
+        <p>
+          <label for="text-size">ขนาดตัวอักษร</label>
+          <select id="text-size"></select>
+        </p>
       </div>
 
       <h2>สำรองความคืบหน้า</h2>

@@ -22,6 +22,8 @@ test("settings default to 10 new words a day starting from level 1 with the syst
     theme: "auto",
     textSize: "normal",
     sound: false,
+    dailyGoal: 10,
+    reviewCap: 100,
   });
 });
 
@@ -91,13 +93,57 @@ test("reset clears the history too", () => {
 
 test("sound and appearance settings are saved and read back", () => {
   const storage = createStorage(fakeStore());
-  const custom = { ...DEFAULT_SETTINGS, autoSpeak: true, speechRate: 0.7, theme: "dark", textSize: "large", sound: true };
+  const custom = { ...DEFAULT_SETTINGS, autoSpeak: true, speechRate: 0.7, theme: "dark", textSize: "large", sound: true, dailyGoal: 30, reviewCap: 0 };
   storage.saveSettings(custom);
   assert.deepEqual(storage.loadSettings(), custom);
 });
 
 test("invalid sound and appearance values fall back to the defaults", () => {
-  const saved = { autoSpeak: "yes", speechRate: 5, theme: "purple", textSize: "huge", sound: "on" };
+  const saved = { autoSpeak: "yes", speechRate: 5, theme: "purple", textSize: "huge", sound: "on", dailyGoal: 15, reviewCap: "many" };
   const storage = createStorage(fakeStore({ "vg:settings": JSON.stringify(saved) }));
   assert.deepEqual(storage.loadSettings(), DEFAULT_SETTINGS);
+});
+
+test("rest days are validated, exported and imported, and a backup without them clears the old ones", () => {
+  const source = createStorage(fakeStore());
+  source.addReview(50);
+  source.saveRest({ bank: 1, run: 3, upTo: 50, frozen: [48] });
+  const backup = JSON.parse(JSON.stringify(source.exportData("0.11.0")));
+  assert.deepEqual(backup.rest, { bank: 1, run: 3, upTo: 50, frozen: [48] });
+
+  const target = createStorage(fakeStore());
+  target.importData(backup);
+  assert.deepEqual(target.loadRest(), backup.rest);
+
+  const { rest, ...withoutRest } = backup;
+  target.importData(withoutRest);
+  assert.equal(target.loadRest(), null);
+
+  for (const bad of [{ bank: -1, run: 0, upTo: 1, frozen: [] }, { bank: 0, run: 0, upTo: 1, frozen: ["x"] }, [1], "no"]) {
+    assert.equal(createStorage(fakeStore({ "vg:rest": JSON.stringify(bad) })).loadRest(), null);
+  }
+});
+
+test("the daily record keeps the new-word count and the goal flag together and resets each day", () => {
+  const storage = createStorage(fakeStore());
+  assert.deepEqual(storage.loadDaily(10), { newCount: 0, goalDone: false });
+  storage.saveNewCount(10, 4);
+  storage.saveGoalDone(10);
+  storage.saveNewCount(10, 5);
+  assert.deepEqual(storage.loadDaily(10), { newCount: 5, goalDone: true });
+  assert.equal(storage.newCountToday(10), 5);
+  assert.deepEqual(storage.loadDaily(11), { newCount: 0, goalDone: false });
+});
+
+test("addReview returns the count for that day", () => {
+  const storage = createStorage(fakeStore());
+  assert.equal(storage.addReview(5), 1);
+  assert.equal(storage.addReview(5), 2);
+});
+
+test("reset clears the rest days", () => {
+  const storage = createStorage(fakeStore());
+  storage.saveRest({ bank: 1, run: 1, upTo: 5, frozen: [] });
+  storage.reset();
+  assert.equal(storage.loadRest(), null);
 });

@@ -6,17 +6,24 @@ const WEEKDAYS = ["อา", "จ", "อ", "พ", "พฤ", "ศ", "ส"];
 
 // streak ปัจจุบันนับถึงวันนี้ ถ้าวันนี้ยังไม่ได้ท่อง ให้นับถึงเมื่อวาน (ยังไม่ถือว่าขาด)
 // best คือช่วงที่ท่องติดต่อกันนานที่สุดเท่าที่มีประวัติ
-export function streakOf(days, today) {
+// frozen = วันที่ใช้วันพัก 🧊 ไปแล้ว ถือว่าสตรีคไม่ขาด แต่ไม่นับเป็นวันที่ท่อง
+export function streakOf(days, today, frozen = []) {
   const studied = (day) => (days[day] || 0) > 0;
+  const rested = new Set(frozen);
+  const alive = (day) => studied(day) || rested.has(day);
   let current = 0;
-  for (let cursor = studied(today) ? today : today - 1; studied(cursor); cursor -= 1) current += 1;
+  for (let cursor = alive(today) ? today : today - 1; alive(cursor); cursor -= 1) {
+    if (studied(cursor)) current += 1;
+  }
 
   let best = 0;
   let run = 0;
   let previous = null;
-  for (const day of Object.keys(days).map(Number).sort((a, b) => a - b)) {
-    if (!studied(day)) continue;
-    run = previous !== null && day === previous + 1 ? run + 1 : 1;
+  const all = new Set([...Object.keys(days).map(Number), ...rested]);
+  for (const day of [...all].sort((a, b) => a - b)) {
+    if (!alive(day)) continue;
+    const count = studied(day) ? 1 : 0;
+    run = previous !== null && day === previous + 1 ? run + count : count;
     best = Math.max(best, run);
     previous = day;
   }

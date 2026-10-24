@@ -77,10 +77,13 @@ export function stageOf(state) {
 
 // คิวการ์ดของรอบนี้: คำที่ถึงกำหนดทวนก่อน (ค้างนานสุดก่อน) แล้วจึงเป็นคำใหม่ตามลำดับ NGSL
 // freshWords = กลุ่มคำที่เลือกคำใหม่ได้ (ค่าเริ่มต้นคือทุกคำใน words)
-export function buildQueue(words, cards, today, newLimit, freshWords = words) {
-  const due = words
+// dueLimit = ทวนได้อีกไม่เกินกี่ใบ (ค่าเริ่มต้นไม่จำกัด) ถ้าคำค้างเกินกว่านี้ จะทวนเฉพาะที่ค้างนานสุดก่อน
+// และงดคำใหม่ไว้จนกว่าคำค้างจะเบาลง
+export function buildQueue(words, cards, today, newLimit, freshWords = words, dueLimit = Infinity) {
+  const dueAll = words
     .filter((word) => isDue(cards[word.headword], today))
     .sort((a, b) => cards[a.headword].due - cards[b.headword].due || a.order - b.order);
-  const fresh = freshWords.filter((word) => !cards[word.headword]).slice(0, Math.max(0, newLimit));
-  return [...due, ...fresh];
+  const backlog = dueAll.length > dueLimit;
+  const fresh = backlog ? [] : freshWords.filter((word) => !cards[word.headword]).slice(0, Math.max(0, newLimit));
+  return [...dueAll.slice(0, dueLimit), ...fresh];
 }

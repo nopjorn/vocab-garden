@@ -65,9 +65,15 @@
           <div class="stat"><strong id="due-count">0</strong><span>🔁 ต้องทวน</span></div>
           <div class="stat"><strong id="new-count">0</strong><span>✨ คำใหม่</span></div>
         </div>
+        <div class="goal">
+          <p id="goal-text" class="goal-text">🎯 เป้าวันนี้ 0/10</p>
+          <div id="goal-bar" class="goal-bar" role="progressbar" aria-label="เป้าหมายวันนี้" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><div id="goal-fill"></div></div>
+        </div>
         <a href="#/study" id="start" class="button hero-cta">🌱 เริ่มท่องศัพท์</a>
         <p id="today-empty" class="hero-done" hidden>วันนี้ทวนครบแล้ว 🎉 พรุ่งนี้มาดูสวนกันใหม่นะ</p>
       </div>
+      <p id="welcome-back" class="notice" hidden></p>
+      <p id="backlog-note" class="notice" hidden></p>
 
       <div class="section-head">
         <h2>สวนคำศัพท์</h2>
@@ -143,6 +149,10 @@
         <div class="stat-card"><strong id="g-total">0</strong><span>🔁 ทวนทั้งหมด</span></div>
       </div>
 
+      <p id="g-rest" class="muted small"></p>
+      <p class="tip small">วันพัก 🧊 ได้เพิ่ม 1 วันทุกครั้งที่ท่องติดกันครบ 7 วัน เก็บได้ไม่เกิน 2 วัน ถ้าพลาดไปหนึ่งวัน
+        ระบบใช้ให้เองเพื่อให้สตรีคไม่หาย (วันพักไม่นับเป็นวันที่ท่อง)</p>
+
       <h2>ต้นไม้ในสวน</h2>
       <ul id="g-stages" class="stage-rows"></ul>
 
@@ -185,6 +195,21 @@
         </p>
         <p class="tip small">บางเครื่อง (เช่น iPhone) อาจต้องแตะหน้าจอหนึ่งครั้งก่อน เสียงจึงจะเล่นอัตโนมัติ
           เสียงมาจากเครื่องของคุณ ถ้าไม่ได้ยินให้เช็คว่าไม่ได้ปิดเสียงเครื่องไว้</p>
+      </div>
+
+      <h2>นิสัยการท่อง</h2>
+      <div class="panel">
+        <p>
+          <label for="daily-goal">เป้าหมายต่อวัน</label>
+          <select id="daily-goal"></select>
+        </p>
+        <p>
+          <label for="review-cap">ทวนได้สูงสุดต่อวัน</label>
+          <select id="review-cap"></select>
+        </p>
+        <p class="tip small">นับเป็นจำนวนครั้งที่ตอบ ถ้าคำค้างทวนเยอะกว่าเพดาน แอปจะทยอยทวนวันละส่วน (เริ่มจากคำที่ค้างนานสุด)
+          และงดคำใหม่ชั่วคราวจนกว่าคำค้างจะเบาลง ตั้ง "ไม่จำกัด" ถ้าอยากทวนให้หมดในวันเดียว
+          การแตะเรียนเฉพาะด่านจากหน้าหลักไม่ถูกจำกัดด้วยเพดานนี้</p>
       </div>
 
       <h2>ความสนุก</h2>
@@ -267,7 +292,7 @@
 
       <h2>ความเป็นส่วนตัว</h2>
       <ul>
-        <li>ความคืบหน้า การตั้งค่า และประวัติการทวนรายวัน เก็บอยู่ในเครื่องของคุณเท่านั้น (ที่ localStorage คีย์ขึ้นต้นด้วย <code>vg:</code>)
+        <li>ความคืบหน้า การตั้งค่า ประวัติการทวนรายวัน และวันพักของสตรีค เก็บอยู่ในเครื่องของคุณเท่านั้น (ที่ localStorage คีย์ขึ้นต้นด้วย <code>vg:</code>)
           ไม่ถูกส่งออกไปที่ไหน</li>
         <li>ไม่มีการสมัครสมาชิก ไม่มีคุกกี้ ไม่มีโฆษณา และไม่มีเครื่องมือวิเคราะห์หรือติดตามผู้ใช้</li>
         <li>เสียงอ่านใช้บริการเสียงของเครื่องและเบราว์เซอร์ของคุณ บางเบราว์เซอร์อาจส่งข้อความที่อ่านไปประมวลผลกับผู้ให้บริการเสียงของเบราว์เซอร์นั้น

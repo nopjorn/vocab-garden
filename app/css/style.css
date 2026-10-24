@@ -703,6 +703,39 @@ body.studying main {
   white-space: nowrap;
 }
 
+.goal {
+  margin: 14px 0 12px;
+}
+
+.goal-text {
+  margin: 0 0 6px;
+  font-weight: 700;
+}
+
+.goal-bar {
+  height: 10px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.28);
+  overflow: hidden;
+}
+
+.goal-bar > div {
+  height: 100%;
+  width: 0;
+  border-radius: 999px;
+  background: #fde68a;
+  transition: width 0.35s ease-out;
+}
+
+.notice {
+  margin: 12px 0 0;
+  padding: 10px 14px;
+  border-radius: var(--radius-sm);
+  background: var(--warning-bg);
+  color: var(--text);
+  font-size: 0.95rem;
+}
+
 .combo {
   flex: none;
   padding: 4px 10px;

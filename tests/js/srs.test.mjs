@@ -91,3 +91,14 @@ test("buildQueue takes new words only from freshWords but still reviews every du
   const queue = buildQueue(words, cards, TODAY, 5, words.slice(2));
   assert.deepEqual(queue.map((word) => word.headword), ["a", "c", "d"]);
 });
+
+test("a due limit keeps the longest-overdue cards and pauses new words while there is a backlog", () => {
+  const words = ["a", "b", "c", "d", "e"].map((headword, order) => ({ headword, order }));
+  const card = (due) => ({ due, ivl: 3, ease: 2.5, reps: 2, lapses: 0 });
+  const cards = { a: card(TODAY - 1), b: card(TODAY - 5), c: card(TODAY) };
+  const names = (queue) => queue.map((word) => word.headword);
+  assert.deepEqual(names(buildQueue(words, cards, TODAY, 5, words, 2)), ["b", "a"]);
+  assert.deepEqual(names(buildQueue(words, cards, TODAY, 5, words, 3)), ["b", "a", "c", "d", "e"]);
+  assert.deepEqual(names(buildQueue(words, cards, TODAY, 1, words, 0)), []);
+  assert.deepEqual(names(buildQueue(words, {}, TODAY, 2, words, 0)), ["a", "b"]); // ไม่มีคำค้าง เพดานหมดแล้วก็ยังเรียนคำใหม่ได้
+});

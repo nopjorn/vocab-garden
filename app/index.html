@@ -216,7 +216,42 @@
             <span class="game-info"><strong>ทายคำปริศนา</strong><span class="muted small">เดาคำอังกฤษ 5 ตัวอักษรภายใน 6 ครั้ง วันละข้อ ทุกคนได้คำเดียวกัน</span><span id="wordle-status" class="small"></span></span>
           </a>
         </li>
+        <li>
+          <a class="game-card" href="#/play/scramble">
+            <span class="game-emoji" aria-hidden="true">🔀</span>
+            <span class="game-info"><strong>เรียงตัวอักษร</strong><span class="muted small">ดูคำแปลไทยแล้วเรียงตัวอักษรที่สลับไว้ให้เป็นคำอังกฤษ 5 ข้อ</span><span id="scramble-best" class="small"></span></span>
+          </a>
+        </li>
       </ul>
+    </section>
+
+    <section id="view-scramble" hidden>
+      <div class="study-top">
+        <a href="#/play" class="close" aria-label="กลับไปหน้าเล่น">✕</a>
+        <strong class="game-title">🔀 เรียงตัวอักษร</strong>
+        <span id="scramble-count" class="muted small"></span>
+      </div>
+      <div id="scramble-play">
+        <p class="muted small center-text">แตะตัวอักษรเรียงตามลำดับให้เป็นคำที่มีความหมายตามนี้</p>
+        <p id="scramble-meaning" class="scramble-meaning"></p>
+        <div id="scramble-slots" class="scramble-slots" aria-label="คำที่เรียงแล้ว"></div>
+        <div id="scramble-tiles" class="scramble-tiles"></div>
+        <p id="scramble-feedback" class="quiz-feedback" role="status" hidden></p>
+        <div class="row scramble-actions">
+          <button type="button" id="scramble-undo">⌫ ลบ</button>
+          <button type="button" id="scramble-hint">💡 ใบ้ (ได้ 1 แต้ม)</button>
+          <button type="button" id="scramble-skip">🤷 ข้าม</button>
+        </div>
+        <button type="button" id="scramble-next" class="primary wide" hidden>ต่อไป ➡️</button>
+      </div>
+      <div id="scramble-result" class="done-card" hidden>
+        <p class="big-emoji celebrate" aria-hidden="true">🏁</p>
+        <h2 id="scramble-title"></h2>
+        <p id="scramble-summary" class="muted"></p>
+        <p id="scramble-marks" class="big-marks" aria-hidden="true"></p>
+        <button type="button" id="scramble-again" class="primary wide">🔁 เล่นอีกรอบ</button>
+        <a href="#/play" class="button wide">กลับไปหน้าเล่น</a>
+      </div>
     </section>
 
     <section id="view-wordle" hidden>

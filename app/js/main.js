@@ -7,6 +7,7 @@ import { playSfx } from "./sfx.js";
 import { LEECH_LAPSES, dueLabel, leechWords, matchesQuery, plantInfo, plotSummary } from "./garden.js";
 import { daysAway, goalProgress, mergeDays, settleRest } from "./habit.js";
 import { buildMatchRound, formatSeconds, isMatch, isNewBest } from "./match.js";
+import { SCRAMBLE_COUNT, applyHint, buildScrambleRound, isSolved, maxScore, roundScore } from "./scramble.js";
 import { MAX_GUESSES, WORD_LENGTH, answerPool, dailyAnswer, guessSet, keyStates, nextStats, scoreGuess, shareText } from "./wordle.js";
 import { AGAIN, GOOD, HARD, STAGES, buildQueue, dayNumber, grade, isDue, knownCard, stageOf } from "./srs.js";
 import {
@@ -26,8 +27,8 @@ import { recentDays, stageCounts, streakOf, totalReviews } from "./stats.js";
 import { SUPPORT_LINKS } from "./support.js";
 import { isNewer, parseSwVersion } from "./update.js";
 
-const VIEWS = ["loading", "error", "home", "study", "done", "garden", "play", "match", "wordle", "settings", "about", "changelog"];
-const TAB_OF_VIEW = { changelog: "about", match: "play", wordle: "play" }; // หน้าที่ไม่มีแท็บของตัวเอง ให้ไฮไลต์แท็บนี้แทน
+const VIEWS = ["loading", "error", "home", "study", "done", "garden", "play", "match", "wordle", "scramble", "settings", "about", "changelog"];
+const TAB_OF_VIEW = { changelog: "about", match: "play", wordle: "play", scramble: "play" }; // หน้าที่ไม่มีแท็บของตัวเอง ให้ไฮไลต์แท็บนี้แทน
 const REQUEUE_GAP = 3; // คำที่ตอบ "ยังจำไม่ได้" จะกลับมาอีกครั้งหลังการ์ดใบอื่นอีก 3 ใบ
 const SWIPE_DISTANCE = 90; // ปัดเกินกี่ px ถึงนับเป็นการให้คะแนน
 const SWIPE_PREVIEW = 40; // ปัดเกินกี่ px ถึงเริ่มขึ้นป้ายบนการ์ด
@@ -689,12 +690,152 @@ function finishSession() {
 function renderPlay() {
   const best = storage.loadGames().best.match;
   $("match-best").textContent = best ? `🏆 ดีที่สุด ${formatSeconds(best)}` : "";
+  const scrambleBest = storage.loadGames().best.scramble;
+  $("scramble-best").textContent = scrambleBest ? `🏆 คะแนนสูงสุด ${scrambleBest}/${maxScore()}` : "";
   const today = storage.loadWordle(dayNumber());
   $("wordle-status").textContent =
     today?.status === "won" ? `✅ วันนี้ทายถูกใน ${today.guesses.length} ครั้ง`
     : today?.status === "lost" ? "วันนี้จบแล้ว พรุ่งนี้มาลองใหม่"
     : today ? `🔄 เล่นค้างอยู่ ทายไปแล้ว ${today.guesses.length} ครั้ง`
     : "ยังไม่ได้เล่นวันนี้";
+}
+
+// ---------- เรียงตัวอักษร ----------
+
+const scramble = { round: [], index: 0, picked: [], hinted: false, results: [], answered: false };
+
+function startScramble() {
+  const round = buildScrambleRound(translatedWords());
+  if (!round) {
+    toast("ยังมีคำที่แปลแล้วไม่พอสำหรับเกมนี้");
+    location.hash = "#/play";
+    return;
+  }
+  Object.assign(scramble, { round, index: 0, picked: [], hinted: false, results: [], answered: false });
+  $("scramble-play").hidden = false;
+  $("scramble-result").hidden = true;
+  show("scramble");
+  renderScramble();
+}
+
+function renderScramble() {
+  const item = scramble.round[scramble.index];
+  $("scramble-count").textContent = `ข้อ ${scramble.index + 1}/${SCRAMBLE_COUNT}`;
+  $("scramble-meaning").textContent = `${item.posLabel} · ${item.meaning}`;
+  $("scramble-slots").replaceChildren(
+    ...[...item.answer].map((_, position) => {
+      const index = scramble.picked[position];
+      return el("span", `scramble-slot${index === undefined ? "" : " filled"}`, index === undefined ? "" : item.letters[index]);
+    }),
+  );
+  $("scramble-tiles").replaceChildren(
+    ...item.letters.map((letter, index) => {
+      const button = el("button", "scramble-tile", letter);
+      button.type = "button";
+      button.dataset.index = index;
+      button.disabled = scramble.answered || scramble.picked.includes(index);
+      return button;
+    }),
+  );
+  const done = scramble.answered;
+  $("scramble-undo").disabled = done;
+  $("scramble-hint").disabled = done;
+  $("scramble-skip").disabled = done;
+  $("scramble-next").hidden = !done;
+}
+
+// ตัดสินข้อนี้: result = clean / hint / skip แล้วเฉลยพร้อมประโยคตัวอย่าง
+function settleScramble(result) {
+  const item = scramble.round[scramble.index];
+  scramble.answered = true;
+  scramble.results.push(result);
+  if (result === "skip") scramble.picked = item.letters.map((_, index) => index); // ไม่ใช้ในการตรวจ แค่ให้ช่องแสดงผล
+  const word = state.words.find((entry) => entry.headword.toLowerCase() === item.answer);
+  $("scramble-feedback").textContent =
+    result === "skip" ? `💡 คำตอบคือ ${item.answer} · ${word.exampleEn}` : `✅ ถูกต้อง! ${item.answer} · ${word.exampleEn}`;
+  $("scramble-feedback").classList.toggle("is-correct", result !== "skip");
+  $("scramble-feedback").hidden = false;
+  if (result === "skip") {
+    $("scramble-slots").replaceChildren(...[...item.answer].map((letter) => el("span", "scramble-slot filled", letter)));
+    $("scramble-tiles").querySelectorAll("button").forEach((button) => {
+      button.disabled = true;
+    });
+    $("scramble-undo").disabled = true;
+    $("scramble-hint").disabled = true;
+    $("scramble-skip").disabled = true;
+    $("scramble-next").hidden = false;
+  } else {
+    fx("correct");
+    renderScramble();
+  }
+  $("scramble-next").focus({ preventScroll: true });
+}
+
+function checkScramble() {
+  const item = scramble.round[scramble.index];
+  if (scramble.picked.length < item.answer.length) return;
+  if (isSolved(item.letters, scramble.picked, item.answer)) {
+    settleScramble(scramble.hinted ? "hint" : "clean");
+  } else {
+    const slots = $("scramble-slots");
+    slots.classList.remove("shake");
+    void slots.offsetWidth;
+    slots.classList.add("shake");
+    $("scramble-feedback").textContent = "ยังไม่ใช่ ลองลบแล้วเรียงใหม่ได้นะ";
+    $("scramble-feedback").classList.remove("is-correct");
+    $("scramble-feedback").hidden = false;
+  }
+}
+
+function scramblePick(index) {
+  const item = scramble.round[scramble.index];
+  if (scramble.answered || scramble.picked.includes(index) || scramble.picked.length >= item.answer.length) return;
+  scramble.picked.push(index);
+  $("scramble-feedback").hidden = true;
+  renderScramble();
+  checkScramble();
+}
+
+function scrambleUndo() {
+  if (scramble.answered) return;
+  scramble.picked.pop();
+  $("scramble-feedback").hidden = true;
+  renderScramble();
+}
+
+function scrambleHint() {
+  const item = scramble.round[scramble.index];
+  if (scramble.answered) return;
+  scramble.hinted = true;
+  scramble.picked = applyHint(item.letters, scramble.picked, item.answer);
+  $("scramble-feedback").hidden = true;
+  renderScramble();
+  checkScramble();
+}
+
+function nextScramble() {
+  if (!scramble.answered) return;
+  if (scramble.index + 1 < scramble.round.length) {
+    Object.assign(scramble, { index: scramble.index + 1, picked: [], hinted: false, answered: false });
+    $("scramble-feedback").hidden = true;
+    renderScramble();
+    return;
+  }
+  finishScramble();
+}
+
+function finishScramble() {
+  const score = roundScore(scramble.results);
+  const isBest = storage.saveBest("scramble", score, (next, best) => next > best);
+  storage.addGamePlay(dayNumber());
+  const marks = { clean: "⭐", hint: "✅", skip: "❌" };
+  $("scramble-marks").textContent = scramble.results.map((result) => marks[result]).join(" ");
+  $("scramble-title").textContent = score === maxScore() ? "เต็มเลย! เก่งมาก 🎉" : "จบรอบแล้ว!";
+  $("scramble-summary").textContent = `${score}/${maxScore()} แต้ม (⭐ ตอบเอง 2 แต้ม · ✅ ใช้ใบ้ 1 แต้ม · ❌ ข้าม)${isBest ? " 🏆 สถิติใหม่!" : ""}`;
+  $("scramble-play").hidden = true;
+  $("scramble-result").hidden = false;
+  if (score >= maxScore() - 2) launchConfetti(isBest ? 48 : 24);
+  fx("finish");
 }
 
 // ---------- ทายคำปริศนา ----------
@@ -1258,6 +1399,10 @@ function route() {
     startMatch();
     return;
   }
+  if (page === "play" && argument === "scramble") {
+    startScramble();
+    return;
+  }
   if (page === "play" && argument === "wordle") {
     startWordle();
     return;
@@ -1317,6 +1462,31 @@ function bindEvents() {
     if (button) wordleKey(button.dataset.key);
   });
   $("wordle-share").addEventListener("click", shareWordle);
+  $("scramble-tiles").addEventListener("click", (event) => {
+    const button = event.target.closest(".scramble-tile");
+    if (button) scramblePick(Number(button.dataset.index));
+  });
+  $("scramble-undo").addEventListener("click", scrambleUndo);
+  $("scramble-hint").addEventListener("click", scrambleHint);
+  $("scramble-skip").addEventListener("click", () => {
+    if (!scramble.answered) settleScramble("skip");
+  });
+  $("scramble-next").addEventListener("click", nextScramble);
+  $("scramble-again").addEventListener("click", startScramble);
+  document.addEventListener("keydown", (event) => {
+    if ($("view-scramble").hidden || $("scramble-play").hidden || event.altKey || event.ctrlKey || event.metaKey) return;
+    if (document.querySelector(".modal:not([hidden])")) return;
+    if (/^[a-zA-Z]$/.test(event.key)) {
+      const item = scramble.round[scramble.index];
+      const index = item.letters.findIndex((letter, position) => letter === event.key.toLowerCase() && !scramble.picked.includes(position));
+      if (index >= 0) scramblePick(index);
+    } else if (event.key === "Backspace") {
+      scrambleUndo();
+    } else if (event.key === "Enter" && scramble.answered) {
+      event.preventDefault();
+      nextScramble();
+    }
+  });
   document.addEventListener("keydown", (event) => {
     if ($("view-wordle").hidden || event.altKey || event.ctrlKey || event.metaKey) return;
     if (document.querySelector(".modal:not([hidden])")) return;

@@ -4,6 +4,7 @@ import { launchConfetti } from "./confetti.js";
 import { canSpeak, speak } from "./speech.js";
 import { buildQuestion, gradeTyped } from "./quiz.js";
 import { playSfx } from "./sfx.js";
+import { dueLabel, matchesQuery, plantInfo, plotSummary } from "./garden.js";
 import { daysAway, goalProgress, settleRest } from "./habit.js";
 import { AGAIN, GOOD, HARD, STAGES, buildQueue, dayNumber, grade, isDue, knownCard, stageOf } from "./srs.js";
 import {
@@ -651,6 +652,80 @@ function renderGarden() {
   );
   $("g-week").setAttribute("aria-label", `ทวน 7 วันล่าสุด: ${week.map((entry) => entry.count).join(", ")} ครั้ง`);
   $("g-empty").hidden = totalReviews(days) > 0;
+  renderPlots(today);
+}
+
+// แปลงสวน: ด่านละแปลง คำละต้น ต้นที่ถึงเวลาทวนเหี่ยวจนกว่าจะรดน้ำ
+function plantButton(word, today) {
+  const info = plantInfo(state.cards[word.headword], today);
+  const button = el("button", `plant${info.planted ? "" : " seed"}${info.wilted ? " wilted" : ""}`, info.stage.emoji);
+  button.type = "button";
+  button.dataset.headword = word.headword;
+  button.title = word.headword;
+  button.setAttribute("aria-label", `${word.headword} ${info.stage.label}${info.wilted ? " ต้องรดน้ำ" : ""}`);
+  return button;
+}
+
+function renderPlots(today) {
+  const translated = translatedWords();
+  const { wilted } = plotSummary(translated, state.cards, today);
+  $("water-note").textContent = wilted > 0 ? `💧 ${wilted} ต้นรอรดน้ำ (ถึงเวลาทวนแล้ว)` : "🌤️ ต้นไม้ทุกต้นชุ่มชื้นดี วันนี้ไม่ต้องรดน้ำ";
+  $("water-go").hidden = wilted === 0;
+
+  const levels = [...new Set(translated.map((word) => word.level))];
+  $("plots").replaceChildren(
+    ...levels.map((level) => {
+      const words = translated.filter((word) => word.level === level);
+      const summary = plotSummary(words, state.cards, today);
+      const plot = el("section", "plot");
+      const grid = el("div", "plot-grid");
+      grid.append(...words.map((word) => plantButton(word, today)));
+      plot.append(el("h3", "plot-head", `${levelTitle(level)} · ปลูกแล้ว ${summary.planted}/${summary.total}`), grid);
+      return plot;
+    }),
+  );
+  applyGardenSearch();
+}
+
+// ช่องค้นหา: ต้นที่ไม่ตรงจะจางลง
+function applyGardenSearch() {
+  const query = $("garden-search").value;
+  let found = 0;
+  $("plots")
+    .querySelectorAll(".plant")
+    .forEach((button) => {
+      const word = state.words.find((entry) => entry.headword === button.dataset.headword);
+      const match = matchesQuery(word, query);
+      button.classList.toggle("dim", !match);
+      if (match) found += 1;
+    });
+  $("garden-found").textContent = query.trim() ? `พบ ${found} คำ` : "";
+}
+
+function openWordDialog(word) {
+  const today = dayNumber();
+  const card = state.cards[word.headword];
+  const info = plantInfo(card, today);
+  $("word-stage").textContent = info.wilted ? `${info.stage.emoji}💧` : info.stage.emoji;
+  $("word-title").textContent = word.headword;
+  $("word-stage-label").textContent = `${levelTitle(word.level)} · อันดับ ${word.rank} · ${info.stage.label}`;
+  $("word-due").textContent = dueLabel(card, today);
+  $("word-senses").replaceChildren(
+    ...word.senses.map((sense) => {
+      const item = el("li");
+      item.append(el("span", `pos pos-${sense.pos}`, sense.label), document.createTextNode(sense.text));
+      return item;
+    }),
+  );
+  $("word-forms").textContent = word.forms.length ? `รูปคำอื่น: ${word.forms.join(", ")}` : "";
+  $("word-forms").hidden = word.forms.length === 0;
+  $("word-example-en").textContent = word.exampleEn;
+  $("word-example-th").textContent = word.exampleTh;
+  $("word-stats").textContent = card ? `ทวนไปแล้ว ${card.reps} ครั้ง · เคยลืม ${card.lapses} ครั้ง` : "";
+  $("word-speak").hidden = !canSpeak();
+  $("word-speak").onclick = () => speakWord(word.headword);
+  $("word-dialog").hidden = false;
+  $("word-close").focus();
 }
 
 // ---------- มีอะไรใหม่ ----------
@@ -874,6 +949,17 @@ function bindEvents() {
   $("flip").addEventListener("click", flip);
   $("know").addEventListener("click", markKnown);
   $("report").addEventListener("click", (event) => event.stopPropagation());
+  $("plots").addEventListener("click", (event) => {
+    const button = event.target.closest(".plant");
+    if (button) openWordDialog(state.words.find((entry) => entry.headword === button.dataset.headword));
+  });
+  $("garden-search").addEventListener("input", applyGardenSearch);
+  $("word-close").addEventListener("click", () => {
+    $("word-dialog").hidden = true;
+  });
+  $("word-dialog").addEventListener("click", (event) => {
+    if (event.target === $("word-dialog")) $("word-dialog").hidden = true;
+  });
   $("whatsnew-ok").addEventListener("click", () => {
     $("whatsnew-dialog").hidden = true;
   });

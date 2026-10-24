@@ -2,7 +2,7 @@
 
 > แอปท่องศัพท์ภาษาอังกฤษพื้นฐานจาก NGSL 1.2 สำหรับคนไทย ใช้ฟรี เปิดได้ทั้งบนเว็บและบนมือถือแบบ Add to Home Screen
 >
-> **สถานะ:** ออกแบบเสร็จ รออนุมัติก่อนเริ่ม Phase 0 · **อัปเดตล่าสุด:** 2026-10-25
+> **สถานะ:** Phase 0 ทำเสร็จแล้ว รอ merge PR · **อัปเดตล่าสุด:** 2026-10-25
 
 **วิธีใช้ไฟล์นี้:** ทุก PR ต้องติ๊กงานที่ทำเสร็จและอัปเดตสถานะด้านบน · 👤 = งานที่เจ้าของโปรเจคต้องทำเอง
 
@@ -112,31 +112,32 @@ vocab-garden/
 **จำนวน PR:** 1
 
 ### เอกสารและกฎ
-- [ ] `CLAUDE.md` กฎสำหรับ Claude ทุก session
+- [x] `CLAUDE.md` กฎสำหรับ Claude ทุก session
   - ข้อ 1: เงื่อนไข NGSL (ตามด้านบน) + วิธีแจ้ง 🚨 NGSL Alert
   - ข้อ 2: ทุก PR ต้องขยับ version และเขียน CHANGELOG
   - ข้อ 3: workflow branch → PR → merge ห้าม push ตรงเข้า `main`
   - ข้อ 4: แนวทางเขียนโค้ด (vanilla JS, ไม่มี build step, UI ภาษาไทย, prefix `vg:`)
   - ข้อ 5: อ่าน `TODO.md` ก่อนเริ่มงาน และอัปเดตเมื่อจบงาน
-- [ ] `README.md` แนะนำโปรเจค, เครดิต NGSL (ข้อความทางการ + การอ้างอิงแบบ APA ที่เว็บ NGSL แนะนำ + ลิงก์ .com), อธิบาย license 2 ชั้น และระบุว่าไม่ใช่แอปทางการ
-- [ ] `LICENSE` (MIT สำหรับโค้ด)
-- [ ] `CHANGELOG.md` ภาษาไทย เริ่มที่ `[0.0.1]`
-- [ ] `TODO.md` (ไฟล์นี้)
-- [ ] `.github/pull_request_template.md` มีส่วนสรุปงาน, เหตุผลที่ขยับเลข, checklist version/changelog และ checklist NGSL compliance
+- [x] `README.md` แนะนำโปรเจค, เครดิต NGSL (ข้อความทางการ + การอ้างอิงแบบ APA ที่เว็บ NGSL แนะนำ + ลิงก์ .com), อธิบาย license 2 ชั้น และระบุว่าไม่ใช่แอปทางการ
+- [x] `LICENSE` (MIT สำหรับโค้ดเท่านั้น โดยระบุไว้ต้นไฟล์ว่าไม่ครอบคลุม NGSL และข้อมูลที่ดัดแปลงจาก NGSL)
+- [x] `CHANGELOG.md` ภาษาไทย เริ่มที่ `[0.0.1]`
+- [x] `TODO.md` (ไฟล์นี้)
+- [x] `.github/pull_request_template.md` มีส่วนสรุปงาน, เหตุผลที่ขยับเลข, checklist version/changelog และ checklist NGSL compliance
 
 ### ไฟล์ต้นฉบับ NGSL
-- [ ] `ngsl-source/1.2/` เก็บไฟล์จากเว็บทางการโดยไม่แก้ไข: `NGSL_12_stats.csv`, `NGSL_12_lemmatized_for_teaching.csv`, `SUP_lemmatized.csv`, `NGSL_12_alphabetized_description.txt`
-- [ ] `ngsl-source/1.2/SOURCE.md` บันทึก URL ต้นทาง, วันที่โหลด, SHA-256 ของทุกไฟล์, ข้อความ license และข้อสังเกต (ไฟล์ stats สะกด `I` แต่ไฟล์ teaching สะกด `i` → ใช้ `I` ตามไฟล์ stats)
+- [x] `ngsl-source/1.2/` เก็บไฟล์จากเว็บทางการโดยไม่แก้ไข: `NGSL_12_stats.csv`, `NGSL_12_lemmatized_for_teaching.csv`, `SUP_lemmatized.csv`, `NGSL_12_alphabetized_description.txt`
+- [x] `ngsl-source/1.2/SOURCE.md` บันทึก URL ต้นทาง, วันที่โหลด, SHA-256 ของทุกไฟล์, ข้อความ license และข้อสังเกต (ไฟล์ stats สะกด `I` แต่ไฟล์ teaching สะกด `i` → ใช้ `I` ตามไฟล์ stats)
+- [x] `.gitattributes` สั่งไม่ให้ git แปลง line endings ของไฟล์ต้นฉบับ (บางไฟล์ใช้ CRLF และมี BOM)
 
 ### เลข version
-- [ ] `app/version.js` เก็บเลข version จุดเดียว ใช้ทั้งในแอป, service worker และ CI
+- [x] `app/version.js` เก็บเลข version จุดเดียว ใช้ทั้งในแอป, service worker และ CI
 
 ### CI (GitHub Actions + Python)
-- [ ] `scripts/check_version.py`: version ใน PR ต้องมากกว่าใน `main` และ CHANGELOG ต้องมีหัวข้อของเวอร์ชันนั้นพร้อมวันที่ถูกรูปแบบ
-- [ ] `scripts/check_ngsl.py`: ไฟล์ต้นฉบับไม่ถูกแก้ (SHA-256 ตรงกับ SOURCE.md), ข้อความเครดิตทางการอยู่ครบทุกจุดที่กำหนด, ไม่มีลิงก์ไปโดเมน `.org` ของ NGSL
-- [ ] `tests/` ทดสอบว่าสคริปต์จับกรณีผิดได้จริง (ใช้ unittest)
-- [ ] `.github/workflows/pr-checks.yml` รันกับทุก PR ที่เข้า `main`
-- [ ] `.github/workflows/release.yml` เมื่อ merge เข้า `main` ให้สร้าง tag `vX.Y.Z` และ GitHub Release โดยใช้ข้อความจาก CHANGELOG
+- [x] `scripts/versioning.py check`: version ใน PR ต้องขยับทีละขั้นจากเลขใน `main` และหัวข้อบนสุดของ CHANGELOG ต้องเป็นเวอร์ชันนั้น พร้อมวันที่ถูกรูปแบบและมีรายการอย่างน้อย 1 ข้อ (มีคำสั่ง `current` และ `notes` ให้ `release.yml` ใช้ด้วย)
+- [x] `scripts/check_ngsl.py`: ไฟล์ต้นฉบับไม่ถูกแก้ (SHA-256 ตรงกับ SOURCE.md), ข้อความเครดิตทางการ ลิงก์ license และลิงก์เว็บทางการอยู่ครบทุกจุดที่กำหนด, ไม่มีลิงก์ไปโดเมน `.org` ของ NGSL
+- [x] `tests/` ทดสอบว่าสคริปต์จับกรณีผิดได้จริง (ใช้ unittest)
+- [x] `.github/workflows/pr-checks.yml` รันกับทุก PR ที่เข้า `main`
+- [x] `.github/workflows/release.yml` เมื่อ merge เข้า `main` ให้สร้าง tag `vX.Y.Z` และ GitHub Release โดยใช้ข้อความจาก CHANGELOG
 
 ### 👤 งานของเจ้าของโปรเจค
 - [ ] ตรวจและ merge PR แรก

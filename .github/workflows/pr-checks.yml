@@ -1,0 +1,30 @@
+name: PR checks
+
+on:
+  pull_request:
+    branches: [main]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: pr-checks-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
+
+jobs:
+  checks:
+    name: PR checks
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          fetch-depth: 0
+
+      - name: ตรวจเลข version และ CHANGELOG
+        run: python3 scripts/versioning.py check --base-ref "origin/${GITHUB_BASE_REF}"
+
+      - name: ตรวจเงื่อนไข NGSL
+        run: python3 scripts/check_ngsl.py
+
+      - name: Unit tests
+        run: python3 -m unittest discover -s tests -v

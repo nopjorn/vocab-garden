@@ -35,7 +35,7 @@
 |---|---|
 | โค้ดของแอป | MIT (ดู [LICENSE](LICENSE)) |
 | ไฟล์ต้นฉบับ NGSL ใน `ngsl-source/` | CC BY-SA 4.0 โดยผู้จัดทำ NGSL |
-| ชุดข้อมูลคำศัพท์ที่ดัดแปลงจาก NGSL ใน `app/data/` (คำแปลไทย ประโยคตัวอย่าง ฯลฯ) | CC BY-SA 4.0 (เริ่มใน Phase 1) |
+| ชุดข้อมูลคำศัพท์ที่ดัดแปลงจาก NGSL ใน `app/data/` (คำแปลไทย ประโยคตัวอย่าง ฯลฯ) | CC BY-SA 4.0 (ดู [app/data/LICENSE](app/data/LICENSE)) |
 
 ## การพัฒนา
 
@@ -50,5 +50,6 @@
 ```sh
 python3 scripts/versioning.py check --base-ref origin/main
 python3 scripts/check_ngsl.py
+python3 scripts/validate_data.py
 python3 -m unittest discover -s tests
 ```

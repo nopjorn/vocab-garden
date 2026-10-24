@@ -21,6 +21,7 @@ class CheckNgslTest(unittest.TestCase):
         self.write("ngsl-source/1.2/words.csv", "the,1\r\nbe,2\r\n")
         self.write_source_note()
         self.write("README.md", "# test\n\n" + CREDIT)
+        self.write("app/data/LICENSE", CREDIT)
 
     def write(self, rel, text):
         path = self.root / rel
@@ -31,12 +32,17 @@ class CheckNgslTest(unittest.TestCase):
         digest = hashlib.sha256((self.root / "ngsl-source/1.2/words.csv").read_bytes()).hexdigest()
         self.write("ngsl-source/1.2/SOURCE.md", f"{CREDIT}\n```\n{digest}  words.csv\n```\n")
 
+    def errors(self):
+        # ชุดข้อมูลตรวจแยกใน DatasetTest เพราะต้องใช้ไฟล์ต้นฉบับ NGSL จริง
+        return check_ngsl.check_sources(self.root) + check_ngsl.check_attribution(self.root) + \
+            check_ngsl.check_unofficial_links(self.root)
+
     def assertErrorMentions(self, text):
-        errors = check_ngsl.run_checks(self.root)
+        errors = self.errors()
         self.assertTrue(any(text in error for error in errors), errors)
 
     def test_valid_repo_passes(self):
-        self.assertEqual(check_ngsl.run_checks(self.root), [])
+        self.assertEqual(self.errors(), [])
 
     def test_detects_modified_source_file(self):
         self.write("ngsl-source/1.2/words.csv", "the,1\r\nbe,3\r\n")
@@ -66,6 +72,10 @@ class CheckNgslTest(unittest.TestCase):
         self.write("README.md", f"> {check_ngsl.OFFICIAL_ATTRIBUTION}\n\n{check_ngsl.OFFICIAL_SITE}\n")
         self.assertErrorMentions("README.md ไม่มีลิงก์ license")
 
+    def test_detects_missing_data_license(self):
+        (self.root / "app/data/LICENSE").unlink()
+        self.assertErrorMentions("ไม่พบ app/data/LICENSE")
+
     def test_detects_missing_official_site(self):
         self.write("README.md", f"> {check_ngsl.OFFICIAL_ATTRIBUTION}\n\n{check_ngsl.LICENSE_URL}\n")
         self.assertErrorMentions("README.md ไม่มีลิงก์เว็บทางการ")
@@ -73,7 +83,7 @@ class CheckNgslTest(unittest.TestCase):
     def test_attribution_may_wrap_lines(self):
         wrapped = check_ngsl.OFFICIAL_ATTRIBUTION.replace(" is licensed", "\nis licensed")
         self.write("README.md", f"{wrapped}\n\n{check_ngsl.LICENSE_URL}\n{check_ngsl.OFFICIAL_SITE}\n")
-        self.assertEqual(check_ngsl.run_checks(self.root), [])
+        self.assertEqual(self.errors(), [])
 
     def test_detects_unofficial_domain(self):
         self.write("docs/links.md", f"https://www.{check_ngsl.UNOFFICIAL_DOMAIN}/\n")
@@ -86,7 +96,54 @@ class CheckNgslTest(unittest.TestCase):
     def test_source_files_are_not_scanned_for_domains(self):
         self.write("ngsl-source/1.2/words.csv", f"{check_ngsl.UNOFFICIAL_DOMAIN}\r\n")
         self.write_source_note()
-        self.assertEqual(check_ngsl.run_checks(self.root), [])
+        self.assertEqual(self.errors(), [])
+
+
+class DatasetTest(unittest.TestCase):
+    """ใช้ไฟล์ต้นฉบับ NGSL และชุดข้อมูลจริงของ repo ในโฟลเดอร์ชั่วคราว"""
+
+    def setUp(self):
+        tmp = tempfile.TemporaryDirectory()
+        self.addCleanup(tmp.cleanup)
+        self.root = Path(tmp.name)
+        shutil.copytree(ROOT / "ngsl-source", self.root / "ngsl-source")
+        shutil.copytree(ROOT / "app/data/levels", self.root / "app/data/levels")
+        self.level = self.root / "app/data/levels/01.tsv"
+
+    def assertErrorMentions(self, text):
+        errors = check_ngsl.check_dataset(self.root)
+        self.assertTrue(any(text in error for error in errors), errors)
+
+    def replace_in_level(self, old, new):
+        self.level.write_text(self.level.read_text(encoding="utf-8").replace(old, new, 1), encoding="utf-8")
+
+    def test_real_dataset_passes(self):
+        self.assertEqual(check_ngsl.check_dataset(self.root), [])
+
+    def test_detects_changed_headword(self):
+        self.replace_in_level("\tthe\t", "\tThe\t")
+        self.assertErrorMentions("บรรทัด 2: คอลัมน์ของ NGSL ต้องเป็น 1 / the")
+
+    def test_detects_changed_forms(self):
+        self.replace_in_level("works, worked, working, workings", "works, worked, working")
+        self.assertErrorMentions("ห้ามแก้ข้อมูลของ NGSL")
+
+    def test_detects_removed_word(self):
+        lines = self.level.read_text(encoding="utf-8").splitlines(keepends=True)
+        self.level.write_text("".join(lines[:-1]), encoding="utf-8")
+        self.assertErrorMentions("ต้องมี 100 คำตาม NGSL (ตอนนี้มี 99)")
+
+    def test_detects_missing_level(self):
+        (self.root / "app/data/levels/sup.tsv").unlink()
+        self.assertErrorMentions("ไม่พบไฟล์ด่าน app/data/levels/sup.tsv")
+
+    def test_detects_unknown_level(self):
+        shutil.copy(self.level, self.root / "app/data/levels/99.tsv")
+        self.assertErrorMentions("99.tsv ไม่ใช่ไฟล์ด่านที่กำหนดไว้")
+
+    def test_detects_wrong_header(self):
+        self.replace_in_level("example_th", "example_thai")
+        self.assertErrorMentions("หัวตารางต้องเป็น")
 
 
 class RepositoryTest(unittest.TestCase):

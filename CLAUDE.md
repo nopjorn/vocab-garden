@@ -58,6 +58,7 @@
 ```sh
 python3 scripts/versioning.py check --base-ref origin/main
 python3 scripts/check_ngsl.py
+python3 scripts/validate_data.py
 python3 -m unittest discover -s tests
 ```
 
@@ -66,6 +67,7 @@ python3 -m unittest discover -s tests
 - แอปใช้ HTML/CSS/JavaScript ล้วน ไม่มี framework ไม่มี build step ไม่มี dependency ภายนอก ทุกอย่างที่ขึ้น GitHub Pages อยู่ใน `app/`
 - สคริปต์ใน `scripts/` ใช้ Python standard library เท่านั้น
 - UI เป็นภาษาไทย
+- ชุดข้อมูลคำศัพท์อยู่ที่ `app/data/levels/` เขียนคำแปลตาม [`docs/translation-guide.md`](docs/translation-guide.md)
 - คีย์ใน localStorage ต้องขึ้นต้นด้วย `vg:` เพราะทุก repo ใต้ `nopjorn.github.io` ใช้ storage ร่วมกัน
 - ไอคอน รูป และเสียง ต้องทำเองหรือมี license ที่เข้ากันได้
 

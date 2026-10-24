@@ -1,0 +1,37 @@
+Vocab Garden word data
+======================
+
+The files in this folder are adapted from the New General Service List (NGSL) 1.2.
+
+New General Service List by Browne, C., Culligan, B., and Phillips, J. is licensed under a Creative Commons Attribution-ShareAlike 4.0 International License.
+
+- NGSL source: https://www.newgeneralservicelist.com/new-general-service-list
+- License: https://creativecommons.org/licenses/by-sa/4.0/
+
+This adapted data is also licensed under the Creative Commons
+Attribution-ShareAlike 4.0 International License (CC BY-SA 4.0):
+https://creativecommons.org/licenses/by-sa/4.0/
+
+Vocab Garden is not an official NGSL product and is not endorsed by the
+NGSL authors.
+
+Changes made to the NGSL
+------------------------
+
+- Grouped the words into levels of 100 words by NGSL frequency rank
+  (level 28 holds ranks 2,701-2,809) plus one level for the 52 NGSL
+  supplementary words (ranks written as S1-S52 in file order).
+- Combined the rank from "NGSL 1.2 with basic statistics" with the word
+  forms from "NGSL 1.2 alphabetized and lemmatized for teaching".
+- Used the headword "I" as written in the statistics file (the teaching
+  file writes "i").
+- Added Thai meanings, parts of speech, original example sentences with
+  Thai translations, and usage notes.
+
+The full history of changes is recorded in CHANGELOG.md under
+"ข้อมูลคำศัพท์" (word data).
+
+---
+
+ไฟล์ในโฟลเดอร์นี้ดัดแปลงมาจาก NGSL 1.2 และเผยแพร่ภายใต้ CC BY-SA 4.0
+นำไปใช้ แชร์ต่อ หรือดัดแปลงได้ (รวมถึงเชิงพาณิชย์) โดยต้องให้เครดิตและเผยแพร่ต่อด้วย license เดียวกัน

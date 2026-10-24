@@ -26,5 +26,8 @@ jobs:
       - name: ตรวจเงื่อนไข NGSL
         run: python3 scripts/check_ngsl.py
 
+      - name: ตรวจรูปแบบชุดข้อมูลคำศัพท์
+        run: python3 scripts/validate_data.py
+
       - name: Unit tests
         run: python3 -m unittest discover -s tests -v

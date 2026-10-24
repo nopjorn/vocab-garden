@@ -4,6 +4,7 @@
 1. ไฟล์ต้นฉบับใน ngsl-source/ ต้องไม่ถูกแก้ (SHA-256 ตรงกับ SOURCE.md)
 2. ข้อความเครดิตทางการ ลิงก์ license และลิงก์เว็บทางการ ต้องอยู่ครบทุกไฟล์ที่กำหนด
 3. ห้ามมีลิงก์ไปโดเมน .org ของ NGSL ซึ่งไม่ใช่เว็บทางการแล้ว
+4. คอลัมน์ของ NGSL (rank, headword, forms) ในชุดข้อมูลทุกด่านต้องตรงกับไฟล์ต้นฉบับ ครบทุกคำ ไม่ขาด ไม่เกิน
 
     python3 scripts/check_ngsl.py
 """
@@ -16,6 +17,8 @@ import re
 import subprocess
 import sys
 from pathlib import Path
+
+import ngsl_data
 
 ROOT = Path(__file__).resolve().parent.parent
 SOURCE_ROOT = "ngsl-source"
@@ -31,7 +34,7 @@ OFFICIAL_SITE = "https://www.newgeneralservicelist.com"
 UNOFFICIAL_DOMAIN = "newgeneralservicelist" + ".org"
 
 # ไฟล์ที่ต้องมีเครดิต NGSL ครบ (SOURCE.md ของทุกเวอร์ชันถูกรวมให้อัตโนมัติ)
-ATTRIBUTION_FILES = ["README.md"]
+ATTRIBUTION_FILES = ["README.md", "app/data/LICENSE"]
 
 CHECKSUM_LINE_RE = re.compile(r"^([0-9a-f]{64})  (\S+)$", re.MULTILINE)
 
@@ -113,8 +116,43 @@ def check_unofficial_links(root: Path) -> list[str]:
     return errors
 
 
+def check_dataset(root: Path) -> list[str]:
+    try:
+        expected = ngsl_data.load_base_rows(root)
+    except (OSError, KeyError, ValueError, IndexError) as error:
+        return [f"อ่านไฟล์ต้นฉบับ NGSL เพื่อตรวจชุดข้อมูลไม่ได้ ({error!r})"]
+
+    names = ngsl_data.level_names()
+    errors = []
+    present = {path.stem for path in (root / ngsl_data.LEVELS_DIR).glob("*.tsv")}
+    for name in sorted(present - set(names)):
+        errors.append(f"{ngsl_data.LEVELS_DIR}/{name}.tsv ไม่ใช่ไฟล์ด่านที่กำหนดไว้")
+
+    for name in names:
+        rel = f"{ngsl_data.LEVELS_DIR}/{name}.tsv"
+        path = ngsl_data.level_path(root, name)
+        if not path.is_file():
+            errors.append(f"ไม่พบไฟล์ด่าน {rel} (รัน scripts/build_skeleton.py)")
+            continue
+        header, rows = ngsl_data.read_level(path)
+        if header != ngsl_data.COLUMNS:
+            errors.append(f"{rel} หัวตารางต้องเป็น {', '.join(ngsl_data.COLUMNS)}")
+        want = [(row.rank, row.headword, row.forms) for row in expected if row.level == name]
+        got = [tuple(row[:len(ngsl_data.NGSL_COLUMNS)]) for row in rows]
+        if len(got) != len(want):
+            errors.append(f"{rel} ต้องมี {len(want)} คำตาม NGSL (ตอนนี้มี {len(got)})")
+        mismatches = [(line, row, base) for line, (row, base) in enumerate(zip(got, want), start=2) if row != base]
+        for line, row, base in mismatches[:5]:
+            errors.append(
+                f"{rel} บรรทัด {line}: คอลัมน์ของ NGSL ต้องเป็น {' / '.join(base)} (ตอนนี้เป็น {' / '.join(row)}) ห้ามแก้ข้อมูลของ NGSL"
+            )
+        if len(mismatches) > 5:
+            errors.append(f"{rel} มีบรรทัดที่ไม่ตรงกับ NGSL อีก {len(mismatches) - 5} บรรทัด")
+    return errors
+
+
 def run_checks(root: Path) -> list[str]:
-    return check_sources(root) + check_attribution(root) + check_unofficial_links(root)
+    return check_sources(root) + check_attribution(root) + check_unofficial_links(root) + check_dataset(root)
 
 
 def report_error(message: str) -> None:

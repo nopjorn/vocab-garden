@@ -120,6 +120,14 @@
 
       <p id="swipe-hint" class="swipe-hint muted small">👈 ปัดซ้าย ยังจำไม่ได้ · ปัดขวา จำได้ 👉</p>
       <ul id="quiz-options" class="quiz-options" aria-label="ตัวเลือกคำตอบ" hidden></ul>
+      <div id="quiz-type" class="quiz-type" hidden>
+        <input id="quiz-input" type="text" lang="en" autocapitalize="none" autocomplete="off" autocorrect="off" spellcheck="false"
+          aria-label="พิมพ์คำภาษาอังกฤษ" placeholder="พิมพ์คำภาษาอังกฤษ">
+        <div class="row">
+          <button type="button" id="quiz-check" class="primary">ตรวจคำตอบ</button>
+          <button type="button" id="quiz-hint">💡 ใบ้</button>
+        </div>
+      </div>
       <p id="quiz-feedback" class="quiz-feedback" role="status" hidden></p>
       <div class="study-actions">
         <button type="button" id="quiz-skip" class="wide" hidden>🤷 ไม่รู้ ดูคำตอบ</button>
@@ -207,9 +215,12 @@
           <label for="quiz-mode">รูปแบบการทวน</label>
           <select id="quiz-mode"></select>
         </p>
-        <p class="tip small">"ผสมหลายแบบ": คำใหม่ยังเป็นการ์ดให้ดูก่อน ต้นอ่อน 🌱 ตอบด้วยการเลือกคำแปล ต้นที่โตแล้ว 🌿🌳
-          เติมคำที่หายไปในประโยคตัวอย่าง ตอบถูกนับเป็น "จำได้แม่น" ตอบผิดหรือกด "ไม่รู้" นับเป็น "ยังจำไม่ได้"
-          ได้ทั้งการนึกเองและการจำคำในประโยค ช่วยให้จำได้นานกว่าการพลิกดูคำแปลอย่างเดียว</p>
+        <label class="check"><input type="checkbox" id="quiz-typing"> ให้พิมพ์คำตอบเองสำหรับต้นไม้ใหญ่ 🌳</label>
+        <p class="tip small">"ผสมหลายแบบ": คำใหม่ยังเป็นการ์ดให้ดูก่อน ต้นอ่อน 🌱 ตอบด้วยการเลือกคำแปล ต้นกำลังโต 🌿
+          เติมคำที่หายไปในประโยคตัวอย่าง ส่วนต้นไม้ใหญ่ 🌳 ดูคำแปลไทยแล้วพิมพ์คำอังกฤษเอง (ถ้าไม่อยากพิมพ์ ปิดช่องด้านบนได้
+          ต้นไม้ใหญ่จะเติมคำแทน) ตอบถูกนับเป็น "จำได้แม่น" ตอบผิดหรือกด "ไม่รู้" นับเป็น "ยังจำไม่ได้"
+          พิมพ์ถูกแต่ใช้ตัวช่วยใบ้ หรือสะกดผิดแค่ตัวเดียว นับเป็น "พอจำได้"
+          การนึกคำเองช่วยให้จำได้นานกว่าการพลิกดูคำแปลอย่างเดียว</p>
       </div>
 
       <h2>นิสัยการท่อง</h2>

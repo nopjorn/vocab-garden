@@ -53,6 +53,10 @@ jobs:
 
       - uses: actions/configure-pages@v6
 
+      # หน้า "มีอะไรใหม่" ในแอปอ่านจากไฟล์นี้ (ไม่ได้เก็บซ้ำใน repo)
+      - name: คัดลอก CHANGELOG ไปไว้กับแอป
+        run: cp CHANGELOG.md app/changelog.md
+
       - uses: actions/upload-pages-artifact@v5
         with:
           path: app

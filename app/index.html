@@ -99,6 +99,7 @@
             <p id="card-example-th" class="muted"></p>
           </div>
           <p id="card-note" class="note small"></p>
+          <a id="report" class="report small" target="_blank" rel="noopener noreferrer">🚩 แจ้งคำแปลผิด</a>
         </div>
       </article>
 
@@ -141,6 +142,14 @@
         (ประวัตินับตั้งแต่เวอร์ชัน 0.6.0 เป็นต้นไป)</p>
     </section>
 
+    <section id="view-changelog" hidden>
+      <h1>มีอะไรใหม่ ✨</h1>
+      <p class="muted small">ประวัติการเปลี่ยนแปลงของ Vocab Garden เวอร์ชันใหม่อยู่บนสุด</p>
+      <div id="changelog-list"></div>
+      <p id="changelog-empty" class="muted" hidden>โหลดประวัติไม่ได้ในตอนนี้ (อาจกำลังออฟไลน์) ดูได้ที่
+        <a href="https://github.com/nopjorn/vocab-garden/blob/main/CHANGELOG.md">CHANGELOG บน GitHub</a></p>
+    </section>
+
     <section id="view-settings" hidden>
       <h1>ตั้งค่า</h1>
 
@@ -177,7 +186,10 @@
       <h1>เกี่ยวกับ Vocab Garden</h1>
       <p>แอปท่องศัพท์ภาษาอังกฤษพื้นฐานสำหรับคนไทย ใช้ฟรี คำศัพท์แต่ละคำเหมือนเมล็ดพันธุ์ ยิ่งทวนจนจำได้ ก็ยิ่งโต 🌱</p>
       <p class="muted small">Vocab Garden v<span class="app-version"></span> · ข้อมูล NGSL 1.2</p>
-      <p><button type="button" id="check-update">🔄 ตรวจเวอร์ชันใหม่</button></p>
+      <p class="row">
+        <button type="button" id="check-update">🔄 ตรวจเวอร์ชันใหม่</button>
+        <a class="button" href="#/changelog">✨ มีอะไรใหม่</a>
+      </p>
 
       <h2>เครดิตคำศัพท์</h2>
       <div class="panel">
@@ -207,6 +219,15 @@
     </section>
   </main>
 
+  <div id="whatsnew-dialog" class="modal" role="dialog" aria-modal="true" aria-labelledby="whatsnew-title" hidden>
+    <div class="modal-box">
+      <p class="big-emoji" aria-hidden="true">🎉</p>
+      <h2 id="whatsnew-title">มีอะไรใหม่</h2>
+      <div id="whatsnew-body" class="whatsnew-body"></div>
+      <button type="button" id="whatsnew-ok" class="primary wide">รับทราบ</button>
+      <a class="button wide" href="#/changelog" id="whatsnew-all">ดูประวัติทั้งหมด</a>
+    </div>
+  </div>
   <div id="update-dialog" class="modal" role="dialog" aria-modal="true" aria-labelledby="update-title" hidden>
     <div class="modal-box">
       <p class="big-emoji" aria-hidden="true">🌱</p>

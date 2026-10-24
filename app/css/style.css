@@ -1226,3 +1226,86 @@ kbd {
   color: var(--brand-strong);
   font-weight: 700;
 }
+
+/* ===== แจ้งคำแปลผิด / มีอะไรใหม่ ===== */
+.report {
+  justify-self: center;
+  display: inline-block;
+  margin-top: 6px;
+  padding: 8px 12px;
+  color: var(--muted);
+  text-decoration: none;
+  border-radius: 999px;
+}
+
+.report:hover,
+.report:focus-visible {
+  background: var(--surface-2);
+}
+
+.whatsnew-body {
+  max-height: 46vh;
+  overflow-y: auto;
+  text-align: left;
+  padding-right: 4px;
+}
+
+.cl-entry {
+  margin: 0 0 18px;
+}
+
+.cl-head {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  margin: 0 0 6px;
+  font-size: 1.15rem;
+}
+
+.cl-version {
+  color: var(--brand-strong);
+  font-weight: 800;
+}
+
+.cl-date {
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--muted);
+}
+
+.cl-intro {
+  margin: 0 0 6px;
+  color: var(--muted);
+}
+
+.cl-section {
+  display: inline-block;
+  margin: 8px 0 2px;
+  padding: 1px 10px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--brand-deep);
+  background: var(--brand-soft);
+  border-radius: 999px;
+}
+
+.cl-section.cl-data {
+  color: var(--text);
+  background: var(--surface-2);
+}
+
+.cl-items {
+  margin: 2px 0 0;
+  padding-left: 1.2rem;
+}
+
+.cl-items li {
+  margin: 4px 0;
+}
+
+.cl-items code {
+  font-size: 0.85em;
+  padding: 1px 5px;
+  background: var(--surface-2);
+  border-radius: 6px;
+}

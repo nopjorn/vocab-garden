@@ -3,7 +3,13 @@
 // ความคืบหน้าผูกกับคำหลัก (ไม่ใช่อันดับ) เพื่อรองรับ NGSL เวอร์ชันใหม่
 
 export const SCHEMA = 1;
-const KEYS = { progress: "vg:progress", settings: "vg:settings", daily: "vg:daily", history: "vg:history" };
+const KEYS = {
+  progress: "vg:progress",
+  settings: "vg:settings",
+  daily: "vg:daily",
+  history: "vg:history",
+  seenVersion: "vg:seen-version",
+};
 const HISTORY_KEEP_DAYS = 400; // เก็บประวัติการทวนรายวันย้อนหลังไม่เกินนี้
 export const DEFAULT_SETTINGS = { newPerDay: 10, startLevel: 1 };
 export const LAST_LEVEL = 28;
@@ -86,6 +92,15 @@ export function createStorage(store = globalThis.localStorage) {
     },
     saveSettings(settings) {
       write(KEYS.settings, settings);
+    },
+
+    // เลขเวอร์ชันล่าสุดที่เคยเปิดแอป ใช้ตัดสินว่าต้องแสดง "มีอะไรใหม่" ไหม
+    loadSeenVersion() {
+      const saved = read(KEYS.seenVersion, null);
+      return typeof saved === "string" && /^\d+\.\d+\.\d+$/.test(saved) ? saved : null;
+    },
+    saveSeenVersion(version) {
+      write(KEYS.seenVersion, version);
     },
 
     loadHistory() {

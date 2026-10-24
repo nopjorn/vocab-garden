@@ -82,6 +82,8 @@
 
 html {
   -webkit-tap-highlight-color: transparent;
+  /* ปิดการแตะสองครั้งแล้วซูมของ iOS (ปุ่มดูคำแปลกับปุ่มให้คะแนนอยู่ตำแหน่งเดียวกัน แตะเร็ว ๆ จอจะซูม) ยังซูมด้วยสองนิ้วได้ */
+  touch-action: manipulation;
 }
 
 body {
@@ -95,6 +97,8 @@ body {
     radial-gradient(60vw 50vh at 100% 10%, var(--bg-glow-2), transparent 70%),
     var(--bg);
   background-attachment: fixed;
+  /* การ์ดที่ปัดออกนอกจอต้องไม่ทำให้หน้าเลื่อนซ้ายขวาได้ */
+  overflow-x: clip;
 }
 
 main {

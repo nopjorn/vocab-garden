@@ -1,0 +1,29 @@
+name: แจ้งบั๊ก
+description: แอปทำงานผิดปกติ ใช้งานไม่ได้ หรือหน้าตาเพี้ยน
+title: "บั๊ก: "
+labels: ["bug"]
+body:
+  - type: textarea
+    id: what
+    attributes:
+      label: เกิดอะไรขึ้น
+      description: เล่าให้ฟังว่ากดอะไร เห็นอะไร และคาดว่าควรเป็นอย่างไร ถ้ามีภาพหน้าจอแนบมาได้เลย
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: ทำซ้ำได้อย่างไร
+      placeholder: |
+        1. เปิดหน้า ...
+        2. กด ...
+  - type: input
+    id: device
+    attributes:
+      label: เครื่องและเบราว์เซอร์
+      placeholder: "iPhone 15, Safari / แอปที่เพิ่มไว้บนหน้าจอโฮม"
+  - type: input
+    id: version
+    attributes:
+      label: เวอร์ชันของแอป
+      description: ดูได้ข้างชื่อแอปหรือในหน้าเกี่ยวกับ

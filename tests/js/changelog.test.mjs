@@ -76,9 +76,9 @@ test("issueUrl prefills a GitHub issue with the word and app version", () => {
   };
   const url = new URL(issueUrl(word, "0.7.0"));
   assert.equal(`${url.origin}${url.pathname}`, `${REPO_URL}/issues/new`);
+  assert.equal(url.searchParams.get("template"), "wrong-translation.yml");
   assert.equal(url.searchParams.get("title"), "แจ้งคำแปลผิด: work");
-  const body = url.searchParams.get("body");
-  assert.match(body, /work \(อันดับ 67, ด่าน 01\)/);
-  assert.match(body, /v: ทำงาน, ใช้การได้ \| n: งาน/);
-  assert.match(body, /v0\.7\.0 · NGSL 1\.2/);
+  assert.equal(url.searchParams.get("word"), "work (อันดับ 67, ด่าน 01)");
+  assert.match(url.searchParams.get("current"), /v: ทำงาน, ใช้การได้ \| n: งาน\nI work at a small hotel\./);
+  assert.equal(url.searchParams.get("version"), "v0.7.0 · NGSL 1.2");
 });

@@ -9,11 +9,14 @@ const KEYS = {
   daily: "vg:daily",
   history: "vg:history",
   seenVersion: "vg:seen-version",
+  rest: "vg:rest",
 };
 const HISTORY_KEEP_DAYS = 400; // เก็บประวัติการทวนรายวันย้อนหลังไม่เกินนี้
 export const SPEECH_RATE_CHOICES = [0.7, 0.9, 1.1]; // ช้า / ปกติ / เร็ว
 export const THEME_CHOICES = ["auto", "light", "dark"];
 export const TEXT_SIZE_CHOICES = ["normal", "large"];
+export const DAILY_GOAL_CHOICES = [10, 20, 30]; // เป้าหมายรายวัน (จำนวนครั้งที่ตอบ)
+export const REVIEW_CAP_CHOICES = [50, 100, 0]; // ทวนได้ไม่เกินกี่ครั้งต่อวัน (0 = ไม่จำกัด)
 export const DEFAULT_SETTINGS = {
   newPerDay: 10,
   startLevel: 1,
@@ -22,6 +25,8 @@ export const DEFAULT_SETTINGS = {
   theme: "auto",
   textSize: "normal",
   sound: false,
+  dailyGoal: 10,
+  reviewCap: 100,
 };
 export const LAST_LEVEL = 28;
 export const NEW_PER_DAY_CHOICES = [5, 10, 20];
@@ -68,6 +73,19 @@ function validHistory(days) {
   return ok ? days : null;
 }
 
+// สถานะวันพัก { bank, run, upTo, frozen } (ดู habit.js) ต้องเป็นจำนวนเต็มทั้งหมด
+function validRest(rest) {
+  if (rest === null || typeof rest !== "object" || Array.isArray(rest)) return null;
+  const whole = (value) => Number.isInteger(value) && value >= 0;
+  const ok =
+    whole(rest.bank) &&
+    whole(rest.run) &&
+    (rest.upTo === null || Number.isInteger(rest.upTo)) &&
+    Array.isArray(rest.frozen) &&
+    rest.frozen.every(Number.isInteger);
+  return ok ? { bank: rest.bank, run: rest.run, upTo: rest.upTo, frozen: rest.frozen } : null;
+}
+
 export function createStorage(store = globalThis.localStorage) {
   const { store: target, persistent } = usableStore(store);
 
@@ -108,6 +126,8 @@ export function createStorage(store = globalThis.localStorage) {
         theme: pick(THEME_CHOICES, saved.theme, DEFAULT_SETTINGS.theme),
         textSize: pick(TEXT_SIZE_CHOICES, saved.textSize, DEFAULT_SETTINGS.textSize),
         sound: saved.sound === true,
+        dailyGoal: pick(DAILY_GOAL_CHOICES, saved.dailyGoal, DEFAULT_SETTINGS.dailyGoal),
+        reviewCap: pick(REVIEW_CAP_CHOICES, saved.reviewCap, DEFAULT_SETTINGS.reviewCap),
       };
     },
     saveSettings(settings) {
@@ -130,7 +150,7 @@ export function createStorage(store = globalThis.localStorage) {
     saveHistory(days) {
       write(KEYS.history, { schema: SCHEMA, days });
     },
-    // นับการทวนหนึ่งครั้งของวันนั้น
+    // นับการทวนหนึ่งครั้งของวันนั้น คืนจำนวนครั้งของวันนั้นหลังนับ
     addReview(today) {
       const days = this.loadHistory();
       days[today] = (days[today] || 0) + 1;
@@ -138,15 +158,31 @@ export function createStorage(store = globalThis.localStorage) {
         if (Number(day) < today - HISTORY_KEEP_DAYS) delete days[day];
       });
       this.saveHistory(days);
+      return days[today];
     },
 
-    // จำนวนคำใหม่ที่เริ่มเรียนไปแล้วในวันนี้
-    newCountToday(today) {
+    // ข้อมูลรายวัน: จำนวนคำใหม่ที่เริ่มเรียนไปแล้ว และฉลองถึงเป้าหมายไปแล้วหรือยัง (วันใหม่เริ่มต้นใหม่)
+    loadDaily(today) {
       const saved = read(KEYS.daily, null);
-      return saved && saved.day === today && Number.isFinite(saved.newCount) ? saved.newCount : 0;
+      if (!saved || saved.day !== today) return { newCount: 0, goalDone: false };
+      return { newCount: Number.isFinite(saved.newCount) ? saved.newCount : 0, goalDone: saved.goalDone === true };
+    },
+    newCountToday(today) {
+      return this.loadDaily(today).newCount;
     },
     saveNewCount(today, newCount) {
-      write(KEYS.daily, { day: today, newCount });
+      write(KEYS.daily, { day: today, newCount, goalDone: this.loadDaily(today).goalDone });
+    },
+    saveGoalDone(today) {
+      write(KEYS.daily, { day: today, newCount: this.loadDaily(today).newCount, goalDone: true });
+    },
+
+    // วันพักกันสตรีคขาด (null = ยังไม่เคยคำนวณ)
+    loadRest() {
+      return validRest(read(KEYS.rest, null));
+    },
+    saveRest(rest) {
+      write(KEYS.rest, rest);
     },
 
     exportData(version, now = new Date()) {
@@ -158,6 +194,7 @@ export function createStorage(store = globalThis.localStorage) {
         cards: this.loadCards(),
         settings: this.loadSettings(),
         history: this.loadHistory(),
+        rest: this.loadRest(),
       };
     },
     // คืนจำนวนคำที่นำเข้า หรือโยน Error ถ้าไฟล์ไม่ถูกต้อง
@@ -171,7 +208,13 @@ export function createStorage(store = globalThis.localStorage) {
       if (data.settings) this.saveSettings({ ...this.loadSettings(), ...data.settings });
       // ไฟล์สำรองเก่า (ก่อน v0.6.0) ไม่มีประวัติ ให้คงประวัติเดิมไว้
       const history = validHistory(data.history);
-      if (history) this.saveHistory(history);
+      if (history) {
+        this.saveHistory(history);
+        // วันพักคำนวณจากประวัติ ถ้าไฟล์ไม่มีวันพักให้ลบของเดิมทิ้ง แล้วคำนวณใหม่จากประวัติที่นำเข้า
+        const rest = validRest(data.rest);
+        if (rest) this.saveRest(rest);
+        else target.removeItem(KEYS.rest);
+      }
       return Object.keys(cards).length;
     },
 

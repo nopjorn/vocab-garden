@@ -3,8 +3,17 @@ import { comboMessage, growthSummary, nextCombo, recordGrowth, stageMove, wordLi
 import { launchConfetti } from "./confetti.js";
 import { canSpeak, speak } from "./speech.js";
 import { playSfx } from "./sfx.js";
-import { AGAIN, GOOD, HARD, STAGES, buildQueue, dayNumber, grade, knownCard, stageOf } from "./srs.js";
-import { NEW_PER_DAY_CHOICES, SPEECH_RATE_CHOICES, TEXT_SIZE_CHOICES, THEME_CHOICES, createStorage } from "./storage.js";
+import { daysAway, goalProgress, settleRest } from "./habit.js";
+import { AGAIN, GOOD, HARD, STAGES, buildQueue, dayNumber, grade, isDue, knownCard, stageOf } from "./srs.js";
+import {
+  DAILY_GOAL_CHOICES,
+  NEW_PER_DAY_CHOICES,
+  REVIEW_CAP_CHOICES,
+  SPEECH_RATE_CHOICES,
+  TEXT_SIZE_CHOICES,
+  THEME_CHOICES,
+  createStorage,
+} from "./storage.js";
 import { entriesSince, inlineParts, parseChangelog } from "./changelog.js";
 import { issueUrl } from "./report.js";
 import { recentDays, stageCounts, streakOf, totalReviews } from "./stats.js";
@@ -87,6 +96,12 @@ function newLimit(day) {
   return Math.max(0, state.settings.newPerDay - storage.newCountToday(day));
 }
 
+// ทวนได้อีกกี่ครั้งในวันนี้ตามเพดานที่ตั้งไว้ (นับจากจำนวนครั้งที่ตอบไปแล้ววันนี้) 0 ในตั้งค่า = ไม่จำกัด
+function reviewBudget(day) {
+  const cap = state.settings.reviewCap;
+  return cap ? Math.max(0, cap - (storage.loadHistory()[day] || 0)) : Infinity;
+}
+
 // ลำดับของด่านไว้เทียบกับ "เริ่มคำใหม่จากด่าน" (ด่านพิเศษถือว่าอยู่หลังสุด)
 function levelNumber(level) {
   return level === "sup" ? Number.MAX_SAFE_INTEGER : Number(level);
@@ -100,7 +115,7 @@ function todayQueue(day, level = null) {
     return buildQueue(words, state.cards, day, state.settings.newPerDay);
   }
   const fresh = translated.filter((word) => levelNumber(word.level) >= state.settings.startLevel);
-  return buildQueue(translated, state.cards, day, newLimit(day), fresh);
+  return buildQueue(translated, state.cards, day, newLimit(day), fresh, reviewBudget(day));
 }
 
 // ---------- หน้าหลัก ----------
@@ -161,23 +176,66 @@ function levelItem(level) {
   return item;
 }
 
+// คำนวณวันพักถึงปัจจุบัน (รันซ้ำได้ ผลเดิม) แล้วคืนประวัติกับสถานะวันพัก
+function refreshHabit(day) {
+  const history = storage.loadHistory();
+  const { rest, usedNow, earned } = settleRest(history, storage.loadRest(), day);
+  storage.saveRest(rest);
+  return { history, rest, usedNow, earned };
+}
+
+function announceRest({ usedNow, earned, rest }) {
+  if (usedNow.length > 0) {
+    toast(`🧊 ใช้วันพักให้ ${usedNow.length} วัน สตรีคของคุณไม่หาย (เหลือ ${rest.bank} วัน)`);
+  } else if (earned > 0) {
+    toast("🧊 ท่องติดกันครบ 7 วัน ได้วันพักเพิ่ม 1 วัน");
+  }
+}
+
+// ถึงเป้าหมายรายวันครั้งแรกของวัน: ฉลอง
+function checkGoal(day, count) {
+  if (count < state.settings.dailyGoal || storage.loadDaily(day).goalDone) return;
+  storage.saveGoalDone(day);
+  toast(`🎯 ถึงเป้าวันนี้แล้ว! ทวนไป ${count} ครั้ง`);
+  launchConfetti();
+  fx("finish");
+}
+
 function renderHome() {
-  const queue = todayQueue(dayNumber());
+  const today = dayNumber();
+  const queue = todayQueue(today);
   const dueCount = queue.filter((word) => state.cards[word.headword]).length;
+  const habit = refreshHabit(today);
+  const totalDue = translatedWords().filter((word) => isDue(state.cards[word.headword], today)).length;
   $("greeting").textContent = greeting();
   $("due-count").textContent = dueCount;
   $("new-count").textContent = queue.length - dueCount;
   $("start").hidden = queue.length === 0;
   $("today-empty").hidden = queue.length > 0;
+  $("today-empty").textContent =
+    totalDue > 0
+      ? `วันนี้ทวนครบโควตาแล้ว 🎉 เหลือคำรอทวน ${totalDue} คำ พรุ่งนี้ทยอยทวนต่อ (ปรับโควตาได้ที่ตั้งค่า)`
+      : "วันนี้ทวนครบแล้ว 🎉 พรุ่งนี้มาดูสวนกันใหม่นะ";
+  $("backlog-note").hidden = !(queue.length > 0 && totalDue > dueCount);
+  $("backlog-note").textContent = `📚 มีคำรอทวน ${totalDue} คำ วันนี้ทยอยทวนก่อน ${dueCount} ใบ (ค้างนานสุดก่อน) งดคำใหม่ชั่วคราวจนกว่าคำค้างจะเบาลง`;
+  const away = daysAway(habit.history, today);
+  $("welcome-back").hidden = !(away >= 3 && totalDue > 0);
+  $("welcome-back").textContent = `ยินดีต้อนรับกลับมา 🌱 ห่างไป ${away} วัน ไม่เป็นไรเลย ลิซ่าทยอยให้ทวนทีละส่วน เริ่มจากคำที่ค้างนานสุดก่อนนะ`;
+
+  const goal = goalProgress(habit.history, today, state.settings.dailyGoal);
+  $("goal-text").textContent = goal.reached ? `🎯 ถึงเป้าวันนี้แล้ว ${goal.done}/${goal.goal} ✅` : `🎯 เป้าวันนี้ ${goal.done}/${goal.goal}`;
+  $("goal-fill").style.width = `${goal.percent}%`;
+  $("goal-bar").setAttribute("aria-valuenow", goal.percent);
 
   const translated = translatedWords();
   const planted = translated.filter((word) => state.cards[word.headword]).length;
   $("garden-count").textContent = planted;
   $("garden-ring").style.setProperty("--p", translated.length ? (planted / translated.length) * 100 : 0);
   $("garden-ring").setAttribute("aria-label", `ปลูกแล้ว ${planted} จาก ${translated.length} คำ`);
-  const { current } = streakOf(storage.loadHistory(), dayNumber());
+  const { current } = streakOf(habit.history, today, habit.rest.frozen);
   $("streak").hidden = current === 0;
-  $("streak").textContent = `🔥 ท่องต่อเนื่อง ${current} วัน`;
+  $("streak").textContent = `🔥 ท่องต่อเนื่อง ${current} วัน${habit.rest.bank > 0 ? ` · 🧊 วันพัก ${habit.rest.bank}` : ""}`;
+  announceRest(habit);
   $("garden-total").textContent = `แปลแล้ว ${translated.length.toLocaleString()} / ${state.words.length.toLocaleString()} คำ`;
 
   $("levels").replaceChildren(...LEVELS.map(levelItem));
@@ -292,10 +350,11 @@ function answer(rating) {
 
   state.cards[word.headword] = card;
   storage.saveCards(state.cards);
-  storage.addReview(session.day);
+  const count = storage.addReview(session.day);
   if (isNew) storage.saveNewCount(session.day, storage.newCountToday(session.day) + 1);
   session.answered += 1;
   celebrate(word, before, card, rating);
+  checkGoal(session.day, count);
 
   if (card.ivl === 0) {
     session.queue.splice(Math.min(REQUEUE_GAP, session.queue.length), 0, word);
@@ -323,10 +382,11 @@ function markKnown() {
   const move = stageMove(before, state.cards[word.headword]);
   if (move) recordGrowth(session.grown, word.headword, move);
   storage.saveCards(state.cards);
-  storage.addReview(session.day);
+  const count = storage.addReview(session.day);
   session.answered += 1;
   session.learned.add(word.headword);
   toast(`${word.headword} ข้ามไปเป็นต้นไม้ใหญ่แล้ว 🌳`);
+  checkGoal(session.day, count);
   nextCard();
 }
 
@@ -422,9 +482,10 @@ function finishSession() {
 // ---------- สวนของฉัน ----------
 
 function renderGarden() {
-  const days = storage.loadHistory();
   const today = dayNumber();
-  const { current, best } = streakOf(days, today);
+  const { history: days, rest } = refreshHabit(today);
+  const { current, best } = streakOf(days, today, rest.frozen);
+  $("g-rest").textContent = `🧊 วันพักที่เก็บไว้: ${rest.bank} จาก 2 วัน`;
   $("g-streak").textContent = current;
   $("g-best").textContent = best;
   $("g-total").textContent = totalReviews(days).toLocaleString();
@@ -537,6 +598,8 @@ function renderSupport() {
 const SPEECH_RATE_LABELS = { 0.7: "ช้า", 0.9: "ปกติ", 1.1: "เร็ว" };
 const THEME_LABELS = { auto: "ตามเครื่อง", light: "สว่าง", dark: "มืด" };
 const TEXT_SIZE_LABELS = { normal: "ปกติ", large: "ใหญ่" };
+const DAILY_GOAL_LABELS = Object.fromEntries(DAILY_GOAL_CHOICES.map((count) => [count, `${count} ครั้ง`]));
+const REVIEW_CAP_LABELS = Object.fromEntries(REVIEW_CAP_CHOICES.map((count) => [count, count ? `ไม่เกิน ${count} ครั้ง` : "ไม่จำกัด"]));
 
 function fillSelect(select, choices, current, labels) {
   select.replaceChildren(
@@ -569,6 +632,8 @@ function renderSettings() {
   fillSelect($("speech-rate"), SPEECH_RATE_CHOICES, state.settings.speechRate, SPEECH_RATE_LABELS);
   fillSelect($("theme"), THEME_CHOICES, state.settings.theme, THEME_LABELS);
   fillSelect($("text-size"), TEXT_SIZE_CHOICES, state.settings.textSize, TEXT_SIZE_LABELS);
+  fillSelect($("daily-goal"), DAILY_GOAL_CHOICES, state.settings.dailyGoal, DAILY_GOAL_LABELS);
+  fillSelect($("review-cap"), REVIEW_CAP_CHOICES, state.settings.reviewCap, REVIEW_CAP_LABELS);
   $("auto-speak").checked = state.settings.autoSpeak;
   $("sound-fx").checked = state.settings.sound;
   $("sound-panel").hidden = !canSpeak();
@@ -722,6 +787,14 @@ function bindEvents() {
   $("speech-test").addEventListener("click", () => speakWord("Hello, welcome to Vocab Garden"));
   $("theme").addEventListener("change", (event) => updateSetting({ theme: event.target.value }));
   $("text-size").addEventListener("change", (event) => updateSetting({ textSize: event.target.value }));
+  $("daily-goal").addEventListener("change", (event) => {
+    updateSetting({ dailyGoal: Number(event.target.value) });
+    toast(`ตั้งเป้าหมายวันละ ${state.settings.dailyGoal} ครั้งแล้ว`);
+  });
+  $("review-cap").addEventListener("change", (event) => {
+    updateSetting({ reviewCap: Number(event.target.value) });
+    toast(state.settings.reviewCap ? `วันนี้ทวนได้ไม่เกิน ${state.settings.reviewCap} ครั้ง` : "ทวนได้ไม่จำกัดต่อวัน");
+  });
   matchMedia("(prefers-color-scheme: dark)").addEventListener("change", applyAppearance);
   $("export").addEventListener("click", exportBackup);
   $("import").addEventListener("change", (event) => {

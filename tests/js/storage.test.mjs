@@ -21,6 +21,7 @@ test("settings default to 10 new words a day starting from level 1 with the syst
     speechRate: 0.9,
     theme: "auto",
     textSize: "normal",
+    sound: false,
   });
 });
 
@@ -90,13 +91,13 @@ test("reset clears the history too", () => {
 
 test("sound and appearance settings are saved and read back", () => {
   const storage = createStorage(fakeStore());
-  const custom = { ...DEFAULT_SETTINGS, autoSpeak: true, speechRate: 0.7, theme: "dark", textSize: "large" };
+  const custom = { ...DEFAULT_SETTINGS, autoSpeak: true, speechRate: 0.7, theme: "dark", textSize: "large", sound: true };
   storage.saveSettings(custom);
   assert.deepEqual(storage.loadSettings(), custom);
 });
 
 test("invalid sound and appearance values fall back to the defaults", () => {
-  const saved = { autoSpeak: "yes", speechRate: 5, theme: "purple", textSize: "huge" };
+  const saved = { autoSpeak: "yes", speechRate: 5, theme: "purple", textSize: "huge", sound: "on" };
   const storage = createStorage(fakeStore({ "vg:settings": JSON.stringify(saved) }));
   assert.deepEqual(storage.loadSettings(), DEFAULT_SETTINGS);
 });

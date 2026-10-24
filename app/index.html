@@ -64,6 +64,7 @@
         <span id="garden-total" class="muted small"></span>
       </div>
       <p class="legend">🌰 เมล็ด · 🌱 ต้นอ่อน · 🌿 กำลังโต · 🌳 ต้นไม้ใหญ่</p>
+      <p class="muted small level-hint">แตะที่ด่านเพื่อเรียนเฉพาะด่านนั้น</p>
       <ul id="levels" class="levels"></ul>
 
       <p id="storage-warning" class="warning" hidden>
@@ -108,6 +109,7 @@
           <button type="button" data-grade="3" class="grade good"><span class="grade-emoji" aria-hidden="true">😎</span>จำได้แม่น<kbd>3</kbd></button>
         </div>
       </div>
+      <button type="button" id="know" class="know">✅ รู้อยู่แล้ว ข้ามเลย <kbd>K</kbd></button>
     </section>
 
     <section id="view-done" class="center" hidden>
@@ -125,6 +127,13 @@
       <div class="panel">
         <label for="new-per-day">คำใหม่ต่อวัน</label>
         <select id="new-per-day"></select>
+      </div>
+
+      <div class="panel">
+        <label for="start-level">เริ่มคำใหม่จากด่าน</label>
+        <select id="start-level"></select>
+        <p class="tip small">รู้ศัพท์ด่านแรก ๆ อยู่แล้วใช่ไหม? เลือกด่านที่อยากเริ่ม คำใหม่จะมาจากด่านนี้เป็นต้นไป
+          คำที่ถึงเวลาทวนยังมาตามปกติ และแตะที่ด่านในหน้าหลักเพื่อเรียนเฉพาะด่านนั้นได้เสมอ</p>
       </div>
 
       <h2>สำรองความคืบหน้า</h2>

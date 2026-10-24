@@ -1,6 +1,6 @@
 import { LEVELS, levelTitle, loadWords } from "./data.js";
 import { canSpeak, speak } from "./speech.js";
-import { AGAIN, GOOD, HARD, STAGES, buildQueue, dayNumber, grade, stageOf } from "./srs.js";
+import { AGAIN, GOOD, HARD, STAGES, buildQueue, dayNumber, grade, knownCard, stageOf } from "./srs.js";
 import { NEW_PER_DAY_CHOICES, createStorage } from "./storage.js";
 import { isNewer, parseSwVersion } from "./update.js";
 
@@ -57,8 +57,20 @@ function newLimit(day) {
   return Math.max(0, state.settings.newPerDay - storage.newCountToday(day));
 }
 
-function todayQueue(day) {
-  return buildQueue(translatedWords(), state.cards, day, newLimit(day));
+// ลำดับของด่านไว้เทียบกับ "เริ่มคำใหม่จากด่าน" (ด่านพิเศษถือว่าอยู่หลังสุด)
+function levelNumber(level) {
+  return level === "sup" ? Number.MAX_SAFE_INTEGER : Number(level);
+}
+
+// คิวของรอบนี้: ถ้าระบุ level จะเรียนเฉพาะด่านนั้น (คำใหม่ได้วันละตามที่ตั้งไว้ต่อรอบ) ไม่ระบุคือคิวของวันนี้
+function todayQueue(day, level = null) {
+  const translated = translatedWords();
+  if (level) {
+    const words = translated.filter((word) => word.level === level);
+    return buildQueue(words, state.cards, day, state.settings.newPerDay);
+  }
+  const fresh = translated.filter((word) => levelNumber(word.level) >= state.settings.startLevel);
+  return buildQueue(translated, state.cards, day, newLimit(day), fresh);
 }
 
 // ---------- หน้าหลัก ----------
@@ -84,6 +96,19 @@ function levelItem(level) {
     info.append(el("p", "level-sub", `${words.length} คำ · กำลังปลูก เร็ว ๆ นี้`));
     return item;
   }
+
+  // แตะที่ด่านเพื่อเรียนเฉพาะด่านนั้น
+  item.classList.add("clickable");
+  item.tabIndex = 0;
+  item.setAttribute("role", "link");
+  item.setAttribute("aria-label", `เรียนเฉพาะ${levelTitle(level)}`);
+  const open = () => {
+    location.hash = `#/study/${level}`;
+  };
+  item.addEventListener("click", open);
+  item.addEventListener("keydown", (event) => {
+    if (event.key === "Enter") open();
+  });
 
   const counts = Object.fromEntries(STAGES.map((stage) => [stage.id, 0]));
   words.forEach((word) => {
@@ -128,10 +153,11 @@ function renderHome() {
 
 // ---------- ท่องศัพท์ ----------
 
-function startSession() {
+function startSession(level = null) {
   const day = dayNumber();
-  const queue = todayQueue(day);
+  const queue = todayQueue(day, level);
   if (queue.length === 0) {
+    if (level) toast(`${levelTitle(level)} ไม่มีคำให้เรียนตอนนี้ ไว้ทวนใหม่วันหลังนะ`);
     location.hash = "#/";
     return;
   }
@@ -201,11 +227,27 @@ function answer(rating) {
     session.learned.add(word.headword);
   }
 
-  if (session.queue.length > 0) {
+  nextCard();
+}
+
+function nextCard() {
+  if (state.session.queue.length > 0) {
     showCard();
   } else {
     finishSession();
   }
+}
+
+// รู้อยู่แล้ว: ข้ามไปเป็นต้นไม้ใหญ่ทันที ไม่นับเป็นคำใหม่ของวันนี้
+function markKnown() {
+  const session = state.session;
+  const word = session.queue.shift();
+  state.cards[word.headword] = knownCard(state.cards[word.headword], session.day);
+  storage.saveCards(state.cards);
+  session.answered += 1;
+  session.learned.add(word.headword);
+  toast(`${word.headword} ข้ามไปเป็นต้นไม้ใหญ่แล้ว 🌳`);
+  nextCard();
 }
 
 // ---------- ปัดการ์ด ----------
@@ -288,6 +330,16 @@ function finishSession() {
 // ---------- ตั้งค่า ----------
 
 function renderSettings() {
+  const levels = [...new Set(translatedWords().map((word) => word.level))].filter((level) => level !== "sup");
+  const startLevel = $("start-level");
+  startLevel.replaceChildren(
+    ...levels.map((level) => {
+      const option = el("option", "", `ด่าน ${Number(level)}`);
+      option.value = Number(level);
+      option.selected = Number(level) === state.settings.startLevel;
+      return option;
+    }),
+  );
   const select = $("new-per-day");
   select.replaceChildren(
     ...NEW_PER_DAY_CHOICES.map((count) => {
@@ -336,9 +388,10 @@ function resetProgress() {
 
 function route() {
   if (state.words.length === 0) return;
-  const page = location.hash.replace(/^#\/?/, "") || "home";
+  const [page, argument] = (location.hash.replace(/^#\/?/, "") || "home").split("/");
   if (page === "study") {
-    startSession();
+    const level = LEVELS.includes(argument) ? argument : null;
+    startSession(level);
     return;
   }
   state.session = null;
@@ -362,6 +415,7 @@ function bindEvents() {
   });
   bindSwipe();
   $("flip").addEventListener("click", flip);
+  $("know").addEventListener("click", markKnown);
   $("speak-word").addEventListener("click", (event) => {
     event.stopPropagation();
     speak(currentWord().headword);
@@ -384,6 +438,8 @@ function bindEvents() {
     } else if (!isFlipped() && (event.key === " " || event.key === "Enter")) {
       event.preventDefault();
       flip();
+    } else if (event.key === "k" || event.key === "K") {
+      markKnown();
     } else if (isFlipped() && ["1", "2", "3"].includes(event.key)) {
       answer({ 1: AGAIN, 2: HARD, 3: GOOD }[event.key]);
     }
@@ -393,6 +449,11 @@ function bindEvents() {
     state.settings = { ...state.settings, newPerDay: Number(event.target.value) };
     storage.saveSettings(state.settings);
     toast(`ตั้งคำใหม่เป็นวันละ ${state.settings.newPerDay} คำแล้ว`);
+  });
+  $("start-level").addEventListener("change", (event) => {
+    state.settings = { ...state.settings, startLevel: Number(event.target.value) };
+    storage.saveSettings(state.settings);
+    toast(`คำใหม่จะมาจากด่าน ${state.settings.startLevel} เป็นต้นไป`);
   });
   $("export").addEventListener("click", exportBackup);
   $("import").addEventListener("change", (event) => {

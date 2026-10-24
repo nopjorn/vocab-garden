@@ -45,6 +45,17 @@ export function grade(state, rating, today) {
   return card;
 }
 
+// คำที่ผู้เรียนรู้อยู่แล้ว กด "รู้แล้ว" ข้ามไปเป็นต้นไม้ใหญ่ทันที (ทวนอีกทีในอีก 30 วัน)
+export const KNOWN_IVL = 30;
+
+export function knownCard(state, today) {
+  const card = state ? { ...state } : { due: today, ivl: 0, ease: START_EASE, reps: 0, lapses: 0 };
+  card.ivl = Math.max(KNOWN_IVL, card.ivl);
+  card.reps += 1;
+  card.due = today + card.ivl;
+  return card;
+}
+
 export function isDue(state, today) {
   return Boolean(state) && state.due <= today;
 }
@@ -65,10 +76,11 @@ export function stageOf(state) {
 }
 
 // คิวการ์ดของรอบนี้: คำที่ถึงกำหนดทวนก่อน (ค้างนานสุดก่อน) แล้วจึงเป็นคำใหม่ตามลำดับ NGSL
-export function buildQueue(words, cards, today, newLimit) {
+// freshWords = กลุ่มคำที่เลือกคำใหม่ได้ (ค่าเริ่มต้นคือทุกคำใน words)
+export function buildQueue(words, cards, today, newLimit, freshWords = words) {
   const due = words
     .filter((word) => isDue(cards[word.headword], today))
     .sort((a, b) => cards[a.headword].due - cards[b.headword].due || a.order - b.order);
-  const fresh = words.filter((word) => !cards[word.headword]).slice(0, Math.max(0, newLimit));
+  const fresh = freshWords.filter((word) => !cards[word.headword]).slice(0, Math.max(0, newLimit));
   return [...due, ...fresh];
 }

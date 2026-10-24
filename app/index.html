@@ -6,7 +6,7 @@
   <title>Vocab Garden</title>
   <meta name="description" content="ท่องศัพท์ภาษาอังกฤษพื้นฐานจาก NGSL ใช้ฟรี">
   <meta name="color-scheme" content="light dark">
-  <meta name="theme-color" content="#2f7d4f">
+  <meta name="theme-color" content="#059669">
   <meta name="mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-title" content="Vocab Garden">
@@ -41,18 +41,29 @@
     </section>
 
     <section id="view-home" hidden>
-      <div class="panel today">
-        <h1>วันนี้</h1>
-        <div class="today-stats">
-          <p><strong id="due-count">0</strong> คำที่ต้องทวน</p>
-          <p><strong id="new-count">0</strong> คำใหม่</p>
+      <div class="hero">
+        <div class="hero-top">
+          <div>
+            <p id="greeting" class="hero-greeting">สวัสดี 👋</p>
+            <h1 class="hero-title">วันนี้มาปลูกคำศัพท์กัน</h1>
+          </div>
+          <div id="garden-ring" class="ring" role="img" aria-label="คำในสวน">
+            <div class="ring-inner"><strong id="garden-count">0</strong><span>คำในสวน</span></div>
+          </div>
         </div>
-        <a href="#/study" id="start" class="button primary wide">เริ่มท่องศัพท์</a>
-        <p id="today-empty" class="muted" hidden>วันนี้ทวนครบแล้ว 🎉 พรุ่งนี้มาดูสวนกันใหม่นะ</p>
+        <div class="hero-stats">
+          <div class="stat"><strong id="due-count">0</strong><span>🔁 ต้องทวน</span></div>
+          <div class="stat"><strong id="new-count">0</strong><span>✨ คำใหม่</span></div>
+        </div>
+        <a href="#/study" id="start" class="button hero-cta">🌱 เริ่มท่องศัพท์</a>
+        <p id="today-empty" class="hero-done" hidden>วันนี้ทวนครบแล้ว 🎉 พรุ่งนี้มาดูสวนกันใหม่นะ</p>
       </div>
 
-      <h2>สวนคำศัพท์</h2>
-      <p class="legend muted small">🌰 เมล็ด · 🌱 ต้นอ่อน · 🌿 กำลังโต · 🌳 ต้นไม้ใหญ่</p>
+      <div class="section-head">
+        <h2>สวนคำศัพท์</h2>
+        <span id="garden-total" class="muted small"></span>
+      </div>
+      <p class="legend">🌰 เมล็ด · 🌱 ต้นอ่อน · 🌿 กำลังโต · 🌳 ต้นไม้ใหญ่</p>
       <ul id="levels" class="levels"></ul>
 
       <p id="storage-warning" class="warning" hidden>
@@ -90,20 +101,22 @@
 
       <p class="swipe-hint muted small">👈 ปัดซ้าย ยังจำไม่ได้ · ปัดขวา จำได้ 👉</p>
       <div class="study-actions">
-        <button type="button" id="flip" class="primary wide">ดูคำแปล</button>
+        <button type="button" id="flip" class="primary wide">👀 ดูคำแปล</button>
         <div id="grades" class="grades" hidden>
-          <button type="button" data-grade="1" class="grade again">ยังจำไม่ได้<kbd>1</kbd></button>
-          <button type="button" data-grade="2" class="grade hard">พอจำได้<kbd>2</kbd></button>
-          <button type="button" data-grade="3" class="grade good">จำได้แม่น<kbd>3</kbd></button>
+          <button type="button" data-grade="1" class="grade again"><span class="grade-emoji" aria-hidden="true">😵</span>ยังจำไม่ได้<kbd>1</kbd></button>
+          <button type="button" data-grade="2" class="grade hard"><span class="grade-emoji" aria-hidden="true">🤔</span>พอจำได้<kbd>2</kbd></button>
+          <button type="button" data-grade="3" class="grade good"><span class="grade-emoji" aria-hidden="true">😎</span>จำได้แม่น<kbd>3</kbd></button>
         </div>
       </div>
     </section>
 
     <section id="view-done" class="center" hidden>
-      <p class="big-emoji">🌳</p>
-      <h1>เก่งมาก!</h1>
-      <p id="done-summary"></p>
-      <a href="#/" class="button primary">กลับหน้าหลัก</a>
+      <div class="done-card">
+        <p class="big-emoji celebrate" aria-hidden="true">🎉</p>
+        <h1>เก่งมาก!</h1>
+        <p id="done-summary" class="muted"></p>
+        <a href="#/" class="button primary wide">กลับไปดูสวน 🌳</a>
+      </div>
     </section>
 
     <section id="view-settings" hidden>

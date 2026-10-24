@@ -62,31 +62,66 @@ function todayQueue(day) {
 
 // ---------- หน้าหลัก ----------
 
+function greeting(hour = new Date().getHours()) {
+  if (hour >= 5 && hour < 12) return "สวัสดีตอนเช้า ☀️";
+  if (hour >= 12 && hour < 17) return "สวัสดีตอนบ่าย 🌤️";
+  if (hour >= 17 && hour < 21) return "สวัสดีตอนเย็น 🌇";
+  return "สวัสดีตอนค่ำ 🌙";
+}
+
+function levelItem(level) {
+  const words = state.words.filter((word) => word.level === level);
+  const item = el("li", "level");
+  const badge = el("span", "level-badge", level === "sup" ? "★" : String(Number(level)));
+  const info = el("div", "level-info");
+  info.append(el("p", "level-title", levelTitle(level)));
+  item.append(badge, info);
+
+  if (!words.some((word) => word.translated)) {
+    item.classList.add("locked");
+    badge.textContent = "🔒";
+    info.append(el("p", "level-sub", `${words.length} คำ · กำลังปลูก เร็ว ๆ นี้`));
+    return item;
+  }
+
+  const counts = Object.fromEntries(STAGES.map((stage) => [stage.id, 0]));
+  words.forEach((word) => {
+    counts[stageOf(state.cards[word.headword]).id] += 1;
+  });
+  const planted = words.length - counts.seed;
+  info.append(el("p", "level-sub", `${words.length} คำ · ปลูกแล้ว ${planted}`));
+  item.append(el("span", "level-pct", `${Math.round((planted / words.length) * 100)}%`));
+
+  // แถบสีแยกตามระยะของต้นไม้ (ไม่รวมเมล็ด)
+  const bar = el("div", "stagebar");
+  STAGES.slice(1).forEach((stage) => {
+    if (counts[stage.id] === 0) return;
+    const segment = el("span", `seg seg-${stage.id}`);
+    segment.style.width = `${(counts[stage.id] / words.length) * 100}%`;
+    bar.append(segment);
+  });
+  const stages = el("p", "level-stages", STAGES.map((stage) => `${stage.emoji} ${counts[stage.id]}`).join("   "));
+  item.append(bar, stages);
+  return item;
+}
+
 function renderHome() {
   const queue = todayQueue(dayNumber());
   const dueCount = queue.filter((word) => state.cards[word.headword]).length;
+  $("greeting").textContent = greeting();
   $("due-count").textContent = dueCount;
   $("new-count").textContent = queue.length - dueCount;
   $("start").hidden = queue.length === 0;
   $("today-empty").hidden = queue.length > 0;
 
-  const items = LEVELS.map((level) => {
-    const words = state.words.filter((word) => word.level === level);
-    const item = el("li");
-    item.append(el("span", "level-title", levelTitle(level)));
-    if (!words.some((word) => word.translated)) {
-      item.classList.add("locked");
-      item.append(el("span", "muted", "🌱 กำลังปลูก"));
-      return item;
-    }
-    const counts = Object.fromEntries(STAGES.map((stage) => [stage.id, 0]));
-    words.forEach((word) => {
-      counts[stageOf(state.cards[word.headword]).id] += 1;
-    });
-    item.append(el("span", "level-stages", STAGES.map((stage) => `${stage.emoji} ${counts[stage.id]}`).join("  ")));
-    return item;
-  });
-  $("levels").replaceChildren(...items);
+  const translated = translatedWords();
+  const planted = translated.filter((word) => state.cards[word.headword]).length;
+  $("garden-count").textContent = planted;
+  $("garden-ring").style.setProperty("--p", translated.length ? (planted / translated.length) * 100 : 0);
+  $("garden-ring").setAttribute("aria-label", `ปลูกแล้ว ${planted} จาก ${translated.length} คำ`);
+  $("garden-total").textContent = `แปลแล้ว ${translated.length.toLocaleString()} / ${state.words.length.toLocaleString()} คำ`;
+
+  $("levels").replaceChildren(...LEVELS.map(levelItem));
   $("storage-warning").hidden = storage.persistent;
 }
 
@@ -123,7 +158,7 @@ function showCard() {
   $("card-senses").replaceChildren(
     ...word.senses.map((sense) => {
       const item = el("li");
-      item.append(el("span", "pos", sense.label), document.createTextNode(sense.text));
+      item.append(el("span", `pos pos-${sense.pos}`, sense.label), document.createTextNode(sense.text));
       return item;
     }),
   );

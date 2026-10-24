@@ -87,10 +87,67 @@ a {
   text-decoration: none;
 }
 
-.icon-link {
-  font-size: 1.25rem;
+.version {
+  font-size: 0.75rem;
+  font-weight: 400;
+  color: var(--muted);
+  margin-left: 4px;
+}
+
+.tabbar {
+  display: flex;
+  gap: 4px;
+}
+
+.tabbar a {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  border-radius: 10px;
+  color: var(--muted);
   text-decoration: none;
-  padding: 4px 8px;
+  font-size: 0.9rem;
+}
+
+.tabbar a[aria-current="page"] {
+  color: var(--accent);
+  font-weight: 600;
+}
+
+/* มือถือ: เมนูอยู่ด้านล่างจอ */
+@media (max-width: 767px) {
+  .tabbar {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 2;
+    justify-content: space-around;
+    background: var(--surface);
+    border-top: 1px solid var(--border);
+    padding: 4px 8px calc(4px + env(safe-area-inset-bottom));
+  }
+
+  .tabbar a {
+    flex-direction: column;
+    gap: 0;
+    flex: 1;
+    font-size: 0.75rem;
+  }
+
+  .tab-icon {
+    font-size: 1.35rem;
+    line-height: 1.3;
+  }
+
+  main {
+    padding-bottom: calc(96px + env(safe-area-inset-bottom));
+  }
+
+  .toast {
+    bottom: calc(80px + env(safe-area-inset-bottom));
+  }
 }
 
 .panel {
@@ -227,31 +284,131 @@ select {
 }
 
 /* หน้าการ์ด */
+/* ระหว่างท่องศัพท์ ซ่อนแถบด้านบนและเมนู ให้การ์ดเต็มจอ */
+body.studying .topbar {
+  display: none;
+}
+
+body.studying main {
+  padding-top: calc(12px + env(safe-area-inset-top));
+  padding-bottom: calc(16px + env(safe-area-inset-bottom));
+}
+
+#view-study:not([hidden]) {
+  display: flex;
+  flex-direction: column;
+  min-height: calc(100dvh - 28px - env(safe-area-inset-top) - env(safe-area-inset-bottom));
+}
+
 .study-top {
   display: flex;
-  justify-content: space-between;
   align-items: center;
+  gap: 12px;
   margin-bottom: 12px;
 }
 
-.back {
+.close {
+  font-size: 1.25rem;
+  color: var(--muted);
   text-decoration: none;
+  padding: 4px 8px;
 }
 
+.progress {
+  flex: 1;
+  height: 8px;
+  background: var(--border);
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.progress-bar {
+  height: 100%;
+  width: 0;
+  background: var(--accent);
+  border-radius: 999px;
+  transition: width 0.3s;
+}
+
+
 .flashcard {
+  position: relative;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   background: var(--surface);
   border: 1px solid var(--border);
-  border-radius: 20px;
+  border-radius: 24px;
   box-shadow: var(--shadow);
   padding: 24px 20px;
-  min-height: 300px;
-  margin-bottom: 16px;
+  min-height: 320px;
   cursor: pointer;
   text-align: center;
+  touch-action: pan-y;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.flashcard.dragging {
+  transition: none;
+}
+
+.flashcard.fly-left,
+.flashcard.fly-right,
+.flashcard.snap-back {
+  transition: transform 0.2s ease-out, opacity 0.2s ease-out;
+}
+
+.flashcard.fly-left {
+  transform: translateX(-120vw) rotate(-20deg) !important;
+  opacity: 0;
+}
+
+.flashcard.fly-right {
+  transform: translateX(120vw) rotate(20deg) !important;
+  opacity: 0;
+}
+
+.stamp {
+  position: absolute;
+  top: 20px;
+  padding: 4px 12px;
+  border: 3px solid;
+  border-radius: 10px;
+  font-weight: 700;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.stamp-again {
+  right: 20px;
+  color: var(--again);
+  transform: rotate(12deg);
+}
+
+.stamp-good {
+  left: 20px;
+  color: var(--good);
+  transform: rotate(-12deg);
+}
+
+.flashcard[data-swipe="again"] .stamp-again,
+.flashcard[data-swipe="good"] .stamp-good {
+  opacity: 1;
+}
+
+.swipe-hint {
+  text-align: center;
+  margin: 10px 0;
+}
+
+.study-actions {
+  min-height: 52px;
 }
 
 .word {
-  font-size: 2.5rem;
+  font-size: clamp(2.5rem, 12vw, 4rem);
   font-weight: 700;
   margin: 8px 0;
   overflow-wrap: anywhere;
@@ -386,13 +543,6 @@ kbd {
   box-shadow: var(--shadow);
 }
 
-.toast.update {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  white-space: nowrap;
-}
-
 @media (prefers-reduced-motion: no-preference) {
   .card-back:not([hidden]) {
     animation: reveal 0.2s ease-out;
@@ -404,4 +554,31 @@ kbd {
       transform: translateY(4px);
     }
   }
+}
+
+.modal {
+  position: fixed;
+  inset: 0;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  background: rgba(0, 0, 0, 0.45);
+}
+
+.modal-box {
+  width: 100%;
+  max-width: 360px;
+  background: var(--surface);
+  border-radius: 20px;
+  padding: 24px;
+  text-align: center;
+  display: grid;
+  gap: 8px;
+}
+
+.modal-box h2,
+.modal-box p {
+  margin: 0;
 }

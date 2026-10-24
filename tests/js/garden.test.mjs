@@ -38,3 +38,15 @@ test("plotSummary counts planted and wilted plants", () => {
   const cards = { a: card(2, TODAY - 1), b: card(9, TODAY + 5), c: card(1, TODAY) };
   assert.deepEqual(plotSummary(words, cards, TODAY), { planted: 3, wilted: 2, total: 4 });
 });
+
+import { LEECH_LAPSES, leechWords } from "../../app/js/garden.js";
+
+test("leech words are the ones forgotten at least 3 times, most forgotten first", () => {
+  const words = ["a", "b", "c", "d", "e"].map((headword, order) => ({ headword, order }));
+  const lapsed = (lapses) => ({ due: 0, ivl: 1, ease: 2, reps: 1, lapses });
+  const cards = { a: lapsed(3), b: lapsed(5), c: lapsed(2), d: lapsed(3) };
+  assert.equal(LEECH_LAPSES, 3);
+  assert.deepEqual(leechWords(words, cards).map((word) => word.headword), ["b", "a", "d"]);
+  assert.deepEqual(leechWords(words, cards, 2).map((word) => word.headword), ["b", "a"]);
+  assert.deepEqual(leechWords(words, {}), []);
+});

@@ -1755,3 +1755,79 @@ html[data-text-size="large"] {
   margin: 0;
   font-size: 1.1rem;
 }
+
+/* ===== โน้ตช่วยจำ / คำที่ลืมบ่อย ===== */
+.mynote {
+  margin: 10px 0 0;
+  padding: 10px 14px;
+  border-radius: var(--radius-sm);
+  background: var(--brand-soft);
+  color: var(--text);
+  font-weight: 600;
+  text-align: left;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+
+.linklike {
+  display: inline-flex;
+  min-height: 44px;
+  padding: 8px 4px;
+  color: var(--link);
+  background: transparent;
+  border: none;
+  box-shadow: none;
+  font-weight: 600;
+}
+
+.linklike:active {
+  transform: none;
+  background: var(--surface-2);
+}
+
+#note-text {
+  width: 100%;
+  padding: 10px 14px;
+  font: inherit;
+  font-size: 1.05rem; /* ไม่ต่ำกว่า 16px ไม่งั้น iPhone ซูมหน้าตอนแตะช่องพิมพ์ */
+  color: var(--text);
+  background: var(--surface);
+  border: 2px solid var(--border);
+  border-radius: var(--radius-sm);
+  resize: vertical;
+}
+
+.leech-list {
+  list-style: none;
+  margin: 0 0 12px;
+  padding: 0;
+  display: grid;
+  gap: 8px;
+}
+
+.leech-item {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 4px 10px;
+  width: 100%;
+  min-height: 48px;
+  padding: 10px 14px;
+  text-align: left;
+  color: var(--text);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  box-shadow: none;
+}
+
+.leech-item .muted {
+  flex: 1;
+  min-width: 0;
+}
+
+.leech-count {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--text);
+}

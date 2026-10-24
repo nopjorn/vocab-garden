@@ -1,0 +1,38 @@
+name: Release
+
+on:
+  push:
+    branches: [main]
+
+permissions:
+  contents: write
+
+concurrency:
+  group: release
+  cancel-in-progress: false
+
+jobs:
+  release:
+    name: สร้าง tag และ GitHub Release
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+
+      - name: อ่านเลข version และ release notes จาก CHANGELOG
+        id: info
+        run: |
+          version="$(python3 scripts/versioning.py current)"
+          echo "version=${version}" >> "$GITHUB_OUTPUT"
+          python3 scripts/versioning.py notes "${version}" > "${RUNNER_TEMP}/notes.md"
+
+      - name: สร้าง tag และ Release
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+          TAG: v${{ steps.info.outputs.version }}
+        run: |
+          if gh release view "${TAG}" > /dev/null 2>&1; then
+            echo "::warning::มี Release ${TAG} อยู่แล้ว ข้ามขั้นตอนนี้"
+            exit 0
+          fi
+          gh release create "${TAG}" --target "${GITHUB_SHA}" --title "${TAG}" --notes-file "${RUNNER_TEMP}/notes.md"

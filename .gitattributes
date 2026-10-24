@@ -1,0 +1,3 @@
+# ไฟล์ต้นฉบับ NGSL ต้องเก็บไว้ตรงตามต้นฉบับทุกไบต์ (CI ตรวจ SHA-256)
+# ห้ามให้ git แปลง line endings
+ngsl-source/** -text

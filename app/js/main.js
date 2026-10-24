@@ -2,6 +2,7 @@ import { LEVELS, levelTitle, loadWords } from "./data.js";
 import { canSpeak, speak } from "./speech.js";
 import { AGAIN, GOOD, HARD, STAGES, buildQueue, dayNumber, grade, stageOf } from "./srs.js";
 import { NEW_PER_DAY_CHOICES, createStorage } from "./storage.js";
+import { isNewer, parseSwVersion } from "./update.js";
 
 const VIEWS = ["loading", "error", "home", "study", "done", "settings", "about"];
 const REQUEUE_GAP = 3; // คำที่ตอบ "ยังจำไม่ได้" จะกลับมาอีกครั้งหลังการ์ดใบอื่นอีก 3 ใบ
@@ -429,18 +430,65 @@ function workerVersion(worker) {
   });
 }
 
-async function showUpdate(worker) {
-  const next = await workerVersion(worker);
+function showUpdateDialog(next, apply) {
   $("update-versions").textContent = next ? `v${self.VG_VERSION} → v${next}` : `ตอนนี้ใช้ v${self.VG_VERSION}`;
   $("update-dialog").hidden = false;
+  $("update-now").disabled = false;
+  $("update-now").textContent = "ดาวน์โหลดเวอร์ชันใหม่";
   $("update-now").onclick = () => {
     $("update-now").disabled = true;
     $("update-now").textContent = "กำลังอัปเดต…";
-    worker.postMessage("skip-waiting");
+    apply();
   };
   $("update-later").onclick = () => {
     $("update-dialog").hidden = true;
   };
+}
+
+async function showUpdate(worker) {
+  showUpdateDialog(await workerVersion(worker), () => worker.postMessage("skip-waiting"));
+}
+
+// ถามเลขเวอร์ชันล่าสุดจากเซิร์ฟเวอร์ตรง ๆ โดยไม่พึ่งการตรวจอัปเดตของ service worker
+// (iOS บางครั้งไม่ติดตั้ง service worker ตัวใหม่ ทำให้ค้างเวอร์ชันเก่า) sw.js ไม่อยู่ใน cache ของแอป จึงถึงเซิร์ฟเวอร์จริง
+async function fetchLatestVersion() {
+  try {
+    const response = await fetch(`sw.js?check=${Date.now()}`, { cache: "no-store" });
+    return response.ok ? parseSwVersion(await response.text()) : null;
+  } catch {
+    return null;
+  }
+}
+
+// อัปเดตแบบบังคับ: ล้าง cache และ service worker เดิมของแอปนี้ ลงทะเบียนตัวใหม่ให้ดึงไฟล์สดจากเซิร์ฟเวอร์ แล้วค่อยโหลดหน้าใหม่
+// (ความคืบหน้าอยู่ใน localStorage ไม่หาย) ห้ามโหลดหน้าใหม่ทันที เพราะ GitHub Pages ให้เบราว์เซอร์จำไฟล์ไว้ 10 นาที จะได้ไฟล์เก่ากลับมา
+// อัปเดตแบบบังคับ: ล้าง cache และ service worker เดิมของแอปนี้ แล้วโหลดหน้าใหม่ (ความคืบหน้าอยู่ใน localStorage ไม่หาย)
+// หน้าที่โหลดใหม่จะลงทะเบียน service worker ตัวใหม่ซึ่งดึงไฟล์สดจากเซิร์ฟเวอร์ แล้วโหลดหน้าอีกรอบให้เอง (ดู registerServiceWorker)
+const FORCE_UPDATE_FLAG = "vg:force-update";
+
+async function forceUpdate() {
+  try {
+    // ลบเฉพาะ cache ของแอปนี้ (repo อื่นใต้ nopjorn.github.io ใช้ origin เดียวกัน)
+    const keys = await caches.keys();
+    await Promise.all(keys.filter((key) => key.startsWith("vg-")).map((key) => caches.delete(key)));
+    await (await navigator.serviceWorker?.getRegistration())?.unregister();
+    sessionStorage.setItem(FORCE_UPDATE_FLAG, "1");
+  } catch (error) {
+    console.warn("ล้าง cache ไม่สำเร็จ", error);
+  }
+  location.reload();
+}
+
+async function checkForNewVersion({ manual = false } = {}) {
+  if (!manual && !$("update-dialog").hidden) return;
+  const latest = await fetchLatestVersion();
+  if (!latest) {
+    if (manual) toast("ตรวจเวอร์ชันไม่สำเร็จ ลองเช็คอินเทอร์เน็ตแล้วลองใหม่นะ");
+  } else if (isNewer(latest, self.VG_VERSION)) {
+    showUpdateDialog(latest, forceUpdate);
+  } else if (manual) {
+    toast(`ใช้เวอร์ชันล่าสุดแล้ว (v${self.VG_VERSION}) 🎉`);
+  }
 }
 
 // แอปที่เปิดจากไอคอนบนหน้าจอโฮมควรเหมือนแอปทั่วไป ไม่ให้ซูมหน้าได้ (เปิดผ่านเบราว์เซอร์ปกติยังซูมได้เพื่อการเข้าถึง)
@@ -457,7 +505,14 @@ function lockZoomInInstalledApp() {
 async function registerServiceWorker() {
   if (!("serviceWorker" in navigator)) return;
   // ถ้ามี service worker คุมหน้าอยู่แล้ว การเปลี่ยนตัวคุมคือการอัปเดต ให้โหลดหน้าใหม่ด้วยไฟล์เวอร์ชันใหม่
-  const updating = Boolean(navigator.serviceWorker.controller);
+  let forced = false;
+  try {
+    forced = sessionStorage.getItem(FORCE_UPDATE_FLAG) === "1";
+    sessionStorage.removeItem(FORCE_UPDATE_FLAG);
+  } catch {
+    // ไม่มี sessionStorage ก็ข้ามไป
+  }
+  const updating = Boolean(navigator.serviceWorker.controller) || forced;
   navigator.serviceWorker.addEventListener("controllerchange", () => {
     if (updating) location.reload();
   });
@@ -489,6 +544,12 @@ $("speak-word").hidden = !canSpeak();
 $("speak-example").hidden = !canSpeak();
 navigator.storage?.persist?.();
 lockZoomInInstalledApp();
+$("check-update").onclick = () => checkForNewVersion({ manual: true });
+document.addEventListener("visibilitychange", () => {
+  if (document.visibilityState === "visible") checkForNewVersion();
+});
+setInterval(checkForNewVersion, UPDATE_CHECK_MS);
+checkForNewVersion();
 bindEvents();
 init();
 registerServiceWorker();

@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <!-- ไอคอนต้นกล้าของ Vocab Garden (วาดขึ้นเอง) เนื้อหาอยู่ในวงกลมกลาง 80% เพื่อใช้เป็น maskable icon ได้ -->
+  <rect width="512" height="512" fill="#2f7d4f"/>
+  <ellipse cx="256" cy="392" rx="120" ry="26" fill="#245f3c"/>
+  <path d="M256 392 C256 330 256 290 256 250" stroke="#f6f8f3" stroke-width="22" stroke-linecap="round" fill="none"/>
+  <path d="M256 262 C200 262 150 226 142 160 C206 156 252 196 256 262 Z" fill="#a8e0b8"/>
+  <path d="M256 236 C262 160 316 118 382 124 C380 196 326 236 256 236 Z" fill="#f6f8f3"/>
+</svg>

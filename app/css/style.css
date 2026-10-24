@@ -1652,3 +1652,106 @@ html[data-text-size="large"] {
     animation: none !important;
   }
 }
+
+/* ===== แปลงสวน ===== */
+.water-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+  margin: 12px 0;
+}
+
+.water-note {
+  flex: 1;
+  font-weight: 600;
+}
+
+.search-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
+#garden-search {
+  flex: 1;
+  min-width: 0;
+  min-height: 44px;
+  padding: 8px 14px;
+  font: inherit;
+  font-size: 1rem;
+  color: var(--text);
+  background: var(--surface);
+  border: 2px solid var(--border);
+  border-radius: 999px;
+}
+
+.plot {
+  margin-bottom: 16px;
+}
+
+.plot-head {
+  margin: 0 0 8px;
+  font-size: 1rem;
+}
+
+.plot-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(44px, 1fr));
+  gap: 6px;
+  padding: 10px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+}
+
+.plant {
+  position: relative;
+  display: grid;
+  place-items: center;
+  min-height: 44px;
+  padding: 0;
+  font-size: 1.5rem;
+  line-height: 1;
+  background: var(--surface-2);
+  border: 1px solid transparent;
+  border-radius: var(--radius-sm);
+  box-shadow: none;
+  transition: opacity 0.2s, transform 0.2s;
+}
+
+.plant:active {
+  transform: scale(0.92);
+}
+
+.plant.seed {
+  opacity: 0.55;
+}
+
+.plant.wilted {
+  filter: grayscale(0.7) saturate(0.6);
+  transform: rotate(-14deg);
+}
+
+.plant.wilted::after {
+  content: "💧";
+  position: absolute;
+  top: -4px;
+  right: -2px;
+  font-size: 0.75rem;
+}
+
+.plant.dim {
+  opacity: 0.18;
+}
+
+.word-box {
+  max-height: 90dvh;
+  overflow-y: auto;
+}
+
+.word-box .senses {
+  margin: 0;
+  font-size: 1.1rem;
+}

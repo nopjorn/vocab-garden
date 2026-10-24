@@ -2,10 +2,13 @@ import { LEVELS, levelTitle, loadWords } from "./data.js";
 import { canSpeak, speak } from "./speech.js";
 import { AGAIN, GOOD, HARD, STAGES, buildQueue, dayNumber, grade, knownCard, stageOf } from "./srs.js";
 import { NEW_PER_DAY_CHOICES, createStorage } from "./storage.js";
+import { entriesSince, inlineParts, parseChangelog } from "./changelog.js";
+import { issueUrl } from "./report.js";
 import { recentDays, stageCounts, streakOf, totalReviews } from "./stats.js";
 import { isNewer, parseSwVersion } from "./update.js";
 
-const VIEWS = ["loading", "error", "home", "study", "done", "garden", "settings", "about"];
+const VIEWS = ["loading", "error", "home", "study", "done", "garden", "settings", "about", "changelog"];
+const TAB_OF_VIEW = { changelog: "about" }; // หน้าที่ไม่มีแท็บของตัวเอง ให้ไฮไลต์แท็บนี้แทน
 const REQUEUE_GAP = 3; // คำที่ตอบ "ยังจำไม่ได้" จะกลับมาอีกครั้งหลังการ์ดใบอื่นอีก 3 ใบ
 const SWIPE_DISTANCE = 90; // ปัดเกินกี่ px ถึงนับเป็นการให้คะแนน
 const SWIPE_PREVIEW = 40; // ปัดเกินกี่ px ถึงเริ่มขึ้นป้ายบนการ์ด
@@ -34,7 +37,7 @@ function show(view) {
   });
   document.body.classList.toggle("studying", view === "study");
   document.querySelectorAll(".tabbar a").forEach((tab) => {
-    if (tab.dataset.tab === view) tab.setAttribute("aria-current", "page");
+    if (tab.dataset.tab === (TAB_OF_VIEW[view] || view)) tab.setAttribute("aria-current", "page");
     else tab.removeAttribute("aria-current");
   });
   window.scrollTo(0, 0);
@@ -199,6 +202,7 @@ function showCard() {
   $("card-example-th").textContent = word.exampleTh;
   $("card-note").textContent = word.note ? `💡 ${word.note}` : "";
   $("card-note").hidden = !word.note;
+  $("report").href = issueUrl(word, self.VG_VERSION);
   $("card").focus({ preventScroll: true });
 }
 
@@ -372,6 +376,61 @@ function renderGarden() {
   $("g-empty").hidden = totalReviews(days) > 0;
 }
 
+// ---------- มีอะไรใหม่ ----------
+
+// CHANGELOG ถูกคัดลอกมาไว้ที่ changelog.md ตอน deploy (ตอนพัฒนาในเครื่องอาจไม่มีไฟล์นี้)
+async function loadChangelog() {
+  try {
+    const response = await fetch("changelog.md", { cache: "no-store" });
+    return response.ok ? parseChangelog(await response.text()) : [];
+  } catch {
+    return [];
+  }
+}
+
+function inlineNodes(text) {
+  return inlineParts(text).map((part) => (part.code ? el("code", "", part.text) : document.createTextNode(part.text)));
+}
+
+function changelogEntry(entry) {
+  const box = el("article", "cl-entry");
+  const head = el("h2", "cl-head");
+  head.append(el("span", "cl-version", `v${entry.version}`), el("span", "cl-date", entry.date));
+  box.append(head);
+  if (entry.intro) box.append(el("p", "cl-intro", entry.intro));
+  entry.sections.forEach((section) => {
+    box.append(el("p", `cl-section cl-${section.title === "ข้อมูลคำศัพท์" ? "data" : "change"}`, section.title));
+    const list = el("ul", "cl-items");
+    section.items.forEach((text) => {
+      const item = el("li");
+      item.append(...inlineNodes(text));
+      list.append(item);
+    });
+    box.append(list);
+  });
+  return box;
+}
+
+async function renderChangelog() {
+  $("changelog-list").replaceChildren();
+  $("changelog-empty").hidden = true;
+  const entries = await loadChangelog();
+  $("changelog-list").replaceChildren(...entries.map(changelogEntry));
+  $("changelog-empty").hidden = entries.length > 0;
+}
+
+// หลังอัปเดตเวอร์ชัน แสดงสิ่งที่เปลี่ยนตั้งแต่เวอร์ชันที่เคยเปิดครั้งก่อน (เปิดแอปครั้งแรกจะไม่แสดง)
+async function maybeShowWhatsNew() {
+  const seen = storage.loadSeenVersion();
+  storage.saveSeenVersion(self.VG_VERSION);
+  if (!seen) return;
+  const entries = entriesSince(await loadChangelog(), seen, self.VG_VERSION).slice(0, 5);
+  if (entries.length === 0) return;
+  $("whatsnew-title").textContent = `มีอะไรใหม่ใน v${self.VG_VERSION}`;
+  $("whatsnew-body").replaceChildren(...entries.map(changelogEntry));
+  $("whatsnew-dialog").hidden = false;
+}
+
 // ---------- ตั้งค่า ----------
 
 function renderSettings() {
@@ -448,6 +507,9 @@ function route() {
     show("settings");
   } else if (page === "about") {
     show("about");
+  } else if (page === "changelog") {
+    renderChangelog();
+    show("changelog");
   } else {
     renderHome();
     show("home");
@@ -464,6 +526,13 @@ function bindEvents() {
   bindSwipe();
   $("flip").addEventListener("click", flip);
   $("know").addEventListener("click", markKnown);
+  $("report").addEventListener("click", (event) => event.stopPropagation());
+  $("whatsnew-ok").addEventListener("click", () => {
+    $("whatsnew-dialog").hidden = true;
+  });
+  $("whatsnew-all").addEventListener("click", () => {
+    $("whatsnew-dialog").hidden = true;
+  });
   $("speak-word").addEventListener("click", (event) => {
     event.stopPropagation();
     speak(currentWord().headword);
@@ -661,4 +730,5 @@ setInterval(checkForNewVersion, UPDATE_CHECK_MS);
 checkForNewVersion();
 bindEvents();
 init();
+maybeShowWhatsNew();
 registerServiceWorker();

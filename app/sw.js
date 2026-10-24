@@ -4,7 +4,7 @@
 // PRECACHE ต้องมีทุกไฟล์ใน app/ (tests/test_pwa.py ตรวจให้)
 // Safari เทียบแค่ไฟล์ sw.js ไม่ดู version.js ที่ import มา จึงต้องเขียนเลข version ไว้ในไฟล์นี้ด้วย
 // ขยับ version ทุกครั้งต้องแก้บรรทัดด้านล่างให้ตรงกับ app/version.js (tests/test_pwa.py ตรวจให้)
-// sw-version: 0.6.0
+// sw-version: 0.7.0
 
 importScripts("version.js");
 
@@ -23,6 +23,8 @@ const PRECACHE = [
   "js/speech.js",
   "js/update.js",
   "js/stats.js",
+  "js/report.js",
+  "js/changelog.js",
   "icons/icon.svg",
   "icons/icon-192.png",
   "icons/icon-512.png",
@@ -57,6 +59,23 @@ self.addEventListener("message", (event) => {
 self.addEventListener("fetch", (event) => {
   const { request } = event;
   if (request.method !== "GET" || new URL(request.url).origin !== location.origin) return;
+  // changelog.md ถูกคัดลอกมาไว้ตอน deploy (ไม่อยู่ใน PRECACHE) ขอจากเซิร์ฟเวอร์ก่อน แล้วเก็บไว้เปิดตอน offline
+  if (new URL(request.url).pathname.endsWith("/changelog.md")) {
+    event.respondWith(
+      caches.open(CACHE).then(async (cache) => {
+        try {
+          const response = await fetch(request);
+          if (response.ok) await cache.put("changelog.md", response.clone());
+          return response;
+        } catch (error) {
+          const cached = await cache.match("changelog.md");
+          if (cached) return cached;
+          throw error;
+        }
+      }),
+    );
+    return;
+  }
   event.respondWith(
     caches.open(CACHE).then(async (cache) => {
       const cached = await cache.match(request, { ignoreSearch: true });

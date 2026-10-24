@@ -20,10 +20,12 @@
 </head>
 <body>
   <header class="topbar">
-    <a href="#/" class="brand">🌱 Vocab Garden</a>
-    <nav>
-      <a href="#/settings" class="icon-link" aria-label="ตั้งค่า">⚙️</a>
-      <a href="#/about" class="icon-link" aria-label="เกี่ยวกับ">ℹ️</a>
+    <a href="#/" class="brand">🌱 Vocab Garden <span class="version">v<span class="app-version"></span></span></a>
+    <!-- บนมือถือแถบเมนูนี้อยู่ด้านล่างจอ บนจอกว้างอยู่ในแถบด้านบน -->
+    <nav class="tabbar" aria-label="เมนูหลัก">
+      <a href="#/" data-tab="home"><span class="tab-icon" aria-hidden="true">🏠</span><span>หน้าหลัก</span></a>
+      <a href="#/settings" data-tab="settings"><span class="tab-icon" aria-hidden="true">⚙️</span><span>ตั้งค่า</span></a>
+      <a href="#/about" data-tab="about"><span class="tab-icon" aria-hidden="true">ℹ️</span><span>เกี่ยวกับ</span></a>
     </nav>
   </header>
 
@@ -60,16 +62,19 @@
 
     <section id="view-study" hidden>
       <div class="study-top">
-        <a href="#/" class="back">← กลับ</a>
+        <a href="#/" class="close" aria-label="ออกจากการท่องศัพท์">✕</a>
+        <div class="progress" aria-hidden="true"><div id="study-bar" class="progress-bar"></div></div>
         <span id="study-progress" class="muted small"></span>
       </div>
 
       <article id="card" class="flashcard" tabindex="0" aria-live="polite">
+        <span class="stamp stamp-again" aria-hidden="true">❌ ยังจำไม่ได้</span>
+        <span class="stamp stamp-good" aria-hidden="true">✅ จำได้</span>
         <div class="card-front">
           <p id="card-level" class="muted small"></p>
           <p id="card-word" class="word" lang="en"></p>
           <button type="button" id="speak-word" class="speak" aria-label="ฟังเสียงคำนี้">🔊</button>
-          <p id="card-hint" class="muted small">แตะการ์ดหรือกด Space เพื่อดูคำแปล</p>
+          <p id="card-hint" class="muted small">แตะการ์ดเพื่อดูคำแปล</p>
         </div>
         <div id="card-back" class="card-back" hidden>
           <ul id="card-senses" class="senses"></ul>
@@ -83,11 +88,14 @@
         </div>
       </article>
 
-      <button type="button" id="flip" class="primary wide">ดูคำแปล</button>
-      <div id="grades" class="grades" hidden>
-        <button type="button" data-grade="1" class="grade again">ยังจำไม่ได้<kbd>1</kbd></button>
-        <button type="button" data-grade="2" class="grade hard">พอจำได้<kbd>2</kbd></button>
-        <button type="button" data-grade="3" class="grade good">จำได้แม่น<kbd>3</kbd></button>
+      <p class="swipe-hint muted small">👈 ปัดซ้าย ยังจำไม่ได้ · ปัดขวา จำได้ 👉</p>
+      <div class="study-actions">
+        <button type="button" id="flip" class="primary wide">ดูคำแปล</button>
+        <div id="grades" class="grades" hidden>
+          <button type="button" data-grade="1" class="grade again">ยังจำไม่ได้<kbd>1</kbd></button>
+          <button type="button" data-grade="2" class="grade hard">พอจำได้<kbd>2</kbd></button>
+          <button type="button" data-grade="3" class="grade good">จำได้แม่น<kbd>3</kbd></button>
+        </div>
       </div>
     </section>
 
@@ -126,7 +134,7 @@
     <section id="view-about" hidden>
       <h1>เกี่ยวกับ Vocab Garden</h1>
       <p>แอปท่องศัพท์ภาษาอังกฤษพื้นฐานสำหรับคนไทย ใช้ฟรี คำศัพท์แต่ละคำเหมือนเมล็ดพันธุ์ ยิ่งทวนจนจำได้ ก็ยิ่งโต 🌱</p>
-      <p class="muted small">Vocab Garden v<span id="app-version"></span> · ข้อมูล NGSL 1.2</p>
+      <p class="muted small">Vocab Garden v<span class="app-version"></span> · ข้อมูล NGSL 1.2</p>
 
       <h2>เครดิตคำศัพท์</h2>
       <div class="panel">
@@ -156,8 +164,14 @@
     </section>
   </main>
 
-  <div id="update-banner" class="toast update" role="status" hidden>
-    มีเวอร์ชันใหม่ 🌱 <button type="button" id="update-now" class="primary">อัปเดต</button>
+  <div id="update-dialog" class="modal" role="dialog" aria-modal="true" aria-labelledby="update-title" hidden>
+    <div class="modal-box">
+      <p class="big-emoji" aria-hidden="true">🌱</p>
+      <h2 id="update-title">มีเวอร์ชันใหม่!</h2>
+      <p id="update-versions" class="muted"></p>
+      <button type="button" id="update-now" class="primary wide">ดาวน์โหลดเวอร์ชันใหม่</button>
+      <button type="button" id="update-later" class="wide">ไว้ทีหลัง</button>
+    </div>
   </div>
   <div id="toast" class="toast" role="status" hidden></div>
 </body>

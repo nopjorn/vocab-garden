@@ -5,6 +5,9 @@ import { NEW_PER_DAY_CHOICES, createStorage } from "./storage.js";
 
 const VIEWS = ["loading", "error", "home", "study", "done", "settings", "about"];
 const REQUEUE_GAP = 3; // คำที่ตอบ "ยังจำไม่ได้" จะกลับมาอีกครั้งหลังการ์ดใบอื่นอีก 3 ใบ
+const SWIPE_DISTANCE = 90; // ปัดเกินกี่ px ถึงนับเป็นการให้คะแนน
+const SWIPE_PREVIEW = 40; // ปัดเกินกี่ px ถึงเริ่มขึ้นป้ายบนการ์ด
+const UPDATE_CHECK_MS = 30 * 60 * 1000; // ระหว่างเปิดแอปค้างไว้ เช็คเวอร์ชันใหม่ทุก 30 นาที
 
 const storage = createStorage();
 const state = {
@@ -26,6 +29,11 @@ function el(tag, className, text) {
 function show(view) {
   VIEWS.forEach((name) => {
     $(`view-${name}`).hidden = name !== view;
+  });
+  document.body.classList.toggle("studying", view === "study");
+  document.querySelectorAll(".tabbar a").forEach((tab) => {
+    if (tab.dataset.tab === view) tab.setAttribute("aria-current", "page");
+    else tab.removeAttribute("aria-current");
   });
   window.scrollTo(0, 0);
 }
@@ -91,7 +99,7 @@ function startSession() {
     location.hash = "#/";
     return;
   }
-  state.session = { day, queue, answered: 0, learned: new Set() };
+  state.session = { day, queue, total: queue.length, answered: 0, learned: new Set() };
   show("study");
   showCard();
 }
@@ -102,7 +110,9 @@ function currentWord() {
 
 function showCard() {
   const word = currentWord();
-  $("study-progress").textContent = `เหลือ ${state.session.queue.length} ใบ`;
+  const { queue, total, learned } = state.session;
+  $("study-progress").textContent = `เหลือ ${queue.length} ใบ`;
+  $("study-bar").style.width = `${(learned.size / total) * 100}%`;
   $("card-level").textContent = `${levelTitle(word.level)} · อันดับ ${word.rank}`;
   $("card-word").textContent = word.headword;
   $("card-hint").hidden = false;
@@ -160,6 +170,76 @@ function answer(rating) {
   } else {
     finishSession();
   }
+}
+
+// ---------- ปัดการ์ด ----------
+
+const swipe = { start: null, dragging: false, justSwiped: false, busy: false };
+
+function setCardOffset(dx) {
+  const card = $("card");
+  card.style.transform = dx ? `translateX(${dx}px) rotate(${dx / 20}deg)` : "";
+  card.dataset.swipe = dx > SWIPE_PREVIEW ? "good" : dx < -SWIPE_PREVIEW ? "again" : "";
+}
+
+// ปัดขวา = จำได้แม่น, ปัดซ้าย = ยังจำไม่ได้ (ปัดได้ทั้งก่อนและหลังพลิกการ์ด)
+function swipeAnswer(rating) {
+  if (swipe.busy) return;
+  const card = $("card");
+  const reduceMotion = matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const finish = () => {
+    card.classList.remove("fly-left", "fly-right");
+    setCardOffset(0);
+    swipe.busy = false;
+    answer(rating);
+  };
+  if (reduceMotion) {
+    finish();
+    return;
+  }
+  swipe.busy = true;
+  card.classList.add(rating === GOOD ? "fly-right" : "fly-left");
+  setTimeout(finish, 200);
+}
+
+function bindSwipe() {
+  const card = $("card");
+  card.addEventListener("pointerdown", (event) => {
+    if (swipe.busy || event.target.closest("button")) return;
+    swipe.start = { x: event.clientX, y: event.clientY };
+    swipe.dragging = false;
+  });
+  card.addEventListener("pointermove", (event) => {
+    if (!swipe.start) return;
+    const dx = event.clientX - swipe.start.x;
+    const dy = event.clientY - swipe.start.y;
+    if (!swipe.dragging && Math.abs(dx) > 10 && Math.abs(dx) > Math.abs(dy)) {
+      swipe.dragging = true;
+      card.setPointerCapture(event.pointerId);
+      card.classList.add("dragging");
+    }
+    if (swipe.dragging) setCardOffset(dx);
+  });
+  const end = (event) => {
+    if (!swipe.start) return;
+    const dx = event.clientX - swipe.start.x;
+    const wasDragging = swipe.dragging;
+    swipe.start = null;
+    swipe.dragging = false;
+    card.classList.remove("dragging");
+    if (!wasDragging) return;
+    swipe.justSwiped = true; // กันไม่ให้ click หลังปัดไปพลิกการ์ด
+    setTimeout(() => {
+      swipe.justSwiped = false;
+    }, 0);
+    if (Math.abs(dx) >= SWIPE_DISTANCE && event.type === "pointerup") {
+      swipeAnswer(dx > 0 ? GOOD : AGAIN);
+    } else {
+      setCardOffset(0);
+    }
+  };
+  card.addEventListener("pointerup", end);
+  card.addEventListener("pointercancel", end);
 }
 
 function finishSession() {
@@ -241,7 +321,10 @@ function bindEvents() {
   window.addEventListener("hashchange", route);
   $("retry").addEventListener("click", init);
 
-  $("card").addEventListener("click", flip);
+  $("card").addEventListener("click", () => {
+    if (!swipe.justSwiped) flip();
+  });
+  bindSwipe();
   $("flip").addEventListener("click", flip);
   $("speak-word").addEventListener("click", (event) => {
     event.stopPropagation();
@@ -259,7 +342,10 @@ function bindEvents() {
   document.addEventListener("keydown", (event) => {
     if (!state.session || event.altKey || event.ctrlKey || event.metaKey) return;
     if (event.target.closest("input, select, textarea")) return;
-    if (!isFlipped() && (event.key === " " || event.key === "Enter")) {
+    if (event.key === "ArrowLeft" || event.key === "ArrowRight") {
+      event.preventDefault();
+      swipeAnswer(event.key === "ArrowRight" ? GOOD : AGAIN);
+    } else if (!isFlipped() && (event.key === " " || event.key === "Enter")) {
       event.preventDefault();
       flip();
     } else if (isFlipped() && ["1", "2", "3"].includes(event.key)) {
@@ -295,9 +381,31 @@ async function init() {
 
 // ---------- ใช้ offline (service worker) ----------
 
-function showUpdate(worker) {
-  $("update-banner").hidden = false;
-  $("update-now").onclick = () => worker.postMessage("skip-waiting");
+// ถามเลขเวอร์ชันจาก service worker ตัวใหม่ที่รอติดตั้งอยู่
+function workerVersion(worker) {
+  return new Promise((resolve) => {
+    const channel = new MessageChannel();
+    const timer = setTimeout(() => resolve(null), 1500);
+    channel.port1.onmessage = (event) => {
+      clearTimeout(timer);
+      resolve(event.data);
+    };
+    worker.postMessage("version", [channel.port2]);
+  });
+}
+
+async function showUpdate(worker) {
+  const next = await workerVersion(worker);
+  $("update-versions").textContent = next ? `v${self.VG_VERSION} → v${next}` : `ตอนนี้ใช้ v${self.VG_VERSION}`;
+  $("update-dialog").hidden = false;
+  $("update-now").onclick = () => {
+    $("update-now").disabled = true;
+    $("update-now").textContent = "กำลังอัปเดต…";
+    worker.postMessage("skip-waiting");
+  };
+  $("update-later").onclick = () => {
+    $("update-dialog").hidden = true;
+  };
 }
 
 async function registerServiceWorker() {
@@ -310,6 +418,12 @@ async function registerServiceWorker() {
   try {
     const registration = await navigator.serviceWorker.register("sw.js");
     if (registration.waiting && navigator.serviceWorker.controller) showUpdate(registration.waiting);
+    // แอปที่เปิดจากหน้าจอโฮมมักถูกพักไว้แทนการเปิดใหม่ จึงต้องเช็คเวอร์ชันใหม่เองตอนกลับมาใช้
+    const checkForUpdate = () => registration.update().catch(() => {});
+    document.addEventListener("visibilitychange", () => {
+      if (document.visibilityState === "visible") checkForUpdate();
+    });
+    setInterval(checkForUpdate, UPDATE_CHECK_MS);
     registration.addEventListener("updatefound", () => {
       const worker = registration.installing;
       worker.addEventListener("statechange", () => {
@@ -321,7 +435,9 @@ async function registerServiceWorker() {
   }
 }
 
-$("app-version").textContent = self.VG_VERSION;
+document.querySelectorAll(".app-version").forEach((node) => {
+  node.textContent = self.VG_VERSION;
+});
 $("speak-word").hidden = !canSpeak();
 $("speak-example").hidden = !canSpeak();
 navigator.storage?.persist?.();

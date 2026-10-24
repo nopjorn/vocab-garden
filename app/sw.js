@@ -46,6 +46,7 @@ self.addEventListener("activate", (event) => {
 
 self.addEventListener("message", (event) => {
   if (event.data === "skip-waiting") self.skipWaiting();
+  if (event.data === "version") event.ports[0]?.postMessage(self.VG_VERSION);
 });
 
 self.addEventListener("fetch", (event) => {

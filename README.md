@@ -45,6 +45,8 @@
 2. ทุก PR ที่เข้า `main` ต้องขยับเลข version ใน `app/version.js` และเขียน `CHANGELOG.md`
 3. ทุกการเปลี่ยนแปลงต้องผ่าน PR และผ่าน CI ก่อน merge
 
+ลองเปิดแอปในเครื่อง: `python3 -m http.server -d app` แล้วเข้า http://localhost:8000
+
 ตรวจในเครื่องก่อนเปิด PR:
 
 ```sh
@@ -52,4 +54,5 @@ python3 scripts/versioning.py check --base-ref origin/main
 python3 scripts/check_ngsl.py
 python3 scripts/validate_data.py
 python3 -m unittest discover -s tests
+node --test tests/js/*.test.mjs
 ```

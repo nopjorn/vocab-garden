@@ -443,6 +443,17 @@ async function showUpdate(worker) {
   };
 }
 
+// แอปที่เปิดจากไอคอนบนหน้าจอโฮมควรเหมือนแอปทั่วไป ไม่ให้ซูมหน้าได้ (เปิดผ่านเบราว์เซอร์ปกติยังซูมได้เพื่อการเข้าถึง)
+function lockZoomInInstalledApp() {
+  const installed = window.matchMedia("(display-mode: standalone)").matches || navigator.standalone === true;
+  if (!installed) return;
+  document
+    .querySelector('meta[name="viewport"]')
+    ?.setAttribute("content", "width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover");
+  // iOS ไม่สนใจ user-scalable=no ต้องกันท่าถ่างนิ้วด้วย gesturestart
+  document.addEventListener("gesturestart", (event) => event.preventDefault());
+}
+
 async function registerServiceWorker() {
   if (!("serviceWorker" in navigator)) return;
   // ถ้ามี service worker คุมหน้าอยู่แล้ว การเปลี่ยนตัวคุมคือการอัปเดต ให้โหลดหน้าใหม่ด้วยไฟล์เวอร์ชันใหม่
@@ -477,6 +488,7 @@ document.querySelectorAll(".app-version").forEach((node) => {
 $("speak-word").hidden = !canSpeak();
 $("speak-example").hidden = !canSpeak();
 navigator.storage?.persist?.();
+lockZoomInInstalledApp();
 bindEvents();
 init();
 registerServiceWorker();

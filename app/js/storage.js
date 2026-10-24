@@ -4,7 +4,8 @@
 
 export const SCHEMA = 1;
 const KEYS = { progress: "vg:progress", settings: "vg:settings", daily: "vg:daily" };
-export const DEFAULT_SETTINGS = { newPerDay: 10 };
+export const DEFAULT_SETTINGS = { newPerDay: 10, startLevel: 1 };
+export const LAST_LEVEL = 28;
 export const NEW_PER_DAY_CHOICES = [5, 10, 20];
 
 function memoryStore() {
@@ -67,7 +68,11 @@ export function createStorage(store = globalThis.localStorage) {
     loadSettings() {
       const saved = read(KEYS.settings, {});
       const newPerDay = NEW_PER_DAY_CHOICES.includes(saved.newPerDay) ? saved.newPerDay : DEFAULT_SETTINGS.newPerDay;
-      return { ...DEFAULT_SETTINGS, newPerDay };
+      const startLevel =
+        Number.isInteger(saved.startLevel) && saved.startLevel >= 1 && saved.startLevel <= LAST_LEVEL
+          ? saved.startLevel
+          : DEFAULT_SETTINGS.startLevel;
+      return { ...DEFAULT_SETTINGS, newPerDay, startLevel };
     },
     saveSettings(settings) {
       write(KEYS.settings, settings);

@@ -1,7 +1,7 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
 
-import { AGAIN, HARD, GOOD, buildQueue, dayNumber, grade, stageOf } from "../../app/js/srs.js";
+import { AGAIN, HARD, GOOD, buildQueue, dayNumber, grade, knownCard, stageOf } from "../../app/js/srs.js";
 
 const TODAY = 20000;
 
@@ -72,4 +72,22 @@ test("queue puts overdue cards first, then new cards in NGSL order up to the lim
   };
   assert.deepEqual(buildQueue(words, cards, TODAY, 1).map((word) => word.headword), ["c", "b", "d"]);
   assert.deepEqual(buildQueue(words, cards, TODAY, 0).map((word) => word.headword), ["c", "b"]);
+});
+
+test("knownCard sends a new word straight to a big tree", () => {
+  const card = knownCard(undefined, TODAY);
+  assert.deepEqual([card.ivl, card.due, card.reps, card.lapses], [30, TODAY + 30, 1, 0]);
+  assert.equal(stageOf(card).id, "tree");
+});
+
+test("knownCard never shortens a longer interval and keeps the lapse history", () => {
+  const card = knownCard({ due: TODAY, ivl: 50, ease: 2.1, reps: 6, lapses: 2 }, TODAY);
+  assert.deepEqual([card.ivl, card.due, card.ease, card.reps, card.lapses], [50, TODAY + 50, 2.1, 7, 2]);
+});
+
+test("buildQueue takes new words only from freshWords but still reviews every due word", () => {
+  const words = ["a", "b", "c", "d"].map((headword, order) => ({ headword, order }));
+  const cards = { a: { due: TODAY - 1, ivl: 1, ease: 2.5, reps: 1, lapses: 0 } };
+  const queue = buildQueue(words, cards, TODAY, 5, words.slice(2));
+  assert.deepEqual(queue.map((word) => word.headword), ["a", "c", "d"]);
 });

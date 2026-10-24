@@ -15,6 +15,7 @@ const HISTORY_KEEP_DAYS = 400; // เก็บประวัติการท�
 export const SPEECH_RATE_CHOICES = [0.7, 0.9, 1.1]; // ช้า / ปกติ / เร็ว
 export const THEME_CHOICES = ["auto", "light", "dark"];
 export const TEXT_SIZE_CHOICES = ["normal", "large"];
+export const QUIZ_MODE_CHOICES = ["flip", "mixed"]; // พลิกการ์ดแบบเดิม / ผสมหลายแบบตามระยะของต้นไม้
 export const DAILY_GOAL_CHOICES = [10, 20, 30]; // เป้าหมายรายวัน (จำนวนครั้งที่ตอบ)
 export const REVIEW_CAP_CHOICES = [50, 100, 0]; // ทวนได้ไม่เกินกี่ครั้งต่อวัน (0 = ไม่จำกัด)
 export const DEFAULT_SETTINGS = {
@@ -27,6 +28,7 @@ export const DEFAULT_SETTINGS = {
   sound: false,
   dailyGoal: 10,
   reviewCap: 100,
+  quizMode: "flip",
 };
 export const LAST_LEVEL = 28;
 export const NEW_PER_DAY_CHOICES = [5, 10, 20];
@@ -128,6 +130,7 @@ export function createStorage(store = globalThis.localStorage) {
         sound: saved.sound === true,
         dailyGoal: pick(DAILY_GOAL_CHOICES, saved.dailyGoal, DEFAULT_SETTINGS.dailyGoal),
         reviewCap: pick(REVIEW_CAP_CHOICES, saved.reviewCap, DEFAULT_SETTINGS.reviewCap),
+        quizMode: pick(QUIZ_MODE_CHOICES, saved.quizMode, DEFAULT_SETTINGS.quizMode),
       };
     },
     saveSettings(settings) {

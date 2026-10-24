@@ -1035,6 +1035,12 @@ body.studying main {
 
 .study-actions {
   min-height: 56px;
+  /* หลังพลิกการ์ดหน้าอาจยาวกว่าจอ ปุ่มจึงลอยติดขอบล่างให้กดได้เสมอ */
+  position: sticky;
+  bottom: 0;
+  z-index: 2;
+  padding: 10px 0 calc(6px + env(safe-area-inset-bottom));
+  background: linear-gradient(to bottom, transparent, var(--bg) 28%);
 }
 
 .grades {
@@ -1090,6 +1096,86 @@ kbd {
   kbd {
     display: inline;
   }
+}
+
+/* ===== ทวนแบบผสม (เลือกคำแปล / เติมคำ) ===== */
+.word.sentence {
+  font-size: clamp(1.4rem, 6vw, 2rem);
+  font-weight: 700;
+  letter-spacing: 0;
+  line-height: 1.45;
+}
+
+.blank {
+  display: inline-block;
+  min-width: 3.2em;
+  padding: 0 6px;
+  border-bottom: 3px solid var(--brand);
+  text-align: center;
+  color: var(--muted);
+}
+
+.blank.filled {
+  color: var(--link);
+  border-bottom-color: var(--good-deep);
+}
+
+.quiz-options {
+  list-style: none;
+  margin: 0 0 12px;
+  padding: 0;
+  display: grid;
+  gap: 10px;
+}
+
+.quiz-option {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  min-height: 52px;
+  padding: 10px 14px;
+  text-align: left;
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--text);
+  background: var(--surface);
+  border: 2px solid var(--border);
+  border-radius: var(--radius-sm);
+  box-shadow: 0 3px 0 var(--border);
+}
+
+.quiz-option kbd {
+  margin: 0;
+  opacity: 0.6;
+}
+
+.quiz-option:disabled {
+  opacity: 1;
+  cursor: default;
+}
+
+.quiz-option.correct {
+  background: var(--brand-soft);
+  border-color: var(--good-deep);
+  box-shadow: 0 3px 0 var(--good-deep);
+}
+
+.quiz-option.wrong {
+  background: var(--warning-bg);
+  border-color: var(--again-deep);
+  box-shadow: 0 3px 0 var(--again-deep);
+}
+
+.quiz-feedback {
+  margin: 0 0 12px;
+  text-align: center;
+  font-weight: 700;
+  color: var(--text);
+}
+
+.quiz-feedback.is-correct {
+  color: var(--link);
 }
 
 /* ===== จบรอบ ===== */

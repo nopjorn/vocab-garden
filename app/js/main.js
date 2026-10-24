@@ -2,12 +2,14 @@ import { LEVELS, levelTitle, loadWords } from "./data.js";
 import { comboMessage, growthSummary, nextCombo, recordGrowth, stageMove, wordList } from "./celebrate.js";
 import { launchConfetti } from "./confetti.js";
 import { canSpeak, speak } from "./speech.js";
+import { buildQuestion } from "./quiz.js";
 import { playSfx } from "./sfx.js";
 import { daysAway, goalProgress, settleRest } from "./habit.js";
 import { AGAIN, GOOD, HARD, STAGES, buildQueue, dayNumber, grade, isDue, knownCard, stageOf } from "./srs.js";
 import {
   DAILY_GOAL_CHOICES,
   NEW_PER_DAY_CHOICES,
+  QUIZ_MODE_CHOICES,
   REVIEW_CAP_CHOICES,
   SPEECH_RATE_CHOICES,
   TEXT_SIZE_CHOICES,
@@ -252,7 +254,7 @@ function startSession(level = null) {
     location.hash = "#/";
     return;
   }
-  state.session = { day, queue, total: queue.length, answered: 0, learned: new Set(), combo: 0, bestCombo: 0, grown: new Map() };
+  state.session = { day, queue, total: queue.length, answered: 0, learned: new Set(), combo: 0, bestCombo: 0, grown: new Map(), quiz: null };
   show("study");
   renderCombo();
   showCard();
@@ -290,8 +292,81 @@ function showCard() {
   $("card-note").textContent = word.note ? `💡 ${word.note}` : "";
   $("card-note").hidden = !word.note;
   $("report").href = issueUrl(word, self.VG_VERSION);
-  if (state.settings.autoSpeak) speakWord(word.headword);
+  state.session.quiz = quizFor(word);
+  renderQuiz(word);
+  if (state.settings.autoSpeak && state.session.quiz?.type !== "cloze") speakWord(word.headword);
   $("card").focus({ preventScroll: true });
+}
+
+// ---------- ทวนแบบผสม (เลือกคำแปล / เติมคำในประโยค) ----------
+
+// คำถามของการ์ดใบนี้ (null = พลิกการ์ดแบบเดิม): ใช้เฉพาะโหมด "ผสมหลายแบบ" และกับคำที่เคยเห็นแล้ว
+function quizFor(word) {
+  if (state.settings.quizMode !== "mixed") return null;
+  const question = buildQuestion(word, state.cards[word.headword], translatedWords());
+  return question && { ...question, answered: false, rating: null };
+}
+
+function renderQuiz(word) {
+  const quiz = state.session.quiz;
+  $("quiz-options").hidden = !quiz;
+  $("quiz-feedback").hidden = true;
+  $("quiz-next").hidden = true;
+  $("quiz-skip").hidden = !quiz;
+  $("swipe-hint").hidden = Boolean(quiz); // ทวนแบบผสมไม่ปัดการ์ด
+  $("flip").hidden = Boolean(quiz);
+  $("speak-word").hidden = quiz?.type === "cloze";
+  $("card-word").classList.toggle("sentence", quiz?.type === "cloze");
+  if (!quiz) return;
+
+  if (quiz.type === "cloze") {
+    $("card-word").replaceChildren(quiz.before, el("span", "blank", "＿＿＿＿"), quiz.after);
+    $("card-hint").textContent = `เติมคำที่หายไป · ${word.exampleTh}`;
+  } else {
+    $("card-hint").textContent = "เลือกคำแปลที่ถูกต้อง";
+  }
+  $("quiz-options").replaceChildren(
+    ...quiz.options.map((option, index) => {
+      const item = el("li");
+      const button = el("button", "quiz-option", option.text);
+      button.type = "button";
+      button.dataset.index = index;
+      if (quiz.type === "cloze") button.lang = "en";
+      button.prepend(el("kbd", "", index + 1));
+      item.append(button);
+      return item;
+    }),
+  );
+}
+
+// index = ตัวเลือกที่แตะ (-1 = กด "ไม่รู้ ดูคำตอบ") ตอบถูก = จำได้แม่น นอกนั้น = ยังจำไม่ได้
+function chooseOption(index) {
+  const quiz = state.session?.quiz;
+  if (!quiz || quiz.answered) return;
+  quiz.answered = true;
+  const correct = index === quiz.answerIndex;
+  quiz.rating = correct ? GOOD : AGAIN;
+
+  $("quiz-options")
+    .querySelectorAll(".quiz-option")
+    .forEach((button, position) => {
+      button.disabled = true;
+      button.classList.toggle("correct", position === quiz.answerIndex);
+      button.classList.toggle("wrong", position === index && !correct);
+    });
+  if (quiz.type === "cloze") $("card-word").replaceChildren(quiz.before, el("span", "blank filled", quiz.answerText), quiz.after);
+  $("quiz-feedback").textContent = correct ? "✅ ถูกต้อง!" : `${index < 0 ? "💡" : "❌ ยังไม่ถูก"} คำตอบคือ ${quiz.answerText}`;
+  $("quiz-feedback").classList.toggle("is-correct", correct);
+  $("quiz-feedback").hidden = false;
+  $("quiz-skip").hidden = true;
+  flip();
+  $("quiz-next").hidden = false;
+  $("quiz-next").focus({ preventScroll: true });
+}
+
+function nextQuiz() {
+  const quiz = state.session?.quiz;
+  if (quiz && quiz.answered) answer(quiz.rating);
 }
 
 function isFlipped() {
@@ -303,7 +378,7 @@ function flip() {
   $("card-back").hidden = false;
   $("card-hint").hidden = true;
   $("flip").hidden = true;
-  $("grades").hidden = false;
+  $("grades").hidden = Boolean(state.session?.quiz); // โหมดทวนแบบผสมให้คะแนนเอง
 }
 
 // คอมโบ: ตอบ "พอจำได้" / "จำได้แม่น" ติดกันกี่ใบ แสดงตั้งแต่ใบที่ 2
@@ -423,7 +498,7 @@ function swipeAnswer(rating) {
 function bindSwipe() {
   const card = $("card");
   card.addEventListener("pointerdown", (event) => {
-    if (swipe.busy || event.target.closest("button")) return;
+    if (swipe.busy || state.session?.quiz || event.target.closest("button")) return;
     swipe.start = { x: event.clientX, y: event.clientY };
     swipe.dragging = false;
   });
@@ -598,6 +673,7 @@ function renderSupport() {
 const SPEECH_RATE_LABELS = { 0.7: "ช้า", 0.9: "ปกติ", 1.1: "เร็ว" };
 const THEME_LABELS = { auto: "ตามเครื่อง", light: "สว่าง", dark: "มืด" };
 const TEXT_SIZE_LABELS = { normal: "ปกติ", large: "ใหญ่" };
+const QUIZ_MODE_LABELS = { flip: "พลิกการ์ด (แบบเดิม)", mixed: "ผสมหลายแบบ" };
 const DAILY_GOAL_LABELS = Object.fromEntries(DAILY_GOAL_CHOICES.map((count) => [count, `${count} ครั้ง`]));
 const REVIEW_CAP_LABELS = Object.fromEntries(REVIEW_CAP_CHOICES.map((count) => [count, count ? `ไม่เกิน ${count} ครั้ง` : "ไม่จำกัด"]));
 
@@ -632,6 +708,7 @@ function renderSettings() {
   fillSelect($("speech-rate"), SPEECH_RATE_CHOICES, state.settings.speechRate, SPEECH_RATE_LABELS);
   fillSelect($("theme"), THEME_CHOICES, state.settings.theme, THEME_LABELS);
   fillSelect($("text-size"), TEXT_SIZE_CHOICES, state.settings.textSize, TEXT_SIZE_LABELS);
+  fillSelect($("quiz-mode"), QUIZ_MODE_CHOICES, state.settings.quizMode, QUIZ_MODE_LABELS);
   fillSelect($("daily-goal"), DAILY_GOAL_CHOICES, state.settings.dailyGoal, DAILY_GOAL_LABELS);
   fillSelect($("review-cap"), REVIEW_CAP_CHOICES, state.settings.reviewCap, REVIEW_CAP_LABELS);
   $("auto-speak").checked = state.settings.autoSpeak;
@@ -717,8 +794,14 @@ function bindEvents() {
   $("retry").addEventListener("click", init);
 
   $("card").addEventListener("click", () => {
-    if (!swipe.justSwiped) flip();
+    if (!swipe.justSwiped && !state.session?.quiz) flip();
   });
+  $("quiz-options").addEventListener("click", (event) => {
+    const button = event.target.closest("[data-index]");
+    if (button) chooseOption(Number(button.dataset.index));
+  });
+  $("quiz-skip").addEventListener("click", () => chooseOption(-1));
+  $("quiz-next").addEventListener("click", nextQuiz);
   bindSwipe();
   $("flip").addEventListener("click", flip);
   $("know").addEventListener("click", markKnown);
@@ -752,6 +835,19 @@ function bindEvents() {
   document.addEventListener("keydown", (event) => {
     if (!state.session || event.altKey || event.ctrlKey || event.metaKey) return;
     if (event.target.closest("input, select, textarea")) return;
+    const quiz = state.session.quiz;
+    if (quiz) {
+      // ทวนแบบผสม: 1–4 เลือกคำตอบ เว้นวรรค/Enter ไปต่อ (ไม่ปัดการ์ด ไม่ให้คะแนนเอง)
+      if (!quiz.answered && /^[1-4]$/.test(event.key)) {
+        if (Number(event.key) <= quiz.options.length) chooseOption(Number(event.key) - 1);
+      } else if (quiz.answered && (event.key === " " || event.key === "Enter")) {
+        event.preventDefault();
+        nextQuiz();
+      } else if (event.key === "k" || event.key === "K") {
+        markKnown();
+      }
+      return;
+    }
     if (event.key === "ArrowLeft" || event.key === "ArrowRight") {
       event.preventDefault();
       swipeAnswer(event.key === "ArrowRight" ? GOOD : AGAIN);
@@ -787,6 +883,7 @@ function bindEvents() {
   $("speech-test").addEventListener("click", () => speakWord("Hello, welcome to Vocab Garden"));
   $("theme").addEventListener("change", (event) => updateSetting({ theme: event.target.value }));
   $("text-size").addEventListener("change", (event) => updateSetting({ textSize: event.target.value }));
+  $("quiz-mode").addEventListener("change", (event) => updateSetting({ quizMode: event.target.value }));
   $("daily-goal").addEventListener("change", (event) => {
     updateSetting({ dailyGoal: Number(event.target.value) });
     toast(`ตั้งเป้าหมายวันละ ${state.settings.dailyGoal} ครั้งแล้ว`);

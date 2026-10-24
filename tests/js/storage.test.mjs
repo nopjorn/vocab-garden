@@ -24,6 +24,7 @@ test("settings default to 10 new words a day starting from level 1 with the syst
     sound: false,
     dailyGoal: 10,
     reviewCap: 100,
+    quizMode: "flip",
   });
 });
 
@@ -93,13 +94,13 @@ test("reset clears the history too", () => {
 
 test("sound and appearance settings are saved and read back", () => {
   const storage = createStorage(fakeStore());
-  const custom = { ...DEFAULT_SETTINGS, autoSpeak: true, speechRate: 0.7, theme: "dark", textSize: "large", sound: true, dailyGoal: 30, reviewCap: 0 };
+  const custom = { ...DEFAULT_SETTINGS, autoSpeak: true, speechRate: 0.7, theme: "dark", textSize: "large", sound: true, dailyGoal: 30, reviewCap: 0, quizMode: "mixed" };
   storage.saveSettings(custom);
   assert.deepEqual(storage.loadSettings(), custom);
 });
 
 test("invalid sound and appearance values fall back to the defaults", () => {
-  const saved = { autoSpeak: "yes", speechRate: 5, theme: "purple", textSize: "huge", sound: "on", dailyGoal: 15, reviewCap: "many" };
+  const saved = { autoSpeak: "yes", speechRate: 5, theme: "purple", textSize: "huge", sound: "on", dailyGoal: 15, reviewCap: "many", quizMode: "hard" };
   const storage = createStorage(fakeStore({ "vg:settings": JSON.stringify(saved) }));
   assert.deepEqual(storage.loadSettings(), DEFAULT_SETTINGS);
 });

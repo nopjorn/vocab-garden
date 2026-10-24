@@ -118,8 +118,12 @@
         </div>
       </article>
 
-      <p class="swipe-hint muted small">👈 ปัดซ้าย ยังจำไม่ได้ · ปัดขวา จำได้ 👉</p>
+      <p id="swipe-hint" class="swipe-hint muted small">👈 ปัดซ้าย ยังจำไม่ได้ · ปัดขวา จำได้ 👉</p>
+      <ul id="quiz-options" class="quiz-options" aria-label="ตัวเลือกคำตอบ" hidden></ul>
+      <p id="quiz-feedback" class="quiz-feedback" role="status" hidden></p>
       <div class="study-actions">
+        <button type="button" id="quiz-skip" class="wide" hidden>🤷 ไม่รู้ ดูคำตอบ</button>
+        <button type="button" id="quiz-next" class="primary wide" hidden>ต่อไป ➡️</button>
         <button type="button" id="flip" class="primary wide">👀 ดูคำแปล</button>
         <div id="grades" class="grades" hidden>
           <button type="button" data-grade="1" class="grade again"><span class="grade-emoji" aria-hidden="true">😵</span>ยังจำไม่ได้<kbd>1</kbd></button>
@@ -195,6 +199,17 @@
         </p>
         <p class="tip small">บางเครื่อง (เช่น iPhone) อาจต้องแตะหน้าจอหนึ่งครั้งก่อน เสียงจึงจะเล่นอัตโนมัติ
           เสียงมาจากเครื่องของคุณ ถ้าไม่ได้ยินให้เช็คว่าไม่ได้ปิดเสียงเครื่องไว้</p>
+      </div>
+
+      <h2>วิธีทวน</h2>
+      <div class="panel">
+        <p>
+          <label for="quiz-mode">รูปแบบการทวน</label>
+          <select id="quiz-mode"></select>
+        </p>
+        <p class="tip small">"ผสมหลายแบบ": คำใหม่ยังเป็นการ์ดให้ดูก่อน ต้นอ่อน 🌱 ตอบด้วยการเลือกคำแปล ต้นที่โตแล้ว 🌿🌳
+          เติมคำที่หายไปในประโยคตัวอย่าง ตอบถูกนับเป็น "จำได้แม่น" ตอบผิดหรือกด "ไม่รู้" นับเป็น "ยังจำไม่ได้"
+          ได้ทั้งการนึกเองและการจำคำในประโยค ช่วยให้จำได้นานกว่าการพลิกดูคำแปลอย่างเดียว</p>
       </div>
 
       <h2>นิสัยการท่อง</h2>

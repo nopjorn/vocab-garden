@@ -386,6 +386,13 @@ kbd {
   box-shadow: var(--shadow);
 }
 
+.toast.update {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  white-space: nowrap;
+}
+
 @media (prefers-reduced-motion: no-preference) {
   .card-back:not([hidden]) {
     animation: reveal 0.2s ease-out;

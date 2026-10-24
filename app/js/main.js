@@ -293,9 +293,38 @@ async function init() {
   route();
 }
 
+// ---------- ใช้ offline (service worker) ----------
+
+function showUpdate(worker) {
+  $("update-banner").hidden = false;
+  $("update-now").onclick = () => worker.postMessage("skip-waiting");
+}
+
+async function registerServiceWorker() {
+  if (!("serviceWorker" in navigator)) return;
+  // ถ้ามี service worker คุมหน้าอยู่แล้ว การเปลี่ยนตัวคุมคือการอัปเดต ให้โหลดหน้าใหม่ด้วยไฟล์เวอร์ชันใหม่
+  const updating = Boolean(navigator.serviceWorker.controller);
+  navigator.serviceWorker.addEventListener("controllerchange", () => {
+    if (updating) location.reload();
+  });
+  try {
+    const registration = await navigator.serviceWorker.register("sw.js");
+    if (registration.waiting && navigator.serviceWorker.controller) showUpdate(registration.waiting);
+    registration.addEventListener("updatefound", () => {
+      const worker = registration.installing;
+      worker.addEventListener("statechange", () => {
+        if (worker.state === "installed" && navigator.serviceWorker.controller) showUpdate(worker);
+      });
+    });
+  } catch (error) {
+    console.warn("ลงทะเบียน service worker ไม่สำเร็จ", error);
+  }
+}
+
 $("app-version").textContent = self.VG_VERSION;
 $("speak-word").hidden = !canSpeak();
 $("speak-example").hidden = !canSpeak();
 navigator.storage?.persist?.();
 bindEvents();
 init();
+registerServiceWorker();

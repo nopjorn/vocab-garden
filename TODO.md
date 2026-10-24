@@ -2,7 +2,7 @@
 
 > แอปท่องศัพท์ภาษาอังกฤษพื้นฐานจาก NGSL 1.2 สำหรับคนไทย ใช้ฟรี เปิดได้ทั้งบนเว็บและบนมือถือแบบ Add to Home Screen
 >
-> **สถานะ:** Phase 2A ตัวแอปเสร็จแล้ว รอ merge PR (ต่อไป Phase 2B: PWA และ deploy) · **อัปเดตล่าสุด:** 2026-10-25
+> **สถานะ:** Phase 2B (PWA + deploy) เสร็จแล้ว รอ merge PR เพื่อออก v0.1.0 · **อัปเดตล่าสุด:** 2026-10-25
 
 **วิธีใช้ไฟล์นี้:** ทุก PR ต้องติ๊กงานที่ทำเสร็จและอัปเดตสถานะด้านบน · 👤 = งานที่เจ้าของโปรเจคต้องทำเอง
 
@@ -219,18 +219,18 @@ vocab-garden/
 - [x] ปุ่ม 🔊 ใช้ Web Speech API (en-US) · ซ่อนปุ่มถ้าเครื่องไม่รองรับ
 
 ### PWA
-- [ ] `manifest.webmanifest` (ชื่อ, ไอคอน 192/512 + maskable, standalone, สีธีม, `lang: th`)
-- [ ] ไอคอนต้นกล้าออกแบบเอง (SVG) + `apple-touch-icon` 180px + meta สำหรับ iOS
-- [ ] `sw.js`: `importScripts('version.js')`, ตั้งชื่อ cache เป็น `vg-<version>`, เก็บแอปและข้อมูลไว้ใช้ offline, ลบ cache เก่า
-- [ ] แจ้งผู้ใช้ "มีเวอร์ชันใหม่ แตะเพื่ออัปเดต"
-- [ ] คำแนะนำสำหรับ iOS: ให้เปิดจากไอคอนบนหน้าจอเป็นหลัก เพราะ Safari กับแอปบนหน้าจอเก็บข้อมูลแยกกัน
+- [x] `manifest.webmanifest` (ชื่อ, ไอคอน 192/512 + maskable, standalone, สีธีม, `lang: th`)
+- [x] ไอคอนต้นกล้าออกแบบเอง (SVG) + `apple-touch-icon` 180px + meta สำหรับ iOS
+- [x] `sw.js`: `importScripts('version.js')`, ตั้งชื่อ cache เป็น `vg-<version>`, เก็บแอปและข้อมูลไว้ใช้ offline, ลบ cache เก่า
+- [x] แจ้งผู้ใช้ "มีเวอร์ชันใหม่ แตะเพื่ออัปเดต"
+- [x] คำแนะนำสำหรับ iOS: ให้เปิดจากไอคอนบนหน้าจอเป็นหลัก เพราะ Safari กับแอปบนหน้าจอเก็บข้อมูลแยกกัน
 
 ### Deploy
-- [ ] เพิ่มขั้นตอน deploy โฟลเดอร์ `app/` ขึ้น GitHub Pages ใน `release.yml`
+- [x] เพิ่มขั้นตอน deploy โฟลเดอร์ `app/` ขึ้น GitHub Pages ใน `release.yml`
 - [ ] 👤 ตั้ง Settings → Pages → Source เป็น GitHub Actions
 
 ### ทดสอบ
-- [ ] ทดสอบอัตโนมัติด้วย Playwright ระหว่างพัฒนา: เปิดแอป, พลิกการ์ด, ให้คะแนน, ใช้แบบ offline
+- [x] ทดสอบอัตโนมัติด้วย Playwright ระหว่างพัฒนา: เปิดแอป, พลิกการ์ด, ให้คะแนน, ใช้แบบ offline
 - [ ] 👤 ทดสอบบน iPad: เปิดใน Safari, Add to Home Screen, ปิดเน็ตแล้วลองใช้, ลองอัปเดตเวอร์ชัน
 - [ ] ทดสอบบน Android Chrome และบนคอม (Chrome, Safari, Firefox)
 

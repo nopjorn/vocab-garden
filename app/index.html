@@ -6,6 +6,14 @@
   <title>Vocab Garden</title>
   <meta name="description" content="ท่องศัพท์ภาษาอังกฤษพื้นฐานจาก NGSL ใช้ฟรี">
   <meta name="color-scheme" content="light dark">
+  <meta name="theme-color" content="#2f7d4f">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="Vocab Garden">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" href="icons/icon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
   <link rel="stylesheet" href="css/style.css">
   <script src="version.js"></script>
   <script type="module" src="js/main.js"></script>
@@ -148,6 +156,9 @@
     </section>
   </main>
 
+  <div id="update-banner" class="toast update" role="status" hidden>
+    มีเวอร์ชันใหม่ 🌱 <button type="button" id="update-now" class="primary">อัปเดต</button>
+  </div>
   <div id="toast" class="toast" role="status" hidden></div>
 </body>
 </html>

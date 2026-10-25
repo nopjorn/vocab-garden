@@ -4,6 +4,7 @@ import { launchConfetti } from "./confetti.js";
 import { canSpeak, speak } from "./speech.js";
 import { buildQuestion, gradeTyped } from "./quiz.js";
 import { playSfx } from "./sfx.js";
+import { buildIcs, parseTime } from "./reminder.js";
 import { buildCalendar, cellLabel } from "./calendar.js";
 import { wordOfDay } from "./daily.js";
 import { EXAM_COUNT, TIERS, bestTier, buildExam, examMedalIds, examReady, rescheduleMissed, tierOf } from "./exam.js";
@@ -1637,6 +1638,24 @@ function renderSettings() {
   );
 }
 
+// สร้างไฟล์ปฏิทิน (.ics) นัดทุกวัน ให้ดาวน์โหลดไปเปิดด้วยแอปปฏิทิน
+function makeReminder() {
+  const time = parseTime($("reminder-time").value);
+  if (!time) {
+    toast("เลือกเวลาที่อยากให้เตือนก่อนนะ");
+    return;
+  }
+  const link = el("a");
+  const blob = new Blob([buildIcs(time, new Date(), location.origin + location.pathname)], { type: "text/calendar;charset=utf-8" });
+  link.href = URL.createObjectURL(blob);
+  link.download = "vocab-garden-reminder.ics";
+  document.body.append(link);
+  link.click();
+  link.remove();
+  setTimeout(() => URL.revokeObjectURL(link.href), 1000);
+  toast("สร้างไฟล์นัดแล้ว เปิดไฟล์ด้วยแอปปฏิทินเพื่อเพิ่มการเตือน 📅");
+}
+
 function exportBackup() {
   const data = storage.exportData(self.VG_VERSION);
   const blob = new Blob([JSON.stringify(data, null, 2)], { type: "application/json" });
@@ -2047,6 +2066,7 @@ function bindEvents() {
     toast(state.settings.reviewCap ? `วันนี้ทวนได้ไม่เกิน ${state.settings.reviewCap} ครั้ง` : "ทวนได้ไม่จำกัดต่อวัน");
   });
   matchMedia("(prefers-color-scheme: dark)").addEventListener("change", applyAppearance);
+  $("reminder-make").addEventListener("click", makeReminder);
   $("export").addEventListener("click", exportBackup);
   $("import").addEventListener("change", (event) => {
     const [file] = event.target.files;

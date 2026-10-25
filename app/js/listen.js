@@ -1,6 +1,6 @@
 // เกมฟังแล้วเลือก: ได้ยินแต่เสียงอ่าน แล้วเลือกคำแปลไทยที่ถูก (ตรรกะล้วน ไม่แตะหน้าเว็บ)
 
-import { choiceQuestion, shuffle } from "./quiz.js";
+import { choiceQuestion, editDistance, meaningOf, shuffle } from "./quiz.js";
 
 export const LISTEN_COUNT = 8;
 
@@ -30,3 +30,29 @@ export function listenSummary(score, total) {
   if (score === total) return `ได้ยินถูกทุกข้อ ${score}/${total} เก่งมาก 🎉`;
   return `ฟังถูก ${score}/${total} ข้อ ลองเล่นอีกรอบเพื่อฝึกหูให้คุ้นกับเสียงนะ`;
 }
+
+// ---------- แบบพิมพ์: ฟังแล้วพิมพ์คำที่ได้ยิน ----------
+
+export const DICTATION_COUNT = 6;
+export const DICTATION_POINTS = { clean: 2, hint: 1, close: 1, wrong: 0 }; // พิมพ์ถูกเอง / ถูกแต่ดูใบ้ / สะกดผิดตัวเดียว / ผิด
+
+// ข้อสอบพิมพ์: เฉพาะคำที่เป็นตัวอักษร 3–10 ตัว และไม่มีคำพ้องเสียง คืน null ถ้าคำไม่พอ
+export function buildDictationRound(pool, rng = Math.random, count = DICTATION_COUNT, only = pool) {
+  const eligible = only.filter((word) => canListenTo(word) && meaningOf(word) && /^[a-z]{3,10}$/.test(word.headword.toLowerCase()));
+  if (eligible.length < count) return null;
+  return shuffle(eligible, rng)
+    .slice(0, count)
+    .map((word) => ({ word, answer: word.headword.toLowerCase(), meaning: meaningOf(word) }));
+}
+
+// ตรวจคำที่พิมพ์: ถูกทุกตัว = clean (ใช้ใบ้ = hint) · ผิดตัวเดียวในคำยาว 5 ตัวขึ้นไป = close · นอกนั้น = wrong
+export function gradeDictation(item, input, hinted = false) {
+  const typed = input.trim().toLowerCase();
+  if (typed === item.answer) return hinted ? "hint" : "clean";
+  if (item.answer.length >= 5 && typed.length > 0 && editDistance(typed, item.answer) === 1) return "close";
+  return "wrong";
+}
+
+export const dictationScore = (results) => results.reduce((sum, result) => sum + DICTATION_POINTS[result], 0);
+
+export const dictationMax = (count = DICTATION_COUNT) => count * DICTATION_POINTS.clean;

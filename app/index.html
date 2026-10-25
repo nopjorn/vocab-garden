@@ -300,6 +300,12 @@
             <span class="game-info"><strong>ฟังแล้วเลือก</strong><span class="muted small">ฟังเสียงอ่านโดยไม่เห็นตัวสะกด แล้วเลือกคำแปลไทยที่ถูก 8 ข้อ (ต้องเปิดเสียงเครื่อง)</span><span id="listen-best" class="small"></span></span>
           </a>
         </li>
+        <li id="dictation-card">
+          <a class="game-card" href="#/play/dictation">
+            <span class="game-emoji" aria-hidden="true">⌨️</span>
+            <span class="game-info"><strong>ฟังแล้วพิมพ์</strong><span class="muted small">ฟังเสียงอ่านแล้วพิมพ์คำอังกฤษที่ได้ยิน 6 ข้อ ฝึกสะกดไปพร้อมกัน (ต้องเปิดเสียงเครื่อง)</span><span id="dictation-best" class="small"></span></span>
+          </a>
+        </li>
         <li>
           <a class="game-card" href="#/play/wordle">
             <span class="game-emoji" aria-hidden="true">🔤</span>
@@ -364,6 +370,38 @@
         <p id="listen-summary" class="muted"></p>
         <p id="listen-marks" class="big-marks" aria-hidden="true"></p>
         <button type="button" id="listen-again" class="primary wide">🔁 เล่นอีกรอบ</button>
+        <a href="#/play" class="button wide">กลับไปหน้าเกม</a>
+      </div>
+    </section>
+
+    <section id="view-dictation" hidden>
+      <div class="study-top">
+        <a href="#/play" class="close" aria-label="กลับไปหน้าเกม">✕</a>
+        <strong class="game-title">⌨️ ฟังแล้วพิมพ์</strong>
+        <span id="dictation-count" class="muted small"></span>
+      </div>
+      <div id="dictation-play">
+        <p class="muted small center-text">ฟังเสียงแล้วพิมพ์คำอังกฤษที่ได้ยิน</p>
+        <p class="center-text"><button type="button" id="dictation-replay" class="listen-btn" aria-label="ฟังอีกครั้ง">🔊</button></p>
+        <p id="dictation-blanks" class="dictation-blanks" aria-hidden="true"></p>
+        <p id="dictation-hint" class="muted small center-text" hidden></p>
+        <form id="dictation-form" class="dictation-form" autocomplete="off">
+          <input id="dictation-input" type="text" lang="en" autocapitalize="off" autocorrect="off" spellcheck="false" enterkeyhint="done" aria-label="พิมพ์คำที่ได้ยิน">
+          <button type="submit" id="dictation-check" class="primary">ตรวจ</button>
+        </form>
+        <div class="row scramble-actions">
+          <button type="button" id="dictation-hint-btn">💡 ใบ้คำแปล (ได้ 1 แต้ม)</button>
+          <button type="button" id="dictation-skip">🤷 ข้าม</button>
+        </div>
+        <p id="dictation-feedback" class="quiz-feedback" role="status" hidden></p>
+        <button type="button" id="dictation-next" class="primary wide" hidden>ต่อไป ➡️</button>
+      </div>
+      <div id="dictation-result" class="done-card" hidden>
+        <p class="big-emoji celebrate" aria-hidden="true">⌨️</p>
+        <h2 id="dictation-title"></h2>
+        <p id="dictation-summary" class="muted"></p>
+        <p id="dictation-marks" class="big-marks" aria-hidden="true"></p>
+        <button type="button" id="dictation-again" class="primary wide">🔁 เล่นอีกรอบ</button>
         <a href="#/play" class="button wide">กลับไปหน้าเกม</a>
       </div>
     </section>

@@ -177,6 +177,10 @@ h1 {
   line-height: 1;
 }
 
+.center-text > .icon-btn {
+  margin-inline: auto;
+}
+
 h2 {
   font-size: 1.15rem;
   letter-spacing: -0.01em;
@@ -1465,6 +1469,41 @@ kbd {
 
 #quiz-input:disabled {
   opacity: 0.7;
+}
+
+.placement-levels {
+  list-style: none;
+  margin: 16px 0;
+  padding: 0;
+  display: grid;
+  gap: 8px;
+  text-align: left;
+}
+
+.placement-levels li {
+  display: grid;
+  grid-template-columns: 4.5rem 1fr 3rem;
+  align-items: center;
+  gap: 10px;
+}
+
+.placement-bar {
+  height: 10px;
+  border-radius: 999px;
+  background: var(--seed);
+  overflow: hidden;
+}
+
+.placement-bar > span {
+  display: block;
+  height: 100%;
+  background: var(--tree);
+}
+
+.placement-pct {
+  text-align: right;
+  font-weight: 700;
+  color: var(--link);
 }
 
 .listen-btn {

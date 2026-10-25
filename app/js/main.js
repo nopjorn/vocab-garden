@@ -2318,6 +2318,9 @@ function finishExam() {
 
 function route() {
   if (state.words.length === 0) return;
+  // เปลี่ยนหน้า (เช่น กดย้อนกลับหรือเปิดลิงก์) ต้องปิดหน้าต่างรายละเอียดคำและโน้ตที่เปิดค้างอยู่ด้วย ไม่งั้นจะบังหน้าใหม่
+  $("word-dialog").hidden = true;
+  $("note-dialog").hidden = true;
   const [page, argument] = (location.hash.replace(/^#\/?/, "") || "home").split("/");
   if (page === "study") {
     if (argument === "more") startSession(null, null, true);

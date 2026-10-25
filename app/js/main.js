@@ -16,6 +16,7 @@ import { COMEBACK_DAYS, MEDALS, isEarlyBird, isPerfectRound, newMedals } from ".
 import { LEECH_LAPSES, dueLabel, leechWords, matchesQuery, plantInfo, plotSummary } from "./garden.js";
 import { daysAway, goalProgress, mergeDays, settleRest } from "./habit.js";
 import { buildMatchRound, formatSeconds, isMatch, isNewBest } from "./match.js";
+import { LISTEN_COUNT, buildListenRound, listenSummary } from "./listen.js";
 import { SCRAMBLE_COUNT, applyHint, buildScrambleRound, isSolved, maxScore, roundScore } from "./scramble.js";
 import { MAX_GUESSES, WORD_LENGTH, answerPool, dailyAnswer, guessSet, keyStates, nextStats, scoreGuess, shareText } from "./wordle.js";
 import { AGAIN, GOOD, HARD, STAGES, buildQueue, dayNumber, grade, isDue, knownCard, stageOf } from "./srs.js";
@@ -37,8 +38,8 @@ import { recentDays, stageCounts, streakOf, totalReviews } from "./stats.js";
 import { SUPPORT_LINKS } from "./support.js";
 import { isNewer, parseSwVersion } from "./update.js";
 
-const VIEWS = ["loading", "error", "home", "study", "done", "garden", "play", "match", "flash", "wordle", "scramble", "exam", "settings", "about", "changelog"];
-const TAB_OF_VIEW = { changelog: "about", match: "play", flash: "play", wordle: "play", scramble: "play", exam: "garden" }; // หน้าที่ไม่มีแท็บของตัวเอง ให้ไฮไลต์แท็บนี้แทน
+const VIEWS = ["loading", "error", "home", "study", "done", "garden", "play", "match", "flash", "wordle", "scramble", "listen", "exam", "settings", "about", "changelog"];
+const TAB_OF_VIEW = { changelog: "about", match: "play", flash: "play", wordle: "play", scramble: "play", listen: "play", exam: "garden" }; // หน้าที่ไม่มีแท็บของตัวเอง ให้ไฮไลต์แท็บนี้แทน
 const REQUEUE_GAP = 3; // คำที่ตอบ "ยังจำไม่ได้" จะกลับมาอีกครั้งหลังการ์ดใบอื่นอีก 3 ใบ
 const SWIPE_DISTANCE = 90; // ปัดเกินกี่ px ถึงนับเป็นการให้คะแนน
 const SWIPE_PREVIEW = 40; // ปัดเกินกี่ px ถึงเริ่มขึ้นป้ายบนการ์ด
@@ -936,6 +937,9 @@ function renderPlay() {
   $("match-best").textContent = best ? `🏆 ดีที่สุด ${formatSeconds(best)}` : "";
   const scrambleBest = storage.loadGames().best.scramble;
   $("scramble-best").textContent = scrambleBest ? `🏆 คะแนนสูงสุด ${scrambleBest}/${maxScore()}` : "";
+  $("listen-card").hidden = !canSpeak();
+  const listenBest = storage.loadGames().best.listen;
+  $("listen-best").textContent = listenBest ? `🏆 ถูกมากสุด ${listenBest}/${LISTEN_COUNT}` : "";
   const today = storage.loadWordle(dayNumber());
   $("wordle-status").textContent =
     today?.status === "won" ? `✅ วันนี้ทายถูกใน ${today.guesses.length} ครั้ง`
@@ -1082,6 +1086,94 @@ function finishScramble() {
   $("scramble-play").hidden = true;
   $("scramble-result").hidden = false;
   if (score >= maxScore() - 2) launchConfetti(isBest ? 48 : 24);
+  fx("finish");
+}
+
+// ---------- ฟังแล้วเลือก ----------
+
+const listen = { items: [], index: 0, results: [], answered: false };
+
+function startListen() {
+  if (!canSpeak()) {
+    toast("เครื่องนี้ไม่มีเสียงอ่าน เล่นเกมนี้ไม่ได้");
+    location.hash = "#/play";
+    return;
+  }
+  const pool = poolOrBack();
+  if (!pool) return;
+  const items = buildListenRound(translatedWords(), Math.random, LISTEN_COUNT, pool);
+  if (!items) {
+    toast("คำที่เลือกไว้ยังไม่พอสำหรับเกมนี้ ลองเลือกแปลงหรือสถานะเพิ่มที่หน้าเกมนะ");
+    location.hash = "#/play";
+    return;
+  }
+  Object.assign(listen, { items, index: 0, results: [], answered: false });
+  $("listen-play").hidden = false;
+  $("listen-result").hidden = true;
+  show("listen");
+  renderListen();
+}
+
+function renderListen() {
+  const { word, question } = listen.items[listen.index];
+  listen.answered = false;
+  $("listen-count").textContent = `ข้อ ${listen.index + 1}/${LISTEN_COUNT}`;
+  $("listen-word").hidden = true;
+  $("listen-options").replaceChildren(
+    ...question.options.map((option, index) => {
+      const item = el("li");
+      const button = el("button", "quiz-option", option.text);
+      button.type = "button";
+      button.dataset.index = index;
+      button.prepend(el("kbd", "", index + 1));
+      item.append(button);
+      return item;
+    }),
+  );
+  $("listen-feedback").hidden = true;
+  $("listen-next").hidden = true;
+  speakWord(word.headword); // เบราว์เซอร์บางตัว (เช่น iPhone) ไม่ยอมเล่นเองจนกว่าจะแตะ ให้กดปุ่ม 🔊 ได้เสมอ
+}
+
+function chooseListenOption(index) {
+  if (listen.answered) return;
+  const { word, question } = listen.items[listen.index];
+  const right = index === question.answerIndex;
+  listen.answered = true;
+  listen.results.push(right);
+  $("listen-options").querySelectorAll("button").forEach((button, position) => {
+    button.disabled = true;
+    if (position === question.answerIndex) button.classList.add("correct");
+    else if (position === index) button.classList.add("wrong");
+  });
+  $("listen-word").textContent = word.headword;
+  $("listen-word").hidden = false;
+  $("listen-feedback").textContent = right ? "ถูกต้อง ✅" : `ยังไม่ถูก คำตอบคือ ${question.answerText}`;
+  $("listen-feedback").classList.toggle("is-correct", right);
+  $("listen-feedback").hidden = false;
+  if (right) fx("correct");
+  $("listen-next").hidden = false;
+  $("listen-next").focus({ preventScroll: true });
+}
+
+function nextListen() {
+  if (!listen.answered) return;
+  listen.index += 1;
+  if (listen.index >= LISTEN_COUNT) finishListen();
+  else renderListen();
+}
+
+function finishListen() {
+  const score = listen.results.filter(Boolean).length;
+  const isBest = storage.saveBest("listen", score, (next, best) => next > best);
+  storage.addGamePlay(dayNumber());
+  checkMedals();
+  $("listen-marks").textContent = listen.results.map((right) => (right ? "✅" : "❌")).join(" ");
+  $("listen-title").textContent = score === LISTEN_COUNT ? "หูไวมาก! 🎉" : "จบรอบแล้ว!";
+  $("listen-summary").textContent = `${listenSummary(score, LISTEN_COUNT)}${isBest && score > 0 ? " 🏆 สถิติใหม่!" : ""}`;
+  $("listen-play").hidden = true;
+  $("listen-result").hidden = false;
+  if (score >= LISTEN_COUNT - 1) launchConfetti(isBest ? 48 : 24);
   fx("finish");
 }
 
@@ -2123,6 +2215,10 @@ function route() {
     startScramble();
     return;
   }
+  if (page === "play" && argument === "listen") {
+    startListen();
+    return;
+  }
   if (page === "play" && argument === "wordle") {
     startWordle();
     return;
@@ -2279,6 +2375,22 @@ function bindEvents() {
     if (!scramble.answered) settleScramble("skip");
   });
   $("scramble-next").addEventListener("click", nextScramble);
+  $("listen-replay").addEventListener("click", () => listen.items[listen.index] && speakWord(listen.items[listen.index].word.headword));
+  $("listen-options").addEventListener("click", (event) => {
+    const button = event.target.closest("button");
+    if (button) chooseListenOption(Number(button.dataset.index));
+  });
+  $("listen-next").addEventListener("click", nextListen);
+  $("listen-again").addEventListener("click", startListen);
+  document.addEventListener("keydown", (event) => {
+    if ($("view-listen").hidden || $("listen-play").hidden || event.altKey || event.ctrlKey || event.metaKey) return;
+    if (document.querySelector(".modal:not([hidden])")) return;
+    if (/^[1-4]$/.test(event.key)) chooseListenOption(Number(event.key) - 1);
+    else if (event.key === "Enter" && listen.answered) {
+      event.preventDefault();
+      nextListen();
+    } else if (event.key === "r" || event.key === "R") listen.items[listen.index] && speakWord(listen.items[listen.index].word.headword);
+  });
   $("scramble-again").addEventListener("click", startScramble);
   document.addEventListener("keydown", (event) => {
     if ($("view-scramble").hidden || $("scramble-play").hidden || event.altKey || event.ctrlKey || event.metaKey) return;

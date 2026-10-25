@@ -152,6 +152,31 @@ h1 {
   margin: 0.5rem 0 1rem;
 }
 
+/* หัวข้อหน้า + ปุ่มไอคอนชิดขวาในบรรทัดเดียวกัน */
+.page-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin: 0.5rem 0 1rem;
+}
+
+.page-head h1 {
+  margin: 0;
+}
+
+.icon-btn {
+  flex: none;
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  border-radius: 50%;
+  font-size: 1.2rem;
+  line-height: 1;
+}
+
 h2 {
   font-size: 1.15rem;
   letter-spacing: -0.01em;

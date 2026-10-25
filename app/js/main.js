@@ -4,6 +4,7 @@ import { launchConfetti } from "./confetti.js";
 import { canSpeak, speak } from "./speech.js";
 import { buildQuestion, gradeTyped } from "./quiz.js";
 import { playSfx } from "./sfx.js";
+import { EXAM_COUNT, TIERS, bestTier, buildExam, examMedalIds, examReady, rescheduleMissed, tierOf } from "./exam.js";
 import { DECORATIONS, FLOWERS, bloomedLevels, flowerId, flowerOf, ownedDecorations, seasonOf } from "./decor.js";
 import { COMEBACK_DAYS, MEDALS, isEarlyBird, isPerfectRound, newMedals } from "./achievements.js";
 import { LEECH_LAPSES, dueLabel, leechWords, matchesQuery, plantInfo, plotSummary } from "./garden.js";
@@ -29,8 +30,8 @@ import { recentDays, stageCounts, streakOf, totalReviews } from "./stats.js";
 import { SUPPORT_LINKS } from "./support.js";
 import { isNewer, parseSwVersion } from "./update.js";
 
-const VIEWS = ["loading", "error", "home", "study", "done", "garden", "play", "match", "wordle", "scramble", "settings", "about", "changelog"];
-const TAB_OF_VIEW = { changelog: "about", match: "play", wordle: "play", scramble: "play" }; // หน้าที่ไม่มีแท็บของตัวเอง ให้ไฮไลต์แท็บนี้แทน
+const VIEWS = ["loading", "error", "home", "study", "done", "garden", "play", "match", "wordle", "scramble", "exam", "settings", "about", "changelog"];
+const TAB_OF_VIEW = { changelog: "about", match: "play", wordle: "play", scramble: "play", exam: "garden" }; // หน้าที่ไม่มีแท็บของตัวเอง ให้ไฮไลต์แท็บนี้แทน
 const REQUEUE_GAP = 3; // คำที่ตอบ "ยังจำไม่ได้" จะกลับมาอีกครั้งหลังการ์ดใบอื่นอีก 3 ใบ
 const SWIPE_DISTANCE = 90; // ปัดเกินกี่ px ถึงนับเป็นการให้คะแนน
 const SWIPE_PREVIEW = 40; // ปัดเกินกี่ px ถึงเริ่มขึ้นป้ายบนการ์ด
@@ -1304,6 +1305,19 @@ function plantButton(word, today) {
   return button;
 }
 
+// ปุ่มสอบปลายแปลงใต้ต้นไม้ของแต่ละแปลง (ปลูกครบทั้งแปลงแล้วจึงเปิดสอบ)
+function examBox(level, summary, tier) {
+  const box = el("div", "exam-box");
+  if (examReady(state.words, state.cards, level)) {
+    const link = el("a", "button primary", `📝 สอบปลายแปลง ${EXAM_COUNT} ข้อ`);
+    link.href = `#/exam/${level}`;
+    box.append(link, el("span", "muted small", tier ? `ดีที่สุดที่เคยได้: ${tier.emoji} ${tier.name}` : "ได้เหรียญเมื่อตอบถูก 12 ข้อขึ้นไป"));
+  } else {
+    box.append(el("span", "muted small", `📝 ปลูกให้ครบทั้งแปลงก่อนจึงเปิดสอบได้ (ปลูกแล้ว ${summary.planted}/${summary.total})`));
+  }
+  return box;
+}
+
 function renderPlots(today) {
   const translated = translatedWords();
   const { wilted } = plotSummary(translated, state.cards, today);
@@ -1336,10 +1350,11 @@ function renderPlots(today) {
         bar.append(segment);
       });
       const stages = STAGES.slice(1).map((stage) => `${stage.emoji} ${counts[stage.id]}`).join("  ");
-      head.append(bar, el("p", "level-stages", stages));
+      const tier = bestTier(level, storage.loadMedals());
+      head.append(bar, el("p", "level-stages", `${stages}${tier ? `  ${tier.emoji}` : ""}`));
       const grid = el("div", "plot-grid");
       grid.append(...words.map((word) => plantButton(word, today)));
-      plot.append(head, grid);
+      plot.append(head, grid, examBox(level, summary, tier));
       return plot;
     }),
   );
@@ -1573,6 +1588,120 @@ function resetProgress() {
   toast("ล้างความคืบหน้าแล้ว");
 }
 
+// ---------- สอบปลายแปลง ----------
+
+const exam = { level: null, items: [], index: 0, results: [], answered: false };
+
+function startExam(level) {
+  const words = state.words.filter((word) => word.level === level);
+  const items = LEVELS.includes(level) && examReady(state.words, state.cards, level) ? buildExam(words) : null;
+  if (!items) {
+    toast("ปลูกให้ครบทั้งแปลงก่อนจึงเปิดสอบได้");
+    location.hash = "#/garden";
+    return;
+  }
+  Object.assign(exam, { level, items, index: 0, results: [], answered: false });
+  $("exam-title").textContent = `📝 สอบ${levelTitle(level).replace(/:.*/, "")}`;
+  $("exam-play").hidden = false;
+  $("exam-result").hidden = true;
+  renderExamQuestion();
+  show("exam");
+}
+
+function renderExamQuestion() {
+  const { word, question } = exam.items[exam.index];
+  exam.answered = false;
+  $("exam-count").textContent = `ข้อ ${exam.index + 1}/${EXAM_COUNT}`;
+  if (question.type === "cloze") {
+    $("exam-prompt").replaceChildren(question.before, el("span", "blank", "＿＿＿＿"), question.after);
+    $("exam-hint").textContent = `เติมคำที่หายไป · ${word.exampleTh}`;
+  } else {
+    $("exam-prompt").textContent = word.headword;
+    $("exam-hint").textContent = "เลือกคำแปลที่ถูกต้อง";
+  }
+  $("exam-prompt").lang = "en";
+  $("exam-options").replaceChildren(
+    ...question.options.map((option, index) => {
+      const item = el("li");
+      const button = el("button", "quiz-option", option.text);
+      button.type = "button";
+      button.dataset.index = index;
+      if (question.type === "cloze") button.lang = "en";
+      button.prepend(el("kbd", "", index + 1));
+      item.append(button);
+      return item;
+    }),
+  );
+  $("exam-feedback").hidden = true;
+  $("exam-next").hidden = true;
+  $("exam-next").textContent = exam.index === EXAM_COUNT - 1 ? "ดูผลสอบ 🏁" : "ต่อไป ➡️";
+}
+
+function chooseExamOption(index) {
+  if (exam.answered) return;
+  const { question } = exam.items[exam.index];
+  const right = index === question.answerIndex;
+  exam.answered = true;
+  exam.results.push(right);
+  $("exam-options").querySelectorAll("button").forEach((button, position) => {
+    button.disabled = true;
+    if (position === question.answerIndex) button.classList.add("correct");
+    else if (position === index) button.classList.add("wrong");
+  });
+  $("exam-feedback").textContent = right ? "ถูกต้อง ✅" : `ยังไม่ถูก คำตอบคือ ${question.answerText}`;
+  $("exam-feedback").classList.toggle("is-correct", right);
+  $("exam-feedback").hidden = false;
+  if (right) fx("correct");
+  $("exam-next").hidden = false;
+  $("exam-next").focus({ preventScroll: true });
+}
+
+function nextExam() {
+  if (!exam.answered) return;
+  exam.index += 1;
+  if (exam.index >= EXAM_COUNT) finishExam();
+  else renderExamQuestion();
+}
+
+function finishExam() {
+  const today = dayNumber();
+  const score = exam.results.filter(Boolean).length;
+  const tier = tierOf(score);
+  const missed = exam.items.filter((_, index) => !exam.results[index]).map((item) => item.word);
+
+  // คำที่ตอบผิดถูกนัดทวนเร็วขึ้น ระยะห่างการทวนไม่เปลี่ยน
+  missed.forEach((word) => {
+    state.cards[word.headword] = rescheduleMissed(state.cards[word.headword], today);
+  });
+  storage.saveCards(state.cards);
+  storage.addMedals(examMedalIds(exam.level, score), today);
+  storage.addGamePlay(today); // นับเป็นวันท่องต่อเนื่องเหมือนเกมอื่น แต่ไม่นับเป็นเป้าหมายรายวัน
+  checkMedals({ examTier: tier?.id ?? null });
+
+  $("exam-play").hidden = true;
+  $("exam-count").textContent = "";
+  $("exam-result").hidden = false;
+  $("exam-emoji").textContent = tier ? tier.emoji : "💪";
+  $("exam-score").textContent = tier ? `${tier.name}! ตอบถูก ${score}/${EXAM_COUNT} ข้อ` : `ตอบถูก ${score}/${EXAM_COUNT} ข้อ`;
+  $("exam-summary").textContent = tier
+    ? missed.length > 0
+      ? `คำที่ตอบผิด ${missed.length} คำ ลิซ่านัดมาทวนพรุ่งนี้ให้แล้ว`
+      : "ถูกทุกข้อเลย! สุดยอดมาก 🎉"
+    : `ต้องตอบถูก ${TIERS[TIERS.length - 1].min} ข้อขึ้นไปจึงได้เหรียญ ลองทบทวนแล้วสอบใหม่ได้เสมอ${missed.length > 0 ? " คำที่ตอบผิดถูกนัดมาทวนพรุ่งนี้แล้ว" : ""}`;
+  $("exam-missed").hidden = missed.length === 0;
+  $("exam-missed-list").replaceChildren(
+    ...missed.map((word) => {
+      const item = el("li");
+      item.append(el("strong", "", word.headword), el("span", "muted", ` ${word.senses[0]?.text || ""}`));
+      return item;
+    }),
+  );
+  if (tier) {
+    launchConfetti();
+    fx("finish");
+  }
+}
+
 // ---------- เส้นทาง ----------
 
 function route() {
@@ -1585,6 +1714,10 @@ function route() {
   }
   state.session = null;
   stopMatchTimer();
+  if (page === "exam") {
+    startExam(argument);
+    return;
+  }
   if (page === "play" && argument === "match") {
     startMatch();
     return;
@@ -1642,6 +1775,21 @@ function bindEvents() {
   $("flip").addEventListener("click", flip);
   $("know").addEventListener("click", markKnown);
   $("report").addEventListener("click", (event) => event.stopPropagation());
+  $("exam-options").addEventListener("click", (event) => {
+    const button = event.target.closest(".quiz-option");
+    if (button) chooseExamOption(Number(button.dataset.index));
+  });
+  $("exam-next").addEventListener("click", nextExam);
+  $("exam-again").addEventListener("click", () => startExam(exam.level));
+  document.addEventListener("keydown", (event) => {
+    if ($("view-exam").hidden || $("exam-play").hidden || event.altKey || event.ctrlKey || event.metaKey) return;
+    if (document.querySelector(".modal:not([hidden])")) return;
+    if (/^[1-4]$/.test(event.key)) chooseExamOption(Number(event.key) - 1);
+    else if (event.key === "Enter" && exam.answered) {
+      event.preventDefault();
+      nextExam();
+    }
+  });
   $("match-board").addEventListener("click", (event) => {
     const button = event.target.closest(".tile");
     if (button) tapTile(button);

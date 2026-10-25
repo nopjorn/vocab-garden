@@ -280,6 +280,32 @@
       </div>
     </section>
 
+    <section id="view-exam" hidden>
+      <div class="study-top">
+        <a href="#/garden" class="close" aria-label="กลับไปหน้าสวน">✕</a>
+        <strong id="exam-title" class="game-title">📝 สอบปลายแปลง</strong>
+        <span id="exam-count" class="muted small"></span>
+      </div>
+      <div id="exam-play">
+        <p id="exam-prompt" class="exam-prompt"></p>
+        <p id="exam-hint" class="muted small center-text"></p>
+        <ul id="exam-options" class="quiz-options" aria-label="ตัวเลือกคำตอบ"></ul>
+        <p id="exam-feedback" class="quiz-feedback" role="status" hidden></p>
+        <button type="button" id="exam-next" class="primary wide" hidden>ต่อไป ➡️</button>
+      </div>
+      <div id="exam-result" class="done-card" hidden>
+        <p id="exam-emoji" class="big-emoji celebrate" aria-hidden="true">🏁</p>
+        <h2 id="exam-score"></h2>
+        <p id="exam-summary" class="muted"></p>
+        <div id="exam-missed" hidden>
+          <h3 class="fold-sub">คำที่ตอบผิด</h3>
+          <ul id="exam-missed-list" class="exam-missed-list"></ul>
+        </div>
+        <button type="button" id="exam-again" class="primary wide">🔁 สอบอีกครั้ง</button>
+        <a href="#/garden" class="button wide">กลับไปหน้าสวน</a>
+      </div>
+    </section>
+
     <section id="view-wordle" hidden>
       <div class="study-top">
         <a href="#/play" class="close" aria-label="กลับไปหน้าเล่น">✕</a>

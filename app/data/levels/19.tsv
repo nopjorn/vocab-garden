@@ -1,101 +1,101 @@
-rank	headword	forms	meanings	example_en	example_th	note
-1801	injury	injuries				
-1802	vast	vaster, vastest				
-1803	exhibition	exhibitions				
-1804	producer	producers				
-1805	regional	regionals				
-1806	immediate					
-1807	incident	incidents				
-1808	childhood	childhoods				
-1809	draft	drafts, drafted, drafting, draught, draughts				
-1810	slip	slips, slipped, slipping				
-1811	accompany	accompanies, accompanied, accompanying				
-1812	politician	politicians				
-1813	angry	angrier, angriest				
-1814	knock	knocks, knocked, knocking				
-1815	seed	seeds, seeded, seeding				
-1816	salary	salaries, salaried				
-1817	illustrate	illustrates, illustrated, illustrating				
-1818	imply	implies, implied, implying				
-1819	breakfast	breakfasts, breakfasted, breakfasting				
-1820	temporary					
-1821	liberal	liberals				
-1822	lake	lakes				
-1823	qualify	qualifies, qualified, qualifying				
-1824	competitive					
-1825	truly					
-1826	hi					
-1827	yellow	yellows, yellowed, yellowing				
-1828	habit	habits, habited				
-1829	disk	disks, disc, discs				
-1830	core	cores, cored, coring				
-1831	emotional					
-1832	aircraft	aircrafts				
-1833	self	selves				
-1834	metal	metals				
-1835	existence	existences				
-1836	bone	bones, boned, boning				
-1837	panel	panels, paneled, paneling, panelled, panelling				
-1838	prime	primes, primed, priming				
-1839	appointment	appointments				
-1840	emphasize	emphasizes, emphasized, emphasizing, emphasise, emphasises, emphasised, emphasising				
-1841	maximum					
-1842	effectively					
-1843	elsewhere					
-1844	bother	bothers, bothered, bothering				
-1845	initiative	initiatives				
-1846	sharp	sharper, sharpest				
-1847	diet	diets, dieted, dieting				
-1848	motion	motions, motioned, motioning				
-1849	gray	grays, grayed, graying, grayer, grayest, grey, greys, greyed, greying, greyer, greyest				
-1850	plastic	plastics				
-1851	complicate	complicates, complicated, complicating				
-1852	discipline	disciplines, disciplined, disciplining				
-1853	disappoint	disappoints, disappointed, disappointing				
-1854	boss	bosses, bossed, bossing				
-1855	assumption	assumptions				
-1856	freeze	freezes, froze, freezing, frozen				
-1857	extreme	extremes				
-1858	passage	passages				
-1859	reputation	reputations				
-1860	forth					
-1861	negotiation	negotiations				
-1862	mechanism	mechanisms				
-1863	coat	coats, coated, coating, coatings				
-1864	democracy	democracies				
-1865	pocket	pockets, pocketed, pocketing				
-1866	lucky	luckier, luckiest				
-1867	crash	crashes, crashed, crashing				
-1868	observation	observations				
-1869	meat	meats				
-1870	concentration	concentrations				
-1871	implication	implications				
-1872	deserve	deserves, deserved, deserving				
-1873	unusual					
-1874	defend	defends, defended, defending				
-1875	classic	classics				
-1876	king	kings				
-1877	interaction	interactions				
-1878	repair	repairs, repaired, repairing				
-1879	collapse	collapses, collapsed, collapsing				
-1880	borrow	borrows, borrowed, borrowing, borrowings				
-1881	fundamental	fundamentals				
-1882	dish	dishes, dished, dishing				
-1883	abroad					
-1884	soul	souls				
-1885	capable					
-1886	defeat	defeats, defeated, defeating				
-1887	presidential					
-1888	perfectly					
-1889	enhance	enhances, enhanced, enhancing				
-1890	proud	prouder, proudest				
-1891	emergency	emergencies				
-1892	educational					
-1893	distinguish	distinguishes, distinguished, distinguishing				
-1894	substantial					
-1895	nearby					
-1896	manufacturer	manufacturers				
-1897	slide	slides, slid, sliding				
-1898	valuable	valuables				
-1899	personally					
-1900	breast	breasts, breasted, breasting				
+rank	headword	forms	meanings	example_en	example_th	note	emoji
+1801	injury	injuries					
+1802	vast	vaster, vastest					
+1803	exhibition	exhibitions					
+1804	producer	producers					
+1805	regional	regionals					
+1806	immediate						
+1807	incident	incidents					
+1808	childhood	childhoods					
+1809	draft	drafts, drafted, drafting, draught, draughts					
+1810	slip	slips, slipped, slipping					
+1811	accompany	accompanies, accompanied, accompanying					
+1812	politician	politicians					
+1813	angry	angrier, angriest					
+1814	knock	knocks, knocked, knocking					
+1815	seed	seeds, seeded, seeding					
+1816	salary	salaries, salaried					
+1817	illustrate	illustrates, illustrated, illustrating					
+1818	imply	implies, implied, implying					
+1819	breakfast	breakfasts, breakfasted, breakfasting					
+1820	temporary						
+1821	liberal	liberals					
+1822	lake	lakes					
+1823	qualify	qualifies, qualified, qualifying					
+1824	competitive						
+1825	truly						
+1826	hi						
+1827	yellow	yellows, yellowed, yellowing					
+1828	habit	habits, habited					
+1829	disk	disks, disc, discs					
+1830	core	cores, cored, coring					
+1831	emotional						
+1832	aircraft	aircrafts					
+1833	self	selves					
+1834	metal	metals					
+1835	existence	existences					
+1836	bone	bones, boned, boning					
+1837	panel	panels, paneled, paneling, panelled, panelling					
+1838	prime	primes, primed, priming					
+1839	appointment	appointments					
+1840	emphasize	emphasizes, emphasized, emphasizing, emphasise, emphasises, emphasised, emphasising					
+1841	maximum						
+1842	effectively						
+1843	elsewhere						
+1844	bother	bothers, bothered, bothering					
+1845	initiative	initiatives					
+1846	sharp	sharper, sharpest					
+1847	diet	diets, dieted, dieting					
+1848	motion	motions, motioned, motioning					
+1849	gray	grays, grayed, graying, grayer, grayest, grey, greys, greyed, greying, greyer, greyest					
+1850	plastic	plastics					
+1851	complicate	complicates, complicated, complicating					
+1852	discipline	disciplines, disciplined, disciplining					
+1853	disappoint	disappoints, disappointed, disappointing					
+1854	boss	bosses, bossed, bossing					
+1855	assumption	assumptions					
+1856	freeze	freezes, froze, freezing, frozen					
+1857	extreme	extremes					
+1858	passage	passages					
+1859	reputation	reputations					
+1860	forth						
+1861	negotiation	negotiations					
+1862	mechanism	mechanisms					
+1863	coat	coats, coated, coating, coatings					
+1864	democracy	democracies					
+1865	pocket	pockets, pocketed, pocketing					
+1866	lucky	luckier, luckiest					
+1867	crash	crashes, crashed, crashing					
+1868	observation	observations					
+1869	meat	meats					
+1870	concentration	concentrations					
+1871	implication	implications					
+1872	deserve	deserves, deserved, deserving					
+1873	unusual						
+1874	defend	defends, defended, defending					
+1875	classic	classics					
+1876	king	kings					
+1877	interaction	interactions					
+1878	repair	repairs, repaired, repairing					
+1879	collapse	collapses, collapsed, collapsing					
+1880	borrow	borrows, borrowed, borrowing, borrowings					
+1881	fundamental	fundamentals					
+1882	dish	dishes, dished, dishing					
+1883	abroad						
+1884	soul	souls					
+1885	capable						
+1886	defeat	defeats, defeated, defeating					
+1887	presidential						
+1888	perfectly						
+1889	enhance	enhances, enhanced, enhancing					
+1890	proud	prouder, proudest					
+1891	emergency	emergencies					
+1892	educational						
+1893	distinguish	distinguishes, distinguished, distinguishing					
+1894	substantial						
+1895	nearby						
+1896	manufacturer	manufacturers					
+1897	slide	slides, slid, sliding					
+1898	valuable	valuables					
+1899	personally						
+1900	breast	breasts, breasted, breasting					

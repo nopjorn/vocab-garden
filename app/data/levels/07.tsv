@@ -1,101 +1,101 @@
-rank	headword	forms	meanings	example_en	example_th	note
-601	particularly					
-602	wife	wives				
-603	sport	sports, sported, sporting				
-604	prepare	prepares, prepared, preparing				
-605	discuss	discusses, discussed, discussing				
-606	response	responses				
-607	voice	voices, voiced, voicing				
-608	piece	pieces, pieced, piecing				
-609	finish	finishes, finished, finishing				
-610	suppose	supposes, supposed, supposing				
-611	apply	applies, applied, applying				
-612	president	presidents				
-613	fire	fires, fired, firing, firings				
-614	compare	compares, compared, comparing				
-615	court	courts, courted, courting				
-616	police	polices, policed, policing				
-617	store	stores, stored, storing				
-618	poor	poorer, poorest				
-619	knowledge					
-620	laugh	laughs, laughed, laughing				
-621	arm	arms, armed, arming				
-622	heart	hearts, hearted				
-623	source	sources, sourced, sourcing				
-624	employee	employees				
-625	manage	manages, managed, managing				
-626	simply					
-627	bank	banks, banked, banking				
-628	firm	firms, firmed, firming, firmer, firmest				
-629	cell	cells, celled				
-630	article	articles, articled, articling				
-631	fast	fasts, fasted, fasting, faster, fastest				
-632	attack	attacks, attacked, attacking				
-633	foreign					
-634	surprise	surprises, surprised, surprising				
-635	feature	features, featured, featuring				
-636	factor	factors, factored, factoring, factorings				
-637	pretty	pretties, prettying, prettier, prettiest				
-638	recently					
-639	affect	affects, affected, affecting				
-640	drop	drops, dropped, dropping				
-641	recent					
-642	relate	relates, related, relating				
-643	official	officials				
-644	financial	financials				
-645	miss	misses, missed, missing				
-646	art	arts				
-647	campaign	campaigns, campaigned, campaigning				
-648	private					
-649	pause	pauses, paused, pausing				
-650	everyone					
-651	forget	forgets, forgot, forgetting, forgotten				
-652	page	pages, paged, paging				
-653	worry	worries, worried, worrying				
-654	summer	summers, summered				
-655	drink	drinks, drank, drunk, drinking				
-656	opinion	opinions, opinioned				
-657	park	parks, parked, parking				
-658	represent	represents, represented, representing				
-659	key	keys, keyed, keying				
-660	inside	insides				
-661	manager	managers				
-662	international	internationals				
-663	contain	contains, contained, containing				
-664	notice	notices, noticed, noticing				
-665	wonder	wonders, wondered, wondering, wonderings				
-666	nature	natures, natured				
-667	structure	structures, structured, structuring				
-668	section	sections, sectioned, sectioning				
-669	myself					
-670	exactly					
-671	plant	plants, planted, planting, plantings				
-672	paint	paints, painted, painting, paintings				
-673	worker	workers				
-674	press	presses, pressed, pressing, pressings				
-675	whatever					
-676	necessary	necessaries				
-677	region	regions				
-678	growth	growths				
-679	evening	evenings				
-680	influence	influences, influenced, influencing				
-681	respect	respects, respected, respecting				
-682	various					
-683	catch	catches, caught, catching				
-684	thus					
-685	skill	skills, skilled				
-686	attempt	attempts, attempted, attempting				
-687	son	sons				
-688	simple	simpler, simplest				
-689	medium	mediums				
-690	average	averages, averaged, averaging				
-691	stock	stocks, stocked, stocking				
-692	management	managements				
-693	character	characters				
-694	bed	beds, bedded, bedding, beddings				
-695	hit	hits, hitting				
-696	establish	establishes, established, establishing				
-697	indeed					
-698	final	finals				
-699	economy	economies				
-700	fit	fits, fitted, fitting, fitter, fittest, fittings				
+rank	headword	forms	meanings	example_en	example_th	note	emoji
+601	particularly						
+602	wife	wives					
+603	sport	sports, sported, sporting					
+604	prepare	prepares, prepared, preparing					
+605	discuss	discusses, discussed, discussing					
+606	response	responses					
+607	voice	voices, voiced, voicing					
+608	piece	pieces, pieced, piecing					
+609	finish	finishes, finished, finishing					
+610	suppose	supposes, supposed, supposing					
+611	apply	applies, applied, applying					
+612	president	presidents					
+613	fire	fires, fired, firing, firings					
+614	compare	compares, compared, comparing					
+615	court	courts, courted, courting					
+616	police	polices, policed, policing					
+617	store	stores, stored, storing					
+618	poor	poorer, poorest					
+619	knowledge						
+620	laugh	laughs, laughed, laughing					
+621	arm	arms, armed, arming					
+622	heart	hearts, hearted					
+623	source	sources, sourced, sourcing					
+624	employee	employees					
+625	manage	manages, managed, managing					
+626	simply						
+627	bank	banks, banked, banking					
+628	firm	firms, firmed, firming, firmer, firmest					
+629	cell	cells, celled					
+630	article	articles, articled, articling					
+631	fast	fasts, fasted, fasting, faster, fastest					
+632	attack	attacks, attacked, attacking					
+633	foreign						
+634	surprise	surprises, surprised, surprising					
+635	feature	features, featured, featuring					
+636	factor	factors, factored, factoring, factorings					
+637	pretty	pretties, prettying, prettier, prettiest					
+638	recently						
+639	affect	affects, affected, affecting					
+640	drop	drops, dropped, dropping					
+641	recent						
+642	relate	relates, related, relating					
+643	official	officials					
+644	financial	financials					
+645	miss	misses, missed, missing					
+646	art	arts					
+647	campaign	campaigns, campaigned, campaigning					
+648	private						
+649	pause	pauses, paused, pausing					
+650	everyone						
+651	forget	forgets, forgot, forgetting, forgotten					
+652	page	pages, paged, paging					
+653	worry	worries, worried, worrying					
+654	summer	summers, summered					
+655	drink	drinks, drank, drunk, drinking					
+656	opinion	opinions, opinioned					
+657	park	parks, parked, parking					
+658	represent	represents, represented, representing					
+659	key	keys, keyed, keying					
+660	inside	insides					
+661	manager	managers					
+662	international	internationals					
+663	contain	contains, contained, containing					
+664	notice	notices, noticed, noticing					
+665	wonder	wonders, wondered, wondering, wonderings					
+666	nature	natures, natured					
+667	structure	structures, structured, structuring					
+668	section	sections, sectioned, sectioning					
+669	myself						
+670	exactly						
+671	plant	plants, planted, planting, plantings					
+672	paint	paints, painted, painting, paintings					
+673	worker	workers					
+674	press	presses, pressed, pressing, pressings					
+675	whatever						
+676	necessary	necessaries					
+677	region	regions					
+678	growth	growths					
+679	evening	evenings					
+680	influence	influences, influenced, influencing					
+681	respect	respects, respected, respecting					
+682	various						
+683	catch	catches, caught, catching					
+684	thus						
+685	skill	skills, skilled					
+686	attempt	attempts, attempted, attempting					
+687	son	sons					
+688	simple	simpler, simplest					
+689	medium	mediums					
+690	average	averages, averaged, averaging					
+691	stock	stocks, stocked, stocking					
+692	management	managements					
+693	character	characters					
+694	bed	beds, bedded, bedding, beddings					
+695	hit	hits, hitting					
+696	establish	establishes, established, establishing					
+697	indeed						
+698	final	finals					
+699	economy	economies					
+700	fit	fits, fitted, fitting, fitter, fittest, fittings					

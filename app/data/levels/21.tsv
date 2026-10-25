@@ -1,101 +1,101 @@
-rank	headword	forms	meanings	example_en	example_th	note
-2001	achievement	achievements				
-2002	negotiate	negotiates, negotiated, negotiating				
-2003	dominate	dominates, dominated, dominating				
-2004	supplier	suppliers				
-2005	prize	prizes, prized				
-2006	typically					
-2007	peer	peers, peered, peering				
-2008	pension	pensions, pensioned, pensioning				
-2009	wing	wings, winged, winging				
-2010	acquisition	acquisitions				
-2011	laughter					
-2012	deeply					
-2013	recognition	recognitions				
-2014	electricity					
-2015	assistance	assistances				
-2016	roof	roofs, roofed, roofing				
-2017	retirement	retirements				
-2018	respectively					
-2019	variation	variations				
-2020	ultimately					
-2021	proof	proofs, proofed, proofing				
-2022	soil	soils, soiled, soiling				
-2023	smart	smarts, smarted, smarting, smarter, smartest				
-2024	layer	layers, layered, layering				
-2025	upset	upsets, upsetting				
-2026	tooth	teeth, toothed				
-2027	representation	representations				
-2028	preparation	preparations				
-2029	dispute	disputes, disputed, disputing				
-2030	agenda	agendas				
-2031	emphasis	emphases				
-2032	edition	editions				
-2033	silver	silvers, silvered				
-2034	entertainment	entertainments				
-2035	honest					
-2036	undertake	undertakes, undertook, undertaking, undertaken, undertakings				
-2037	retail	retails, retailed, retailing				
-2038	wire	wires, wired, wiring, wirings				
-2039	unlikely	unlikelier, unlikeliest				
-2040	gay	gayer, gayest, gays				
-2041	publication	publications				
-2042	slight	slights, slighted, slighting, slighter, slightest				
-2043	unknown	unknowns				
-2044	framework	frameworks				
-2045	zone	zones, zoned, zoning, zonings				
-2046	restrict	restricts, restricted, restricting				
-2047	trace	traces, traced, tracing, tracings				
-2048	inch	inches, inched, inching				
-2049	equivalent	equivalents				
-2050	solid	solids				
-2051	enterprise	enterprises, enterprising				
-2052	elderly					
-2053	owe	owes, owed, owing				
-2054	governor	governors				
-2055	uniform	uniforms, uniformed				
-2056	port	ports, ported, porting				
-2057	pitch	pitches, pitched, pitching				
-2058	arrival	arrivals				
-2059	contemporary	contemporaries				
-2060	gate	gates, gated, gating				
-2061	ease	eases, eased, easing				
-2062	beer	beers				
-2063	specialist	specialists				
-2064	assure	assures, assured, assuring				
-2065	profile	profiles, profiled, profiling, profilings				
-2066	mood	moods				
-2067	episode	episodes				
-2068	crack	cracks, cracked, cracking				
-2069	numerous					
-2070	submit	submits, submitted, submitting				
-2071	symptom	symptoms				
-2072	virtually					
-2073	era	eras				
-2074	coverage					
-2075	tension	tensions, tensioned, tensioning				
-2076	cable	cables, cabled, cabling				
-2077	sensitive					
-2078	nervous					
-2079	input	inputs, inputted, inputting				
-2080	isolate	isolates, isolated, isolating				
-2081	prisoner	prisoners				
-2082	eliminate	eliminates, eliminated, eliminating				
-2083	tight	tighter, tightest				
-2084	wet	wets, wetted, wetting, wetter, wettest				
-2085	secondary					
-2086	welfare	welfares				
-2087	recruit	recruits, recruited, recruiting				
-2088	exclude	excludes, excluded, excluding				
-2089	string	strings, strung, stringing				
-2090	cloud	clouds, clouded, clouding				
-2091	persuade	persuades, persuaded, persuading				
-2092	inspire	inspires, inspired, inspiring				
-2093	grand	grander, grandest				
-2094	hence					
-2095	crew	crews, crewed, crewing				
-2096	phenomenon	phenomena				
-2097	pupil	pupils				
-2098	FALSE	falser, falsest				
-2099	assist	assists, assisted, assisting				
-2100	restore	restores, restored, restoring				
+rank	headword	forms	meanings	example_en	example_th	note	emoji
+2001	achievement	achievements					
+2002	negotiate	negotiates, negotiated, negotiating					
+2003	dominate	dominates, dominated, dominating					
+2004	supplier	suppliers					
+2005	prize	prizes, prized					
+2006	typically						
+2007	peer	peers, peered, peering					
+2008	pension	pensions, pensioned, pensioning					
+2009	wing	wings, winged, winging					
+2010	acquisition	acquisitions					
+2011	laughter						
+2012	deeply						
+2013	recognition	recognitions					
+2014	electricity						
+2015	assistance	assistances					
+2016	roof	roofs, roofed, roofing					
+2017	retirement	retirements					
+2018	respectively						
+2019	variation	variations					
+2020	ultimately						
+2021	proof	proofs, proofed, proofing					
+2022	soil	soils, soiled, soiling					
+2023	smart	smarts, smarted, smarting, smarter, smartest					
+2024	layer	layers, layered, layering					
+2025	upset	upsets, upsetting					
+2026	tooth	teeth, toothed					
+2027	representation	representations					
+2028	preparation	preparations					
+2029	dispute	disputes, disputed, disputing					
+2030	agenda	agendas					
+2031	emphasis	emphases					
+2032	edition	editions					
+2033	silver	silvers, silvered					
+2034	entertainment	entertainments					
+2035	honest						
+2036	undertake	undertakes, undertook, undertaking, undertaken, undertakings					
+2037	retail	retails, retailed, retailing					
+2038	wire	wires, wired, wiring, wirings					
+2039	unlikely	unlikelier, unlikeliest					
+2040	gay	gayer, gayest, gays					
+2041	publication	publications					
+2042	slight	slights, slighted, slighting, slighter, slightest					
+2043	unknown	unknowns					
+2044	framework	frameworks					
+2045	zone	zones, zoned, zoning, zonings					
+2046	restrict	restricts, restricted, restricting					
+2047	trace	traces, traced, tracing, tracings					
+2048	inch	inches, inched, inching					
+2049	equivalent	equivalents					
+2050	solid	solids					
+2051	enterprise	enterprises, enterprising					
+2052	elderly						
+2053	owe	owes, owed, owing					
+2054	governor	governors					
+2055	uniform	uniforms, uniformed					
+2056	port	ports, ported, porting					
+2057	pitch	pitches, pitched, pitching					
+2058	arrival	arrivals					
+2059	contemporary	contemporaries					
+2060	gate	gates, gated, gating					
+2061	ease	eases, eased, easing					
+2062	beer	beers					
+2063	specialist	specialists					
+2064	assure	assures, assured, assuring					
+2065	profile	profiles, profiled, profiling, profilings					
+2066	mood	moods					
+2067	episode	episodes					
+2068	crack	cracks, cracked, cracking					
+2069	numerous						
+2070	submit	submits, submitted, submitting					
+2071	symptom	symptoms					
+2072	virtually						
+2073	era	eras					
+2074	coverage						
+2075	tension	tensions, tensioned, tensioning					
+2076	cable	cables, cabled, cabling					
+2077	sensitive						
+2078	nervous						
+2079	input	inputs, inputted, inputting					
+2080	isolate	isolates, isolated, isolating					
+2081	prisoner	prisoners					
+2082	eliminate	eliminates, eliminated, eliminating					
+2083	tight	tighter, tightest					
+2084	wet	wets, wetted, wetting, wetter, wettest					
+2085	secondary						
+2086	welfare	welfares					
+2087	recruit	recruits, recruited, recruiting					
+2088	exclude	excludes, excluded, excluding					
+2089	string	strings, strung, stringing					
+2090	cloud	clouds, clouded, clouding					
+2091	persuade	persuades, persuaded, persuading					
+2092	inspire	inspires, inspired, inspiring					
+2093	grand	grander, grandest					
+2094	hence						
+2095	crew	crews, crewed, crewing					
+2096	phenomenon	phenomena					
+2097	pupil	pupils					
+2098	FALSE	falser, falsest					
+2099	assist	assists, assisted, assisting					
+2100	restore	restores, restored, restoring					

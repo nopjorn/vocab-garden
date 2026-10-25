@@ -20,7 +20,7 @@ LEVEL_SIZE = 100
 LAST_LEVEL = 28  # ด่าน 28 รวมอันดับ 2,701–2,809 (109 คำ)
 SUPPLEMENT_LEVEL = "sup"
 
-COLUMNS = ["rank", "headword", "forms", "meanings", "example_en", "example_th", "note"]
+COLUMNS = ["rank", "headword", "forms", "meanings", "example_en", "example_th", "note", "emoji"]
 NGSL_COLUMNS = COLUMNS[:3]
 THAI_COLUMNS = COLUMNS[3:]
 FORMS_SEPARATOR = ", "

@@ -11,12 +11,13 @@ import build_skeleton  # noqa: E402
 import ngsl_data  # noqa: E402
 import validate_data  # noqa: E402
 
-UNTRANSLATED = ["67", "work", "works, worked, working, workings", "", "", "", ""]
+UNTRANSLATED = ["67", "work", "works, worked, working, workings", "", "", "", "", ""]
 TRANSLATED = [
     "67", "work", "works, worked, working, workings",
     "v: ทำงาน, ใช้การได้ | n: งาน, ผลงาน",
     "I work at a small hotel.",
     "ฉันทำงานที่โรงแรมเล็ก ๆ แห่งหนึ่ง",
+    "",
     "",
 ]
 
@@ -113,6 +114,18 @@ class CheckRowTest(unittest.TestCase):
 
     def test_rejects_non_thai_translation(self):
         self.assertTrue(validate_data.check_row(with_fields(example_th="I work at a hotel.")))
+
+    def test_accepts_emoji_only(self):
+        for emoji in ["💼", "👨‍👩‍👧", "🏃", "❤️", "👍🏽"]:
+            with self.subTest(emoji=emoji):
+                self.assertEqual(validate_data.check_row(with_fields(emoji=emoji)), [])
+        for emoji in ["work", "งาน", "💼 ", "💼💼💼💼💼💼💼💼💼", "1", "a💼"]:
+            with self.subTest(emoji=emoji):
+                self.assertTrue(validate_data.check_row(with_fields(emoji=emoji)))
+
+    def test_emoji_alone_does_not_make_a_word_translated(self):
+        problems = validate_data.check_row([*UNTRANSLATED[:7], "💼"])
+        self.assertTrue(any("ขาด" in problem for problem in problems), problems)
 
     def test_rejects_surrounding_spaces(self):
         self.assertTrue(validate_data.check_row(with_fields(meanings="v: ทำงาน ")))

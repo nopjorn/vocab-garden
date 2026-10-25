@@ -1,101 +1,101 @@
-rank	headword	forms	meanings	example_en	example_th	note
-2401	dare	dares, dared, daring				
-2402	barrier	barriers				
-2403	rid	rids, ridded, ridding				
-2404	divorce	divorces, divorced, divorcing				
-2405	ruin	ruins, ruined, ruining				
-2406	bury	buries, buried, burying				
-2407	counsel	counsels, counselled, counseled, counselling, counseling				
-2408	tendency	tendencies				
-2409	frequent	frequents, frequented, frequenting				
-2410	motor	motors, motored, motoring				
-2411	survival	survivals				
-2412	counter	counters, countered, countering				
-2413	possess	possesses, possessed, possessing				
-2414	permission	permissions				
-2415	valley	valleys				
-2416	float	floats, floated, floating				
-2417	mad	madder, maddest				
-2418	greatly					
-2419	visible					
-2420	electric	electrics				
-2421	impressive					
-2422	evolution	evolutions				
-2423	awareness					
-2424	violent					
-2425	slave	slaves, slaved, slaving				
-2426	wealthy	wealthier, wealthiest				
-2427	architecture	architectures				
-2428	acceptable					
-2429	journal	journals, journaling				
-2430	coal	coals				
-2431	measurement	measurements				
-2432	random					
-2433	successfully					
-2434	depress	depresses, depressed, depressing				
-2435	illustration	illustrations				
-2436	burst	bursts, bursting				
-2437	privilege	privileges, privileged, privileging				
-2438	buyer	buyers				
-2439	mutual					
-2440	rail	rails, railed, railing, railings				
-2441	motivate	motivates, motivated, motivating				
-2442	laboratory	laboratories				
-2443	mortgage	mortgages, mortgaged, mortgaging				
-2444	promotion	promotions				
-2445	passion	passions				
-2446	champion	champions, championed, championing				
-2447	fulfill	fulfills, fulfilled, fulfilling, fulfil, fulfils, fulfiled, fulfiling				
-2448	dust	dusts, dusted, dusting				
-2449	dedicate	dedicates, dedicated, dedicating				
-2450	roughly					
-2451	skirt	skirts, skirted, skirting				
-2452	province	provinces				
-2453	march	marches, marched, marching				
-2454	evaluation	evaluations				
-2455	compromise	compromises, compromised, compromising				
-2456	accomplish	accomplishes, accomplished, accomplishing				
-2457	weakness	weaknesses				
-2458	announcement	announcements				
-2459	salt	salts, salted, salting				
-2460	glance	glances, glanced, glancing				
-2461	opera	operas				
-2462	contest	contests, contested, contesting				
-2463	brush	brushes, brushed, brushing, brushings				
-2464	embarrass	embarrasses, embarrassed, embarrassing				
-2465	gallery	galleries				
-2466	genetic					
-2467	aggressive					
-2468	chest	chests				
-2469	format	formats, formatted, formatting				
-2470	literary					
-2471	govern	governs, governed, governing				
-2472	embrace	embraces, embraced, embracing				
-2473	praise	praises, praised, praising				
-2474	silent					
-2475	pump	pumps, pumped, pumping				
-2476	publisher	publishers				
-2477	celebration	celebrations				
-2478	golf	golfs, golfed, golfing				
-2479	compensation	compensations				
-2480	classical					
-2481	weigh	weighs, weighed, weighing				
-2482	versus					
-2483	deficit	deficits				
-2484	modify	modifies, modified, modifying				
-2485	flash	flashes, flashed, flashing				
-2486	friendship	friendships				
-2487	profession	professions				
-2488	literally					
-2489	equation	equations				
-2490	gesture	gestures, gestured, gesturing				
-2491	entertain	entertains, entertained, entertaining				
-2492	fantastic					
-2493	assign	assigns, assigned, assigning				
-2494	inflation	inflations				
-2495	historic					
-2496	injure	injures, injured, injuring				
-2497	remote	remoter, remotest				
-2498	therapy	therapies				
-2499	orange	oranges				
-2500	twist	twists, twisted, twisting				
+rank	headword	forms	meanings	example_en	example_th	note	emoji
+2401	dare	dares, dared, daring					
+2402	barrier	barriers					
+2403	rid	rids, ridded, ridding					
+2404	divorce	divorces, divorced, divorcing					
+2405	ruin	ruins, ruined, ruining					
+2406	bury	buries, buried, burying					
+2407	counsel	counsels, counselled, counseled, counselling, counseling					
+2408	tendency	tendencies					
+2409	frequent	frequents, frequented, frequenting					
+2410	motor	motors, motored, motoring					
+2411	survival	survivals					
+2412	counter	counters, countered, countering					
+2413	possess	possesses, possessed, possessing					
+2414	permission	permissions					
+2415	valley	valleys					
+2416	float	floats, floated, floating					
+2417	mad	madder, maddest					
+2418	greatly						
+2419	visible						
+2420	electric	electrics					
+2421	impressive						
+2422	evolution	evolutions					
+2423	awareness						
+2424	violent						
+2425	slave	slaves, slaved, slaving					
+2426	wealthy	wealthier, wealthiest					
+2427	architecture	architectures					
+2428	acceptable						
+2429	journal	journals, journaling					
+2430	coal	coals					
+2431	measurement	measurements					
+2432	random						
+2433	successfully						
+2434	depress	depresses, depressed, depressing					
+2435	illustration	illustrations					
+2436	burst	bursts, bursting					
+2437	privilege	privileges, privileged, privileging					
+2438	buyer	buyers					
+2439	mutual						
+2440	rail	rails, railed, railing, railings					
+2441	motivate	motivates, motivated, motivating					
+2442	laboratory	laboratories					
+2443	mortgage	mortgages, mortgaged, mortgaging					
+2444	promotion	promotions					
+2445	passion	passions					
+2446	champion	champions, championed, championing					
+2447	fulfill	fulfills, fulfilled, fulfilling, fulfil, fulfils, fulfiled, fulfiling					
+2448	dust	dusts, dusted, dusting					
+2449	dedicate	dedicates, dedicated, dedicating					
+2450	roughly						
+2451	skirt	skirts, skirted, skirting					
+2452	province	provinces					
+2453	march	marches, marched, marching					
+2454	evaluation	evaluations					
+2455	compromise	compromises, compromised, compromising					
+2456	accomplish	accomplishes, accomplished, accomplishing					
+2457	weakness	weaknesses					
+2458	announcement	announcements					
+2459	salt	salts, salted, salting					
+2460	glance	glances, glanced, glancing					
+2461	opera	operas					
+2462	contest	contests, contested, contesting					
+2463	brush	brushes, brushed, brushing, brushings					
+2464	embarrass	embarrasses, embarrassed, embarrassing					
+2465	gallery	galleries					
+2466	genetic						
+2467	aggressive						
+2468	chest	chests					
+2469	format	formats, formatted, formatting					
+2470	literary						
+2471	govern	governs, governed, governing					
+2472	embrace	embraces, embraced, embracing					
+2473	praise	praises, praised, praising					
+2474	silent						
+2475	pump	pumps, pumped, pumping					
+2476	publisher	publishers					
+2477	celebration	celebrations					
+2478	golf	golfs, golfed, golfing					
+2479	compensation	compensations					
+2480	classical						
+2481	weigh	weighs, weighed, weighing					
+2482	versus						
+2483	deficit	deficits					
+2484	modify	modifies, modified, modifying					
+2485	flash	flashes, flashed, flashing					
+2486	friendship	friendships					
+2487	profession	professions					
+2488	literally						
+2489	equation	equations					
+2490	gesture	gestures, gestured, gesturing					
+2491	entertain	entertains, entertained, entertaining					
+2492	fantastic						
+2493	assign	assigns, assigned, assigning					
+2494	inflation	inflations					
+2495	historic						
+2496	injure	injures, injured, injuring					
+2497	remote	remoter, remotest					
+2498	therapy	therapies					
+2499	orange	oranges					
+2500	twist	twists, twisted, twisting					

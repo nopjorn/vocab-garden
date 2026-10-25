@@ -23,6 +23,8 @@ SENSE_SEPARATOR = " | "
 SENSE_RE = re.compile(r"([a-z]+): ([^|\s][^|]*)")
 THAI_RE = re.compile(r"[฀-๿]")
 REQUIRED = ["meanings", "example_en", "example_th"]
+EMOJI_MAX_LENGTH = 8  # จำนวน code point (อีโมจิครอบครัวหรือสีผิวยาวหลาย code point)
+EMOJI_RE = re.compile(r"[^\x00-\u2000฀-๿]+")  # ไม่มีตัวอักษรละติน เลข ช่องว่าง หรือไทย
 
 
 def check_meanings(meanings: str) -> list[str]:
@@ -55,6 +57,9 @@ def check_row(row: list[str]) -> list[str]:
         return problems + [f"เริ่มแปลแล้วแต่ยังขาด {', '.join(missing)}"]
 
     problems += check_meanings(fields["meanings"])
+    emoji = fields["emoji"]
+    if emoji and (len(emoji) > EMOJI_MAX_LENGTH or not EMOJI_RE.fullmatch(emoji)):
+        problems.append("emoji ต้องเป็นอีโมจิล้วน ๆ ไม่เกิน 8 ตัว (ไม่มีตัวอักษร ตัวเลข หรือช่องว่าง)")
     words = [fields["headword"]] + [form for form in fields["forms"].split(ngsl_data.FORMS_SEPARATOR) if form]
     if not uses_word(fields["example_en"], words):
         problems.append("example_en ต้องมีคำหลักหรือรูปคำของคำนี้อยู่ในประโยค")

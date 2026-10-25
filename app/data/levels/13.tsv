@@ -1,101 +1,101 @@
-rank	headword	forms	meanings	example_en	example_th	note
-1201	ball	balls, balled, balling				
-1202	cry	cries, cried, crying				
-1203	introduction	introductions				
-1204	requirement	requirements				
-1205	north					
-1206	confirm	confirms, confirmed, confirming				
-1207	senior	seniors				
-1208	photo	photos				
-1209	refuse	refuses, refused, refusing				
-1210	transport	transports, transported, transporting				
-1211	emerge	emerges, emerged, emerging				
-1212	map	maps, mapped, mapping, mappings				
-1213	concept	concepts				
-1214	island	islands, islanded, islanding				
-1215	reform	reforms, reformed, reforming				
-1216	neither					
-1217	football	footballs				
-1218	survive	survives, survived, surviving				
-1219	flight	flights				
-1220	left	lefts				
-1221	solve	solves, solved, solving				
-1222	neighbor	neighbors, neighbored, neighboring, neighbour, neighbours, neighboured, neighbouring				
-1223	background	backgrounds				
-1224	technique	techniques				
-1225	traffic	traffics, trafficked, trafficking, traffick, trafficks				
-1226	improvement	improvements				
-1227	tool	tools, tooled, tooling				
-1228	consequence	consequences				
-1229	circumstance	circumstances				
-1230	smoke	smokes, smoked, smoking				
-1231	reaction	reactions				
-1232	rain	rains, rained, raining				
-1233	busy	busies, busied, busying, busier, busiest				
-1234	lesson	lessons				
-1235	brain	brains, brained, braining				
-1236	mass	masses, massed, massing				
-1237	funny	funnier, funniest				
-1238	contribute	contributes, contributed, contributing				
-1239	failure	failures				
-1240	schedule	schedules, scheduled, scheduling				
-1241	speaker	speakers				
-1242	bottom	bottoms, bottomed, bottoming				
-1243	adopt	adopts, adopted, adopting				
-1244	combine	combines, combined, combining				
-1245	mountain	mountains				
-1246	waste	wastes, wasted, wasting				
-1247	hide	hides, hid, hiding, hidden				
-1248	marriage	marriages				
-1249	ticket	tickets, ticketed, ticketing				
-1250	meal	meals				
-1251	colleague	colleagues				
-1252	bag	bags, bagged, bagging				
-1253	repeat	repeats, repeated, repeating				
-1254	equal	equals, equaled, equaling, equalled, equalling				
-1255	expression	expressions				
-1256	plus	pluses				
-1257	extremely					
-1258	owner	owners				
-1259	plane	planes, planed				
-1260	commercial	commercials				
-1261	lady	ladies				
-1262	duty	duties				
-1263	strength	strengths				
-1264	connect	connects, connected, connecting				
-1265	cultural					
-1266	arrange	arranges, arranged, arranging				
-1267	scheme	schemes, schemed, scheming				
-1268	payment	payments				
-1269	unfortunately					
-1270	brief	briefs, briefed, briefing, briefer, briefest, briefings				
-1271	bird	birds, birded, birding				
-1272	demonstrate	demonstrates, demonstrated, demonstrating				
-1273	contribution	contributions				
-1274	appreciate	appreciates, appreciated, appreciating				
-1275	chapter	chapters				
-1276	secret	secrets				
-1277	apparently					
-1278	novel	novels				
-1279	union	unions				
-1280	burn	burns, burned, burning, burnt				
-1281	trend	trends, trended, trending				
-1282	initial	initials, initialed, initialing, initialled, initialling				
-1283	pleasure	pleasures, pleasured, pleasuring				
-1284	suggestion	suggestions				
-1285	critical					
-1286	gather	gathers, gathered, gathering, gatherings				
-1287	mostly					
-1288	earth	earths, earthed				
-1289	pop	pops, popped, popping				
-1290	essential	essentials				
-1291	desire	desires, desired, desiring				
-1292	promote	promotes, promoted, promoting				
-1293	currently					
-1294	employ	employs, employed, employing				
-1295	path	paths				
-1296	topic	topics				
-1297	beach	beaches, beached, beaching				
-1298	attract	attracts, attracted, attracting				
-1299	engage	engages, engaged, engaging				
-1300	powerful					
+rank	headword	forms	meanings	example_en	example_th	note	emoji
+1201	ball	balls, balled, balling					
+1202	cry	cries, cried, crying					
+1203	introduction	introductions					
+1204	requirement	requirements					
+1205	north						
+1206	confirm	confirms, confirmed, confirming					
+1207	senior	seniors					
+1208	photo	photos					
+1209	refuse	refuses, refused, refusing					
+1210	transport	transports, transported, transporting					
+1211	emerge	emerges, emerged, emerging					
+1212	map	maps, mapped, mapping, mappings					
+1213	concept	concepts					
+1214	island	islands, islanded, islanding					
+1215	reform	reforms, reformed, reforming					
+1216	neither						
+1217	football	footballs					
+1218	survive	survives, survived, surviving					
+1219	flight	flights					
+1220	left	lefts					
+1221	solve	solves, solved, solving					
+1222	neighbor	neighbors, neighbored, neighboring, neighbour, neighbours, neighboured, neighbouring					
+1223	background	backgrounds					
+1224	technique	techniques					
+1225	traffic	traffics, trafficked, trafficking, traffick, trafficks					
+1226	improvement	improvements					
+1227	tool	tools, tooled, tooling					
+1228	consequence	consequences					
+1229	circumstance	circumstances					
+1230	smoke	smokes, smoked, smoking					
+1231	reaction	reactions					
+1232	rain	rains, rained, raining					
+1233	busy	busies, busied, busying, busier, busiest					
+1234	lesson	lessons					
+1235	brain	brains, brained, braining					
+1236	mass	masses, massed, massing					
+1237	funny	funnier, funniest					
+1238	contribute	contributes, contributed, contributing					
+1239	failure	failures					
+1240	schedule	schedules, scheduled, scheduling					
+1241	speaker	speakers					
+1242	bottom	bottoms, bottomed, bottoming					
+1243	adopt	adopts, adopted, adopting					
+1244	combine	combines, combined, combining					
+1245	mountain	mountains					
+1246	waste	wastes, wasted, wasting					
+1247	hide	hides, hid, hiding, hidden					
+1248	marriage	marriages					
+1249	ticket	tickets, ticketed, ticketing					
+1250	meal	meals					
+1251	colleague	colleagues					
+1252	bag	bags, bagged, bagging					
+1253	repeat	repeats, repeated, repeating					
+1254	equal	equals, equaled, equaling, equalled, equalling					
+1255	expression	expressions					
+1256	plus	pluses					
+1257	extremely						
+1258	owner	owners					
+1259	plane	planes, planed					
+1260	commercial	commercials					
+1261	lady	ladies					
+1262	duty	duties					
+1263	strength	strengths					
+1264	connect	connects, connected, connecting					
+1265	cultural						
+1266	arrange	arranges, arranged, arranging					
+1267	scheme	schemes, schemed, scheming					
+1268	payment	payments					
+1269	unfortunately						
+1270	brief	briefs, briefed, briefing, briefer, briefest, briefings					
+1271	bird	birds, birded, birding					
+1272	demonstrate	demonstrates, demonstrated, demonstrating					
+1273	contribution	contributions					
+1274	appreciate	appreciates, appreciated, appreciating					
+1275	chapter	chapters					
+1276	secret	secrets					
+1277	apparently						
+1278	novel	novels					
+1279	union	unions					
+1280	burn	burns, burned, burning, burnt					
+1281	trend	trends, trended, trending					
+1282	initial	initials, initialed, initialing, initialled, initialling					
+1283	pleasure	pleasures, pleasured, pleasuring					
+1284	suggestion	suggestions					
+1285	critical						
+1286	gather	gathers, gathered, gathering, gatherings					
+1287	mostly						
+1288	earth	earths, earthed					
+1289	pop	pops, popped, popping					
+1290	essential	essentials					
+1291	desire	desires, desired, desiring					
+1292	promote	promotes, promoted, promoting					
+1293	currently						
+1294	employ	employs, employed, employing					
+1295	path	paths					
+1296	topic	topics					
+1297	beach	beaches, beached, beaching					
+1298	attract	attracts, attracted, attracting					
+1299	engage	engages, engaged, engaging					
+1300	powerful						

@@ -1395,6 +1395,17 @@ kbd {
   box-shadow: var(--shadow-md);
 }
 
+/* ปุ่มในการ์ดจบรอบของเกม (เรียงลงมา เว้นช่องไฟให้ไม่ติดกัน) */
+.done-card > button.wide,
+.done-card > a.button.wide {
+  margin-top: 12px;
+}
+
+.done-card > p.muted + button.wide,
+.done-card > p.muted + a.button.wide {
+  margin-top: 24px;
+}
+
 .done-growth {
   list-style: none;
   margin: 12px 0 4px;

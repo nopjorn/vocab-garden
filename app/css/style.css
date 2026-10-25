@@ -2262,6 +2262,57 @@ html[data-text-size="large"] {
   text-align: center;
 }
 
+.fold-sub {
+  margin: 12px 14px 6px;
+  font-size: 0.95rem;
+}
+
+.season-note {
+  margin-top: 8px;
+  padding: 8px 12px;
+  font-weight: 700;
+  text-align: center;
+  background: var(--brand-soft);
+  border-radius: var(--radius-sm);
+}
+
+.chips {
+  list-style: none;
+  margin-bottom: 12px;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(104px, 1fr));
+  gap: 6px;
+}
+
+.chip {
+  display: grid;
+  justify-items: center;
+  gap: 2px;
+  padding: 8px 4px;
+  text-align: center;
+  background: var(--surface-2);
+  border-radius: var(--radius-sm);
+}
+
+.chip-emoji {
+  font-size: 1.6rem;
+  line-height: 1.2;
+}
+
+.chip-title {
+  font-size: 0.72rem;
+  line-height: 1.25;
+}
+
+.chip.locked {
+  opacity: 0.55;
+}
+
+.chip.locked .chip-emoji {
+  filter: grayscale(1);
+}
+
 .medal.locked {
   opacity: 0.6;
 }

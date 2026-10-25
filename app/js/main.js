@@ -4,6 +4,7 @@ import { launchConfetti } from "./confetti.js";
 import { canSpeak, speak } from "./speech.js";
 import { buildQuestion, gradeTyped } from "./quiz.js";
 import { playSfx } from "./sfx.js";
+import { DECORATIONS, FLOWERS, bloomedLevels, flowerId, flowerOf, ownedDecorations, seasonOf } from "./decor.js";
 import { COMEBACK_DAYS, MEDALS, isEarlyBird, isPerfectRound, newMedals } from "./achievements.js";
 import { LEECH_LAPSES, dueLabel, leechWords, matchesQuery, plantInfo, plotSummary } from "./garden.js";
 import { daysAway, goalProgress, mergeDays, settleRest } from "./habit.js";
@@ -752,6 +753,7 @@ function medalContext(events = {}) {
 
 // ตรวจเหรียญใหม่ บันทึก และแจ้งในแอป (หน่วงเล็กน้อยไม่ให้ป้ายอื่นทับทันที)
 function checkMedals(events = {}) {
+  checkFlowers();
   const fresh = newMedals(medalContext(events), storage.loadMedals());
   if (fresh.length === 0) return;
   storage.addMedals(
@@ -765,12 +767,61 @@ function checkMedals(events = {}) {
   }, 1600);
 }
 
+// แปลงที่ทุกต้นโตถึง 🌿 แล้วออกดอก ได้ดอกไม้ประจำแปลง (เก็บรวมกับเหรียญ ไม่หายแม้ภายหลังมีคำที่ลืม)
+function checkFlowers() {
+  const unlocked = storage.loadMedals();
+  const fresh = bloomedLevels(state.words, state.cards, LEVELS).filter((level) => !(flowerId(level) in unlocked));
+  if (fresh.length === 0) return;
+  storage.addMedals(fresh.map(flowerId), dayNumber());
+  const names = fresh.map((level) => `${flowerOf(level, LEVELS).emoji} ${levelTitle(level)}`).join(", ");
+  setTimeout(() => {
+    toast(`${names} ออกดอกแล้ว! ได้ดอกไม้ประจำแปลง`);
+    launchConfetti();
+    fx("finish");
+  }, 2400);
+}
+
+// ดอกไม้ประจำแปลงและของแต่งสวน (ปลดล็อกจากเหรียญ) พับเก็บไว้เหมือนเหรียญ
+function renderDecor(unlocked) {
+  const flowers = LEVELS.filter((level) => flowerId(level) in unlocked);
+  const decorations = ownedDecorations(unlocked);
+  const season = seasonOf();
+  $("decor-count").textContent = `${flowers.length + decorations.length}/${LEVELS.length + DECORATIONS.length}`;
+  $("decor-preview").textContent = [season?.emoji, ...flowers.map((level) => flowerOf(level, LEVELS).emoji), ...decorations.map((decoration) => decoration.emoji)]
+    .filter(Boolean)
+    .join("");
+  $("season-note").hidden = !season;
+  $("season-note").textContent = season ? `${season.emoji} ${season.title}!` : "";
+  const chip = (emoji, title, hint, got) => {
+    const item = el("li", `chip${got ? "" : " locked"}`);
+    item.append(el("span", "chip-emoji", got ? emoji : "🔒"), el("span", "chip-title", title));
+    item.title = hint;
+    item.setAttribute("aria-label", `${title} ${got ? "ได้แล้ว" : `ยังไม่ได้ ${hint}`}`);
+    return item;
+  };
+  $("flower-list").replaceChildren(
+    ...LEVELS.map((level) => {
+      const flower = flowerOf(level, LEVELS);
+      const got = flowerId(level) in unlocked;
+      const plot = levelTitle(level).replace(/:.*/, "");
+      return chip(flower.emoji, got ? `${flower.name} · ${plot}` : plot, `ทำให้ทุกคำใน${levelTitle(level)}โตถึง 🌿 ขึ้นไป`, got);
+    }),
+  );
+  const medalTitle = (id) => MEDALS.find((medal) => medal.id === id)?.title || id;
+  $("decor-list").replaceChildren(
+    ...DECORATIONS.map((decoration) =>
+      chip(decoration.emoji, decoration.title, `ได้จากเหรียญ "${medalTitle(decoration.medal)}"`, decoration.medal in unlocked),
+    ),
+  );
+}
+
 function renderMedals() {
   checkMedals();
   const unlocked = storage.loadMedals();
   const owned = MEDALS.filter((medal) => medal.id in unlocked);
   $("medal-count").textContent = `${owned.length}/${MEDALS.length}`;
   $("medal-preview").textContent = owned.map((medal) => medal.emoji).join("");
+  renderDecor(unlocked);
   $("medal-list").replaceChildren(
     ...MEDALS.map((medal) => {
       const got = medal.id in unlocked;

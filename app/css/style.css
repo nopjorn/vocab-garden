@@ -1395,6 +1395,17 @@ kbd {
   box-shadow: var(--shadow-md);
 }
 
+/* ปุ่มในการ์ดจบรอบของเกม (เรียงลงมา เว้นช่องไฟให้ไม่ติดกัน) */
+.done-card > button.wide,
+.done-card > a.button.wide {
+  margin-top: 12px;
+}
+
+.done-card > p.muted + button.wide,
+.done-card > p.muted + a.button.wide {
+  margin-top: 24px;
+}
+
 .done-growth {
   list-style: none;
   margin: 12px 0 4px;
@@ -1477,9 +1488,11 @@ kbd {
   max-width: calc(100% - 32px);
   background: var(--text);
   color: var(--bg);
-  border-radius: 999px;
-  padding: 10px 18px;
+  border-radius: 24px;
+  padding: 10px 20px;
   font-weight: 600;
+  text-align: center;
+  text-wrap: balance; /* ขึ้นสองบรรทัดก็ยาวพอ ๆ กัน */
   box-shadow: var(--shadow-md);
   pointer-events: none; /* แตะผ่านป้ายไปกดปุ่มข้างใต้ได้ */
 }

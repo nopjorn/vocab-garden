@@ -73,3 +73,10 @@ test("medals are saved once, validated, exported, merged on import and reset", (
   const junk = createStorage({ getItem: () => JSON.stringify({ "BAD ID": 1, ok: 5, text: "x", "plant-1": 2.5 }), setItem() {}, removeItem() {} });
   assert.deepEqual(junk.loadMedals(), { ok: 5 });
 });
+
+test("exam medals follow the tier of the exam just finished", () => {
+  assert.deepEqual(ids({}), []);
+  assert.deepEqual(ids({ examTier: "bronze" }), ["exam-first"]);
+  assert.deepEqual(ids({ examTier: "silver" }), ["exam-first"]);
+  assert.deepEqual(ids({ examTier: "gold" }), ["exam-first", "exam-gold"]);
+});

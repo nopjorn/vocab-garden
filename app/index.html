@@ -265,7 +265,7 @@
           <span id="play-pool-count" class="muted small"></span>
           <span id="play-filter-summary" class="fold-preview"></span>
         </summary>
-        <p class="muted small">เลือกครั้งเดียว ใช้กับแฟลชการ์ด จับคู่คำ และเรียงตัวอักษร (ทายคำปริศนาประจำวันใช้คำชุดเดียวกันทุกคน จึงไม่ขึ้นกับตัวเลือกนี้)</p>
+        <p class="muted small">เลือกครั้งเดียว ใช้กับแฟลชการ์ด จับคู่คำ เรียงตัวอักษร และฟังแล้วเลือก (ทายคำปริศนาประจำวันใช้คำชุดเดียวกันทุกคน จึงไม่ขึ้นกับตัวเลือกนี้)</p>
         <div class="flash-head">
           <strong>เลือกแปลง</strong>
           <span class="flash-quick">
@@ -290,6 +290,12 @@
           <a class="game-card" href="#/play/match">
             <span class="game-emoji" aria-hidden="true">🧩</span>
             <span class="game-info"><strong>จับคู่คำ</strong><span class="muted small">จับคู่คำอังกฤษกับคำแปลไทย 6 คู่ให้เร็วที่สุด</span><span id="match-best" class="small"></span></span>
+          </a>
+        </li>
+        <li id="listen-card">
+          <a class="game-card" href="#/play/listen">
+            <span class="game-emoji" aria-hidden="true">🎧</span>
+            <span class="game-info"><strong>ฟังแล้วเลือก</strong><span class="muted small">ฟังเสียงอ่านโดยไม่เห็นตัวสะกด แล้วเลือกคำแปลไทยที่ถูก 8 ข้อ (ต้องเปิดเสียงเครื่อง)</span><span id="listen-best" class="small"></span></span>
           </a>
         </li>
         <li>
@@ -332,6 +338,30 @@
         <p id="scramble-summary" class="muted"></p>
         <p id="scramble-marks" class="big-marks" aria-hidden="true"></p>
         <button type="button" id="scramble-again" class="primary wide">🔁 เล่นอีกรอบ</button>
+        <a href="#/play" class="button wide">กลับไปหน้าเกม</a>
+      </div>
+    </section>
+
+    <section id="view-listen" hidden>
+      <div class="study-top">
+        <a href="#/play" class="close" aria-label="กลับไปหน้าเกม">✕</a>
+        <strong class="game-title">🎧 ฟังแล้วเลือก</strong>
+        <span id="listen-count" class="muted small"></span>
+      </div>
+      <div id="listen-play">
+        <p class="muted small center-text">ฟังเสียงแล้วเลือกคำแปลไทยของคำที่ได้ยิน</p>
+        <p class="center-text"><button type="button" id="listen-replay" class="listen-btn" aria-label="ฟังอีกครั้ง">🔊</button></p>
+        <p id="listen-word" class="exam-prompt" lang="en" hidden></p>
+        <ul id="listen-options" class="quiz-options" aria-label="ตัวเลือกคำแปล"></ul>
+        <p id="listen-feedback" class="quiz-feedback" role="status" hidden></p>
+        <button type="button" id="listen-next" class="primary wide" hidden>ต่อไป ➡️</button>
+      </div>
+      <div id="listen-result" class="done-card" hidden>
+        <p class="big-emoji celebrate" aria-hidden="true">🎧</p>
+        <h2 id="listen-title"></h2>
+        <p id="listen-summary" class="muted"></p>
+        <p id="listen-marks" class="big-marks" aria-hidden="true"></p>
+        <button type="button" id="listen-again" class="primary wide">🔁 เล่นอีกรอบ</button>
         <a href="#/play" class="button wide">กลับไปหน้าเกม</a>
       </div>
     </section>

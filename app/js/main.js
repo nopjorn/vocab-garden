@@ -931,6 +931,7 @@ function renderMedals() {
 // ---------- เล่น (เกม) ----------
 
 function renderPlay() {
+  renderPlayFilter();
   const best = storage.loadGames().best.match;
   $("match-best").textContent = best ? `🏆 ดีที่สุด ${formatSeconds(best)}` : "";
   const scrambleBest = storage.loadGames().best.scramble;
@@ -948,9 +949,11 @@ function renderPlay() {
 const scramble = { round: [], index: 0, picked: [], hinted: false, results: [], answered: false };
 
 function startScramble() {
-  const round = buildScrambleRound(translatedWords());
+  const pool = poolOrBack();
+  if (!pool) return;
+  const round = buildScrambleRound(translatedWords(), Math.random, SCRAMBLE_COUNT, pool);
   if (!round) {
-    toast("ยังมีคำที่แปลแล้วไม่พอสำหรับเกมนี้");
+    toast("คำที่เลือกไว้ยังไม่พอสำหรับเกมนี้ ลองเลือกแปลงหรือสถานะเพิ่มที่หน้าเล่นนะ");
     location.hash = "#/play";
     return;
   }
@@ -1273,7 +1276,7 @@ async function shareGarden() {
 // ---------- แฟลชการ์ด ----------
 
 const flash = {
-  prefs: { levels: null, statuses: new Set(STATUSES.map((status) => status.id)), size: 20, side: "en" },
+  prefs: { size: 20, side: "en" },
   deck: [],
   queue: [],
   unsure: 0,
@@ -1282,18 +1285,47 @@ const flash = {
 const FLASH_SIDE_LABELS = { en: "คำอังกฤษ (ดูคำแปลหลังพลิก)", th: "คำแปลไทย (ทายคำอังกฤษ)" };
 const FLASH_SIZE_LABELS = Object.fromEntries(DECK_SIZE_CHOICES.map((count) => [count, count ? `${count} ใบ` : "ทั้งหมดที่เลือก"]));
 
-const flashLevels = () => LEVELS.filter((level) => state.words.some((word) => word.level === level && word.translated));
+// ---------- คำที่ใช้เล่น (ใช้ร่วมกันทุกเกม) ----------
 
-function flashMatches() {
-  return matchingWords(translatedWords(), state.cards, flash.prefs);
+const playableLevels = () => LEVELS.filter((level) => state.words.some((word) => word.level === level && word.translated));
+
+// แปลงที่เลือกอยู่ (ยังไม่เคยเลือก = ทุกแปลงที่แปลแล้ว)
+function playLevelSet() {
+  const all = playableLevels();
+  const saved = state.settings.playLevels;
+  return new Set(saved ? saved.filter((level) => all.includes(level)) : all);
 }
 
-// หน้าเลือกคำ: แปลง สถานะ จำนวน และด้านหน้าการ์ด ตัวเลขข้างสถานะนับเฉพาะแปลงที่เลือก
-function renderFlashSetup() {
-  const { prefs } = flash;
-  if (!prefs.levels) prefs.levels = new Set(flashLevels());
+// คำที่ตรงกับแปลงและสถานะที่เลือก ใช้เป็นกองคำของเกมต่าง ๆ
+function playPool() {
+  return matchingWords(translatedWords(), state.cards, { levels: playLevelSet(), statuses: new Set(state.settings.playStatuses) });
+}
+
+function savePlayLevels(levels) {
+  const all = playableLevels();
+  updateSetting({ playLevels: all.every((level) => levels.has(level)) ? null : all.filter((level) => levels.has(level)) });
+  renderPlayFilter();
+}
+
+function savePlayStatuses(statuses) {
+  updateSetting({ playStatuses: STATUSES.map((status) => status.id).filter((id) => statuses.has(id)) });
+  renderPlayFilter();
+}
+
+function playFilterText() {
+  const levels = playLevelSet();
+  const all = playableLevels();
+  const levelText = levels.size === all.length ? "ทุกแปลง" : levels.size === 0 ? "ยังไม่ได้เลือกแปลง" : `${levels.size} แปลง`;
+  const statuses = STATUSES.filter((status) => state.settings.playStatuses.includes(status.id));
+  const statusText = statuses.length === STATUSES.length ? "ทุกสถานะ" : statuses.length === 0 ? "ยังไม่ได้เลือกสถานะ" : statuses.map((status) => status.emoji).join("");
+  return `${levelText} · ${statusText}`;
+}
+
+// ส่วนเลือกคำในหน้าเล่น: แปลง สถานะ (ตัวเลขข้างสถานะนับเฉพาะแปลงที่เลือก) และสรุปจำนวนคำ
+function renderPlayFilter() {
+  const levels = playLevelSet();
   const words = translatedWords();
-  const checkbox = (id, checked, text, onChange) => {
+  const checkbox = (checked, text, onChange) => {
     const label = el("label", "check");
     const input = el("input");
     input.type = "checkbox";
@@ -1302,32 +1334,54 @@ function renderFlashSetup() {
     label.append(input, ` ${text}`);
     return label;
   };
-  $("flash-levels").replaceChildren(
-    ...flashLevels().map((level) => {
-      const inLevel = words.filter((word) => word.level === level);
-      return checkbox(level, prefs.levels.has(level), `${levelTitle(level).replace(/:.*/, "")} (${inLevel.length})`, (on) => {
-        if (on) prefs.levels.add(level);
-        else prefs.levels.delete(level);
-        renderFlashSetup();
+  $("play-levels").replaceChildren(
+    ...playableLevels().map((level) => {
+      const count = words.filter((word) => word.level === level).length;
+      return checkbox(levels.has(level), `${levelTitle(level).replace(/:.*/, "")} (${count})`, (on) => {
+        const next = new Set(levels);
+        if (on) next.add(level);
+        else next.delete(level);
+        savePlayLevels(next);
       });
     }),
   );
-  const inChosen = words.filter((word) => prefs.levels.has(word.level));
-  $("flash-statuses").replaceChildren(
+  const inChosen = words.filter((word) => levels.has(word.level));
+  const chosenStatuses = new Set(state.settings.playStatuses);
+  $("play-statuses").replaceChildren(
     ...STATUSES.map((status) => {
       const count = inChosen.filter((word) => statusOf(state.cards[word.headword]) === status.id).length;
-      return checkbox(status.id, prefs.statuses.has(status.id), `${status.emoji} ${status.label} (${count})`, (on) => {
-        if (on) prefs.statuses.add(status.id);
-        else prefs.statuses.delete(status.id);
-        renderFlashSetup();
+      return checkbox(chosenStatuses.has(status.id), `${status.emoji} ${status.label} (${count})`, (on) => {
+        const next = new Set(chosenStatuses);
+        if (on) next.add(status.id);
+        else next.delete(status.id);
+        savePlayStatuses(next);
       });
     }),
   );
+  $("play-pool-count").textContent = `${playPool().length} คำ`;
+  $("play-filter-summary").textContent = playFilterText();
+}
+
+// เกมที่ใช้กองคำนี้ ถ้าคำไม่พอให้กลับไปปรับที่หน้าเล่น
+function poolOrBack() {
+  const pool = playPool();
+  if (pool.length === 0) {
+    toast("ยังไม่มีคำที่ตรงเงื่อนไข ลองเลือกแปลงหรือสถานะเพิ่มที่หน้าเล่นนะ");
+    location.hash = "#/play";
+    return null;
+  }
+  return pool;
+}
+
+// หน้าตั้งค่าแฟลชการ์ด: จำนวนใบและด้านหน้าการ์ด (คำมาจากที่เลือกไว้ในหน้าเล่น)
+function renderFlashSetup() {
+  const { prefs } = flash;
   fillSelect($("flash-size"), DECK_SIZE_CHOICES, prefs.size, FLASH_SIZE_LABELS);
   fillSelect($("flash-side"), SIDE_CHOICES, prefs.side, FLASH_SIDE_LABELS);
-  const total = flashMatches().length;
+  const total = playPool().length;
   const deckSize = prefs.size > 0 ? Math.min(prefs.size, total) : total;
-  $("flash-ready").textContent = total > 0 ? `พร้อมเล่น ${deckSize} ใบ (จากคำที่ตรงเงื่อนไข ${total} คำ)` : "ยังไม่มีคำที่ตรงเงื่อนไข ลองเลือกแปลงหรือสถานะเพิ่มนะ";
+  $("flash-pool").textContent = `🎯 ${playFilterText()}`;
+  $("flash-ready").textContent = total > 0 ? `พร้อมเล่น ${deckSize} ใบ (จากคำที่ตรงเงื่อนไข ${total} คำ)` : "ยังไม่มีคำที่ตรงเงื่อนไข กลับไปเลือกแปลงหรือสถานะที่หน้าเล่นนะ";
   $("flash-start").disabled = total === 0;
 }
 
@@ -1429,9 +1483,11 @@ function renderMatchStats() {
 
 function startMatch() {
   stopMatchTimer();
-  const round = buildMatchRound(translatedWords());
+  const pool = poolOrBack();
+  if (!pool) return;
+  const round = buildMatchRound(pool);
   if (!round) {
-    toast("ยังมีคำที่แปลแล้วไม่พอสำหรับเกมนี้");
+    toast("คำที่เลือกไว้ยังไม่พอสำหรับเกมนี้ ลองเลือกแปลงหรือสถานะเพิ่มที่หน้าเล่นนะ");
     location.hash = "#/play";
     return;
   }
@@ -2128,14 +2184,8 @@ function bindEvents() {
   });
   $("wordle-share").addEventListener("click", shareWordle);
   $("share-garden").addEventListener("click", shareGarden);
-  $("flash-all").addEventListener("click", () => {
-    flash.prefs.levels = new Set(flashLevels());
-    renderFlashSetup();
-  });
-  $("flash-none").addEventListener("click", () => {
-    flash.prefs.levels = new Set();
-    renderFlashSetup();
-  });
+  $("play-all").addEventListener("click", () => savePlayLevels(new Set(playableLevels())));
+  $("play-none").addEventListener("click", () => savePlayLevels(new Set()));
   $("flash-size").addEventListener("change", (event) => {
     flash.prefs.size = Number(event.target.value);
     renderFlashSetup();
@@ -2143,7 +2193,7 @@ function bindEvents() {
   $("flash-side").addEventListener("change", (event) => {
     flash.prefs.side = event.target.value;
   });
-  $("flash-start").addEventListener("click", () => startFlashDeck(buildDeck(flashMatches(), flash.prefs.size)));
+  $("flash-start").addEventListener("click", () => startFlashDeck(buildDeck(playPool(), flash.prefs.size)));
   $("flash-card").addEventListener("click", flipFlash);
   $("flash-known").addEventListener("click", () => answerFlash(true));
   $("flash-unsure").addEventListener("click", () => answerFlash(false));

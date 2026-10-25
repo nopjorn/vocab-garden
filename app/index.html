@@ -259,6 +259,26 @@
     <section id="view-play" hidden>
       <h1>เล่น 🎮</h1>
       <p class="muted small">เกมสั้น ๆ ที่ใช้คำที่แปลแล้ว เล่นแล้วนับเป็นวันท่องต่อเนื่อง 🔥 แต่ไม่เปลี่ยนวันทวนของคำและไม่นับเป็นเป้าหมายรายวัน</p>
+      <details id="play-filter" class="fold">
+        <summary>
+          <strong>🎯 คำที่ใช้เล่น</strong>
+          <span id="play-pool-count" class="muted small"></span>
+          <span id="play-filter-summary" class="fold-preview"></span>
+        </summary>
+        <p class="muted small">เลือกครั้งเดียว ใช้กับแฟลชการ์ด จับคู่คำ และเรียงตัวอักษร (ทายคำปริศนาประจำวันใช้คำชุดเดียวกันทุกคน จึงไม่ขึ้นกับตัวเลือกนี้)</p>
+        <div class="flash-head">
+          <strong>เลือกแปลง</strong>
+          <span class="flash-quick">
+            <button type="button" id="play-all" class="linklike small">เลือกทั้งหมด</button>
+            <button type="button" id="play-none" class="linklike small">ล้างที่เลือก</button>
+          </span>
+        </div>
+        <div id="play-levels" class="flash-levels"></div>
+        <p><strong>สถานะของคำ</strong></p>
+        <div id="play-statuses" class="flash-statuses"></div>
+        <p class="tip small">🌰 ยังไม่เรียน = ยังไม่เคยปลูก · 🌱 กำลังเรียน = ต้นอ่อนและกำลังโต · 🌳 เรียนแล้ว = ต้นไม้ใหญ่</p>
+      </details>
+
       <ul class="game-list">
         <li>
           <a class="game-card" href="#/play/flash">
@@ -372,24 +392,8 @@
       </div>
 
       <div id="flash-setup">
-        <p class="muted small">เลือกว่าจะทบทวนคำจากแปลงไหน และคำสถานะไหน เล่นแล้วไม่เปลี่ยนวันทวนของคำ</p>
-
-        <div class="panel">
-          <div class="flash-head">
-            <strong>เลือกแปลง</strong>
-            <span class="flash-quick">
-              <button type="button" id="flash-all" class="linklike small">เลือกทั้งหมด</button>
-              <button type="button" id="flash-none" class="linklike small">ล้างที่เลือก</button>
-            </span>
-          </div>
-          <div id="flash-levels" class="flash-levels"></div>
-        </div>
-
-        <div class="panel">
-          <strong>สถานะของคำ</strong>
-          <div id="flash-statuses" class="flash-statuses"></div>
-          <p class="tip small">🌰 ยังไม่เรียน = ยังไม่เคยปลูก · 🌱 กำลังเรียน = ต้นอ่อนและกำลังโต · 🌳 เรียนแล้ว = ต้นไม้ใหญ่</p>
-        </div>
+        <p class="muted small">ใช้คำตามที่เลือกไว้ในหน้า <a href="#/play">เล่น</a> (แปลงและสถานะของคำ) เล่นแล้วไม่เปลี่ยนวันทวนของคำ</p>
+        <p id="flash-pool" class="flash-pool"></p>
 
         <div class="panel">
           <p>

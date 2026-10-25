@@ -17,9 +17,10 @@ export function scrambleLetters(answer, rng = Math.random) {
 }
 
 // ข้อหนึ่งรอบ: คำที่ยาว 3–8 ตัวอักษรและคำแปลชี้ไปที่คำเดียวจริง ๆ (ไม่มีคำอื่นแปลทับกัน) คืน null ถ้าคำไม่พอ
-export function buildScrambleRound(pool, rng = Math.random, count = SCRAMBLE_COUNT) {
+// pool = คำทั้งหมดที่ใช้ตัดสินว่าคำแปลชี้ไปที่คำเดียวจริง ๆ · only = เลือกออกข้อสอบจากคำกลุ่มนี้เท่านั้น (ค่าเริ่มต้นคือทั้ง pool)
+export function buildScrambleRound(pool, rng = Math.random, count = SCRAMBLE_COUNT, only = pool) {
   const eligible = [];
-  for (const word of pool) {
+  for (const word of only) {
     const answer = word.headword.toLowerCase();
     if (!/^[a-z]{3,8}$/.test(answer)) continue;
     const question = typeQuestion(word, pool);

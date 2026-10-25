@@ -25,6 +25,7 @@ export const NOTE_MAX = 200; // โน้ตช่วยจำยาวได้
 export const DAILY_GOAL_CHOICES = [10, 20, 30]; // เป้าหมายรายวัน (จำนวนครั้งที่ตอบ)
 export const REVIEW_CAP_CHOICES = [50, 100, 0]; // ทวนได้ไม่เกินกี่ครั้งต่อวัน (0 = ไม่จำกัด)
 export const ROUND_SIZE_CHOICES = [10, 20, 0]; // ทวนรอบละกี่ใบแล้วพักถามว่าจะไปต่อไหม (0 = ไม่แบ่งรอบ)
+export const PLAY_STATUS_IDS = ["new", "learning", "done"]; // สถานะคำที่เลือกเล่นได้ ตรงกับ STATUSES ใน flash.js
 export const DEFAULT_SETTINGS = {
   newPerDay: 10,
   startLevel: 1,
@@ -36,6 +37,8 @@ export const DEFAULT_SETTINGS = {
   dailyGoal: 10,
   reviewCap: 100,
   roundSize: 10,
+  playLevels: null, // แปลงที่ใช้เล่นเกม (null = ทุกแปลง)
+  playStatuses: [...PLAY_STATUS_IDS],
   quizMode: "flip",
   quizTyping: true,
 };
@@ -73,6 +76,19 @@ function isCardState(value) {
 function validCards(cards) {
   if (cards === null || typeof cards !== "object" || Array.isArray(cards)) return null;
   return Object.values(cards).every(isCardState) ? cards : null;
+}
+
+// แปลงที่เลือกเล่น: รายการรหัสแปลง (01–28 หรือ sup) ที่ไม่ซ้ำ ไม่ถูกต้อง = null (ทุกแปลง)
+function validPlayLevels(levels) {
+  if (!Array.isArray(levels)) return null;
+  const clean = [...new Set(levels.filter((level) => typeof level === "string" && /^(0[1-9]|1\d|2[0-8]|sup)$/.test(level)))];
+  return clean;
+}
+
+// สถานะที่เลือกเล่น: เก็บเฉพาะรหัสที่รู้จัก เรียงตามลำดับมาตรฐาน ไม่ใช่ array = ทุกสถานะ (เลือกเป็นว่างได้ แปลว่ายังไม่เลือกอะไร)
+function validPlayStatuses(statuses) {
+  if (!Array.isArray(statuses)) return [...PLAY_STATUS_IDS];
+  return PLAY_STATUS_IDS.filter((id) => statuses.includes(id));
 }
 
 // ประวัติการทวนรายวัน { [เลขวัน]: จำนวนครั้ง } ต้องเป็นจำนวนเต็มไม่ติดลบ
@@ -201,6 +217,8 @@ export function createStorage(store = globalThis.localStorage) {
         dailyGoal: pick(DAILY_GOAL_CHOICES, saved.dailyGoal, DEFAULT_SETTINGS.dailyGoal),
         reviewCap: pick(REVIEW_CAP_CHOICES, saved.reviewCap, DEFAULT_SETTINGS.reviewCap),
         roundSize: pick(ROUND_SIZE_CHOICES, saved.roundSize, DEFAULT_SETTINGS.roundSize),
+        playLevels: validPlayLevels(saved.playLevels),
+        playStatuses: validPlayStatuses(saved.playStatuses),
         quizMode: pick(QUIZ_MODE_CHOICES, saved.quizMode, DEFAULT_SETTINGS.quizMode),
         quizTyping: saved.quizTyping !== false,
       };

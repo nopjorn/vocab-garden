@@ -17,6 +17,7 @@ import { LEECH_LAPSES, dueLabel, leechWords, matchesQuery, plantInfo, plantedInL
 import { daysAway, goalProgress, mergeDays, settleRest } from "./habit.js";
 import { buildMatchRound, formatSeconds, isMatch, isNewBest } from "./match.js";
 import { buildPlacement, estimateKnown, knownWords, recommendLevel, scorePlacement } from "./placement.js";
+import { askBadgePermission, canBadge, showBadge } from "./badge.js";
 import { DICTATION_COUNT, LISTEN_COUNT, buildDictationRound, buildListenRound, dictationMax, dictationScore, gradeDictation, listenSummary } from "./listen.js";
 import { SCRAMBLE_COUNT, applyHint, buildScrambleRound, isSolved, maxScore, roundScore } from "./scramble.js";
 import { MAX_GUESSES, WORD_LENGTH, answerPool, dailyAnswer, guessSet, keyStates, nextStats, scoreGuess, shareText } from "./wordle.js";
@@ -285,12 +286,21 @@ function checkGoal(day, count) {
   fx("finish");
 }
 
+// ตัวเลขบนไอคอนแอป = จำนวนคำที่ถึงเวลาทวนทั้งหมด (ไม่ถูกจำกัดด้วยเพดานต่อวัน) ล้างเมื่อปิดตัวเลือกหรือไม่มีคำค้าง
+function updateAppBadge() {
+  if (!canBadge()) return;
+  const today = dayNumber();
+  const due = translatedWords().filter((word) => isDue(state.cards[word.headword], today)).length;
+  showBadge(due, state.settings.appBadge);
+}
+
 function renderHome() {
   const today = dayNumber();
   const queue = todayQueue(today);
   const dueCount = queue.filter((word) => state.cards[word.headword]).length;
   const habit = refreshHabit(today);
   const totalDue = translatedWords().filter((word) => isDue(state.cards[word.headword], today)).length;
+  updateAppBadge();
   $("greeting").textContent = greeting();
   $("due-count").textContent = dueCount;
   $("new-count").textContent = queue.length - dueCount;
@@ -644,6 +654,7 @@ function answer(rating) {
     card = grade(before, rating, session.day, Math.random);
     state.cards[word.headword] = card;
     storage.saveCards(state.cards);
+    updateAppBadge();
     const count = storage.addReview(session.day);
     storage.addLog(session.day, { n: before ? 0 : 1, t: stageMove(before, card)?.stage.id === "tree" ? 1 : 0, a: rating === AGAIN ? 1 : 0 });
     if (!before) storage.saveNewCount(session.day, storage.newCountToday(session.day) + 1);
@@ -2219,6 +2230,8 @@ function renderSettings() {
   fillSelect($("round-size"), ROUND_SIZE_CHOICES, state.settings.roundSize, ROUND_SIZE_LABELS);
   $("auto-speak").checked = state.settings.autoSpeak;
   $("sound-fx").checked = state.settings.sound;
+  $("badge-setting").hidden = !canBadge();
+  $("app-badge").checked = state.settings.appBadge;
   $("sound-panel").hidden = !canSpeak();
   $("sound-heading").hidden = !canSpeak();
   const select = $("new-per-day");
@@ -2799,6 +2812,17 @@ function bindEvents() {
     updateSetting({ sound: event.target.checked });
     fx("combo"); // ลองฟังทันทีที่เปิด (การแตะเป็นการกระทำของผู้ใช้ เบราว์เซอร์จึงยอมให้เล่นเสียง)
   });
+  $("app-badge").addEventListener("change", async (event) => {
+    const box = event.target;
+    if (box.checked && !(await askBadgePermission())) {
+      box.checked = false;
+      toast("ต้องอนุญาตการแจ้งเตือนของแอปนี้ก่อน ตัวเลขบนไอคอนจึงจะขึ้นได้");
+      return;
+    }
+    updateSetting({ appBadge: box.checked });
+    updateAppBadge();
+    toast(box.checked ? "จะแสดงตัวเลขคำที่ต้องทวนบนไอคอนแอปแล้ว 🔢" : "ปิดตัวเลขบนไอคอนแอปแล้ว");
+  });
   $("speech-test").addEventListener("click", () => speakWord("Hello, welcome to Vocab Garden"));
   $("theme").addEventListener("change", (event) => updateSetting({ theme: event.target.value }));
   $("text-size").addEventListener("change", (event) => updateSetting({ textSize: event.target.value }));
@@ -2836,6 +2860,7 @@ async function init() {
     show("error");
     return;
   }
+  updateAppBadge(); // เปิดแอปที่หน้าไหนก็ตาม ตัวเลขบนไอคอนต้องตรงกับคำที่ค้างทวน
   route();
 }
 

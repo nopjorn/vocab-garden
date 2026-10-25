@@ -22,6 +22,7 @@ test("settings default to 10 new words a day starting from level 1 with the syst
     theme: "auto",
     textSize: "normal",
     sound: false,
+    appBadge: false,
     dailyGoal: 10,
     reviewCap: 100,
     roundSize: 10,
@@ -195,4 +196,12 @@ test("play word filters keep only known levels and statuses", () => {
   assert.deepEqual(read({ playLevels: [], playStatuses: [] }).playLevels, []);
   assert.deepEqual(read({ playLevels: [], playStatuses: [] }).playStatuses, []);
   assert.equal(read({}).playLevels, null);
+});
+
+test("the app badge setting defaults to off and only accepts true", () => {
+  const read = (saved) => createStorage(fakeStore({ "vg:settings": JSON.stringify(saved) })).loadSettings();
+  assert.equal(read({}).appBadge, false);
+  assert.equal(read({ appBadge: true }).appBadge, true);
+  assert.equal(read({ appBadge: "yes" }).appBadge, false);
+  assert.equal(read({ appBadge: 1 }).appBadge, false);
 });

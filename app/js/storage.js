@@ -34,6 +34,7 @@ export const DEFAULT_SETTINGS = {
   theme: "auto",
   textSize: "normal",
   sound: false,
+  appBadge: false, // ตัวเลขคำที่ต้องทวนบนไอคอนแอป
   dailyGoal: 10,
   reviewCap: 100,
   roundSize: 10,
@@ -214,6 +215,7 @@ export function createStorage(store = globalThis.localStorage) {
         theme: pick(THEME_CHOICES, saved.theme, DEFAULT_SETTINGS.theme),
         textSize: pick(TEXT_SIZE_CHOICES, saved.textSize, DEFAULT_SETTINGS.textSize),
         sound: saved.sound === true,
+        appBadge: saved.appBadge === true,
         dailyGoal: pick(DAILY_GOAL_CHOICES, saved.dailyGoal, DEFAULT_SETTINGS.dailyGoal),
         reviewCap: pick(REVIEW_CAP_CHOICES, saved.reviewCap, DEFAULT_SETTINGS.reviewCap),
         roundSize: pick(ROUND_SIZE_CHOICES, saved.roundSize, DEFAULT_SETTINGS.roundSize),

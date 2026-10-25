@@ -33,7 +33,7 @@
     <nav class="tabbar" aria-label="เมนูหลัก">
       <a href="#/" data-tab="home"><span class="tab-icon" aria-hidden="true">🏠</span><span>หน้าหลัก</span></a>
       <a href="#/garden" data-tab="garden"><span class="tab-icon" aria-hidden="true">🌳</span><span>สวน</span></a>
-      <a href="#/play" data-tab="play"><span class="tab-icon" aria-hidden="true">🎮</span><span>เล่น</span></a>
+      <a href="#/play" data-tab="play"><span class="tab-icon" aria-hidden="true">🎮</span><span>เกม</span></a>
       <a href="#/settings" data-tab="settings"><span class="tab-icon" aria-hidden="true">⚙️</span><span>ตั้งค่า</span></a>
       <a href="#/about" data-tab="about"><span class="tab-icon" aria-hidden="true">ℹ️</span><span>เกี่ยวกับ</span></a>
     </nav>
@@ -257,7 +257,7 @@
     </section>
 
     <section id="view-play" hidden>
-      <h1>เล่น 🎮</h1>
+      <h1>เกม 🎮</h1>
       <p class="muted small">เกมสั้น ๆ ที่ใช้คำที่แปลแล้ว เล่นแล้วนับเป็นวันท่องต่อเนื่อง 🔥 แต่ไม่เปลี่ยนวันทวนของคำและไม่นับเป็นเป้าหมายรายวัน</p>
       <details id="play-filter" class="fold">
         <summary>
@@ -309,7 +309,7 @@
 
     <section id="view-scramble" hidden>
       <div class="study-top">
-        <a href="#/play" class="close" aria-label="กลับไปหน้าเล่น">✕</a>
+        <a href="#/play" class="close" aria-label="กลับไปหน้าเกม">✕</a>
         <strong class="game-title">🔀 เรียงตัวอักษร</strong>
         <span id="scramble-count" class="muted small"></span>
       </div>
@@ -332,7 +332,7 @@
         <p id="scramble-summary" class="muted"></p>
         <p id="scramble-marks" class="big-marks" aria-hidden="true"></p>
         <button type="button" id="scramble-again" class="primary wide">🔁 เล่นอีกรอบ</button>
-        <a href="#/play" class="button wide">กลับไปหน้าเล่น</a>
+        <a href="#/play" class="button wide">กลับไปหน้าเกม</a>
       </div>
     </section>
 
@@ -364,7 +364,7 @@
 
     <section id="view-wordle" hidden>
       <div class="study-top">
-        <a href="#/play" class="close" aria-label="กลับไปหน้าเล่น">✕</a>
+        <a href="#/play" class="close" aria-label="กลับไปหน้าเกม">✕</a>
         <strong class="game-title">🔤 ทายคำปริศนา</strong>
         <span id="wordle-count" class="muted small"></span>
       </div>
@@ -380,19 +380,19 @@
         <p id="wordle-example" class="muted"></p>
         <p id="wordle-stats" class="muted small"></p>
         <button type="button" id="wordle-share" class="primary wide">📤 แชร์ผล</button>
-        <a href="#/play" class="button wide">กลับไปหน้าเล่น</a>
+        <a href="#/play" class="button wide">กลับไปหน้าเกม</a>
       </div>
     </section>
 
     <section id="view-flash" hidden>
       <div class="study-top">
-        <a href="#/play" class="close" aria-label="กลับไปหน้าเล่น">✕</a>
+        <a href="#/play" class="close" aria-label="กลับไปหน้าเกม">✕</a>
         <strong class="game-title">🃏 แฟลชการ์ด</strong>
         <span id="flash-count" class="muted small"></span>
       </div>
 
       <div id="flash-setup">
-        <p class="muted small">ใช้คำตามที่เลือกไว้ในหน้า <a href="#/play">เล่น</a> (แปลงและสถานะของคำ) เล่นแล้วไม่เปลี่ยนวันทวนของคำ</p>
+        <p class="muted small">ใช้คำตามที่เลือกไว้ในหน้า <a href="#/play">เกม</a> (แปลงและสถานะของคำ) เล่นแล้วไม่เปลี่ยนวันทวนของคำ</p>
         <p id="flash-pool" class="flash-pool"></p>
 
         <div class="panel">
@@ -434,13 +434,13 @@
         <p id="flash-summary" class="muted"></p>
         <button type="button" id="flash-again" class="primary wide">🔁 เล่นชุดเดิมอีกรอบ</button>
         <button type="button" id="flash-change" class="wide">⚙️ เลือกคำใหม่</button>
-        <a href="#/play" class="button wide">กลับไปหน้าเล่น</a>
+        <a href="#/play" class="button wide">กลับไปหน้าเกม</a>
       </div>
     </section>
 
     <section id="view-match" hidden>
       <div class="study-top">
-        <a href="#/play" class="close" aria-label="กลับไปหน้าเล่น">✕</a>
+        <a href="#/play" class="close" aria-label="กลับไปหน้าเกม">✕</a>
         <strong class="game-title">🧩 จับคู่คำ</strong>
         <span id="match-stats" class="muted small" role="timer"></span>
       </div>
@@ -451,7 +451,7 @@
         <h2>จับคู่ครบแล้ว!</h2>
         <p id="match-summary" class="muted"></p>
         <button type="button" id="match-again" class="primary wide">🔁 เล่นอีกรอบ</button>
-        <a href="#/play" class="button wide">กลับไปหน้าเล่น</a>
+        <a href="#/play" class="button wide">กลับไปหน้าเกม</a>
       </div>
     </section>
 

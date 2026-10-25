@@ -308,7 +308,7 @@ export function createStorage(store = globalThis.localStorage) {
       return medals;
     },
 
-    // เกมในแท็บ "เล่น": วันที่เล่น (นับเป็นวันท่องต่อเนื่อง) และสถิติดีที่สุดของแต่ละเกม
+    // เกมในแท็บ "เกม": วันที่เล่น (นับเป็นวันท่องต่อเนื่อง) และสถิติดีที่สุดของแต่ละเกม
     loadGames() {
       return validGames(read(KEYS.games, null)) || { days: {}, best: {} };
     },

@@ -17,7 +17,7 @@ import { LEECH_LAPSES, dueLabel, leechWords, matchesQuery, plantInfo, plantedInL
 import { daysAway, goalProgress, mergeDays, settleRest } from "./habit.js";
 import { buildMatchRound, formatSeconds, isMatch, isNewBest } from "./match.js";
 import { buildPlacement, estimateKnown, knownWords, recommendLevel, scorePlacement } from "./placement.js";
-import { LISTEN_COUNT, buildListenRound, listenSummary } from "./listen.js";
+import { DICTATION_COUNT, LISTEN_COUNT, buildDictationRound, buildListenRound, dictationMax, dictationScore, gradeDictation, listenSummary } from "./listen.js";
 import { SCRAMBLE_COUNT, applyHint, buildScrambleRound, isSolved, maxScore, roundScore } from "./scramble.js";
 import { MAX_GUESSES, WORD_LENGTH, answerPool, dailyAnswer, guessSet, keyStates, nextStats, scoreGuess, shareText } from "./wordle.js";
 import { AGAIN, GOOD, HARD, STAGES, buildQueue, dayNumber, grade, isDue, knownCard, stageOf } from "./srs.js";
@@ -39,8 +39,8 @@ import { recentDays, stageCounts, streakOf, totalReviews } from "./stats.js";
 import { SUPPORT_LINKS } from "./support.js";
 import { isNewer, parseSwVersion } from "./update.js";
 
-const VIEWS = ["loading", "error", "home", "study", "done", "garden", "play", "match", "flash", "wordle", "scramble", "listen", "placement", "exam", "settings", "about", "changelog"];
-const TAB_OF_VIEW = { changelog: "about", match: "play", flash: "play", wordle: "play", scramble: "play", listen: "play", placement: "settings", exam: "garden" }; // หน้าที่ไม่มีแท็บของตัวเอง ให้ไฮไลต์แท็บนี้แทน
+const VIEWS = ["loading", "error", "home", "study", "done", "garden", "play", "match", "flash", "wordle", "scramble", "listen", "dictation", "placement", "exam", "settings", "about", "changelog"];
+const TAB_OF_VIEW = { changelog: "about", match: "play", flash: "play", wordle: "play", scramble: "play", listen: "play", dictation: "play", placement: "settings", exam: "garden" }; // หน้าที่ไม่มีแท็บของตัวเอง ให้ไฮไลต์แท็บนี้แทน
 const REQUEUE_GAP = 3; // คำที่ตอบ "ยังจำไม่ได้" จะกลับมาอีกครั้งหลังการ์ดใบอื่นอีก 3 ใบ
 const SWIPE_DISTANCE = 90; // ปัดเกินกี่ px ถึงนับเป็นการให้คะแนน
 const SWIPE_PREVIEW = 40; // ปัดเกินกี่ px ถึงเริ่มขึ้นป้ายบนการ์ด
@@ -953,6 +953,9 @@ function renderPlay() {
   const scrambleBest = storage.loadGames().best.scramble;
   $("scramble-best").textContent = scrambleBest ? `🏆 คะแนนสูงสุด ${scrambleBest}/${maxScore()}` : "";
   $("listen-card").hidden = !canSpeak();
+  $("dictation-card").hidden = !canSpeak();
+  const dictationBest = storage.loadGames().best.dictation;
+  $("dictation-best").textContent = dictationBest ? `🏆 คะแนนสูงสุด ${dictationBest}/${dictationMax()}` : "";
   const listenBest = storage.loadGames().best.listen;
   $("listen-best").textContent = listenBest ? `🏆 ถูกมากสุด ${listenBest}/${LISTEN_COUNT}` : "";
   const today = storage.loadWordle(dayNumber());
@@ -1189,6 +1192,101 @@ function finishListen() {
   $("listen-play").hidden = true;
   $("listen-result").hidden = false;
   if (score >= LISTEN_COUNT - 1) launchConfetti(isBest ? 48 : 24);
+  fx("finish");
+}
+
+// ---------- ฟังแล้วพิมพ์ ----------
+
+const dictation = { items: [], index: 0, results: [], hinted: false, answered: false };
+
+function startDictation() {
+  if (!canSpeak()) {
+    toast("เครื่องนี้ไม่มีเสียงอ่าน เล่นเกมนี้ไม่ได้");
+    location.hash = "#/play";
+    return;
+  }
+  const pool = poolOrBack();
+  if (!pool) return;
+  const items = buildDictationRound(translatedWords(), Math.random, DICTATION_COUNT, pool);
+  if (!items) {
+    toast("คำที่เลือกไว้ยังไม่พอสำหรับเกมนี้ ลองเลือกแปลงหรือสถานะเพิ่มที่หน้าเกมนะ");
+    location.hash = "#/play";
+    return;
+  }
+  Object.assign(dictation, { items, index: 0, results: [], hinted: false, answered: false });
+  $("dictation-play").hidden = false;
+  $("dictation-result").hidden = true;
+  show("dictation");
+  renderDictation();
+}
+
+function renderDictation() {
+  const item = dictation.items[dictation.index];
+  Object.assign(dictation, { hinted: false, answered: false });
+  $("dictation-count").textContent = `ข้อ ${dictation.index + 1}/${DICTATION_COUNT}`;
+  $("dictation-blanks").textContent = [...item.answer].map(() => "＿").join(" ");
+  $("dictation-hint").hidden = true;
+  $("dictation-input").value = "";
+  $("dictation-input").disabled = false;
+  $("dictation-check").disabled = false;
+  $("dictation-hint-btn").disabled = false;
+  $("dictation-skip").disabled = false;
+  $("dictation-feedback").hidden = true;
+  $("dictation-next").hidden = true;
+  speakWord(item.word.headword);
+  $("dictation-input").focus({ preventScroll: true });
+}
+
+function settleDictation(result) {
+  const item = dictation.items[dictation.index];
+  dictation.answered = true;
+  dictation.results.push(result);
+  $("dictation-input").disabled = true;
+  $("dictation-check").disabled = true;
+  $("dictation-hint-btn").disabled = true;
+  $("dictation-skip").disabled = true;
+  $("dictation-blanks").textContent = [...item.answer].join(" ");
+  const messages = {
+    clean: "ถูกต้อง ✅",
+    hint: "ถูกต้อง ✅ (ใช้ใบ้)",
+    close: `เกือบถูก สะกดคือ ${item.answer}`,
+    wrong: `ยังไม่ถูก คำที่ถูกคือ ${item.answer}`,
+  };
+  $("dictation-feedback").textContent = `${messages[result]} · ${item.meaning}`;
+  $("dictation-feedback").classList.toggle("is-correct", result === "clean" || result === "hint");
+  $("dictation-feedback").hidden = false;
+  if (result === "clean" || result === "hint") fx("correct");
+  $("dictation-next").hidden = false;
+  $("dictation-next").focus({ preventScroll: true });
+}
+
+function checkDictation() {
+  if (dictation.answered) return;
+  const input = $("dictation-input").value;
+  if (!input.trim()) return;
+  settleDictation(gradeDictation(dictation.items[dictation.index], input, dictation.hinted));
+}
+
+function nextDictation() {
+  if (!dictation.answered) return;
+  dictation.index += 1;
+  if (dictation.index >= DICTATION_COUNT) finishDictation();
+  else renderDictation();
+}
+
+function finishDictation() {
+  const score = dictationScore(dictation.results);
+  const max = dictationMax();
+  const isBest = storage.saveBest("dictation", score, (next, best) => next > best);
+  storage.addGamePlay(dayNumber());
+  checkMedals();
+  const marks = { clean: "⭐", hint: "✅", close: "🔸", wrong: "❌" };
+  $("dictation-marks").textContent = dictation.results.map((result) => marks[result]).join(" ");
+  $("dictation-title").textContent = score === max ? "หูไวมือไวมาก! 🎉" : "จบรอบแล้ว!";
+  $("dictation-summary").textContent = `${score}/${max} แต้ม (⭐ พิมพ์ถูกเอง 2 แต้ม · ✅ ใช้ใบ้ · 🔸 สะกดผิดตัวเดียว 1 แต้ม · ❌ ผิดหรือข้าม)${isBest && score > 0 ? " 🏆 สถิติใหม่!" : ""}`;
+  $("dictation-play").hidden = true;
+  $("dictation-result").hidden = false;
+  if (score >= max - 2) launchConfetti(isBest ? 48 : 24);
   fx("finish");
 }
 
@@ -2352,6 +2450,10 @@ function route() {
     showPlacementIntro();
     return;
   }
+  if (page === "play" && argument === "dictation") {
+    startDictation();
+    return;
+  }
   if (page === "play" && argument === "listen") {
     startListen();
     return;
@@ -2518,6 +2620,28 @@ function bindEvents() {
     if (button) chooseListenOption(Number(button.dataset.index));
   });
   $("listen-next").addEventListener("click", nextListen);
+  $("dictation-replay").addEventListener("click", () => {
+    const item = dictation.items[dictation.index];
+    if (item) speakWord(item.word.headword);
+    $("dictation-input").focus({ preventScroll: true });
+  });
+  $("dictation-form").addEventListener("submit", (event) => {
+    event.preventDefault();
+    if (dictation.answered) nextDictation();
+    else checkDictation();
+  });
+  $("dictation-hint-btn").addEventListener("click", () => {
+    if (dictation.answered) return;
+    dictation.hinted = true;
+    $("dictation-hint").textContent = `ใบ้: ${dictation.items[dictation.index].meaning}`;
+    $("dictation-hint").hidden = false;
+    $("dictation-input").focus({ preventScroll: true });
+  });
+  $("dictation-skip").addEventListener("click", () => {
+    if (!dictation.answered) settleDictation("wrong");
+  });
+  $("dictation-next").addEventListener("click", nextDictation);
+  $("dictation-again").addEventListener("click", startDictation);
   $("placement-start").addEventListener("click", startPlacement);
   $("placement-yes").addEventListener("click", () => answerPlacement(true));
   $("placement-no").addEventListener("click", () => answerPlacement(false));

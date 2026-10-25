@@ -3,7 +3,7 @@
 //   planted trees        = จำนวนคำที่เริ่มเรียนแล้ว / ที่เป็นต้นไม้ใหญ่
 //   bestStreak           = สตรีคที่ยาวที่สุด
 //   notes                = จำนวนโน้ตช่วยจำที่เขียน
-//   gamePlays wordleWins matchBest(ms) scrambleBest = สถิติเกมในแท็บ เกมส์
+//   gamePlays wordleWins matchBest(ms) scrambleBest = สถิติเกมในแท็บ เกม
 //   examTier = ระดับเหรียญของการสอบปลายแปลงที่เพิ่งจบ (bronze / silver / gold ไม่ผ่าน = null)
 //   perfectRound earlyBird comeback = เหตุการณ์ตอนจบรอบ (ไม่เก็บถาวร ตัดสินตอนจบรอบเท่านั้น)
 
@@ -21,7 +21,7 @@ export const MEDALS = [
   { id: "early-bird", emoji: "🌅", title: "นกตื่นเช้า", desc: "ท่องจบรอบก่อน 8 โมงเช้า", test: (c) => c.earlyBird },
   { id: "comeback", emoji: "🤗", title: "ยินดีต้อนรับกลับ", desc: "กลับมาท่องจบรอบหลังหายไป 7 วันขึ้นไป", test: (c) => c.comeback },
   { id: "first-note", emoji: "📝", title: "นักจดช่วยจำ", desc: "เขียนโน้ตช่วยจำแรก", test: (c) => c.notes >= 1 },
-  { id: "first-game", emoji: "🎮", title: "นักเล่นหน้าใหม่", desc: "เล่นเกมในแท็บ เกมส์ จบหนึ่งรอบ", test: (c) => c.gamePlays >= 1 },
+  { id: "first-game", emoji: "🎮", title: "นักเล่นหน้าใหม่", desc: "เล่นเกมในแท็บ เกม จบหนึ่งรอบ", test: (c) => c.gamePlays >= 1 },
   { id: "wordle-win", emoji: "🔤", title: "นักเดาคำ", desc: "ทายคำปริศนาถูกหนึ่งครั้ง", test: (c) => c.wordleWins >= 1 },
   { id: "match-fast", emoji: "⏱️", title: "มือไว", desc: "จับคู่คำให้เสร็จภายใน 20 วินาที", test: (c) => c.matchBest !== null && c.matchBest <= 20000 },
   { id: "exam-first", emoji: "🎓", title: "นักสอบ", desc: "สอบปลายแปลงผ่านครั้งแรก (ได้เหรียญทองแดงขึ้นไป)", test: (c) => c.examTier !== null },

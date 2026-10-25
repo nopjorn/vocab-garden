@@ -1429,10 +1429,17 @@ function showFlashCard() {
   back.querySelector(".fc-example").lang = "en";
   back.hidden = true;
   $("flash-card").setAttribute("aria-label", "การ์ด แตะเพื่อพลิก");
-  $("flash-actions").hidden = true;
+  $("flash-card").classList.remove("flipped");
+  $("flash-known").disabled = true;
+  $("flash-unsure").disabled = true;
   $("flash-tip").hidden = false;
+  $("flash-meta").textContent = `${levelTitle(word.level).replace(/:.*/, "")} · อันดับ ${word.rank}`;
   $("flash-speak").hidden = !canSpeak();
   $("flash-count").textContent = `เหลือ ${flash.queue.length} ใบ`;
+  const percent = Math.round(((flash.deck.length - new Set(flash.queue.map((entry) => entry.headword)).size) / flash.deck.length) * 100);
+  $("flash-bar").style.width = `${percent}%`;
+  $("flash-progressbar").setAttribute("aria-valuenow", percent);
+  $("flash-stats").textContent = flash.unsure > 0 ? `🔁 ไม่แน่ใจ ${flash.unsure} ครั้ง` : "";
   if (state.settings.autoSpeak && flash.prefs.side === "en") speakWord(word.headword);
 }
 
@@ -1440,7 +1447,9 @@ function flipFlash() {
   if (flash.flipped || $("flash-play").hidden) return;
   flash.flipped = true;
   $("flash-back").hidden = false;
-  $("flash-actions").hidden = false;
+  $("flash-card").classList.add("flipped");
+  $("flash-known").disabled = false;
+  $("flash-unsure").disabled = false;
   $("flash-tip").hidden = true;
   $("flash-known").focus({ preventScroll: true });
 }
@@ -2194,7 +2203,51 @@ function bindEvents() {
     flash.prefs.side = event.target.value;
   });
   $("flash-start").addEventListener("click", () => startFlashDeck(buildDeck(playPool(), flash.prefs.size)));
-  $("flash-card").addEventListener("click", flipFlash);
+  $("flash-card").addEventListener("click", (event) => {
+    if (!event.target.closest(".fc-speak") && !flash.swiped) flipFlash();
+  });
+  $("flash-card").addEventListener("keydown", (event) => {
+    if (event.key === "Enter") {
+      event.preventDefault();
+      flipFlash();
+    }
+  });
+  // ปัดการ์ดหลังพลิก: ขวา = จำได้ ซ้าย = ยังไม่แน่ใจ
+  {
+    let startX = null;
+    const card = $("flash-card");
+    const reset = () => {
+      card.style.transform = "";
+      card.style.transition = "";
+    };
+    card.addEventListener("pointerdown", (event) => {
+      startX = flash.flipped ? event.clientX : null;
+      flash.swiped = false;
+    });
+    card.addEventListener("pointermove", (event) => {
+      if (startX === null) return;
+      const dx = event.clientX - startX;
+      if (Math.abs(dx) > 8) {
+        flash.swiped = true;
+        card.style.transform = `translateX(${dx}px) rotate(${dx / 25}deg)`;
+      }
+    });
+    const end = (event) => {
+      if (startX === null) return;
+      const dx = event.clientX - startX;
+      startX = null;
+      reset();
+      if (Math.abs(dx) > 90) answerFlash(dx > 0);
+      setTimeout(() => {
+        flash.swiped = false;
+      }, 0);
+    };
+    card.addEventListener("pointerup", end);
+    card.addEventListener("pointercancel", () => {
+      startX = null;
+      reset();
+    });
+  }
   $("flash-known").addEventListener("click", () => answerFlash(true));
   $("flash-unsure").addEventListener("click", () => answerFlash(false));
   $("flash-speak").addEventListener("click", () => flash.queue[0] && speakWord(flash.queue[0].headword));

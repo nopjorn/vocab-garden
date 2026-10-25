@@ -367,6 +367,40 @@
       </div>
     </section>
 
+    <section id="view-placement" hidden>
+      <div class="study-top">
+        <a href="#/settings" class="close" aria-label="กลับไปหน้าตั้งค่า">✕</a>
+        <strong class="game-title">🧭 ทดสอบวัดระดับ</strong>
+        <span id="placement-count" class="muted small"></span>
+      </div>
+      <div id="placement-intro" class="panel">
+        <p>ตอบว่า <strong>รู้จักคำนี้ไหม</strong> ทีละคำ ประมาณ 40 คำจากทุกแปลงที่แปลแล้ว แล้วแอปจะแนะนำว่าควรเริ่มเรียนคำใหม่จากแปลงไหน</p>
+        <p>ตอบตามจริงนะ 🙂 มี <strong>คำปลอม</strong> ปนอยู่ไม่กี่คำ (ไม่ใช่คำในภาษาอังกฤษ) ไว้ช่วยตรวจว่าตอบเผื่อไปหรือเปล่า ผลไม่เปลี่ยนความคืบหน้าของคุณจนกว่าจะกดนำไปใช้เอง</p>
+        <button type="button" id="placement-start" class="primary wide">เริ่มทดสอบ</button>
+      </div>
+      <div id="placement-play" hidden>
+        <div id="placement-progress" class="progress" role="progressbar" aria-label="ความคืบหน้าแบบทดสอบ" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><div id="placement-bar" class="progress-bar"></div></div>
+        <p class="muted small center-text">คุณรู้จักคำนี้ไหม?</p>
+        <p id="placement-word" class="exam-prompt" lang="en"></p>
+        <p class="center-text"><button type="button" id="placement-speak" class="icon-btn" aria-label="ฟังเสียงคำนี้">🔊</button></p>
+        <div class="row flash-actions">
+          <button type="button" id="placement-no">❌ ไม่รู้จัก <kbd>2</kbd></button>
+          <button type="button" id="placement-yes" class="primary">✅ รู้จัก <kbd>1</kbd></button>
+        </div>
+      </div>
+      <div id="placement-result" class="done-card" hidden>
+        <p class="big-emoji celebrate" aria-hidden="true">🧭</p>
+        <h2 id="placement-title"></h2>
+        <p id="placement-summary" class="muted"></p>
+        <ul id="placement-levels" class="placement-levels"></ul>
+        <p id="placement-warning" class="notice" hidden>ตอบว่ารู้จักคำปลอมหลายคำ ผลอาจไม่แม่น ลองทำใหม่อีกครั้งโดยตอบตามจริง ไม่ต้องเกรงใจนะ</p>
+        <button type="button" id="placement-apply" class="primary wide"></button>
+        <button type="button" id="placement-skip" class="wide" hidden></button>
+        <button type="button" id="placement-again" class="wide">🔁 ทำใหม่</button>
+        <a href="#/settings" class="button wide">กลับไปหน้าตั้งค่า</a>
+      </div>
+    </section>
+
     <section id="view-exam" hidden>
       <div class="study-top">
         <a href="#/garden" class="close" aria-label="กลับไปหน้าสวน">✕</a>
@@ -511,6 +545,7 @@
         </p>
         <p class="tip small">รู้ศัพท์แปลงแรก ๆ อยู่แล้วใช่ไหม? เลือกแปลงที่อยากเริ่ม คำใหม่จะมาจากแปลงนี้เป็นต้นไป
           คำที่ถึงเวลาทวนยังมาตามปกติ และแตะที่แปลงในหน้าหลักเพื่อเรียนเฉพาะแปลงนั้นได้เสมอ</p>
+        <p><a href="#/placement" class="button">🧭 ทดสอบวัดระดับ ช่วยเลือกแปลงเริ่มต้น</a></p>
       </div>
 
       <h2 id="sound-heading">เสียงอ่าน</h2>

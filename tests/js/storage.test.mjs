@@ -25,6 +25,8 @@ test("settings default to 10 new words a day starting from level 1 with the syst
     dailyGoal: 10,
     reviewCap: 100,
     roundSize: 10,
+    playLevels: null,
+    playStatuses: ["new", "learning", "done"],
     quizMode: "flip",
     quizTyping: true,
   });
@@ -96,13 +98,13 @@ test("reset clears the history too", () => {
 
 test("sound and appearance settings are saved and read back", () => {
   const storage = createStorage(fakeStore());
-  const custom = { ...DEFAULT_SETTINGS, autoSpeak: true, speechRate: 0.7, theme: "dark", textSize: "large", sound: true, dailyGoal: 30, reviewCap: 0, roundSize: 20, quizMode: "mixed", quizTyping: false };
+  const custom = { ...DEFAULT_SETTINGS, autoSpeak: true, speechRate: 0.7, theme: "dark", textSize: "large", sound: true, dailyGoal: 30, reviewCap: 0, roundSize: 20, playLevels: ["01", "sup"], playStatuses: ["done"], quizMode: "mixed", quizTyping: false };
   storage.saveSettings(custom);
   assert.deepEqual(storage.loadSettings(), custom);
 });
 
 test("invalid sound and appearance values fall back to the defaults", () => {
-  const saved = { autoSpeak: "yes", speechRate: 5, theme: "purple", textSize: "huge", sound: "on", dailyGoal: 15, reviewCap: "many", roundSize: 7, quizMode: "hard", quizTyping: "no" };
+  const saved = { autoSpeak: "yes", speechRate: 5, theme: "purple", textSize: "huge", sound: "on", dailyGoal: 15, reviewCap: "many", roundSize: 7, playLevels: "all", playStatuses: "none", quizMode: "hard", quizTyping: "no" };
   const storage = createStorage(fakeStore({ "vg:settings": JSON.stringify(saved) }));
   assert.deepEqual(storage.loadSettings(), DEFAULT_SETTINGS);
 });
@@ -184,4 +186,13 @@ test("notes travel in the backup, old backups keep the current notes, and reset 
   assert.deepEqual(target.loadNotes(), { house: "บ้าน" });
   target.reset();
   assert.deepEqual(target.loadNotes(), {});
+});
+
+test("play word filters keep only known levels and statuses", () => {
+  const read = (saved) => createStorage(fakeStore({ "vg:settings": JSON.stringify(saved) })).loadSettings();
+  assert.deepEqual(read({ playLevels: ["01", "01", "99", "sup", 5, "x1"], playStatuses: ["done", "bogus", "new"] }).playLevels, ["01", "sup"]);
+  assert.deepEqual(read({ playStatuses: ["done", "bogus", "new"] }).playStatuses, ["new", "done"]);
+  assert.deepEqual(read({ playLevels: [], playStatuses: [] }).playLevels, []);
+  assert.deepEqual(read({ playLevels: [], playStatuses: [] }).playStatuses, []);
+  assert.equal(read({}).playLevels, null);
 });

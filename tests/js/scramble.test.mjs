@@ -64,3 +64,11 @@ test("round score gives 2 points for a clean solve, 1 with a hint and 0 for a sk
   assert.equal(roundScore(["clean", "clean", "hint", "skip", "clean"]), 7);
   assert.equal(maxScore(), 10);
 });
+
+test("a round can be limited to some words while ambiguity is still judged against the whole pool", () => {
+  const only = words.slice(0, 60);
+  const round = buildScrambleRound(words, seeded(5), 5, only);
+  assert.equal(round.length, 5);
+  for (const item of round) assert.ok(only.some((word) => word.headword === item.word.headword));
+  assert.equal(buildScrambleRound(words, seeded(5), 5, words.slice(0, 3)), null);
+});

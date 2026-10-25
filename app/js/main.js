@@ -13,7 +13,7 @@ import { wordOfDay } from "./daily.js";
 import { EXAM_COUNT, TIERS, bestTier, buildExam, examMedalIds, examReady, rescheduleMissed, tierOf } from "./exam.js";
 import { DECORATIONS, FLOWERS, bloomedLevels, flowerId, flowerOf, ownedDecorations, seasonOf } from "./decor.js";
 import { COMEBACK_DAYS, MEDALS, isEarlyBird, isPerfectRound, newMedals } from "./achievements.js";
-import { LEECH_LAPSES, dueLabel, leechWords, matchesQuery, plantInfo, plotSummary } from "./garden.js";
+import { LEECH_LAPSES, dueLabel, leechWords, matchesQuery, plantInfo, plantedInLevel, plotSummary, reviewedToday } from "./garden.js";
 import { daysAway, goalProgress, mergeDays, settleRest } from "./habit.js";
 import { buildMatchRound, formatSeconds, isMatch, isNewBest } from "./match.js";
 import { LISTEN_COUNT, buildListenRound, listenSummary } from "./listen.js";
@@ -330,7 +330,8 @@ function renderHome() {
 
 // ---------- ท่องศัพท์ ----------
 
-// level = เรียนเฉพาะด่านนั้น · practice = "leech" ฝึกคำที่ลืมบ่อย (โหมดฝึกไม่เปลี่ยนวันทวน ไม่นับเป็นการทวน)
+// level = เรียนเฉพาะด่านนั้น · practice = โหมดฝึก ไม่เปลี่ยนวันทวน ไม่นับเป็นการทวน:
+//   "leech" คำที่ลืมบ่อย · "today" คำที่ตอบไปแล้ววันนี้ · "level" คำที่ปลูกแล้วในแปลง level
 // คำใหม่เพิ่มอีกไม่กี่คำ (ปุ่มท้ายรอบ) เลือกตามลำดับ NGSL เหมือนคำใหม่ปกติ
 const EXTRA_NEW_COUNT = 5;
 
@@ -339,11 +340,21 @@ function extraQueue() {
   return fresh.filter((word) => !state.cards[word.headword]).slice(0, EXTRA_NEW_COUNT);
 }
 
+// คิวของโหมดฝึก (ไม่ใช่โหมดฝึก = null)
+function practiceQueue(practice, level, day) {
+  if (practice === "leech") return leechWords(translatedWords(), state.cards);
+  if (practice === "today") return reviewedToday(translatedWords(), state.cards, day);
+  if (practice === "level") return plantedInLevel(translatedWords(), state.cards, level);
+  return null;
+}
+
 function startSession(level = null, practice = null, extra = false) {
   const day = dayNumber();
-  const queue = extra ? extraQueue() : practice === "leech" ? leechWords(translatedWords(), state.cards) : todayQueue(day, level);
+  const queue = extra ? extraQueue() : practiceQueue(practice, level, day) || todayQueue(day, level);
   if (queue.length === 0) {
     if (extra) toast("ตอนนี้ไม่มีคำใหม่เหลือให้เรียนเพิ่ม");
+    else if (practice === "today") toast("วันนี้ยังไม่ได้ตอบคำไหนเลย ไปท่องศัพท์ก่อนนะ");
+    else if (practice === "level") toast(`${levelTitle(level)} ยังไม่มีคำที่ปลูกแล้วให้ฝึก`);
     else if (practice) toast("ยังไม่มีคำที่ลืมบ่อย เก่งมาก 🎉");
     else if (level) toast(`${levelTitle(level)} ไม่มีคำให้เรียนตอนนี้ ไว้ทวนใหม่วันหลังนะ`);
     location.hash = practice ? "#/garden" : "#/";
@@ -797,6 +808,7 @@ function finishSession() {
   $("done-tomorrow").hidden = state.session.practice;
   $("done-tomorrow").textContent = waiting > 0 ? `📅 พรุ่งนี้มีคำรอทวน ${waiting} คำ` : "📅 พรุ่งนี้ยังไม่มีคำรอทวน";
   $("done-more").hidden = state.session.practice || extraQueue().length === 0;
+  $("done-practice").hidden = state.session.practice || reviewedToday(translatedWords(), state.cards, state.session.day).length === 0;
   $("done-summary").textContent = state.session.practice
     ? `ฝึกไป ${answered} ครั้ง จำได้ ${learned.size} คำ 🧠 (โหมดฝึกไม่เปลี่ยนวันทวน)`
     : `วันนี้ทวนไป ${answered} ครั้ง รดน้ำต้นไม้ไป ${learned.size} ต้น 🌱`;
@@ -1760,6 +1772,11 @@ function plantButton(word, today) {
 // ปุ่มสอบปลายแปลงใต้ต้นไม้ของแต่ละแปลง (ปลูกครบทั้งแปลงแล้วจึงเปิดสอบ)
 function examBox(level, summary, tier) {
   const box = el("div", "exam-box");
+  if (summary.planted > 0) {
+    const practice = el("a", "button", "🧠 ฝึกทบทวนแปลงนี้");
+    practice.href = `#/study/practice-${level}`;
+    box.append(practice, el("span", "muted small", "ฝึกกี่ครั้งก็ไม่เปลี่ยนวันทวน"));
+  }
   if (examReady(state.words, state.cards, level)) {
     const link = el("a", "button primary", `📝 สอบปลายแปลง ${EXAM_COUNT} ข้อ`);
     link.href = `#/exam/${level}`;
@@ -2194,6 +2211,8 @@ function route() {
   if (page === "study") {
     if (argument === "more") startSession(null, null, true);
     else if (argument === "leech") startSession(null, "leech");
+    else if (argument === "today") startSession(null, "today");
+    else if (argument?.startsWith("practice-") && LEVELS.includes(argument.slice(9))) startSession(argument.slice(9), "level");
     else startSession(LEVELS.includes(argument) ? argument : null);
     return;
   }

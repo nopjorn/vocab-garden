@@ -1,6 +1,7 @@
 // ตัวช่วยของหน้า "สวนของฉัน": ต้นไม้แต่ละต้นคือหนึ่งคำ (ตรรกะล้วน ไม่แตะหน้าเว็บ)
 // ต้นที่ถึงเวลาทวนจะเหี่ยว 🥀 จนกว่าจะรดน้ำ (ทวน) แต่ไม่มีวันตาย
 
+import { shuffle } from "./quiz.js";
 import { isDue, stageOf } from "./srs.js";
 
 export function plantInfo(card, today) {
@@ -43,6 +44,22 @@ export function plotSummary(words, cards, today) {
 
 // คำที่ลืมบ่อย: เคยจำได้แล้วกลับลืมตั้งแต่ LEECH_LAPSES ครั้งขึ้นไป (ลืมมากสุดก่อน เท่ากันเรียงตามอันดับ NGSL)
 export const LEECH_LAPSES = 3;
+
+// โหมดฝึกอื่น ๆ (ไม่เปลี่ยนวันทวน): คำที่ตอบไปแล้ววันนี้ และคำที่ปลูกแล้วในแปลงหนึ่ง
+// due - ivl คือวันที่ตอบล่าสุดของการ์ด (ตอบวันไหน due = วันนั้น + ivl) จึงรู้ได้โดยไม่ต้องเก็บข้อมูลเพิ่ม
+export const PRACTICE_LIMIT = 30;
+
+export function reviewedToday(words, cards, today) {
+  return words.filter((word) => {
+    const card = cards[word.headword];
+    return card && card.reps > 0 && card.due - card.ivl === today;
+  });
+}
+
+export function plantedInLevel(words, cards, level, rng = Math.random, limit = PRACTICE_LIMIT) {
+  const planted = words.filter((word) => word.level === level && cards[word.headword]);
+  return shuffle(planted, rng).slice(0, limit);
+}
 
 export function leechWords(words, cards, limit = 20) {
   return words

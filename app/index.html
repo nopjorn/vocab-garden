@@ -261,6 +261,12 @@
       <p class="muted small">เกมสั้น ๆ ที่ใช้คำที่แปลแล้ว เล่นแล้วนับเป็นวันท่องต่อเนื่อง 🔥 แต่ไม่เปลี่ยนวันทวนของคำและไม่นับเป็นเป้าหมายรายวัน</p>
       <ul class="game-list">
         <li>
+          <a class="game-card" href="#/play/flash">
+            <span class="game-emoji" aria-hidden="true">🃏</span>
+            <span class="game-info"><strong>แฟลชการ์ด</strong><span class="muted small">เลือกแปลงและสถานะของคำ (ยังไม่เรียน / กำลังเรียน / เรียนแล้ว) แล้วพลิกการ์ดทบทวนตามใจ</span><span id="flash-status" class="small"></span></span>
+          </a>
+        </li>
+        <li>
           <a class="game-card" href="#/play/match">
             <span class="game-emoji" aria-hidden="true">🧩</span>
             <span class="game-info"><strong>จับคู่คำ</strong><span class="muted small">จับคู่คำอังกฤษกับคำแปลไทย 6 คู่ให้เร็วที่สุด</span><span id="match-best" class="small"></span></span>
@@ -354,6 +360,71 @@
         <p id="wordle-example" class="muted"></p>
         <p id="wordle-stats" class="muted small"></p>
         <button type="button" id="wordle-share" class="primary wide">📤 แชร์ผล</button>
+        <a href="#/play" class="button wide">กลับไปหน้าเล่น</a>
+      </div>
+    </section>
+
+    <section id="view-flash" hidden>
+      <div class="study-top">
+        <a href="#/play" class="close" aria-label="กลับไปหน้าเล่น">✕</a>
+        <strong class="game-title">🃏 แฟลชการ์ด</strong>
+        <span id="flash-count" class="muted small"></span>
+      </div>
+
+      <div id="flash-setup">
+        <p class="muted small">เลือกว่าจะทบทวนคำจากแปลงไหน และคำสถานะไหน เล่นแล้วไม่เปลี่ยนวันทวนของคำ</p>
+
+        <div class="panel">
+          <div class="flash-head">
+            <strong>เลือกแปลง</strong>
+            <span class="flash-quick">
+              <button type="button" id="flash-all" class="linklike small">เลือกทั้งหมด</button>
+              <button type="button" id="flash-none" class="linklike small">ล้างที่เลือก</button>
+            </span>
+          </div>
+          <div id="flash-levels" class="flash-levels"></div>
+        </div>
+
+        <div class="panel">
+          <strong>สถานะของคำ</strong>
+          <div id="flash-statuses" class="flash-statuses"></div>
+          <p class="tip small">🌰 ยังไม่เรียน = ยังไม่เคยปลูก · 🌱 กำลังเรียน = ต้นอ่อนและกำลังโต · 🌳 เรียนแล้ว = ต้นไม้ใหญ่</p>
+        </div>
+
+        <div class="panel">
+          <p>
+            <label for="flash-size">จำนวนการ์ด</label>
+            <select id="flash-size"></select>
+          </p>
+          <p>
+            <label for="flash-side">หน้าการ์ดเป็น</label>
+            <select id="flash-side"></select>
+          </p>
+        </div>
+
+        <p id="flash-ready" class="center-text" role="status"></p>
+        <button type="button" id="flash-start" class="primary wide">🃏 เริ่มเล่น</button>
+      </div>
+
+      <div id="flash-play" hidden>
+        <button type="button" id="flash-card" class="fc" aria-live="polite">
+          <span id="flash-front" class="fc-front"></span>
+          <span id="flash-back" class="fc-back" hidden></span>
+        </button>
+        <p id="flash-tip" class="muted small center-text">แตะการ์ดเพื่อพลิก (Space)</p>
+        <div id="flash-actions" class="row flash-actions" hidden>
+          <button type="button" id="flash-unsure">🔁 ยังไม่แน่ใจ <kbd>2</kbd></button>
+          <button type="button" id="flash-known" class="primary">✅ จำได้ <kbd>1</kbd></button>
+        </div>
+        <button type="button" id="flash-speak" class="speak" aria-label="ฟังเสียงคำนี้" hidden>🔊</button>
+      </div>
+
+      <div id="flash-result" class="done-card" hidden>
+        <p class="big-emoji celebrate" aria-hidden="true">🏁</p>
+        <h2>จบรอบแล้ว!</h2>
+        <p id="flash-summary" class="muted"></p>
+        <button type="button" id="flash-again" class="primary wide">🔁 เล่นชุดเดิมอีกรอบ</button>
+        <button type="button" id="flash-change" class="wide">⚙️ เลือกคำใหม่</button>
         <a href="#/play" class="button wide">กลับไปหน้าเล่น</a>
       </div>
     </section>

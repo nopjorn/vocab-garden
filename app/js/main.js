@@ -4,6 +4,7 @@ import { launchConfetti } from "./confetti.js";
 import { canSpeak, speak } from "./speech.js";
 import { buildQuestion, gradeTyped } from "./quiz.js";
 import { playSfx } from "./sfx.js";
+import { DECK_SIZE_CHOICES, SIDE_CHOICES, STATUSES, buildDeck, matchingWords, requeue, statusOf, summaryText } from "./flash.js";
 import { CARD_HEIGHT, CARD_WIDTH, buildCardData, drawCard } from "./sharecard.js";
 import { compareText, weeklyReport } from "./weekly.js";
 import { buildIcs, parseTime } from "./reminder.js";
@@ -36,8 +37,8 @@ import { recentDays, stageCounts, streakOf, totalReviews } from "./stats.js";
 import { SUPPORT_LINKS } from "./support.js";
 import { isNewer, parseSwVersion } from "./update.js";
 
-const VIEWS = ["loading", "error", "home", "study", "done", "garden", "play", "match", "wordle", "scramble", "exam", "settings", "about", "changelog"];
-const TAB_OF_VIEW = { changelog: "about", match: "play", wordle: "play", scramble: "play", exam: "garden" }; // หน้าที่ไม่มีแท็บของตัวเอง ให้ไฮไลต์แท็บนี้แทน
+const VIEWS = ["loading", "error", "home", "study", "done", "garden", "play", "match", "flash", "wordle", "scramble", "exam", "settings", "about", "changelog"];
+const TAB_OF_VIEW = { changelog: "about", match: "play", flash: "play", wordle: "play", scramble: "play", exam: "garden" }; // หน้าที่ไม่มีแท็บของตัวเอง ให้ไฮไลต์แท็บนี้แทน
 const REQUEUE_GAP = 3; // คำที่ตอบ "ยังจำไม่ได้" จะกลับมาอีกครั้งหลังการ์ดใบอื่นอีก 3 ใบ
 const SWIPE_DISTANCE = 90; // ปัดเกินกี่ px ถึงนับเป็นการให้คะแนน
 const SWIPE_PREVIEW = 40; // ปัดเกินกี่ px ถึงเริ่มขึ้นป้ายบนการ์ด
@@ -1269,6 +1270,151 @@ async function shareGarden() {
   toast("บันทึกรูปการ์ดแล้ว นำไปแชร์ได้เลย 📤");
 }
 
+// ---------- แฟลชการ์ด ----------
+
+const flash = {
+  prefs: { levels: null, statuses: new Set(STATUSES.map((status) => status.id)), size: 20, side: "en" },
+  deck: [],
+  queue: [],
+  unsure: 0,
+  flipped: false,
+};
+const FLASH_SIDE_LABELS = { en: "คำอังกฤษ (ดูคำแปลหลังพลิก)", th: "คำแปลไทย (ทายคำอังกฤษ)" };
+const FLASH_SIZE_LABELS = Object.fromEntries(DECK_SIZE_CHOICES.map((count) => [count, count ? `${count} ใบ` : "ทั้งหมดที่เลือก"]));
+
+const flashLevels = () => LEVELS.filter((level) => state.words.some((word) => word.level === level && word.translated));
+
+function flashMatches() {
+  return matchingWords(translatedWords(), state.cards, flash.prefs);
+}
+
+// หน้าเลือกคำ: แปลง สถานะ จำนวน และด้านหน้าการ์ด ตัวเลขข้างสถานะนับเฉพาะแปลงที่เลือก
+function renderFlashSetup() {
+  const { prefs } = flash;
+  if (!prefs.levels) prefs.levels = new Set(flashLevels());
+  const words = translatedWords();
+  const checkbox = (id, checked, text, onChange) => {
+    const label = el("label", "check");
+    const input = el("input");
+    input.type = "checkbox";
+    input.checked = checked;
+    input.addEventListener("change", () => onChange(input.checked));
+    label.append(input, ` ${text}`);
+    return label;
+  };
+  $("flash-levels").replaceChildren(
+    ...flashLevels().map((level) => {
+      const inLevel = words.filter((word) => word.level === level);
+      return checkbox(level, prefs.levels.has(level), `${levelTitle(level).replace(/:.*/, "")} (${inLevel.length})`, (on) => {
+        if (on) prefs.levels.add(level);
+        else prefs.levels.delete(level);
+        renderFlashSetup();
+      });
+    }),
+  );
+  const inChosen = words.filter((word) => prefs.levels.has(word.level));
+  $("flash-statuses").replaceChildren(
+    ...STATUSES.map((status) => {
+      const count = inChosen.filter((word) => statusOf(state.cards[word.headword]) === status.id).length;
+      return checkbox(status.id, prefs.statuses.has(status.id), `${status.emoji} ${status.label} (${count})`, (on) => {
+        if (on) prefs.statuses.add(status.id);
+        else prefs.statuses.delete(status.id);
+        renderFlashSetup();
+      });
+    }),
+  );
+  fillSelect($("flash-size"), DECK_SIZE_CHOICES, prefs.size, FLASH_SIZE_LABELS);
+  fillSelect($("flash-side"), SIDE_CHOICES, prefs.side, FLASH_SIDE_LABELS);
+  const total = flashMatches().length;
+  const deckSize = prefs.size > 0 ? Math.min(prefs.size, total) : total;
+  $("flash-ready").textContent = total > 0 ? `พร้อมเล่น ${deckSize} ใบ (จากคำที่ตรงเงื่อนไข ${total} คำ)` : "ยังไม่มีคำที่ตรงเงื่อนไข ลองเลือกแปลงหรือสถานะเพิ่มนะ";
+  $("flash-start").disabled = total === 0;
+}
+
+function showFlashSetup() {
+  $("flash-setup").hidden = false;
+  $("flash-play").hidden = true;
+  $("flash-result").hidden = true;
+  $("flash-count").textContent = "";
+  renderFlashSetup();
+  show("flash");
+}
+
+function startFlashDeck(deck) {
+  flash.deck = deck;
+  flash.queue = [...deck];
+  flash.unsure = 0;
+  $("flash-setup").hidden = true;
+  $("flash-result").hidden = true;
+  $("flash-play").hidden = false;
+  showFlashCard();
+}
+
+function showFlashCard() {
+  const word = flash.queue[0];
+  flash.flipped = false;
+  const sense = word.senses[0];
+  const meaning = el("span", "fc-meaning");
+  meaning.append(el("span", `pos pos-${sense.pos}`, sense.label), ` ${sense.text}`);
+  $("flash-front").replaceChildren(flash.prefs.side === "en" ? el("strong", "fc-word", word.headword) : meaning);
+  $("flash-front").lang = flash.prefs.side === "en" ? "en" : "th";
+  const back = $("flash-back");
+  back.replaceChildren(
+    ...(flash.prefs.side === "en" ? [] : [el("strong", "fc-word", word.headword)]),
+    el("ul", "senses", ""),
+  );
+  back.querySelector("ul").replaceChildren(
+    ...word.senses.map((entry) => {
+      const item = el("li");
+      item.append(el("span", `pos pos-${entry.pos}`, entry.label), document.createTextNode(entry.text));
+      return item;
+    }),
+  );
+  back.append(el("span", "fc-example", word.exampleEn), el("span", "muted small", word.exampleTh));
+  back.querySelector(".fc-word")?.setAttribute("lang", "en");
+  back.querySelector(".fc-example").lang = "en";
+  back.hidden = true;
+  $("flash-card").setAttribute("aria-label", "การ์ด แตะเพื่อพลิก");
+  $("flash-actions").hidden = true;
+  $("flash-tip").hidden = false;
+  $("flash-speak").hidden = !canSpeak();
+  $("flash-count").textContent = `เหลือ ${flash.queue.length} ใบ`;
+  if (state.settings.autoSpeak && flash.prefs.side === "en") speakWord(word.headword);
+}
+
+function flipFlash() {
+  if (flash.flipped || $("flash-play").hidden) return;
+  flash.flipped = true;
+  $("flash-back").hidden = false;
+  $("flash-actions").hidden = false;
+  $("flash-tip").hidden = true;
+  $("flash-known").focus({ preventScroll: true });
+}
+
+function answerFlash(known) {
+  if (!flash.flipped) return;
+  if (known) {
+    flash.queue.shift();
+    fx("correct");
+  } else {
+    flash.unsure += 1;
+    flash.queue = requeue(flash.queue);
+  }
+  if (flash.queue.length === 0) finishFlash();
+  else showFlashCard();
+}
+
+function finishFlash() {
+  storage.addGamePlay(dayNumber()); // นับเป็นวันท่องต่อเนื่องเหมือนเกมอื่น แต่ไม่เปลี่ยนวันทวนและไม่นับเป็นเป้าหมายรายวัน
+  checkMedals();
+  $("flash-play").hidden = true;
+  $("flash-result").hidden = false;
+  $("flash-count").textContent = "";
+  $("flash-summary").textContent = summaryText(flash.deck.length, flash.unsure);
+  launchConfetti();
+  fx("finish");
+}
+
 const match = { round: null, open: [], matched: 0, moves: 0, startedAt: null, timer: null, locked: false };
 
 function stopMatchTimer() {
@@ -1894,6 +2040,10 @@ function route() {
     startExam(argument);
     return;
   }
+  if (page === "play" && argument === "flash") {
+    showFlashSetup();
+    return;
+  }
   if (page === "play" && argument === "match") {
     startMatch();
     return;
@@ -1978,6 +2128,37 @@ function bindEvents() {
   });
   $("wordle-share").addEventListener("click", shareWordle);
   $("share-garden").addEventListener("click", shareGarden);
+  $("flash-all").addEventListener("click", () => {
+    flash.prefs.levels = new Set(flashLevels());
+    renderFlashSetup();
+  });
+  $("flash-none").addEventListener("click", () => {
+    flash.prefs.levels = new Set();
+    renderFlashSetup();
+  });
+  $("flash-size").addEventListener("change", (event) => {
+    flash.prefs.size = Number(event.target.value);
+    renderFlashSetup();
+  });
+  $("flash-side").addEventListener("change", (event) => {
+    flash.prefs.side = event.target.value;
+  });
+  $("flash-start").addEventListener("click", () => startFlashDeck(buildDeck(flashMatches(), flash.prefs.size)));
+  $("flash-card").addEventListener("click", flipFlash);
+  $("flash-known").addEventListener("click", () => answerFlash(true));
+  $("flash-unsure").addEventListener("click", () => answerFlash(false));
+  $("flash-speak").addEventListener("click", () => flash.queue[0] && speakWord(flash.queue[0].headword));
+  $("flash-again").addEventListener("click", () => startFlashDeck(buildDeck(flash.deck, 0)));
+  $("flash-change").addEventListener("click", showFlashSetup);
+  document.addEventListener("keydown", (event) => {
+    if ($("view-flash").hidden || $("flash-play").hidden || event.altKey || event.ctrlKey || event.metaKey) return;
+    if (document.querySelector(".modal:not([hidden])")) return;
+    if (event.key === " " && !flash.flipped) {
+      event.preventDefault();
+      flipFlash();
+    } else if (event.key === "1" || event.key === "ArrowRight") answerFlash(true);
+    else if (event.key === "2" || event.key === "ArrowLeft") answerFlash(false);
+  });
   $("scramble-tiles").addEventListener("click", (event) => {
     const button = event.target.closest(".scramble-tile");
     if (button) scramblePick(Number(button.dataset.index));

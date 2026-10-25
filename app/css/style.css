@@ -615,6 +615,27 @@ select {
   min-width: 12px;
 }
 
+.weekly {
+  margin-top: 14px;
+  padding: 14px 16px;
+  background: var(--brand-soft);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+}
+
+.weekly h2 {
+  margin: 0 0 8px;
+  font-size: 1.05rem;
+}
+
+.weekly-list {
+  list-style: none;
+  margin: 0 0 12px;
+  padding: 0;
+  display: grid;
+  gap: 4px;
+}
+
 .wotd {
   position: relative;
   margin-top: 14px;

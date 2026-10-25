@@ -76,6 +76,12 @@
       <p id="welcome-back" class="notice" hidden></p>
       <p id="backlog-note" class="notice" hidden></p>
 
+      <section id="weekly" class="weekly" aria-labelledby="weekly-title" hidden>
+        <h2 id="weekly-title">📰 สรุปสัปดาห์ที่แล้ว</h2>
+        <ul id="weekly-list" class="weekly-list"></ul>
+        <button type="button" id="weekly-dismiss" class="primary">เยี่ยม! ไปต่อกัน</button>
+      </section>
+
       <div id="wotd" class="wotd" hidden>
         <button type="button" id="wotd-open" class="wotd-main" aria-label="ดูรายละเอียดศัพท์ของวันนี้">
           <span class="wotd-label">💡 ศัพท์ของวันนี้</span>
@@ -527,7 +533,7 @@
 
       <h2>ความเป็นส่วนตัว</h2>
       <ul>
-        <li>ความคืบหน้า การตั้งค่า ประวัติการทวนรายวัน วันพักของสตรีค โน้ตช่วยจำที่คุณเขียน สถิติเกม เหรียญ และดอกไม้ที่ได้ เก็บอยู่ในเครื่องของคุณเท่านั้น (ที่ localStorage คีย์ขึ้นต้นด้วย <code>vg:</code>)
+        <li>ความคืบหน้า การตั้งค่า ประวัติการทวนรายวัน สถิติรายวัน (คำใหม่ ต้นไม้ใหญ่ ครั้งที่ตอบไม่ได้) วันพักของสตรีค โน้ตช่วยจำที่คุณเขียน สถิติเกม เหรียญ และดอกไม้ที่ได้ เก็บอยู่ในเครื่องของคุณเท่านั้น (ที่ localStorage คีย์ขึ้นต้นด้วย <code>vg:</code>)
           ไม่ถูกส่งออกไปที่ไหน</li>
         <li>ไม่มีการสมัครสมาชิก ไม่มีคุกกี้ ไม่มีโฆษณา และไม่มีเครื่องมือวิเคราะห์หรือติดตามผู้ใช้</li>
         <li>เสียงอ่านใช้บริการเสียงของเครื่องและเบราว์เซอร์ของคุณ บางเบราว์เซอร์อาจส่งข้อความที่อ่านไปประมวลผลกับผู้ให้บริการเสียงของเบราว์เซอร์นั้น

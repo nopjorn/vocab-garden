@@ -724,8 +724,8 @@ select {
   padding: 0;
   margin: 0;
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 10px;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 8px;
 }
 
 .level {
@@ -742,6 +742,38 @@ select {
 
 .level-rest {
   grid-column: 1 / -1;
+}
+
+/* แปลงที่ปลูกแล้ว: เป็นแปลงเล็ก ๆ เรียง 4 แปลงต่อแถว เลขแปลงอยู่ในป้ายด้านบน */
+.level:not(.level-rest) {
+  grid-template-columns: 1fr;
+  justify-items: center;
+  gap: 2px;
+  padding: 10px 6px;
+  text-align: center;
+}
+
+.level:not(.level-rest) .level-title {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+}
+
+.level:not(.level-rest) .level-sub {
+  font-size: 0.72rem;
+  white-space: nowrap;
+}
+
+.level:not(.level-rest) .level-pct {
+  font-size: 1.05rem;
+}
+
+.level:not(.level-rest) .stagebar {
+  width: 100%;
+  height: 8px;
+  margin-top: 4px;
 }
 
 .level-badge {
@@ -2682,7 +2714,10 @@ html[data-text-size="large"] {
     grid-template-columns: 1fr 1fr;
   }
 
-  .levels,
+  .levels {
+    grid-template-columns: repeat(6, 1fr);
+  }
+
   .plots {
     grid-template-columns: repeat(3, 1fr);
   }

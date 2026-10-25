@@ -140,12 +140,12 @@ function greeting(hour = new Date().getHours()) {
 function lockedItem(levels) {
   const count = levels.reduce((sum, level) => sum + state.words.filter((word) => word.level === level).length, 0);
   const numbered = levels.filter((level) => level !== "sup").map(Number);
-  const range = numbered.length > 1 ? `ด่าน ${numbered[0]}–${numbered[numbered.length - 1]}` : `ด่าน ${numbered[0]}`;
-  const label = levels.includes("sup") ? `${range} และด่านพิเศษ` : range;
+  const range = numbered.length > 1 ? `แปลง ${numbered[0]}–${numbered[numbered.length - 1]}` : `แปลง ${numbered[0]}`;
+  const label = levels.includes("sup") ? `${range} และแปลงพิเศษ` : range;
   const item = el("li", "level locked level-rest");
   const info = el("div", "level-info");
   info.append(
-    el("p", "level-title", `${levels.length} ด่านที่เหลือ`),
+    el("p", "level-title", `${levels.length} แปลงที่เหลือ`),
     el("p", "level-sub", `${label} · ${count.toLocaleString()} คำ · กำลังปลูก เร็ว ๆ นี้`),
   );
   item.append(el("span", "level-badge", "🔒"), info);
@@ -1456,7 +1456,7 @@ function renderSettings() {
   const startLevel = $("start-level");
   startLevel.replaceChildren(
     ...levels.map((level) => {
-      const option = el("option", "", `ด่าน ${Number(level)}`);
+      const option = el("option", "", `แปลง ${Number(level)}`);
       option.value = Number(level);
       option.selected = Number(level) === state.settings.startLevel;
       return option;
@@ -1730,7 +1730,7 @@ function bindEvents() {
   $("start-level").addEventListener("change", (event) => {
     state.settings = { ...state.settings, startLevel: Number(event.target.value) };
     storage.saveSettings(state.settings);
-    toast(`คำใหม่จะมาจากด่าน ${state.settings.startLevel} เป็นต้นไป`);
+    toast(`คำใหม่จะมาจากแปลง ${state.settings.startLevel} เป็นต้นไป`);
   });
   $("auto-speak").addEventListener("change", (event) => updateSetting({ autoSpeak: event.target.checked }));
   $("speech-rate").addEventListener("change", (event) => {

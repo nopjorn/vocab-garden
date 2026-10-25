@@ -249,12 +249,12 @@ a {
   color: var(--tree);
 }
 
-/* มือถือ: เมนูลอยอยู่ด้านล่างจอ */
-@media (max-width: 767px) {
+/* มือถือและแท็บเล็ตที่ใช้สัมผัส (iPad): เมนูลอยอยู่ด้านล่างจอ หน้าตาเหมือน iPhone */
+@media (max-width: 767px), (pointer: coarse) and (max-width: 1400px) {
   .tabbar {
     position: fixed;
-    left: 12px;
-    right: 12px;
+    left: max(12px, calc(50% - 360px));
+    right: max(12px, calc(50% - 360px));
     bottom: calc(10px + env(safe-area-inset-bottom));
     z-index: 3;
     justify-content: space-around;
@@ -287,6 +287,47 @@ a {
 
   .toast {
     bottom: calc(96px + env(safe-area-inset-bottom));
+  }
+}
+
+/* iPad: คงหน้าตาแบบ iPhone แต่ขยายตัวหนังสือและเนื้อหาให้เต็มตาขึ้น */
+@media (min-width: 768px) and (pointer: coarse) and (max-width: 1400px) {
+  html {
+    font-size: 112.5%;
+  }
+
+  main {
+    max-width: 720px;
+  }
+}
+
+/* iPad แนวนอน: ขยายเนื้อหาให้เต็มจอขึ้น รายการด่าน เกม และเหรียญเรียงสองคอลัมน์ ส่วนหน้าท่อง เกม และตั้งค่ายังอยู่กลางจอแคบ ๆ ให้อ่านง่าย */
+@media (min-width: 1000px) and (pointer: coarse) and (max-width: 1400px) {
+  main {
+    max-width: 1040px;
+  }
+
+  .tabbar {
+    left: max(12px, calc(50% - 440px));
+    right: max(12px, calc(50% - 440px));
+  }
+
+  .levels,
+  .game-list,
+  .medal-list {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  #view-study,
+  #view-done,
+  #view-wordle,
+  #view-scramble,
+  #view-match,
+  #view-settings,
+  #view-about,
+  #view-changelog {
+    max-width: 720px;
+    margin-inline: auto;
   }
 }
 

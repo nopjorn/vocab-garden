@@ -541,6 +541,80 @@ select {
   font-weight: 600;
 }
 
+.cal-wrap {
+  display: grid;
+  gap: 4px;
+}
+
+.cal-months {
+  display: grid;
+  grid-template-columns: repeat(var(--weeks), 1fr);
+  font-size: 0.65rem;
+  color: var(--muted);
+}
+
+.cal-months span {
+  overflow: visible;
+  white-space: nowrap;
+}
+
+.cal-grid {
+  display: grid;
+  grid-template-columns: repeat(var(--weeks), 1fr);
+  grid-template-rows: repeat(7, auto);
+  grid-auto-flow: column;
+  gap: 3px;
+}
+
+.cal-cell {
+  display: inline-block;
+  aspect-ratio: 1;
+  min-width: 8px;
+  background: var(--surface-2);
+  border-radius: 3px;
+}
+
+.cal-grid .cal-cell.future {
+  background: transparent;
+}
+
+.cal-cell.l1 {
+  background: color-mix(in srgb, var(--tree) 28%, var(--surface-2));
+}
+
+.cal-cell.l2 {
+  background: color-mix(in srgb, var(--tree) 52%, var(--surface-2));
+}
+
+.cal-cell.l3 {
+  background: color-mix(in srgb, var(--tree) 76%, var(--surface-2));
+}
+
+.cal-cell.l4 {
+  background: var(--tree);
+}
+
+.cal-cell.rest {
+  background: color-mix(in srgb, #38bdf8 35%, var(--surface-2));
+}
+
+.cal-cell.today {
+  outline: 2px solid var(--link);
+  outline-offset: 1px;
+}
+
+.cal-legend {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  margin-top: 6px;
+}
+
+.cal-legend .cal-cell {
+  width: 12px;
+  min-width: 12px;
+}
+
 .wotd {
   position: relative;
   margin-top: 14px;

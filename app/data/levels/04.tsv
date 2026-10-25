@@ -1,101 +1,101 @@
 rank	headword	forms	meanings	example_en	example_th	note
-301	control	controls, controlled, controlling				
-302	already					
-303	concern	concerns, concerned, concerning				
-304	product	products				
-305	lose	loses, lost, losing				
-306	story	stories, storied, storey, storys				
-307	almost					
-308	continue	continues, continued, continuing				
-309	stand	stands, stood, standing				
-310	whole	wholes				
-311	yet					
-312	rate	rates, rated, rating, ratings				
-313	care	cares, cared, caring				
-314	expect	expects, expected, expecting				
-315	effect	effects, effected, effecting				
-316	sort	sorts, sorted, sorting				
-317	ever					
-318	anything					
-319	cause	causes, caused, causing				
-320	fall	falls, fell, falling, fallen				
-321	deal	deals, dealing, dealt				
-322	water	waters, watered, watering				
-323	send	sends, sending, sent				
-324	allow	allows, allowed, allowing				
-325	soon	sooner, soonest				
-326	watch	watches, watched, watching				
-327	base	bases, based, basing, baser, basest				
-328	probably					
-329	suggest	suggests, suggested, suggesting				
-330	past					
-331	power	powers, powered, powering				
-332	test	tests, tested, testing				
-333	visit	visits, visited, visiting				
-334	center	centers, centered, centering, centre, centres, centred				
-335	grow	grows, grew, growing, grown				
-336	nothing					
-337	return	returns, returned, returning				
-338	mother	mothers, mothered, mothering				
-339	walk	walks, walked, walking				
-340	matter	matters, mattered, mattering				
-341	mind	minds, minded, minding				
-342	value	values, valued, valuing				
-343	office	offices				
-344	record	records, recorded, recording, recordings				
-345	stay	stays, stayed, staying				
-346	force	forces, forced, forcing				
-347	stop	stops, stopped, stopping				
-348	several					
-349	light	lights, lighted, lit, lighting, lightest				
-350	develop	develops, developed, developing				
-351	remember	remembers, remembered, remembering				
-352	bit	bits, bitted				
-353	share	shares, shared, sharing				
-354	real	realer				
-355	answer	answers, answered, answering				
-356	sit	sits, sat, sitting				
-357	figure	figures, figured, figuring				
-358	letter	letters, lettering, letterings				
-359	decide	decides, decided, deciding				
-360	language	languages				
-361	subject	subjects, subjected, subjecting				
-362	class	classes, classed, classing				
-363	development	developments				
-364	town	towns				
-365	half	halves, halved, halving				
-366	minute	minutes				
-367	food	foods				
-368	break	breaks, broke, breaking, broken				
-369	clear	clears, cleared, clearing, clearer, clearest				
-370	future	futures				
-371	either					
-372	ago					
-373	per					
-374	remain	remains, remained, remaining				
-375	top	tops, topped, topping, toppings				
-376	among					
-377	win	wins, winning, winnings				
-378	color	colors, colored, coloring, colorings, colour, colours, coloured, colouring				
-379	involve	involves, involved, involving				
-380	reach	reaches, reached, reaching				
-381	social	socials				
-382	period	periods				
-383	across					
-384	note	notes, noted, noting				
-385	history	histories				
-386	create	creates, created, creating				
-387	drive	drives, drove, driving, driven				
-388	along					
-389	type	types, typed, typing				
-390	sound	sounds, sounded, sounding				
-391	eye	eyes, eyed, eyeing				
-392	music					
-393	game	games, gamed, gaming				
-394	political					
-395	free	frees, freed, freeing, freer, freest				
-396	receive	receives, received, receiving				
-397	moment	moments				
-398	sale	sales				
-399	policy	policies				
-400	further	furthers, furthered, furthering				
+301	control	controls, controlled, controlling	n: การควบคุม | v: ควบคุม, บังคับ	Please control your speed.	กรุณาควบคุมความเร็วด้วย	
+302	already		adv: แล้ว, เรียบร้อยแล้ว	I have already eaten lunch.	ฉันกินข้าวเที่ยงแล้ว	
+303	concern	concerns, concerned, concerning	n: ความกังวล, เรื่องที่เป็นห่วง | v: เกี่ยวข้องกับ, ทำให้กังวล	I have a concern about the plan.	ฉันกังวลเกี่ยวกับแผนนี้	
+304	product	products	n: สินค้า, ผลิตภัณฑ์	This product is very popular.	สินค้านี้ได้รับความนิยมมาก	
+305	lose	loses, lost, losing	v: สูญเสีย, ทำหาย, แพ้	I lost my keys yesterday.	เมื่อวานฉันทำกุญแจหาย	รูปอดีตคือ lost
+306	story	stories, storied, storey, storys	n: เรื่องราว, นิทาน	He told us a funny story.	เขาเล่าเรื่องตลกให้เราฟัง	
+307	almost		adv: เกือบ, เกือบจะ	I am almost ready.	ฉันเกือบพร้อมแล้ว	
+308	continue	continues, continued, continuing	v: ทำต่อ, ดำเนินต่อไป	Please continue your work.	กรุณาทำงานของคุณต่อ	
+309	stand	stands, stood, standing	v: ยืน, ทนได้ | n: แผง, ที่ตั้ง	Please stand in line.	กรุณายืนต่อแถว	รูปอดีตคือ stood
+310	whole	wholes	adj: ทั้งหมด, ทั้งสิ้น | n: ส่วนรวม	I ate the whole cake.	ฉันกินเค้กทั้งก้อนหมดเลย	
+311	yet		adv: ยัง, ยังไม่ | conj: แต่ทว่า	He has not come yet.	เขายังไม่มา	
+312	rate	rates, rated, rating, ratings	n: อัตรา, ราคา, ความเร็ว | v: ประเมิน, ให้คะแนน	The rate of change is fast.	อัตราการเปลี่ยนแปลงเร็วมาก	
+313	care	cares, cared, caring	v: ใส่ใจ, ดูแล, สนใจ | n: การดูแล	I care about my health.	ฉันใส่ใจสุขภาพของตัวเอง	
+314	expect	expects, expected, expecting	v: คาดหวัง, คาดว่า, รอคอย	I expect him to come soon.	ฉันคาดว่าเขาจะมาเร็ว ๆ นี้	
+315	effect	effects, effected, effecting	n: ผล, ผลกระทบ	The medicine had a good effect.	ยานี้ให้ผลดี	คำนาม effect = ผล ส่วน affect (กริยา) = ส่งผลต่อ
+316	sort	sorts, sorted, sorting	n: ชนิด, ประเภท | v: คัดแยก, จัดเรียง	What sort of music do you like?	คุณชอบเพลงประเภทไหน	
+317	ever		adv: เคย, เคยมี, เมื่อไรก็ตาม	Have you ever been to Japan?	คุณเคยไปญี่ปุ่นไหม	
+318	anything		pron: อะไรก็ได้, สิ่งใด ๆ	Do you need anything?	คุณต้องการอะไรไหม	
+319	cause	causes, caused, causing	n: สาเหตุ | v: ทำให้, เป็นสาเหตุ	Rain can cause traffic jams.	ฝนอาจทำให้รถติด	
+320	fall	falls, fell, falling, fallen	v: ล้ม, ตก, ลดลง | n: ฤดูใบไม้ร่วง	Leaves fall in autumn.	ใบไม้ร่วงในฤดูใบไม้ร่วง	รูปอดีตคือ fell
+321	deal	deals, dealing, dealt	n: ข้อตกลง | v: จัดการ, แจกไพ่	It is a good deal.	นี่เป็นข้อตกลงที่ดี	รูปอดีตคือ dealt
+322	water	waters, watered, watering	n: น้ำ | v: รดน้ำ	Please drink more water.	กรุณาดื่มน้ำให้มากขึ้น	
+323	send	sends, sending, sent	v: ส่ง, ส่งไป	I will send you a message.	ฉันจะส่งข้อความให้คุณ	รูปอดีตคือ sent
+324	allow	allows, allowed, allowing	v: อนุญาต, ปล่อยให้	My mother does not allow me to stay out late.	แม่ไม่อนุญาตให้ฉันอยู่ข้างนอกดึก	
+325	soon	sooner, soonest	adv: เร็ว ๆ นี้, อีกไม่นาน	I will see you soon.	เดี๋ยวเจอกันนะ	
+326	watch	watches, watched, watching	v: ดู, เฝ้าดู | n: นาฬิกาข้อมือ	I watch TV after dinner.	ฉันดูทีวีหลังอาหารเย็น	
+327	base	bases, based, basing, baser, basest	n: ฐาน, พื้นฐาน | v: อิงจาก, ตั้งอยู่บน	The story is based on real life.	เรื่องนี้สร้างจากเรื่องจริง	
+328	probably		adv: อาจจะ, คงจะ, น่าจะ	It will probably rain tonight.	คืนนี้ฝนน่าจะตก	
+329	suggest	suggests, suggested, suggesting	v: แนะนำ, เสนอ, บอกเป็นนัย	I suggest we leave early.	ฉันแนะนำให้เราออกเดินทางแต่เช้า	
+330	past		adj: ที่ผ่านมา | n: อดีต | prep: เลย, ผ่าน	Please do not live in the past.	อย่ามัวจมอยู่กับอดีต	
+331	power	powers, powered, powering	n: พลัง, อำนาจ, กำลัง | v: ให้พลังงาน	The sun gives us power.	ดวงอาทิตย์ให้พลังงานแก่เรา	
+332	test	tests, tested, testing	n: การทดสอบ, ข้อสอบ | v: ทดสอบ, ตรวจ	I have a test tomorrow.	พรุ่งนี้ฉันมีสอบ	
+333	visit	visits, visited, visiting	v: ไปเยี่ยม, ไปเที่ยว | n: การไปเยือน	I visit my grandmother every Sunday.	ฉันไปเยี่ยมคุณยายทุกวันอาทิตย์	
+334	center	centers, centered, centering, centre, centres, centred	n: ศูนย์กลาง, ศูนย์ | v: ตั้งไว้กลาง	The shopping center is very big.	ห้างสรรพสินค้านี้ใหญ่มาก	center สะกดแบบอเมริกัน ส่วน centre สะกดแบบอังกฤษ
+335	grow	grows, grew, growing, grown	v: เติบโต, ปลูก, เพิ่มขึ้น	Plants grow quickly in summer.	พืชโตเร็วในฤดูร้อน	รูปอดีตคือ grew
+336	nothing		pron: ไม่มีอะไร, ไม่มีสิ่งใด	There is nothing in the box.	ไม่มีอะไรอยู่ในกล่อง	
+337	return	returns, returned, returning	v: กลับ, คืน, ส่งคืน | n: การกลับมา	I return home at six.	ฉันกลับบ้านตอนหกโมง	
+338	mother	mothers, mothered, mothering	n: แม่, มารดา | v: เลี้ยงดูแบบแม่	My mother cooks very well.	แม่ของฉันทำอาหารเก่งมาก	
+339	walk	walks, walked, walking	v: เดิน | n: การเดิน	I walk to school every day.	ฉันเดินไปโรงเรียนทุกวัน	
+340	matter	matters, mattered, mattering	n: เรื่อง, ปัญหา | v: สำคัญ, มีความสำคัญ	What is the matter?	เกิดเรื่องอะไรขึ้น	
+341	mind	minds, minded, minding	n: จิตใจ, ความคิด | v: ถือสา, ใส่ใจ	Do you mind if I sit here?	ฉันนั่งตรงนี้ได้ไหม	
+342	value	values, valued, valuing	n: คุณค่า, มูลค่า | v: เห็นคุณค่า	Health has great value.	สุขภาพมีคุณค่ามาก	
+343	office	offices	n: ที่ทำงาน, สำนักงาน	I work in a small office.	ฉันทำงานในออฟฟิศเล็ก ๆ	
+344	record	records, recorded, recording, recordings	n: บันทึก, สถิติ | v: บันทึก, อัด	Please record your name here.	กรุณาลงชื่อของคุณที่นี่	ออกเสียงต่างกัน: n. = เรค'เคิร์ด v. = รีคอร์ด'
+345	stay	stays, stayed, staying	v: พัก, อยู่ต่อ | n: การพัก	We stay at a small hotel.	เราพักที่โรงแรมเล็ก ๆ	
+346	force	forces, forced, forcing	n: แรง, กำลัง | v: บังคับ, ฝืน	Do not force the door.	อย่าฝืนเปิดประตู	
+347	stop	stops, stopped, stopping	v: หยุด | n: ป้ายหยุด, การหยุด	Please stop here.	กรุณาหยุดตรงนี้	
+348	several		det: หลาย ๆ, หลายอัน	I have several friends here.	ฉันมีเพื่อนหลายคนที่นี่	
+349	light	lights, lighted, lit, lighting, lightest	n: แสง, ไฟ | adj: เบา, สว่าง | v: จุดไฟ	Please turn on the light.	กรุณาเปิดไฟ	รูปอดีตคือ lit หรือ lighted
+350	develop	develops, developed, developing	v: พัฒนา, ทำให้เติบโต	They develop new apps.	พวกเขาพัฒนาแอปใหม่	
+351	remember	remembers, remembered, remembering	v: จำได้, นึกออก	I remember your name.	ฉันจำชื่อคุณได้	
+352	bit	bits, bitted	n: ชิ้นเล็ก ๆ, นิดหน่อย	Wait a bit, please.	รอสักครู่นะ	ใช้ a bit = นิดหน่อย
+353	share	shares, shared, sharing	v: แบ่งปัน, ใช้ร่วมกัน | n: ส่วนแบ่ง, หุ้น	We share one room.	เราใช้ห้องร่วมกัน	
+354	real	realer	adj: จริง, แท้, ของจริง	Is this a real diamond?	นี่เป็นเพชรแท้หรือเปล่า	
+355	answer	answers, answered, answering	n: คำตอบ | v: ตอบ	Please answer my question.	กรุณาตอบคำถามของฉัน	
+356	sit	sits, sat, sitting	v: นั่ง	Please sit here.	เชิญนั่งที่นี่	รูปอดีตคือ sat
+357	figure	figures, figured, figuring	n: ตัวเลข, รูปร่าง, บุคคลสำคัญ | v: คิดออก, คำนวณ	I cannot figure out this problem.	ฉันคิดไม่ออกว่าปัญหานี้เป็นอย่างไร	figure out = คิดออก, ทำความเข้าใจ
+358	letter	letters, lettering, letterings	n: จดหมาย, ตัวอักษร	I wrote a letter to my friend.	ฉันเขียนจดหมายถึงเพื่อน	
+359	decide	decides, decided, deciding	v: ตัดสินใจ, ตกลงใจ	I decide to study English.	ฉันตัดสินใจเรียนภาษาอังกฤษ	
+360	language	languages	n: ภาษา	She speaks three languages.	เธอพูดได้สามภาษา	
+361	subject	subjects, subjected, subjecting	n: หัวข้อ, วิชา, ประธาน | v: ทำให้ต้องเผชิญ	My favorite subject is English.	วิชาที่ฉันชอบที่สุดคือภาษาอังกฤษ	ออกเสียงต่างกัน: n. = ซับ'เจคท์ v. = ซับเจคท์'
+362	class	classes, classed, classing	n: ชั้นเรียน, ชนชั้น, ประเภท	The class starts at nine.	คลาสเริ่มตอนเก้าโมง	
+363	development	developments	n: การพัฒนา, ความเจริญก้าวหน้า	The city is under development.	เมืองนี้อยู่ระหว่างการพัฒนา	
+364	town	towns	n: เมืองเล็ก, ตัวเมือง	My grandmother lives in a small town.	คุณยายของฉันอยู่ในเมืองเล็ก ๆ	
+365	half	halves, halved, halving	n: ครึ่ง, ครึ่งหนึ่ง | adj: ครึ่ง	I ate half of the cake.	ฉันกินเค้กไปครึ่งหนึ่ง	พหูพจน์คือ halves
+366	minute	minutes	n: นาที | adj: เล็กน้อยมาก	Wait a minute, please.	รอสักครู่นะ	ออกเสียงต่างกัน: n. = มินิท adj. = ไมนิวท์
+367	food	foods	n: อาหาร, ของกิน	Thai food is delicious.	อาหารไทยอร่อย	
+368	break	breaks, broke, breaking, broken	v: หัก, ทำแตก, ฝ่าฝืน | n: การพัก	Be careful not to break the glass.	ระวังอย่าทำแก้วแตกนะ	รูปอดีตคือ broke
+369	clear	clears, cleared, clearing, clearer, clearest	adj: ชัดเจน, โปร่งใส, แจ่มใส | v: ทำให้ชัด, เคลียร์	The water is very clear.	น้ำใสมาก	
+370	future	futures	n: อนาคต	I have big plans for the future.	ฉันมีแผนใหญ่สำหรับอนาคต	
+371	either		det: อย่างใดอย่างหนึ่ง, ก็ได้ | adv: ก็ไม่...เหมือนกัน (ประโยคปฏิเสธ)	You can take either bag.	เลือกกระเป๋าใบไหนก็ได้	
+372	ago		adv: ที่แล้ว, มาแล้ว (ในอดีต)	I met her two years ago.	ฉันเจอเธอเมื่อสองปีที่แล้ว	
+373	per		prep: ต่อ, ในแต่ละ	The ticket costs fifty baht per person.	ตั๋วราคาคนละห้าสิบบาท	
+374	remain	remains, remained, remaining	v: ยังคงอยู่, เหลืออยู่	Please remain seated.	กรุณาอยู่ในที่นั่งต่อไป	
+375	top	tops, topped, topping, toppings	n: ยอด, บนสุด, เสื้อ | adj: สูงสุด | v: อยู่เหนือ, เป็นอันดับหนึ่ง	The cat is on top of the table.	แมวอยู่บนโต๊ะ	
+376	among		prep: ท่ามกลาง, ในหมู่	She is popular among her friends.	เธอเป็นที่นิยมในหมู่เพื่อน	
+377	win	wins, winning, winnings	v: ชนะ, ได้รับ | n: ชัยชนะ	I hope our team will win.	ฉันหวังว่าทีมของเราจะชนะ	รูปอดีตคือ won
+378	color	colors, colored, coloring, colorings, colour, colours, coloured, colouring	n: สี | v: ระบายสี	My favorite color is blue.	สีโปรดของฉันคือสีน้ำเงิน	color สะกดแบบอเมริกัน ส่วน colour สะกดแบบอังกฤษ
+379	involve	involves, involved, involving	v: เกี่ยวข้อง, รวมถึง, ทำให้เข้าร่วม	This job involves a lot of walking.	งานนี้ต้องเดินเยอะ	
+380	reach	reaches, reached, reaching	v: ไปถึง, เอื้อมถึง, ติดต่อได้	We will reach the hotel at noon.	เราจะไปถึงโรงแรมตอนเที่ยง	
+381	social	socials	adj: เกี่ยวกับสังคม, ทางสังคม	She enjoys social media.	เธอชอบใช้โซเชียลมีเดีย	
+382	period	periods	n: ช่วงเวลา, คาบเรียน	The first period starts at nine.	คาบแรกเริ่มตอนเก้าโมง	
+383	across		prep: ข้าม, ตลอด, อีกฟากของ | adv: ข้ามไป	He walked across the road.	เขาเดินข้ามถนน	
+384	note	notes, noted, noting	n: บันทึก, โน้ต | v: สังเกต, จดไว้	Please take notes in class.	กรุณาจดบันทึกในห้องเรียน	
+385	history	histories	n: ประวัติศาสตร์, ประวัติ	I like to read history books.	ฉันชอบอ่านหนังสือประวัติศาสตร์	
+386	create	creates, created, creating	v: สร้าง, สร้างสรรค์	She creates beautiful paintings.	เธอสร้างภาพวาดที่สวยงาม	
+387	drive	drives, drove, driving, driven	v: ขับ, ขับรถ, ผลักดัน | n: การขับรถ, แรงขับเคลื่อน	I drive to work every day.	ฉันขับรถไปทำงานทุกวัน	รูปอดีตคือ drove
+388	along		prep: ตามแนว, ไปตาม | adv: ไปด้วยกัน, ไปข้างหน้า	We walked along the river.	เราเดินเลียบแม่น้ำ	
+389	type	types, typed, typing	n: ชนิด, ประเภท | v: พิมพ์ดีด	What type of music do you like?	คุณชอบดนตรีประเภทไหน	
+390	sound	sounds, sounded, sounding	n: เสียง | v: ฟังดูเหมือน, ส่งเสียง | adj: สมบูรณ์, ดี	I like the sound of the rain.	ฉันชอบเสียงฝน	
+391	eye	eyes, eyed, eyeing	n: ดวงตา, ตา | v: มองดู	She has brown eyes.	เธอมีดวงตาสีน้ำตาล	
+392	music		n: ดนตรี, เพลง	I listen to music every day.	ฉันฟังเพลงทุกวัน	ไม่นับจำนวนได้ ไม่ใช้ musics
+393	game	games, gamed, gaming	n: เกม, การแข่งขัน	We play a game every Friday.	เราเล่นเกมกันทุกวันศุกร์	
+394	political		adj: เกี่ยวกับการเมือง, ทางการเมือง	He is interested in political news.	เขาสนใจข่าวการเมือง	
+395	free	frees, freed, freeing, freer, freest	adj: ฟรี, อิสระ, ว่าง | v: ปล่อย, ทำให้เป็นอิสระ	The museum is free on Sundays.	พิพิธภัณฑ์เข้าชมฟรีวันอาทิตย์	
+396	receive	receives, received, receiving	v: ได้รับ, รับ	I receive many emails every day.	ฉันได้รับอีเมลหลายฉบับทุกวัน	
+397	moment	moments	n: ช่วงเวลา, ขณะ, ชั่วครู่	Wait a moment, please.	รอสักครู่นะ	
+398	sale	sales	n: การขาย, การลดราคา	The shop has a big sale today.	วันนี้ร้านลดราคาครั้งใหญ่	
+399	policy	policies	n: นโยบาย, กรมธรรม์	The school has a new policy.	โรงเรียนมีนโยบายใหม่	
+400	further	furthers, furthered, furthering	adv: ไกลขึ้น, ต่อไปอีก | adj: เพิ่มเติม | v: ส่งเสริม	I need further information.	ฉันต้องการข้อมูลเพิ่มเติม	further ใช้ได้ทั้ง adv., adj. และ v.

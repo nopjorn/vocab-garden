@@ -4,6 +4,7 @@ import { launchConfetti } from "./confetti.js";
 import { canSpeak, speak } from "./speech.js";
 import { buildQuestion, gradeTyped } from "./quiz.js";
 import { playSfx } from "./sfx.js";
+import { wordOfDay } from "./daily.js";
 import { EXAM_COUNT, TIERS, bestTier, buildExam, examMedalIds, examReady, rescheduleMissed, tierOf } from "./exam.js";
 import { DECORATIONS, FLOWERS, bloomedLevels, flowerId, flowerOf, ownedDecorations, seasonOf } from "./decor.js";
 import { COMEBACK_DAYS, MEDALS, isEarlyBird, isPerfectRound, newMedals } from "./achievements.js";
@@ -216,6 +217,21 @@ function levelItems() {
   return items;
 }
 
+// ศัพท์ของวันนี้: คำเดียวกันทั้งวัน แตะเพื่อดูรายละเอียด (ไม่เปลี่ยนตารางทวน)
+function renderWordOfDay(today) {
+  const word = wordOfDay(translatedWords(), today);
+  $("wotd").hidden = !word;
+  if (!word) return;
+  const info = plantInfo(state.cards[word.headword], today);
+  const sense = word.senses[0];
+  $("wotd-word").textContent = `${info.stage.emoji} ${word.headword}`;
+  $("wotd-meaning").textContent = sense ? `${sense.label} · ${sense.text}` : "";
+  $("wotd-example").textContent = word.exampleEn;
+  $("wotd-open").onclick = () => openWordDialog(word);
+  $("wotd-speak").hidden = !canSpeak();
+  $("wotd-speak").onclick = () => speakWord(word.headword);
+}
+
 // คำนวณวันพักถึงปัจจุบัน (รันซ้ำได้ ผลเดิม) แล้วคืนประวัติกับสถานะวันพัก
 function refreshHabit(day) {
   const history = storage.loadHistory();
@@ -280,6 +296,7 @@ function renderHome() {
   announceRest(habit);
   $("garden-total").textContent = `แปลแล้ว ${translated.length.toLocaleString()} / ${state.words.length.toLocaleString()} คำ`;
 
+  renderWordOfDay(today);
   $("levels").replaceChildren(...levelItems());
   $("storage-warning").hidden = storage.persistent;
 }

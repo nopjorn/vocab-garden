@@ -410,17 +410,22 @@
         <button type="button" id="flash-start" class="primary wide">🃏 เริ่มเล่น</button>
       </div>
 
-      <div id="flash-play" hidden>
-        <button type="button" id="flash-card" class="fc" aria-live="polite">
+      <div id="flash-play" class="flash-play" hidden>
+        <div class="flash-progress">
+          <div id="flash-progressbar" class="progress" role="progressbar" aria-label="ความคืบหน้าของรอบนี้" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><div id="flash-bar" class="progress-bar"></div></div>
+          <span id="flash-stats" class="muted small"></span>
+        </div>
+        <div id="flash-card" class="fc" role="button" tabindex="0" aria-live="polite">
+          <span id="flash-meta" class="fc-meta muted small"></span>
+          <button type="button" id="flash-speak" class="speak fc-speak" aria-label="ฟังเสียงคำนี้" hidden>🔊</button>
           <span id="flash-front" class="fc-front"></span>
           <span id="flash-back" class="fc-back" hidden></span>
-        </button>
-        <p id="flash-tip" class="muted small center-text">แตะการ์ดเพื่อพลิก (Space)</p>
-        <div id="flash-actions" class="row flash-actions" hidden>
-          <button type="button" id="flash-unsure">🔁 ยังไม่แน่ใจ <kbd>2</kbd></button>
-          <button type="button" id="flash-known" class="primary">✅ จำได้ <kbd>1</kbd></button>
+          <span id="flash-tip" class="fc-tip muted small">👆 แตะการ์ดเพื่อพลิก (Space)</span>
         </div>
-        <button type="button" id="flash-speak" class="speak" aria-label="ฟังเสียงคำนี้" hidden>🔊</button>
+        <div id="flash-actions" class="flash-actions">
+          <button type="button" id="flash-unsure" disabled>🔁 ยังไม่แน่ใจ <kbd>2</kbd></button>
+          <button type="button" id="flash-known" class="primary" disabled>✅ จำได้ <kbd>1</kbd></button>
+        </div>
       </div>
 
       <div id="flash-result" class="done-card" hidden>

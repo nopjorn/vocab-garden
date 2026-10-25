@@ -1274,9 +1274,9 @@ function renderPlots(today) {
       plot.dataset.level = level;
       plot.open = open.has(level);
       const head = el("summary", "plot-head");
-      head.append(el("strong", "", `${levelTitle(level)} · ปลูกแล้ว ${summary.planted}/${summary.total}`));
-      const stages = STAGES.slice(1).map((stage) => `${stage.emoji} ${counts[stage.id]}`).join("  ");
-      head.append(el("span", "muted small", `${stages}${summary.wilted ? `  💧 ${summary.wilted}` : ""}`));
+      const info = el("div", "level-info");
+      info.append(el("p", "level-title", levelTitle(level)), el("p", "level-sub", `${summary.planted}/${summary.total} คำ${summary.wilted ? ` · 💧 ${summary.wilted}` : ""}`));
+      head.append(el("span", "level-badge", level === "sup" ? "★" : String(Number(level))), info);
       const bar = el("div", "stagebar");
       STAGES.slice(1).forEach((stage) => {
         if (counts[stage.id] === 0) return;
@@ -1284,7 +1284,8 @@ function renderPlots(today) {
         segment.style.width = `${(counts[stage.id] / words.length) * 100}%`;
         bar.append(segment);
       });
-      head.append(bar);
+      const stages = STAGES.slice(1).map((stage) => `${stage.emoji} ${counts[stage.id]}`).join("  ");
+      head.append(bar, el("p", "level-stages", stages));
       const grid = el("div", "plot-grid");
       grid.append(...words.map((word) => plantButton(word, today)));
       plot.append(head, grid);

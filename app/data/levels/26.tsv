@@ -1,101 +1,101 @@
-rank	headword	forms	meanings	example_en	example_th	note
-2501	personnel					
-2502	imagination	imaginations				
-2503	disagree	disagrees, disagreed, disagreeing				
-2504	throat	throats				
-2505	insight	insights				
-2506	tackle	tackles, tackled, tackling				
-2507	forever					
-2508	exceed	exceeds, exceeded, exceeding				
-2509	expenditure	expenditures				
-2510	joy	joys				
-2511	pregnant					
-2512	reliable	reliables				
-2513	gear	gears, geared, gearing, gearings				
-2514	click	clicks, clicked, clicking, clickings				
-2515	poet	poets				
-2516	fortune	fortunes				
-2517	ceremony	ceremonies				
-2518	pile	piles, piled, piling				
-2519	pig	pigs, pigged, pigging				
-2520	mixture	mixtures				
-2521	automatically					
-2522	scholar	scholars				
-2523	psychological					
-2524	dramatically					
-2525	stake	stakes, staked, staking				
-2526	creature	creatures				
-2527	partnership	partnerships				
-2528	participation	participations				
-2529	clause	clauses				
-2530	penalty	penalties				
-2531	chamber	chambers, chambered, chambering				
-2532	fancy	fancies, fancied, fancying, fanciest				
-2533	poetry	poetries				
-2534	chat	chats, chatted, chatting				
-2535	clothing					
-2536	evolve	evolves, evolved, evolving				
-2537	sake	sakes				
-2538	shelf	shelves, shelved, shelving				
-2539	boost	boosts, boosted, boosting				
-2540	tail	tails, tailed, tailing				
-2541	possession	possessions				
-2542	abortion	abortions				
-2543	curious	curiouser				
-2544	wooden					
-2545	boom	booms, boomed, booming				
-2546	tale	tales				
-2547	democratic					
-2548	maintenance	maintenances				
-2549	consequently					
-2550	pot	pots, potted, potting				
-2551	cow	cows, cowed, cowing				
-2552	strengthen	strengthens, strengthened, strengthening				
-2553	whilst					
-2554	constraint	constraints				
-2555	fold	folds, folded, folding				
-2556	bin	bins, binned, binning				
-2557	undergo	undergoes, underwent, undergoing, undergone				
-2558	potentially					
-2559	scope	scopes, scoped, scoping				
-2560	pretend	pretends, pretended, pretending				
-2561	diversity	diversities				
-2562	allege	alleges, alleged				
-2563	pride	prides, prided, priding				
-2564	intense					
-2565	inquiry	inquiries				
-2566	resign	resigns, resigned, resigning				
-2567	craft	crafts, crafted, crafting				
-2568	strict	stricter, strictest				
-2569	concrete	concretes, concreted, concreting				
-2570	shell	shells, shelled				
-2571	damn	damns, damned, damning				
-2572	distinct					
-2573	humor	humors, humored, humoring, humorings, humour, humours, humoured				
-2574	limitation	limitations				
-2575	indication	indications				
-2576	stability	stabilities				
-2577	wise	wises, wised, wising, wiser, wisest				
-2578	neglect	neglects, neglected, neglecting				
-2579	compose	composes, composed, composing				
-2580	jail	jails, jailed, jailing				
-2581	shelter	shelters, sheltered				
-2582	mere	merest				
-2583	carbon	carbons				
-2584	regulate	regulates, regulated, regulating				
-2585	cheese	cheeses				
-2586	trigger	triggers, triggered, triggering				
-2587	pipe	pipes, piped, piping				
-2588	destruction	destructions				
-2589	guitar	guitars				
-2590	flag	flags, flagged, flagging				
-2591	piano	pianos				
-2592	magic					
-2593	mystery	mysteries				
-2594	ski	skis, skied, skiing				
-2595	whisper	whispers, whispered, whispering, whisperings				
-2596	rear	rears, reared, rearing				
-2597	menu	menus				
-2598	species					
-2599	moon	moons, mooned				
-2600	presumably					
+rank	headword	forms	meanings	example_en	example_th	note	emoji
+2501	personnel						
+2502	imagination	imaginations					
+2503	disagree	disagrees, disagreed, disagreeing					
+2504	throat	throats					
+2505	insight	insights					
+2506	tackle	tackles, tackled, tackling					
+2507	forever						
+2508	exceed	exceeds, exceeded, exceeding					
+2509	expenditure	expenditures					
+2510	joy	joys					
+2511	pregnant						
+2512	reliable	reliables					
+2513	gear	gears, geared, gearing, gearings					
+2514	click	clicks, clicked, clicking, clickings					
+2515	poet	poets					
+2516	fortune	fortunes					
+2517	ceremony	ceremonies					
+2518	pile	piles, piled, piling					
+2519	pig	pigs, pigged, pigging					
+2520	mixture	mixtures					
+2521	automatically						
+2522	scholar	scholars					
+2523	psychological						
+2524	dramatically						
+2525	stake	stakes, staked, staking					
+2526	creature	creatures					
+2527	partnership	partnerships					
+2528	participation	participations					
+2529	clause	clauses					
+2530	penalty	penalties					
+2531	chamber	chambers, chambered, chambering					
+2532	fancy	fancies, fancied, fancying, fanciest					
+2533	poetry	poetries					
+2534	chat	chats, chatted, chatting					
+2535	clothing						
+2536	evolve	evolves, evolved, evolving					
+2537	sake	sakes					
+2538	shelf	shelves, shelved, shelving					
+2539	boost	boosts, boosted, boosting					
+2540	tail	tails, tailed, tailing					
+2541	possession	possessions					
+2542	abortion	abortions					
+2543	curious	curiouser					
+2544	wooden						
+2545	boom	booms, boomed, booming					
+2546	tale	tales					
+2547	democratic						
+2548	maintenance	maintenances					
+2549	consequently						
+2550	pot	pots, potted, potting					
+2551	cow	cows, cowed, cowing					
+2552	strengthen	strengthens, strengthened, strengthening					
+2553	whilst						
+2554	constraint	constraints					
+2555	fold	folds, folded, folding					
+2556	bin	bins, binned, binning					
+2557	undergo	undergoes, underwent, undergoing, undergone					
+2558	potentially						
+2559	scope	scopes, scoped, scoping					
+2560	pretend	pretends, pretended, pretending					
+2561	diversity	diversities					
+2562	allege	alleges, alleged					
+2563	pride	prides, prided, priding					
+2564	intense						
+2565	inquiry	inquiries					
+2566	resign	resigns, resigned, resigning					
+2567	craft	crafts, crafted, crafting					
+2568	strict	stricter, strictest					
+2569	concrete	concretes, concreted, concreting					
+2570	shell	shells, shelled					
+2571	damn	damns, damned, damning					
+2572	distinct						
+2573	humor	humors, humored, humoring, humorings, humour, humours, humoured					
+2574	limitation	limitations					
+2575	indication	indications					
+2576	stability	stabilities					
+2577	wise	wises, wised, wising, wiser, wisest					
+2578	neglect	neglects, neglected, neglecting					
+2579	compose	composes, composed, composing					
+2580	jail	jails, jailed, jailing					
+2581	shelter	shelters, sheltered					
+2582	mere	merest					
+2583	carbon	carbons					
+2584	regulate	regulates, regulated, regulating					
+2585	cheese	cheeses					
+2586	trigger	triggers, triggered, triggering					
+2587	pipe	pipes, piped, piping					
+2588	destruction	destructions					
+2589	guitar	guitars					
+2590	flag	flags, flagged, flagging					
+2591	piano	pianos					
+2592	magic						
+2593	mystery	mysteries					
+2594	ski	skis, skied, skiing					
+2595	whisper	whispers, whispered, whispering, whisperings					
+2596	rear	rears, reared, rearing					
+2597	menu	menus					
+2598	species						
+2599	moon	moons, mooned					
+2600	presumably						

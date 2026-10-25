@@ -1,101 +1,101 @@
-rank	headword	forms	meanings	example_en	example_th	note
-1001	difficulty	difficulties				
-1002	purchase	purchases, purchased, purchasing				
-1003	shoot	shoots, shooting, shootings				
-1004	announce	announces, announced, announcing				
-1005	unless					
-1006	independent	independents				
-1007	recommend	recommends, recommended, recommending				
-1008	survey	surveys, surveyed, surveying				
-1009	majority	majorities				
-1010	stick	sticks, stuck, sticking				
-1011	request	requests, requested, requesting				
-1012	rich	richer, richest				
-1013	wind	winds, wound, winded, winding				
-1014	none					
-1015	exchange	exchanges, exchanged, exchanging				
-1016	budget	budgets, budgeted, budgeting				
-1017	famous					
-1018	blood	bloods, blooded, blooding				
-1019	appropriate	appropriates, appropriated, appropriating				
-1020	block	blocks, blocked, blocking				
-1021	warm	warms, warmed, warming, warmer, warmest				
-1022	count	counts, counted, counting				
-1023	scene	scenes				
-1024	writer	writers				
-1025	content	contents, contented, contenting				
-1026	prevent	prevents, prevented, preventing				
-1027	safe	safer, safest				
-1028	invite	invites, invited, inviting				
-1029	mix	mixes, mixed, mixing				
-1030	element	elements				
-1031	effective					
-1032	correct	corrects, corrected, correcting				
-1033	medical	medicals				
-1034	admit	admits, admitting, admitted				
-1035	beat	beats, beating, beaten, beatings				
-1036	telephone	telephones, telephoned, telephoning				
-1037	copy	copies, copied, copying				
-1038	committee	committees				
-1039	aware					
-1040	advice	advices				
-1041	handle	handles, handled, handling				
-1042	glass	glasses, glassed, glassing				
-1043	trial	trials, trialed, trialing, trialled, trialling				
-1044	stress	stresses, stressed				
-1045	radio	radios, radioed				
-1046	administration	administrations				
-1047	complex	complexes				
-1048	text	texts				
-1049	context	contexts				
-1050	ride	rides, rode, riding, ridden				
-1051	directly					
-1052	heavy	heavies, heavier, heaviest				
-1053	remove	removes, removed, removing				
-1054	conduct	conducts, conducted, conducting				
-1055	equipment	equipments				
-1056	otherwise					
-1057	title	titles, titled, titling				
-1058	extra	extras				
-1059	executive	executives				
-1060	chair	chairs, chaired, chairing				
-1061	expensive					
-1062	sample	samples, sampled, sampling, samplings				
-1063	sex	sexes				
-1064	deliver	delivers, delivered, delivering				
-1065	video	videos, videoed				
-1066	connection	connections, connexion, connexions				
-1067	primary	primaries				
-1068	weather	weathers, weathered, weathering				
-1069	collect	collects, collected, collecting				
-1070	inform	informs, informed, informing				
-1071	principle	principles, principled				
-1072	straight	straighter, straightest				
-1073	appeal	appeals, appealed, appealing				
-1074	highly					
-1075	trust	trusts, trusted, trusting				
-1076	wonderful					
-1077	flat	flats, flatted, flatting				
-1078	absolutely					
-1079	flow	flows, flowed, flowing				
-1080	fair	fairs, faired, fairing, fairer, fairest				
-1081	additional					
-1082	responsible					
-1083	farm	farms, farmed, farming				
-1084	collection	collections				
-1085	hang	hangs, hung, hanging, hanged, hangings				
-1086	negative	negatives				
-1087	band	bands, banded				
-1088	relative	relatives				
-1089	tour	tours, toured, touring				
-1090	alternative	alternatives				
-1091	software					
-1092	pair	pairs, paired, pairing, pairings				
-1093	ship	ships, shipped, shipping				
-1094	attitude	attitudes				
-1095	cheap	cheaper, cheapest				
-1096	double	doubles, doubled, doubling				
-1097	leg	legs, legged, legging, leggings				
-1098	observe	observes, observed, observing				
-1099	sentence	sentences, sentenced, sentencing				
-1100	print	prints, printed, printing, printings				
+rank	headword	forms	meanings	example_en	example_th	note	emoji
+1001	difficulty	difficulties					
+1002	purchase	purchases, purchased, purchasing					
+1003	shoot	shoots, shooting, shootings					
+1004	announce	announces, announced, announcing					
+1005	unless						
+1006	independent	independents					
+1007	recommend	recommends, recommended, recommending					
+1008	survey	surveys, surveyed, surveying					
+1009	majority	majorities					
+1010	stick	sticks, stuck, sticking					
+1011	request	requests, requested, requesting					
+1012	rich	richer, richest					
+1013	wind	winds, wound, winded, winding					
+1014	none						
+1015	exchange	exchanges, exchanged, exchanging					
+1016	budget	budgets, budgeted, budgeting					
+1017	famous						
+1018	blood	bloods, blooded, blooding					
+1019	appropriate	appropriates, appropriated, appropriating					
+1020	block	blocks, blocked, blocking					
+1021	warm	warms, warmed, warming, warmer, warmest					
+1022	count	counts, counted, counting					
+1023	scene	scenes					
+1024	writer	writers					
+1025	content	contents, contented, contenting					
+1026	prevent	prevents, prevented, preventing					
+1027	safe	safer, safest					
+1028	invite	invites, invited, inviting					
+1029	mix	mixes, mixed, mixing					
+1030	element	elements					
+1031	effective						
+1032	correct	corrects, corrected, correcting					
+1033	medical	medicals					
+1034	admit	admits, admitting, admitted					
+1035	beat	beats, beating, beaten, beatings					
+1036	telephone	telephones, telephoned, telephoning					
+1037	copy	copies, copied, copying					
+1038	committee	committees					
+1039	aware						
+1040	advice	advices					
+1041	handle	handles, handled, handling					
+1042	glass	glasses, glassed, glassing					
+1043	trial	trials, trialed, trialing, trialled, trialling					
+1044	stress	stresses, stressed					
+1045	radio	radios, radioed					
+1046	administration	administrations					
+1047	complex	complexes					
+1048	text	texts					
+1049	context	contexts					
+1050	ride	rides, rode, riding, ridden					
+1051	directly						
+1052	heavy	heavies, heavier, heaviest					
+1053	remove	removes, removed, removing					
+1054	conduct	conducts, conducted, conducting					
+1055	equipment	equipments					
+1056	otherwise						
+1057	title	titles, titled, titling					
+1058	extra	extras					
+1059	executive	executives					
+1060	chair	chairs, chaired, chairing					
+1061	expensive						
+1062	sample	samples, sampled, sampling, samplings					
+1063	sex	sexes					
+1064	deliver	delivers, delivered, delivering					
+1065	video	videos, videoed					
+1066	connection	connections, connexion, connexions					
+1067	primary	primaries					
+1068	weather	weathers, weathered, weathering					
+1069	collect	collects, collected, collecting					
+1070	inform	informs, informed, informing					
+1071	principle	principles, principled					
+1072	straight	straighter, straightest					
+1073	appeal	appeals, appealed, appealing					
+1074	highly						
+1075	trust	trusts, trusted, trusting					
+1076	wonderful						
+1077	flat	flats, flatted, flatting					
+1078	absolutely						
+1079	flow	flows, flowed, flowing					
+1080	fair	fairs, faired, fairing, fairer, fairest					
+1081	additional						
+1082	responsible						
+1083	farm	farms, farmed, farming					
+1084	collection	collections					
+1085	hang	hangs, hung, hanging, hanged, hangings					
+1086	negative	negatives					
+1087	band	bands, banded					
+1088	relative	relatives					
+1089	tour	tours, toured, touring					
+1090	alternative	alternatives					
+1091	software						
+1092	pair	pairs, paired, pairing, pairings					
+1093	ship	ships, shipped, shipping					
+1094	attitude	attitudes					
+1095	cheap	cheaper, cheapest					
+1096	double	doubles, doubled, doubling					
+1097	leg	legs, legged, legging, leggings					
+1098	observe	observes, observed, observing					
+1099	sentence	sentences, sentenced, sentencing					
+1100	print	prints, printed, printing, printings					

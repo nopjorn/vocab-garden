@@ -1,101 +1,101 @@
-rank	headword	forms	meanings	example_en	example_th	note
-401	body	bodies, bodied, bodying				
-402	require	requires, required, requiring				
-403	wait	waits, waited, waiting				
-404	general	generals				
-405	appear	appears, appeared, appearing				
-406	toward	towards				
-407	team	teams, teamed, teaming				
-408	easy	easier, easiest				
-409	individual	individuals				
-410	full	fuller, fullest				
-411	black	blacks, blacked, blacking, blacker, blackest				
-412	sense	senses, sensed, sensing				
-413	perhaps					
-414	add	adds, added, adding				
-415	rule	rules, ruled, ruling, rulings				
-416	pass	passes, passed, passing				
-417	produce	produces, produced, producing				
-418	sell	sells, sold, selling				
-419	short	shorts, shorted, shorting, shorter, shortest				
-420	agree	agrees, agreed, agreeing				
-421	law	laws				
-422	everything					
-423	research	researches, researched, researching				
-424	cover	covers, covered, covering, coverings				
-425	paper	papers, papered, papering				
-426	position	positions, positioned, positioning				
-427	near	nears, neared, nearing, nearer, nearest				
-428	human	humans				
-429	computer	computers				
-430	situation	situations				
-431	staff	staffs, staffed, staffing				
-432	activity	activities				
-433	film	films, filmed, filming				
-434	morning	mornings				
-435	war	wars, warred, warring				
-436	account	accounts, accounted, accounting				
-437	shop	shops, shopped, shopping				
-438	major	majors, majored, majoring				
-439	someone					
-440	above					
-441	design	designs, designed, designing				
-442	event	events				
-443	special	specials				
-444	sometimes					
-445	condition	conditions, conditioned, conditioning, conditionings				
-446	carry	carries, carried, carrying				
-447	choose	chooses, chose, choosing, chosen				
-448	father	fathers, fathered, fathering				
-449	decision	decisions				
-450	table	tables, tabled				
-451	certain					
-452	forward	forwards, forwarded, forwarding				
-453	main					
-454	die	dies, died, dying				
-455	bear	bears, bearing, born, bearings				
-456	cut	cuts, cutting, cuttings				
-457	describe	describes, described, describing				
-458	himself					
-459	available					
-460	especially					
-461	strong	stronger, strongest				
-462	rise	rises, rose, rising, risen				
-463	girl	girls				
-464	maybe					
-465	community	communities				
-466	else					
-467	particular	particulars				
-468	role	roles				
-469	join	joins, joined, joining				
-470	difficult					
-471	please	pleases, pleased, pleasing				
-472	detail	details, detailed, detailing				
-473	difference	differences, differenced, differencing				
-474	action	actions				
-475	health					
-476	eat	eats, ate, eating, eaten				
-477	step	steps, stepped, stepping				
-478	TRUE	trues, trued, truing, truer, truest				
-479	phone	phones, phoned, phoning				
-480	themselves					
-481	draw	draws, drew, drawing, drawn, drawings				
-482	white	whiter, whitest, whites				
-483	date	dates, dated, dating				
-484	practice	practices, practiced, practicing, practise, practised, practises, practising				
-485	model	models, modeled, modeling, modelled, modelling				
-486	raise	raises, raised, raising, raisings				
-487	customer	customers				
-488	front	fronts, fronted, fronting				
-489	explain	explains, explained, explaining				
-490	door	doors				
-491	outside	outsides				
-492	behind					
-493	economic	economics				
-494	site	sites, sited				
-495	approach	approaches, approached, approaching				
-496	teacher	teachers				
-497	land	lands, landed, landing, landings				
-498	charge	charges, charged, charging				
-499	finally					
-500	sign	signs, signed, signing				
+rank	headword	forms	meanings	example_en	example_th	note	emoji
+401	body	bodies, bodied, bodying					
+402	require	requires, required, requiring					
+403	wait	waits, waited, waiting					
+404	general	generals					
+405	appear	appears, appeared, appearing					
+406	toward	towards					
+407	team	teams, teamed, teaming					
+408	easy	easier, easiest					
+409	individual	individuals					
+410	full	fuller, fullest					
+411	black	blacks, blacked, blacking, blacker, blackest					
+412	sense	senses, sensed, sensing					
+413	perhaps						
+414	add	adds, added, adding					
+415	rule	rules, ruled, ruling, rulings					
+416	pass	passes, passed, passing					
+417	produce	produces, produced, producing					
+418	sell	sells, sold, selling					
+419	short	shorts, shorted, shorting, shorter, shortest					
+420	agree	agrees, agreed, agreeing					
+421	law	laws					
+422	everything						
+423	research	researches, researched, researching					
+424	cover	covers, covered, covering, coverings					
+425	paper	papers, papered, papering					
+426	position	positions, positioned, positioning					
+427	near	nears, neared, nearing, nearer, nearest					
+428	human	humans					
+429	computer	computers					
+430	situation	situations					
+431	staff	staffs, staffed, staffing					
+432	activity	activities					
+433	film	films, filmed, filming					
+434	morning	mornings					
+435	war	wars, warred, warring					
+436	account	accounts, accounted, accounting					
+437	shop	shops, shopped, shopping					
+438	major	majors, majored, majoring					
+439	someone						
+440	above						
+441	design	designs, designed, designing					
+442	event	events					
+443	special	specials					
+444	sometimes						
+445	condition	conditions, conditioned, conditioning, conditionings					
+446	carry	carries, carried, carrying					
+447	choose	chooses, chose, choosing, chosen					
+448	father	fathers, fathered, fathering					
+449	decision	decisions					
+450	table	tables, tabled					
+451	certain						
+452	forward	forwards, forwarded, forwarding					
+453	main						
+454	die	dies, died, dying					
+455	bear	bears, bearing, born, bearings					
+456	cut	cuts, cutting, cuttings					
+457	describe	describes, described, describing					
+458	himself						
+459	available						
+460	especially						
+461	strong	stronger, strongest					
+462	rise	rises, rose, rising, risen					
+463	girl	girls					
+464	maybe						
+465	community	communities					
+466	else						
+467	particular	particulars					
+468	role	roles					
+469	join	joins, joined, joining					
+470	difficult						
+471	please	pleases, pleased, pleasing					
+472	detail	details, detailed, detailing					
+473	difference	differences, differenced, differencing					
+474	action	actions					
+475	health						
+476	eat	eats, ate, eating, eaten					
+477	step	steps, stepped, stepping					
+478	TRUE	trues, trued, truing, truer, truest					
+479	phone	phones, phoned, phoning					
+480	themselves						
+481	draw	draws, drew, drawing, drawn, drawings					
+482	white	whiter, whitest, whites					
+483	date	dates, dated, dating					
+484	practice	practices, practiced, practicing, practise, practised, practises, practising					
+485	model	models, modeled, modeling, modelled, modelling					
+486	raise	raises, raised, raising, raisings					
+487	customer	customers					
+488	front	fronts, fronted, fronting					
+489	explain	explains, explained, explaining					
+490	door	doors					
+491	outside	outsides					
+492	behind						
+493	economic	economics					
+494	site	sites, sited					
+495	approach	approaches, approached, approaching					
+496	teacher	teachers					
+497	land	lands, landed, landing, landings					
+498	charge	charges, charged, charging					
+499	finally						
+500	sign	signs, signed, signing					

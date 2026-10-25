@@ -1,101 +1,101 @@
-rank	headword	forms	meanings	example_en	example_th	note
-1901	cope	copes, coped, coping				
-1902	approximately					
-1903	accommodation	accommodations				
-1904	highlight	highlights, highlighted, highlighting				
-1905	reporter	reporters				
-1906	climate	climates				
-1907	shirt	shirts, shirted, shirting				
-1908	exception	exceptions				
-1909	corporation	corporations				
-1910	chip	chips, chipped, chipping				
-1911	winner	winners				
-1912	encounter	encounters, encountered, encountering				
-1913	brown	browns, browned, browning, browner, brownest				
-1914	breathe	breathes, breathed, breathing				
-1915	excuse	excuses, excused, excusing				
-1916	partly					
-1917	tennis					
-1918	urban					
-1919	confuse	confuses, confused, confusing				
-1920	southern					
-1921	output	outputs, outputted, outputting				
-1922	beauty	beauties				
-1923	massive					
-1924	install	installs, installed, installing				
-1925	calculate	calculates, calculated, calculating				
-1926	mouse	mouses, mice				
-1927	mathematics	mathematic, math, maths				
-1928	upper	uppers				
-1929	creation	creations				
-1930	occupy	occupies, occupied, occupying				
-1931	outline	outlines, outlined, outlining				
-1932	sufficient					
-1933	update	updates, updated, updating				
-1934	luck	lucks, lucked, lucking				
-1935	preserve	preserves, preserved, preserving				
-1936	split	splits, splitting				
-1937	swing	swings, swung, swinging				
-1938	illness	illnesses				
-1939	journalist	journalists				
-1940	sudden					
-1941	advertisement	advertisements, advertisment, advertisments				
-1942	consistent					
-1943	originally					
-1944	aside	asides				
-1945	comfort	comforts, comforted, comforting				
-1946	secondly					
-1947	severe	severer, severest				
-1948	gene	genes				
-1949	prospect	prospects, prospected, prospecting				
-1950	snow	snows, snowed, snowing				
-1951	plot	plots, plotted, plotting				
-1952	neck	necks, necked, necking				
-1953	criteria					
-1954	primarily					
-1955	integrate	integrates, integrated, integrating				
-1956	criticism	criticisms				
-1957	convention	conventions				
-1958	bet	bets, betted, betting				
-1959	retain	retains, retained, retaining				
-1960	sequence	sequences, sequenced, sequencing, sequencings				
-1961	plain	plains, plainer, plainest				
-1962	volunteer	volunteers, volunteered, volunteering				
-1963	rural					
-1964	calm	calms, calmed, calming, calmer, calmest				
-1965	abandon	abandons, abandoned, abandoning				
-1966	examination	examinations				
-1967	silence	silences, silenced, silencing				
-1968	rapidly					
-1969	efficient					
-1970	revolution	revolutions				
-1971	delight	delights, delighted, delighting				
-1972	spell	spells, spelled, spelling, spelt, spellings				
-1973	premise	premises, premised, premising				
-1974	lean	leans, leaned, leaning, leanings, leant, leaner, leanest				
-1975	dramatic	dramatics				
-1976	differ	differs, differed, differing				
-1977	grateful					
-1978	protein	proteins				
-1979	bike	bikes, biked, biking				
-1980	distribute	distributes, distributed, distributing				
-1981	intellectual	intellectuals				
-1982	derive	derives, derived, deriving				
-1983	crucial					
-1984	unemployment					
-1985	wheel	wheels, wheeled, wheeling				
-1986	crop	crops, cropped, cropping				
-1987	minority	minorities				
-1988	origin	origins				
-1989	interpretation	interpretations				
-1990	gentleman	gentlemen				
-1991	drama	dramas				
-1992	landscape	landscapes, landscaped, landscaping				
-1993	educate	educates, educated, educating				
-1994	toy	toys, toyed, toying				
-1995	fault	faults, faulted, faulting				
-1996	exhibit	exhibits, exhibited, exhibiting				
-1997	minor	minors				
-1998	hunt	hunts, hunted, hunting				
-1999	storm	storms, stormed, storming				
-2000	thick	thicker, thickest				
+rank	headword	forms	meanings	example_en	example_th	note	emoji
+1901	cope	copes, coped, coping					
+1902	approximately						
+1903	accommodation	accommodations					
+1904	highlight	highlights, highlighted, highlighting					
+1905	reporter	reporters					
+1906	climate	climates					
+1907	shirt	shirts, shirted, shirting					
+1908	exception	exceptions					
+1909	corporation	corporations					
+1910	chip	chips, chipped, chipping					
+1911	winner	winners					
+1912	encounter	encounters, encountered, encountering					
+1913	brown	browns, browned, browning, browner, brownest					
+1914	breathe	breathes, breathed, breathing					
+1915	excuse	excuses, excused, excusing					
+1916	partly						
+1917	tennis						
+1918	urban						
+1919	confuse	confuses, confused, confusing					
+1920	southern						
+1921	output	outputs, outputted, outputting					
+1922	beauty	beauties					
+1923	massive						
+1924	install	installs, installed, installing					
+1925	calculate	calculates, calculated, calculating					
+1926	mouse	mouses, mice					
+1927	mathematics	mathematic, math, maths					
+1928	upper	uppers					
+1929	creation	creations					
+1930	occupy	occupies, occupied, occupying					
+1931	outline	outlines, outlined, outlining					
+1932	sufficient						
+1933	update	updates, updated, updating					
+1934	luck	lucks, lucked, lucking					
+1935	preserve	preserves, preserved, preserving					
+1936	split	splits, splitting					
+1937	swing	swings, swung, swinging					
+1938	illness	illnesses					
+1939	journalist	journalists					
+1940	sudden						
+1941	advertisement	advertisements, advertisment, advertisments					
+1942	consistent						
+1943	originally						
+1944	aside	asides					
+1945	comfort	comforts, comforted, comforting					
+1946	secondly						
+1947	severe	severer, severest					
+1948	gene	genes					
+1949	prospect	prospects, prospected, prospecting					
+1950	snow	snows, snowed, snowing					
+1951	plot	plots, plotted, plotting					
+1952	neck	necks, necked, necking					
+1953	criteria						
+1954	primarily						
+1955	integrate	integrates, integrated, integrating					
+1956	criticism	criticisms					
+1957	convention	conventions					
+1958	bet	bets, betted, betting					
+1959	retain	retains, retained, retaining					
+1960	sequence	sequences, sequenced, sequencing, sequencings					
+1961	plain	plains, plainer, plainest					
+1962	volunteer	volunteers, volunteered, volunteering					
+1963	rural						
+1964	calm	calms, calmed, calming, calmer, calmest					
+1965	abandon	abandons, abandoned, abandoning					
+1966	examination	examinations					
+1967	silence	silences, silenced, silencing					
+1968	rapidly						
+1969	efficient						
+1970	revolution	revolutions					
+1971	delight	delights, delighted, delighting					
+1972	spell	spells, spelled, spelling, spelt, spellings					
+1973	premise	premises, premised, premising					
+1974	lean	leans, leaned, leaning, leanings, leant, leaner, leanest					
+1975	dramatic	dramatics					
+1976	differ	differs, differed, differing					
+1977	grateful						
+1978	protein	proteins					
+1979	bike	bikes, biked, biking					
+1980	distribute	distributes, distributed, distributing					
+1981	intellectual	intellectuals					
+1982	derive	derives, derived, deriving					
+1983	crucial						
+1984	unemployment						
+1985	wheel	wheels, wheeled, wheeling					
+1986	crop	crops, cropped, cropping					
+1987	minority	minorities					
+1988	origin	origins					
+1989	interpretation	interpretations					
+1990	gentleman	gentlemen					
+1991	drama	dramas					
+1992	landscape	landscapes, landscaped, landscaping					
+1993	educate	educates, educated, educating					
+1994	toy	toys, toyed, toying					
+1995	fault	faults, faulted, faulting					
+1996	exhibit	exhibits, exhibited, exhibiting					
+1997	minor	minors					
+1998	hunt	hunts, hunted, hunting					
+1999	storm	storms, stormed, storming					
+2000	thick	thicker, thickest					

@@ -1,101 +1,101 @@
-rank	headword	forms	meanings	example_en	example_th	note
-1	the		det: คำนำหน้านามแบบชี้เฉพาะ (ไม่มีคำแปลตรงตัว)	Please close the door.	ช่วยปิดประตูหน่อย	ใช้นำหน้าคำนามที่ทั้งผู้พูดและผู้ฟังรู้ว่าหมายถึงสิ่งไหน หรือมีอยู่สิ่งเดียว เช่น the sun
-2	be	am, m, is, isn, s, are, re, aren, ain, been, was, wasn, were, weren, being, bein, beings	v: เป็น, อยู่, คือ | aux: กริยาช่วยในรูป -ing และประโยคถูกกระทำ	She is a nurse, and we are her friends.	เธอเป็นพยาบาล และพวกเราเป็นเพื่อนของเธอ	รูปปัจจุบันคือ am / is / are และรูปอดีตคือ was / were
-3	and	ands	conj: และ, กับ	I like tea and coffee.	ฉันชอบชาและกาแฟ	
-4	of		prep: ของ, แห่ง	This is a picture of my family.	นี่คือรูปถ่ายของครอบครัวฉัน	บอกความเป็นเจ้าของหรือส่วนหนึ่งของสิ่งต่าง ๆ เช่น a cup of tea = ชาหนึ่งถ้วย
-5	to		prep: ไป, ถึง, ยัง	I walk to school every day.	ฉันเดินไปโรงเรียนทุกวัน	ใช้หน้ากริยาได้ด้วย เช่น I want to eat. = ฉันอยากกิน
-6	a	an	det: หนึ่ง (ใช้นำหน้าคำนามนับได้ที่เป็นเอกพจน์)	I have a cat and an old dog.	ฉันมีแมวหนึ่งตัวและหมาแก่หนึ่งตัว	ใช้ an แทน a เมื่อคำถัดไปขึ้นต้นด้วยเสียงสระ เช่น an apple
-7	in	ins	prep: ใน, ข้างใน | adv: เข้ามา, อยู่ข้างใน	The keys are in my bag.	กุญแจอยู่ในกระเป๋าของฉัน	
-8	have	haven, ve, has, hasn, had, hadn, d, having, hafta	v: มี, กิน (อาหาร) | aux: กริยาช่วยในรูป have + กริยาช่อง 3	We have two children.	เรามีลูกสองคน	have to = ต้อง เช่น I have to go. = ฉันต้องไปแล้ว
-9	it	its	pron: มัน (ใช้กับสิ่งของหรือสัตว์)	I lost my phone, but I found it later.	ฉันทำโทรศัพท์หาย แต่หาเจอทีหลัง	ใช้เป็นประธานลอย ๆ ได้ด้วย เช่น It is raining. = ฝนกำลังตก
-10	you	y, ye, your, yours	pron: คุณ, เธอ, พวกคุณ	Thank you for your help.	ขอบคุณสำหรับความช่วยเหลือของคุณ	
-11	he	him, im, his	pron: เขา (ผู้ชาย)	He is my brother.	เขาเป็นพี่ชายของฉัน	
-12	for		prep: สำหรับ, เพื่อ, เป็นเวลา	This gift is for you.	ของขวัญนี้สำหรับคุณ	
-13	they	them, em, their, theirs	pron: พวกเขา, พวกมัน	They live near the sea.	พวกเขาอาศัยอยู่ใกล้ทะเล	
-14	not	t	adv: ไม่	I am not hungry now.	ตอนนี้ฉันไม่หิว	มักย่อเป็น n't เช่น don't, isn't
-15	that	those	det: นั้น, โน้น | pron: สิ่งนั้น | conj: ว่า	Is that your car?	นั่นรถของคุณใช่ไหม	
-16	we	us, our, ours	pron: เรา, พวกเรา	We play football after school.	พวกเราเล่นฟุตบอลหลังเลิกเรียน	
-17	on		prep: บน, ใน (ใช้กับวัน) | adv: เปิดอยู่ (เครื่องใช้ไฟฟ้า)	The book is on the table.	หนังสืออยู่บนโต๊ะ	ใช้กับวันได้ด้วย เช่น on Monday = ในวันจันทร์
-18	with		prep: กับ, ด้วย, พร้อมกับ	I live with my parents.	ฉันอาศัยอยู่กับพ่อแม่	
-19	this	these	det: นี้ | pron: สิ่งนี้	This bag is very heavy.	กระเป๋าใบนี้หนักมาก	
-20	I	me, my, mine	pron: ฉัน, ผม	I am a student.	ฉันเป็นนักเรียน	เขียนด้วยตัวพิมพ์ใหญ่เสมอ · mine ที่แปลว่า "ของฉัน" อยู่ในการ์ดนี้ ส่วน mine ที่แปลว่าเหมืองอยู่ในการ์ด mine
-21	do	does, don, doesn, did, didn, doing, done, doin	v: ทำ | aux: กริยาช่วยสร้างประโยคคำถามและปฏิเสธ	Do you like music?	คุณชอบดนตรีไหม	
-22	as		prep: ในฐานะ, เป็น | conj: ขณะที่, เพราะว่า	She works as a teacher.	เธอทำงานเป็นครู	as ... as = เท่ากับ เช่น as tall as me = สูงเท่าฉัน
-23	at		prep: ที่, ตอน (บอกเวลา)	Let's meet at the station at six.	เจอกันที่สถานีตอนหกโมงนะ	
-24	she	her, hers	pron: เธอ, หล่อน (ผู้หญิง)	She sings very well.	เธอร้องเพลงเก่งมาก	
-25	but	buts	conj: แต่	It is small but comfortable.	มันเล็กแต่สบาย	
-26	from		prep: จาก	I am from Thailand.	ฉันมาจากประเทศไทย	
-27	by		prep: โดย, ด้วย (บอกวิธีเดินทาง), ข้าง ๆ	I go to work by bus.	ฉันไปทำงานโดยรถเมล์	
-28	will	wills, willed, willing, won, ll	modal: จะ | n: ความตั้งใจ, พินัยกรรม	I will call you tomorrow.	พรุ่งนี้ฉันจะโทรหาคุณ	ย่อเป็น 'll เช่น I'll และรูปปฏิเสธคือ won't
-29	or		conj: หรือ	Do you want tea or coffee?	คุณอยากได้ชาหรือกาแฟ	
-30	say	says, said, saying, sayings	v: พูด, บอก	What did you say?	คุณพูดว่าอะไรนะ	say ใช้กับคำพูด ส่วน tell ใช้บอกใครบางคน เช่น tell me
-31	go	goes, went, going, gone, goin, gonna	v: ไป	We go to the beach every summer.	เราไปทะเลทุกฤดูร้อน	be going to = กำลังจะ เช่น I'm going to eat.
-32	so		adv: มาก, อย่างนั้น | conj: ดังนั้น, ก็เลย	I was tired, so I went to bed.	ฉันเหนื่อย ก็เลยเข้านอน	
-33	all		det: ทั้งหมด, ทุก | pron: ทุกคน, ทุกสิ่ง	All my friends came to the party.	เพื่อนทุกคนของฉันมางานปาร์ตี้	
-34	if	ifs	conj: ถ้า, หาก	If it rains, we will stay home.	ถ้าฝนตก เราจะอยู่บ้าน	
-35	one	ones	num: หนึ่ง | pron: อัน (ใช้แทนคำนามที่พูดถึงแล้ว)	I want the red one.	ฉันอยากได้อันสีแดง	
-36	would	wouldn	modal: จะ (รูปอดีตของ will), อยากจะ (ใช้แบบสุภาพ)	Would you like some water?	คุณอยากดื่มน้ำไหม	would like = อยากได้ สุภาพกว่า want
-37	about		prep: เกี่ยวกับ | adv: ประมาณ	This book is about animals.	หนังสือเล่มนี้เกี่ยวกับสัตว์	
-38	can	cans, canned, canning, cannot	modal: สามารถ, ทำได้ | n: กระป๋อง	Can you swim?	คุณว่ายน้ำเป็นไหม	รูปปฏิเสธคือ cannot หรือ can't
-39	which		det: ...ไหน | pron: อันไหน, ซึ่ง	Which bus goes to the airport?	รถเมล์คันไหนไปสนามบิน	
-40	there		adv: ที่นั่น, ตรงนั้น	There is a cat under the car.	มีแมวอยู่ใต้รถ	there is / there are = มี (บอกว่ามีสิ่งใดอยู่)
-41	know	knows, knew, knowing, known	v: รู้, รู้จัก	Do you know her name?	คุณรู้ชื่อของเธอไหม	
-42	more		det: มากกว่า, เพิ่มอีก | adv: มากขึ้น	Can I have more rice?	ขอข้าวเพิ่มได้ไหม	
-43	get	gets, got, getting, gotten, gettin, gotta	v: ได้รับ, ไปเอามา, กลายเป็น	I get up at six every morning.	ฉันตื่นนอนตอนหกโมงทุกเช้า	ความหมายเปลี่ยนตามคำที่ตามมา เช่น get up = ตื่นนอน, get home = ถึงบ้าน
-44	who	whom, whose	pron: ใคร, ผู้ซึ่ง	Who is that man?	ผู้ชายคนนั้นคือใคร	
-45	like	likes, liked, liking	v: ชอบ | prep: เหมือน	I like this song.	ฉันชอบเพลงนี้	
-46	when		adv: เมื่อไร | conj: เมื่อ, ตอนที่	When is your birthday?	วันเกิดของคุณคือวันไหน	
-47	think	thinks, thought, thinking, thoughts	v: คิด, เชื่อว่า	I think it will rain today.	ฉันคิดว่าวันนี้ฝนจะตก	
-48	make	makes, made, making	v: ทำ, สร้าง, ทำให้	My mother makes great soup.	แม่ของฉันทำซุปอร่อยมาก	make ใช้กับการสร้างสิ่งใหม่ ส่วน do ใช้กับการทำกิจกรรม เช่น do homework
-49	time	times, timed, timing	n: เวลา, ครั้ง	What time is it now?	ตอนนี้กี่โมงแล้ว	
-50	see	sees, saw, seeing, seen	v: เห็น, ดู, พบ	I can see the mountain from here.	ฉันมองเห็นภูเขาจากตรงนี้	
-51	what		pron: อะไร | det: ...อะไร	What is your name?	คุณชื่ออะไร	
-52	up	ups, upped, upping	adv: ขึ้น, ข้างบน | prep: ขึ้นไปตาม	Please stand up.	กรุณายืนขึ้น	
-53	some		det: บ้าง, จำนวนหนึ่ง	I need some help.	ฉันต้องการความช่วยเหลือหน่อย	ในประโยคคำถามและปฏิเสธมักใช้ any แทน
-54	other	others	adj: อื่น, อีก | pron: คนอื่น, สิ่งอื่น	Where are the other students?	นักเรียนคนอื่น ๆ อยู่ที่ไหน	
-55	out	outs, outed, outing, outings	adv: ออก, ข้างนอก	Let's go out for dinner.	ออกไปกินข้าวเย็นข้างนอกกันเถอะ	
-56	good	better, best	adj: ดี, เก่ง	This is a good idea.	นี่เป็นความคิดที่ดี	รูปเปรียบเทียบคือ better (ดีกว่า) และ best (ดีที่สุด)
-57	people	peoples, peopled, peopling	n: ผู้คน, คน (พหูพจน์)	Many people live in this city.	ผู้คนมากมายอาศัยอยู่ในเมืองนี้	people เป็นพหูพจน์ของ person ส่วน peoples แปลว่าชนชาติต่าง ๆ
-58	year	years	n: ปี	My son is five years old.	ลูกชายของฉันอายุห้าขวบ	
-59	take	takes, took, taking, taken	v: เอาไป, หยิบ, ใช้เวลา, ขึ้น (รถ)	Take an umbrella with you.	เอาร่มติดตัวไปด้วยนะ	
-60	no		det: ไม่มี | adv: ไม่, ไม่ใช่	There is no milk in the fridge.	ไม่มีนมในตู้เย็นเลย	
-61	well	wells, welled, welling	adv: ดี, อย่างดี | adj: สบายดี | n: บ่อน้ำ	She speaks English very well.	เธอพูดภาษาอังกฤษได้ดีมาก	
-62	because	cos	conj: เพราะ, เพราะว่า	I stayed home because I was sick.	ฉันอยู่บ้านเพราะไม่สบาย	
-63	very		adv: มาก, อย่างยิ่ง	The soup is very hot.	ซุปร้อนมาก	
-64	just		adv: เพิ่ง, แค่, เพียง	I just finished my homework.	ฉันเพิ่งทำการบ้านเสร็จ	
-65	come	comes, came, coming, cometh	v: มา	Please come to my house.	เชิญมาบ้านฉันนะ	
-66	could	couldn, coulda	modal: สามารถ (รูปอดีตของ can), ช่วย...ได้ไหม (ใช้แบบสุภาพ)	Could you open the window?	ช่วยเปิดหน้าต่างให้หน่อยได้ไหม	
-67	work	works, worked, working, workings	v: ทำงาน, ใช้การได้ | n: งาน, ที่ทำงาน	I work at a small hotel.	ฉันทำงานที่โรงแรมเล็ก ๆ แห่งหนึ่ง	
-68	use	uses, used, using	v: ใช้ | n: การใช้	Can I use your pen?	ขอใช้ปากกาของคุณได้ไหม	used to = เคย เช่น I used to swim. = ฉันเคยว่ายน้ำ
-69	than		conj: กว่า	My brother is taller than me.	พี่ชายของฉันสูงกว่าฉัน	
-70	now		adv: ตอนนี้, เดี๋ยวนี้	I am busy now.	ตอนนี้ฉันยุ่งอยู่	
-71	then		adv: แล้ว, จากนั้น, ตอนนั้น	Wash your hands, then eat.	ล้างมือ แล้วค่อยกิน	
-72	also		adv: ด้วย, เช่นกัน	She also plays the piano.	เธอเล่นเปียโนด้วย	
-73	into		prep: เข้าไปใน, กลายเป็น	He jumped into the pool.	เขากระโดดลงไปในสระ	
-74	only		adv: เท่านั้น, แค่ | adj: เพียงหนึ่งเดียว	I only have ten baht.	ฉันมีแค่สิบบาท	
-75	look	looks, looked, looking	v: มอง, ดู, ดูเหมือน	Look at that bird!	ดูนกตัวนั้นสิ	look at = มองดู, look for = หา
-76	want	wants, wanted, wanting, wanna	v: ต้องการ, อยาก	I want a glass of water.	ฉันอยากได้น้ำสักแก้ว	
-77	give	gives, gave, giving, given	v: ให้	Please give me the book.	ช่วยส่งหนังสือให้ฉันหน่อย	
-78	first	firsts	adj: แรก, ที่หนึ่ง | adv: ก่อน, อันดับแรก	This is my first time in Japan.	นี่เป็นครั้งแรกที่ฉันมาญี่ปุ่น	
-79	new	newer, newest	adj: ใหม่	I bought a new phone.	ฉันซื้อโทรศัพท์เครื่องใหม่	
-80	way	ways	n: ทาง, วิธี	Is this the way to the market?	นี่ใช่ทางไปตลาดไหม	
-81	find	finds, found, finding, findings	v: หา...เจอ, พบ, รู้สึกว่า	I can't find my keys.	ฉันหากุญแจไม่เจอ	รูปอดีตคือ found ซึ่งเป็นคนละคำกับ found ที่แปลว่าก่อตั้ง (อยู่ในการ์ด found)
-82	over	overs	prep: เหนือ, ข้าม, มากกว่า | adv: จบ, เสร็จ	The plane flew over the city.	เครื่องบินบินผ่านเหนือเมือง	
-83	any		det: ใด ๆ, บ้าง	Do you have any questions?	คุณมีคำถามอะไรไหม	มักใช้ในประโยคคำถามและปฏิเสธ
-84	after		prep: หลังจาก	Let's play after lunch.	มาเล่นกันหลังกินข้าวเที่ยงนะ	
-85	day	days	n: วัน, กลางวัน	Have a nice day!	ขอให้เป็นวันที่ดีนะ	
-86	where		adv: ที่ไหน	Where do you live?	คุณอาศัยอยู่ที่ไหน	
-87	thing	things	n: สิ่ง, ของ	I have many things to do today.	วันนี้ฉันมีหลายอย่างต้องทำ	
-88	most		det: ส่วนใหญ่ | adv: ที่สุด	Most students like this teacher.	นักเรียนส่วนใหญ่ชอบครูคนนี้	the most + คำคุณศัพท์ = ...ที่สุด เช่น the most beautiful
-89	should	shouldn, shoulda	modal: ควร, ควรจะ	You should drink more water.	คุณควรดื่มน้ำให้มากขึ้น	
-90	need	needs, needed, needing	v: ต้องการ, จำเป็นต้อง | n: ความจำเป็น	I need a new bag.	ฉันต้องการกระเป๋าใบใหม่	
-91	much		det: มาก (ใช้กับคำนามนับไม่ได้) | adv: มาก	How much is this shirt?	เสื้อตัวนี้ราคาเท่าไร	how much = เท่าไร (ถามราคาหรือปริมาณ)
-92	right	rights, righted, righting, righter	adj: ถูกต้อง, ขวา | n: สิทธิ์, ด้านขวา | adv: ทันที, ตรง	Turn right at the corner.	เลี้ยวขวาตรงหัวมุม	
-93	how	hows	adv: อย่างไร, เท่าไร	How are you today?	วันนี้คุณเป็นอย่างไรบ้าง	
-94	back	backs, backed, backing	adv: กลับ, คืน | n: หลัง, ด้านหลัง	I will be back soon.	เดี๋ยวฉันจะกลับมานะ	
-95	mean	means, meaning, meant, meanings, meaner, meanest	v: หมายความว่า, ตั้งใจ | adj: ใจร้าย	What does this word mean?	คำนี้หมายความว่าอะไร	
-96	even	evens, evened	adv: แม้แต่, ยิ่ง...ขึ้นไปอีก | adj: เรียบ, เป็นเลขคู่	Even children can do it.	แม้แต่เด็กก็ทำได้	
-97	may		modal: อาจจะ, ...ได้ไหม (ใช้ขออนุญาต)	It may rain this afternoon.	บ่ายนี้ฝนอาจจะตก	May ที่แปลว่าเดือนพฤษภาคมอยู่ในด่านพิเศษ
-98	here		adv: ที่นี่, ตรงนี้	Please wait here.	กรุณารอที่นี่	
-99	many		det: มาก, หลาย (ใช้กับคำนามนับได้)	There are many books in the library.	ในห้องสมุดมีหนังสือหลายเล่ม	how many = กี่... (ถามจำนวน)
-100	such		det: เช่นนั้น, อย่างนั้น	It was such a beautiful day.	เป็นวันที่สวยงามจริง ๆ	such as = เช่น
+rank	headword	forms	meanings	example_en	example_th	note	emoji
+1	the		det: คำนำหน้านามแบบชี้เฉพาะ (ไม่มีคำแปลตรงตัว)	Please close the door.	ช่วยปิดประตูหน่อย	ใช้นำหน้าคำนามที่ทั้งผู้พูดและผู้ฟังรู้ว่าหมายถึงสิ่งไหน หรือมีอยู่สิ่งเดียว เช่น the sun	
+2	be	am, m, is, isn, s, are, re, aren, ain, been, was, wasn, were, weren, being, bein, beings	v: เป็น, อยู่, คือ | aux: กริยาช่วยในรูป -ing และประโยคถูกกระทำ	She is a nurse, and we are her friends.	เธอเป็นพยาบาล และพวกเราเป็นเพื่อนของเธอ	รูปปัจจุบันคือ am / is / are และรูปอดีตคือ was / were	
+3	and	ands	conj: และ, กับ	I like tea and coffee.	ฉันชอบชาและกาแฟ		
+4	of		prep: ของ, แห่ง	This is a picture of my family.	นี่คือรูปถ่ายของครอบครัวฉัน	บอกความเป็นเจ้าของหรือส่วนหนึ่งของสิ่งต่าง ๆ เช่น a cup of tea = ชาหนึ่งถ้วย	
+5	to		prep: ไป, ถึง, ยัง	I walk to school every day.	ฉันเดินไปโรงเรียนทุกวัน	ใช้หน้ากริยาได้ด้วย เช่น I want to eat. = ฉันอยากกิน	
+6	a	an	det: หนึ่ง (ใช้นำหน้าคำนามนับได้ที่เป็นเอกพจน์)	I have a cat and an old dog.	ฉันมีแมวหนึ่งตัวและหมาแก่หนึ่งตัว	ใช้ an แทน a เมื่อคำถัดไปขึ้นต้นด้วยเสียงสระ เช่น an apple	
+7	in	ins	prep: ใน, ข้างใน | adv: เข้ามา, อยู่ข้างใน	The keys are in my bag.	กุญแจอยู่ในกระเป๋าของฉัน		
+8	have	haven, ve, has, hasn, had, hadn, d, having, hafta	v: มี, กิน (อาหาร) | aux: กริยาช่วยในรูป have + กริยาช่อง 3	We have two children.	เรามีลูกสองคน	have to = ต้อง เช่น I have to go. = ฉันต้องไปแล้ว	
+9	it	its	pron: มัน (ใช้กับสิ่งของหรือสัตว์)	I lost my phone, but I found it later.	ฉันทำโทรศัพท์หาย แต่หาเจอทีหลัง	ใช้เป็นประธานลอย ๆ ได้ด้วย เช่น It is raining. = ฝนกำลังตก	
+10	you	y, ye, your, yours	pron: คุณ, เธอ, พวกคุณ	Thank you for your help.	ขอบคุณสำหรับความช่วยเหลือของคุณ		
+11	he	him, im, his	pron: เขา (ผู้ชาย)	He is my brother.	เขาเป็นพี่ชายของฉัน		
+12	for		prep: สำหรับ, เพื่อ, เป็นเวลา	This gift is for you.	ของขวัญนี้สำหรับคุณ		
+13	they	them, em, their, theirs	pron: พวกเขา, พวกมัน	They live near the sea.	พวกเขาอาศัยอยู่ใกล้ทะเล		
+14	not	t	adv: ไม่	I am not hungry now.	ตอนนี้ฉันไม่หิว	มักย่อเป็น n't เช่น don't, isn't	🚫
+15	that	those	det: นั้น, โน้น | pron: สิ่งนั้น | conj: ว่า	Is that your car?	นั่นรถของคุณใช่ไหม		
+16	we	us, our, ours	pron: เรา, พวกเรา	We play football after school.	พวกเราเล่นฟุตบอลหลังเลิกเรียน		
+17	on		prep: บน, ใน (ใช้กับวัน) | adv: เปิดอยู่ (เครื่องใช้ไฟฟ้า)	The book is on the table.	หนังสืออยู่บนโต๊ะ	ใช้กับวันได้ด้วย เช่น on Monday = ในวันจันทร์	
+18	with		prep: กับ, ด้วย, พร้อมกับ	I live with my parents.	ฉันอาศัยอยู่กับพ่อแม่		
+19	this	these	det: นี้ | pron: สิ่งนี้	This bag is very heavy.	กระเป๋าใบนี้หนักมาก		
+20	I	me, my, mine	pron: ฉัน, ผม	I am a student.	ฉันเป็นนักเรียน	เขียนด้วยตัวพิมพ์ใหญ่เสมอ · mine ที่แปลว่า "ของฉัน" อยู่ในการ์ดนี้ ส่วน mine ที่แปลว่าเหมืองอยู่ในการ์ด mine	
+21	do	does, don, doesn, did, didn, doing, done, doin	v: ทำ | aux: กริยาช่วยสร้างประโยคคำถามและปฏิเสธ	Do you like music?	คุณชอบดนตรีไหม		
+22	as		prep: ในฐานะ, เป็น | conj: ขณะที่, เพราะว่า	She works as a teacher.	เธอทำงานเป็นครู	as ... as = เท่ากับ เช่น as tall as me = สูงเท่าฉัน	
+23	at		prep: ที่, ตอน (บอกเวลา)	Let's meet at the station at six.	เจอกันที่สถานีตอนหกโมงนะ		
+24	she	her, hers	pron: เธอ, หล่อน (ผู้หญิง)	She sings very well.	เธอร้องเพลงเก่งมาก		
+25	but	buts	conj: แต่	It is small but comfortable.	มันเล็กแต่สบาย		
+26	from		prep: จาก	I am from Thailand.	ฉันมาจากประเทศไทย		
+27	by		prep: โดย, ด้วย (บอกวิธีเดินทาง), ข้าง ๆ	I go to work by bus.	ฉันไปทำงานโดยรถเมล์		
+28	will	wills, willed, willing, won, ll	modal: จะ | n: ความตั้งใจ, พินัยกรรม	I will call you tomorrow.	พรุ่งนี้ฉันจะโทรหาคุณ	ย่อเป็น 'll เช่น I'll และรูปปฏิเสธคือ won't	
+29	or		conj: หรือ	Do you want tea or coffee?	คุณอยากได้ชาหรือกาแฟ		
+30	say	says, said, saying, sayings	v: พูด, บอก	What did you say?	คุณพูดว่าอะไรนะ	say ใช้กับคำพูด ส่วน tell ใช้บอกใครบางคน เช่น tell me	💬
+31	go	goes, went, going, gone, goin, gonna	v: ไป	We go to the beach every summer.	เราไปทะเลทุกฤดูร้อน	be going to = กำลังจะ เช่น I'm going to eat.	🚶
+32	so		adv: มาก, อย่างนั้น | conj: ดังนั้น, ก็เลย	I was tired, so I went to bed.	ฉันเหนื่อย ก็เลยเข้านอน		
+33	all		det: ทั้งหมด, ทุก | pron: ทุกคน, ทุกสิ่ง	All my friends came to the party.	เพื่อนทุกคนของฉันมางานปาร์ตี้		
+34	if	ifs	conj: ถ้า, หาก	If it rains, we will stay home.	ถ้าฝนตก เราจะอยู่บ้าน		
+35	one	ones	num: หนึ่ง | pron: อัน (ใช้แทนคำนามที่พูดถึงแล้ว)	I want the red one.	ฉันอยากได้อันสีแดง		☝️
+36	would	wouldn	modal: จะ (รูปอดีตของ will), อยากจะ (ใช้แบบสุภาพ)	Would you like some water?	คุณอยากดื่มน้ำไหม	would like = อยากได้ สุภาพกว่า want	
+37	about		prep: เกี่ยวกับ | adv: ประมาณ	This book is about animals.	หนังสือเล่มนี้เกี่ยวกับสัตว์		
+38	can	cans, canned, canning, cannot	modal: สามารถ, ทำได้ | n: กระป๋อง	Can you swim?	คุณว่ายน้ำเป็นไหม	รูปปฏิเสธคือ cannot หรือ can't	
+39	which		det: ...ไหน | pron: อันไหน, ซึ่ง	Which bus goes to the airport?	รถเมล์คันไหนไปสนามบิน		
+40	there		adv: ที่นั่น, ตรงนั้น	There is a cat under the car.	มีแมวอยู่ใต้รถ	there is / there are = มี (บอกว่ามีสิ่งใดอยู่)	
+41	know	knows, knew, knowing, known	v: รู้, รู้จัก	Do you know her name?	คุณรู้ชื่อของเธอไหม		
+42	more		det: มากกว่า, เพิ่มอีก | adv: มากขึ้น	Can I have more rice?	ขอข้าวเพิ่มได้ไหม		
+43	get	gets, got, getting, gotten, gettin, gotta	v: ได้รับ, ไปเอามา, กลายเป็น	I get up at six every morning.	ฉันตื่นนอนตอนหกโมงทุกเช้า	ความหมายเปลี่ยนตามคำที่ตามมา เช่น get up = ตื่นนอน, get home = ถึงบ้าน	
+44	who	whom, whose	pron: ใคร, ผู้ซึ่ง	Who is that man?	ผู้ชายคนนั้นคือใคร		
+45	like	likes, liked, liking	v: ชอบ | prep: เหมือน	I like this song.	ฉันชอบเพลงนี้		
+46	when		adv: เมื่อไร | conj: เมื่อ, ตอนที่	When is your birthday?	วันเกิดของคุณคือวันไหน		
+47	think	thinks, thought, thinking, thoughts	v: คิด, เชื่อว่า	I think it will rain today.	ฉันคิดว่าวันนี้ฝนจะตก		🤔
+48	make	makes, made, making	v: ทำ, สร้าง, ทำให้	My mother makes great soup.	แม่ของฉันทำซุปอร่อยมาก	make ใช้กับการสร้างสิ่งใหม่ ส่วน do ใช้กับการทำกิจกรรม เช่น do homework	🔨
+49	time	times, timed, timing	n: เวลา, ครั้ง	What time is it now?	ตอนนี้กี่โมงแล้ว		⏰
+50	see	sees, saw, seeing, seen	v: เห็น, ดู, พบ	I can see the mountain from here.	ฉันมองเห็นภูเขาจากตรงนี้		🔭
+51	what		pron: อะไร | det: ...อะไร	What is your name?	คุณชื่ออะไร		
+52	up	ups, upped, upping	adv: ขึ้น, ข้างบน | prep: ขึ้นไปตาม	Please stand up.	กรุณายืนขึ้น		⬆️
+53	some		det: บ้าง, จำนวนหนึ่ง	I need some help.	ฉันต้องการความช่วยเหลือหน่อย	ในประโยคคำถามและปฏิเสธมักใช้ any แทน	
+54	other	others	adj: อื่น, อีก | pron: คนอื่น, สิ่งอื่น	Where are the other students?	นักเรียนคนอื่น ๆ อยู่ที่ไหน		
+55	out	outs, outed, outing, outings	adv: ออก, ข้างนอก	Let's go out for dinner.	ออกไปกินข้าวเย็นข้างนอกกันเถอะ		
+56	good	better, best	adj: ดี, เก่ง	This is a good idea.	นี่เป็นความคิดที่ดี	รูปเปรียบเทียบคือ better (ดีกว่า) และ best (ดีที่สุด)	👍
+57	people	peoples, peopled, peopling	n: ผู้คน, คน (พหูพจน์)	Many people live in this city.	ผู้คนมากมายอาศัยอยู่ในเมืองนี้	people เป็นพหูพจน์ของ person ส่วน peoples แปลว่าชนชาติต่าง ๆ	👥
+58	year	years	n: ปี	My son is five years old.	ลูกชายของฉันอายุห้าขวบ		🎆
+59	take	takes, took, taking, taken	v: เอาไป, หยิบ, ใช้เวลา, ขึ้น (รถ)	Take an umbrella with you.	เอาร่มติดตัวไปด้วยนะ		
+60	no		det: ไม่มี | adv: ไม่, ไม่ใช่	There is no milk in the fridge.	ไม่มีนมในตู้เย็นเลย		🙅
+61	well	wells, welled, welling	adv: ดี, อย่างดี | adj: สบายดี | n: บ่อน้ำ	She speaks English very well.	เธอพูดภาษาอังกฤษได้ดีมาก		
+62	because	cos	conj: เพราะ, เพราะว่า	I stayed home because I was sick.	ฉันอยู่บ้านเพราะไม่สบาย		
+63	very		adv: มาก, อย่างยิ่ง	The soup is very hot.	ซุปร้อนมาก		
+64	just		adv: เพิ่ง, แค่, เพียง	I just finished my homework.	ฉันเพิ่งทำการบ้านเสร็จ		
+65	come	comes, came, coming, cometh	v: มา	Please come to my house.	เชิญมาบ้านฉันนะ		
+66	could	couldn, coulda	modal: สามารถ (รูปอดีตของ can), ช่วย...ได้ไหม (ใช้แบบสุภาพ)	Could you open the window?	ช่วยเปิดหน้าต่างให้หน่อยได้ไหม		
+67	work	works, worked, working, workings	v: ทำงาน, ใช้การได้ | n: งาน, ที่ทำงาน	I work at a small hotel.	ฉันทำงานที่โรงแรมเล็ก ๆ แห่งหนึ่ง		🛠️
+68	use	uses, used, using	v: ใช้ | n: การใช้	Can I use your pen?	ขอใช้ปากกาของคุณได้ไหม	used to = เคย เช่น I used to swim. = ฉันเคยว่ายน้ำ	
+69	than		conj: กว่า	My brother is taller than me.	พี่ชายของฉันสูงกว่าฉัน		
+70	now		adv: ตอนนี้, เดี๋ยวนี้	I am busy now.	ตอนนี้ฉันยุ่งอยู่		
+71	then		adv: แล้ว, จากนั้น, ตอนนั้น	Wash your hands, then eat.	ล้างมือ แล้วค่อยกิน		
+72	also		adv: ด้วย, เช่นกัน	She also plays the piano.	เธอเล่นเปียโนด้วย		
+73	into		prep: เข้าไปใน, กลายเป็น	He jumped into the pool.	เขากระโดดลงไปในสระ		
+74	only		adv: เท่านั้น, แค่ | adj: เพียงหนึ่งเดียว	I only have ten baht.	ฉันมีแค่สิบบาท		
+75	look	looks, looked, looking	v: มอง, ดู, ดูเหมือน	Look at that bird!	ดูนกตัวนั้นสิ	look at = มองดู, look for = หา	👀
+76	want	wants, wanted, wanting, wanna	v: ต้องการ, อยาก	I want a glass of water.	ฉันอยากได้น้ำสักแก้ว		
+77	give	gives, gave, giving, given	v: ให้	Please give me the book.	ช่วยส่งหนังสือให้ฉันหน่อย		🎁
+78	first	firsts	adj: แรก, ที่หนึ่ง | adv: ก่อน, อันดับแรก	This is my first time in Japan.	นี่เป็นครั้งแรกที่ฉันมาญี่ปุ่น		🥇
+79	new	newer, newest	adj: ใหม่	I bought a new phone.	ฉันซื้อโทรศัพท์เครื่องใหม่		🆕
+80	way	ways	n: ทาง, วิธี	Is this the way to the market?	นี่ใช่ทางไปตลาดไหม		
+81	find	finds, found, finding, findings	v: หา...เจอ, พบ, รู้สึกว่า	I can't find my keys.	ฉันหากุญแจไม่เจอ	รูปอดีตคือ found ซึ่งเป็นคนละคำกับ found ที่แปลว่าก่อตั้ง (อยู่ในการ์ด found)	
+82	over	overs	prep: เหนือ, ข้าม, มากกว่า | adv: จบ, เสร็จ	The plane flew over the city.	เครื่องบินบินผ่านเหนือเมือง		
+83	any		det: ใด ๆ, บ้าง	Do you have any questions?	คุณมีคำถามอะไรไหม	มักใช้ในประโยคคำถามและปฏิเสธ	
+84	after		prep: หลังจาก	Let's play after lunch.	มาเล่นกันหลังกินข้าวเที่ยงนะ		
+85	day	days	n: วัน, กลางวัน	Have a nice day!	ขอให้เป็นวันที่ดีนะ		☀️
+86	where		adv: ที่ไหน	Where do you live?	คุณอาศัยอยู่ที่ไหน		
+87	thing	things	n: สิ่ง, ของ	I have many things to do today.	วันนี้ฉันมีหลายอย่างต้องทำ		
+88	most		det: ส่วนใหญ่ | adv: ที่สุด	Most students like this teacher.	นักเรียนส่วนใหญ่ชอบครูคนนี้	the most + คำคุณศัพท์ = ...ที่สุด เช่น the most beautiful	
+89	should	shouldn, shoulda	modal: ควร, ควรจะ	You should drink more water.	คุณควรดื่มน้ำให้มากขึ้น		
+90	need	needs, needed, needing	v: ต้องการ, จำเป็นต้อง | n: ความจำเป็น	I need a new bag.	ฉันต้องการกระเป๋าใบใหม่		
+91	much		det: มาก (ใช้กับคำนามนับไม่ได้) | adv: มาก	How much is this shirt?	เสื้อตัวนี้ราคาเท่าไร	how much = เท่าไร (ถามราคาหรือปริมาณ)	
+92	right	rights, righted, righting, righter	adj: ถูกต้อง, ขวา | n: สิทธิ์, ด้านขวา | adv: ทันที, ตรง	Turn right at the corner.	เลี้ยวขวาตรงหัวมุม		
+93	how	hows	adv: อย่างไร, เท่าไร	How are you today?	วันนี้คุณเป็นอย่างไรบ้าง		
+94	back	backs, backed, backing	adv: กลับ, คืน | n: หลัง, ด้านหลัง	I will be back soon.	เดี๋ยวฉันจะกลับมานะ		🔙
+95	mean	means, meaning, meant, meanings, meaner, meanest	v: หมายความว่า, ตั้งใจ | adj: ใจร้าย	What does this word mean?	คำนี้หมายความว่าอะไร		
+96	even	evens, evened	adv: แม้แต่, ยิ่ง...ขึ้นไปอีก | adj: เรียบ, เป็นเลขคู่	Even children can do it.	แม้แต่เด็กก็ทำได้		
+97	may		modal: อาจจะ, ...ได้ไหม (ใช้ขออนุญาต)	It may rain this afternoon.	บ่ายนี้ฝนอาจจะตก	May ที่แปลว่าเดือนพฤษภาคมอยู่ในด่านพิเศษ	
+98	here		adv: ที่นี่, ตรงนี้	Please wait here.	กรุณารอที่นี่		
+99	many		det: มาก, หลาย (ใช้กับคำนามนับได้)	There are many books in the library.	ในห้องสมุดมีหนังสือหลายเล่ม	how many = กี่... (ถามจำนวน)	
+100	such		det: เช่นนั้น, อย่างนั้น	It was such a beautiful day.	เป็นวันที่สวยงามจริง ๆ	such as = เช่น	

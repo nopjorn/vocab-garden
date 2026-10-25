@@ -44,6 +44,7 @@ export function parseLevel(text, level) {
       exampleEn: field("example_en"),
       exampleTh: field("example_th"),
       note: field("note"),
+      emoji: field("emoji"),
     };
   });
 }

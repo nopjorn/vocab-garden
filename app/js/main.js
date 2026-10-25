@@ -409,6 +409,8 @@ function showCard() {
       return item;
     }),
   );
+  $("card-emoji").textContent = word.emoji;
+  $("card-emoji").hidden = !word.emoji;
   $("card-forms").textContent = word.forms.length ? `รูปคำอื่น: ${word.forms.join(", ")}` : "";
   $("card-forms").hidden = word.forms.length === 0;
   $("card-example-en").textContent = word.exampleEn;
@@ -1627,6 +1629,7 @@ function showFlashCard() {
   const back = $("flash-back");
   back.replaceChildren(
     ...(flash.prefs.side === "en" ? [] : [el("strong", "fc-word", word.headword)]),
+    ...(word.emoji ? [el("span", "card-emoji", word.emoji)] : []),
     el("ul", "senses", ""),
   );
   back.querySelector("ul").replaceChildren(
@@ -1972,7 +1975,7 @@ function openWordDialog(word) {
   const card = state.cards[word.headword];
   const info = plantInfo(card, today);
   $("word-stage").textContent = info.wilted ? `${info.stage.emoji}💧` : info.stage.emoji;
-  $("word-title").textContent = word.headword;
+  $("word-title").textContent = word.emoji ? `${word.headword} ${word.emoji}` : word.headword;
   $("word-stage-label").textContent = `${levelTitle(word.level)} · อันดับ ${word.rank} · ${info.stage.label}`;
   $("word-due").textContent = dueLabel(card, today);
   $("word-senses").replaceChildren(

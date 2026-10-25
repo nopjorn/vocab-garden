@@ -1,101 +1,101 @@
-rank	headword	forms	meanings	example_en	example_th	note
-1501	asset	assets				
-1502	signal	signals, signaled, signaling, signalled, signalling				
-1503	finger	fingers, fingered, fingering				
-1504	relevant					
-1505	explore	explores, explored, exploring				
-1506	leadership	leaderships				
-1507	commitment	commitments				
-1508	wake	wakes, woke, waking, woken, waked				
-1509	necessarily					
-1510	bright	brighter, brightest				
-1511	frame	frames, framed, framing				
-1512	slowly					
-1513	bond	bonds, bonded, bonding				
-1514	hire	hires, hired, hiring				
-1515	hole	holes, holed, holing				
-1516	tie	ties, tied, tying				
-1517	internal	internals				
-1518	chain	chains, chained, chaining				
-1519	literature	literatures				
-1520	victim	victims				
-1521	threaten	threatens, threatened, threatening				
-1522	division	divisions				
-1523	secure	secures, secured, securing				
-1524	amaze	amazes, amazed, amazing				
-1525	device	devices				
-1526	birth	births, birthed, birthing				
-1527	forest	forests, forested, foresting				
-1528	label	labels, labeled, labeling, labelled, labelling				
-1529	root	roots, rooted, rooting				
-1530	factory	factories				
-1531	expense	expenses, expensed, expensing				
-1532	channel	channels, channeled, channelled, channelling, channeling				
-1533	investigate	investigates, investigated, investigating				
-1534	recommendation	recommendations				
-1535	rank	ranks, ranked, ranking, rankings				
-1536	typical					
-1537	west					
-1538	friendly	friendlier, friendliest				
-1539	resident	residents				
-1540	provision	provisions, provisioned, provisioning				
-1541	concentrate	concentrates, concentrated, concentrating				
-1542	plenty					
-1543	export	exports, exported, exporting				
-1544	entirely					
-1545	strongly					
-1546	bridge	bridges, bridged, bridging				
-1547	consist	consists, consisted, consisting				
-1548	graduate	graduates, graduated, graduating				
-1549	brand	brands, branded, branding				
-1550	moral	morals				
-1551	insist	insists, insisted, insisting				
-1552	combination	combinations				
-1553	abuse	abuses, abused, abusing				
-1554	ice	ices, iced				
-1555	principal	principals				
-1556	master	masters, mastered, mastering				
-1557	definitely					
-1558	session	sessions				
-1559	grade	grades, graded, grading				
-1560	nevertheless					
-1561	predict	predicts, predicted, predicting				
-1562	previously					
-1563	protection	protections				
-1564	largely					
-1565	wed	weds, wedded, wedding, weddings				
-1566	rent	rents, rented, renting				
-1567	shot	shots				
-1568	appearance	appearances				
-1569	reasonable					
-1570	guarantee	guarantees, guaranteed, guaranteeing, guaranty, guaranties				
-1571	till	tills, tilled, tilling				
-1572	theme	themes, themed				
-1573	judgment	judgments				
-1574	odd	odder, oddest				
-1575	approve	approves, approved, approving				
-1576	loan	loans, loaned, loaning				
-1577	definition	definitions				
-1578	elect	elects, elected, electing				
-1579	atmosphere	atmospheres				
-1580	farmer	farmers				
-1581	comparison	comparisons				
-1582	characteristic	characteristics				
-1583	license	licenses, licensed, licensing, licence, licences, licenced, licencing				
-1584	rely	relies, relied, relying				
-1585	narrow	narrows, narrowed, narrowing, narrower, narrowest				
-1586	succeed	succeeds, succeeded, succeeding				
-1587	identity	identities				
-1588	desk	desks				
-1589	permit	permits, permitted, permitting				
-1590	seriously					
-1591	wild	wilder, wildest, wilds				
-1592	empty	empties, emptied, emptying, emptier, emptiest				
-1593	commission	commissions, commissioned, commissioning				
-1594	unique					
-1595	association	associations				
-1596	instrument	instruments, instrumented				
-1597	investor	investors				
-1598	practical					
-1599	tea	teas				
-1600	lovely	lovelier, loveliest				
+rank	headword	forms	meanings	example_en	example_th	note	emoji
+1501	asset	assets					
+1502	signal	signals, signaled, signaling, signalled, signalling					
+1503	finger	fingers, fingered, fingering					
+1504	relevant						
+1505	explore	explores, explored, exploring					
+1506	leadership	leaderships					
+1507	commitment	commitments					
+1508	wake	wakes, woke, waking, woken, waked					
+1509	necessarily						
+1510	bright	brighter, brightest					
+1511	frame	frames, framed, framing					
+1512	slowly						
+1513	bond	bonds, bonded, bonding					
+1514	hire	hires, hired, hiring					
+1515	hole	holes, holed, holing					
+1516	tie	ties, tied, tying					
+1517	internal	internals					
+1518	chain	chains, chained, chaining					
+1519	literature	literatures					
+1520	victim	victims					
+1521	threaten	threatens, threatened, threatening					
+1522	division	divisions					
+1523	secure	secures, secured, securing					
+1524	amaze	amazes, amazed, amazing					
+1525	device	devices					
+1526	birth	births, birthed, birthing					
+1527	forest	forests, forested, foresting					
+1528	label	labels, labeled, labeling, labelled, labelling					
+1529	root	roots, rooted, rooting					
+1530	factory	factories					
+1531	expense	expenses, expensed, expensing					
+1532	channel	channels, channeled, channelled, channelling, channeling					
+1533	investigate	investigates, investigated, investigating					
+1534	recommendation	recommendations					
+1535	rank	ranks, ranked, ranking, rankings					
+1536	typical						
+1537	west						
+1538	friendly	friendlier, friendliest					
+1539	resident	residents					
+1540	provision	provisions, provisioned, provisioning					
+1541	concentrate	concentrates, concentrated, concentrating					
+1542	plenty						
+1543	export	exports, exported, exporting					
+1544	entirely						
+1545	strongly						
+1546	bridge	bridges, bridged, bridging					
+1547	consist	consists, consisted, consisting					
+1548	graduate	graduates, graduated, graduating					
+1549	brand	brands, branded, branding					
+1550	moral	morals					
+1551	insist	insists, insisted, insisting					
+1552	combination	combinations					
+1553	abuse	abuses, abused, abusing					
+1554	ice	ices, iced					
+1555	principal	principals					
+1556	master	masters, mastered, mastering					
+1557	definitely						
+1558	session	sessions					
+1559	grade	grades, graded, grading					
+1560	nevertheless						
+1561	predict	predicts, predicted, predicting					
+1562	previously						
+1563	protection	protections					
+1564	largely						
+1565	wed	weds, wedded, wedding, weddings					
+1566	rent	rents, rented, renting					
+1567	shot	shots					
+1568	appearance	appearances					
+1569	reasonable						
+1570	guarantee	guarantees, guaranteed, guaranteeing, guaranty, guaranties					
+1571	till	tills, tilled, tilling					
+1572	theme	themes, themed					
+1573	judgment	judgments					
+1574	odd	odder, oddest					
+1575	approve	approves, approved, approving					
+1576	loan	loans, loaned, loaning					
+1577	definition	definitions					
+1578	elect	elects, elected, electing					
+1579	atmosphere	atmospheres					
+1580	farmer	farmers					
+1581	comparison	comparisons					
+1582	characteristic	characteristics					
+1583	license	licenses, licensed, licensing, licence, licences, licenced, licencing					
+1584	rely	relies, relied, relying					
+1585	narrow	narrows, narrowed, narrowing, narrower, narrowest					
+1586	succeed	succeeds, succeeded, succeeding					
+1587	identity	identities					
+1588	desk	desks					
+1589	permit	permits, permitted, permitting					
+1590	seriously						
+1591	wild	wilder, wildest, wilds					
+1592	empty	empties, emptied, emptying, emptier, emptiest					
+1593	commission	commissions, commissioned, commissioning					
+1594	unique						
+1595	association	associations					
+1596	instrument	instruments, instrumented					
+1597	investor	investors					
+1598	practical						
+1599	tea	teas					
+1600	lovely	lovelier, loveliest					

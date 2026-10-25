@@ -1,101 +1,101 @@
-rank	headword	forms	meanings	example_en	example_th	note
-1301	flower	flowers, flowered, flowering				
-1302	crisis	crises				
-1303	settle	settles, settled, settling				
-1304	boat	boats, boated, boating				
-1305	aid	aids, aided, aiding				
-1306	fan	fans, fanned, fanning				
-1307	kitchen	kitchens				
-1308	twice					
-1309	fresh	fresher, freshest				
-1310	delay	delays, delayed, delaying				
-1311	safety	safeties				
-1312	engineer	engineers, engineered, engineering				
-1313	quiet	quiets, quieted, quieting, quieter, quietest				
-1314	insurance	insurances				
-1315	nurse	nurses, nursed, nursing				
-1316	divide	divides, divided, dividing				
-1317	length	lengths				
-1318	investigation	investigations				
-1319	package	packages, packaged, packaging				
-1320	somewhere					
-1321	expand	expands, expanded, expanding				
-1322	commit	commits, committing, committed				
-1323	obvious					
-1324	jump	jumps, jumped, jumping				
-1325	weapon	weapons				
-1326	relatively					
-1327	host	hosts, hosted, hosting				
-1328	winter	winters, wintered, wintering				
-1329	district	districts				
-1330	broad	broader, broadest				
-1331	tire	tires, tired, tiring				
-1332	spring	springs, sprang, sprung, springing				
-1333	spirit	spirits, spirited, spiriting				
-1334	lunch	lunches, lunched, lunching				
-1335	actual					
-1336	pool	pools, pooled, pooling				
-1337	battle	battles, battled, battling				
-1338	tradition	traditions				
-1339	cash	cashes, cashed, cashing				
-1340	hardly					
-1341	award	awards, awarded, awarding				
-1342	coach	coaches, coached, coaching				
-1343	experiment	experiments, experimented, experimenting				
-1344	consideration	considerations				
-1345	strange	strangest				
-1346	code	codes, coded, coding				
-1347	possibly					
-1348	threat	threats				
-1349	accident	accidents				
-1350	impossible					
-1351	revenue	revenues				
-1352	enable	enables, enabled, enabling				
-1353	afraid					
-1354	active	actives				
-1355	conclude	concludes, concluded, concluding				
-1356	religious					
-1357	cancer	cancers				
-1358	convince	convinces, convinced, convincing				
-1359	vary	varies, varied, varying				
-1360	environmental					
-1361	sun	suns, sunned, sunning				
-1362	healthy	healthier, healthiest				
-1363	blow	blows, blew, blowing, blown				
-1364	volume	volumes				
-1365	location	locations				
-1366	invest	invests, invested, investing				
-1367	proceed	proceeds, proceeded, proceeding, proceedings				
-1368	wash	washes, washed, washing				
-1369	actor	actors				
-1370	glad	gladder, gladdest				
-1371	tape	tapes, taped, taping				
-1372	whereas					
-1373	opposite	opposites				
-1374	stone	stones, stoned, stoning				
-1375	sum	sums, summed, summing				
-1376	murder	murders, murdered, murdering				
-1377	monitor	monitors, monitored, monitoring				
-1378	soldier	soldiers, soldiered, soldiering				
-1379	finance	finances, financed, financing, financings				
-1380	hate	hates, hated, hating				
-1381	egg	eggs, egged, egging				
-1382	concert	concerts, concerted				
-1383	shock	shocks, shocked, shocking				
-1384	comfortable					
-1385	usual					
-1386	carefully					
-1387	pack	packs, packed, packing				
-1388	recall	recalls, recalled				
-1389	wine	wines, wining				
-1390	camera	cameras				
-1391	swim	swims, swam, swimming, swum				
-1392	manufacture	manufactures, manufactured, manufacturing				
-1393	theater	theaters, theatre, theatres				
-1394	cycle	cycles, cycled, cycling				
-1395	coffee	coffees				
-1396	totally					
-1397	museum	museums				
-1398	visitor	visitors				
-1399	freedom	freedoms				
-1400	construction	constructions				
+rank	headword	forms	meanings	example_en	example_th	note	emoji
+1301	flower	flowers, flowered, flowering					
+1302	crisis	crises					
+1303	settle	settles, settled, settling					
+1304	boat	boats, boated, boating					
+1305	aid	aids, aided, aiding					
+1306	fan	fans, fanned, fanning					
+1307	kitchen	kitchens					
+1308	twice						
+1309	fresh	fresher, freshest					
+1310	delay	delays, delayed, delaying					
+1311	safety	safeties					
+1312	engineer	engineers, engineered, engineering					
+1313	quiet	quiets, quieted, quieting, quieter, quietest					
+1314	insurance	insurances					
+1315	nurse	nurses, nursed, nursing					
+1316	divide	divides, divided, dividing					
+1317	length	lengths					
+1318	investigation	investigations					
+1319	package	packages, packaged, packaging					
+1320	somewhere						
+1321	expand	expands, expanded, expanding					
+1322	commit	commits, committing, committed					
+1323	obvious						
+1324	jump	jumps, jumped, jumping					
+1325	weapon	weapons					
+1326	relatively						
+1327	host	hosts, hosted, hosting					
+1328	winter	winters, wintered, wintering					
+1329	district	districts					
+1330	broad	broader, broadest					
+1331	tire	tires, tired, tiring					
+1332	spring	springs, sprang, sprung, springing					
+1333	spirit	spirits, spirited, spiriting					
+1334	lunch	lunches, lunched, lunching					
+1335	actual						
+1336	pool	pools, pooled, pooling					
+1337	battle	battles, battled, battling					
+1338	tradition	traditions					
+1339	cash	cashes, cashed, cashing					
+1340	hardly						
+1341	award	awards, awarded, awarding					
+1342	coach	coaches, coached, coaching					
+1343	experiment	experiments, experimented, experimenting					
+1344	consideration	considerations					
+1345	strange	strangest					
+1346	code	codes, coded, coding					
+1347	possibly						
+1348	threat	threats					
+1349	accident	accidents					
+1350	impossible						
+1351	revenue	revenues					
+1352	enable	enables, enabled, enabling					
+1353	afraid						
+1354	active	actives					
+1355	conclude	concludes, concluded, concluding					
+1356	religious						
+1357	cancer	cancers					
+1358	convince	convinces, convinced, convincing					
+1359	vary	varies, varied, varying					
+1360	environmental						
+1361	sun	suns, sunned, sunning					
+1362	healthy	healthier, healthiest					
+1363	blow	blows, blew, blowing, blown					
+1364	volume	volumes					
+1365	location	locations					
+1366	invest	invests, invested, investing					
+1367	proceed	proceeds, proceeded, proceeding, proceedings					
+1368	wash	washes, washed, washing					
+1369	actor	actors					
+1370	glad	gladder, gladdest					
+1371	tape	tapes, taped, taping					
+1372	whereas						
+1373	opposite	opposites					
+1374	stone	stones, stoned, stoning					
+1375	sum	sums, summed, summing					
+1376	murder	murders, murdered, murdering					
+1377	monitor	monitors, monitored, monitoring					
+1378	soldier	soldiers, soldiered, soldiering					
+1379	finance	finances, financed, financing, financings					
+1380	hate	hates, hated, hating					
+1381	egg	eggs, egged, egging					
+1382	concert	concerts, concerted					
+1383	shock	shocks, shocked, shocking					
+1384	comfortable						
+1385	usual						
+1386	carefully						
+1387	pack	packs, packed, packing					
+1388	recall	recalls, recalled					
+1389	wine	wines, wining					
+1390	camera	cameras					
+1391	swim	swims, swam, swimming, swum					
+1392	manufacture	manufactures, manufactured, manufacturing					
+1393	theater	theaters, theatre, theatres					
+1394	cycle	cycles, cycled, cycling					
+1395	coffee	coffees					
+1396	totally						
+1397	museum	museums					
+1398	visitor	visitors					
+1399	freedom	freedoms					
+1400	construction	constructions					

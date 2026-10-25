@@ -19,6 +19,7 @@ import {
   NOTE_MAX,
   QUIZ_MODE_CHOICES,
   REVIEW_CAP_CHOICES,
+  ROUND_SIZE_CHOICES,
   SPEECH_RATE_CHOICES,
   TEXT_SIZE_CHOICES,
   THEME_CHOICES,
@@ -286,11 +287,20 @@ function renderHome() {
 // ---------- ท่องศัพท์ ----------
 
 // level = เรียนเฉพาะด่านนั้น · practice = "leech" ฝึกคำที่ลืมบ่อย (โหมดฝึกไม่เปลี่ยนวันทวน ไม่นับเป็นการทวน)
-function startSession(level = null, practice = null) {
+// คำใหม่เพิ่มอีกไม่กี่คำ (ปุ่มท้ายรอบ) เลือกตามลำดับ NGSL เหมือนคำใหม่ปกติ
+const EXTRA_NEW_COUNT = 5;
+
+function extraQueue() {
+  const fresh = translatedWords().filter((word) => levelNumber(word.level) >= state.settings.startLevel);
+  return fresh.filter((word) => !state.cards[word.headword]).slice(0, EXTRA_NEW_COUNT);
+}
+
+function startSession(level = null, practice = null, extra = false) {
   const day = dayNumber();
-  const queue = practice === "leech" ? leechWords(translatedWords(), state.cards) : todayQueue(day, level);
+  const queue = extra ? extraQueue() : practice === "leech" ? leechWords(translatedWords(), state.cards) : todayQueue(day, level);
   if (queue.length === 0) {
-    if (practice) toast("ยังไม่มีคำที่ลืมบ่อย เก่งมาก 🎉");
+    if (extra) toast("ตอนนี้ไม่มีคำใหม่เหลือให้เรียนเพิ่ม");
+    else if (practice) toast("ยังไม่มีคำที่ลืมบ่อย เก่งมาก 🎉");
     else if (level) toast(`${levelTitle(level)} ไม่มีคำให้เรียนตอนนี้ ไว้ทวนใหม่วันหลังนะ`);
     location.hash = practice ? "#/garden" : "#/";
     return;
@@ -308,6 +318,7 @@ function startSession(level = null, practice = null) {
     practice: Boolean(practice),
     nudged: new Set(),
     hadAgain: false,
+    roundStart: 0,
     away: practice ? null : daysAway(mergeDays(storage.loadHistory(), storage.loadGames().days), day),
   };
   $("practice-note").hidden = !practice;
@@ -606,11 +617,37 @@ function nudgeNote(word, card, rating) {
 }
 
 function nextCard() {
-  if (state.session.queue.length > 0) {
-    showCard();
-  } else {
+  const session = state.session;
+  if (session.queue.length === 0) {
     finishSession();
+  } else if (state.settings.roundSize > 0 && session.answered - session.roundStart >= state.settings.roundSize) {
+    pauseRound();
+  } else {
+    showCard();
   }
+}
+
+// จบรอบย่อย: ถามว่าจะไปต่อหรือพักก่อน (ที่ทวนไปแล้วบันทึกครบ ออกจากหน้านี้ได้เลย)
+function pauseRound() {
+  const session = state.session;
+  $("done-title").textContent = "พักหายใจก่อนไหม? 🌤️";
+  $("done-summary").textContent = `ทวนไปแล้ว ${session.answered} ใบ เหลืออีก ${session.queue.length} ใบ ทำได้ดีมาก`;
+  $("done-growth").hidden = true;
+  $("done-tomorrow").hidden = true;
+  $("done-more").hidden = true;
+  $("done-continue").hidden = false;
+  $("done-continue").textContent = `▶️ ไปต่ออีก ${Math.min(state.settings.roundSize, session.queue.length)} ใบ`;
+  $("done-home").textContent = "พักก่อน กลับไปดูสวน 🌳";
+  $("done-home").classList.remove("primary");
+  show("done");
+  fx("correct");
+}
+
+function continueRound() {
+  if (!state.session) return;
+  state.session.roundStart = state.session.answered;
+  show("study");
+  showCard();
 }
 
 // รู้อยู่แล้ว: ข้ามไปเป็นต้นไม้ใหญ่ทันที ไม่นับเป็นคำใหม่ของวันนี้
@@ -704,6 +741,16 @@ function bindSwipe() {
 
 function finishSession() {
   const { answered, learned, bestCombo, grown } = state.session;
+  $("done-title").textContent = "เก่งมาก!";
+  $("done-continue").hidden = true;
+  $("done-home").textContent = "กลับไปดูสวน 🌳";
+  $("done-home").classList.add("primary");
+  // พรุ่งนี้มีคำรอทวนกี่คำ และเรียนคำใหม่เพิ่มได้ (ไม่ใช่โหมดฝึก)
+  const tomorrow = state.session.day + 1;
+  const waiting = translatedWords().filter((word) => state.cards[word.headword]?.due <= tomorrow).length;
+  $("done-tomorrow").hidden = state.session.practice;
+  $("done-tomorrow").textContent = waiting > 0 ? `📅 พรุ่งนี้มีคำรอทวน ${waiting} คำ` : "📅 พรุ่งนี้ยังไม่มีคำรอทวน";
+  $("done-more").hidden = state.session.practice || extraQueue().length === 0;
   $("done-summary").textContent = state.session.practice
     ? `ฝึกไป ${answered} ครั้ง จำได้ ${learned.size} คำ 🧠 (โหมดฝึกไม่เปลี่ยนวันทวน)`
     : `วันนี้ทวนไป ${answered} ครั้ง รดน้ำต้นไม้ไป ${learned.size} ต้น 🌱`;
@@ -1501,6 +1548,8 @@ const QUIZ_MODE_LABELS = { flip: "พลิกการ์ด (แบบเด�
 const DAILY_GOAL_LABELS = Object.fromEntries(DAILY_GOAL_CHOICES.map((count) => [count, `${count} ครั้ง`]));
 const REVIEW_CAP_LABELS = Object.fromEntries(REVIEW_CAP_CHOICES.map((count) => [count, count ? `ไม่เกิน ${count} ครั้ง` : "ไม่จำกัด"]));
 
+const ROUND_SIZE_LABELS = Object.fromEntries(ROUND_SIZE_CHOICES.map((count) => [count, count ? `${count} ใบ` : "ไม่แบ่งรอบ"]));
+
 function fillSelect(select, choices, current, labels) {
   select.replaceChildren(
     ...choices.map((choice) => {
@@ -1536,6 +1585,7 @@ function renderSettings() {
   $("quiz-typing").checked = state.settings.quizTyping;
   fillSelect($("daily-goal"), DAILY_GOAL_CHOICES, state.settings.dailyGoal, DAILY_GOAL_LABELS);
   fillSelect($("review-cap"), REVIEW_CAP_CHOICES, state.settings.reviewCap, REVIEW_CAP_LABELS);
+  fillSelect($("round-size"), ROUND_SIZE_CHOICES, state.settings.roundSize, ROUND_SIZE_LABELS);
   $("auto-speak").checked = state.settings.autoSpeak;
   $("sound-fx").checked = state.settings.sound;
   $("sound-panel").hidden = !canSpeak();
@@ -1708,7 +1758,8 @@ function route() {
   if (state.words.length === 0) return;
   const [page, argument] = (location.hash.replace(/^#\/?/, "") || "home").split("/");
   if (page === "study") {
-    if (argument === "leech") startSession(null, "leech");
+    if (argument === "more") startSession(null, null, true);
+    else if (argument === "leech") startSession(null, "leech");
     else startSession(LEVELS.includes(argument) ? argument : null);
     return;
   }
@@ -1753,6 +1804,7 @@ function route() {
 function bindEvents() {
   window.addEventListener("hashchange", route);
   $("retry").addEventListener("click", init);
+  $("done-continue").addEventListener("click", continueRound);
 
   $("card").addEventListener("click", () => {
     if (!swipe.justSwiped && !state.session?.quiz) flip();
@@ -1949,6 +2001,10 @@ function bindEvents() {
   $("daily-goal").addEventListener("change", (event) => {
     updateSetting({ dailyGoal: Number(event.target.value) });
     toast(`ตั้งเป้าหมายวันละ ${state.settings.dailyGoal} ครั้งแล้ว`);
+  });
+  $("round-size").addEventListener("change", (event) => {
+    updateSetting({ roundSize: Number(event.target.value) });
+    toast(state.settings.roundSize ? `พักถามทุก ๆ ${state.settings.roundSize} ใบแล้ว` : "ไม่แบ่งรอบแล้ว ท่องรวดเดียวจนจบ");
   });
   $("review-cap").addEventListener("change", (event) => {
     updateSetting({ reviewCap: Number(event.target.value) });

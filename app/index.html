@@ -150,10 +150,13 @@
     <section id="view-done" class="center" hidden>
       <div class="done-card">
         <p class="big-emoji celebrate" aria-hidden="true">🎉</p>
-        <h1>เก่งมาก!</h1>
+        <h1 id="done-title">เก่งมาก!</h1>
         <p id="done-summary" class="muted"></p>
         <ul id="done-growth" class="done-growth" hidden></ul>
-        <a href="#/" class="button primary wide">กลับไปดูสวน 🌳</a>
+        <p id="done-tomorrow" class="muted small" hidden></p>
+        <button type="button" id="done-continue" class="primary wide" hidden></button>
+        <a id="done-more" href="#/study/more" class="button wide" hidden>🌱 เรียนคำใหม่เพิ่มอีก 5 คำ</a>
+        <a id="done-home" href="#/" class="button primary wide">กลับไปดูสวน 🌳</a>
       </div>
     </section>
 
@@ -404,6 +407,11 @@
           <label for="review-cap">ทวนได้สูงสุดต่อวัน</label>
           <select id="review-cap"></select>
         </p>
+        <p>
+          <label for="round-size">พักถามทุก ๆ</label>
+          <select id="round-size"></select>
+        </p>
+        <p class="tip small">แบ่งการท่องเป็นรอบย่อย จบแต่ละรอบจะถามว่าจะไปต่อหรือพักก่อน (ที่ทวนไปแล้วบันทึกไว้เรียบร้อย) เริ่มง่ายขึ้นเพราะแค่ไม่กี่นาทีก็จบรอบได้</p>
         <p class="tip small">นับเป็นจำนวนครั้งที่ตอบ ถ้าคำค้างทวนเยอะกว่าเพดาน แอปจะทยอยทวนวันละส่วน (เริ่มจากคำที่ค้างนานสุด)
           และงดคำใหม่ชั่วคราวจนกว่าคำค้างจะเบาลง ตั้ง "ไม่จำกัด" ถ้าอยากทวนให้หมดในวันเดียว
           การแตะเรียนเฉพาะแปลงจากหน้าหลักไม่ถูกจำกัดด้วยเพดานนี้</p>

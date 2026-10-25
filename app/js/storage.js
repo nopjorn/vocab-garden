@@ -22,6 +22,7 @@ export const QUIZ_MODE_CHOICES = ["flip", "mixed"]; // พลิกการ์�
 export const NOTE_MAX = 200; // โน้ตช่วยจำยาวได้ไม่เกินกี่ตัวอักษร
 export const DAILY_GOAL_CHOICES = [10, 20, 30]; // เป้าหมายรายวัน (จำนวนครั้งที่ตอบ)
 export const REVIEW_CAP_CHOICES = [50, 100, 0]; // ทวนได้ไม่เกินกี่ครั้งต่อวัน (0 = ไม่จำกัด)
+export const ROUND_SIZE_CHOICES = [10, 20, 0]; // ทวนรอบละกี่ใบแล้วพักถามว่าจะไปต่อไหม (0 = ไม่แบ่งรอบ)
 export const DEFAULT_SETTINGS = {
   newPerDay: 10,
   startLevel: 1,
@@ -32,6 +33,7 @@ export const DEFAULT_SETTINGS = {
   sound: false,
   dailyGoal: 10,
   reviewCap: 100,
+  roundSize: 10,
   quizMode: "flip",
   quizTyping: true,
 };
@@ -183,6 +185,7 @@ export function createStorage(store = globalThis.localStorage) {
         sound: saved.sound === true,
         dailyGoal: pick(DAILY_GOAL_CHOICES, saved.dailyGoal, DEFAULT_SETTINGS.dailyGoal),
         reviewCap: pick(REVIEW_CAP_CHOICES, saved.reviewCap, DEFAULT_SETTINGS.reviewCap),
+        roundSize: pick(ROUND_SIZE_CHOICES, saved.roundSize, DEFAULT_SETTINGS.roundSize),
         quizMode: pick(QUIZ_MODE_CHOICES, saved.quizMode, DEFAULT_SETTINGS.quizMode),
         quizTyping: saved.quizTyping !== false,
       };

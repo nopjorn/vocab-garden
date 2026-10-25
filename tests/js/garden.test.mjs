@@ -50,3 +50,29 @@ test("leech words are the ones forgotten at least 3 times, most forgotten first"
   assert.deepEqual(leechWords(words, cards, 2).map((word) => word.headword), ["b", "a"]);
   assert.deepEqual(leechWords(words, {}), []);
 });
+
+import { PRACTICE_LIMIT, plantedInLevel, reviewedToday } from "../../app/js/garden.js";
+
+test("reviewedToday picks cards last answered today (due - ivl) and ignores the rest", () => {
+  const words = ["a", "b", "c", "d"].map((headword) => ({ headword, level: "01" }));
+  const cards = {
+    a: { due: 103, ivl: 3, reps: 1, lapses: 0 }, // ตอบวันที่ 100
+    b: { due: 105, ivl: 5, reps: 2, lapses: 0 }, // ตอบวันที่ 100
+    c: { due: 100, ivl: 0, reps: 0, lapses: 1 }, // ไม่เคยตอบผ่าน
+    d: { due: 99, ivl: 2, reps: 2, lapses: 0 }, // ตอบวันที่ 97
+  };
+  assert.deepEqual(reviewedToday(words, cards, 100).map((word) => word.headword), ["a", "b"]);
+  assert.deepEqual(reviewedToday(words, cards, 101), []);
+});
+
+test("plantedInLevel only returns planted words of that level, capped at the limit", () => {
+  const words = Array.from({ length: 40 }, (_, index) => ({ headword: `w${index}`, level: index < 35 ? "01" : "02" }));
+  const cards = Object.fromEntries(words.map((word) => [word.headword, { due: 10, ivl: 1, reps: 1, lapses: 0 }]));
+  delete cards.w0;
+  const picked = plantedInLevel(words, cards, "01");
+  assert.equal(picked.length, PRACTICE_LIMIT);
+  assert.ok(picked.every((word) => word.level === "01" && word.headword !== "w0"));
+  assert.equal(new Set(picked.map((word) => word.headword)).size, picked.length);
+  assert.equal(plantedInLevel(words, cards, "02").length, 5);
+  assert.deepEqual(plantedInLevel(words, {}, "01"), []);
+});

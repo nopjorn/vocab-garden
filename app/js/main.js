@@ -1430,8 +1430,6 @@ function showFlashCard() {
   back.hidden = true;
   $("flash-card").setAttribute("aria-label", "การ์ด แตะเพื่อพลิก");
   $("flash-card").classList.remove("flipped");
-  $("flash-known").disabled = true;
-  $("flash-unsure").disabled = true;
   $("flash-tip").hidden = false;
   $("flash-meta").textContent = `${levelTitle(word.level).replace(/:.*/, "")} · อันดับ ${word.rank}`;
   $("flash-speak").hidden = !canSpeak();
@@ -1448,14 +1446,11 @@ function flipFlash() {
   flash.flipped = true;
   $("flash-back").hidden = false;
   $("flash-card").classList.add("flipped");
-  $("flash-known").disabled = false;
-  $("flash-unsure").disabled = false;
   $("flash-tip").hidden = true;
-  $("flash-known").focus({ preventScroll: true });
 }
 
 function answerFlash(known) {
-  if (!flash.flipped) return;
+  if ($("flash-play").hidden) return;
   if (known) {
     flash.queue.shift();
     fx("correct");
@@ -2212,7 +2207,7 @@ function bindEvents() {
       flipFlash();
     }
   });
-  // ปัดการ์ดหลังพลิก: ขวา = จำได้ ซ้าย = ยังไม่แน่ใจ
+  // ปัดการ์ด (จะพลิกแล้วหรือยังก็ได้): ขวา = จำได้ ซ้าย = ยังไม่แน่ใจ
   {
     let startX = null;
     const card = $("flash-card");
@@ -2221,7 +2216,7 @@ function bindEvents() {
       card.style.transition = "";
     };
     card.addEventListener("pointerdown", (event) => {
-      startX = flash.flipped ? event.clientX : null;
+      startX = event.clientX;
       flash.swiped = false;
     });
     card.addEventListener("pointermove", (event) => {
@@ -2256,7 +2251,8 @@ function bindEvents() {
   document.addEventListener("keydown", (event) => {
     if ($("view-flash").hidden || $("flash-play").hidden || event.altKey || event.ctrlKey || event.metaKey) return;
     if (document.querySelector(".modal:not([hidden])")) return;
-    if (event.key === " " && !flash.flipped) {
+    if (event.key === " ") {
+      if (flash.flipped) return;
       event.preventDefault();
       flipFlash();
     } else if (event.key === "1" || event.key === "ArrowRight") answerFlash(true);

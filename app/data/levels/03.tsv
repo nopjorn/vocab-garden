@@ -1,101 +1,101 @@
 rank	headword	forms	meanings	example_en	example_th	note
-201	money	moneys				
-202	fact	facts				
-203	however					
-204	area	areas				
-205	provide	provides, provided, providing				
-206	name	names, named, naming				
-207	read	reads, reading, readings				
-208	friend	friends				
-209	month	months				
-210	large	larger, largest				
-211	business	businesses				
-212	without					
-213	information					
-214	open	opens, opened, opening, openings				
-215	order	orders, ordered, ordering				
-216	government	governments				
-217	word	words, worded, wording, wordings				
-218	issue	issues, issued, issuing				
-219	market	markets, marketed, marketing				
-220	pay	pays, paid, paying				
-221	build	builds, building, buildings, built				
-222	hold	holds, held, holding, holdings				
-223	service	services, serviced, servicing				
-224	against					
-225	believe	believes, believed, believing				
-226	second	seconds, seconded, seconding, sec				
-227	though					
-228	yes	yeses				
-229	love	loves, loved, loving				
-230	increase	increases, increased, increasing				
-231	job	jobs, jobbing				
-232	plan	plans, planned, planning				
-233	result	results, resulted, resulting				
-234	away					
-235	example	examples				
-236	happen	happens, happened, happening, happenings				
-237	offer	offers, offered, offering, offerings				
-238	young	younger, youngest				
-239	close	closes, closed, closing, closer, closest				
-240	program	programs, programmed, programming, programme, programmes, programed, programing				
-241	lead	leads, led, leading				
-242	buy	buys, bought, buying				
-243	understand	understands, understood, understanding, understandings				
-244	thank	thanks, thanked, thanking				
-245	far	farther, farthest				
-246	today					
-247	hour	hours				
-248	student	students				
-249	face	faces, faced, facing				
-250	hope	hopes, hoped, hoping				
-251	idea	ideas				
-252	cost	costs, costing				
-253	less					
-254	room	rooms, roomed, rooming				
-255	until	til				
-256	reason	reasons, reasoned, reasoning				
-257	form	forms, formed, forming				
-258	spend	spends, spending, spent				
-259	head	heads, headed, heading, headings				
-260	car	cars				
-261	learn	learns, learned, learning, learnt				
-262	level	levels, leveled, leveling, levelled, levelling				
-263	person	persons				
-264	experience	experiences, experienced, experiencing				
-265	once					
-266	member	members				
-267	enough					
-268	bad	worse, worst, baddest				
-269	city	cities				
-270	night	nights				
-271	able	abler, ablest				
-272	support	supports, supported, supporting				
-273	whether					
-274	line	lines, lined, lining				
-275	present	presents, presented, presenting				
-276	side	sides, sided, siding, sidings				
-277	quite					
-278	although					
-279	sure	surer, surest				
-280	term	terms, termed, terming				
-281	least					
-282	age	ages, aged, aging, ageing				
-283	low	lows, lowed, lowing, lower, lowest, lowers, lowered, lowering				
-284	speak	speaks, spoke, speaking, spoken				
-285	within					
-286	process	processes, processed, processing				
-287	public	publics				
-288	often					
-289	train	trains, trained, training, trainings				
-290	possible					
-291	actually					
-292	rather					
-293	view	views, viewed, viewing				
-294	together					
-295	consider	considers, considered, considering				
-296	price	prices, priced, pricing, pricings				
-297	parent	parents, parented, parenting				
-298	hard	harder, hardest				
-299	party	parties, partied, partying				
-300	local	locals				
+201	money	moneys	n: เงิน, เงินทอง	I need some money for lunch.	ฉันต้องการเงินสำหรับมื้อเที่ยง	ไม่นับจำนวนได้ ไม่ใช้ a money
+202	fact	facts	n: ข้อเท็จจริง, ความจริง	That is a fact, not an opinion.	นั่นคือข้อเท็จจริง ไม่ใช่ความเห็น	
+203	however		adv: อย่างไรก็ตาม, แต่ว่า	I like it. However, it is too expensive.	ฉันชอบมัน แต่ว่ามันแพงเกินไป	
+204	area	areas	n: พื้นที่, บริเวณ, ย่าน	This area is very quiet at night.	ย่านนี้เงียบมากตอนกลางคืน	
+205	provide	provides, provided, providing	v: จัดหาให้, ให้, เตรียมไว้ให้	The hotel provides free breakfast.	โรงแรมมีอาหารเช้าให้ฟรี	
+206	name	names, named, naming	n: ชื่อ | v: ตั้งชื่อ, เรียกชื่อ	My name is Mali.	ฉันชื่อมะลิ	
+207	read	reads, reading, readings	v: อ่าน	I read a book every week.	ฉันอ่านหนังสือทุกสัปดาห์	เมื่อเป็นรูปอดีต read สะกดเหมือนเดิมแต่ออกเสียงว่า เร็ด
+208	friend	friends	n: เพื่อน	She is my best friend.	เธอเป็นเพื่อนสนิทของฉัน	
+209	month	months	n: เดือน	There are twelve months in a year.	หนึ่งปีมีสิบสองเดือน	
+210	large	larger, largest	adj: ใหญ่, กว้างขวาง, จำนวนมาก	We live in a large house.	เราอาศัยอยู่ในบ้านหลังใหญ่	
+211	business	businesses	n: ธุรกิจ, กิจการ, การค้า	He runs a small business.	เขาทำธุรกิจเล็ก ๆ	
+212	without		prep: ปราศจาก, ไม่มี, โดยไม่	I drink coffee without sugar.	ฉันดื่มกาแฟแบบไม่ใส่น้ำตาล	
+213	information		n: ข้อมูล, ข่าวสาร	I need more information about the trip.	ฉันต้องการข้อมูลเกี่ยวกับการเดินทางเพิ่มเติม	ไม่นับจำนวนได้ ไม่ใช้ informations
+214	open	opens, opened, opening, openings	v: เปิด | adj: เปิดอยู่, เปิดกว้าง	Please open the window.	ช่วยเปิดหน้าต่างหน่อย	
+215	order	orders, ordered, ordering	n: คำสั่งซื้อ, ลำดับ | v: สั่ง	I would like to order a pizza.	ฉันอยากสั่งพิซซ่าหนึ่งถาด	
+216	government	governments	n: รัฐบาล	The government made a new rule.	รัฐบาลออกกฎใหม่	
+217	word	words, worded, wording, wordings	n: คำ, ถ้อยคำ	I do not know this word.	ฉันไม่รู้จักคำนี้	
+218	issue	issues, issued, issuing	n: ประเด็น, ปัญหา, ฉบับ | v: ออก, ออกให้	This issue is very important.	ประเด็นนี้สำคัญมาก	
+219	market	markets, marketed, marketing	n: ตลาด | v: ทำการตลาด, ขาย	We buy fruit at the market.	เราซื้อผลไม้ที่ตลาด	
+220	pay	pays, paid, paying	v: จ่าย, จ่ายเงิน, ชำระ	I will pay for the tickets.	ฉันจะจ่ายค่าตั๋วเอง	รูปอดีตคือ paid
+221	build	builds, building, buildings, built	v: สร้าง, ก่อสร้าง	They build houses near the river.	พวกเขาสร้างบ้านใกล้แม่น้ำ	รูปอดีตคือ built
+222	hold	holds, held, holding, holdings	v: ถือ, จับ, จัดงาน, รองรับ	Please hold my bag for a moment.	ช่วยถือกระเป๋าให้ฉันสักครู่	รูปอดีตคือ held
+223	service	services, serviced, servicing	n: บริการ, การให้บริการ | v: ซ่อมบำรุง	The service at this shop is great.	บริการที่ร้านนี้ยอดเยี่ยมมาก	
+224	against		prep: ต่อต้าน, ขัดกับ, พิงกับ	He leaned against the wall.	เขาพิงกำแพง	
+225	believe	believes, believed, believing	v: เชื่อ, เชื่อว่า, คิดว่า	I believe you.	ฉันเชื่อคุณ	
+226	second	seconds, seconded, seconding, sec	adj: ที่สอง | n: วินาที, ผู้ที่สอง	He finished in second place.	เขาเข้าเส้นชัยเป็นที่สอง	
+227	though		conj: ถึงแม้ว่า, แม้ว่า	Though it was late, we kept talking.	แม้จะดึกแล้ว เราก็ยังคุยกันต่อ	
+228	yes	yeses	int: ใช่, ครับ, ค่ะ	Yes, I can help you.	ได้ค่ะ ฉันช่วยคุณได้	
+229	love	loves, loved, loving	n: ความรัก | v: รัก, ชอบมาก	I love my family.	ฉันรักครอบครัวของฉัน	
+230	increase	increases, increased, increasing	v: เพิ่มขึ้น, เพิ่ม | n: การเพิ่มขึ้น	Prices increase every year.	ราคาสินค้าเพิ่มขึ้นทุกปี	เมื่อเป็นคำนามเน้นเสียงที่พยางค์แรก
+231	job	jobs, jobbing	n: งาน, อาชีพ	She found a new job last month.	เธอได้งานใหม่เมื่อเดือนที่แล้ว	
+232	plan	plans, planned, planning	n: แผน, แผนการ | v: วางแผน	We plan to visit Chiang Mai.	เราวางแผนจะไปเที่ยวเชียงใหม่	
+233	result	results, resulted, resulting	n: ผลลัพธ์, ผล | v: ส่งผลให้, เป็นผลมาจาก	The test results were good.	ผลสอบออกมาดี	
+234	away		adv: ไป, ออกไป, ห่างออกไป	The birds flew away.	นกบินจากไป	
+235	example	examples	n: ตัวอย่าง, แบบอย่าง	Can you give me an example?	ช่วยยกตัวอย่างให้หน่อยได้ไหม	
+236	happen	happens, happened, happening, happenings	v: เกิดขึ้น, บังเอิญ	What happened to your phone?	โทรศัพท์คุณเป็นอะไรไป	
+237	offer	offers, offered, offering, offerings	v: เสนอ, ให้ | n: ข้อเสนอ	They offered me a cup of tea.	พวกเขาเสนอชาให้ฉันหนึ่งถ้วย	
+238	young	younger, youngest	adj: หนุ่มสาว, อ่อนวัย, เยาว์วัย	She is a young teacher.	เธอเป็นครูสาว	
+239	close	closes, closed, closing, closer, closest	adj: ใกล้, สนิท | v: ปิด	The shop is close to my house.	ร้านอยู่ใกล้บ้านฉัน	v. ปิด ออกเสียง โคลซ ส่วน adj. ใกล้ ออกเสียง โคลส
+240	program	programs, programmed, programming, programme, programmes, programed, programing	n: โปรแกรม, รายการ, หลักสูตร | v: เขียนโปรแกรม	This program helps you learn English.	โปรแกรมนี้ช่วยให้คุณเรียนภาษาอังกฤษ	
+241	lead	leads, led, leading	v: นำ, นำทาง, เป็นผู้นำ	She will lead the team.	เธอจะเป็นผู้นำทีม	รูปอดีตคือ led
+242	buy	buys, bought, buying	v: ซื้อ	I want to buy a new bag.	ฉันอยากซื้อกระเป๋าใบใหม่	รูปอดีตคือ bought
+243	understand	understands, understood, understanding, understandings	v: เข้าใจ, รู้เรื่อง	I understand what you mean.	ฉันเข้าใจที่คุณหมายถึง	รูปอดีตคือ understood
+244	thank	thanks, thanked, thanking	v: ขอบคุณ | n: คำขอบคุณ	I want to thank you for your help.	ฉันอยากขอบคุณที่คุณช่วยเหลือ	
+245	far	farther, farthest	adv: ไกล | adj: ไกล	The station is not far from here.	สถานีไม่ไกลจากที่นี่	
+246	today		adv: วันนี้, ทุกวันนี้ | n: วันนี้	I am busy today.	วันนี้ฉันยุ่ง	
+247	hour	hours	n: ชั่วโมง	The trip takes one hour.	การเดินทางใช้เวลาหนึ่งชั่วโมง	
+248	student	students	n: นักเรียน, นักศึกษา	Every student has a book.	นักเรียนทุกคนมีหนังสือหนึ่งเล่ม	
+249	face	faces, faced, facing	n: ใบหน้า | v: เผชิญหน้า, หันหน้าไปทาง	She has a kind face.	เธอมีใบหน้าใจดี	
+250	hope	hopes, hoped, hoping	v: หวัง, หวังว่า | n: ความหวัง	I hope it does not rain tomorrow.	ฉันหวังว่าพรุ่งนี้ฝนจะไม่ตก	
+251	idea	ideas	n: ความคิด, ไอเดีย	That is a good idea.	นั่นเป็นความคิดที่ดี	
+252	cost	costs, costing	n: ราคา, ต้นทุน | v: มีราคา, ต้องเสียค่า	This bag costs two hundred baht.	กระเป๋าใบนี้ราคาสองร้อยบาท	รูปอดีตคือ cost เหมือนเดิม
+253	less		adv: น้อยกว่า, น้อยลง | det: น้อยกว่า	Please add less sugar.	ช่วยใส่น้ำตาลให้น้อยลงหน่อย	
+254	room	rooms, roomed, rooming	n: ห้อง, ที่ว่าง	Our room is on the second floor.	ห้องของเราอยู่ชั้นสอง	room ที่ไม่ได้แปลว่าห้องอาจแปลว่า ที่ว่าง เป็นนามนับไม่ได้
+255	until	til	conj: จนกระทั่ง, จนกว่า | prep: จนถึง	Wait here until I come back.	รอที่นี่จนกว่าฉันจะกลับมา	
+256	reason	reasons, reasoned, reasoning	n: เหตุผล, สาเหตุ	What is the reason for this?	เหตุผลของเรื่องนี้คืออะไร	
+257	form	forms, formed, forming	n: รูปแบบ, แบบฟอร์ม | v: ก่อตัว, สร้างขึ้น	Please fill in this form.	กรุณากรอกแบบฟอร์มนี้	
+258	spend	spends, spending, spent	v: ใช้จ่าย, ใช้เวลา	I spend too much time on my phone.	ฉันใช้เวลากับโทรศัพท์มากเกินไป	รูปอดีตคือ spent
+259	head	heads, headed, heading, headings	n: ศีรษะ, หัว | v: มุ่งหน้าไป	My head hurts.	ฉันปวดหัว	
+260	car	cars	n: รถยนต์, รถ	My father drives a red car.	พ่อของฉันขับรถสีแดง	
+261	learn	learns, learned, learning, learnt	v: เรียนรู้, เรียน, ฝึก	I learn ten new words every day.	ฉันเรียนรู้คำใหม่สิบคำทุกวัน	
+262	level	levels, leveled, leveling, levelled, levelling	n: ระดับ, ชั้น | adj: ราบเรียบ	This book is at the right level for me.	หนังสือเล่มนี้ระดับกำลังพอดีกับฉัน	
+263	person	persons	n: คน, บุคคล	She is a very kind person.	เธอเป็นคนใจดีมาก	พหูพจน์ที่ใช้บ่อยคือ people
+264	experience	experiences, experienced, experiencing	n: ประสบการณ์ | v: ประสบ, เจอ	He has a lot of experience.	เขามีประสบการณ์มาก	
+265	once		adv: ครั้งหนึ่ง, หนึ่งครั้ง | conj: เมื่อ, ทันทีที่	I go to the gym once a week.	ฉันไปยิมสัปดาห์ละครั้ง	
+266	member	members	n: สมาชิก, ผู้เข้าร่วม	She is a member of our club.	เธอเป็นสมาชิกของชมรมเรา	
+267	enough		adv: พอ, เพียงพอ | det: พอ	We have enough food for everyone.	เรามีอาหารพอสำหรับทุกคน	
+268	bad	worse, worst, baddest	adj: แย่, ไม่ดี, เลว	The weather is bad today.	วันนี้อากาศไม่ดี	เปรียบเทียบด้วย worse และ worst
+269	city	cities	n: เมือง, นคร	Bangkok is a big city.	กรุงเทพฯ เป็นเมืองใหญ่	
+270	night	nights	n: กลางคืน, ค่ำคืน	I sleep early at night.	ฉันเข้านอนเร็วตอนกลางคืน	
+271	able	abler, ablest	adj: สามารถ, เก่ง	She is able to speak three languages.	เธอสามารถพูดได้สามภาษา	ใช้ be able to + กริยา เหมือน can
+272	support	supports, supported, supporting	v: สนับสนุน, ค้ำจุน | n: การสนับสนุน	My family supports my plan.	ครอบครัวสนับสนุนแผนของฉัน	
+273	whether		conj: ไม่ว่า, หรือไม่	I do not know whether he will come.	ฉันไม่รู้ว่าเขาจะมาหรือไม่	
+274	line	lines, lined, lining	n: เส้น, แถว, สาย | v: เรียงเป็นแถว	Please wait in line.	กรุณาต่อแถวรอ	
+275	present	presents, presented, presenting	adj: ปัจจุบัน, ที่อยู่ | n: ของขวัญ | v: นำเสนอ, มอบ	At present, I am very busy.	ตอนนี้ฉันยุ่งมาก	ออกเสียงต่างกัน: n./adj. = เพรซ'เซนท์ v. = พรีเซนท์'
+276	side	sides, sided, siding, sidings	n: ด้าน, ข้าง, ฝั่ง	Sit on the left side.	นั่งทางด้านซ้าย	
+277	quite		adv: ค่อนข้าง, ทีเดียว	It is quite cold today.	วันนี้อากาศค่อนข้างหนาว	
+278	although		conj: ถึงแม้ว่า, แม้ว่า	Although he was tired, he kept working.	แม้เขาจะเหนื่อย เขาก็ยังทำงานต่อ	
+279	sure	surer, surest	adj: แน่ใจ, มั่นใจ, แน่นอน	I am sure he will come.	ฉันมั่นใจว่าเขาจะมา	
+280	term	terms, termed, terming	n: คำศัพท์เฉพาะ, ภาคเรียน, เงื่อนไข	I do not know this term.	ฉันไม่รู้จักคำศัพท์นี้	
+281	least		adv: น้อยที่สุด | det: น้อยที่สุด	At least try it once.	อย่างน้อยก็ลองสักครั้ง	นิยมใช้ในวลี at least = อย่างน้อย
+282	age	ages, aged, aging, ageing	n: อายุ, ยุคสมัย | v: แก่ลง, สูงวัย	What is your age?	คุณอายุเท่าไร	
+283	low	lows, lowed, lowing, lower, lowest, lowers, lowered, lowering	adj: ต่ำ, เตี้ย, เบา (เสียง) | adv: ต่ำ	The price is very low.	ราคาต่ำมาก	
+284	speak	speaks, spoke, speaking, spoken	v: พูด, กล่าว	Can you speak English?	คุณพูดภาษาอังกฤษได้ไหม	รูปอดีตคือ spoke
+285	within		prep: ภายใน, ในระยะ	I will call you within an hour.	ฉันจะโทรหาคุณภายในหนึ่งชั่วโมง	
+286	process	processes, processed, processing	n: กระบวนการ, ขั้นตอน | v: ดำเนินการ, แปรรูป	The process takes three steps.	กระบวนการนี้มีสามขั้นตอน	
+287	public	publics	adj: สาธารณะ, ของส่วนรวม | n: ประชาชน	This is a public park.	นี่เป็นสวนสาธารณะ	
+288	often		adv: บ่อย, บ่อย ๆ	I often walk to work.	ฉันมักเดินไปทำงาน	
+289	train	trains, trained, training, trainings	n: รถไฟ, ขบวนรถ | v: ฝึกฝน, อบรม	I take the train to work.	ฉันนั่งรถไฟไปทำงาน	
+290	possible		adj: เป็นไปได้, อาจเป็นได้	It is possible to finish today.	เป็นไปได้ที่จะเสร็จวันนี้	
+291	actually		adv: จริง ๆ แล้ว, ที่จริง	Actually, I do not like coffee.	จริง ๆ แล้วฉันไม่ชอบกาแฟ	
+292	rather		adv: ค่อนข้าง, ค่อนข้างจะ	It is rather cold today.	วันนี้อากาศค่อนข้างหนาว	ใช้บ่อยในวลี would rather = อยากจะ...มากกว่า
+293	view	views, viewed, viewing	n: ทิวทัศน์, ความคิดเห็น | v: ดู, มองว่า	The room has a nice view.	ห้องนี้วิวสวย	
+294	together		adv: ด้วยกัน, พร้อมกัน	Let us go together.	ไปด้วยกันเถอะ	
+295	consider	considers, considered, considering	v: พิจารณา, คิดถึง, ถือว่า	I will consider your idea.	ฉันจะพิจารณาความคิดของคุณ	
+296	price	prices, priced, pricing, pricings	n: ราคา | v: ตั้งราคา	What is the price of this shirt?	เสื้อตัวนี้ราคาเท่าไร	
+297	parent	parents, parented, parenting	n: พ่อหรือแม่, ผู้ปกครอง	My parents live in Chiang Mai.	พ่อแม่ของฉันอยู่เชียงใหม่	ใช้พหูพจน์ parents เมื่อหมายถึงทั้งพ่อและแม่
+298	hard	harder, hardest	adj: ยาก, แข็ง, หนัก | adv: อย่างหนัก, อย่างยากลำบาก	This question is very hard.	คำถามข้อนี้ยากมาก	
+299	party	parties, partied, partying	n: งานเลี้ยง, ปาร์ตี้, พรรค	We had a party last night.	เมื่อคืนเรามีปาร์ตี้	
+300	local	locals	adj: ในท้องถิ่น, ในละแวกนั้น	I like local food.	ฉันชอบอาหารท้องถิ่น	

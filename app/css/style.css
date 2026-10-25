@@ -301,6 +301,36 @@ a {
   }
 }
 
+/* iPad แนวนอน: ขยายเนื้อหาให้เต็มจอขึ้น รายการด่าน เกม และเหรียญเรียงสองคอลัมน์ ส่วนหน้าท่อง เกม และตั้งค่ายังอยู่กลางจอแคบ ๆ ให้อ่านง่าย */
+@media (min-width: 1000px) and (pointer: coarse) and (max-width: 1400px) {
+  main {
+    max-width: 1040px;
+  }
+
+  .tabbar {
+    left: max(12px, calc(50% - 440px));
+    right: max(12px, calc(50% - 440px));
+  }
+
+  .levels,
+  .game-list,
+  .medal-list {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  #view-study,
+  #view-done,
+  #view-wordle,
+  #view-scramble,
+  #view-match,
+  #view-settings,
+  #view-about,
+  #view-changelog {
+    max-width: 720px;
+    margin-inline: auto;
+  }
+}
+
 /* ===== ปุ่ม ===== */
 button,
 .button {

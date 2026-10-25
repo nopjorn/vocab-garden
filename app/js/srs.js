@@ -18,7 +18,17 @@ export function dayNumber(date = new Date()) {
   return Math.floor(Date.UTC(shifted.getFullYear(), shifted.getMonth(), shifted.getDate()) / 86400000);
 }
 
-export function grade(state, rating, today) {
+// ระยะทวนที่สุ่มขยับได้ ± กี่วัน: ระยะสั้นมากไม่สุ่ม ยิ่งยาวยิ่งขยับได้มาก (ประมาณ 10% ถึง 5%) ไม่ต่ำกว่า 1 วัน
+export function fuzzRange(ivl) {
+  if (ivl < 3) return 0;
+  if (ivl < 7) return 1;
+  if (ivl < 21) return Math.max(1, Math.round(ivl * 0.1));
+  return Math.max(2, Math.round(ivl * 0.05));
+}
+
+// rng = ฟังก์ชันสุ่ม 0..1 (ไม่ส่ง = ไม่สุ่ม) ใช้ให้คำที่เรียนวันเดียวกันไม่ครบกำหนดพร้อมกันหมด
+// ระยะที่สุ่มแล้วถูกเก็บเป็น ivl เลย (due - ivl จึงยังเท่ากับวันที่ตอบ)
+export function grade(state, rating, today, rng = null) {
   const card = state ? { ...state } : { due: today, ivl: 0, ease: START_EASE, reps: 0, lapses: 0 };
 
   if (rating === AGAIN) {
@@ -41,6 +51,10 @@ export function grade(state, rating, today) {
     card.reps += 1;
   }
 
+  if (rng && rating !== AGAIN) {
+    const range = fuzzRange(card.ivl);
+    if (range > 0) card.ivl = Math.max(1, card.ivl + Math.floor(rng() * (2 * range + 1)) - range);
+  }
   card.due = today + card.ivl;
   return card;
 }

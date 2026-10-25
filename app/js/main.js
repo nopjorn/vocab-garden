@@ -641,7 +641,7 @@ function answer(rating) {
 
   // โหมดฝึกไม่แตะความคืบหน้า ประวัติ หรือเป้าหมายของวัน
   if (!session.practice) {
-    card = grade(before, rating, session.day);
+    card = grade(before, rating, session.day, Math.random);
     state.cards[word.headword] = card;
     storage.saveCards(state.cards);
     const count = storage.addReview(session.day);

@@ -67,7 +67,7 @@ function show(view) {
     $(`view-${name}`).hidden = name !== view;
   });
   document.body.classList.toggle("studying", view === "study");
-  document.querySelectorAll(".tabbar a").forEach((tab) => {
+  document.querySelectorAll("[data-tab]").forEach((tab) => {
     if (tab.dataset.tab === (TAB_OF_VIEW[view] || view)) tab.setAttribute("aria-current", "page");
     else tab.removeAttribute("aria-current");
   });

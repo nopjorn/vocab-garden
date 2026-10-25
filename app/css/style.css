@@ -214,9 +214,44 @@ a {
   border-radius: 999px;
 }
 
+.brand {
+  margin-right: auto;
+}
+
 .tabbar {
   display: flex;
   gap: 4px;
+}
+
+/* ปุ่ม ⓘ เกี่ยวกับแอป อยู่ชิดขวาของแถบบน (ใช้ไม่บ่อยเลยไม่ต้องอยู่ในเมนูหลัก) */
+.about-link {
+  display: grid;
+  place-items: center;
+  flex: none;
+  width: 36px;
+  height: 36px;
+  margin-left: 8px;
+  border-radius: 50%;
+  color: var(--muted);
+  text-decoration: none;
+  font-size: 1.25rem;
+  line-height: 1;
+  transition: background 0.2s, color 0.2s;
+}
+
+.about-link[aria-current="page"] {
+  color: var(--link);
+  background: var(--brand-soft);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .about-link[aria-current="page"] {
+    color: var(--tree);
+  }
+}
+
+:root[data-theme="dark"] .about-link[aria-current="page"] {
+  color: var(--tree);
 }
 
 .tabbar a {

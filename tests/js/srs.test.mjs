@@ -102,3 +102,40 @@ test("a due limit keeps the longest-overdue cards and pauses new words while the
   assert.deepEqual(names(buildQueue(words, cards, TODAY, 1, words, 0)), []);
   assert.deepEqual(names(buildQueue(words, {}, TODAY, 2, words, 0)), ["a", "b"]); // ไม่มีคำค้าง เพดานหมดแล้วก็ยังเรียนคำใหม่ได้
 });
+
+import { fuzzRange } from "../../app/js/srs.js";
+
+test("fuzzRange is zero for very short intervals and grows with the interval", () => {
+  assert.deepEqual([0, 1, 2].map(fuzzRange), [0, 0, 0]);
+  assert.deepEqual([3, 6].map(fuzzRange), [1, 1]);
+  assert.equal(fuzzRange(10), 1);
+  assert.equal(fuzzRange(20), 2);
+  assert.equal(fuzzRange(30), 2);
+  assert.equal(fuzzRange(100), 5);
+});
+
+test("grading without an rng never fuzzes, with an rng it stays inside the range", () => {
+  assert.equal(grade(undefined, GOOD, TODAY).due, TODAY + 3);
+  const low = grade(undefined, GOOD, TODAY, () => 0);
+  const high = grade(undefined, GOOD, TODAY, () => 0.999999);
+  assert.equal(low.ivl, 2);
+  assert.equal(high.ivl, 4);
+  assert.equal(low.due, TODAY + 2);
+  const seen = new Set();
+  let seed = 7;
+  for (let i = 0; i < 200; i += 1) {
+    seed = (seed * 1664525 + 1013904223) % 4294967296;
+    const card = grade({ due: TODAY, ivl: 20, ease: 2.5, reps: 3, lapses: 0 }, GOOD, TODAY, () => seed / 4294967296);
+    assert.equal(card.due, TODAY + card.ivl); // due - ivl ยังเป็นวันที่ตอบ
+    assert.ok(card.ivl >= 47 && card.ivl <= 53, String(card.ivl)); // 20×2.5=50 ± 3
+    seen.add(card.ivl);
+  }
+  assert.ok(seen.size > 1);
+});
+
+test("again and short intervals are never fuzzed", () => {
+  for (const rng of [() => 0, () => 0.999999]) {
+    assert.equal(grade({ due: TODAY, ivl: 10, ease: 2.5, reps: 2, lapses: 0 }, AGAIN, TODAY, rng).ivl, 0);
+    assert.equal(grade(undefined, HARD, TODAY, rng).ivl, 1);
+  }
+});

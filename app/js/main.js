@@ -136,6 +136,22 @@ function greeting(hour = new Date().getHours()) {
   return "สวัสดีตอนค่ำ 🌙";
 }
 
+// ด่านที่ยังไม่แปลรวมเป็นแถวเดียว หน้าหลักจะได้ไม่ยาวตามจำนวนด่าน
+function lockedItem(levels) {
+  const count = levels.reduce((sum, level) => sum + state.words.filter((word) => word.level === level).length, 0);
+  const numbered = levels.filter((level) => level !== "sup").map(Number);
+  const range = numbered.length > 1 ? `ด่าน ${numbered[0]}–${numbered[numbered.length - 1]}` : `ด่าน ${numbered[0]}`;
+  const label = levels.includes("sup") ? `${range} และด่านพิเศษ` : range;
+  const item = el("li", "level locked level-rest");
+  const info = el("div", "level-info");
+  info.append(
+    el("p", "level-title", `${levels.length} ด่านที่เหลือ`),
+    el("p", "level-sub", `${label} · ${count.toLocaleString()} คำ · กำลังปลูก เร็ว ๆ นี้`),
+  );
+  item.append(el("span", "level-badge", "🔒"), info);
+  return item;
+}
+
 function levelItem(level) {
   const words = state.words.filter((word) => word.level === level);
   const item = el("li", "level");
@@ -143,13 +159,6 @@ function levelItem(level) {
   const info = el("div", "level-info");
   info.append(el("p", "level-title", levelTitle(level)));
   item.append(badge, info);
-
-  if (!words.some((word) => word.translated)) {
-    item.classList.add("locked");
-    badge.textContent = "🔒";
-    info.append(el("p", "level-sub", `${words.length} คำ · กำลังปลูก เร็ว ๆ นี้`));
-    return item;
-  }
 
   // แตะที่ด่านเพื่อเรียนเฉพาะด่านนั้น
   item.classList.add("clickable");
@@ -169,8 +178,9 @@ function levelItem(level) {
     counts[stageOf(state.cards[word.headword]).id] += 1;
   });
   const planted = words.length - counts.seed;
-  info.append(el("p", "level-sub", `${words.length} คำ · ปลูกแล้ว ${planted}`));
+  info.append(el("p", "level-sub", `${planted}/${words.length} คำ`));
   item.append(el("span", "level-pct", `${Math.round((planted / words.length) * 100)}%`));
+  item.title = STAGES.map((stage) => `${stage.emoji} ${stage.label} ${counts[stage.id]}`).join(" · ");
 
   // แถบสีแยกตามระยะของต้นไม้ (ไม่รวมเมล็ด)
   const bar = el("div", "stagebar");
@@ -180,9 +190,27 @@ function levelItem(level) {
     segment.style.width = `${(counts[stage.id] / words.length) * 100}%`;
     bar.append(segment);
   });
-  const stages = el("p", "level-stages", STAGES.map((stage) => `${stage.emoji} ${counts[stage.id]}`).join("   "));
-  item.append(bar, stages);
+  item.append(bar);
   return item;
+}
+
+function levelItems() {
+  const items = [];
+  let locked = [];
+  const flush = () => {
+    if (locked.length > 0) items.push(lockedItem(locked));
+    locked = [];
+  };
+  for (const level of LEVELS) {
+    if (state.words.some((word) => word.level === level && word.translated)) {
+      flush();
+      items.push(levelItem(level));
+    } else {
+      locked.push(level);
+    }
+  }
+  flush();
+  return items;
 }
 
 // คำนวณวันพักถึงปัจจุบัน (รันซ้ำได้ ผลเดิม) แล้วคืนประวัติกับสถานะวันพัก
@@ -249,7 +277,7 @@ function renderHome() {
   announceRest(habit);
   $("garden-total").textContent = `แปลแล้ว ${translated.length.toLocaleString()} / ${state.words.length.toLocaleString()} คำ`;
 
-  $("levels").replaceChildren(...LEVELS.map(levelItem));
+  $("levels").replaceChildren(...levelItems());
   $("storage-warning").hidden = storage.persistent;
 }
 

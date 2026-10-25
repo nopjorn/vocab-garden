@@ -312,10 +312,13 @@ a {
     right: max(12px, calc(50% - 440px));
   }
 
-  .levels,
   .game-list,
   .medal-list {
     grid-template-columns: 1fr 1fr;
+  }
+
+  .levels {
+    grid-template-columns: repeat(3, 1fr);
   }
 
   #view-study,
@@ -594,6 +597,7 @@ select {
   padding: 0;
   margin: 0;
   display: grid;
+  grid-template-columns: 1fr 1fr;
   gap: 10px;
 }
 
@@ -601,18 +605,22 @@ select {
   display: grid;
   grid-template-columns: auto 1fr auto;
   align-items: center;
-  gap: 4px 12px;
+  gap: 4px 10px;
   background: var(--surface);
   border: 1px solid var(--border);
   border-radius: var(--radius);
-  padding: 14px 16px;
+  padding: 12px;
   box-shadow: var(--shadow-sm);
 }
 
+.level-rest {
+  grid-column: 1 / -1;
+}
+
 .level-badge {
-  width: 44px;
-  height: 44px;
-  border-radius: 14px;
+  width: 38px;
+  height: 38px;
+  border-radius: 12px;
   display: grid;
   place-items: center;
   font-weight: 800;
@@ -662,13 +670,6 @@ select {
 
 .seg-tree {
   background: var(--tree);
-}
-
-.level-stages {
-  grid-column: 1 / -1;
-  margin: 2px 0 0;
-  font-size: 0.8rem;
-  color: var(--muted);
 }
 
 .level.locked {

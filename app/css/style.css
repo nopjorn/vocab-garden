@@ -1942,13 +1942,20 @@ html[data-text-size="large"] {
 
 .match-board {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: 1fr 1fr;
   gap: 10px;
   margin-top: 12px;
 }
 
+.match-column {
+  display: grid;
+  grid-auto-rows: 1fr;
+  align-content: start;
+  gap: 10px;
+}
+
 .tile {
-  min-height: 76px;
+  min-height: 64px;
   padding: 8px;
   font-size: 1rem;
   font-weight: 700;

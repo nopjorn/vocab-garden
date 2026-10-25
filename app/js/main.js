@@ -1104,16 +1104,24 @@ function startMatch() {
   Object.assign(match, { round, open: [], matched: 0, moves: 0, startedAt: null, locked: false });
   $("match-result").hidden = true;
   $("match-board").hidden = false;
-  $("match-board").replaceChildren(
-    ...round.tiles.map((tile) => {
-      const button = el("button", `tile tile-${tile.lang}`, tile.text);
-      button.type = "button";
-      button.dataset.id = tile.id;
-      button.setAttribute("aria-pressed", "false");
-      if (tile.lang === "en") button.lang = "en";
-      return button;
-    }),
-  );
+  // คำอังกฤษอยู่คอลัมน์ซ้าย คำแปลอยู่คอลัมน์ขวา (สลับลำดับในแต่ละฝั่งแล้ว)
+  const column = (lang) => {
+    const side = el("div", "match-column");
+    side.append(
+      ...round.tiles
+        .filter((tile) => tile.lang === lang)
+        .map((tile) => {
+          const button = el("button", `tile tile-${tile.lang}`, tile.text);
+          button.type = "button";
+          button.dataset.id = tile.id;
+          button.setAttribute("aria-pressed", "false");
+          if (tile.lang === "en") button.lang = "en";
+          return button;
+        }),
+    );
+    return side;
+  };
+  $("match-board").replaceChildren(column("en"), column("th"));
   renderMatchStats();
   show("match");
 }

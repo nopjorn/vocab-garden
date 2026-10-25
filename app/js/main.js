@@ -4,6 +4,7 @@ import { launchConfetti } from "./confetti.js";
 import { canSpeak, speak } from "./speech.js";
 import { buildQuestion, gradeTyped } from "./quiz.js";
 import { playSfx } from "./sfx.js";
+import { CARD_HEIGHT, CARD_WIDTH, buildCardData, drawCard } from "./sharecard.js";
 import { compareText, weeklyReport } from "./weekly.js";
 import { buildIcs, parseTime } from "./reminder.js";
 import { buildCalendar, cellLabel } from "./calendar.js";
@@ -1223,6 +1224,51 @@ async function shareWordle() {
   }
 }
 
+// ---------- การ์ดแชร์สวน ----------
+
+// วาดการ์ดสวนของฉันเป็นรูป PNG แล้วแชร์ผ่านเมนูแชร์ของเครื่อง (ไม่รองรับ = ดาวน์โหลดรูปแทน)
+async function shareGarden() {
+  const today = dayNumber();
+  const { history, active, rest } = refreshHabit(today);
+  const unlocked = storage.loadMedals();
+  const cards = translatedWords().map((word) => state.cards[word.headword]).filter(Boolean);
+  const data = buildCardData({
+    planted: cards.length,
+    trees: cards.filter((card) => stageOf(card).id === "tree").length,
+    streak: streakOf(active, today, rest.frozen).current,
+    reviews: totalReviews(history),
+    flowers: LEVELS.filter((level) => flowerId(level) in unlocked).map((level) => flowerOf(level, LEVELS).emoji),
+    medals: MEDALS.filter((medal) => medal.id in unlocked).map((medal) => medal.emoji),
+    decorations: ownedDecorations(unlocked).map((decoration) => decoration.emoji),
+  });
+  const canvas = el("canvas");
+  canvas.width = CARD_WIDTH;
+  canvas.height = CARD_HEIGHT;
+  drawCard(canvas.getContext("2d"), data);
+  const blob = await new Promise((resolve) => canvas.toBlob(resolve, "image/png"));
+  if (!blob) {
+    toast("สร้างรูปไม่สำเร็จ ลองใหม่อีกครั้งนะ");
+    return;
+  }
+  const file = new File([blob], "vocab-garden.png", { type: "image/png" });
+  try {
+    if (navigator.canShare?.({ files: [file] })) {
+      await navigator.share({ files: [file], title: "สวนคำศัพท์ของฉัน" });
+      return;
+    }
+  } catch (error) {
+    if (error.name === "AbortError") return; // ผู้ใช้ปิดหน้าต่างแชร์เอง
+  }
+  const link = el("a");
+  link.href = URL.createObjectURL(blob);
+  link.download = file.name;
+  document.body.append(link);
+  link.click();
+  link.remove();
+  setTimeout(() => URL.revokeObjectURL(link.href), 1000);
+  toast("บันทึกรูปการ์ดแล้ว นำไปแชร์ได้เลย 📤");
+}
+
 const match = { round: null, open: [], matched: 0, moves: 0, startedAt: null, timer: null, locked: false };
 
 function stopMatchTimer() {
@@ -1931,6 +1977,7 @@ function bindEvents() {
     if (button) wordleKey(button.dataset.key);
   });
   $("wordle-share").addEventListener("click", shareWordle);
+  $("share-garden").addEventListener("click", shareGarden);
   $("scramble-tiles").addEventListener("click", (event) => {
     const button = event.target.closest(".scramble-tile");
     if (button) scramblePick(Number(button.dataset.index));

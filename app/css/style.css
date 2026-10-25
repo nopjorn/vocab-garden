@@ -2069,6 +2069,96 @@ html[data-text-size="large"] {
   text-align: center;
 }
 
+.flash-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 8px;
+}
+
+.flash-quick {
+  display: flex;
+  gap: 12px;
+}
+
+.flash-levels {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+  gap: 4px 12px;
+  margin-top: 8px;
+}
+
+.flash-statuses {
+  display: grid;
+  gap: 4px;
+  margin: 8px 0;
+}
+
+.fc {
+  display: grid;
+  align-content: center;
+  justify-items: center;
+  gap: 10px;
+  width: 100%;
+  min-height: 260px;
+  margin-top: 12px;
+  padding: 24px 18px;
+  text-align: center;
+  color: var(--text);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-md);
+}
+
+.fc-front,
+.fc-back {
+  display: grid;
+  justify-items: center;
+  gap: 8px;
+  width: 100%;
+}
+
+.fc-back {
+  padding-top: 12px;
+  border-top: 1px dashed var(--border);
+}
+
+.fc-word {
+  font-size: 2.2rem;
+  line-height: 1.2;
+}
+
+.fc-meaning {
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+.fc-example {
+  font-weight: 600;
+}
+
+.fc .senses {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 4px;
+}
+
+.flash-actions {
+  margin-top: 12px;
+}
+
+.flash-actions button {
+  flex: 1;
+}
+
+#flash-speak {
+  display: block;
+  margin: 12px auto 0;
+}
+
 .match-board {
   display: grid;
   grid-template-columns: 1fr 1fr;

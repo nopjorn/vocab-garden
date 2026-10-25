@@ -13,6 +13,8 @@ const KEYS = {
   notes: "vg:notes",
   games: "vg:games",
   medals: "vg:medals",
+  log: "vg:log",
+  weekSeen: "vg:week-seen",
 };
 const HISTORY_KEEP_DAYS = 400; // เก็บประวัติการทวนรายวันย้อนหลังไม่เกินนี้
 export const SPEECH_RATE_CHOICES = [0.7, 0.9, 1.1]; // ช้า / ปกติ / เร็ว
@@ -80,6 +82,19 @@ function validHistory(days) {
     ([day, count]) => Number.isInteger(Number(day)) && Number.isInteger(count) && count >= 0,
   );
   return ok ? days : null;
+}
+
+// สถิติรายวันแบบละเอียดสำหรับสรุปประจำสัปดาห์ { [เลขวัน]: { n: คำใหม่ที่เริ่มเรียน, t: ต้นไม้ใหญ่ที่โตใหม่, a: ครั้งที่ตอบ "ยังจำไม่ได้" } }
+// รายการที่ผิดรูปแบบถูกตัดทิ้ง (ไม่ใช่ object = null)
+function validLog(log) {
+  if (log === null || typeof log !== "object" || Array.isArray(log)) return null;
+  const clean = {};
+  for (const [day, entry] of Object.entries(log)) {
+    if (!Number.isInteger(Number(day)) || entry === null || typeof entry !== "object") continue;
+    const count = (value) => (Number.isInteger(value) && value >= 0 ? value : 0);
+    clean[day] = { n: count(entry.n), t: count(entry.t), a: count(entry.a) };
+  }
+  return clean;
 }
 
 // โน้ตช่วยจำ { [คำหลัก]: ข้อความ } เก็บเฉพาะข้อความที่ไม่ว่างและตัดให้ไม่เกิน NOTE_MAX (ไม่ใช่ object = null)
@@ -221,6 +236,30 @@ export function createStorage(store = globalThis.localStorage) {
       return days[today];
     },
 
+    // สถิติรายวันแบบละเอียด (ใช้ทำสรุปประจำสัปดาห์) เก็บย้อนหลังเท่าประวัติการทวน
+    loadLog() {
+      return validLog(read(KEYS.log, null)) || {};
+    },
+    // เพิ่มสถิติของวันนั้น (delta = { n, t, a } ที่ไม่ใส่ถือเป็น 0)
+    addLog(today, delta) {
+      const log = this.loadLog();
+      const entry = log[today] || { n: 0, t: 0, a: 0 };
+      log[today] = { n: entry.n + (delta.n || 0), t: entry.t + (delta.t || 0), a: entry.a + (delta.a || 0) };
+      Object.keys(log).forEach((day) => {
+        if (Number(day) < today - HISTORY_KEEP_DAYS) delete log[day];
+      });
+      write(KEYS.log, log);
+      return log;
+    },
+    // สัปดาห์ล่าสุดที่แสดงสรุปให้ดูแล้ว (เก็บเลขวันแรกของสัปดาห์นั้น)
+    loadWeekSeen() {
+      const saved = read(KEYS.weekSeen, null);
+      return Number.isInteger(saved) ? saved : null;
+    },
+    saveWeekSeen(weekStart) {
+      write(KEYS.weekSeen, weekStart);
+    },
+
     // ข้อมูลรายวัน: จำนวนคำใหม่ที่เริ่มเรียนไปแล้ว และฉลองถึงเป้าหมายไปแล้วหรือยัง (วันใหม่เริ่มต้นใหม่)
     loadDaily(today) {
       const saved = read(KEYS.daily, null);
@@ -321,6 +360,7 @@ export function createStorage(store = globalThis.localStorage) {
         notes: this.loadNotes(),
         games: this.loadGames(),
         medals: this.loadMedals(),
+        log: this.loadLog(),
       };
     },
     // คืนจำนวนคำที่นำเข้า หรือโยน Error ถ้าไฟล์ไม่ถูกต้อง
@@ -350,6 +390,16 @@ export function createStorage(store = globalThis.localStorage) {
       // ไฟล์สำรองเก่า (ก่อน v0.19.0) ไม่มีเหรียญ ให้คงของเดิมไว้ ไฟล์ใหม่รวมเหรียญเข้ากับที่มีอยู่ (เหรียญไม่หาย)
       const medals = data.medals === undefined ? null : validMedals(data.medals);
       if (medals) write(KEYS.medals, { ...this.loadMedals(), ...medals });
+      // ไฟล์สำรองเก่า (ก่อน v0.26.0) ไม่มีสถิติรายวันแบบละเอียด ให้คงของเดิมไว้ ไฟล์ใหม่รวมเข้ากับที่มีอยู่ (วันเดียวกันเอาค่าที่มากกว่า)
+      const log = data.log === undefined ? null : validLog(data.log);
+      if (log) {
+        const merged = this.loadLog();
+        for (const [day, entry] of Object.entries(log)) {
+          const old = merged[day] || { n: 0, t: 0, a: 0 };
+          merged[day] = { n: Math.max(old.n, entry.n), t: Math.max(old.t, entry.t), a: Math.max(old.a, entry.a) };
+        }
+        write(KEYS.log, merged);
+      }
       return Object.keys(cards).length;
     },
 

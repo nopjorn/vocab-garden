@@ -4,6 +4,7 @@ import { launchConfetti } from "./confetti.js";
 import { canSpeak, speak } from "./speech.js";
 import { buildQuestion, gradeTyped } from "./quiz.js";
 import { playSfx } from "./sfx.js";
+import { compareText, weeklyReport } from "./weekly.js";
 import { buildIcs, parseTime } from "./reminder.js";
 import { buildCalendar, cellLabel } from "./calendar.js";
 import { wordOfDay } from "./daily.js";
@@ -219,6 +220,26 @@ function levelItems() {
   return items;
 }
 
+// สรุปสัปดาห์ที่แล้ว: โชว์ที่หน้าหลังครั้งแรกของสัปดาห์ใหม่ จนกว่าจะกดปิด (สัปดาห์ที่ไม่ได้ท่องเลยไม่โชว์)
+function renderWeekly(today, active) {
+  const report = weeklyReport(active, storage.loadLog(), today, storage.loadWeekSeen());
+  $("weekly").hidden = !report;
+  if (!report) return;
+  const { week, previous } = report;
+  const lines = [
+    `🔁 ทวน ${week.reviews.toLocaleString()} ครั้ง ใน ${week.activeDays} วัน${compareText(week.reviews, previous.reviews) ? ` (${compareText(week.reviews, previous.reviews)})` : ""}`,
+  ];
+  if (week.hasLog) {
+    lines.push(`🌱 ปลูกใหม่ ${week.planted} คำ`, `🌳 โตเป็นต้นไม้ใหญ่ ${week.trees} ต้น`);
+    if (week.rate !== null) lines.push(`🎯 ตอบจำได้ ${week.rate}%`);
+  }
+  $("weekly-list").replaceChildren(...lines.map((line) => el("li", "", line)));
+  $("weekly-dismiss").onclick = () => {
+    storage.saveWeekSeen(report.markSeen);
+    $("weekly").hidden = true;
+  };
+}
+
 // ศัพท์ของวันนี้: คำเดียวกันทั้งวัน แตะเพื่อดูรายละเอียด (ไม่เปลี่ยนตารางทวน)
 function renderWordOfDay(today) {
   const word = wordOfDay(translatedWords(), today);
@@ -298,6 +319,7 @@ function renderHome() {
   announceRest(habit);
   $("garden-total").textContent = `แปลแล้ว ${translated.length.toLocaleString()} / ${state.words.length.toLocaleString()} คำ`;
 
+  renderWeekly(today, habit.active);
   renderWordOfDay(today);
   $("levels").replaceChildren(...levelItems());
   $("storage-warning").hidden = storage.persistent;
@@ -606,6 +628,7 @@ function answer(rating) {
     state.cards[word.headword] = card;
     storage.saveCards(state.cards);
     const count = storage.addReview(session.day);
+    storage.addLog(session.day, { n: before ? 0 : 1, t: stageMove(before, card)?.stage.id === "tree" ? 1 : 0, a: rating === AGAIN ? 1 : 0 });
     if (!before) storage.saveNewCount(session.day, storage.newCountToday(session.day) + 1);
     session.answered += 1;
     celebrate(word, before, card, rating);
@@ -680,6 +703,7 @@ function markKnown() {
   if (move) recordGrowth(session.grown, word.headword, move);
   storage.saveCards(state.cards);
   const count = storage.addReview(session.day);
+  storage.addLog(session.day, { n: before ? 0 : 1, t: move?.stage.id === "tree" ? 1 : 0 });
   session.answered += 1;
   session.learned.add(word.headword);
   toast(`${word.headword} ข้ามไปเป็นต้นไม้ใหญ่แล้ว 🌳`);

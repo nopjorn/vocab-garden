@@ -1932,12 +1932,23 @@ function makeReminder() {
   toast("สร้างไฟล์นัดแล้ว เปิดไฟล์ด้วยแอปปฏิทินเพื่อเพิ่มการเตือน 📅");
 }
 
-function exportBackup() {
+// ส่งออกไฟล์สำรอง: เครื่องที่รองรับจะเปิดเมนูแชร์ให้เลือกปลายทางเอง (บันทึกลงไฟล์ AirDrop เมล ฯลฯ) ไม่รองรับก็ดาวน์โหลดตรง ๆ
+async function exportBackup() {
   const data = storage.exportData(self.VG_VERSION);
+  const name = `vocab-garden-backup-${data.exportedAt.slice(0, 10)}.json`;
   const blob = new Blob([JSON.stringify(data, null, 2)], { type: "application/json" });
+  try {
+    const file = new File([blob], name, { type: "application/json" });
+    if (navigator.canShare?.({ files: [file] })) {
+      await navigator.share({ files: [file], title: "ไฟล์สำรอง Vocab Garden" });
+      return;
+    }
+  } catch (error) {
+    if (error.name === "AbortError") return; // ผู้ใช้ปิดเมนูแชร์เอง
+  }
   const link = el("a");
   link.href = URL.createObjectURL(blob);
-  link.download = `vocab-garden-backup-${data.exportedAt.slice(0, 10)}.json`;
+  link.download = name;
   document.body.append(link);
   link.click();
   link.remove();
@@ -1959,7 +1970,7 @@ async function importBackup(file) {
 }
 
 function resetProgress() {
-  if (!confirm("ล้างความคืบหน้าทั้งหมดใช่ไหม? ย้อนกลับไม่ได้นะ (แนะนำให้ดาวน์โหลดไฟล์สำรองก่อน)")) return;
+  if (!confirm("ล้างความคืบหน้าทั้งหมดใช่ไหม? ย้อนกลับไม่ได้นะ (แนะนำให้ส่งออกไฟล์สำรองก่อน)")) return;
   storage.reset();
   state.cards = storage.loadCards();
   state.settings = storage.loadSettings();

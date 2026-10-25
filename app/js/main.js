@@ -953,7 +953,7 @@ function startScramble() {
   if (!pool) return;
   const round = buildScrambleRound(translatedWords(), Math.random, SCRAMBLE_COUNT, pool);
   if (!round) {
-    toast("คำที่เลือกไว้ยังไม่พอสำหรับเกมนี้ ลองเลือกแปลงหรือสถานะเพิ่มที่หน้าเล่นนะ");
+    toast("คำที่เลือกไว้ยังไม่พอสำหรับเกมนี้ ลองเลือกแปลงหรือสถานะเพิ่มที่หน้าเกมส์นะ");
     location.hash = "#/play";
     return;
   }
@@ -1321,7 +1321,7 @@ function playFilterText() {
   return `${levelText} · ${statusText}`;
 }
 
-// ส่วนเลือกคำในหน้าเล่น: แปลง สถานะ (ตัวเลขข้างสถานะนับเฉพาะแปลงที่เลือก) และสรุปจำนวนคำ
+// ส่วนเลือกคำในหน้าเกมส์: แปลง สถานะ (ตัวเลขข้างสถานะนับเฉพาะแปลงที่เลือก) และสรุปจำนวนคำ
 function renderPlayFilter() {
   const levels = playLevelSet();
   const words = translatedWords();
@@ -1362,18 +1362,18 @@ function renderPlayFilter() {
   $("play-filter-summary").textContent = playFilterText();
 }
 
-// เกมที่ใช้กองคำนี้ ถ้าคำไม่พอให้กลับไปปรับที่หน้าเล่น
+// เกมที่ใช้กองคำนี้ ถ้าคำไม่พอให้กลับไปปรับที่หน้าเกมส์
 function poolOrBack() {
   const pool = playPool();
   if (pool.length === 0) {
-    toast("ยังไม่มีคำที่ตรงเงื่อนไข ลองเลือกแปลงหรือสถานะเพิ่มที่หน้าเล่นนะ");
+    toast("ยังไม่มีคำที่ตรงเงื่อนไข ลองเลือกแปลงหรือสถานะเพิ่มที่หน้าเกมส์นะ");
     location.hash = "#/play";
     return null;
   }
   return pool;
 }
 
-// หน้าตั้งค่าแฟลชการ์ด: จำนวนใบและด้านหน้าการ์ด (คำมาจากที่เลือกไว้ในหน้าเล่น)
+// หน้าตั้งค่าแฟลชการ์ด: จำนวนใบและด้านหน้าการ์ด (คำมาจากที่เลือกไว้ในหน้าเกมส์)
 function renderFlashSetup() {
   const { prefs } = flash;
   fillSelect($("flash-size"), DECK_SIZE_CHOICES, prefs.size, FLASH_SIZE_LABELS);
@@ -1381,7 +1381,7 @@ function renderFlashSetup() {
   const total = playPool().length;
   const deckSize = prefs.size > 0 ? Math.min(prefs.size, total) : total;
   $("flash-pool").textContent = `🎯 ${playFilterText()}`;
-  $("flash-ready").textContent = total > 0 ? `พร้อมเล่น ${deckSize} ใบ (จากคำที่ตรงเงื่อนไข ${total} คำ)` : "ยังไม่มีคำที่ตรงเงื่อนไข กลับไปเลือกแปลงหรือสถานะที่หน้าเล่นนะ";
+  $("flash-ready").textContent = total > 0 ? `พร้อมเล่น ${deckSize} ใบ (จากคำที่ตรงเงื่อนไข ${total} คำ)` : "ยังไม่มีคำที่ตรงเงื่อนไข กลับไปเลือกแปลงหรือสถานะที่หน้าเกมส์นะ";
   $("flash-start").disabled = total === 0;
 }
 
@@ -1491,7 +1491,7 @@ function startMatch() {
   if (!pool) return;
   const round = buildMatchRound(pool);
   if (!round) {
-    toast("คำที่เลือกไว้ยังไม่พอสำหรับเกมนี้ ลองเลือกแปลงหรือสถานะเพิ่มที่หน้าเล่นนะ");
+    toast("คำที่เลือกไว้ยังไม่พอสำหรับเกมนี้ ลองเลือกแปลงหรือสถานะเพิ่มที่หน้าเกมส์นะ");
     location.hash = "#/play";
     return;
   }

@@ -18,7 +18,7 @@ export const POS_LABELS = {
 };
 
 export function levelTitle(level) {
-  return level === "sup" ? "ด่านพิเศษ: วัน เดือน ตัวเลข" : `ด่าน ${Number(level)}`;
+  return level === "sup" ? "แปลงพิเศษ: วัน เดือน ตัวเลข" : `แปลง ${Number(level)}`;
 }
 
 function parseSenses(meanings) {

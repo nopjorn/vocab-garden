@@ -4,6 +4,7 @@ import { launchConfetti } from "./confetti.js";
 import { canSpeak, speak } from "./speech.js";
 import { buildQuestion, gradeTyped } from "./quiz.js";
 import { playSfx } from "./sfx.js";
+import { buildCalendar, cellLabel } from "./calendar.js";
 import { wordOfDay } from "./daily.js";
 import { EXAM_COUNT, TIERS, bestTier, buildExam, examMedalIds, examReady, rescheduleMissed, tierOf } from "./exam.js";
 import { DECORATIONS, FLOWERS, bloomedLevels, flowerId, flowerOf, ownedDecorations, seasonOf } from "./decor.js";
@@ -1333,9 +1334,27 @@ function renderGarden() {
   );
   $("g-week").setAttribute("aria-label", `ทวน 7 วันล่าสุด: ${week.map((entry) => entry.count).join(", ")} ครั้ง`);
   $("g-empty").hidden = totalReviews(days) > 0;
+  renderCalendar(active, today, rest.frozen);
   renderPlots(today);
   renderLeeches();
   renderMedals();
+}
+
+// ปฏิทินสวน: ช่องละหนึ่งวัน สีเข้มตามจำนวนที่ทวน (รวมวันที่เล่นเกม) คอลัมน์ละหนึ่งสัปดาห์
+function renderCalendar(active, today, frozen) {
+  const calendar = buildCalendar(active, today, frozen);
+  $("cal-grid").style.setProperty("--weeks", calendar.weeks);
+  $("cal-months").style.setProperty("--weeks", calendar.weeks);
+  $("cal-months").replaceChildren(...calendar.months.map((name) => el("span", "", name)));
+  $("cal-grid").replaceChildren(
+    ...calendar.cells.map((cell) => {
+      const node = el("span", `cal-cell${cell.future ? " future" : ` l${cell.level}`}${cell.rest ? " rest" : ""}${cell.day === today ? " today" : ""}`);
+      node.title = cellLabel(cell);
+      return node;
+    }),
+  );
+  $("cal-summary").textContent = `ท่อง ${calendar.activeDays} วัน ใน ${calendar.weeks} สัปดาห์ล่าสุด (ทวนรวม ${calendar.total.toLocaleString()} ครั้ง)`;
+  $("cal-grid").setAttribute("aria-label", `ปฏิทินสวน ท่อง ${calendar.activeDays} วัน ใน ${calendar.weeks} สัปดาห์ล่าสุด`);
 }
 
 function renderLeeches() {

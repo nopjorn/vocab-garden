@@ -3467,30 +3467,54 @@ html[data-text-size="large"] {
   }
 }
 
-/* ===== หน้าของแปลงบนจอกว้าง: ข้อมูลและตัวกรองอยู่ซ้าย ต้นไม้ทั้งแปลงอยู่ขวา ให้เห็นครบโดยไม่ต้องเลื่อน =====
-   มุมมองรายการคำยังเป็นคอลัมน์เดียวกลางจอ เพราะรายการยาวและแถบเลือกต้องติดอยู่ตอนเลื่อน */
-@media (min-width: 960px) and (hover: hover) and (pointer: fine), (min-width: 960px) and (orientation: landscape) and (pointer: coarse) {
-  #view-plot:has(#plot-list:not([hidden])) {
-    max-width: 760px;
-    margin-inline: auto;
-  }
+/* ===== หน้าของแปลงบนจอกว้าง: ข้อมูลและตัวกรองอยู่ซ้าย ต้นไม้หรือรายการคำอยู่ขวา =====
+   ทั้งสองมุมมองใช้เลย์เอาต์เดียวกัน สลับแล้วหน้าไม่กระโดด แถบซ้ายติดอยู่ตอนเลื่อนรายการยาว */
+.plot-side,
+.plot-main,
+.plot-foot {
+  display: contents;
+}
 
-  #view-plot:not([hidden]):not(:has(#plot-list:not([hidden]))) {
+@media (min-width: 960px) and (hover: hover) and (pointer: fine), (min-width: 960px) and (orientation: landscape) and (pointer: coarse) {
+  #view-plot:not([hidden]) {
     display: grid;
     grid-template-columns: minmax(280px, 340px) minmax(0, 1fr);
+    grid-template-rows: auto 1fr;
     gap: 0 32px;
     align-items: start;
   }
 
-  #view-plot:not(:has(#plot-list:not([hidden]))) > * {
-    grid-column: 1;
+  #view-plot .plot-side,
+  #view-plot .plot-main,
+  #view-plot .plot-foot {
+    display: block;
   }
 
-  #view-plot:not(:has(#plot-list:not([hidden]))) > .plot-grid {
+  #view-plot .plot-side {
+    grid-column: 1;
+    grid-row: 1;
+    position: sticky;
+    top: 80px;
+  }
+
+  #view-plot .plot-foot {
+    grid-column: 1;
+    grid-row: 2;
+  }
+
+  #view-plot .plot-main {
     grid-column: 2;
-    grid-row: 1 / span 12;
+    grid-row: 1 / span 2;
+  }
+
+  #view-plot .plot-main .plot-grid {
     margin-bottom: 0;
     grid-template-columns: repeat(auto-fill, minmax(52px, 1fr));
+  }
+
+  /* แถบด้านซ้ายติดอยู่แล้ว ไม่ต้องติดซ้อนอีกชั้น */
+  #view-plot .select-bar {
+    position: static;
   }
 
   #view-plot .plot-filters {

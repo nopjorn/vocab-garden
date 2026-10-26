@@ -237,7 +237,7 @@
 
       <div class="garden-plots">
       <h2>แปลงสวน</h2>
-      <p class="muted small">คำละหนึ่งต้น แตะที่แปลงเพื่อกางดูต้นไม้ แล้วแตะต้นไม้เพื่อดูคำแปลและวันรดน้ำครั้งถัดไป ต้นที่เหี่ยว 🥀 ถึงเวลารดน้ำแล้ว (ทวน) แต่ต้นไม้ไม่มีวันตาย</p>
+      <p class="muted small">คำละหนึ่งต้น แตะที่แปลงเพื่อเปิดดูต้นไม้ในแปลงนั้น ต้นที่เหี่ยว 🥀 ถึงเวลารดน้ำแล้ว (ทวน) แต่ต้นไม้ไม่มีวันตาย</p>
       <p class="water-row">
         <span id="water-note" class="water-note"></span>
         <a id="water-go" href="#/study" class="button primary" hidden>💧 ไปรดน้ำ</a>
@@ -276,6 +276,24 @@
       <p id="g-empty" class="muted small">ยังไม่มีประวัติการทวน ลองท่องศัพท์สักรอบ แล้วสถิติจะมาขึ้นที่นี่
         (ประวัตินับตั้งแต่เวอร์ชัน 0.6.0 เป็นต้นไป)</p>
       </div>
+    </section>
+
+    <section id="view-plot" class="plot-page" hidden>
+      <div class="plot-nav">
+        <a href="#/garden" class="button icon-btn" aria-label="กลับไปหน้าสวน" title="กลับไปหน้าสวน">←</a>
+        <h1 id="plot-title"></h1>
+        <span class="plot-arrows">
+          <a id="plot-prev" class="button icon-btn" aria-label="แปลงก่อนหน้า" title="แปลงก่อนหน้า">‹</a>
+          <a id="plot-next" class="button icon-btn" aria-label="แปลงถัดไป" title="แปลงถัดไป">›</a>
+        </span>
+      </div>
+      <p id="plot-sub" class="muted"></p>
+      <div id="plot-stagebar" class="stagebar" aria-hidden="true"></div>
+      <div id="plot-filters" class="plot-filters" role="group" aria-label="กรองต้นไม้ตามระยะ"></div>
+      <div id="plot-grid" class="plot-grid"></div>
+      <p id="plot-empty" class="muted small" hidden>ไม่มีต้นไม้ในระยะนี้</p>
+      <p class="muted small">แตะต้นไม้เพื่อดูคำแปลและวันรดน้ำครั้งถัดไป ต้นที่เหี่ยว 🥀 ถึงเวลารดน้ำแล้ว (ทวน) แต่ต้นไม้ไม่มีวันตาย</p>
+      <div id="plot-exam" class="panel"></div>
     </section>
 
     <section id="view-play" hidden>
@@ -462,7 +480,7 @@
 
     <section id="view-exam" hidden>
       <div class="study-top">
-        <a href="#/garden" class="close" aria-label="กลับไปหน้าสวน">✕</a>
+        <a href="#/garden" id="exam-close" class="close" aria-label="กลับไปหน้าสวน">✕</a>
         <strong id="exam-title" class="game-title">📝 สอบปลายแปลง</strong>
         <span id="exam-count" class="muted small"></span>
       </div>
@@ -482,7 +500,7 @@
           <ul id="exam-missed-list" class="exam-missed-list"></ul>
         </div>
         <button type="button" id="exam-again" class="primary wide">🔁 สอบอีกครั้ง</button>
-        <a href="#/garden" class="button wide">กลับไปหน้าสวน</a>
+        <a href="#/garden" id="exam-back" class="button wide">กลับไปหน้าสวน</a>
       </div>
     </section>
 

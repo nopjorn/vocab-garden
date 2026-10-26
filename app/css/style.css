@@ -2053,66 +2053,36 @@ html[data-text-size="large"] {
 
 .plots {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 8px;
-  align-items: start;
 }
 
-/* แปลงที่กางอยู่กินเต็มความกว้าง */
-.plot[open] {
-  grid-column: 1 / -1;
-}
-
+/* แปลงในหน้าสวน: แผ่นเล็ก ๆ เรียง 4 แปลงต่อแถว แตะแล้วไปหน้าของแปลงนั้น */
 .plot {
+  display: block;
+  min-width: 0;
+  color: inherit;
+  text-decoration: none;
   background: var(--surface);
   border: 1px solid var(--border);
   border-radius: var(--radius);
 }
 
+.plot:active {
+  transform: scale(0.97);
+}
+
 .plot-head {
   display: grid;
-  grid-template-columns: auto 1fr;
-  align-items: center;
-  gap: 4px 10px;
-  padding: 12px;
-  cursor: pointer;
-  list-style: none;
-}
-
-.plot-head::-webkit-details-marker {
-  display: none;
-}
-
-.plot-head::after {
-  content: "▾";
-  position: absolute;
-  top: 12px;
-  right: 12px;
-  color: var(--muted);
-}
-
-.plot-head {
-  position: relative;
-}
-
-.plot[open] > .plot-head::after {
-  content: "▴";
-}
-
-/* แปลงที่ยังไม่กาง: เป็นแปลงเล็ก ๆ เรียง 4 แปลงต่อแถว (แปลงที่กางแล้วกินเต็มความกว้าง) */
-.plot:not([open]) > .plot-head {
   grid-template-columns: 1fr;
   justify-items: center;
+  align-items: center;
   gap: 2px;
   padding: 10px 6px;
   text-align: center;
 }
 
-.plot:not([open]) > .plot-head::after {
-  content: none;
-}
-
-.plot:not([open]) .level-title {
+.plot .level-title {
   position: absolute;
   width: 1px;
   height: 1px;
@@ -2120,16 +2090,15 @@ html[data-text-size="large"] {
   clip-path: inset(50%);
 }
 
-.plot:not([open]) .level-sub {
+.plot .level-sub {
   font-size: 0.72rem;
 }
 
-.plot:not([open]) .level-stages {
+.plot .level-stages {
   font-size: 0.62rem;
-  white-space: nowrap;
 }
 
-.plot:not([open]) .stagebar {
+.plot .stagebar {
   width: 100%;
   height: 8px;
   margin-top: 4px;
@@ -2140,6 +2109,89 @@ html[data-text-size="large"] {
   grid-template-columns: repeat(auto-fill, minmax(38px, 1fr));
   gap: 4px;
   padding: 0 12px 12px;
+}
+
+/* หน้าของแต่ละแปลง */
+.plot-nav {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 0.5rem 0 0.25rem;
+}
+
+.plot-nav h1 {
+  flex: 1;
+  margin: 0;
+  min-width: 0;
+}
+
+.plot-nav .icon-btn,
+.plot-arrows .icon-btn {
+  width: 44px;
+  height: 44px;
+  min-height: 44px;
+  margin: 0;
+  padding: 0;
+  border-radius: 50%;
+  font-size: 1.4rem;
+}
+
+.plot-arrows {
+  display: flex;
+  gap: 6px;
+}
+
+.plot-page .stagebar {
+  margin: 0 0 12px;
+}
+
+/* มือถือเลื่อนแถวตัวกรองไปด้านข้างได้ แทนที่จะตกบรรทัดหลายแถว */
+.plot-filters {
+  display: flex;
+  gap: 6px;
+  margin-bottom: 10px;
+  padding-bottom: 4px;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+.plot-filters::-webkit-scrollbar {
+  display: none;
+}
+
+.plot-filter {
+  flex: none;
+  min-height: 40px;
+  padding: 6px 12px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  border-radius: 999px;
+  box-shadow: none;
+}
+
+.plot-filter[aria-pressed="true"] {
+  color: var(--link);
+  background: var(--brand-soft);
+  border-color: var(--link);
+  font-weight: 700;
+}
+
+.plot-page .plot-grid {
+  grid-template-columns: repeat(auto-fill, minmax(48px, 1fr));
+  gap: 6px;
+  margin-bottom: 12px;
+  padding: 12px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+}
+
+.plot-page .plant {
+  min-height: 48px;
+}
+
+.plot-page .exam-box {
+  padding: 0;
 }
 
 .plant {
@@ -2983,6 +3035,7 @@ html[data-text-size="large"] {
   #view-placement,
   #view-exam,
   #view-flash,
+  #view-plot,
   #view-changelog,
   #view-loading,
   #view-error {

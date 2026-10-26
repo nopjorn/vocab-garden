@@ -14,7 +14,7 @@ import { wordOfDay } from "./daily.js";
 import { EXAM_COUNT, TIERS, bestTier, buildExam, examMedalIds, examReady, rescheduleMissed, tierOf } from "./exam.js";
 import { DECORATIONS, FLOWERS, bloomedLevels, flowerId, flowerOf, ownedDecorations, seasonOf } from "./decor.js";
 import { COMEBACK_DAYS, MEDALS, isEarlyBird, isPerfectRound, newMedals } from "./achievements.js";
-import { LEECH_LAPSES, dueLabel, leechWords, matchesQuery, plantInfo, plantedInLevel, plotSummary, reviewedToday } from "./garden.js";
+import { LEECH_LAPSES, PLOT_FILTERS, dueLabel, leechWords, matchesQuery, plantInfo, plantMatchesFilter, plantedInLevel, plotFilterCounts, plotSummary, reviewedToday } from "./garden.js";
 import { daysAway, goalProgress, mergeDays, settleRest } from "./habit.js";
 import { buildMatchRound, formatSeconds, isMatch, isNewBest } from "./match.js";
 import { buildPlacement, estimateKnown, knownWords, recommendLevel, scorePlacement } from "./placement.js";
@@ -42,8 +42,8 @@ import { recentDays, stageCounts, streakOf, totalReviews } from "./stats.js";
 import { SUPPORT_LINKS } from "./support.js";
 import { isNewer, parseSwVersion } from "./update.js";
 
-const VIEWS = ["loading", "error", "home", "study", "done", "garden", "play", "match", "flash", "wordle", "scramble", "listen", "dictation", "placement", "exam", "settings", "about", "changelog"];
-const TAB_OF_VIEW = { changelog: "about", match: "play", flash: "play", wordle: "play", scramble: "play", listen: "play", dictation: "play", placement: "settings", exam: "garden" }; // หน้าที่ไม่มีแท็บของตัวเอง ให้ไฮไลต์แท็บนี้แทน
+const VIEWS = ["loading", "error", "home", "study", "done", "garden", "plot", "play", "match", "flash", "wordle", "scramble", "listen", "dictation", "placement", "exam", "settings", "about", "changelog"];
+const TAB_OF_VIEW = { plot: "garden", changelog: "about", match: "play", flash: "play", wordle: "play", scramble: "play", listen: "play", dictation: "play", placement: "settings", exam: "garden" }; // หน้าที่ไม่มีแท็บของตัวเอง ให้ไฮไลต์แท็บนี้แทน
 const REQUEUE_GAP = 3; // คำที่ตอบ "ยังจำไม่ได้" จะกลับมาอีกครั้งหลังการ์ดใบอื่นอีก 3 ใบ
 const SWIPE_DISTANCE = 90; // ปัดเกินกี่ px ถึงนับเป็นการให้คะแนน
 const SWIPE_PREVIEW = 40; // ปัดเกินกี่ px ถึงเริ่มขึ้นป้ายบนการ์ด
@@ -2012,47 +2012,100 @@ function examBox(level, summary, tier) {
   return box;
 }
 
+// แถบสีสัดส่วนระยะของต้นไม้ในแปลง (counts = จำนวนต้นของแต่ละระยะ)
+function stageBarOf(counts, total) {
+  const bar = el("div", "stagebar");
+  STAGES.slice(1).forEach((stage) => {
+    if (counts[stage.id] === 0) return;
+    const segment = el("span", `seg seg-${stage.id}`);
+    segment.style.width = `${(counts[stage.id] / total) * 100}%`;
+    bar.append(segment);
+  });
+  return bar;
+}
+
+function stageCountsOf(words) {
+  const counts = Object.fromEntries(STAGES.map((stage) => [stage.id, 0]));
+  words.forEach((word) => {
+    counts[stageOf(state.cards[word.headword]).id] += 1;
+  });
+  return counts;
+}
+
+const stageTextOf = (counts) => STAGES.slice(1).map((stage) => `${stage.emoji} ${counts[stage.id]}`).join("  ");
+
 function renderPlots(today) {
   const translated = translatedWords();
   const { wilted } = plotSummary(translated, state.cards, today);
   $("water-note").textContent = wilted > 0 ? `💧 ${wilted} ต้นรอรดน้ำ (ถึงเวลาทวนแล้ว)` : "🌤️ ต้นไม้ทุกต้นชุ่มชื้นดี วันนี้ไม่ต้องรดน้ำ";
   $("water-go").hidden = wilted === 0;
 
-  // ด่านละแถวที่พับเก็บไว้ (บอกสรุปและแถบสี) แตะแล้วค่อยกางดูต้นไม้ จะได้ไม่กินพื้นที่
+  // แต่ละแปลงเป็นแผ่นเล็ก ๆ (บอกสรุปและแถบสี) แตะแล้วไปหน้าของแปลงนั้น แปลงอื่นจึงไม่ถูกดัน
   const levels = [...new Set(translated.map((word) => word.level))];
-  const open = new Set([...$("plots").querySelectorAll("details[open]")].map((node) => node.dataset.level));
   $("plots").replaceChildren(
     ...levels.map((level) => {
       const words = translated.filter((word) => word.level === level);
       const summary = plotSummary(words, state.cards, today);
-      const counts = Object.fromEntries(STAGES.map((stage) => [stage.id, 0]));
-      words.forEach((word) => {
-        counts[stageOf(state.cards[word.headword]).id] += 1;
-      });
-      const plot = el("details", "plot");
+      const counts = stageCountsOf(words);
+      const plot = el("a", "plot");
+      plot.href = `#/garden/${level}`;
       plot.dataset.level = level;
-      plot.open = open.has(level);
-      const head = el("summary", "plot-head");
+      const head = el("div", "plot-head");
       const info = el("div", "level-info");
       info.append(el("p", "level-title", levelTitle(level)), el("p", "level-sub", `${summary.planted}/${summary.total} คำ${summary.wilted ? ` · 💧 ${summary.wilted}` : ""}`));
       head.append(el("span", "level-badge", level === "sup" ? "★" : String(Number(level))), info);
-      const bar = el("div", "stagebar");
-      STAGES.slice(1).forEach((stage) => {
-        if (counts[stage.id] === 0) return;
-        const segment = el("span", `seg seg-${stage.id}`);
-        segment.style.width = `${(counts[stage.id] / words.length) * 100}%`;
-        bar.append(segment);
-      });
-      const stages = STAGES.slice(1).map((stage) => `${stage.emoji} ${counts[stage.id]}`).join("  ");
       const tier = bestTier(level, storage.loadMedals());
-      head.append(bar, el("p", "level-stages", `${stages}${tier ? `  ${tier.emoji}` : ""}`));
-      const grid = el("div", "plot-grid");
-      grid.append(...words.map((word) => plantButton(word, today)));
-      plot.append(head, grid, examBox(level, summary, tier));
+      head.append(stageBarOf(counts, words.length), el("p", "level-stages", `${stageTextOf(counts)}${tier ? `  ${tier.emoji}` : ""}`));
+      plot.append(head);
       return plot;
     }),
   );
   applyGardenSearch();
+}
+
+// ---------- หน้าของแต่ละแปลง (#/garden/<แปลง>) ----------
+
+const plotPage = { level: null, filter: "all" };
+
+function renderPlotPage(level) {
+  if (plotPage.level !== level) Object.assign(plotPage, { level, filter: "all" });
+  const today = dayNumber();
+  const translated = translatedWords();
+  const levels = [...new Set(translated.map((word) => word.level))];
+  const words = translated.filter((word) => word.level === level);
+  const summary = plotSummary(words, state.cards, today);
+  const counts = stageCountsOf(words);
+  const tier = bestTier(level, storage.loadMedals());
+
+  $("plot-title").textContent = levelTitle(level);
+  $("plot-sub").textContent = `ปลูกแล้ว ${summary.planted}/${summary.total} คำ${summary.wilted ? ` · 💧 ${summary.wilted} ต้นรอรดน้ำ` : ""}  ${stageTextOf(counts)}${tier ? `  ${tier.emoji}` : ""}`;
+  $("plot-stagebar").replaceChildren(...stageBarOf(counts, words.length).childNodes);
+
+  // ลูกศรสลับไปแปลงก่อนหน้า/ถัดไป โดยไม่ต้องกลับไปหน้าสวน
+  const index = levels.indexOf(level);
+  for (const [id, target] of [["plot-prev", levels[index - 1]], ["plot-next", levels[index + 1]]]) {
+    $(id).hidden = target === undefined;
+    if (target !== undefined) $(id).href = `#/garden/${target}`;
+  }
+
+  const filterCounts = plotFilterCounts(words, state.cards, today);
+  if (filterCounts[plotPage.filter] === 0) plotPage.filter = "all";
+  $("plot-filters").replaceChildren(
+    ...PLOT_FILTERS.filter((filter) => filter.id === "all" || filter.id === plotPage.filter || filterCounts[filter.id] > 0).map((filter) => {
+      const chip = el("button", "plot-filter", `${filter.label} ${filterCounts[filter.id]}`);
+      chip.type = "button";
+      chip.setAttribute("aria-pressed", String(filter.id === plotPage.filter));
+      chip.addEventListener("click", () => {
+        plotPage.filter = filter.id;
+        renderPlotPage(level);
+      });
+      return chip;
+    }),
+  );
+  const shown = words.filter((word) => plantMatchesFilter(state.cards[word.headword], today, plotPage.filter));
+  $("plot-grid").replaceChildren(...shown.map((word) => plantButton(word, today)));
+  $("plot-empty").hidden = shown.length > 0;
+  $("plot-exam").replaceChildren(examBox(level, summary, tier));
 }
 
 // ช่องค้นหา: พิมพ์แล้วแสดงรายการคำที่ตรงแทนแปลง (ไม่ต้องไล่หาในตาราง)
@@ -2430,11 +2483,14 @@ function startExam(level) {
   const items = LEVELS.includes(level) && examReady(state.words, state.cards, level) ? buildExam(words) : null;
   if (!items) {
     toast("ปลูกให้ครบทั้งแปลงก่อนจึงเปิดสอบได้");
-    location.hash = "#/garden";
+    location.hash = LEVELS.includes(level) ? `#/garden/${level}` : "#/garden";
     return;
   }
   Object.assign(exam, { level, items, index: 0, results: [], answered: false });
   $("exam-title").textContent = `📝 สอบ${levelTitle(level).replace(/:.*/, "")}`;
+  $("exam-close").href = `#/garden/${level}`;
+  $("exam-back").href = `#/garden/${level}`;
+  $("exam-back").textContent = "กลับไปแปลง";
   $("exam-play").hidden = false;
   $("exam-result").hidden = true;
   renderExamQuestion();
@@ -2537,11 +2593,16 @@ function finishExam() {
 
 // ---------- เส้นทาง ----------
 
+let gardenScroll = 0; // ตำแหน่งเลื่อนของหน้าสวนก่อนเข้าหน้าแปลง
+
 function route() {
   if (state.words.length === 0) return;
   // เปลี่ยนหน้า (เช่น กดย้อนกลับหรือเปิดลิงก์) ต้องปิดหน้าต่างรายละเอียดคำและโน้ตที่เปิดค้างอยู่ด้วย ไม่งั้นจะบังหน้าใหม่
   $("word-dialog").hidden = true;
   $("note-dialog").hidden = true;
+  // กลับจากหน้าแปลงมาหน้าสวน ให้เลื่อนกลับไปตำแหน่งเดิม
+  const fromPlot = !$("view-plot").hidden;
+  if (!$("view-garden").hidden) gardenScroll = window.scrollY;
   const [page, argument] = (location.hash.replace(/^#\/?/, "") || "home").split("/");
   if (page === "study") {
     if (argument === "more") startSession(null, null, true);
@@ -2588,9 +2649,13 @@ function route() {
   if (page === "play") {
     renderPlay();
     show("play");
+  } else if (page === "garden" && argument && translatedWords().some((word) => word.level === argument)) {
+    renderPlotPage(argument);
+    show("plot");
   } else if (page === "garden") {
     renderGarden();
     show("garden");
+    if (fromPlot) window.scrollTo(0, gardenScroll);
   } else if (page === "settings") {
     renderSettings();
     show("settings");
@@ -2816,7 +2881,14 @@ function bindEvents() {
       wordleKey("*");
     }
   });
-  $("plots").addEventListener("click", (event) => {
+  // สลับไปแปลงก่อนหน้า/ถัดไปโดยแทนที่หน้าเดิมในประวัติ ปุ่มย้อนกลับจะกลับไปหน้าสวนทีเดียว ไม่ต้องไล่กลับทีละแปลง
+  for (const id of ["plot-prev", "plot-next"]) {
+    $(id).addEventListener("click", (event) => {
+      event.preventDefault();
+      location.replace($(id).href);
+    });
+  }
+  $("plot-grid").addEventListener("click", (event) => {
     const button = event.target.closest(".plant");
     if (button) openWordDialog(state.words.find((entry) => entry.headword === button.dataset.headword));
   });

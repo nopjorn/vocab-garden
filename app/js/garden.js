@@ -67,3 +67,30 @@ export function leechWords(words, cards, limit = 20) {
     .sort((a, b) => cards[b.headword].lapses - cards[a.headword].lapses || a.order - b.order)
     .slice(0, limit);
 }
+
+// ตัวกรองต้นไม้ในหน้าแปลง: ทั้งหมด / รอรดน้ำ / ตามระยะ (รหัสระยะตาม STAGES ใน srs.js)
+export const PLOT_FILTERS = [
+  { id: "all", label: "ทั้งหมด" },
+  { id: "wilted", label: "💧 รอรดน้ำ" },
+  { id: "seed", label: "🌰 เมล็ด" },
+  { id: "sprout", label: "🌱 ต้นอ่อน" },
+  { id: "growing", label: "🌿 กำลังโต" },
+  { id: "tree", label: "🌳 ต้นไม้ใหญ่" },
+];
+
+export function plantMatchesFilter(card, today, filter) {
+  if (filter === "all") return true;
+  const info = plantInfo(card, today);
+  return filter === "wilted" ? info.wilted : info.stage.id === filter;
+}
+
+// จำนวนต้นไม้ของแต่ละตัวกรอง { all, wilted, seed, sprout, growing, tree }
+export function plotFilterCounts(words, cards, today) {
+  const counts = Object.fromEntries(PLOT_FILTERS.map((filter) => [filter.id, 0]));
+  for (const word of words) {
+    for (const filter of PLOT_FILTERS) {
+      if (plantMatchesFilter(cards[word.headword], today, filter.id)) counts[filter.id] += 1;
+    }
+  }
+  return counts;
+}

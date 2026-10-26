@@ -279,6 +279,7 @@
     </section>
 
     <section id="view-plot" class="plot-page" hidden>
+      <div class="plot-side">
       <div class="plot-nav">
         <a href="#/garden" class="button icon-btn" aria-label="กลับไปหน้าสวน" title="กลับไปหน้าสวน">←</a>
         <h1 id="plot-title"></h1>
@@ -300,11 +301,16 @@
         <button type="button" id="plot-select-none" class="linklike small">ล้างที่เลือก</button>
         <button type="button" id="plot-skip" class="primary">✅ รู้แล้ว ข้ามที่เลือก</button>
       </div>
+      </div>
+      <div class="plot-main">
       <div id="plot-grid" class="plot-grid"></div>
       <ul id="plot-list" class="word-list" hidden></ul>
       <p id="plot-empty" class="muted small" hidden>ไม่มีต้นไม้ในระยะนี้</p>
+      </div>
+      <div class="plot-foot">
       <p class="muted small">แตะต้นไม้หรือคำเพื่อดูคำแปลและวันรดน้ำครั้งถัดไป ต้นที่เหี่ยว 🥀 ถึงเวลารดน้ำแล้ว (ทวน) แต่ต้นไม้ไม่มีวันตาย ในมุมมองรายการ ติ๊กคำที่รู้อยู่แล้วเพื่อข้ามเป็นต้นไม้ใหญ่ได้หลายคำพร้อมกัน</p>
       <div id="plot-exam" class="panel"></div>
+      </div>
     </section>
 
     <section id="view-play" hidden>

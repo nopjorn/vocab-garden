@@ -8,8 +8,8 @@ import { DECK_SIZE_CHOICES, SIDE_CHOICES, STATUSES, buildDeck, matchingWords, re
 import { CARD_HEIGHT, CARD_WIDTH, buildCardData, drawCard } from "./sharecard.js";
 import { compareText, weeklyReport } from "./weekly.js";
 import { buildIcs, parseTime } from "./reminder.js";
-import { MONTH_ABBR, buildCalendar, cellLabel } from "./calendar.js";
-import { SNAPSHOT_REASONS, backupDue, backupText, canSnapshot, clearSnapshots, daysSinceBackup, hasSnapshot, listSnapshots, loadSnapshot, markSince, saveSnapshot } from "./backup.js";
+import { buildCalendar, cellLabel } from "./calendar.js";
+import { SNAPSHOT_REASONS, backupDue, backupText, canSnapshot, clearSnapshots, daysSinceBackup, formatSnapshotTime, hasSnapshot, listSnapshots, loadSnapshot, markSince, saveSnapshot } from "./backup.js";
 import { wordOfDay } from "./daily.js";
 import { EXAM_COUNT, TIERS, bestTier, buildExam, examMedalIds, examReady, rescheduleMissed, tierOf } from "./exam.js";
 import { DECORATIONS, FLOWERS, bloomedLevels, flowerId, flowerOf, ownedDecorations, seasonOf } from "./decor.js";
@@ -2340,11 +2340,7 @@ async function takeSnapshot(kind, reason = null) {
   }
 }
 
-const snapshotLabel = (info) => {
-  const date = new Date(info.day * 86400000);
-  const when = `${date.getUTCDate()} ${MONTH_ABBR[date.getUTCMonth()]}`;
-  return info.kind === "daily" ? `${when} (ต้นวัน)` : `${SNAPSHOT_REASONS[info.reason] || "สำเนาก่อนเปลี่ยนข้อมูล"} · ${when}`;
-};
+const snapshotLabel = (info) => `${info.kind === "daily" ? "สำเนาต้นวัน" : SNAPSHOT_REASONS[info.reason] || "สำเนาก่อนเปลี่ยนข้อมูล"} · เก็บเมื่อ ${formatSnapshotTime(info.at)}`;
 
 async function renderSnapshots() {
   $("snapshots").hidden = !canSnapshot();
@@ -2357,6 +2353,7 @@ async function renderSnapshots() {
     return;
   }
   $("snapshot-clear").hidden = list.length === 0;
+  $("snapshot-latest").textContent = list.length > 0 ? `สำเนาล่าสุดเก็บเมื่อ ${formatSnapshotTime(list[0].at)}` : "";
   const items = list.map((info) => {
     const button = el("button", "", "กู้คืน");
     button.type = "button";

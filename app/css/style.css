@@ -2947,3 +2947,137 @@ html[data-text-size="large"] {
   padding: 6px 0;
   border-bottom: 1px solid var(--border);
 }
+
+/* ===== จอคอมที่ใช้เมาส์ (กว้างตั้งแต่ 960px) =====
+   มือถือและ iPad ไม่เปลี่ยน: กล่องห่อด้านล่างเป็น display: contents จึงเหมือนไม่มีอยู่
+   จอคอมใช้พื้นที่ซ้ายขวาให้คุ้มขึ้น: หน้าหลัก สวน เกม ตั้งค่า แบ่งเป็นสองคอลัมน์ ส่วนหน้าท่อง เกม และข้อความยาวอยู่กลางจอแคบ ๆ ให้อ่านง่าย */
+.home-side,
+.home-main,
+.garden-top,
+.garden-plots,
+.garden-rest {
+  display: contents;
+}
+
+@media (min-width: 960px) and (hover: hover) and (pointer: fine) {
+  .topbar {
+    padding-inline: max(16px, calc((100% - 1200px) / 2 + 32px));
+  }
+
+  main {
+    max-width: 1200px;
+    padding: 28px 32px 56px;
+  }
+
+  /* หน้าที่ต้องอ่านทีละอย่าง ไม่ต้องขยายเต็มจอ */
+  #view-study,
+  #view-done,
+  #view-wordle,
+  #view-scramble,
+  #view-match,
+  #view-listen,
+  #view-dictation,
+  #view-placement,
+  #view-exam,
+  #view-flash,
+  #view-changelog,
+  #view-loading,
+  #view-error {
+    max-width: 760px;
+    margin-inline: auto;
+  }
+
+  #view-about {
+    max-width: 820px;
+    margin-inline: auto;
+  }
+
+  /* หน้าหลัก: ซ้ายคือสรุปวันนี้ (ติดอยู่ตอนเลื่อน) ขวาคือแปลง */
+  #view-home {
+    display: grid;
+    grid-template-columns: minmax(340px, 400px) minmax(0, 1fr);
+    gap: 0 36px;
+    align-items: start;
+  }
+
+  .home-side,
+  .home-main,
+  .garden-top,
+  .garden-plots,
+  .garden-rest {
+    display: block;
+  }
+
+  .home-side {
+    position: sticky;
+    top: 80px;
+  }
+
+  .home-main .section-head:first-child h2 {
+    margin-top: 0;
+  }
+
+  .home-main > .section-head {
+    margin-top: 0.5rem;
+  }
+
+  /* สวน: ซ้ายคือสถิติ ต้นไม้ ปฏิทิน ขวาคือแปลงสวน */
+  #view-garden {
+    display: grid;
+    grid-template-columns: minmax(340px, 440px) minmax(0, 1fr);
+    grid-template-rows: auto 1fr;
+    gap: 0 36px;
+    align-items: start;
+  }
+
+  .garden-top {
+    grid-column: 1;
+    grid-row: 1;
+  }
+
+  .garden-rest {
+    grid-column: 1;
+    grid-row: 2;
+  }
+
+  .garden-plots {
+    grid-column: 2;
+    grid-row: 1 / span 2;
+  }
+
+  .garden-plots > h2:first-child {
+    margin-top: 0.5rem;
+  }
+
+  /* เกม: การ์ดเกมเรียงหลายคอลัมน์ */
+  .game-list,
+  .medal-list {
+    grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+  }
+
+  .game-list > li {
+    display: flex;
+  }
+
+  .game-list .game-card {
+    flex: 1;
+  }
+
+  /* ตั้งค่า: แบ่งสองคอลัมน์ กล่องแต่ละใบไม่ถูกตัดกลาง */
+  #view-settings {
+    column-count: 2;
+    column-gap: 36px;
+  }
+
+  #view-settings h1 {
+    column-span: all;
+  }
+
+  #view-settings h2 {
+    break-after: avoid;
+  }
+
+  #view-settings .panel {
+    break-inside: avoid;
+  }
+}

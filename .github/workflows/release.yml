@@ -3,6 +3,9 @@ name: Release
 on:
   push:
     branches: [main]
+  # สั่งรันเองได้จากหน้า Actions (หรือ API) เมื่อ deploy ขึ้น Pages ไม่สำเร็จเพราะ GitHub ขัดข้องชั่วคราว
+  # (การ re-run run เดิมทำไม่ได้ เพราะจะอัปโหลด artifact ซ้ำชื่อ github-pages) ขั้นสร้าง Release จะข้ามเองถ้ามีอยู่แล้ว
+  workflow_dispatch:
 
 permissions:
   contents: write

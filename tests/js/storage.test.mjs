@@ -21,6 +21,7 @@ test("settings default to 10 new words a day starting from level 1 with the syst
     speechRate: 0.9,
     theme: "auto",
     textSize: "normal",
+    menuPosition: "bottom",
     sound: false,
     appBadge: false,
     dailyGoal: 10,
@@ -284,4 +285,13 @@ test("backup meta defaults to nothing and survives a round trip", () => {
   assert.deepEqual(target.loadBackupMeta(), { last: 100, since: 90, asked: 99 });
   target.reset();
   assert.deepEqual(target.loadBackupMeta(), { last: null, since: null, asked: null });
+});
+
+test("the menu position defaults to the bottom bar and only accepts bottom or top", () => {
+  const target = createStorage(fakeStore());
+  assert.equal(target.loadSettings().menuPosition, "bottom");
+  target.saveSettings({ ...target.loadSettings(), menuPosition: "top" });
+  assert.equal(target.loadSettings().menuPosition, "top");
+  target.saveSettings({ ...target.loadSettings(), menuPosition: "left" });
+  assert.equal(target.loadSettings().menuPosition, "bottom");
 });

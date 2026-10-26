@@ -21,6 +21,7 @@ const HISTORY_KEEP_DAYS = 400; // เก็บประวัติการท�
 export const SPEECH_RATE_CHOICES = [0.7, 0.9, 1.1]; // ช้า / ปกติ / เร็ว
 export const THEME_CHOICES = ["auto", "light", "dark"];
 export const TEXT_SIZE_CHOICES = ["normal", "large"];
+export const MENU_POSITION_CHOICES = ["bottom", "top"]; // เมนูหลักบนมือถือ/iPad: ลอยด้านล่าง (ค่าเริ่มต้น) หรืออยู่ในแถบด้านบนเหมือนจอคอม
 export const QUIZ_MODE_CHOICES = ["flip", "mixed"]; // พลิกการ์ดแบบเดิม / ผสมหลายแบบตามระยะของต้นไม้
 export const NOTE_MAX = 200; // โน้ตช่วยจำยาวได้ไม่เกินกี่ตัวอักษร
 export const DAILY_GOAL_CHOICES = [10, 20, 30]; // เป้าหมายรายวัน (จำนวนครั้งที่ตอบ)
@@ -34,6 +35,7 @@ export const DEFAULT_SETTINGS = {
   speechRate: 0.9,
   theme: "auto",
   textSize: "normal",
+  menuPosition: "bottom",
   sound: false,
   appBadge: false, // ตัวเลขคำที่ต้องทวนบนไอคอนแอป
   dailyGoal: 10,
@@ -260,6 +262,7 @@ export function createStorage(store = globalThis.localStorage) {
         speechRate: pick(SPEECH_RATE_CHOICES, saved.speechRate, DEFAULT_SETTINGS.speechRate),
         theme: pick(THEME_CHOICES, saved.theme, DEFAULT_SETTINGS.theme),
         textSize: pick(TEXT_SIZE_CHOICES, saved.textSize, DEFAULT_SETTINGS.textSize),
+        menuPosition: pick(MENU_POSITION_CHOICES, saved.menuPosition, DEFAULT_SETTINGS.menuPosition),
         sound: saved.sound === true,
         appBadge: saved.appBadge === true,
         dailyGoal: pick(DAILY_GOAL_CHOICES, saved.dailyGoal, DEFAULT_SETTINGS.dailyGoal),

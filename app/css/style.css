@@ -315,7 +315,7 @@ a {
 
 /* มือถือและแท็บเล็ตที่ใช้สัมผัส (iPad): เมนูลอยอยู่ด้านล่างจอ หน้าตาเหมือน iPhone */
 @media (max-width: 767px), (pointer: coarse) and (max-width: 1400px) {
-  .tabbar {
+  :root:not([data-menu="top"]) .tabbar {
     position: fixed;
     left: max(12px, calc(50% - 360px));
     right: max(12px, calc(50% - 360px));
@@ -331,7 +331,7 @@ a {
     box-shadow: var(--shadow-md);
   }
 
-  .tabbar a {
+  :root:not([data-menu="top"]) .tabbar a {
     flex: 1;
     flex-direction: column;
     gap: 0;
@@ -340,16 +340,16 @@ a {
     font-size: 0.72rem;
   }
 
-  .tab-icon {
+  :root:not([data-menu="top"]) .tab-icon {
     font-size: 1.3rem;
     line-height: 1.3;
   }
 
-  main {
+  :root:not([data-menu="top"]) main {
     padding-bottom: calc(110px + env(safe-area-inset-bottom));
   }
 
-  .toast {
+  :root:not([data-menu="top"]) .toast {
     bottom: calc(96px + env(safe-area-inset-bottom));
   }
 }
@@ -3089,5 +3089,52 @@ html[data-text-size="large"] {
 
   #view-settings .panel {
     break-inside: avoid;
+  }
+}
+
+/* ===== เมนูอยู่ด้านบน (ตั้งค่า → หน้าตา → ตำแหน่งเมนู) =====
+   จอกว้างแสดงแบบจอคอม จอแคบ (มือถือแนวตั้ง) ย่อโลโก้เหลือ 🌱 และเรียงไอคอนกับป้ายเล็ก ๆ ให้พอดีแถบเดียว */
+@media (max-width: 639px) {
+  :root[data-menu="top"] .brand {
+    font-size: 0;
+    gap: 0;
+  }
+
+  :root[data-menu="top"] .brand::before {
+    content: "🌱";
+    font-size: 1.4rem;
+  }
+
+  :root[data-menu="top"] .version {
+    display: none;
+  }
+
+  :root[data-menu="top"] .tabbar {
+    gap: 0;
+  }
+
+  :root[data-menu="top"] .tabbar a {
+    flex-direction: column;
+    gap: 0;
+    padding: 4px 8px;
+    border-radius: 14px;
+    font-size: 0.65rem;
+  }
+
+  :root[data-menu="top"] .tab-icon {
+    font-size: 1.15rem;
+    line-height: 1.2;
+  }
+
+  :root[data-menu="top"] .about-link {
+    margin-left: 0;
+  }
+}
+
+/* จอที่เมนูอยู่ด้านบนอยู่แล้ว (คอมที่ใช้เมาส์) ไม่ต้องมีตัวเลือกนี้ */
+@media (min-width: 768px) and (pointer: fine), (min-width: 1401px) {
+  #menu-setting,
+  #menu-setting-note {
+    display: none;
   }
 }

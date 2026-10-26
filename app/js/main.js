@@ -30,6 +30,7 @@ import {
   QUIZ_MODE_CHOICES,
   REVIEW_CAP_CHOICES,
   ROUND_SIZE_CHOICES,
+  MENU_POSITION_CHOICES,
   SPEECH_RATE_CHOICES,
   TEXT_SIZE_CHOICES,
   THEME_CHOICES,
@@ -80,8 +81,10 @@ function show(view) {
 
 // ธีม (ตามเครื่อง/สว่าง/มืด) และขนาดตัวอักษรตามการตั้งค่า
 function applyAppearance() {
-  const { theme, textSize } = state.settings;
+  const { theme, textSize, menuPosition } = state.settings;
   const root = document.documentElement;
+  if (menuPosition === "top") root.dataset.menu = "top";
+  else delete root.dataset.menu;
   if (theme === "auto") delete root.dataset.theme;
   else root.dataset.theme = theme;
   if (textSize === "large") root.dataset.textSize = "large";
@@ -2188,6 +2191,7 @@ function renderSupport() {
 const SPEECH_RATE_LABELS = { 0.7: "ช้า", 0.9: "ปกติ", 1.1: "เร็ว" };
 const THEME_LABELS = { auto: "ตามเครื่อง", light: "สว่าง", dark: "มืด" };
 const TEXT_SIZE_LABELS = { normal: "ปกติ", large: "ใหญ่" };
+const MENU_POSITION_LABELS = { bottom: "ด้านล่าง", top: "ด้านบน" };
 const QUIZ_MODE_LABELS = { flip: "พลิกการ์ด (แบบเดิม)", mixed: "ผสมหลายแบบ" };
 const DAILY_GOAL_LABELS = Object.fromEntries(DAILY_GOAL_CHOICES.map((count) => [count, `${count} ครั้ง`]));
 const REVIEW_CAP_LABELS = Object.fromEntries(REVIEW_CAP_CHOICES.map((count) => [count, count ? `ไม่เกิน ${count} ครั้ง` : "ไม่จำกัด"]));
@@ -2225,6 +2229,7 @@ function renderSettings() {
   fillSelect($("speech-rate"), SPEECH_RATE_CHOICES, state.settings.speechRate, SPEECH_RATE_LABELS);
   fillSelect($("theme"), THEME_CHOICES, state.settings.theme, THEME_LABELS);
   fillSelect($("text-size"), TEXT_SIZE_CHOICES, state.settings.textSize, TEXT_SIZE_LABELS);
+  fillSelect($("menu-position"), MENU_POSITION_CHOICES, state.settings.menuPosition, MENU_POSITION_LABELS);
   fillSelect($("quiz-mode"), QUIZ_MODE_CHOICES, state.settings.quizMode, QUIZ_MODE_LABELS);
   $("quiz-typing").checked = state.settings.quizTyping;
   fillSelect($("daily-goal"), DAILY_GOAL_CHOICES, state.settings.dailyGoal, DAILY_GOAL_LABELS);
@@ -2931,6 +2936,7 @@ function bindEvents() {
   $("speech-test").addEventListener("click", () => speakWord("Hello, welcome to Vocab Garden"));
   $("theme").addEventListener("change", (event) => updateSetting({ theme: event.target.value }));
   $("text-size").addEventListener("change", (event) => updateSetting({ textSize: event.target.value }));
+  $("menu-position").addEventListener("change", (event) => updateSetting({ menuPosition: event.target.value }));
   $("quiz-mode").addEventListener("change", (event) => updateSetting({ quizMode: event.target.value }));
   $("quiz-typing").addEventListener("change", (event) => updateSetting({ quizTyping: event.target.checked }));
   $("daily-goal").addEventListener("change", (event) => {

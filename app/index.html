@@ -21,6 +21,7 @@
       var saved = JSON.parse(localStorage.getItem("vg:settings") || "{}");
       if (saved.theme === "light" || saved.theme === "dark") document.documentElement.dataset.theme = saved.theme;
       if (saved.textSize === "large") document.documentElement.dataset.textSize = "large";
+      if (saved.menuPosition === "top") document.documentElement.dataset.menu = "top";
     } catch (error) {}
   </script>
   <script src="version.js"></script>
@@ -669,6 +670,12 @@
           <label for="text-size">ขนาดตัวอักษร</label>
           <select id="text-size"></select>
         </p>
+        <p id="menu-setting">
+          <label for="menu-position">ตำแหน่งเมนู</label>
+          <select id="menu-position"></select>
+        </p>
+        <p id="menu-setting-note" class="tip small">เลือก "ด้านบน" เพื่อย้ายปุ่มเมนูหลักจากด้านล่างจอไปอยู่ในแถบด้านบนฝั่งขวา เหมือนเมื่อเปิดบนเว็บเบราว์เซอร์ในคอม
+          ใช้กับมือถือและ iPad (จอคอมที่ใช้เมาส์แสดงเมนูด้านบนอยู่แล้ว)</p>
       </div>
 
       <h2>เตือนให้มาท่อง</h2>

@@ -1,7 +1,7 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
 
-import { dueLabel, matchesQuery, plantInfo, plotSummary } from "../../app/js/garden.js";
+import { PLOT_FILTERS, dueLabel, matchesQuery, plantInfo, plantMatchesFilter, plotFilterCounts, plotSummary } from "../../app/js/garden.js";
 
 const TODAY = 20000;
 const card = (ivl, due) => ({ due, ivl, ease: 2.5, reps: 4, lapses: 1 });
@@ -75,4 +75,21 @@ test("plantedInLevel only returns planted words of that level, capped at the lim
   assert.equal(new Set(picked.map((word) => word.headword)).size, picked.length);
   assert.equal(plantedInLevel(words, cards, "02").length, 5);
   assert.deepEqual(plantedInLevel(words, {}, "01"), []);
+});
+
+test("plot filters match all, wilted, or one growth stage", () => {
+  const cards = {
+    a: card(2, TODAY + 1), // ต้นอ่อน ยังไม่ถึงเวลา
+    b: card(10, TODAY - 1), // กำลังโต ถึงเวลารดน้ำ
+    c: card(30, TODAY + 9), // ต้นไม้ใหญ่
+  };
+  const words = ["a", "b", "c", "d"].map((headword) => ({ headword })); // d ยังเป็นเมล็ด
+  assert.equal(plantMatchesFilter(cards.a, TODAY, "all"), true);
+  assert.equal(plantMatchesFilter(cards.b, TODAY, "wilted"), true);
+  assert.equal(plantMatchesFilter(cards.a, TODAY, "wilted"), false);
+  assert.equal(plantMatchesFilter(undefined, TODAY, "wilted"), false);
+  assert.equal(plantMatchesFilter(undefined, TODAY, "seed"), true);
+  assert.equal(plantMatchesFilter(cards.c, TODAY, "tree"), true);
+  assert.deepEqual(plotFilterCounts(words, cards, TODAY), { all: 4, wilted: 1, seed: 1, sprout: 1, growing: 1, tree: 1 });
+  assert.deepEqual(PLOT_FILTERS.map((filter) => filter.id), ["all", "wilted", "seed", "sprout", "growing", "tree"]);
 });

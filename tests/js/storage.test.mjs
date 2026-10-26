@@ -287,11 +287,13 @@ test("backup meta defaults to nothing and survives a round trip", () => {
   assert.deepEqual(target.loadBackupMeta(), { last: null, since: null, asked: null });
 });
 
-test("the menu position defaults to the bottom bar and only accepts bottom or top", () => {
+test("the menu position defaults to the floating bottom bar and only accepts bottom, dock or top", () => {
   const target = createStorage(fakeStore());
   assert.equal(target.loadSettings().menuPosition, "bottom");
   target.saveSettings({ ...target.loadSettings(), menuPosition: "top" });
   assert.equal(target.loadSettings().menuPosition, "top");
+  target.saveSettings({ ...target.loadSettings(), menuPosition: "dock" });
+  assert.equal(target.loadSettings().menuPosition, "dock");
   target.saveSettings({ ...target.loadSettings(), menuPosition: "left" });
   assert.equal(target.loadSettings().menuPosition, "bottom");
 });

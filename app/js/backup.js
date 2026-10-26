@@ -8,6 +8,7 @@ export const SNOOZE_DAYS = 3; // กด "ไว้ทีหลัง" แล้�
 export const MIN_CARDS = 10; // มีความคืบหน้าอย่างน้อยกี่คำถึงเริ่มเตือน
 export const KEEP_DAILY = 7; // เก็บสำเนารายวันย้อนหลังกี่วัน
 export const KEEP_BEFORE = 3; // เก็บสำเนาก่อนนำเข้า / ล้าง / กู้คืนกี่ชุด
+export const KEEP_MANUAL = 5; // เก็บสำเนาที่กดเก็บเองกี่ชุด
 
 // วันที่เริ่มนับเวลา: ครั้งแรกที่มีความคืบหน้าพอ ใช้เมื่อยังไม่เคยสำรองเลย คืน meta ใหม่ (ไม่แก้ตัวเดิม)
 export function markSince(meta, cardCount, today) {
@@ -35,10 +36,10 @@ export function backupText(meta, today) {
   return `สำรองล่าสุด: ${days} วันที่แล้ว`;
 }
 
-// บอกว่าสำเนาไหนต้องลบ: รายวันเก็บ KEEP_DAILY ชุดล่าสุด ก่อนนำเข้า/ล้าง/กู้คืนเก็บ KEEP_BEFORE ชุดล่าสุด (เรียงตามเวลา at)
+// บอกว่าสำเนาไหนต้องลบ: รายวันเก็บ KEEP_DAILY ชุดล่าสุด ก่อนนำเข้า/ล้าง/กู้คืนเก็บ KEEP_BEFORE ชุดล่าสุด ที่กดเก็บเองเก็บ KEEP_MANUAL ชุดล่าสุด (เรียงตามเวลา at)
 export function planPrune(entries) {
   const drop = [];
-  for (const [kind, keep] of [["daily", KEEP_DAILY], ["before", KEEP_BEFORE]]) {
+  for (const [kind, keep] of [["daily", KEEP_DAILY], ["before", KEEP_BEFORE], ["manual", KEEP_MANUAL]]) {
     const sorted = entries.filter((entry) => entry.kind === kind).sort((a, b) => b.at.localeCompare(a.at));
     drop.push(...sorted.slice(keep).map((entry) => entry.id));
   }

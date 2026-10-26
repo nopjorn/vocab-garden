@@ -51,6 +51,7 @@
     </section>
 
     <section id="view-home" hidden>
+      <div class="home-side">
       <div class="hero">
         <div class="hero-top">
           <div>
@@ -99,6 +100,9 @@
         <button type="button" id="wotd-speak" class="wotd-speak" aria-label="ฟังเสียงอ่าน" hidden>🔊</button>
       </div>
 
+      </div>
+
+      <div class="home-main">
       <div class="section-head">
         <h2>สวนคำศัพท์</h2>
         <span id="garden-total" class="muted small"></span>
@@ -110,6 +114,7 @@
       <p id="storage-warning" class="warning" hidden>
         เบราว์เซอร์นี้บันทึกข้อมูลไม่ได้ ความคืบหน้าจะหายเมื่อปิดหน้าเว็บ (อาจเป็นเพราะเปิดโหมดส่วนตัวอยู่)
       </p>
+      </div>
     </section>
 
     <section id="view-study" hidden>
@@ -186,6 +191,7 @@
     </section>
 
     <section id="view-garden" hidden>
+      <div class="garden-top">
       <div class="page-head">
         <h1>สวนของฉัน 🌳</h1>
         <button type="button" id="share-garden" class="icon-btn" aria-label="แชร์สวนของฉัน" title="แชร์สวนของฉัน (สร้างรูปสรุปสวน ไม่มีชื่อหรือข้อมูลส่วนตัว)">📤</button>
@@ -226,6 +232,9 @@
         <ul id="decor-list" class="chips"></ul>
       </details>
 
+      </div>
+
+      <div class="garden-plots">
       <h2>แปลงสวน</h2>
       <p class="muted small">คำละหนึ่งต้น แตะที่แปลงเพื่อกางดูต้นไม้ แล้วแตะต้นไม้เพื่อดูคำแปลและวันรดน้ำครั้งถัดไป ต้นที่เหี่ยว 🥀 ถึงเวลารดน้ำแล้ว (ทวน) แต่ต้นไม้ไม่มีวันตาย</p>
       <p class="water-row">
@@ -247,7 +256,9 @@
         <ul id="leech-list" class="leech-list"></ul>
         <a href="#/study/leech" class="button primary">🧠 ฝึกคำที่ลืมบ่อย</a>
       </div>
+      </div>
 
+      <div class="garden-rest">
       <h2>ต้นไม้ในสวน</h2>
       <ul id="g-stages" class="stage-rows"></ul>
 
@@ -263,6 +274,7 @@
       <div id="g-week" class="week" role="img"></div>
       <p id="g-empty" class="muted small">ยังไม่มีประวัติการทวน ลองท่องศัพท์สักรอบ แล้วสถิติจะมาขึ้นที่นี่
         (ประวัตินับตั้งแต่เวอร์ชัน 0.6.0 เป็นต้นไป)</p>
+      </div>
     </section>
 
     <section id="view-play" hidden>

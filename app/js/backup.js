@@ -1,6 +1,8 @@
 // เตือนให้สำรองไฟล์ และจัดการสำเนาอัตโนมัติในเครื่อง (IndexedDB)
 // ส่วนตัดสินใจ (backupDue, planPrune ฯลฯ) เป็นฟังก์ชันล้วน ทดสอบได้ ส่วนที่แตะ IndexedDB อยู่ท้ายไฟล์
 
+import { MONTH_ABBR } from "./calendar.js";
+
 export const BACKUP_EVERY_DAYS = 7; // ไม่ได้สำรองเกินกี่วันถึงเตือน
 export const SNOOZE_DAYS = 3; // กด "ไว้ทีหลัง" แล้วเงียบกี่วัน
 export const MIN_CARDS = 10; // มีความคืบหน้าอย่างน้อยกี่คำถึงเริ่มเตือน
@@ -41,6 +43,13 @@ export function planPrune(entries) {
     drop.push(...sorted.slice(keep).map((entry) => entry.id));
   }
   return drop;
+}
+
+// วันและเวลาที่เก็บสำเนา ตามเวลาเครื่อง เช่น "26 ต.ค. 07:05 น."
+export function formatSnapshotTime(iso) {
+  const date = new Date(iso);
+  const pad = (value) => String(value).padStart(2, "0");
+  return `${date.getDate()} ${MONTH_ABBR[date.getMonth()]} ${pad(date.getHours())}:${pad(date.getMinutes())} น.`;
 }
 
 export const SNAPSHOT_REASONS = { import: "ก่อนนำเข้าไฟล์", reset: "ก่อนล้างความคืบหน้า", restore: "ก่อนกู้คืนสำเนา" };

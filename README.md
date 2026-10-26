@@ -23,6 +23,19 @@
 - ไม่ต้องสมัครสมาชิก ความคืบหน้าเก็บไว้ในเครื่องของผู้ใช้
 - ติดตั้งบนมือถือได้ (PWA) และใช้แบบ offline ได้
 
+## ภาพหน้าจอ
+
+<table>
+  <tr>
+    <td align="center"><img src="docs/screenshots/home.png" alt="หน้าหลัก: สรุปวันนี้ เป้าหมายรายวัน ศัพท์ของวันนี้ และรายการแปลง" width="200"><br>หน้าหลัก</td>
+    <td align="center"><img src="docs/screenshots/card.png" alt="หน้าท่องการ์ด: ด้านหลังการ์ดมีคำแปล ประโยคตัวอย่าง และปุ่มให้คะแนน 3 ปุ่ม" width="200"><br>ท่องการ์ด</td>
+    <td align="center"><img src="docs/screenshots/garden.png" alt="หน้าสวนของฉัน: ท้องฟ้าตามเวลา สถิติ เหรียญ และของแต่งสวน" width="200"><br>สวนของฉัน</td>
+    <td align="center"><img src="docs/screenshots/plot.png" alt="หน้าแปลง 1: ต้นไม้หนึ่งต้นต่อหนึ่งคำ ต้นที่ถึงเวลาทวนจะเอียงและมีหยดน้ำ" width="200"><br>แปลงคำศัพท์</td>
+  </tr>
+</table>
+
+ภาพหน้าจอใช้ความคืบหน้าตัวอย่างที่สมมติขึ้นเพื่อให้เห็นว่าสวนเป็นอย่างไร ไม่ใช่ข้อมูลของผู้ใช้จริง คำศัพท์ในภาพมาจากข้อมูลที่ดัดแปลงจาก NGSL 1.2 ตามเครดิตด้านล่าง
+
 ## เครดิตคำศัพท์: NGSL
 
 > New General Service List by Browne, C., Culligan, B., and Phillips, J. is licensed under a Creative Commons Attribution-ShareAlike 4.0 International License.
@@ -44,6 +57,7 @@
 | โค้ดของแอป | MIT (ดู [LICENSE](LICENSE)) |
 | ไฟล์ต้นฉบับ NGSL ใน `ngsl-source/` | CC BY-SA 4.0 โดยผู้จัดทำ NGSL |
 | ชุดข้อมูลคำศัพท์ที่ดัดแปลงจาก NGSL ใน `app/data/` (คำแปลไทย ประโยคตัวอย่าง ฯลฯ) | CC BY-SA 4.0 (ดู [app/data/LICENSE](app/data/LICENSE)) |
+| ฟอนต์ Anuphan ใน `app/fonts/` (ของตกแต่งหน้าตา ไม่ใช่ข้อมูลคำศัพท์) | SIL OFL 1.1 โดย Cadson Demak (ดู [app/fonts/OFL.txt](app/fonts/OFL.txt) และ [app/fonts/README.md](app/fonts/README.md)) |
 
 ## ร่วมพัฒนาและสนับสนุน
 

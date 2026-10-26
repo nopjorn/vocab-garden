@@ -31,7 +31,7 @@ export function fitText(ctx, text, maxWidth) {
   return `${chars.join("")}…`;
 }
 
-const FONT = '"Noto Sans Thai", "Sarabun", system-ui, -apple-system, "Segoe UI", sans-serif';
+const FONT = '"Anuphan", "Noto Sans Thai", "Sarabun", system-ui, -apple-system, "Segoe UI", sans-serif';
 
 // วาดการ์ดลง ctx (canvas 2D) ขนาด CARD_WIDTH × CARD_HEIGHT
 export function drawCard(ctx, data) {

@@ -14,6 +14,8 @@ import { wordOfDay } from "./daily.js";
 import { EXAM_COUNT, TIERS, bestTier, buildExam, examMedalIds, examReady, rescheduleMissed, tierOf } from "./exam.js";
 import { DECORATIONS, FLOWERS, bloomedLevels, flowerId, flowerOf, ownedDecorations, seasonOf } from "./decor.js";
 import { COMEBACK_DAYS, MEDALS, isEarlyBird, isPerfectRound, newMedals } from "./achievements.js";
+import { applySky } from "./sky.js";
+import { treeEl } from "./tree-art.js";
 import { LEECH_LAPSES, PLOT_FILTERS, dueLabel, leechWords, matchesQuery, plantInfo, plantMatchesFilter, plantedInLevel, plotFilterCounts, plotSummary, reviewedToday } from "./garden.js";
 import { daysAway, goalProgress, mergeDays, settleRest } from "./habit.js";
 import { buildMatchRound, formatSeconds, isMatch, isNewBest } from "./match.js";
@@ -256,7 +258,7 @@ function renderWordOfDay(today) {
   if (!word) return;
   const info = plantInfo(state.cards[word.headword], today);
   const sense = word.senses[0];
-  $("wotd-word").textContent = `${info.stage.emoji} ${word.headword}`;
+  $("wotd-word").replaceChildren(treeEl(info.stage.id, { wilted: info.wilted }), word.headword);
   $("wotd-meaning").textContent = sense ? `${sense.label} · ${sense.text}` : "";
   $("wotd-example").textContent = word.exampleEn;
   $("wotd-open").onclick = () => openWordDialog(word);
@@ -329,6 +331,7 @@ function renderHome() {
   const translated = translatedWords();
   const planted = translated.filter((word) => state.cards[word.headword]).length;
   $("garden-count").textContent = planted;
+  renderStageLegend();
   $("garden-ring").style.setProperty("--p", translated.length ? (planted / translated.length) * 100 : 0);
   $("garden-ring").setAttribute("aria-label", `ปลูกแล้ว ${planted} จาก ${translated.length} คำ`);
   checkMedals();
@@ -1922,7 +1925,9 @@ function renderGarden() {
       const fill = el("span", `seg seg-${stage.id}`);
       fill.style.width = `${total ? (stage.count / total) * 100 : 0}%`;
       bar.append(fill);
-      row.append(el("span", "stage-name", `${stage.emoji} ${stage.label}`), bar, el("strong", "stage-count", stage.count));
+      const name = el("span", "stage-name");
+      name.append(treeEl(stage.id), ` ${stage.label}`);
+      row.append(name, bar, el("strong", "stage-count", stage.count));
       return row;
     }),
   );
@@ -1986,7 +1991,8 @@ function renderLeeches() {
 // แปลงสวน: ด่านละแปลง คำละต้น ต้นที่ถึงเวลาทวนเหี่ยวจนกว่าจะรดน้ำ
 function plantButton(word, today) {
   const info = plantInfo(state.cards[word.headword], today);
-  const button = el("button", `plant${info.planted ? "" : " seed"}${info.wilted ? " wilted" : ""}`, info.stage.emoji);
+  const button = el("button", `plant${info.planted ? "" : " seed"}${info.wilted ? " wilted" : ""}`);
+  button.append(treeEl(info.stage.id, { wilted: info.wilted }));
   button.type = "button";
   button.dataset.headword = word.headword;
   button.title = word.headword;
@@ -2032,7 +2038,26 @@ function stageCountsOf(words) {
   return counts;
 }
 
-const stageTextOf = (counts) => STAGES.slice(1).map((stage) => `${stage.emoji} ${counts[stage.id]}`).join("  ");
+// จำนวนต้นของแต่ละระยะ เป็นต้นไม้ SVG ตามด้วยตัวเลข (ชื่อระยะซ่อนไว้ให้โปรแกรมอ่านหน้าจออ่าน)
+function stageChipsOf(counts) {
+  const wrap = el("span", "stage-chips");
+  STAGES.slice(1).forEach((stage) => {
+    const chip = el("span", "stage-chip");
+    chip.append(treeEl(stage.id), el("span", "sr-only", stage.label), String(counts[stage.id]));
+    wrap.append(chip);
+  });
+  return wrap;
+}
+
+// คำอธิบายสัญลักษณ์ระยะในหน้าหลัก
+function renderStageLegend() {
+  const parts = STAGES.map((stage) => {
+    const item = el("span", "legend-item");
+    item.append(treeEl(stage.id), ` ${stage.label}`);
+    return item;
+  });
+  $("stage-legend").replaceChildren(...parts.flatMap((part, index) => (index ? [" · ", part] : [part])));
+}
 
 function renderPlots(today) {
   const translated = translatedWords();
@@ -2055,7 +2080,9 @@ function renderPlots(today) {
       info.append(el("p", "level-title", levelTitle(level)), el("p", "level-sub", `${summary.planted}/${summary.total} คำ${summary.wilted ? ` · 💧 ${summary.wilted}` : ""}`));
       head.append(el("span", "level-badge", level === "sup" ? "★" : String(Number(level))), info);
       const tier = bestTier(level, storage.loadMedals());
-      head.append(stageBarOf(counts, words.length), el("p", "level-stages", `${stageTextOf(counts)}${tier ? `  ${tier.emoji}` : ""}`));
+      const stagesLine = el("p", "level-stages");
+      stagesLine.append(stageChipsOf(counts), tier ? `  ${tier.emoji}` : "");
+      head.append(stageBarOf(counts, words.length), stagesLine);
       plot.append(head);
       return plot;
     }),
@@ -2112,7 +2139,8 @@ function wordRow(word, today) {
   const main = el("button", "word-row-main");
   main.type = "button";
   main.dataset.headword = word.headword;
-  const emoji = el("span", "word-row-emoji", info.wilted ? `${info.stage.emoji}💧` : info.stage.emoji);
+  const emoji = el("span", "word-row-emoji");
+  emoji.append(treeEl(info.stage.id, { wilted: info.wilted }));
   emoji.setAttribute("aria-hidden", "true");
   const name = el("strong", "", word.headword);
   name.lang = "en";
@@ -2151,7 +2179,11 @@ function renderPlotPage(level) {
   const tier = bestTier(level, storage.loadMedals());
 
   $("plot-title").textContent = levelTitle(level);
-  $("plot-sub").textContent = `ปลูกแล้ว ${summary.planted}/${summary.total} คำ${summary.wilted ? ` · 💧 ${summary.wilted} ต้นรอรดน้ำ` : ""}  ${stageTextOf(counts)}${tier ? `  ${tier.emoji}` : ""}`;
+  $("plot-sub").replaceChildren(
+    `ปลูกแล้ว ${summary.planted}/${summary.total} คำ${summary.wilted ? ` · 💧 ${summary.wilted} ต้นรอรดน้ำ` : ""}  `,
+    stageChipsOf(counts),
+    tier ? `  ${tier.emoji}` : "",
+  );
   $("plot-stagebar").replaceChildren(...stageBarOf(counts, words.length).childNodes);
 
   // ลูกศรสลับไปแปลงก่อนหน้า/ถัดไป โดยไม่ต้องกลับไปหน้าสวน
@@ -2165,7 +2197,10 @@ function renderPlotPage(level) {
   if (filterCounts[plotPage.filter] === 0) plotPage.filter = "all";
   $("plot-filters").replaceChildren(
     ...PLOT_FILTERS.filter((filter) => filter.id === "all" || filter.id === plotPage.filter || filterCounts[filter.id] > 0).map((filter) => {
-      const chip = el("button", "plot-filter", `${filter.label} ${filterCounts[filter.id]}`);
+      const isStage = STAGES.some((stage) => stage.id === filter.id);
+      // ตัวกรองตามระยะใช้ต้นไม้ SVG แทนอีโมจิหน้าป้าย (label ใน garden.js ขึ้นต้นด้วยอีโมจิ 1 ตัวแล้วเว้นวรรค)
+      const chip = el("button", "plot-filter", `${isStage ? filter.label.replace(/^\S+\s/, "") : filter.label} ${filterCounts[filter.id]}`);
+      if (isStage) chip.prepend(treeEl(filter.id));
       chip.type = "button";
       chip.setAttribute("aria-pressed", String(filter.id === plotPage.filter));
       chip.addEventListener("click", () => {
@@ -2204,7 +2239,10 @@ function applyGardenSearch() {
       const button = el("button", `match-item${info.wilted ? " wilted" : ""}`);
       button.type = "button";
       button.dataset.headword = word.headword;
-      button.append(el("span", "match-emoji", info.stage.emoji), el("strong", "", word.headword), el("span", "muted", word.senses[0]?.text || ""));
+      const matchIcon = el("span", "match-emoji");
+      matchIcon.append(treeEl(info.stage.id, { wilted: info.wilted }));
+      matchIcon.setAttribute("aria-hidden", "true");
+      button.append(matchIcon, el("strong", "", word.headword), el("span", "muted", word.senses[0]?.text || ""));
       item.append(button);
       return item;
     }),
@@ -2223,7 +2261,7 @@ function openWordDialog(word) {
   const today = dayNumber();
   const card = state.cards[word.headword];
   const info = plantInfo(card, today);
-  $("word-stage").textContent = info.wilted ? `${info.stage.emoji}💧` : info.stage.emoji;
+  $("word-stage").replaceChildren(treeEl(info.stage.id, { wilted: info.wilted }));
   $("word-title").textContent = word.emoji ? `${word.headword} ${word.emoji}` : word.headword;
   $("word-stage-label").textContent = `${levelTitle(word.level)} · อันดับ ${word.rank} · ${info.stage.label}`;
   $("word-due").textContent = dueLabel(card, today);
@@ -2685,6 +2723,7 @@ let gardenScroll = 0; // ตำแหน่งเลื่อนของหน�
 
 function route() {
   if (state.words.length === 0) return;
+  applySky();
   // เปลี่ยนหน้า (เช่น กดย้อนกลับหรือเปิดลิงก์) ต้องปิดหน้าต่างรายละเอียดคำและโน้ตที่เปิดค้างอยู่ด้วย ไม่งั้นจะบังหน้าใหม่
   $("word-dialog").hidden = true;
   $("note-dialog").hidden = true;

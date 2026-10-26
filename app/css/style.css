@@ -922,9 +922,16 @@ body.studying .topbar {
   display: none;
 }
 
-/* ห้ามดึงหน้าเด้ง ตอนปัดการ์ด */
+/* หน้าท่องไม่เลื่อนทั้งหน้า ไม่งั้นท่าปัดซ้ายขวาที่เฉียดขึ้นลงจะถูกเบราว์เซอร์แย่งไปเลื่อนหน้า
+   ถ้าเนื้อหาในการ์ดยาวเกินจอ ให้เลื่อนในการ์ดแทน */
+html:has(body.studying),
 body.studying {
-  overscroll-behavior-y: none;
+  overflow: hidden;
+  overscroll-behavior: none;
+}
+
+body.studying {
+  height: 100dvh;
 }
 
 /* ขึ้นต้น :root ให้ชนะกฎเว้นที่ให้เมนูล่าง (หน้านี้ซ่อนเมนู ไม่เช่นนั้นเนื้อหาน้อยก็เลื่อนได้ และปัดการ์ดยาก) */
@@ -936,14 +943,20 @@ body.studying {
 #view-study:not([hidden]) {
   display: flex;
   flex-direction: column;
-  min-height: calc(100dvh - 28px - env(safe-area-inset-top) - env(safe-area-inset-bottom));
+  height: calc(100dvh - 28px - env(safe-area-inset-top) - env(safe-area-inset-bottom));
+}
+
+#view-study .notice {
+  margin: 0 0 8px;
+  padding: 6px 12px;
+  font-size: 0.85rem;
 }
 
 .study-top {
   display: flex;
   align-items: center;
   gap: 12px;
-  margin-bottom: 14px;
+  margin-bottom: 10px;
 }
 
 .close {
@@ -1047,19 +1060,22 @@ body.studying {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  justify-content: safe center;
   background: var(--surface);
   border: 1px solid var(--border);
   border-radius: 32px;
   box-shadow: var(--shadow-md);
-  padding: 28px 22px;
-  min-height: min(320px, 46dvh);
+  padding: 22px 20px;
+  min-height: 0;
+  overflow-x: hidden;
+  overflow-y: auto;
+  overscroll-behavior: contain;
   cursor: pointer;
   text-align: center;
   touch-action: pan-y;
   user-select: none;
   -webkit-user-select: none;
   overflow-wrap: anywhere;
-  overflow: hidden;
 }
 
 .flashcard::before {
@@ -1179,14 +1195,14 @@ body.studying {
 }
 
 #card-hint {
-  margin-top: 16px;
+  margin-top: 12px;
 }
 
 .card-back {
   text-align: left;
   border-top: 2px dashed var(--border);
-  margin-top: 20px;
-  padding-top: 18px;
+  margin-top: 14px;
+  padding-top: 12px;
 }
 
 .senses {
@@ -1317,7 +1333,7 @@ body.studying {
 
 .swipe-hint {
   text-align: center;
-  margin: 12px 0;
+  margin: 8px 0;
 }
 
 .study-actions {

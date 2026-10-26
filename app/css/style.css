@@ -936,14 +936,14 @@ body.studying {
 
 /* ขึ้นต้น :root ให้ชนะกฎเว้นที่ให้เมนูล่าง (หน้านี้ซ่อนเมนู ไม่เช่นนั้นเนื้อหาน้อยก็เลื่อนได้ และปัดการ์ดยาก) */
 :root body.studying main {
-  padding-top: calc(12px + env(safe-area-inset-top));
-  padding-bottom: calc(16px + env(safe-area-inset-bottom));
+  padding-top: calc(22px + env(safe-area-inset-top));
+  padding-bottom: calc(6px + env(safe-area-inset-bottom) * 0.5);
 }
 
 #view-study:not([hidden]) {
   display: flex;
   flex-direction: column;
-  height: calc(100dvh - 28px - env(safe-area-inset-top) - env(safe-area-inset-bottom));
+  height: calc(100dvh - 28px - env(safe-area-inset-top) - env(safe-area-inset-bottom) * 0.5);
 }
 
 #view-study .notice {
@@ -956,7 +956,7 @@ body.studying {
   display: flex;
   align-items: center;
   gap: 12px;
-  margin-bottom: 10px;
+  margin-bottom: 16px;
 }
 
 .close {

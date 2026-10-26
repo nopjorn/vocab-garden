@@ -1,7 +1,7 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
 
-import { KEEP_BEFORE, KEEP_DAILY, backupDue, backupText, daysSinceBackup, formatSnapshotTime, markSince, planPrune } from "../../app/js/backup.js";
+import { KEEP_BEFORE, KEEP_DAILY, KEEP_MANUAL, backupDue, backupText, daysSinceBackup, formatSnapshotTime, markSince, planPrune } from "../../app/js/backup.js";
 
 const meta = (over = {}) => ({ last: null, since: null, asked: null, ...over });
 
@@ -54,4 +54,13 @@ test("planPrune keeps the newest daily and before snapshots separately", () => {
 test("formatSnapshotTime shows the local date and time", () => {
   assert.equal(formatSnapshotTime(new Date(2026, 9, 26, 7, 5).toISOString()), "26 ต.ค. 07:05 น.");
   assert.equal(formatSnapshotTime(new Date(2026, 0, 3, 23, 59).toISOString()), "3 ม.ค. 23:59 น.");
+});
+
+test("planPrune keeps only the newest manual snapshots", () => {
+  const entries = [];
+  for (let n = 1; n <= KEEP_MANUAL + 2; n += 1) {
+    entries.push({ id: `manual-${n}`, kind: "manual", at: `2026-03-0${n}T00:00:00Z` });
+  }
+  entries.push({ id: "daily-1", kind: "daily", at: "2026-03-01T00:00:00Z" });
+  assert.deepEqual(planPrune(entries).sort(), ["manual-1", "manual-2"]);
 });

@@ -2324,23 +2324,27 @@ function renderBackupReminder() {
 
 // สำเนาอัตโนมัติในเครื่อง (IndexedDB): รายวัน 1 ชุดต้นวัน และก่อนนำเข้า / ล้าง / กู้คืน เก็บไว้กันกดผิด
 // ล้มเหลวได้เงียบ ๆ (โหมดส่วนตัวหรือเครื่องที่ไม่รองรับ) ต้องไม่ขวางงานหลัก
+// คืน true เมื่อเก็บสำเนาใหม่สำเร็จ
 async function takeSnapshot(kind, reason = null) {
-  if (!canSnapshot()) return;
+  if (!canSnapshot()) return false;
   const data = storage.exportData(self.VG_VERSION);
   const count = Object.keys(data.cards).length;
-  if (count === 0) return;
+  if (count === 0) return false;
   const day = dayNumber();
   const at = new Date().toISOString();
-  const id = kind === "daily" ? `daily-${day}` : `before-${at}`;
+  const id = kind === "daily" ? `daily-${day}` : `${kind}-${at}`;
   try {
-    if (kind === "daily" && (await hasSnapshot(id))) return;
+    if (kind === "daily" && (await hasSnapshot(id))) return false;
     await saveSnapshot({ id, kind, day, at, count, reason }, data);
+    return true;
   } catch {
-    // เก็บสำเนาไม่ได้ก็ข้ามไป
+    return false; // เก็บสำเนาไม่ได้ก็ข้ามไป
   }
 }
 
-const snapshotLabel = (info) => `${info.kind === "daily" ? "สำเนาต้นวัน" : SNAPSHOT_REASONS[info.reason] || "สำเนาก่อนเปลี่ยนข้อมูล"} · เก็บเมื่อ ${formatSnapshotTime(info.at)}`;
+const SNAPSHOT_KIND_LABELS = { daily: "สำเนาต้นวัน", manual: "สำเนาที่เก็บเอง" };
+const snapshotLabel = (info) =>
+  `${SNAPSHOT_KIND_LABELS[info.kind] || SNAPSHOT_REASONS[info.reason] || "สำเนาก่อนเปลี่ยนข้อมูล"} · เก็บเมื่อ ${formatSnapshotTime(info.at)}`;
 
 async function renderSnapshots() {
   $("snapshots").hidden = !canSnapshot();
@@ -2948,6 +2952,11 @@ function bindEvents() {
   $("backup-later").addEventListener("click", () => {
     storage.saveBackupMeta({ ...storage.loadBackupMeta(), asked: dayNumber() });
     renderBackupReminder();
+  });
+  $("snapshot-now").addEventListener("click", async () => {
+    const saved = await takeSnapshot("manual");
+    toast(saved ? "เก็บสำเนาตอนนี้แล้ว 💾" : "เก็บสำเนาไม่ได้ ยังไม่มีความคืบหน้า หรือเบราว์เซอร์ไม่รองรับ");
+    renderSnapshots();
   });
   $("snapshot-clear").addEventListener("click", async () => {
     if (!confirm("ลบสำเนาอัตโนมัติทั้งหมดในเครื่องนี้ใช่ไหม? ความคืบหน้าปัจจุบันไม่หาย")) return;

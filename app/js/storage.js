@@ -15,6 +15,7 @@ const KEYS = {
   medals: "vg:medals",
   log: "vg:log",
   weekSeen: "vg:week-seen",
+  backup: "vg:backup",
 };
 const HISTORY_KEEP_DAYS = 400; // เก็บประวัติการทวนรายวันย้อนหลังไม่เกินนี้
 export const SPEECH_RATE_CHOICES = [0.7, 0.9, 1.1]; // ช้า / ปกติ / เร็ว
@@ -173,6 +174,51 @@ function validRest(rest) {
     Array.isArray(rest.frozen) &&
     rest.frozen.every(Number.isInteger);
   return ok ? { bank: rest.bank, run: rest.run, upTo: rest.upTo, frozen: rest.frozen } : null;
+}
+
+// ---------- รวมข้อมูลตอนนำเข้า (ใช้ซิงก์ข้ามเครื่องด้วยไฟล์สำรอง) ----------
+
+// วันที่ตอบการ์ดครั้งล่าสุด (due - ivl ตามที่ srs.js กำหนด)
+const lastAnswered = (card) => card.due - card.ivl;
+
+// การ์ดคำเดียวกันสองฝั่ง เอาฝั่งที่ตอบล่าสุด (เท่ากันเอาฝั่งที่ทวนสำเร็จมากกว่า เท่ากันอีกเอาในเครื่อง)
+export function mergeCards(local, incoming) {
+  const merged = { ...local };
+  for (const [headword, card] of Object.entries(incoming)) {
+    const mine = local[headword];
+    if (!mine) merged[headword] = card;
+    else if (lastAnswered(card) > lastAnswered(mine) || (lastAnswered(card) === lastAnswered(mine) && card.reps > mine.reps)) {
+      merged[headword] = card;
+    }
+  }
+  return merged;
+}
+
+// ตัวนับรายวัน { [เลขวัน]: จำนวน } เอาค่าที่มากกว่าของแต่ละวัน (ไม่นับซ้ำถ้าไฟล์มาจากเครื่องเดียวกัน)
+function mergeDayCounts(local, incoming) {
+  const merged = { ...local };
+  for (const [day, count] of Object.entries(incoming)) merged[day] = Math.max(merged[day] || 0, count);
+  return merged;
+}
+
+// เกมที่สถิติดีกว่าคือค่าน้อยกว่า (เวลาจับคู่) ที่เหลือคือคะแนน ยิ่งมากยิ่งดี
+const LOWER_IS_BETTER = new Set(["match"]);
+
+export function mergeGames(local, incoming) {
+  const best = { ...local.best };
+  for (const [name, value] of Object.entries(incoming.best)) {
+    const mine = best[name];
+    if (mine === undefined || (LOWER_IS_BETTER.has(name) ? value < mine : value > mine)) best[name] = value;
+  }
+  const merged = { days: mergeDayCounts(local.days, incoming.days), best };
+  // ทายคำปริศนา: เอาของวันที่ใหม่กว่า วันเดียวกันเอาฝั่งที่เดาไปมากกว่า
+  const wordles = [local.wordle, incoming.wordle].filter(Boolean);
+  if (wordles.length > 0) {
+    merged.wordle = wordles.reduce((a, b) => (b.day > a.day || (b.day === a.day && b.guesses.length > a.guesses.length) ? b : a));
+  }
+  const stats = [local.wordleStats, incoming.wordleStats].filter(Boolean);
+  if (stats.length > 0) merged.wordleStats = stats.reduce((a, b) => (b.played > a.played ? b : a));
+  return merged;
 }
 
 export function createStorage(store = globalThis.localStorage) {
@@ -359,6 +405,17 @@ export function createStorage(store = globalThis.localStorage) {
       return notes;
     },
 
+    // การสำรองไฟล์: { last: วันที่ส่งออกล่าสุด, since: วันที่เริ่มนับ (วันแรกที่มีความคืบหน้าพอ), asked: วันที่เตือนล่าสุดแล้วผู้ใช้กด "ไว้ทีหลัง" }
+    // เก็บเฉพาะในเครื่องนี้ ไม่อยู่ในไฟล์สำรอง
+    loadBackupMeta() {
+      const saved = read(KEYS.backup, null) || {};
+      const day = (value) => (Number.isInteger(value) ? value : null);
+      return { last: day(saved.last), since: day(saved.since), asked: day(saved.asked) };
+    },
+    saveBackupMeta(meta) {
+      write(KEYS.backup, meta);
+    },
+
     // วันพักกันสตรีคขาด (null = ยังไม่เคยคำนวณ)
     loadRest() {
       return validRest(read(KEYS.rest, null));
@@ -383,30 +440,38 @@ export function createStorage(store = globalThis.localStorage) {
         log: this.loadLog(),
       };
     },
-    // คืนจำนวนคำที่นำเข้า หรือโยน Error ถ้าไฟล์ไม่ถูกต้อง
-    importData(data) {
+    // คืนจำนวนคำที่มีหลังนำเข้า หรือโยน Error ถ้าไฟล์ไม่ถูกต้อง
+    // merge = false: ทับของเดิมตามไฟล์ (กู้คืน) · merge = true: รวมกับที่มี การ์ดคำเดียวกันเอาฝั่งที่ตอบล่าสุด (ซิงก์ข้ามเครื่อง)
+    importData(data, { merge = false } = {}) {
       if (!data || data.app !== "vocab-garden" || data.schema !== SCHEMA) {
         throw new Error("ไฟล์นี้ไม่ใช่ไฟล์สำรองของ Vocab Garden");
       }
-      const cards = validCards(data.cards);
-      if (!cards) throw new Error("ข้อมูลความคืบหน้าในไฟล์ไม่ถูกต้อง");
+      const incoming = validCards(data.cards);
+      if (!incoming) throw new Error("ข้อมูลความคืบหน้าในไฟล์ไม่ถูกต้อง");
+      const local = this.loadCards();
+      // เครื่องที่ยังไม่มีความคืบหน้า (เครื่องใหม่ หรือเพิ่งล้าง) รับการตั้งค่าจากไฟล์ด้วย เครื่องที่ใช้อยู่แล้วคงการตั้งค่าของตัวเอง
+      const fresh = Object.keys(local).length === 0;
+      const cards = merge ? mergeCards(local, incoming) : incoming;
       this.saveCards(cards);
-      if (data.settings) this.saveSettings({ ...this.loadSettings(), ...data.settings });
+      if (data.settings && (!merge || fresh)) this.saveSettings({ ...this.loadSettings(), ...data.settings });
       // ไฟล์สำรองเก่า (ก่อน v0.6.0) ไม่มีประวัติ ให้คงประวัติเดิมไว้
-      const history = validHistory(data.history);
+      const importedHistory = validHistory(data.history);
+      const history = importedHistory && merge ? mergeDayCounts(this.loadHistory(), importedHistory) : importedHistory;
       if (history) {
         this.saveHistory(history);
         // วันพักคำนวณจากประวัติ ถ้าไฟล์ไม่มีวันพักให้ลบของเดิมทิ้ง แล้วคำนวณใหม่จากประวัติที่นำเข้า
-        const rest = validRest(data.rest);
+        // (ตอนรวมข้อมูล ประวัติเปลี่ยนไปจากทั้งสองฝั่ง จึงคำนวณวันพักใหม่เสมอ)
+        const rest = merge ? null : validRest(data.rest);
         if (rest) this.saveRest(rest);
         else target.removeItem(KEYS.rest);
       }
       // ไฟล์สำรองเก่า (ก่อน v0.15.0) ไม่มีโน้ต ให้คงโน้ตเดิมไว้
+      // ตอนรวมข้อมูล โน้ตที่คำเดียวกันมีทั้งสองฝั่ง ใช้ของในเครื่อง (โน้ตไม่มีเวลาบอกว่าอันไหนใหม่กว่า)
       const notes = data.notes === undefined ? null : validNotes(data.notes);
-      if (notes) write(KEYS.notes, notes);
+      if (notes) write(KEYS.notes, merge ? { ...notes, ...this.loadNotes() } : notes);
       // ไฟล์สำรองเก่า (ก่อน v0.16.0) ไม่มีข้อมูลเกม ให้คงของเดิมไว้
       const games = data.games === undefined ? null : validGames(data.games);
-      if (games) write(KEYS.games, games);
+      if (games) write(KEYS.games, merge ? mergeGames(this.loadGames(), games) : games);
       // ไฟล์สำรองเก่า (ก่อน v0.19.0) ไม่มีเหรียญ ให้คงของเดิมไว้ ไฟล์ใหม่รวมเหรียญเข้ากับที่มีอยู่ (เหรียญไม่หาย)
       const medals = data.medals === undefined ? null : validMedals(data.medals);
       if (medals) write(KEYS.medals, { ...this.loadMedals(), ...medals });

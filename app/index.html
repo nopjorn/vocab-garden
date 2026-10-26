@@ -73,6 +73,13 @@
         <a href="#/study" id="start" class="button hero-cta">🌱 เริ่มท่องศัพท์</a>
         <p id="today-empty" class="hero-done" hidden>วันนี้ทวนครบแล้ว 🎉 พรุ่งนี้มาดูสวนกันใหม่นะ</p>
       </div>
+      <div id="backup-reminder" class="notice backup-reminder" hidden>
+        <span id="backup-reminder-text"></span>
+        <span class="backup-reminder-actions">
+          <button type="button" id="backup-now" class="primary">สำรองเลย</button>
+          <button type="button" id="backup-later">ไว้ทีหลัง</button>
+        </span>
+      </div>
       <p id="welcome-back" class="notice" hidden></p>
       <p id="backlog-note" class="notice" hidden></p>
 
@@ -672,12 +679,23 @@
       <h2>สำรองความคืบหน้า</h2>
       <div class="panel">
         <p>ความคืบหน้าเก็บอยู่ในเครื่องนี้เท่านั้น ส่งออกไฟล์สำรองเก็บไว้ (เลือกบันทึกลงไฟล์ AirDrop หรือส่งเมลได้) หรือใช้ย้ายไปเครื่องอื่นได้</p>
+        <p id="backup-last" class="muted small"></p>
         <div class="row">
           <button type="button" id="export">ส่งออกไฟล์สำรอง</button>
           <label class="button">นำเข้าไฟล์สำรอง<input type="file" id="import" accept=".json,application/json" hidden></label>
         </div>
+        <p class="tip small">🔄 <strong>ใช้หลายเครื่อง:</strong> นำเข้าไฟล์จะ <strong>รวม</strong> กับความคืบหน้าในเครื่อง
+          คำที่มีทั้งสองฝั่งจะเอาฝั่งที่ตอบล่าสุด ไม่ทับกัน ส่งออกไฟล์ไปเก็บใน iCloud Drive หรือ Google Drive แล้วเปิดนำเข้าที่อีกเครื่องได้
+          (ใช้การตั้งค่าจากไฟล์เฉพาะตอนเครื่องนี้ยังไม่มีความคืบหน้า)</p>
         <p class="tip small">💡 บน iPhone และ iPad: Safari กับแอปที่เพิ่มไว้บนหน้าจอโฮมเก็บข้อมูลแยกกัน
           แนะนำให้เปิดจากไอคอนบนหน้าจอโฮมเป็นหลัก ถ้าจะย้าย ให้ใช้ไฟล์สำรอง</p>
+        <details id="snapshots" class="snapshots">
+          <summary>🕘 สำเนาอัตโนมัติในเครื่อง</summary>
+          <p class="small muted">แอปเก็บสำเนาต้นวันย้อนหลัง 7 วัน และสำเนาก่อนนำเข้า ล้าง หรือกู้คืนอีก 3 ชุด ไว้กู้คืนเมื่อกดผิด
+            สำเนาอยู่ในเบราว์เซอร์ของเครื่องนี้ ถ้าล้างข้อมูลเว็บไซต์หรือเครื่องหาย สำเนาก็หายไปด้วย จึงไม่ใช่ที่สำรองจริง ยังควรส่งออกไฟล์ไว้</p>
+          <ul id="snapshot-list" class="snapshot-list"></ul>
+          <button type="button" id="snapshot-clear" hidden>ลบสำเนาทั้งหมด</button>
+        </details>
       </div>
 
       <h2>ล้างข้อมูล</h2>
@@ -731,7 +749,7 @@
       <h2>ความเป็นส่วนตัว</h2>
       <ul>
         <li>ความคืบหน้า การตั้งค่า ประวัติการทวนรายวัน สถิติรายวัน (คำใหม่ ต้นไม้ใหญ่ ครั้งที่ตอบไม่ได้) วันพักของสตรีค โน้ตช่วยจำที่คุณเขียน สถิติเกม เหรียญ และดอกไม้ที่ได้ เก็บอยู่ในเครื่องของคุณเท่านั้น (ที่ localStorage คีย์ขึ้นต้นด้วย <code>vg:</code>)
-          ไม่ถูกส่งออกไปที่ไหน</li>
+          ไม่ถูกส่งออกไปที่ไหน แอปยังเก็บสำเนาอัตโนมัติของข้อมูลเหล่านี้ไว้ในเบราว์เซอร์ของเครื่องนี้ (IndexedDB ชื่อ <code>vg-snapshots</code>) ลบได้ที่ ตั้งค่า → สำเนาอัตโนมัติในเครื่อง</li>
         <li>ไม่มีการสมัครสมาชิก ไม่มีคุกกี้ ไม่มีโฆษณา และไม่มีเครื่องมือวิเคราะห์หรือติดตามผู้ใช้</li>
         <li>เสียงอ่านใช้บริการเสียงของเครื่องและเบราว์เซอร์ของคุณ บางเบราว์เซอร์อาจส่งข้อความที่อ่านไปประมวลผลกับผู้ให้บริการเสียงของเบราว์เซอร์นั้น
           ซึ่งเป็นไปตามนโยบายของเบราว์เซอร์ ไม่ใช่ของแอปนี้</li>

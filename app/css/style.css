@@ -3035,7 +3035,6 @@ html[data-text-size="large"] {
   #view-placement,
   #view-exam,
   #view-flash,
-  #view-plot,
   #view-changelog,
   #view-loading,
   #view-error {
@@ -3465,5 +3464,37 @@ html[data-text-size="large"] {
 
   .word-actions #word-know {
     grid-column: auto;
+  }
+}
+
+/* ===== หน้าของแปลงบนจอกว้าง: ข้อมูลและตัวกรองอยู่ซ้าย ต้นไม้ทั้งแปลงอยู่ขวา ให้เห็นครบโดยไม่ต้องเลื่อน =====
+   มุมมองรายการคำยังเป็นคอลัมน์เดียวกลางจอ เพราะรายการยาวและแถบเลือกต้องติดอยู่ตอนเลื่อน */
+@media (min-width: 960px) and (hover: hover) and (pointer: fine), (min-width: 960px) and (orientation: landscape) and (pointer: coarse) {
+  #view-plot:has(#plot-list:not([hidden])) {
+    max-width: 760px;
+    margin-inline: auto;
+  }
+
+  #view-plot:not([hidden]):not(:has(#plot-list:not([hidden]))) {
+    display: grid;
+    grid-template-columns: minmax(280px, 340px) minmax(0, 1fr);
+    gap: 0 32px;
+    align-items: start;
+  }
+
+  #view-plot:not(:has(#plot-list:not([hidden]))) > * {
+    grid-column: 1;
+  }
+
+  #view-plot:not(:has(#plot-list:not([hidden]))) > .plot-grid {
+    grid-column: 2;
+    grid-row: 1 / span 12;
+    margin-bottom: 0;
+    grid-template-columns: repeat(auto-fill, minmax(52px, 1fr));
+  }
+
+  #view-plot .plot-filters {
+    flex-wrap: wrap;
+    overflow: visible;
   }
 }

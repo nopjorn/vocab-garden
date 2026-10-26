@@ -22,7 +22,7 @@
       var saved = JSON.parse(localStorage.getItem("vg:settings") || "{}");
       if (saved.theme === "light" || saved.theme === "dark") document.documentElement.dataset.theme = saved.theme;
       if (saved.textSize === "large") document.documentElement.dataset.textSize = "large";
-      if (saved.menuPosition === "top") document.documentElement.dataset.menu = "top";
+      if (saved.menuPosition === "top" || saved.menuPosition === "dock") document.documentElement.dataset.menu = saved.menuPosition;
     } catch (error) {}
   </script>
   <script src="version.js"></script>

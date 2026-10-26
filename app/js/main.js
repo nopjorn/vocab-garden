@@ -85,7 +85,7 @@ function show(view) {
 function applyAppearance() {
   const { theme, textSize, menuPosition } = state.settings;
   const root = document.documentElement;
-  if (menuPosition === "top") root.dataset.menu = "top";
+  if (menuPosition === "top" || menuPosition === "dock") root.dataset.menu = menuPosition;
   else delete root.dataset.menu;
   if (theme === "auto") delete root.dataset.theme;
   else root.dataset.theme = theme;
@@ -2370,7 +2370,7 @@ function renderSupport() {
 const SPEECH_RATE_LABELS = { 0.7: "ช้า", 0.9: "ปกติ", 1.1: "เร็ว" };
 const THEME_LABELS = { auto: "ตามเครื่อง", light: "สว่าง", dark: "มืด" };
 const TEXT_SIZE_LABELS = { normal: "ปกติ", large: "ใหญ่" };
-const MENU_POSITION_LABELS = { bottom: "ด้านล่าง", top: "ด้านบน" };
+const MENU_POSITION_LABELS = { bottom: "ด้านล่าง (ลอย)", dock: "ด้านล่าง (ชิดขอบจอ)", top: "ด้านบน" };
 const QUIZ_MODE_LABELS = { flip: "พลิกการ์ด (แบบเดิม)", mixed: "ผสมหลายแบบ" };
 const DAILY_GOAL_LABELS = Object.fromEntries(DAILY_GOAL_CHOICES.map((count) => [count, `${count} ครั้ง`]));
 const REVIEW_CAP_LABELS = Object.fromEntries(REVIEW_CAP_CHOICES.map((count) => [count, count ? `ไม่เกิน ${count} ครั้ง` : "ไม่จำกัด"]));

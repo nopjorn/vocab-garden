@@ -384,6 +384,25 @@ a {
   :root:not([data-menu="top"]) .toast {
     bottom: calc(96px + env(safe-area-inset-bottom));
   }
+
+  /* เมนูชิดขอบจอล่าง: เต็มความกว้าง ไม่ลอย ไม่มีมุมโค้งและเงารอบด้าน เว้นที่ใต้ปุ่มสำหรับขอบจอโค้งและแถบ home ของ iPhone */
+  :root[data-menu="dock"] .tabbar {
+    left: 0;
+    right: 0;
+    bottom: 0;
+    padding: 6px max(8px, calc(50% - 352px)) calc(6px + env(safe-area-inset-bottom));
+    border-width: 1px 0 0;
+    border-radius: 0;
+    box-shadow: 0 -4px 16px rgba(15, 36, 25, 0.06);
+  }
+
+  :root[data-menu="dock"] main {
+    padding-bottom: calc(88px + env(safe-area-inset-bottom));
+  }
+
+  :root[data-menu="dock"] .toast {
+    bottom: calc(76px + env(safe-area-inset-bottom));
+  }
 }
 
 /* iPad: คงหน้าตาแบบ iPhone แต่ขยายตัวหนังสือและเนื้อหาให้เต็มตาขึ้น */

@@ -2063,12 +2063,85 @@ function renderPlots(today) {
   applyGardenSearch();
 }
 
+// ---------- รู้แล้ว ข้ามเป็นต้นไม้ใหญ่ ----------
+
+// คำที่ยังไม่เป็นต้นไม้ใหญ่ ข้ามได้
+const canSkip = (word) => stageOf(state.cards[word.headword]).id !== "tree";
+
+// ข้ามคำที่ผู้เรียนรู้อยู่แล้วให้เป็นต้นไม้ใหญ่เลย (ทวนอีกทีในอีก 30 วัน) ไม่นับเป็นการทวนของวัน
+function skipWordsAsKnown(words) {
+  const day = dayNumber();
+  let fresh = 0;
+  let grown = 0;
+  words.forEach((word) => {
+    const before = state.cards[word.headword];
+    if (!before) fresh += 1;
+    if (stageOf(before).id !== "tree") grown += 1;
+    state.cards[word.headword] = knownCard(before, day);
+  });
+  storage.saveCards(state.cards);
+  storage.addLog(day, { n: fresh, t: grown });
+  checkMedals();
+  updateAppBadge();
+  if (!$("view-plot").hidden) renderPlotPage(plotPage.level);
+  if (!$("view-garden").hidden) renderGarden();
+}
+
 // ---------- หน้าของแต่ละแปลง (#/garden/<แปลง>) ----------
 
-const plotPage = { level: null, filter: "all" };
+// แถวในมุมมองรายการ: ช่องติ๊ก "รู้แล้ว" + ตัวคำและความหมาย แตะที่คำเพื่อดูรายละเอียด
+function wordRow(word, today) {
+  const info = plantInfo(state.cards[word.headword], today);
+  const row = el("li", `word-row${info.wilted ? " wilted" : ""}`);
+  if (canSkip(word)) {
+    const label = el("label", "word-check");
+    const box = el("input");
+    box.type = "checkbox";
+    box.checked = plotPage.selected.has(word.headword);
+    box.setAttribute("aria-label", `รู้คำว่า ${word.headword} แล้ว (เลือกเพื่อข้าม)`);
+    box.addEventListener("change", () => {
+      if (box.checked) plotPage.selected.add(word.headword);
+      else plotPage.selected.delete(word.headword);
+      updateSelectBar();
+    });
+    label.append(box);
+    row.append(label);
+  } else {
+    row.append(el("span", "word-check done", "✓"));
+  }
+  const main = el("button", "word-row-main");
+  main.type = "button";
+  main.dataset.headword = word.headword;
+  const emoji = el("span", "word-row-emoji", info.wilted ? `${info.stage.emoji}💧` : info.stage.emoji);
+  emoji.setAttribute("aria-hidden", "true");
+  const name = el("strong", "", word.headword);
+  name.lang = "en";
+  main.append(emoji, name, el("span", "word-row-meaning", word.senses[0]?.text || ""));
+  main.setAttribute("aria-label", `${word.headword} ${info.stage.label}${info.wilted ? " ต้องรดน้ำ" : ""}`);
+  row.append(main);
+  return row;
+}
+
+function updateSelectBar() {
+  const count = plotPage.selected.size;
+  $("plot-select-count").textContent = count > 0 ? `เลือกแล้ว ${count} คำ` : "ติ๊กคำที่รู้อยู่แล้ว";
+  $("plot-skip").disabled = count === 0;
+  $("plot-select-none").hidden = count === 0;
+}
+
+function skipSelected() {
+  const words = (plotPage.shown || []).filter((word) => plotPage.selected.has(word.headword) && canSkip(word));
+  if (words.length === 0) return;
+  if (!confirm(`ข้าม ${words.length} คำที่เลือกให้เป็นต้นไม้ใหญ่เลยใช่ไหม? (คำเหล่านี้จะมาทวนอีกทีในอีก 30 วัน และย้อนกลับไม่ได้)`)) return;
+  plotPage.selected.clear();
+  skipWordsAsKnown(words);
+  toast(`ข้าม ${words.length} คำเป็นต้นไม้ใหญ่แล้ว 🌳`);
+}
+
+const plotPage = { level: null, filter: "all", view: "grid", selected: new Set() };
 
 function renderPlotPage(level) {
-  if (plotPage.level !== level) Object.assign(plotPage, { level, filter: "all" });
+  if (plotPage.level !== level) Object.assign(plotPage, { level, filter: "all", selected: new Set() });
   const today = dayNumber();
   const translated = translatedWords();
   const levels = [...new Set(translated.map((word) => word.level))];
@@ -2097,13 +2170,22 @@ function renderPlotPage(level) {
       chip.setAttribute("aria-pressed", String(filter.id === plotPage.filter));
       chip.addEventListener("click", () => {
         plotPage.filter = filter.id;
+        plotPage.selected.clear();
         renderPlotPage(level);
       });
       return chip;
     }),
   );
   const shown = words.filter((word) => plantMatchesFilter(state.cards[word.headword], today, plotPage.filter));
-  $("plot-grid").replaceChildren(...shown.map((word) => plantButton(word, today)));
+  const list = plotPage.view === "list";
+  for (const [id, view] of [["plot-view-grid", "grid"], ["plot-view-list", "list"]]) $(id).setAttribute("aria-pressed", String(plotPage.view === view));
+  $("plot-grid").hidden = list;
+  $("plot-list").hidden = !list;
+  $("plot-grid").replaceChildren(...(list ? [] : shown.map((word) => plantButton(word, today))));
+  $("plot-list").replaceChildren(...(list ? shown.map((word) => wordRow(word, today)) : []));
+  $("plot-select-bar").hidden = !list || !shown.some(canSkip);
+  plotPage.shown = shown;
+  updateSelectBar();
   $("plot-empty").hidden = shown.length > 0;
   $("plot-exam").replaceChildren(examBox(level, summary, tier));
 }
@@ -2161,6 +2243,12 @@ function openWordDialog(word) {
   $("word-edit-note").onclick = () => openNoteDialog(word);
   $("word-speak").hidden = !canSpeak();
   $("word-speak").onclick = () => speakWord(word.headword);
+  $("word-know").hidden = !canSkip(word);
+  $("word-know").onclick = () => {
+    $("word-dialog").hidden = true;
+    skipWordsAsKnown([word]);
+    toast(`${word.headword} ข้ามไปเป็นต้นไม้ใหญ่แล้ว 🌳`);
+  };
   $("word-dialog").hidden = false;
   $("word-close").focus();
 }
@@ -2888,6 +2976,32 @@ function bindEvents() {
       location.replace($(id).href);
     });
   }
+  for (const [id, view] of [["plot-view-grid", "grid"], ["plot-view-list", "list"]]) {
+    $(id).addEventListener("click", () => {
+      plotPage.view = view;
+      plotPage.selected.clear();
+      renderPlotPage(plotPage.level);
+    });
+  }
+  $("plot-select-all").addEventListener("click", () => {
+    (plotPage.shown || []).filter(canSkip).forEach((word) => plotPage.selected.add(word.headword));
+    $("plot-list").querySelectorAll(".word-check input").forEach((box) => {
+      box.checked = true;
+    });
+    updateSelectBar();
+  });
+  $("plot-select-none").addEventListener("click", () => {
+    plotPage.selected.clear();
+    $("plot-list").querySelectorAll(".word-check input").forEach((box) => {
+      box.checked = false;
+    });
+    updateSelectBar();
+  });
+  $("plot-skip").addEventListener("click", skipSelected);
+  $("plot-list").addEventListener("click", (event) => {
+    const button = event.target.closest(".word-row-main");
+    if (button) openWordDialog(state.words.find((entry) => entry.headword === button.dataset.headword));
+  });
   $("plot-grid").addEventListener("click", (event) => {
     const button = event.target.closest(".plant");
     if (button) openWordDialog(state.words.find((entry) => entry.headword === button.dataset.headword));

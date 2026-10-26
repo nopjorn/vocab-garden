@@ -3191,3 +3191,279 @@ html[data-text-size="large"] {
     display: none;
   }
 }
+
+/* ===== หน้าต่างรายละเอียดคำ: ใช้พื้นที่ให้เต็มขึ้น ===== */
+.word-head {
+  display: grid;
+  gap: 10px;
+  align-content: start;
+}
+
+/* จัดกลางแนวตั้งแบบไม่ตัดหัวเมื่อเนื้อหายาวกว่าพื้นที่ (ตัวเว้นว่างหน้า/หลังแบ่งที่เหลือเท่า ๆ กัน และเป็น 0 เมื่อล้น) */
+.word-body {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.word-body::before,
+.word-body::after {
+  content: "";
+  flex: 1 0 0;
+}
+
+.word-head h2 {
+  font-size: 2.2rem;
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+}
+
+.word-head .big-emoji {
+  font-size: 5.5rem;
+}
+
+.word-head #word-due {
+  font-weight: 600;
+}
+
+.word-body {
+  font-size: 1.1rem;
+}
+
+.word-box .word-body .senses {
+  font-size: 1.35rem;
+}
+
+.word-example {
+  font-size: 1.15rem;
+}
+
+.word-actions {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.word-actions .primary {
+  grid-column: 1 / -1;
+}
+
+/* มือถือ: แผ่นล่างสูงเกือบเต็มจอ ปุ่มอยู่ติดล่างใกล้นิ้วโป้ง */
+@media (max-width: 599px) {
+  #word-dialog {
+    align-items: flex-end;
+    padding: 0;
+  }
+
+  #word-dialog .word-box {
+    max-width: none;
+    min-height: 82dvh;
+    max-height: 94dvh;
+    grid-template-rows: auto minmax(0, 1fr) auto;
+    gap: 16px;
+    padding: 28px 22px calc(20px + env(safe-area-inset-bottom));
+    border-radius: 28px 28px 0 0;
+    overflow: hidden;
+  }
+
+  /* ถ้าเนื้อหายาว ให้เลื่อนเฉพาะส่วนกลาง ปุ่มด้านล่างอยู่กับที่เสมอ */
+  .word-body {
+    overflow-y: auto;
+  }
+
+  .word-head .big-emoji {
+    font-size: 4.5rem;
+  }
+
+  .word-head h2 {
+    font-size: 2rem;
+  }
+
+  .word-box .word-body .senses {
+    font-size: 1.3rem;
+  }
+
+  .word-body,
+  .word-example {
+    font-size: 1.05rem;
+  }
+}
+
+/* แท็บเล็ตแนวตั้งและจอกลาง: กล่องกว้างขึ้น ตัวหนังสือโตขึ้น */
+@media (min-width: 600px) {
+  #word-dialog .word-box {
+    max-width: 680px;
+    padding: 40px 44px 32px;
+    gap: 22px;
+  }
+
+  .word-head h2 {
+    font-size: 2.6rem;
+  }
+
+  .word-box .word-body .senses {
+    font-size: 1.5rem;
+  }
+
+  .word-body,
+  .word-example {
+    font-size: 1.25rem;
+  }
+}
+
+/* จอกว้าง (คอม iPad แนวนอน): สองคอลัมน์ ซ้ายคือตัวคำ ขวาคือความหมายและประโยค */
+@media (min-width: 900px) {
+  #word-dialog .word-box {
+    max-width: 940px;
+    grid-template-columns: minmax(240px, 300px) 1fr;
+    column-gap: 48px;
+    row-gap: 28px;
+    padding: 48px 52px 40px;
+  }
+
+  .word-head {
+    align-content: center;
+    padding-right: 48px;
+    border-right: 1px solid var(--border);
+  }
+
+  .word-body {
+    text-align: left;
+  }
+
+  .word-actions {
+    grid-column: 1 / -1;
+    grid-template-columns: 1fr 1fr 2fr;
+  }
+
+  .word-actions .primary {
+    grid-column: auto;
+  }
+}
+
+/* ===== มุมมองรายการคำในหน้าของแปลง ===== */
+.plot-view-toggle {
+  display: flex;
+  gap: 6px;
+  margin-bottom: 10px;
+}
+
+.select-bar {
+  position: sticky;
+  top: 64px;
+  z-index: 2;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 4px 12px;
+  margin-bottom: 8px;
+  padding: 8px 12px;
+  background: var(--surface);
+  border: 1px solid var(--link);
+  border-radius: var(--radius-sm);
+  box-shadow: var(--shadow-md);
+}
+
+.select-bar #plot-select-count {
+  flex: 1 1 auto;
+  font-weight: 600;
+}
+
+.select-bar .primary {
+  min-height: 44px;
+  padding: 8px 16px;
+}
+
+.word-list {
+  list-style: none;
+  margin: 0 0 12px;
+  padding: 0;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+
+.word-row {
+  display: flex;
+  align-items: stretch;
+  border-bottom: 1px solid var(--border);
+}
+
+.word-row:last-child {
+  border-bottom: 0;
+}
+
+.word-check {
+  flex: none;
+  display: grid;
+  place-items: center;
+  width: 52px;
+  cursor: pointer;
+}
+
+.word-check input {
+  width: 22px;
+  height: 22px;
+  accent-color: var(--link);
+}
+
+.word-check.done {
+  color: var(--tree);
+  font-weight: 800;
+  cursor: default;
+}
+
+.word-row-main {
+  flex: 1;
+  min-width: 0;
+  justify-content: flex-start;
+  gap: 10px;
+  min-height: 52px;
+  padding: 8px 14px 8px 0;
+  font-weight: 400;
+  text-align: left;
+  background: none;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+}
+
+.word-row-main strong {
+  flex: none;
+  font-size: 1.05rem;
+}
+
+.word-row-emoji {
+  flex: none;
+  min-width: 2.7em;
+  font-size: 1.3rem;
+  line-height: 1;
+}
+
+.word-row-meaning {
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  color: var(--muted);
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.word-row.wilted .word-row-emoji {
+  filter: grayscale(0.6);
+}
+
+.word-actions #word-know {
+  grid-column: 1 / -1;
+}
+
+@media (min-width: 900px) {
+  .word-actions {
+    grid-template-columns: 1fr 1fr 1.2fr 1fr;
+  }
+
+  .word-actions #word-know {
+    grid-column: auto;
+  }
+}

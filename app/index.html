@@ -289,10 +289,21 @@
       </div>
       <p id="plot-sub" class="muted"></p>
       <div id="plot-stagebar" class="stagebar" aria-hidden="true"></div>
+      <div class="plot-view-toggle" role="group" aria-label="มุมมอง">
+        <button type="button" id="plot-view-grid" class="plot-filter">🌳 ต้นไม้</button>
+        <button type="button" id="plot-view-list" class="plot-filter">☰ รายการคำ</button>
+      </div>
       <div id="plot-filters" class="plot-filters" role="group" aria-label="กรองต้นไม้ตามระยะ"></div>
+      <div id="plot-select-bar" class="select-bar" hidden>
+        <span id="plot-select-count" role="status"></span>
+        <button type="button" id="plot-select-all" class="linklike small">เลือกทั้งหมด</button>
+        <button type="button" id="plot-select-none" class="linklike small">ล้างที่เลือก</button>
+        <button type="button" id="plot-skip" class="primary">✅ รู้แล้ว ข้ามที่เลือก</button>
+      </div>
       <div id="plot-grid" class="plot-grid"></div>
+      <ul id="plot-list" class="word-list" hidden></ul>
       <p id="plot-empty" class="muted small" hidden>ไม่มีต้นไม้ในระยะนี้</p>
-      <p class="muted small">แตะต้นไม้เพื่อดูคำแปลและวันรดน้ำครั้งถัดไป ต้นที่เหี่ยว 🥀 ถึงเวลารดน้ำแล้ว (ทวน) แต่ต้นไม้ไม่มีวันตาย</p>
+      <p class="muted small">แตะต้นไม้หรือคำเพื่อดูคำแปลและวันรดน้ำครั้งถัดไป ต้นที่เหี่ยว 🥀 ถึงเวลารดน้ำแล้ว (ทวน) แต่ต้นไม้ไม่มีวันตาย ในมุมมองรายการ ติ๊กคำที่รู้อยู่แล้วเพื่อข้ามเป็นต้นไม้ใหญ่ได้หลายคำพร้อมกัน</p>
       <div id="plot-exam" class="panel"></div>
     </section>
 
@@ -812,18 +823,25 @@
   </div>
   <div id="word-dialog" class="modal" role="dialog" aria-modal="true" aria-labelledby="word-title" hidden>
     <div class="modal-box word-box">
-      <p id="word-stage" class="big-emoji" aria-hidden="true"></p>
-      <h2 id="word-title" lang="en"></h2>
-      <p id="word-stage-label" class="muted small"></p>
-      <p id="word-due"></p>
-      <ul id="word-senses" class="senses"></ul>
-      <p id="word-forms" class="forms small" hidden></p>
-      <p><span id="word-example-en" lang="en"></span><br><span id="word-example-th" class="muted"></span></p>
-      <p id="word-stats" class="muted small"></p>
-      <p id="word-note" class="mynote" hidden></p>
-      <button type="button" id="word-edit-note">✏️ โน้ตช่วยจำ</button>
-      <button type="button" id="word-speak">🔊 ฟังเสียง</button>
-      <button type="button" id="word-close" class="primary wide">ปิด</button>
+      <div class="word-head">
+        <p id="word-stage" class="big-emoji" aria-hidden="true"></p>
+        <h2 id="word-title" lang="en"></h2>
+        <p id="word-stage-label" class="muted small"></p>
+        <p id="word-due"></p>
+      </div>
+      <div class="word-body">
+        <ul id="word-senses" class="senses"></ul>
+        <p id="word-forms" class="forms small" hidden></p>
+        <p class="word-example"><span id="word-example-en" lang="en"></span><br><span id="word-example-th" class="muted"></span></p>
+        <p id="word-stats" class="muted small"></p>
+        <p id="word-note" class="mynote" hidden></p>
+      </div>
+      <div class="word-actions">
+        <button type="button" id="word-edit-note">✏️ โน้ตช่วยจำ</button>
+        <button type="button" id="word-speak">🔊 ฟังเสียง</button>
+        <button type="button" id="word-know">✅ รู้แล้ว ข้ามเลย</button>
+        <button type="button" id="word-close" class="primary wide">ปิด</button>
+      </div>
     </div>
   </div>
   <div id="note-dialog" class="modal" role="dialog" aria-modal="true" aria-labelledby="note-title" hidden>

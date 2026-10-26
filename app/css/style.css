@@ -1,4 +1,13 @@
 /* ===== Design tokens ===== */
+/* ฟอนต์ที่มากับแอป (Anuphan, SIL OFL 1.1 ดู app/fonts/README.md) ไม่โหลดจากเว็บภายนอกและใช้ offline ได้ */
+@font-face {
+  font-family: "Anuphan";
+  src: url("../fonts/anuphan-thai-latin.woff2") format("woff2");
+  font-weight: 400 700;
+  font-style: normal;
+  font-display: swap;
+}
+
 :root {
   --bg: #f3faf6;
   --bg-glow-1: rgba(52, 211, 153, 0.18);
@@ -42,6 +51,15 @@
   --growing: #34d399;
   --tree: #047857;
 
+  /* สีต้นไม้ SVG ในสวน (tree-art.js) */
+  --art-soil: #c9b79c;
+  --art-seed: #8a5a2b;
+  --art-stem: #2f9e6e;
+  --art-leaf: #22a06b;
+  --art-leaf2: #6bd39a;
+  --art-trunk: #8a5a2b;
+  --art-drop: #38bdf8;
+
   --warning-bg: #fef3c7;
   --shadow-sm: 0 1px 2px rgba(15, 36, 25, 0.06), 0 2px 8px rgba(15, 36, 25, 0.05);
   --shadow-md: 0 8px 24px rgba(15, 36, 25, 0.08), 0 2px 6px rgba(15, 36, 25, 0.05);
@@ -50,7 +68,7 @@
   --radius: 20px;
   --radius-lg: 28px;
 
-  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Sukhumvit Set", "Noto Sans Thai", "Leelawadee UI", "Segoe UI", Tahoma, sans-serif;
+  font-family: "Anuphan", -apple-system, BlinkMacSystemFont, "SF Pro Text", "Sukhumvit Set", "Noto Sans Thai", "Leelawadee UI", "Segoe UI", Tahoma, sans-serif;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -74,6 +92,13 @@
     --sprout: #1f6f52;
     --growing: #22b07d;
     --tree: #6ee7b7;
+    --art-soil: #3a342b;
+    --art-seed: #c58b4e;
+    --art-stem: #3fbf8a;
+    --art-leaf: #2fae79;
+    --art-leaf2: #7fe0ac;
+    --art-trunk: #b07a45;
+    --art-drop: #7dd3fc;
     --warning-bg: #3b2f12;
     --shadow-sm: none;
     --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.35);
@@ -102,6 +127,13 @@
   --sprout: #1f6f52;
   --growing: #22b07d;
   --tree: #6ee7b7;
+  --art-soil: #3a342b;
+  --art-seed: #c58b4e;
+  --art-stem: #3fbf8a;
+  --art-leaf: #2fae79;
+  --art-leaf2: #7fe0ac;
+  --art-trunk: #b07a45;
+  --art-drop: #7dd3fc;
   --warning-bg: #3b2f12;
   --shadow-sm: none;
   --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.35);
@@ -2239,17 +2271,9 @@ html[data-text-size="large"] {
   opacity: 0.55;
 }
 
-.plant.wilted {
-  filter: grayscale(0.7) saturate(0.6);
-  transform: rotate(-14deg);
-}
-
-.plant.wilted::after {
-  content: "💧";
-  position: absolute;
-  top: -4px;
-  right: -2px;
-  font-size: 0.75rem;
+.plant .tree-art {
+  width: 2em;
+  height: 2em;
 }
 
 .plant.dim {
@@ -3471,8 +3495,9 @@ html[data-text-size="large"] {
   text-overflow: ellipsis;
 }
 
-.word-row.wilted .word-row-emoji {
-  filter: grayscale(0.6);
+.word-row-emoji .tree-art {
+  width: 1.7em;
+  height: 1.7em;
 }
 
 .word-actions #word-know {
@@ -3543,4 +3568,266 @@ html[data-text-size="large"] {
     flex-wrap: wrap;
     overflow: visible;
   }
+}
+
+/* ===== ต้นไม้ SVG (tree-art.js) ===== */
+.tree-art {
+  display: block;
+  width: 1em;
+  height: 1em;
+  overflow: visible;
+}
+
+.plot-filter .tree-art {
+  display: inline-block;
+  width: 1.2em;
+  height: 1.2em;
+  margin-right: 4px;
+  vertical-align: -0.28em;
+}
+
+.art-soil {
+  fill: var(--art-soil);
+}
+
+.art-seed {
+  fill: var(--art-seed);
+}
+
+.art-stem {
+  fill: none;
+  stroke: var(--art-stem);
+  stroke-width: 2.4;
+  stroke-linecap: round;
+}
+
+.art-leaf {
+  fill: var(--art-leaf);
+}
+
+.art-leaf2 {
+  fill: var(--art-leaf2);
+}
+
+.art-trunk {
+  fill: var(--art-trunk);
+}
+
+.art-drop {
+  fill: var(--art-drop);
+}
+
+.art-body {
+  transform-box: view-box;
+  transform-origin: 24px 42px;
+}
+
+/* ต้นที่ถึงเวลารดน้ำ: เอียงและสีซีดลง มีหยดน้ำเตือน แต่ไม่มีวันตาย */
+.tree-art.wilted .art-body {
+  transform: rotate(-13deg);
+  filter: grayscale(0.65) saturate(0.7);
+}
+
+.word-head .tree-art {
+  width: 1em;
+  height: 1em;
+  margin: 0 auto;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .word-head .tree-art:not(.wilted) .art-body {
+    animation: tree-sway 4.5s ease-in-out infinite;
+  }
+
+  @keyframes tree-sway {
+    0%,
+    100% {
+      transform: rotate(-2deg);
+    }
+
+    50% {
+      transform: rotate(2deg);
+    }
+  }
+}
+
+/* ===== ท้องฟ้าในหน้าสวน (sky.js ตั้ง data-sky บน <html> ตามเวลาของเครื่อง) ===== */
+.sky {
+  position: relative;
+  height: 96px;
+  margin-bottom: 14px;
+  overflow: hidden;
+  border-radius: var(--radius);
+  background: linear-gradient(180deg, #7dd3fc 0%, #e0f7ff 100%);
+  box-shadow: var(--shadow-sm);
+}
+
+.sky > span {
+  position: absolute;
+  display: block;
+}
+
+.sky-orb {
+  top: 14px;
+  right: 22%;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 40% 40%, #fff7b0, #fde047 70%);
+  box-shadow: 0 0 0 8px rgba(253, 224, 71, 0.28), 0 0 24px 10px rgba(253, 224, 71, 0.4);
+}
+
+.sky-cloud {
+  top: 24px;
+  left: 12%;
+  width: 54px;
+  height: 16px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.9);
+  box-shadow: 18px -8px 0 -2px rgba(255, 255, 255, 0.9), 34px 2px 0 -4px rgba(255, 255, 255, 0.85);
+}
+
+.sky-stars {
+  inset: 0;
+  opacity: 0;
+  background:
+    radial-gradient(2px 2px at 12% 22%, #fff 50%, transparent 52%),
+    radial-gradient(1.5px 1.5px at 28% 48%, #fff 50%, transparent 52%),
+    radial-gradient(2px 2px at 44% 18%, #fff 50%, transparent 52%),
+    radial-gradient(1.5px 1.5px at 61% 40%, #fff 50%, transparent 52%),
+    radial-gradient(2px 2px at 74% 16%, #fff 50%, transparent 52%),
+    radial-gradient(1.5px 1.5px at 90% 44%, #fff 50%, transparent 52%),
+    radial-gradient(1.5px 1.5px at 8% 56%, #fff 50%, transparent 52%);
+}
+
+.sky-hill {
+  left: -10%;
+  right: -10%;
+  bottom: -26px;
+  height: 52px;
+  border-radius: 50% 50% 0 0 / 100% 100% 0 0;
+  background: linear-gradient(180deg, #34d399, #10b981);
+}
+
+:root[data-sky="dawn"] .sky {
+  background: linear-gradient(180deg, #a5b4fc 0%, #fbc4ab 62%, #ffe5b4 100%);
+}
+
+:root[data-sky="dawn"] .sky-orb {
+  top: 40px;
+  right: auto;
+  left: 18%;
+  background: radial-gradient(circle at 40% 40%, #fff1c1, #ffb86b 70%);
+  box-shadow: 0 0 0 8px rgba(255, 184, 107, 0.3), 0 0 24px 10px rgba(255, 184, 107, 0.4);
+}
+
+:root[data-sky="dawn"] .sky-cloud {
+  left: 52%;
+  background: rgba(255, 240, 230, 0.9);
+  box-shadow: 18px -8px 0 -2px rgba(255, 240, 230, 0.9), 34px 2px 0 -4px rgba(255, 240, 230, 0.85);
+}
+
+:root[data-sky="dusk"] .sky {
+  background: linear-gradient(180deg, #6d5dfc 0%, #f58f7c 66%, #ffd6a5 100%);
+}
+
+:root[data-sky="dusk"] .sky-orb {
+  top: 44px;
+  right: 16%;
+  background: radial-gradient(circle at 40% 40%, #ffe0b0, #ff9a56 70%);
+  box-shadow: 0 0 0 8px rgba(255, 154, 86, 0.3), 0 0 24px 10px rgba(255, 154, 86, 0.4);
+}
+
+:root[data-sky="dusk"] .sky-cloud {
+  background: rgba(255, 214, 200, 0.9);
+  box-shadow: 18px -8px 0 -2px rgba(255, 214, 200, 0.9), 34px 2px 0 -4px rgba(255, 214, 200, 0.85);
+}
+
+:root[data-sky="night"] .sky {
+  background: linear-gradient(180deg, #0b1633 0%, #1f2f66 100%);
+}
+
+/* พระจันทร์เสี้ยว: จานสีอ่อนที่มีเงาเว้าอยู่ด้านใน */
+:root[data-sky="night"] .sky-orb {
+  top: 16px;
+  width: 30px;
+  height: 30px;
+  background: transparent;
+  box-shadow: inset -9px -3px 0 0 #f1f5f9, 0 0 22px 4px rgba(241, 245, 249, 0.28);
+}
+
+:root[data-sky="night"] .sky-stars {
+  opacity: 1;
+}
+
+:root[data-sky="night"] .sky-cloud {
+  background: rgba(148, 163, 184, 0.35);
+  box-shadow: 18px -8px 0 -2px rgba(148, 163, 184, 0.35), 34px 2px 0 -4px rgba(148, 163, 184, 0.3);
+}
+
+:root[data-sky="night"] .sky-hill {
+  background: linear-gradient(180deg, #0f766e, #115e59);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .sky-cloud {
+    animation: sky-drift 40s ease-in-out infinite alternate;
+  }
+
+  :root[data-sky="night"] .sky-stars {
+    animation: sky-twinkle 6s ease-in-out infinite alternate;
+  }
+
+  @keyframes sky-drift {
+    to {
+      transform: translateX(46px);
+    }
+  }
+
+  @keyframes sky-twinkle {
+    to {
+      opacity: 0.6;
+    }
+  }
+}
+
+/* ต้นไม้ SVG แทรกในบรรทัดข้อความ */
+.wotd-word .tree-art,
+.stage-name .tree-art,
+.legend-item .tree-art,
+.stage-chip .tree-art,
+.match-emoji .tree-art {
+  display: inline-block;
+  width: 1.4em;
+  height: 1.4em;
+  vertical-align: -0.35em;
+}
+
+.stage-chips {
+  display: inline-flex;
+  flex-wrap: wrap;
+  gap: 2px 10px;
+  vertical-align: middle;
+}
+
+.stage-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+}
+
+.stage-chip .tree-art {
+  vertical-align: baseline;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
 }

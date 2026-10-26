@@ -14,6 +14,7 @@
   <link rel="manifest" href="manifest.webmanifest">
   <link rel="icon" href="icons/icon.svg" type="image/svg+xml">
   <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+  <link rel="preload" href="fonts/anuphan-thai-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="css/style.css">
   <script>
     // ตั้งธีมและขนาดตัวอักษรก่อนวาดหน้า จะได้ไม่วาบสีผิดตอนเปิดแอป (ค่าจริงอ่านจากการตั้งค่า vg:settings)
@@ -108,7 +109,7 @@
         <h2>สวนคำศัพท์</h2>
         <span id="garden-total" class="muted small"></span>
       </div>
-      <p class="legend">🌰 เมล็ด · 🌱 ต้นอ่อน · 🌿 กำลังโต · 🌳 ต้นไม้ใหญ่</p>
+      <p id="stage-legend" class="legend"></p>
       <p class="muted small level-hint">แตะที่แปลงเพื่อเรียนเฉพาะแปลงนั้น</p>
       <ul id="levels" class="levels"></ul>
 
@@ -193,6 +194,12 @@
 
     <section id="view-garden" hidden>
       <div class="garden-top">
+      <div class="sky" aria-hidden="true">
+        <span class="sky-orb"></span>
+        <span class="sky-stars"></span>
+        <span class="sky-cloud"></span>
+        <span class="sky-hill"></span>
+      </div>
       <div class="page-head">
         <h1>สวนของฉัน 🌳</h1>
         <button type="button" id="share-garden" class="icon-btn" aria-label="แชร์สวนของฉัน" title="แชร์สวนของฉัน (สร้างรูปสรุปสวน ไม่มีชื่อหรือข้อมูลส่วนตัว)">📤</button>
@@ -792,6 +799,8 @@
         <li>ชุดข้อมูลคำศัพท์: CC BY-SA 4.0 (<a href="https://github.com/nopjorn/vocab-garden/blob/main/app/data/LICENSE" target="_blank" rel="noopener noreferrer">อ่าน license</a> ·
           <a href="https://github.com/nopjorn/vocab-garden/tree/main/app/data/levels" target="_blank" rel="noopener noreferrer">ดาวน์โหลดชุดข้อมูล</a>)</li>
         <li>โค้ด: MIT (<a href="https://github.com/nopjorn/vocab-garden" target="_blank" rel="noopener noreferrer">GitHub</a>)</li>
+        <li>ฟอนต์ Anuphan โดย Cadson Demak: <a href="https://github.com/nopjorn/vocab-garden/blob/main/app/fonts/OFL.txt" target="_blank" rel="noopener noreferrer">SIL Open Font License 1.1</a>
+          (<a href="https://github.com/cadsondemak/Anuphan" target="_blank" rel="noopener noreferrer">ต้นทาง</a>) เป็นของตกแต่งหน้าตาแอป ไม่เกี่ยวกับข้อมูลคำศัพท์</li>
       </ul>
 
       <h2 id="support-heading" hidden>สนับสนุนโครงการ</h2>

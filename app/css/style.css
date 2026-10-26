@@ -922,7 +922,13 @@ body.studying .topbar {
   display: none;
 }
 
-body.studying main {
+/* ห้ามดึงหน้าเด้ง ตอนปัดการ์ด */
+body.studying {
+  overscroll-behavior-y: none;
+}
+
+/* ขึ้นต้น :root ให้ชนะกฎเว้นที่ให้เมนูล่าง (หน้านี้ซ่อนเมนู ไม่เช่นนั้นเนื้อหาน้อยก็เลื่อนได้ และปัดการ์ดยาก) */
+:root body.studying main {
   padding-top: calc(12px + env(safe-area-inset-top));
   padding-bottom: calc(16px + env(safe-area-inset-bottom));
 }
@@ -1046,7 +1052,7 @@ body.studying main {
   border-radius: 32px;
   box-shadow: var(--shadow-md);
   padding: 28px 22px;
-  min-height: 320px;
+  min-height: min(320px, 46dvh);
   cursor: pointer;
   text-align: center;
   touch-action: pan-y;

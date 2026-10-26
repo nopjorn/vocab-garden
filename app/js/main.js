@@ -8,7 +8,8 @@ import { DECK_SIZE_CHOICES, SIDE_CHOICES, STATUSES, buildDeck, matchingWords, re
 import { CARD_HEIGHT, CARD_WIDTH, buildCardData, drawCard } from "./sharecard.js";
 import { compareText, weeklyReport } from "./weekly.js";
 import { buildIcs, parseTime } from "./reminder.js";
-import { buildCalendar, cellLabel } from "./calendar.js";
+import { MONTH_ABBR, buildCalendar, cellLabel } from "./calendar.js";
+import { SNAPSHOT_REASONS, backupDue, backupText, canSnapshot, clearSnapshots, daysSinceBackup, hasSnapshot, listSnapshots, loadSnapshot, markSince, saveSnapshot } from "./backup.js";
 import { wordOfDay } from "./daily.js";
 import { EXAM_COUNT, TIERS, bestTier, buildExam, examMedalIds, examReady, rescheduleMissed, tierOf } from "./exam.js";
 import { DECORATIONS, FLOWERS, bloomedLevels, flowerId, flowerOf, ownedDecorations, seasonOf } from "./decor.js";
@@ -301,6 +302,7 @@ function renderHome() {
   const habit = refreshHabit(today);
   const totalDue = translatedWords().filter((word) => isDue(state.cards[word.headword], today)).length;
   updateAppBadge();
+  renderBackupReminder();
   $("greeting").textContent = greeting();
   $("due-count").textContent = dueCount;
   $("new-count").textContent = queue.length - dueCount;
@@ -2234,6 +2236,8 @@ function renderSettings() {
   $("app-badge").checked = state.settings.appBadge;
   $("sound-panel").hidden = !canSpeak();
   $("sound-heading").hidden = !canSpeak();
+  renderBackupInfo();
+  renderSnapshots();
   const select = $("new-per-day");
   select.replaceChildren(
     ...NEW_PER_DAY_CHOICES.map((count) => {
@@ -2272,6 +2276,7 @@ async function exportBackup() {
     const file = new File([blob], name, { type: "application/json" });
     if (navigator.canShare?.({ files: [file] })) {
       await navigator.share({ files: [file], title: "ไฟล์สำรอง Vocab Garden" });
+      recordBackup();
       return;
     }
   } catch (error) {
@@ -2284,30 +2289,129 @@ async function exportBackup() {
   link.click();
   link.remove();
   setTimeout(() => URL.revokeObjectURL(link.href), 1000);
+  recordBackup();
 }
 
-async function importBackup(file) {
-  try {
-    const count = storage.importData(JSON.parse(await file.text()));
-    state.cards = storage.loadCards();
-    state.settings = storage.loadSettings();
-    state.notes = storage.loadNotes();
-    applyAppearance();
-    renderSettings();
-    toast(`นำเข้าความคืบหน้า ${count} คำเรียบร้อย`);
-  } catch (error) {
-    toast(error instanceof SyntaxError ? "อ่านไฟล์ไม่ได้ ไฟล์อาจเสียหาย" : error.message);
+// จดว่าสำรองไฟล์เมื่อไหร่ ใช้ตัดสินใจเตือน
+function recordBackup() {
+  storage.saveBackupMeta({ ...storage.loadBackupMeta(), last: dayNumber(), asked: null });
+  renderBackupInfo();
+  renderBackupReminder();
+}
+
+// บอกข้อความ "สำรองล่าสุด" ใต้ปุ่มสำรอง
+function renderBackupInfo() {
+  $("backup-last").textContent = backupText(storage.loadBackupMeta(), dayNumber());
+}
+
+// แถบเตือนในหน้าหลัก: ไม่ได้สำรองมานานและมีความคืบหน้าพอ
+function renderBackupReminder() {
+  const today = dayNumber();
+  const count = Object.keys(state.cards).length;
+  let meta = storage.loadBackupMeta();
+  const marked = markSince(meta, count, today);
+  if (marked !== meta) {
+    meta = marked;
+    storage.saveBackupMeta(meta);
+  }
+  const due = backupDue(meta, count, today);
+  $("backup-reminder").hidden = !due;
+  if (due) {
+    const days = daysSinceBackup(meta, today);
+    $("backup-reminder-text").textContent = `📦 ${meta.last === null ? "ยังไม่เคยสำรองไฟล์" : "ไม่ได้สำรองมา"} ${days} วันแล้ว สำรองไว้กันข้อมูลหาย แตะครั้งเดียว`;
   }
 }
 
-function resetProgress() {
-  if (!confirm("ล้างความคืบหน้าทั้งหมดใช่ไหม? ย้อนกลับไม่ได้นะ (แนะนำให้ส่งออกไฟล์สำรองก่อน)")) return;
-  storage.reset();
+// สำเนาอัตโนมัติในเครื่อง (IndexedDB): รายวัน 1 ชุดต้นวัน และก่อนนำเข้า / ล้าง / กู้คืน เก็บไว้กันกดผิด
+// ล้มเหลวได้เงียบ ๆ (โหมดส่วนตัวหรือเครื่องที่ไม่รองรับ) ต้องไม่ขวางงานหลัก
+async function takeSnapshot(kind, reason = null) {
+  if (!canSnapshot()) return;
+  const data = storage.exportData(self.VG_VERSION);
+  const count = Object.keys(data.cards).length;
+  if (count === 0) return;
+  const day = dayNumber();
+  const at = new Date().toISOString();
+  const id = kind === "daily" ? `daily-${day}` : `before-${at}`;
+  try {
+    if (kind === "daily" && (await hasSnapshot(id))) return;
+    await saveSnapshot({ id, kind, day, at, count, reason }, data);
+  } catch {
+    // เก็บสำเนาไม่ได้ก็ข้ามไป
+  }
+}
+
+const snapshotLabel = (info) => {
+  const date = new Date(info.day * 86400000);
+  const when = `${date.getUTCDate()} ${MONTH_ABBR[date.getUTCMonth()]}`;
+  return info.kind === "daily" ? `${when} (ต้นวัน)` : `${SNAPSHOT_REASONS[info.reason] || "สำเนาก่อนเปลี่ยนข้อมูล"} · ${when}`;
+};
+
+async function renderSnapshots() {
+  $("snapshots").hidden = !canSnapshot();
+  if (!canSnapshot()) return;
+  let list = [];
+  try {
+    list = await listSnapshots();
+  } catch {
+    $("snapshots").hidden = true;
+    return;
+  }
+  $("snapshot-clear").hidden = list.length === 0;
+  const items = list.map((info) => {
+    const button = el("button", "", "กู้คืน");
+    button.type = "button";
+    button.addEventListener("click", () => restoreSnapshot(info));
+    const item = el("li", "snapshot-item");
+    item.append(el("span", "", `${snapshotLabel(info)} · ${info.count} คำ`), button);
+    return item;
+  });
+  $("snapshot-list").replaceChildren(...(items.length > 0 ? items : [el("li", "muted small", "ยังไม่มีสำเนา จะเก็บให้ทุกวันที่เปิดแอป")]));
+}
+
+async function restoreSnapshot(info) {
+  if (!confirm(`กู้คืนสำเนา "${snapshotLabel(info)}" ใช่ไหม? ความคืบหน้าตอนนี้จะถูกแทนที่ (ระบบเก็บสำเนาก่อนกู้คืนไว้ให้ 1 ชุด)`)) return;
+  try {
+    const snapshot = await loadSnapshot(info.id);
+    if (!snapshot) throw new Error("ไม่พบสำเนานี้แล้ว");
+    await takeSnapshot("before", "restore");
+    storage.importData(snapshot.data);
+    reloadFromStorage();
+    toast("กู้คืนสำเนาเรียบร้อย");
+  } catch (error) {
+    toast(error.message || "กู้คืนสำเนาไม่สำเร็จ");
+  }
+  renderSnapshots();
+}
+
+// โหลดข้อมูลจาก localStorage เข้าหน้าจออีกครั้ง หลังนำเข้า กู้คืน หรือล้าง
+function reloadFromStorage() {
   state.cards = storage.loadCards();
   state.settings = storage.loadSettings();
   state.notes = storage.loadNotes();
   applyAppearance();
   renderSettings();
+  updateAppBadge();
+}
+
+// นำเข้าแบบรวมกับความคืบหน้าในเครื่อง: การ์ดคำเดียวกันเอาฝั่งที่ตอบล่าสุด ใช้ซิงก์ข้ามเครื่องด้วยไฟล์สำรองได้
+async function importBackup(file) {
+  try {
+    const data = JSON.parse(await file.text());
+    await takeSnapshot("before", "import");
+    const count = storage.importData(data, { merge: true });
+    reloadFromStorage();
+    toast(`รวมความคืบหน้าจากไฟล์แล้ว ตอนนี้มี ${count} คำ`);
+  } catch (error) {
+    toast(error instanceof SyntaxError ? "อ่านไฟล์ไม่ได้ ไฟล์อาจเสียหาย" : error.message);
+  }
+}
+
+async function resetProgress() {
+  if (!confirm("ล้างความคืบหน้าทั้งหมดใช่ไหม? ระบบจะเก็บสำเนาก่อนล้างไว้ในเครื่อง 1 ชุด กู้คืนได้ที่ ตั้งค่า → สำเนาอัตโนมัติ (แนะนำให้ส่งออกไฟล์สำรองก่อนด้วย)")) return;
+  await takeSnapshot("before", "reset");
+  storage.reset();
+  reloadFromStorage();
+  renderSnapshots();
   toast("ล้างความคืบหน้าแล้ว");
 }
 
@@ -2843,6 +2947,20 @@ function bindEvents() {
   matchMedia("(prefers-color-scheme: dark)").addEventListener("change", applyAppearance);
   $("reminder-make").addEventListener("click", makeReminder);
   $("export").addEventListener("click", exportBackup);
+  $("backup-now").addEventListener("click", exportBackup);
+  $("backup-later").addEventListener("click", () => {
+    storage.saveBackupMeta({ ...storage.loadBackupMeta(), asked: dayNumber() });
+    renderBackupReminder();
+  });
+  $("snapshot-clear").addEventListener("click", async () => {
+    if (!confirm("ลบสำเนาอัตโนมัติทั้งหมดในเครื่องนี้ใช่ไหม? ความคืบหน้าปัจจุบันไม่หาย")) return;
+    try {
+      await clearSnapshots();
+    } catch {
+      // ลบไม่ได้ก็แสดงรายการเดิม
+    }
+    renderSnapshots();
+  });
   $("import").addEventListener("change", (event) => {
     const [file] = event.target.files;
     if (file) importBackup(file);
@@ -2860,6 +2978,7 @@ async function init() {
     show("error");
     return;
   }
+  takeSnapshot("daily"); // สำเนาต้นวัน ทำก่อนเริ่มท่อง ไม่ต้องรอ
   updateAppBadge(); // เปิดแอปที่หน้าไหนก็ตาม ตัวเลขบนไอคอนต้องตรงกับคำที่ค้างทวน
   route();
 }

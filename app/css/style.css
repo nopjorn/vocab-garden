@@ -2910,3 +2910,40 @@ html[data-text-size="large"] {
     margin-inline: auto;
   }
 }
+
+.backup-reminder {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px 12px;
+}
+
+.backup-reminder-actions {
+  display: flex;
+  gap: 8px;
+}
+
+.snapshots {
+  margin-top: 12px;
+}
+
+.snapshots summary {
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.snapshot-list {
+  list-style: none;
+  margin: 8px 0;
+  padding: 0;
+}
+
+.snapshot-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 6px 0;
+  border-bottom: 1px solid var(--border);
+}

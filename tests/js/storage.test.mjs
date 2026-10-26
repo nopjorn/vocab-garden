@@ -205,3 +205,83 @@ test("the app badge setting defaults to off and only accepts true", () => {
   assert.equal(read({ appBadge: "yes" }).appBadge, false);
   assert.equal(read({ appBadge: 1 }).appBadge, false);
 });
+
+// ---------- นำเข้าแบบรวม ----------
+
+const card = (due, ivl, reps = 1) => ({ due, ivl, ease: 2.5, reps, lapses: 0 });
+const backupOf = (overrides) => ({ app: "vocab-garden", schema: 1, cards: {}, ...overrides });
+
+test("merge import keeps the card that was answered most recently", () => {
+  const target = createStorage(fakeStore());
+  target.saveCards({ a: card(110, 10), b: card(120, 10), c: card(130, 10, 2), only: card(105, 5) });
+  const count = target.importData(
+    backupOf({ cards: { a: card(115, 10), b: card(100, 10), c: card(130, 10, 5), extra: card(140, 7) } }),
+    { merge: true },
+  );
+  const cards = target.loadCards();
+  assert.equal(count, 5);
+  assert.deepEqual(cards.a, card(115, 10)); // ตอบล่าสุดคือไฟล์ (105 > 100)
+  assert.deepEqual(cards.b, card(120, 10)); // ตอบล่าสุดคือในเครื่อง
+  assert.deepEqual(cards.c, card(130, 10, 5)); // วันเดียวกัน เอาฝั่งที่ reps มากกว่า
+  assert.deepEqual(cards.only, card(105, 5));
+  assert.deepEqual(cards.extra, card(140, 7));
+});
+
+test("default import still replaces the progress", () => {
+  const target = createStorage(fakeStore());
+  target.saveCards({ a: card(110, 10), only: card(105, 5) });
+  target.importData(backupOf({ cards: { a: card(50, 10) } }));
+  assert.deepEqual(Object.keys(target.loadCards()), ["a"]);
+  assert.deepEqual(target.loadCards().a, card(50, 10));
+});
+
+test("merge import keeps local settings once the device has progress, but a fresh device takes the file's", () => {
+  const used = createStorage(fakeStore());
+  used.saveCards({ a: card(110, 10) });
+  used.saveSettings({ ...used.loadSettings(), newPerDay: 5 });
+  used.importData(backupOf({ cards: { b: card(120, 10) }, settings: { newPerDay: 20 } }), { merge: true });
+  assert.equal(used.loadSettings().newPerDay, 5);
+
+  const fresh = createStorage(fakeStore());
+  fresh.importData(backupOf({ cards: { b: card(120, 10) }, settings: { newPerDay: 20 } }), { merge: true });
+  assert.equal(fresh.loadSettings().newPerDay, 20);
+});
+
+test("merge import takes the larger daily counts and recomputes the rest days", () => {
+  const target = createStorage(fakeStore());
+  target.saveHistory({ 100: 5, 101: 8 });
+  target.saveRest({ bank: 1, run: 3, upTo: 101, frozen: [] });
+  target.importData(backupOf({ history: { 101: 3, 102: 4 }, rest: { bank: 2, run: 7, upTo: 102, frozen: [] } }), { merge: true });
+  assert.deepEqual(target.loadHistory(), { 100: 5, 101: 8, 102: 4 });
+  assert.equal(target.loadRest(), null);
+});
+
+test("merge import unions notes (local wins on conflict) and merges game records", () => {
+  const target = createStorage(fakeStore());
+  target.saveNote("house", "ของฉัน");
+  target.addGamePlay(100);
+  target.saveBest("match", 30000);
+  target.saveBest("listen", 5);
+  target.importData(
+    backupOf({
+      notes: { house: "จากไฟล์", water: "น้ำ" },
+      games: { days: { 100: 3, 101: 1 }, best: { match: 25000, listen: 4, scramble: 9 } },
+    }),
+    { merge: true },
+  );
+  assert.deepEqual(target.loadNotes(), { house: "ของฉัน", water: "น้ำ" });
+  const games = target.loadGames();
+  assert.deepEqual(games.days, { 100: 3, 101: 1 });
+  assert.equal(games.best.match, 25000); // เวลาน้อยกว่าดีกว่า
+  assert.equal(games.best.listen, 5); // คะแนนมากกว่าดีกว่า
+  assert.equal(games.best.scramble, 9);
+});
+
+test("backup meta defaults to nothing and survives a round trip", () => {
+  const target = createStorage(fakeStore());
+  assert.deepEqual(target.loadBackupMeta(), { last: null, since: null, asked: null });
+  target.saveBackupMeta({ last: 100, since: 90, asked: 99 });
+  assert.deepEqual(target.loadBackupMeta(), { last: 100, since: 90, asked: 99 });
+  target.reset();
+  assert.deepEqual(target.loadBackupMeta(), { last: null, since: null, asked: null });
+});

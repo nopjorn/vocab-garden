@@ -2948,9 +2948,10 @@ html[data-text-size="large"] {
   border-bottom: 1px solid var(--border);
 }
 
-/* ===== จอคอมที่ใช้เมาส์ (กว้างตั้งแต่ 960px) =====
-   มือถือและ iPad ไม่เปลี่ยน: กล่องห่อด้านล่างเป็น display: contents จึงเหมือนไม่มีอยู่
-   จอคอมใช้พื้นที่ซ้ายขวาให้คุ้มขึ้น: หน้าหลัก สวน เกม ตั้งค่า แบ่งเป็นสองคอลัมน์ ส่วนหน้าท่อง เกม และข้อความยาวอยู่กลางจอแคบ ๆ ให้อ่านง่าย */
+/* ===== จอคอมที่ใช้เมาส์ และ iPad แนวนอน (กว้างตั้งแต่ 960px) =====
+   มือถือและ iPad แนวตั้งไม่เปลี่ยน: กล่องห่อด้านล่างเป็น display: contents จึงเหมือนไม่มีอยู่
+   iPad แนวนอนยังใช้เมนูลอยด้านล่างเหมือนเดิม แต่จัดหน้าเหมือนจอคอม
+   จอกว้างใช้พื้นที่ซ้ายขวาให้คุ้มขึ้น: หน้าหลัก สวน เกม ตั้งค่า แบ่งเป็นสองคอลัมน์ ส่วนหน้าท่อง เกม และข้อความยาวอยู่กลางจอแคบ ๆ ให้อ่านง่าย */
 .home-side,
 .home-main,
 .garden-top,
@@ -2959,14 +2960,16 @@ html[data-text-size="large"] {
   display: contents;
 }
 
-@media (min-width: 960px) and (hover: hover) and (pointer: fine) {
+@media (min-width: 960px) and (hover: hover) and (pointer: fine), (min-width: 960px) and (orientation: landscape) and (pointer: coarse) {
   .topbar {
     padding-inline: max(16px, calc((100% - 1200px) / 2 + 32px));
   }
 
+  /* ไม่กำหนดระยะล่าง: iPad ต้องเว้นที่ให้เมนูลอยด้านล่าง */
   main {
     max-width: 1200px;
-    padding: 28px 32px 56px;
+    padding-top: 28px;
+    padding-inline: 32px;
   }
 
   /* หน้าที่ต้องอ่านทีละอย่าง ไม่ต้องขยายเต็มจอ */
@@ -3021,6 +3024,11 @@ html[data-text-size="large"] {
     margin-top: 0.5rem;
   }
 
+  .levels,
+  .plots {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
   /* สวน: ซ้ายคือสถิติ ต้นไม้ ปฏิทิน ขวาคือแปลงสวน */
   #view-garden {
     display: grid;
@@ -3065,6 +3073,8 @@ html[data-text-size="large"] {
 
   /* ตั้งค่า: แบ่งสองคอลัมน์ กล่องแต่ละใบไม่ถูกตัดกลาง */
   #view-settings {
+    max-width: none;
+    margin-inline: 0;
     column-count: 2;
     column-gap: 36px;
   }

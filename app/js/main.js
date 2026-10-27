@@ -298,11 +298,20 @@ function currentWordOfDay(today) {
   return wotdPick?.day === today ? wotdPick.word : wordOfDay(translatedWords(), today);
 }
 
+// คำที่สุ่มได้: อยู่ในแปลงและระยะของต้นไม้ที่ตั้งไว้ในหน้าตั้งค่า
+function wotdPool(today) {
+  const levels = levelSetOf(state.settings.wotdLevels);
+  const stages = new Set(state.settings.wotdStages);
+  return translatedWords().filter((word) => levels.has(word.level) && stages.has(plantInfo(state.cards[word.headword], today).stage.id));
+}
+
 function shuffleWordOfDay(today) {
-  const words = translatedWords();
   const current = currentWordOfDay(today);
-  const others = words.filter((word) => word !== current);
-  if (others.length === 0) return;
+  const others = wotdPool(today).filter((word) => word !== current);
+  if (others.length === 0) {
+    toast("ไม่มีคำในแปลงและระยะที่เลือกไว้ ลองเพิ่มในหน้าตั้งค่า");
+    return;
+  }
   wotdPick = { day: today, word: others[Math.floor(Math.random() * others.length)] };
   renderWordOfDay(today);
 }
@@ -1188,10 +1197,13 @@ async function shareGarden() {
 const playableLevels = () => LEVELS.filter((level) => state.words.some((word) => word.level === level && word.translated));
 
 // แปลงที่เลือกอยู่ (ยังไม่เคยเลือก = ทุกแปลงที่แปลแล้ว)
-function playLevelSet() {
+function levelSetOf(saved) {
   const all = playableLevels();
-  const saved = state.settings.playLevels;
   return new Set(saved ? saved.filter((level) => all.includes(level)) : all);
+}
+
+function playLevelSet() {
+  return levelSetOf(state.settings.playLevels);
 }
 
 // คำที่ตรงกับแปลงและสถานะที่เลือก ใช้เป็นกองคำของเกมต่าง ๆ
@@ -1220,18 +1232,20 @@ function playFilterText() {
 }
 
 // ส่วนเลือกคำในหน้าเกม: แปลง สถานะ (ตัวเลขข้างสถานะนับเฉพาะแปลงที่เลือก) และสรุปจำนวนคำ
+// ช่องติ๊กพร้อมข้อความ ใช้ร่วมกันในส่วนเลือกคำของเกมและตั้งค่าคำที่สุ่มได้
+function checkbox(checked, text, onChange) {
+  const label = el("label", "check");
+  const input = el("input");
+  input.type = "checkbox";
+  input.checked = checked;
+  input.addEventListener("change", () => onChange(input.checked));
+  label.append(input, ` ${text}`);
+  return label;
+}
+
 function renderPlayFilter() {
   const levels = playLevelSet();
   const words = translatedWords();
-  const checkbox = (checked, text, onChange) => {
-    const label = el("label", "check");
-    const input = el("input");
-    input.type = "checkbox";
-    input.checked = checked;
-    input.addEventListener("change", () => onChange(input.checked));
-    label.append(input, ` ${text}`);
-    return label;
-  };
   $("play-levels").replaceChildren(
     ...playableLevels().map((level) => {
       const count = words.filter((word) => word.level === level).length;
@@ -1867,6 +1881,7 @@ function renderSettings() {
   $("sound-heading").hidden = !canSpeak();
   renderBackupInfo();
   renderSnapshots();
+  renderWotdSetup();
   const select = $("new-per-day");
   select.replaceChildren(
     ...NEW_PER_DAY_CHOICES.map((count) => {
@@ -1876,6 +1891,45 @@ function renderSettings() {
       return option;
     }),
   );
+}
+
+// ตั้งค่าคำที่สุ่มได้ (ปุ่ม 🎲 ในการ์ดศัพท์ของวันนี้): แปลงและระยะของต้นไม้
+function saveWotdSetup(change) {
+  wotdPick = null; // คำที่สุ่มไว้อาจไม่อยู่ในกองใหม่แล้ว
+  updateSetting(change);
+  renderWotdSetup();
+}
+
+function renderWotdSetup() {
+  const today = dayNumber();
+  const allLevels = playableLevels();
+  const levels = levelSetOf(state.settings.wotdLevels);
+  const stages = new Set(state.settings.wotdStages);
+  const words = translatedWords();
+  $("wotd-levels").replaceChildren(
+    ...allLevels.map((level) => {
+      const count = words.filter((word) => word.level === level).length;
+      return checkbox(levels.has(level), `${levelTitle(level).replace(/:.*/, "")} (${count})`, (on) => {
+        const next = new Set(levels);
+        if (on) next.add(level);
+        else next.delete(level);
+        saveWotdSetup({ wotdLevels: allLevels.every((item) => next.has(item)) ? null : allLevels.filter((item) => next.has(item)) });
+      });
+    }),
+  );
+  const inChosen = words.filter((word) => levels.has(word.level));
+  const stageCount = (id) => inChosen.filter((word) => plantInfo(state.cards[word.headword], today).stage.id === id).length;
+  $("wotd-stages").replaceChildren(
+    ...STAGES.map((stage) =>
+      checkbox(stages.has(stage.id), `${stage.emoji} ${stage.label} (${stageCount(stage.id)})`, (on) => {
+        const next = new Set(stages);
+        if (on) next.add(stage.id);
+        else next.delete(stage.id);
+        saveWotdSetup({ wotdStages: STAGES.map((item) => item.id).filter((id) => next.has(id)) });
+      }),
+    ),
+  );
+  $("wotd-pool-count").textContent = `สุ่มได้ ${wotdPool(today).length} คำ`;
 }
 
 // สร้างไฟล์ปฏิทิน (.ics) นัดทุกวัน ให้ดาวน์โหลดไปเปิดด้วยแอปปฏิทิน

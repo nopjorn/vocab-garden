@@ -35,6 +35,7 @@ export const DAILY_GOAL_CHOICES = [10, 20, 30]; // เป้าหมายร�
 export const REVIEW_CAP_CHOICES = [50, 100, 0]; // ทวนได้ไม่เกินกี่ครั้งต่อวัน (0 = ไม่จำกัด)
 export const ROUND_SIZE_CHOICES = [10, 20, 0]; // ทวนรอบละกี่ใบแล้วพักถามว่าจะไปต่อไหม (0 = ไม่แบ่งรอบ)
 export const PLAY_STATUS_IDS = ["new", "learning", "done"]; // สถานะคำที่เลือกเล่นได้ ตรงกับ STATUSES ใน flash.js
+export const WOTD_STAGE_IDS = ["seed", "sprout", "growing", "tree"]; // ระยะของต้นไม้ ตรงกับ STAGES ใน srs.js
 export const DEFAULT_SETTINGS = {
   newPerDay: 10,
   startLevel: 1,
@@ -50,6 +51,8 @@ export const DEFAULT_SETTINGS = {
   roundSize: 10,
   playLevels: null, // แปลงที่ใช้เล่นเกม (null = ทุกแปลง)
   playStatuses: [...PLAY_STATUS_IDS],
+  wotdLevels: null, // แปลงที่สุ่มศัพท์ของวันนี้ได้ (null = ทุกแปลง)
+  wotdStages: [...WOTD_STAGE_IDS], // ระยะของต้นไม้ที่สุ่มได้
   quizMode: "flip",
   quizTyping: true,
   scheduler: "sm2",
@@ -101,6 +104,12 @@ function validPlayLevels(levels) {
 function validPlayStatuses(statuses) {
   if (!Array.isArray(statuses)) return [...PLAY_STATUS_IDS];
   return PLAY_STATUS_IDS.filter((id) => statuses.includes(id));
+}
+
+// ระยะที่สุ่มศัพท์ของวันนี้ได้: เก็บเฉพาะรหัสที่รู้จัก ไม่ใช่ array = ทุกระยะ
+function validWotdStages(stages) {
+  if (!Array.isArray(stages)) return [...WOTD_STAGE_IDS];
+  return WOTD_STAGE_IDS.filter((id) => stages.includes(id));
 }
 
 // ประวัติการทวนรายวัน { [เลขวัน]: จำนวนครั้ง } ต้องเป็นจำนวนเต็มไม่ติดลบ
@@ -310,6 +319,8 @@ export function createStorage(store = globalThis.localStorage) {
         roundSize: pick(ROUND_SIZE_CHOICES, saved.roundSize, DEFAULT_SETTINGS.roundSize),
         playLevels: validPlayLevels(saved.playLevels),
         playStatuses: validPlayStatuses(saved.playStatuses),
+        wotdLevels: validPlayLevels(saved.wotdLevels),
+        wotdStages: validWotdStages(saved.wotdStages),
         quizMode: pick(QUIZ_MODE_CHOICES, saved.quizMode, DEFAULT_SETTINGS.quizMode),
         quizTyping: saved.quizTyping !== false,
         scheduler: pick(SCHEDULER_CHOICES, saved.scheduler, DEFAULT_SETTINGS.scheduler),

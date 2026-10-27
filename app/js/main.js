@@ -168,6 +168,11 @@ function lockedItem(levels) {
   return item;
 }
 
+const FRESH_VISIBLE = 2; // แปลงที่ยังไม่เริ่มที่แสดงต่อจากแปลงที่เริ่มแล้ว ที่เหลือพับไว้
+let freshOpen = false;
+
+const plantedIn = (level) => state.words.filter((word) => word.level === level && stageOf(state.cards[word.headword]).id !== "seed").length;
+
 function levelItem(level) {
   const words = state.words.filter((word) => word.level === level);
   const item = el("li", "level");
@@ -194,6 +199,12 @@ function levelItem(level) {
     counts[stageOf(state.cards[word.headword]).id] += 1;
   });
   const planted = words.length - counts.seed;
+  if (planted === 0) {
+    // แปลงที่ยังไม่เริ่ม: เหลือแค่เลขแปลงกับกรอบจาง ๆ ไม่มีเปอร์เซ็นต์และแถบ
+    item.classList.add("level-fresh");
+    info.append(el("p", "level-sub", "ยังไม่เริ่ม"));
+    return item;
+  }
   info.append(el("p", "level-sub", `${planted}/${words.length} คำ`));
   item.append(el("span", "level-pct", `${Math.round((planted / words.length) * 100)}%`));
   item.title = STAGES.map((stage) => `${stage.emoji} ${stage.label} ${counts[stage.id]}`).join(" · ");
@@ -210,22 +221,41 @@ function levelItem(level) {
   return item;
 }
 
+function foldItem(count) {
+  const item = el("li", "level-fold");
+  const button = el("button", "level-fold-btn", `${freshOpen ? "ซ่อน" : "แปลงที่ยังไม่เริ่ม"} (${count}) ${freshOpen ? "▴" : "▾"}`);
+  button.type = "button";
+  button.setAttribute("aria-expanded", String(freshOpen));
+  button.addEventListener("click", () => {
+    freshOpen = !freshOpen;
+    $("levels").replaceChildren(...levelItems());
+    $("levels").querySelector(".level-fold-btn")?.focus({ preventScroll: true });
+  });
+  item.append(button);
+  return item;
+}
+
+// แปลงที่เริ่มแล้วแสดงเต็ม ตามด้วยแปลงที่ยังไม่เริ่มถัดไป FRESH_VISIBLE แปลง ที่เหลือพับไว้ใต้ปุ่ม
 function levelItems() {
   const items = [];
+  const folded = [];
   let locked = [];
+  let fresh = 0;
   const flush = () => {
     if (locked.length > 0) items.push(lockedItem(locked));
     locked = [];
   };
   for (const level of LEVELS) {
-    if (state.words.some((word) => word.level === level && word.translated)) {
-      flush();
-      items.push(levelItem(level));
-    } else {
+    if (!state.words.some((word) => word.level === level && word.translated)) {
       locked.push(level);
+      continue;
     }
+    flush();
+    if (plantedIn(level) === 0 && (fresh += 1) > FRESH_VISIBLE) folded.push(levelItem(level));
+    else items.push(levelItem(level));
   }
   flush();
+  if (folded.length > 0) items.push(foldItem(folded.length), ...(freshOpen ? folded : []));
   return items;
 }
 

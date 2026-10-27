@@ -506,6 +506,11 @@ select {
   margin-bottom: 0;
 }
 
+/* หน้าตั้งค่า: กล่องที่ตามหลังกล่องอื่นเว้นระยะห่างจากกล่องก่อนหน้า (ตอนแบ่งสองคอลัมน์บนจอกว้างก็ต้องมีระยะ) */
+#view-settings .panel + .panel {
+  margin-top: 16px;
+}
+
 .panel label[for] {
   font-weight: 600;
   margin-right: 8px;

@@ -221,15 +221,16 @@ function levelItem(level) {
   return item;
 }
 
-function foldItem(count) {
-  const item = el("li", "level-fold");
+// ปุ่มพับ/ขยายแปลงที่ยังไม่เริ่ม ใช้ร่วมกันทั้งหน้าหลักและหน้าสวน (สถานะพับ/ขยายใช้ร่วมกัน)
+function foldItem(count, tag, container, rebuild) {
+  const item = el(tag, "level-fold");
   const button = el("button", "level-fold-btn", `${freshOpen ? "ซ่อน" : "แปลงที่ยังไม่เริ่ม"} (${count}) ${freshOpen ? "▴" : "▾"}`);
   button.type = "button";
   button.setAttribute("aria-expanded", String(freshOpen));
   button.addEventListener("click", () => {
     freshOpen = !freshOpen;
-    $("levels").replaceChildren(...levelItems());
-    $("levels").querySelector(".level-fold-btn")?.focus({ preventScroll: true });
+    rebuild();
+    container.querySelector(".level-fold-btn")?.focus({ preventScroll: true });
   });
   item.append(button);
   return item;
@@ -255,7 +256,7 @@ function levelItems() {
     else items.push(levelItem(level));
   }
   flush();
-  if (folded.length > 0) items.push(foldItem(folded.length), ...(freshOpen ? folded : []));
+  if (folded.length > 0) items.push(foldItem(folded.length, "li", $("levels"), () => $("levels").replaceChildren(...levelItems())), ...(freshOpen ? folded : []));
   return items;
 }
 
@@ -1309,26 +1310,35 @@ function renderPlots(today) {
 
   // แต่ละแปลงเป็นแผ่นเล็ก ๆ (บอกสรุปและแถบสี) แตะแล้วไปหน้าของแปลงนั้น แปลงอื่นจึงไม่ถูกดัน
   const levels = [...new Set(translated.map((word) => word.level))];
-  $("plots").replaceChildren(
-    ...levels.map((level) => {
-      const words = translated.filter((word) => word.level === level);
-      const summary = plotSummary(words, state.cards, today);
-      const counts = stageCountsOf(words);
-      const plot = el("a", "plot");
-      plot.href = `#/garden/${level}`;
-      plot.dataset.level = level;
-      const head = el("div", "plot-head");
-      const info = el("div", "level-info");
-      info.append(el("p", "level-title", levelTitle(level)), el("p", "level-sub", `${summary.planted}/${summary.total} คำ${summary.wilted ? ` · 💧 ${summary.wilted}` : ""}`));
-      head.append(el("span", "level-badge", level === "sup" ? "★" : String(Number(level))), info);
+  const folded = [];
+  const items = [];
+  let fresh = 0;
+  levels.forEach((level) => {
+    const words = translated.filter((word) => word.level === level);
+    const summary = plotSummary(words, state.cards, today);
+    const counts = stageCountsOf(words);
+    const plot = el("a", "plot");
+    plot.href = `#/garden/${level}`;
+    plot.dataset.level = level;
+    const head = el("div", "plot-head");
+    const info = el("div", "level-info");
+    const isFresh = summary.planted === 0;
+    // แปลงที่ยังไม่เริ่มเหลือแค่เลขแปลง เหมือนหน้าหลัก
+    info.append(el("p", "level-title", levelTitle(level)), el("p", "level-sub", isFresh ? "ยังไม่เริ่ม" : `${summary.planted}/${summary.total} คำ${summary.wilted ? ` · 💧 ${summary.wilted}` : ""}`));
+    head.append(el("span", "level-badge", level === "sup" ? "★" : String(Number(level))), info);
+    if (isFresh) plot.classList.add("plot-fresh");
+    else {
       const tier = bestTier(level, storage.loadMedals());
       const stagesLine = el("p", "level-stages");
       stagesLine.append(stageChipsOf(counts), tier ? `  ${tier.emoji}` : "");
       head.append(stageBarOf(counts, words.length), stagesLine);
-      plot.append(head);
-      return plot;
-    }),
-  );
+    }
+    plot.append(head);
+    if (isFresh && (fresh += 1) > FRESH_VISIBLE) folded.push(plot);
+    else items.push(plot);
+  });
+  if (folded.length > 0) items.push(foldItem(folded.length, "div", $("plots"), () => renderPlots(today)), ...(freshOpen ? folded : []));
+  $("plots").replaceChildren(...items);
   applyGardenSearch();
 }
 

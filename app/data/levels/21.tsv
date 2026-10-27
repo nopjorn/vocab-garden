@@ -1,101 +1,101 @@
 rank	headword	forms	meanings	example_en	example_th	note	emoji
-2001	achievement	achievements					
-2002	negotiate	negotiates, negotiated, negotiating					
-2003	dominate	dominates, dominated, dominating					
-2004	supplier	suppliers					
-2005	prize	prizes, prized					
-2006	typically						
-2007	peer	peers, peered, peering					
-2008	pension	pensions, pensioned, pensioning					
-2009	wing	wings, winged, winging					
-2010	acquisition	acquisitions					
-2011	laughter						
-2012	deeply						
-2013	recognition	recognitions					
-2014	electricity						
-2015	assistance	assistances					
-2016	roof	roofs, roofed, roofing					
-2017	retirement	retirements					
-2018	respectively						
-2019	variation	variations					
-2020	ultimately						
-2021	proof	proofs, proofed, proofing					
-2022	soil	soils, soiled, soiling					
-2023	smart	smarts, smarted, smarting, smarter, smartest					
-2024	layer	layers, layered, layering					
-2025	upset	upsets, upsetting					
-2026	tooth	teeth, toothed					
-2027	representation	representations					
-2028	preparation	preparations					
-2029	dispute	disputes, disputed, disputing					
-2030	agenda	agendas					
-2031	emphasis	emphases					
-2032	edition	editions					
-2033	silver	silvers, silvered					
-2034	entertainment	entertainments					
-2035	honest						
-2036	undertake	undertakes, undertook, undertaking, undertaken, undertakings					
-2037	retail	retails, retailed, retailing					
-2038	wire	wires, wired, wiring, wirings					
-2039	unlikely	unlikelier, unlikeliest					
-2040	gay	gayer, gayest, gays					
-2041	publication	publications					
-2042	slight	slights, slighted, slighting, slighter, slightest					
-2043	unknown	unknowns					
-2044	framework	frameworks					
-2045	zone	zones, zoned, zoning, zonings					
-2046	restrict	restricts, restricted, restricting					
-2047	trace	traces, traced, tracing, tracings					
-2048	inch	inches, inched, inching					
-2049	equivalent	equivalents					
-2050	solid	solids					
-2051	enterprise	enterprises, enterprising					
-2052	elderly						
-2053	owe	owes, owed, owing					
-2054	governor	governors					
-2055	uniform	uniforms, uniformed					
-2056	port	ports, ported, porting					
-2057	pitch	pitches, pitched, pitching					
-2058	arrival	arrivals					
-2059	contemporary	contemporaries					
-2060	gate	gates, gated, gating					
-2061	ease	eases, eased, easing					
-2062	beer	beers					
-2063	specialist	specialists					
-2064	assure	assures, assured, assuring					
-2065	profile	profiles, profiled, profiling, profilings					
-2066	mood	moods					
-2067	episode	episodes					
-2068	crack	cracks, cracked, cracking					
-2069	numerous						
-2070	submit	submits, submitted, submitting					
-2071	symptom	symptoms					
-2072	virtually						
-2073	era	eras					
-2074	coverage						
-2075	tension	tensions, tensioned, tensioning					
-2076	cable	cables, cabled, cabling					
-2077	sensitive						
-2078	nervous						
-2079	input	inputs, inputted, inputting					
-2080	isolate	isolates, isolated, isolating					
-2081	prisoner	prisoners					
-2082	eliminate	eliminates, eliminated, eliminating					
-2083	tight	tighter, tightest					
-2084	wet	wets, wetted, wetting, wetter, wettest					
-2085	secondary						
-2086	welfare	welfares					
-2087	recruit	recruits, recruited, recruiting					
-2088	exclude	excludes, excluded, excluding					
-2089	string	strings, strung, stringing					
-2090	cloud	clouds, clouded, clouding					
-2091	persuade	persuades, persuaded, persuading					
-2092	inspire	inspires, inspired, inspiring					
-2093	grand	grander, grandest					
-2094	hence						
-2095	crew	crews, crewed, crewing					
-2096	phenomenon	phenomena					
-2097	pupil	pupils					
-2098	FALSE	falser, falsest					
-2099	assist	assists, assisted, assisting					
-2100	restore	restores, restored, restoring					
+2001	achievement	achievements	n: ความสำเร็จ, ผลงาน	Winning the prize was a great achievement.	การชนะรางวัลเป็นความสำเร็จครั้งใหญ่		🏆
+2002	negotiate	negotiates, negotiated, negotiating	v: เจรจา, ต่อรอง	They negotiated the price for an hour.	พวกเขาต่อรองราคากันหนึ่งชั่วโมง		
+2003	dominate	dominates, dominated, dominating	v: ครอบงำ, มีอำนาจเหนือ	One big company dominates the market.	บริษัทใหญ่เพียงแห่งเดียวครองตลาด		
+2004	supplier	suppliers	n: ผู้จัดหาสินค้า, ซัพพลายเออร์	The supplier delivers fresh fish every day.	ซัพพลายเออร์ส่งปลาสดทุกวัน		
+2005	prize	prizes, prized	n: รางวัล | v: ให้ความสำคัญมาก	She won first prize in the contest.	เธอได้รางวัลที่หนึ่งในการประกวด		🏅
+2006	typically		adv: โดยทั่วไป, ตามปกติ	Typically, the shop opens at nine.	โดยปกติร้านเปิดเก้าโมง		
+2007	peer	peers, peered, peering	n: เพื่อนวัยเดียวกัน, คนในระดับเดียวกัน | v: จ้องมอง	Students often learn from their peers.	นักเรียนมักเรียนรู้จากเพื่อนวัยเดียวกัน		
+2008	pension	pensions, pensioned, pensioning	n: เงินบำนาญ	My grandfather lives on his pension.	คุณตาของฉันอยู่ได้ด้วยเงินบำนาญ		
+2009	wing	wings, winged, winging	n: ปีก	The bird has a hurt wing.	นกตัวนี้ปีกบาดเจ็บ		🪽
+2010	acquisition	acquisitions	n: การได้มา, การซื้อกิจการ	The acquisition of the company took a year.	การซื้อกิจการบริษัทใช้เวลาหนึ่งปี		
+2011	laughter		n: เสียงหัวเราะ	We heard laughter from the kitchen.	เราได้ยินเสียงหัวเราะมาจากห้องครัว		😂
+2012	deeply		adv: อย่างลึกซึ้ง, มาก	She was deeply moved by the story.	เธอซาบซึ้งกับเรื่องนี้อย่างลึกซึ้ง		
+2013	recognition	recognitions	n: การยอมรับ, ความชื่นชม, การจำได้	She received recognition for her work.	เธอได้รับการยอมรับในผลงานของเธอ		
+2014	electricity		n: ไฟฟ้า	The village has no electricity.	หมู่บ้านนี้ไม่มีไฟฟ้า		💡
+2015	assistance	assistances	n: ความช่วยเหลือ	Do you need any assistance?	คุณต้องการความช่วยเหลืออะไรไหม		
+2016	roof	roofs, roofed, roofing	n: หลังคา	The cat is sitting on the roof.	แมวนั่งอยู่บนหลังคา		🏠
+2017	retirement	retirements	n: การเกษียณ	My father is looking forward to retirement.	พ่อของฉันรอคอยการเกษียณ		
+2018	respectively		adv: ตามลำดับ	Tom and Anna are twelve and ten respectively.	ทอมกับแอนนาอายุสิบสองและสิบตามลำดับ		
+2019	variation	variations	n: ความแตกต่าง, การเปลี่ยนแปลง	There is a slight variation in price.	ราคามีความต่างกันเล็กน้อย		
+2020	ultimately		adv: ท้ายที่สุด, ในที่สุด	Ultimately, the choice is yours.	ท้ายที่สุดแล้ว คุณเป็นคนเลือก		
+2021	proof	proofs, proofed, proofing	n: หลักฐาน, การพิสูจน์	Do you have proof of your age?	คุณมีหลักฐานแสดงอายุไหม		
+2022	soil	soils, soiled, soiling	n: ดิน | v: ทำให้เปื้อน	Plants grow well in rich soil.	พืชเติบโตดีในดินอุดมสมบูรณ์		🌱
+2023	smart	smarts, smarted, smarting, smarter, smartest	adj: ฉลาด, แต่งตัวดี, สมาร์ท	She is a smart student.	เธอเป็นนักเรียนที่ฉลาด		
+2024	layer	layers, layered, layering	n: ชั้น, ชั้นบาง ๆ | v: ซ้อนเป็นชั้น	The cake has three layers.	เค้กนี้มีสามชั้น		🍰
+2025	upset	upsets, upsetting	adj: เสียใจ, ไม่สบายใจ | v: ทำให้เสียใจ, ทำให้ล้ม	She was upset about the news.	เธอเสียใจกับข่าวนี้	รูปอดีตคือ upset (เหมือนเดิม)	😟
+2026	tooth	teeth, toothed	n: ฟัน	I brush my teeth twice a day.	ฉันแปรงฟันวันละสองครั้ง	พหูพจน์คือ teeth	🦷
+2027	representation	representations	n: การเป็นตัวแทน, การนำเสนอภาพ	The film is a fair representation of the story.	หนังเรื่องนี้ถ่ายทอดเรื่องราวได้ตรงดี		
+2028	preparation	preparations	n: การเตรียมการ, การเตรียมตัว	We are busy with the party preparations.	เรายุ่งกับการเตรียมงานปาร์ตี้		
+2029	dispute	disputes, disputed, disputing	n: ข้อพิพาท, การโต้เถียง | v: โต้แย้ง	The two countries had a border dispute.	สองประเทศมีข้อพิพาทเรื่องพรมแดน		
+2030	agenda	agendas	n: วาระการประชุม, แผนงาน	What is on the agenda today?	วันนี้มีวาระอะไรบ้าง		📋
+2031	emphasis	emphases	n: การเน้น, ความสำคัญ	The school puts emphasis on reading.	โรงเรียนให้ความสำคัญกับการอ่าน	พหูพจน์คือ emphases	
+2032	edition	editions	n: ฉบับพิมพ์, ครั้งที่พิมพ์	This is the second edition of the book.	นี่เป็นหนังสือฉบับพิมพ์ครั้งที่สอง		
+2033	silver	silvers, silvered	n: เงิน (โลหะ), สีเงิน | adj: สีเงิน	She wore a silver necklace.	เธอสวมสร้อยคอเงิน		🥈
+2034	entertainment	entertainments	n: ความบันเทิง	This film is great entertainment.	หนังเรื่องนี้บันเทิงมาก		🎭
+2035	honest		adj: ซื่อสัตย์, จริงใจ	He is an honest man.	เขาเป็นคนซื่อสัตย์		
+2036	undertake	undertakes, undertook, undertaking, undertaken, undertakings	v: รับ (งาน), ลงมือทำ	She undertook the task of cleaning the garden.	เธอรับหน้าที่ทำความสะอาดสวน	รูปอดีตคือ undertook / รูป V3 คือ undertaken	
+2037	retail	retails, retailed, retailing	n: การขายปลีก | v: ขายปลีก	He works in retail.	เขาทำงานด้านการขายปลีก		
+2038	wire	wires, wired, wiring, wirings	n: ลวด, สายไฟ | v: เดินสายไฟ	The wire is too short.	สายไฟสั้นเกินไป		
+2039	unlikely	unlikelier, unlikeliest	adj: ไม่น่าจะเป็นไปได้	It is unlikely that it will rain today.	วันนี้ฝนไม่น่าจะตก		
+2040	gay	gayer, gayest, gays	adj: เป็นเกย์, มีรสนิยมรักเพศเดียวกัน | n: เกย์	He is gay and lives with his partner.	เขาเป็นเกย์และอยู่กับคู่ของเขา	เป็นคำที่ใช้เรียกชายที่รักเพศเดียวกัน ควรใช้อย่างให้เกียรติ	
+2041	publication	publications	n: สิ่งพิมพ์, การตีพิมพ์	The publication of the book was a big event.	การตีพิมพ์หนังสือเล่มนี้เป็นเรื่องใหญ่		
+2042	slight	slights, slighted, slighting, slighter, slightest	adj: เล็กน้อย, บาง | n: การดูถูก	I have a slight headache.	ฉันปวดหัวเล็กน้อย		
+2043	unknown	unknowns	adj: ไม่เป็นที่รู้จัก, ไม่ทราบ | n: สิ่งที่ไม่รู้	The cause is still unknown.	ยังไม่ทราบสาเหตุ		
+2044	framework	frameworks	n: กรอบ, โครงสร้าง	We need a framework for the project.	เราต้องการกรอบการทำงานสำหรับโครงการนี้		
+2045	zone	zones, zoned, zoning, zonings	n: เขต, โซน | v: แบ่งเขต	This is a no-parking zone.	นี่คือเขตห้ามจอดรถ		
+2046	restrict	restricts, restricted, restricting	v: จำกัด, ควบคุม	The rule restricts the use of phones.	กฎนี้จำกัดการใช้โทรศัพท์		
+2047	trace	traces, traced, tracing, tracings	n: ร่องรอย, จำนวนเล็กน้อย | v: ตามรอย, ลอก	The police found no trace of the thief.	ตำรวจไม่พบร่องรอยของขโมย		
+2048	inch	inches, inched, inching	n: นิ้ว (หน่วยวัด 2.54 ซม.) | v: ขยับทีละนิด	The table is sixty inches long.	โต๊ะนี้ยาวหกสิบนิ้ว	พหูพจน์คือ inches	📏
+2049	equivalent	equivalents	adj: เทียบเท่า | n: สิ่งที่เทียบเท่า	One dollar is the equivalent of thirty baht.	หนึ่งดอลลาร์เท่ากับราวสามสิบบาท		
+2050	solid	solids	adj: แข็ง, ตัน, แน่นหนา | n: ของแข็ง	Ice is solid water.	น้ำแข็งคือน้ำที่เป็นของแข็ง		
+2051	enterprise	enterprises, enterprising	n: กิจการ, ความกล้าริเริ่ม	She runs a small enterprise.	เธอบริหารกิจการขนาดเล็ก		
+2052	elderly		adj: สูงอายุ	She takes care of her elderly mother.	เธอดูแลแม่ที่สูงอายุ		👵
+2053	owe	owes, owed, owing	v: เป็นหนี้, ติดค้าง	I owe you ten dollars.	ฉันติดเงินคุณสิบดอลลาร์		
+2054	governor	governors	n: ผู้ว่าการ, ผู้ว่าราชการ	The governor visited the school.	ผู้ว่าราชการมาเยี่ยมโรงเรียน		
+2055	uniform	uniforms, uniformed	n: เครื่องแบบ | adj: สม่ำเสมอ, เหมือนกัน	Students wear a uniform to school.	นักเรียนสวมเครื่องแบบไปโรงเรียน		👔
+2056	port	ports, ported, porting	n: ท่าเรือ, พอร์ต, ไวน์พอร์ต	The ship arrived at the port.	เรือมาถึงท่าเรือ		⚓
+2057	pitch	pitches, pitched, pitching	n: สนาม, ระดับเสียง, การขาย | v: โยน, ตั้งเต็นท์	The football pitch is very wet.	สนามฟุตบอลเปียกมาก		
+2058	arrival	arrivals	n: การมาถึง, ผู้มาใหม่	We are waiting for the arrival of the train.	เรากำลังรอรถไฟมาถึง		
+2059	contemporary	contemporaries	adj: ร่วมสมัย, สมัยปัจจุบัน | n: คนร่วมสมัย	She likes contemporary art.	เธอชอบศิลปะร่วมสมัย		
+2060	gate	gates, gated, gating	n: ประตูรั้ว, ประตูทางออก (สนามบิน)	Please go to gate five.	กรุณาไปที่ประตูหมายเลขห้า		🚪
+2061	ease	eases, eased, easing	n: ความง่าย, ความสบาย | v: บรรเทา, ผ่อนคลาย	The medicine will ease the pain.	ยานี้จะช่วยบรรเทาอาการปวด		
+2062	beer	beers	n: เบียร์	He ordered a cold beer.	เขาสั่งเบียร์เย็นหนึ่งแก้ว		🍺
+2063	specialist	specialists	n: ผู้เชี่ยวชาญเฉพาะด้าน	You should see a heart specialist.	คุณควรไปพบแพทย์เฉพาะทางโรคหัวใจ		
+2064	assure	assures, assured, assuring	v: รับรอง, ทำให้มั่นใจ	I assure you the food is safe.	ฉันรับรองว่าอาหารนี้ปลอดภัย		
+2065	profile	profiles, profiled, profiling, profilings	n: ประวัติโดยย่อ, โปรไฟล์, ด้านข้าง	Please update your profile.	กรุณาอัปเดตโปรไฟล์ของคุณ		
+2066	mood	moods	n: อารมณ์, ความรู้สึก	She is in a good mood today.	วันนี้เธออารมณ์ดี		😊
+2067	episode	episodes	n: ตอน (ของซีรีส์)	I watched the first episode last night.	เมื่อคืนฉันดูตอนแรก		📺
+2068	crack	cracks, cracked, cracking	v: แตกร้าว, ทำให้แตก | n: รอยแตก	There is a crack in the window.	หน้าต่างมีรอยร้าว		
+2069	numerous		adj: มากมาย	Numerous people came to the concert.	ผู้คนมากมายมาที่คอนเสิร์ต		
+2070	submit	submits, submitted, submitting	v: ส่ง (งาน), ยอมจำนน	Please submit your homework by Friday.	กรุณาส่งการบ้านภายในวันศุกร์		
+2071	symptom	symptoms	n: อาการ	A cough is a common symptom of a cold.	อาการไอเป็นอาการทั่วไปของหวัด		
+2072	virtually		adv: เกือบจะ, แทบจะ	The room was virtually empty.	ห้องนั้นแทบจะว่างเปล่า		
+2073	era	eras	n: ยุค, สมัย	This was the era of black-and-white TV.	นี่คือยุคของทีวีขาวดำ		
+2074	coverage		n: การรายงานข่าว, ความครอบคลุม	The news gave good coverage of the event.	ข่าวนี้รายงานเหตุการณ์ได้ครบถ้วน		
+2075	tension	tensions, tensioned, tensioning	n: ความตึงเครียด, ความตึง	You could feel the tension in the room.	รู้สึกได้ถึงความตึงเครียดในห้อง		
+2076	cable	cables, cabled, cabling	n: สายเคเบิล, สายไฟ, โทรเลข	Plug the cable into the computer.	เสียบสายเคเบิลเข้ากับคอมพิวเตอร์		🔌
+2077	sensitive		adj: ละเอียดอ่อน, ไว, อ่อนไหว	I have sensitive skin.	ฉันผิวแพ้ง่าย		
+2078	nervous		adj: ประหม่า, กังวล	I feel nervous before exams.	ฉันรู้สึกประหม่าก่อนสอบ		😬
+2079	input	inputs, inputted, inputting	n: ข้อมูลที่ป้อน, ความคิดเห็น | v: ป้อนข้อมูล	Please give us your input.	กรุณาให้ความเห็นของคุณกับเรา		
+2080	isolate	isolates, isolated, isolating	v: แยกออก, แยกตัว	The doctor isolated the sick patient.	หมอแยกผู้ป่วยออกไปอยู่ต่างหาก		
+2081	prisoner	prisoners	n: นักโทษ, เชลย	The prisoner escaped last night.	นักโทษหนีไปเมื่อคืน		
+2082	eliminate	eliminates, eliminated, eliminating	v: กำจัด, ตัดออก	Let's eliminate the wrong answers first.	มาตัดคำตอบที่ผิดออกก่อน		
+2083	tight	tighter, tightest	adj: แน่น, คับ, ตึง	These shoes are too tight.	รองเท้าคู่นี้คับเกินไป		
+2084	wet	wets, wetted, wetting, wetter, wettest	adj: เปียก, ชื้น | v: ทำให้เปียก	My shirt is wet from the rain.	เสื้อของฉันเปียกฝน		💧
+2085	secondary		adj: ระดับมัธยม, รอง, ลำดับสอง	My brother goes to secondary school.	พี่ชายของฉันเรียนมัธยม		
+2086	welfare	welfares	n: สวัสดิการ, ความเป็นอยู่ที่ดี	The company cares about the welfare of its workers.	บริษัทนี้ใส่ใจสวัสดิการของพนักงาน		
+2087	recruit	recruits, recruited, recruiting	v: รับสมัคร, คัดเลือกคนเข้า | n: คนที่เพิ่งเข้ามา	The shop wants to recruit two new staff.	ร้านนี้อยากรับพนักงานใหม่สองคน		
+2088	exclude	excludes, excluded, excluding	v: ไม่รวม, กันออก	Please do not exclude anyone from the game.	กรุณาอย่ากันใครออกจากเกม		
+2089	string	strings, strung, stringing	n: เชือก, สาย, ชุดสาย | v: ร้อยเรียง	She tied a string around the box.	เธอผูกเชือกรอบกล่อง	รูปอดีตคือ strung	
+2090	cloud	clouds, clouded, clouding	n: เมฆ | v: ทำให้ขุ่นมัว	There is a big cloud in the sky.	มีเมฆก้อนใหญ่อยู่บนท้องฟ้า		☁️
+2091	persuade	persuades, persuaded, persuading	v: โน้มน้าว, ชักชวน	She persuaded me to try the soup.	เธอโน้มน้าวให้ฉันลองซุป		
+2092	inspire	inspires, inspired, inspiring	v: ดลใจ, สร้างแรงบันดาลใจ	Her story inspires young people.	เรื่องราวของเธอเป็นแรงบันดาลใจให้คนหนุ่มสาว	inspired = ได้แรงบันดาลใจ / inspiring = สร้างแรงบันดาลใจ	
+2093	grand	grander, grandest	adj: ใหญ่โต, ยิ่งใหญ่, ตระการตา	We stayed in a grand hotel.	เราพักในโรงแรมหรูหราใหญ่โต		
+2094	hence		adv: ดังนั้น, ด้วยเหตุนี้	He was ill, hence his absence.	เขาป่วย จึงไม่มา		
+2095	crew	crews, crewed, crewing	n: ลูกเรือ, ทีมงาน	The crew welcomed the passengers.	ลูกเรือกล่าวต้อนรับผู้โดยสาร		
+2096	phenomenon	phenomena	n: ปรากฏการณ์	A rainbow is a natural phenomenon.	รุ้งกินน้ำเป็นปรากฏการณ์ทางธรรมชาติ	พหูพจน์คือ phenomena	🌈
+2097	pupil	pupils	n: นักเรียน (เด็กเล็ก), ม่านตา	The pupils are in the classroom.	นักเรียนอยู่ในห้องเรียน		
+2098	FALSE	falser, falsest	adj: เท็จ, ผิด, ปลอม	The answer is false.	คำตอบนี้ไม่ถูกต้อง		❌
+2099	assist	assists, assisted, assisting	v: ช่วย, ช่วยเหลือ	Can you assist me with this bag?	คุณช่วยฉันถือกระเป๋าใบนี้หน่อยได้ไหม		
+2100	restore	restores, restored, restoring	v: คืนสภาพ, ซ่อมแซม, ฟื้นฟู	They restored the old temple.	พวกเขาซ่อมแซมวัดเก่าให้กลับมาสวยเหมือนเดิม		

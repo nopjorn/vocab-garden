@@ -1,101 +1,101 @@
 rank	headword	forms	meanings	example_en	example_th	note	emoji
-1801	injury	injuries					
-1802	vast	vaster, vastest					
-1803	exhibition	exhibitions					
-1804	producer	producers					
-1805	regional	regionals					
-1806	immediate						
-1807	incident	incidents					
-1808	childhood	childhoods					
-1809	draft	drafts, drafted, drafting, draught, draughts					
-1810	slip	slips, slipped, slipping					
-1811	accompany	accompanies, accompanied, accompanying					
-1812	politician	politicians					
-1813	angry	angrier, angriest					
-1814	knock	knocks, knocked, knocking					
-1815	seed	seeds, seeded, seeding					
-1816	salary	salaries, salaried					
-1817	illustrate	illustrates, illustrated, illustrating					
-1818	imply	implies, implied, implying					
-1819	breakfast	breakfasts, breakfasted, breakfasting					
-1820	temporary						
-1821	liberal	liberals					
-1822	lake	lakes					
-1823	qualify	qualifies, qualified, qualifying					
-1824	competitive						
-1825	truly						
-1826	hi						
-1827	yellow	yellows, yellowed, yellowing					
-1828	habit	habits, habited					
-1829	disk	disks, disc, discs					
-1830	core	cores, cored, coring					
-1831	emotional						
-1832	aircraft	aircrafts					
-1833	self	selves					
-1834	metal	metals					
-1835	existence	existences					
-1836	bone	bones, boned, boning					
-1837	panel	panels, paneled, paneling, panelled, panelling					
-1838	prime	primes, primed, priming					
-1839	appointment	appointments					
-1840	emphasize	emphasizes, emphasized, emphasizing, emphasise, emphasises, emphasised, emphasising					
-1841	maximum						
-1842	effectively						
-1843	elsewhere						
-1844	bother	bothers, bothered, bothering					
-1845	initiative	initiatives					
-1846	sharp	sharper, sharpest					
-1847	diet	diets, dieted, dieting					
-1848	motion	motions, motioned, motioning					
-1849	gray	grays, grayed, graying, grayer, grayest, grey, greys, greyed, greying, greyer, greyest					
-1850	plastic	plastics					
-1851	complicate	complicates, complicated, complicating					
-1852	discipline	disciplines, disciplined, disciplining					
-1853	disappoint	disappoints, disappointed, disappointing					
-1854	boss	bosses, bossed, bossing					
-1855	assumption	assumptions					
-1856	freeze	freezes, froze, freezing, frozen					
-1857	extreme	extremes					
-1858	passage	passages					
-1859	reputation	reputations					
-1860	forth						
-1861	negotiation	negotiations					
-1862	mechanism	mechanisms					
-1863	coat	coats, coated, coating, coatings					
-1864	democracy	democracies					
-1865	pocket	pockets, pocketed, pocketing					
-1866	lucky	luckier, luckiest					
-1867	crash	crashes, crashed, crashing					
-1868	observation	observations					
-1869	meat	meats					
-1870	concentration	concentrations					
-1871	implication	implications					
-1872	deserve	deserves, deserved, deserving					
-1873	unusual						
-1874	defend	defends, defended, defending					
-1875	classic	classics					
-1876	king	kings					
-1877	interaction	interactions					
-1878	repair	repairs, repaired, repairing					
-1879	collapse	collapses, collapsed, collapsing					
-1880	borrow	borrows, borrowed, borrowing, borrowings					
-1881	fundamental	fundamentals					
-1882	dish	dishes, dished, dishing					
-1883	abroad						
-1884	soul	souls					
-1885	capable						
-1886	defeat	defeats, defeated, defeating					
-1887	presidential						
-1888	perfectly						
-1889	enhance	enhances, enhanced, enhancing					
-1890	proud	prouder, proudest					
-1891	emergency	emergencies					
-1892	educational						
-1893	distinguish	distinguishes, distinguished, distinguishing					
-1894	substantial						
-1895	nearby						
-1896	manufacturer	manufacturers					
-1897	slide	slides, slid, sliding					
-1898	valuable	valuables					
-1899	personally						
-1900	breast	breasts, breasted, breasting					
+1801	injury	injuries	n: การบาดเจ็บ, บาดแผล	He had a serious injury to his leg.	เขาได้รับบาดเจ็บที่ขาอย่างรุนแรง		🩹
+1802	vast	vaster, vastest	adj: กว้างใหญ่, มหาศาล	A vast desert lies to the south.	ทะเลทรายอันกว้างใหญ่อยู่ทางใต้		
+1803	exhibition	exhibitions	n: นิทรรศการ	We saw an art exhibition on Sunday.	วันอาทิตย์เราไปดูนิทรรศการศิลปะ		🖼️
+1804	producer	producers	n: ผู้ผลิต, โปรดิวเซอร์	The producer of the film is famous.	โปรดิวเซอร์ของหนังเรื่องนี้มีชื่อเสียง		
+1805	regional	regionals	adj: ระดับภูมิภาค, ท้องถิ่น	We eat regional food when we travel.	เราลองกินอาหารประจำถิ่นเวลาไปเที่ยว		
+1806	immediate		adj: ทันที, ใกล้ชิดที่สุด	The doctor gave immediate help.	หมอช่วยเหลือทันที		
+1807	incident	incidents	n: เหตุการณ์, เหตุร้าย	Nobody was hurt in the incident.	ไม่มีใครบาดเจ็บในเหตุการณ์นั้น		
+1808	childhood	childhoods	n: วัยเด็ก	I had a happy childhood.	ฉันมีวัยเด็กที่มีความสุข		
+1809	draft	drafts, drafted, drafting, draught, draughts	n: ร่าง, ต้นฉบับ | v: ร่าง	I wrote a draft of the letter.	ฉันเขียนร่างจดหมายไว้	draught เป็นสะกดแบบอังกฤษของลมโกรก	
+1810	slip	slips, slipped, slipping	v: ลื่น, หลุดมือ | n: สลิป, ใบสลิป, ข้อผิดพลาดเล็กน้อย	She slipped on the wet floor.	เธอลื่นล้มบนพื้นเปียก		
+1811	accompany	accompanies, accompanied, accompanying	v: ไปด้วย, เดินทางไปกับ	I will accompany you to the station.	ฉันจะไปส่งคุณที่สถานี		
+1812	politician	politicians	n: นักการเมือง	The politician spoke to the crowd.	นักการเมืองพูดกับฝูงชน		
+1813	angry	angrier, angriest	adj: โกรธ	He was angry about the delay.	เขาโกรธที่ล่าช้า		😠
+1814	knock	knocks, knocked, knocking	v: เคาะ, ชน | n: เสียงเคาะ	Please knock before you enter.	กรุณาเคาะประตูก่อนเข้า		🚪
+1815	seed	seeds, seeded, seeding	n: เมล็ดพันธุ์, เมล็ด | v: หว่านเมล็ด	Plant the seed in the soil.	เอาเมล็ดปลูกลงในดิน		🌰
+1816	salary	salaries, salaried	n: เงินเดือน	She earns a good salary.	เธอได้เงินเดือนดี		💵
+1817	illustrate	illustrates, illustrated, illustrating	v: อธิบายด้วยภาพ, ยกตัวอย่าง	The teacher illustrated the idea with a picture.	ครูอธิบายแนวคิดนี้ด้วยรูปภาพ		
+1818	imply	implies, implied, implying	v: บอกเป็นนัย, หมายความว่า	His silence implied that he disagreed.	ที่เขาเงียบบ่งบอกว่าเขาไม่เห็นด้วย		
+1819	breakfast	breakfasts, breakfasted, breakfasting	n: อาหารเช้า | v: กินอาหารเช้า	I eat breakfast at seven.	ฉันกินอาหารเช้าตอนเจ็ดโมง		🍳
+1820	temporary		adj: ชั่วคราว	This is a temporary job.	นี่เป็นงานชั่วคราว		
+1821	liberal	liberals	adj: ใจกว้าง, เสรีนิยม | n: ผู้มีแนวคิดเสรี	She has liberal ideas.	เธอมีความคิดแบบเปิดกว้าง		
+1822	lake	lakes	n: ทะเลสาบ	We had a picnic by the lake.	เราไปปิกนิกริมทะเลสาบ		🏞️
+1823	qualify	qualifies, qualified, qualifying	v: มีคุณสมบัติ, ผ่านเกณฑ์	She qualified for the final.	เธอเข้ารอบชิงชนะเลิศได้		
+1824	competitive		adj: แข่งขันสูง, ชอบแข่ง	It is a very competitive market.	นี่เป็นตลาดที่แข่งขันกันสูงมาก		
+1825	truly		adv: อย่างแท้จริง, จริง ๆ	I am truly sorry.	ฉันขอโทษจริง ๆ		
+1826	hi		int: สวัสดี (ทักทาย)	Hi, how are you?	สวัสดี สบายดีไหม	ใช้ทักทายแบบไม่เป็นทางการ	👋
+1827	yellow	yellows, yellowed, yellowing	adj: สีเหลือง | n: สีเหลือง	She picked a yellow flower.	เธอเด็ดดอกไม้สีเหลือง		🟡
+1828	habit	habits, habited	n: นิสัย, ความเคยชิน	Reading before bed is a good habit.	การอ่านหนังสือก่อนนอนเป็นนิสัยที่ดี		
+1829	disk	disks, disc, discs	n: แผ่นดิสก์, จาน	He saved the file on a disk.	เขาบันทึกไฟล์ไว้ในแผ่นดิสก์		💿
+1830	core	cores, cored, coring	n: แกนกลาง, แก่น | adj: หลัก	Honesty is the core of friendship.	ความซื่อสัตย์เป็นแก่นของมิตรภาพ		
+1831	emotional		adj: เกี่ยวกับอารมณ์, อ่อนไหว	The film was very emotional.	หนังเรื่องนี้กินใจมาก		
+1832	aircraft	aircrafts	n: อากาศยาน, เครื่องบิน	The aircraft landed safely.	เครื่องบินลงจอดอย่างปลอดภัย	aircraft เป็นรูปเดียวกันทั้งเอกพจน์และพหูพจน์ในภาษาพูด	✈️
+1833	self	selves	n: ตนเอง, ตัวตน	He looked inside his true self.	เขามองเข้าไปในตัวตนที่แท้จริงของเขา	พหูพจน์คือ selves	
+1834	metal	metals	n: โลหะ	Gold is a precious metal.	ทองเป็นโลหะมีค่า		
+1835	existence	existences	n: การมีอยู่, ชีวิต	Many people believe in the existence of life on other planets.	หลายคนเชื่อว่ามีสิ่งมีชีวิตบนดาวดวงอื่น		
+1836	bone	bones, boned, boning	n: กระดูก	The dog buried a bone.	สุนัขฝังกระดูกชิ้นหนึ่ง		🦴
+1837	panel	panels, paneled, paneling, panelled, panelling	n: แผง, คณะกรรมการ, แผ่นกระดาน	The solar panel gives us power.	แผงโซลาร์เซลล์ให้พลังงานแก่เรา		
+1838	prime	primes, primed, priming	adj: หลัก, ยอดเยี่ยม | n: ช่วงที่ดีที่สุด	Thailand's prime minister spoke today.	นายกรัฐมนตรีของไทยกล่าวสุนทรพจน์วันนี้	prime minister = นายกรัฐมนตรี	
+1839	appointment	appointments	n: การนัดหมาย	I have a doctor's appointment at ten.	ฉันมีนัดกับหมอตอนสิบโมง		📅
+1840	emphasize	emphasizes, emphasized, emphasizing, emphasise, emphasises, emphasised, emphasising	v: เน้น, ให้ความสำคัญ	The teacher emphasized the importance of reading.	ครูเน้นความสำคัญของการอ่าน		
+1841	maximum		adj: สูงสุด | n: ค่าสูงสุด	The maximum speed here is sixty.	ความเร็วสูงสุดตรงนี้คือหกสิบ		
+1842	effectively		adv: อย่างมีประสิทธิภาพ	She works effectively in a team.	เธอทำงานเป็นทีมได้อย่างมีประสิทธิภาพ		
+1843	elsewhere		adv: ที่อื่น, ที่ใดที่หนึ่งนอกจากนี้	If you cannot find it here, look elsewhere.	ถ้าหาไม่เจอที่นี่ ก็ไปหาที่อื่น		
+1844	bother	bothers, bothered, bothering	v: รบกวน, ทำให้กังวล, ยอมลำบาก	Sorry to bother you.	ขอโทษที่รบกวนนะ		
+1845	initiative	initiatives	n: ความริเริ่ม, โครงการริเริ่ม	She took the initiative and cleaned the kitchen.	เธอลงมือทำความสะอาดห้องครัวเองโดยไม่ต้องบอก		
+1846	sharp	sharper, sharpest	adj: คม, ฉับพลัน, ชัดเจน	Be careful with that sharp knife.	ระวังมีดที่คมนั่นนะ		🔪
+1847	diet	diets, dieted, dieting	n: อาหารที่กิน, การควบคุมอาหาร | v: ลดน้ำหนัก	A healthy diet includes fruit.	การกินอาหารที่ดีต่อสุขภาพต้องมีผลไม้		🥗
+1848	motion	motions, motioned, motioning	n: การเคลื่อนไหว, ญัตติ | v: ทำท่าทาง	Slow motion helped us see the goal.	ภาพสโลว์โมชันช่วยให้เราเห็นการทำประตู		
+1849	gray	grays, grayed, graying, grayer, grayest, grey, greys, greyed, greying, greyer, greyest	adj: สีเทา | n: สีเทา	The sky is gray today.	วันนี้ท้องฟ้าสีเทา	สะกดแบบอังกฤษคือ grey	🩶
+1850	plastic	plastics	n: พลาสติก | adj: ทำจากพลาสติก	Do not use too much plastic.	อย่าใช้พลาสติกมากเกินไป		♻️
+1851	complicate	complicates, complicated, complicating	v: ทำให้ซับซ้อน, ทำให้ยุ่งยาก	Do not complicate the problem.	อย่าทำให้ปัญหาซับซ้อน	complicated = ซับซ้อน	
+1852	discipline	disciplines, disciplined, disciplining	n: วินัย, สาขาวิชา | v: ฝึกวินัย, ลงโทษ	Good discipline helps students learn.	วินัยที่ดีช่วยให้นักเรียนเรียนรู้		
+1853	disappoint	disappoints, disappointed, disappointing	v: ทำให้ผิดหวัง	I do not want to disappoint my parents.	ฉันไม่อยากทำให้พ่อแม่ผิดหวัง	disappointed = ผิดหวัง / disappointing = น่าผิดหวัง	
+1854	boss	bosses, bossed, bossing	n: เจ้านาย, หัวหน้า | v: สั่งการ	My boss is very kind.	เจ้านายของฉันใจดีมาก		
+1855	assumption	assumptions	n: ข้อสันนิษฐาน, การสมมติ	This is only an assumption.	นี่เป็นแค่ข้อสันนิษฐาน		
+1856	freeze	freezes, froze, freezing, frozen	v: แข็งตัว, แช่แข็ง, ค้าง	Water freezes at zero degrees.	น้ำแข็งตัวที่ศูนย์องศา	รูปอดีตคือ froze / รูป V3 คือ frozen	🥶
+1857	extreme	extremes	adj: สุดโต่ง, รุนแรงมาก | n: ปลายสุด	It was extreme heat yesterday.	เมื่อวานอากาศร้อนจัด		
+1858	passage	passages	n: ทางเดิน, ตอน (ในหนังสือ), การผ่าน	We walked through a narrow passage.	เราเดินผ่านทางแคบ ๆ		
+1859	reputation	reputations	n: ชื่อเสียง	The hotel has a good reputation.	โรงแรมนี้มีชื่อเสียงดี		
+1860	forth		adv: ออกไป, ต่อไป	From that day forth, they were friends.	ตั้งแต่วันนั้นเป็นต้นมา พวกเขาก็เป็นเพื่อนกัน	พบบ่อยในวลี back and forth (ไปมา) และ and so forth (และอื่น ๆ)	
+1861	negotiation	negotiations	n: การเจรจา, การต่อรอง	The negotiation took two days.	การเจรจาใช้เวลาสองวัน		
+1862	mechanism	mechanisms	n: กลไก, ระบบการทำงาน	This clock has a simple mechanism.	นาฬิกานี้มีกลไกง่าย ๆ		⚙️
+1863	coat	coats, coated, coating, coatings	n: เสื้อโค้ต, ชั้นเคลือบ | v: เคลือบ, ทา	It is cold, so wear your coat.	อากาศหนาว ใส่เสื้อโค้ตด้วยนะ		🧥
+1864	democracy	democracies	n: ประชาธิปไตย	Thailand is a democracy with a king.	ประเทศไทยเป็นประชาธิปไตยที่มีพระมหากษัตริย์เป็นประมุข		
+1865	pocket	pockets, pocketed, pocketing	n: กระเป๋า (เสื้อผ้า) | v: ใส่กระเป๋า	He put his phone in his pocket.	เขาเก็บโทรศัพท์ไว้ในกระเป๋าเสื้อ		
+1866	lucky	luckier, luckiest	adj: โชคดี	I am lucky to have good friends.	ฉันโชคดีที่มีเพื่อนดี ๆ		🍀
+1867	crash	crashes, crashed, crashing	v: ชน, พัง, ล่ม | n: อุบัติเหตุชน	The car crashed into a tree.	รถชนต้นไม้		💥
+1868	observation	observations	n: การสังเกต, ข้อสังเกต	Careful observation is important in science.	การสังเกตอย่างละเอียดสำคัญในวิทยาศาสตร์		
+1869	meat	meats	n: เนื้อ	I do not eat red meat.	ฉันไม่กินเนื้อแดง		🥩
+1870	concentration	concentrations	n: สมาธิ, การรวมตัว, ความเข้มข้น	This game needs a lot of concentration.	เกมนี้ต้องใช้สมาธิมาก		
+1871	implication	implications	n: ผลที่ตามมา, นัยยะ	Think about the implications before you decide.	คิดถึงผลที่ตามมาก่อนตัดสินใจ		
+1872	deserve	deserves, deserved, deserving	v: สมควรได้รับ	You deserve a rest.	คุณสมควรได้พักผ่อน		
+1873	unusual		adj: ไม่ปกติ, แปลก	It is unusual to see snow here.	การเห็นหิมะที่นี่เป็นเรื่องผิดปกติ		
+1874	defend	defends, defended, defending	v: ป้องกัน, ปกป้อง, แก้ต่าง	He defended his friend.	เขาปกป้องเพื่อนของเขา		
+1875	classic	classics	adj: คลาสสิก, ดั้งเดิม | n: ผลงานคลาสสิก	This film is a classic.	หนังเรื่องนี้เป็นหนังคลาสสิก		
+1876	king	kings	n: กษัตริย์, พระราชา	The king lived in a big palace.	กษัตริย์ประทับอยู่ในพระราชวังหลังใหญ่		👑
+1877	interaction	interactions	n: การมีปฏิสัมพันธ์	Social interaction is good for children.	การมีปฏิสัมพันธ์กับผู้อื่นดีต่อเด็ก		
+1878	repair	repairs, repaired, repairing	v: ซ่อม | n: การซ่อม	He repaired my bike.	เขาซ่อมจักรยานให้ฉัน		🔧
+1879	collapse	collapses, collapsed, collapsing	v: พังทลาย, ล้มลง | n: การล่ม	The old bridge collapsed.	สะพานเก่าพังลงมา		
+1880	borrow	borrows, borrowed, borrowing, borrowings	v: ยืม	Can I borrow your pen?	ขอยืมปากกาคุณหน่อยได้ไหม	borrow = ยืมมา / lend = ให้ยืม	
+1881	fundamental	fundamentals	adj: พื้นฐาน, สำคัญ | n: หลักพื้นฐาน	Reading is a fundamental skill.	การอ่านเป็นทักษะพื้นฐาน		
+1882	dish	dishes, dished, dishing	n: จาน, อาหารจานหนึ่ง	This dish is very spicy.	อาหารจานนี้เผ็ดมาก		🍛
+1883	abroad		adv: ต่างประเทศ	She studied abroad for two years.	เธอไปเรียนต่างประเทศสองปี		🌍
+1884	soul	souls	n: จิตวิญญาณ, วิญญาณ	Music feeds the soul.	ดนตรีหล่อเลี้ยงจิตวิญญาณ		
+1885	capable		adj: สามารถ, มีความสามารถ	She is capable of speaking three languages.	เธอสามารถพูดได้สามภาษา	มักตามด้วย of เช่น capable of	
+1886	defeat	defeats, defeated, defeating	v: เอาชนะ, ทำให้พ่ายแพ้ | n: ความพ่ายแพ้	Our team defeated them 3–1.	ทีมเราชนะพวกเขา 3–1		
+1887	presidential		adj: เกี่ยวกับประธานาธิบดี	The presidential election is next year.	การเลือกตั้งประธานาธิบดีจะมีในปีหน้า		
+1888	perfectly		adv: อย่างสมบูรณ์แบบ, พอดี	The shoes fit me perfectly.	รองเท้าคู่นี้ใส่พอดีเป๊ะ		
+1889	enhance	enhances, enhanced, enhancing	v: ยกระดับ, ทำให้ดีขึ้น	Music can enhance your mood.	ดนตรีช่วยให้อารมณ์ดีขึ้นได้		
+1890	proud	prouder, proudest	adj: ภูมิใจ	I am proud of you.	ฉันภูมิใจในตัวคุณ	มักตามด้วย of เช่น proud of	
+1891	emergency	emergencies	n: เหตุฉุกเฉิน	Call 191 in an emergency.	โทร 191 เมื่อเกิดเหตุฉุกเฉิน		🚨
+1892	educational		adj: เกี่ยวกับการศึกษา	This is an educational game.	นี่เป็นเกมเพื่อการเรียนรู้		
+1893	distinguish	distinguishes, distinguished, distinguishing	v: แยกแยะ, จำแนก	Can you distinguish the two sounds?	คุณแยกเสียงสองเสียงนี้ออกไหม		
+1894	substantial		adj: จำนวนมาก, มั่นคง, สำคัญ	He earns a substantial salary.	เขาได้เงินเดือนสูงทีเดียว		
+1895	nearby		adj: ใกล้เคียง | adv: ใกล้ ๆ	Is there a bank nearby?	แถวนี้มีธนาคารไหม		📍
+1896	manufacturer	manufacturers	n: ผู้ผลิต, บริษัทผู้ผลิต	The manufacturer made a new phone.	ผู้ผลิตออกโทรศัพท์รุ่นใหม่		
+1897	slide	slides, slid, sliding	v: ลื่นไถล, เลื่อน | n: สไลเดอร์, สไลด์ (นำเสนอ)	The children slide down the hill.	เด็ก ๆ ไถลลงเนินเขา	รูปอดีตคือ slid	🛝
+1898	valuable	valuables	adj: มีค่า | n: ของมีค่า	Please keep your valuable items safe.	กรุณาเก็บของมีค่าของคุณให้ปลอดภัย		💎
+1899	personally		adv: ด้วยตัวเอง, ส่วนตัวแล้ว	Personally, I like the blue one.	ส่วนตัวแล้ว ฉันชอบอันสีฟ้า		
+1900	breast	breasts, breasted, breasting	n: หน้าอก, เนื้ออกไก่	I ordered a chicken breast with rice.	ฉันสั่งอกไก่กับข้าว		

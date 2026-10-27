@@ -1,101 +1,101 @@
 rank	headword	forms	meanings	example_en	example_th	note	emoji
-1201	ball	balls, balled, balling					
-1202	cry	cries, cried, crying					
-1203	introduction	introductions					
-1204	requirement	requirements					
-1205	north						
-1206	confirm	confirms, confirmed, confirming					
-1207	senior	seniors					
-1208	photo	photos					
-1209	refuse	refuses, refused, refusing					
-1210	transport	transports, transported, transporting					
-1211	emerge	emerges, emerged, emerging					
-1212	map	maps, mapped, mapping, mappings					
-1213	concept	concepts					
-1214	island	islands, islanded, islanding					
-1215	reform	reforms, reformed, reforming					
-1216	neither						
-1217	football	footballs					
-1218	survive	survives, survived, surviving					
-1219	flight	flights					
-1220	left	lefts					
-1221	solve	solves, solved, solving					
-1222	neighbor	neighbors, neighbored, neighboring, neighbour, neighbours, neighboured, neighbouring					
-1223	background	backgrounds					
-1224	technique	techniques					
-1225	traffic	traffics, trafficked, trafficking, traffick, trafficks					
-1226	improvement	improvements					
-1227	tool	tools, tooled, tooling					
-1228	consequence	consequences					
-1229	circumstance	circumstances					
-1230	smoke	smokes, smoked, smoking					
-1231	reaction	reactions					
-1232	rain	rains, rained, raining					
-1233	busy	busies, busied, busying, busier, busiest					
-1234	lesson	lessons					
-1235	brain	brains, brained, braining					
-1236	mass	masses, massed, massing					
-1237	funny	funnier, funniest					
-1238	contribute	contributes, contributed, contributing					
-1239	failure	failures					
-1240	schedule	schedules, scheduled, scheduling					
-1241	speaker	speakers					
-1242	bottom	bottoms, bottomed, bottoming					
-1243	adopt	adopts, adopted, adopting					
-1244	combine	combines, combined, combining					
-1245	mountain	mountains					
-1246	waste	wastes, wasted, wasting					
-1247	hide	hides, hid, hiding, hidden					
-1248	marriage	marriages					
-1249	ticket	tickets, ticketed, ticketing					
-1250	meal	meals					
-1251	colleague	colleagues					
-1252	bag	bags, bagged, bagging					
-1253	repeat	repeats, repeated, repeating					
-1254	equal	equals, equaled, equaling, equalled, equalling					
-1255	expression	expressions					
-1256	plus	pluses					
-1257	extremely						
-1258	owner	owners					
-1259	plane	planes, planed					
-1260	commercial	commercials					
-1261	lady	ladies					
-1262	duty	duties					
-1263	strength	strengths					
-1264	connect	connects, connected, connecting					
-1265	cultural						
-1266	arrange	arranges, arranged, arranging					
-1267	scheme	schemes, schemed, scheming					
-1268	payment	payments					
-1269	unfortunately						
-1270	brief	briefs, briefed, briefing, briefer, briefest, briefings					
-1271	bird	birds, birded, birding					
-1272	demonstrate	demonstrates, demonstrated, demonstrating					
-1273	contribution	contributions					
-1274	appreciate	appreciates, appreciated, appreciating					
-1275	chapter	chapters					
-1276	secret	secrets					
-1277	apparently						
-1278	novel	novels					
-1279	union	unions					
-1280	burn	burns, burned, burning, burnt					
-1281	trend	trends, trended, trending					
-1282	initial	initials, initialed, initialing, initialled, initialling					
-1283	pleasure	pleasures, pleasured, pleasuring					
-1284	suggestion	suggestions					
-1285	critical						
-1286	gather	gathers, gathered, gathering, gatherings					
-1287	mostly						
-1288	earth	earths, earthed					
-1289	pop	pops, popped, popping					
-1290	essential	essentials					
-1291	desire	desires, desired, desiring					
-1292	promote	promotes, promoted, promoting					
-1293	currently						
-1294	employ	employs, employed, employing					
-1295	path	paths					
-1296	topic	topics					
-1297	beach	beaches, beached, beaching					
-1298	attract	attracts, attracted, attracting					
-1299	engage	engages, engaged, engaging					
-1300	powerful						
+1201	ball	balls, balled, balling	n: ลูกบอล, ลูกบอลเต้นรำ	The children kick the ball in the park.	เด็ก ๆ เตะลูกบอลในสวน		⚽
+1202	cry	cries, cried, crying	v: ร้องไห้, ตะโกน | n: เสียงร้อง	The baby began to cry.	ทารกเริ่มร้องไห้		😢
+1203	introduction	introductions	n: การแนะนำ, บทนำ	Let me make a short introduction.	ขอแนะนำตัวสั้น ๆ นะ		
+1204	requirement	requirements	n: ข้อกำหนด, สิ่งที่จำเป็นต้องมี	Good English is a requirement for this job.	ภาษาอังกฤษที่ดีเป็นคุณสมบัติที่ต้องมีสำหรับงานนี้		
+1205	north		n: ทิศเหนือ | adj: ทางเหนือ | adv: ไปทางเหนือ	Chiang Mai is in the north of Thailand.	เชียงใหม่อยู่ทางภาคเหนือของประเทศไทย		
+1206	confirm	confirms, confirmed, confirming	v: ยืนยัน, รับรอง	Please confirm your booking by email.	กรุณายืนยันการจองทางอีเมล		✅
+1207	senior	seniors	adj: อาวุโส, สูงอายุ | n: รุ่นพี่, ผู้สูงอายุ	He is a senior manager at the bank.	เขาเป็นผู้จัดการอาวุโสที่ธนาคาร		
+1208	photo	photos	n: รูปถ่าย	She showed me a photo of her family.	เธอให้ฉันดูรูปครอบครัวของเธอ		📷
+1209	refuse	refuses, refused, refusing	v: ปฏิเสธ, ไม่ยอม | n: ขยะ	He refused to eat vegetables.	เขาไม่ยอมกินผัก	refuse (กริยา) ออกเสียงต่างจาก refuse (นาม) ที่แปลว่า ขยะ	
+1210	transport	transports, transported, transporting	v: ขนส่ง | n: การขนส่ง	Trucks transport food to the city.	รถบรรทุกขนอาหารเข้าเมือง		🚚
+1211	emerge	emerges, emerged, emerging	v: โผล่ออกมา, ปรากฏ	A cat emerged from the bushes.	แมวตัวหนึ่งโผล่ออกมาจากพุ่มไม้		
+1212	map	maps, mapped, mapping, mappings	n: แผนที่ | v: ทำแผนที่	Can you show me the way on the map?	คุณชี้ทางให้ฉันดูบนแผนที่ได้ไหม		🗺️
+1213	concept	concepts	n: แนวคิด, ความคิดรวบยอด	This is a difficult concept to explain.	นี่เป็นแนวคิดที่อธิบายยาก		
+1214	island	islands, islanded, islanding	n: เกาะ	We spent a week on a small island.	เราใช้เวลาหนึ่งสัปดาห์บนเกาะเล็ก ๆ		🏝️
+1215	reform	reforms, reformed, reforming	n: การปฏิรูป | v: ปฏิรูป, ปรับปรุงใหม่	The school made reforms to the rules.	โรงเรียนปรับปรุงกฎระเบียบใหม่		
+1216	neither		adv: ไม่...เช่นกัน | pron: ไม่ทั้งสอง | conj: ไม่...ทั้งคู่	Neither of my parents drinks coffee.	พ่อแม่ของฉันไม่มีใครดื่มกาแฟเลยสักคน	มักใช้คู่กับ nor เช่น neither … nor …	
+1217	football	footballs	n: ฟุตบอล, ลูกฟุตบอล	He plays football every Sunday.	เขาเล่นฟุตบอลทุกวันอาทิตย์		⚽
+1218	survive	survives, survived, surviving	v: รอดชีวิต, อยู่รอด	The plant cannot survive without water.	ต้นไม้นี้อยู่รอดไม่ได้ถ้าไม่มีน้ำ		
+1219	flight	flights	n: เที่ยวบิน, การบิน	Our flight leaves at noon.	เที่ยวบินของเราออกตอนเที่ยง		✈️
+1220	left	lefts	adj: ซ้าย | n: ด้านซ้าย | adv: ไปทางซ้าย	Turn left at the next corner.	เลี้ยวซ้ายตรงหัวมุมหน้า	left ที่เป็นรูปอดีตของ leave (จากไป) อยู่ที่การ์ด leave	⬅️
+1221	solve	solves, solved, solving	v: แก้ (ปัญหา), หาคำตอบ	Can you solve this puzzle?	คุณแก้ปริศนานี้ได้ไหม		🧩
+1222	neighbor	neighbors, neighbored, neighboring, neighbour, neighbours, neighboured, neighbouring	n: เพื่อนบ้าน	Our neighbor has a friendly dog.	เพื่อนบ้านของเรามีสุนัขที่เป็นมิตร		🏘️
+1223	background	backgrounds	n: ฉากหลัง, ภูมิหลัง, พื้นหลัง	The photo has a blue background.	รูปนี้มีพื้นหลังสีฟ้า		
+1224	technique	techniques	n: เทคนิค, วิธีการ	She has a good technique for learning words.	เธอมีเทคนิคจำคำศัพท์ที่ดี		
+1225	traffic	traffics, trafficked, trafficking, traffick, trafficks	n: การจราจร, รถที่สัญจร	The traffic is very bad in Bangkok.	การจราจรในกรุงเทพฯ ติดมาก	เป็นนามนับไม่ได้ เช่น heavy traffic (รถติดมาก)	🚦
+1226	improvement	improvements	n: การปรับปรุง, ความก้าวหน้า	I see a lot of improvement in your writing.	ฉันเห็นว่าการเขียนของคุณดีขึ้นมาก		
+1227	tool	tools, tooled, tooling	n: เครื่องมือ, อุปกรณ์	A hammer is a useful tool.	ค้อนเป็นเครื่องมือที่มีประโยชน์		🔨
+1228	consequence	consequences	n: ผลที่ตามมา, ผลลัพธ์	Every action has a consequence.	ทุกการกระทำมีผลที่ตามมา		
+1229	circumstance	circumstances	n: สถานการณ์, เงื่อนไขแวดล้อม	Under the circumstances, we must wait.	ในสถานการณ์แบบนี้ เราต้องรอ		
+1230	smoke	smokes, smoked, smoking	n: ควัน | v: สูบบุหรี่, รมควัน	Smoke came out of the kitchen.	มีควันออกมาจากห้องครัว		💨
+1231	reaction	reactions	n: ปฏิกิริยา, การตอบสนอง	What was his reaction to the news?	เขามีปฏิกิริยาอย่างไรกับข่าวนี้		
+1232	rain	rains, rained, raining	n: ฝน | v: ฝนตก	It rains a lot in July.	เดือนกรกฎาคมฝนตกบ่อย		🌧️
+1233	busy	busies, busied, busying, busier, busiest	adj: ยุ่ง, ไม่ว่าง, คับคั่ง	I am busy today.	วันนี้ฉันยุ่ง		
+1234	lesson	lessons	n: บทเรียน, คาบเรียน	We have an English lesson at ten.	เรามีเรียนภาษาอังกฤษตอนสิบโมง		📖
+1235	brain	brains, brained, braining	n: สมอง, ความฉลาด	The brain controls the body.	สมองควบคุมร่างกาย		🧠
+1236	mass	masses, massed, massing	n: มวล, ก้อนใหญ่, คนจำนวนมาก | adj: เป็นกลุ่มใหญ่	A mass of people gathered in the street.	ผู้คนมากมายมารวมตัวกันบนถนน		
+1237	funny	funnier, funniest	adj: ตลก, ขบขัน	He told us a funny story.	เขาเล่าเรื่องตลกให้เราฟัง		🤣
+1238	contribute	contributes, contributed, contributing	v: มีส่วนร่วม, สมทบ, ให้ (เงิน)	Everyone contributed to the party.	ทุกคนช่วยกันในงานปาร์ตี้		
+1239	failure	failures	n: ความล้มเหลว, ผู้ล้มเหลว	Failure is a part of learning.	ความล้มเหลวเป็นส่วนหนึ่งของการเรียนรู้		
+1240	schedule	schedules, scheduled, scheduling	n: ตารางเวลา, กำหนดการ | v: กำหนดเวลา	What is your schedule for tomorrow?	พรุ่งนี้คุณมีตารางงานอะไรบ้าง		🗓️
+1241	speaker	speakers	n: ผู้พูด, ลำโพง	The speaker spoke slowly and clearly.	ผู้พูดพูดช้า ๆ และชัดเจน		🔊
+1242	bottom	bottoms, bottomed, bottoming	n: ก้น, ด้านล่างสุด | adj: ล่างสุด	The keys are at the bottom of my bag.	กุญแจอยู่ก้นกระเป๋าของฉัน		
+1243	adopt	adopts, adopted, adopting	v: รับมาใช้, รับเลี้ยง	They adopted a puppy last month.	เดือนที่แล้วพวกเขารับลูกสุนัขมาเลี้ยง		
+1244	combine	combines, combined, combining	v: รวม, ผสมผสาน	Combine the flour and sugar.	ผสมแป้งกับน้ำตาลเข้าด้วยกัน		
+1245	mountain	mountains	n: ภูเขา	We climbed a high mountain.	เราปีนภูเขาลูกสูงลูกหนึ่ง		⛰️
+1246	waste	wastes, wasted, wasting	v: สิ้นเปลือง, ทิ้งขว้าง | n: ขยะ, ความสิ้นเปลือง	Do not waste water.	อย่าใช้น้ำอย่างสิ้นเปลือง		
+1247	hide	hides, hid, hiding, hidden	v: ซ่อน, ซุก | n: หนังสัตว์	The child hid under the bed.	เด็กซ่อนอยู่ใต้เตียง	รูปอดีตคือ hid / รูป V3 คือ hidden	🙈
+1248	marriage	marriages	n: การแต่งงาน, ชีวิตสมรส	They have a happy marriage.	พวกเขามีชีวิตแต่งงานที่มีความสุข		💒
+1249	ticket	tickets, ticketed, ticketing	n: ตั๋ว, ใบสั่ง	I bought two tickets for the movie.	ฉันซื้อตั๋วหนังสองใบ		🎟️
+1250	meal	meals	n: มื้ออาหาร	Breakfast is the first meal of the day.	อาหารเช้าเป็นมื้อแรกของวัน		🍽️
+1251	colleague	colleagues	n: เพื่อนร่วมงาน	My colleague helped me with the report.	เพื่อนร่วมงานช่วยฉันทำรายงาน		
+1252	bag	bags, bagged, bagging	n: กระเป๋า, ถุง	She put her books in a bag.	เธอใส่หนังสือลงในกระเป๋า		👜
+1253	repeat	repeats, repeated, repeating	v: พูดซ้ำ, ทำซ้ำ | n: การทำซ้ำ	Please repeat the question.	กรุณาพูดคำถามซ้ำอีกครั้ง		🔁
+1254	equal	equals, equaled, equaling, equalled, equalling	adj: เท่ากัน, เสมอกัน | v: เท่ากับ	Two plus two equals four.	สองบวกสองเท่ากับสี่		
+1255	expression	expressions	n: การแสดงออก, สำนวน, สีหน้า	She had a happy expression on her face.	สีหน้าของเธอดูมีความสุข		
+1256	plus	pluses	prep: บวก, และ | n: ข้อดี	Three plus four is seven.	สามบวกสี่เป็นเจ็ด		➕
+1257	extremely		adv: อย่างยิ่ง, มาก ๆ	The soup is extremely hot.	ซุปร้อนมาก ๆ		
+1258	owner	owners	n: เจ้าของ	The owner of the shop is very kind.	เจ้าของร้านใจดีมาก		
+1259	plane	planes, planed	n: เครื่องบิน, ระนาบ | v: ไสไม้	The plane lands at six.	เครื่องบินลงจอดตอนหกโมง		✈️
+1260	commercial	commercials	adj: เกี่ยวกับการค้า | n: โฆษณา (ทางทีวี วิทยุ)	I saw a funny commercial on TV.	ฉันเห็นโฆษณาตลกทางทีวี		
+1261	lady	ladies	n: สุภาพสตรี, ผู้หญิง	That lady is my English teacher.	สุภาพสตรีท่านนั้นเป็นครูภาษาอังกฤษของฉัน		👩
+1262	duty	duties	n: หน้าที่, ภาระ, ภาษี	It is my duty to help my parents.	การช่วยพ่อแม่เป็นหน้าที่ของฉัน		
+1263	strength	strengths	n: ความแข็งแรง, จุดแข็ง	Swimming builds strength.	การว่ายน้ำช่วยสร้างความแข็งแรง		💪
+1264	connect	connects, connected, connecting	v: เชื่อมต่อ, ต่อ	Please connect the phone to the charger.	กรุณาต่อโทรศัพท์เข้ากับที่ชาร์จ		🔌
+1265	cultural		adj: เกี่ยวกับวัฒนธรรม	We enjoy the cultural show.	เราเพลิดเพลินกับการแสดงทางวัฒนธรรม		
+1266	arrange	arranges, arranged, arranging	v: จัดการ, จัดเตรียม, จัดเรียง	She arranged the flowers in a vase.	เธอจัดดอกไม้ใส่แจกัน		💐
+1267	scheme	schemes, schemed, scheming	n: แผนการ, โครงการ, ระบบ	The school has a new reading scheme.	โรงเรียนมีโครงการส่งเสริมการอ่านใหม่		
+1268	payment	payments	n: การจ่ายเงิน, ค่าชำระ	The payment is due on Friday.	ต้องชำระเงินภายในวันศุกร์		💳
+1269	unfortunately		adv: น่าเสียดาย, โชคร้าย	Unfortunately, I cannot come.	น่าเสียดายที่ฉันมาไม่ได้		
+1270	brief	briefs, briefed, briefing, briefer, briefest, briefings	adj: สั้น, กระชับ | v: บรีฟ, สรุปให้ฟัง	Please give me a brief answer.	กรุณาตอบสั้น ๆ		
+1271	bird	birds, birded, birding	n: นก	A small bird sat on the tree.	นกตัวเล็ก ๆ เกาะอยู่บนต้นไม้		🐦
+1272	demonstrate	demonstrates, demonstrated, demonstrating	v: สาธิต, แสดงให้เห็น	The teacher demonstrated how to use the tool.	ครูสาธิตวิธีใช้เครื่องมือ		
+1273	contribution	contributions	n: การมีส่วนร่วม, ส่วนที่สมทบ	Thank you for your contribution.	ขอบคุณสำหรับความช่วยเหลือของคุณ		
+1274	appreciate	appreciates, appreciated, appreciating	v: ซาบซึ้ง, เห็นคุณค่า	I really appreciate your help.	ฉันขอบคุณคุณมากที่ช่วยเหลือ		🙏
+1275	chapter	chapters	n: บท (ในหนังสือ)	I read two chapters last night.	เมื่อคืนฉันอ่านไปสองบท		
+1276	secret	secrets	n: ความลับ | adj: ลับ	Can you keep a secret?	คุณเก็บความลับได้ไหม		🤫
+1277	apparently		adv: เห็นได้ชัดว่า, ดูเหมือนว่า	Apparently, the shop is closed today.	ดูเหมือนว่าวันนี้ร้านจะปิด		
+1278	novel	novels	n: นิยาย | adj: ใหม่, แปลกใหม่	She is reading a long novel.	เธอกำลังอ่านนิยายเรื่องยาว		📕
+1279	union	unions	n: สหภาพ, การรวมกัน	The workers formed a union.	คนงานรวมตัวกันตั้งสหภาพ		
+1280	burn	burns, burned, burning, burnt	v: ไหม้, เผา, ลวก	Be careful, the toast is burning.	ระวังนะ ขนมปังกำลังไหม้	รูปอดีตคือ burned หรือ burnt	🔥
+1281	trend	trends, trended, trending	n: แนวโน้ม, เทรนด์	This is a popular fashion trend.	นี่เป็นเทรนด์แฟชั่นยอดนิยม		📈
+1282	initial	initials, initialed, initialing, initialled, initialling	adj: เริ่มแรก, ขั้นต้น | n: อักษรตัวแรกของชื่อ	Our initial plan was different.	แผนแรกของเราต่างจากนี้		
+1283	pleasure	pleasures, pleasured, pleasuring	n: ความสุข, ความยินดี	It is a pleasure to meet you.	ยินดีที่ได้รู้จักค่ะ		
+1284	suggestion	suggestions	n: ข้อเสนอแนะ, คำแนะนำ	I have a suggestion for dinner.	ฉันมีข้อเสนอสำหรับมื้อเย็น		
+1285	critical		adj: วิกฤต, วิจารณ์, สำคัญยิ่ง	This is a critical moment for the team.	นี่เป็นช่วงเวลาสำคัญยิ่งของทีม		
+1286	gather	gathers, gathered, gathering, gatherings	v: รวบรวม, มารวมกัน, เก็บ	Everyone gathered around the table.	ทุกคนมารวมตัวกันรอบโต๊ะ		
+1287	mostly		adv: ส่วนใหญ่, โดยมาก	The students here are mostly young.	นักเรียนที่นี่ส่วนใหญ่เป็นคนหนุ่มสาว		
+1288	earth	earths, earthed	n: โลก, ดิน	The earth goes around the sun.	โลกโคจรรอบดวงอาทิตย์		🌍
+1289	pop	pops, popped, popping	v: ผุดขึ้น, ดังเป๊าะ | n: เพลงป็อป, น้ำอัดลม	The balloon will pop.	ลูกโป่งใบนี้จะแตกดังเป๊าะ		🎈
+1290	essential	essentials	adj: จำเป็น, สำคัญที่สุด | n: ของที่จำเป็น	Water is essential for life.	น้ำจำเป็นต่อชีวิต		
+1291	desire	desires, desired, desiring	n: ความปรารถนา, ความอยาก | v: ปรารถนา	She has a strong desire to learn.	เธอมีความปรารถนาอย่างแรงกล้าที่จะเรียนรู้		
+1292	promote	promotes, promoted, promoting	v: ส่งเสริม, เลื่อนตำแหน่ง	The shop promotes its new products online.	ร้านนี้โปรโมตสินค้าใหม่ทางออนไลน์		
+1293	currently		adv: ในปัจจุบัน, ขณะนี้	I am currently studying English.	ตอนนี้ฉันกำลังเรียนภาษาอังกฤษอยู่		
+1294	employ	employs, employed, employing	v: จ้าง, ใช้ (งาน)	The hotel employs fifty people.	โรงแรมนี้จ้างพนักงานห้าสิบคน		
+1295	path	paths	n: เส้นทาง, ทางเดิน	A narrow path leads to the lake.	ทางเดินแคบ ๆ นำไปสู่ทะเลสาบ		
+1296	topic	topics	n: หัวข้อ, เรื่อง	What is the topic of today's lesson?	หัวข้อของบทเรียนวันนี้คืออะไร		
+1297	beach	beaches, beached, beaching	n: ชายหาด	We walked along the beach.	เราเดินเล่นริมชายหาด		🏖️
+1298	attract	attracts, attracted, attracting	v: ดึงดูด, ดึงดูดใจ	The festival attracts many tourists.	เทศกาลนี้ดึงดูดนักท่องเที่ยวจำนวนมาก		🧲
+1299	engage	engages, engaged, engaging	v: เข้าร่วม, ดึงดูด, หมั้น	The teacher tried to engage the students.	ครูพยายามดึงนักเรียนให้มีส่วนร่วม		
+1300	powerful		adj: ทรงพลัง, มีอำนาจ	This engine is very powerful.	เครื่องยนต์นี้ทรงพลังมาก		💪

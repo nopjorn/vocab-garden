@@ -1,101 +1,101 @@
 rank	headword	forms	meanings	example_en	example_th	note	emoji
-401	body	bodies, bodied, bodying					
-402	require	requires, required, requiring					
-403	wait	waits, waited, waiting					
-404	general	generals					
-405	appear	appears, appeared, appearing					
-406	toward	towards					
-407	team	teams, teamed, teaming					
-408	easy	easier, easiest					
-409	individual	individuals					
-410	full	fuller, fullest					
-411	black	blacks, blacked, blacking, blacker, blackest					
-412	sense	senses, sensed, sensing					
-413	perhaps						
-414	add	adds, added, adding					
-415	rule	rules, ruled, ruling, rulings					
-416	pass	passes, passed, passing					
-417	produce	produces, produced, producing					
-418	sell	sells, sold, selling					
-419	short	shorts, shorted, shorting, shorter, shortest					
-420	agree	agrees, agreed, agreeing					
-421	law	laws					
-422	everything						
-423	research	researches, researched, researching					
-424	cover	covers, covered, covering, coverings					
-425	paper	papers, papered, papering					
-426	position	positions, positioned, positioning					
-427	near	nears, neared, nearing, nearer, nearest					
-428	human	humans					
-429	computer	computers					
-430	situation	situations					
-431	staff	staffs, staffed, staffing					
-432	activity	activities					
-433	film	films, filmed, filming					
-434	morning	mornings					
-435	war	wars, warred, warring					
-436	account	accounts, accounted, accounting					
-437	shop	shops, shopped, shopping					
-438	major	majors, majored, majoring					
-439	someone						
-440	above						
-441	design	designs, designed, designing					
-442	event	events					
-443	special	specials					
-444	sometimes						
-445	condition	conditions, conditioned, conditioning, conditionings					
-446	carry	carries, carried, carrying					
-447	choose	chooses, chose, choosing, chosen					
-448	father	fathers, fathered, fathering					
-449	decision	decisions					
-450	table	tables, tabled					
-451	certain						
-452	forward	forwards, forwarded, forwarding					
-453	main						
-454	die	dies, died, dying					
-455	bear	bears, bearing, born, bearings					
-456	cut	cuts, cutting, cuttings					
-457	describe	describes, described, describing					
-458	himself						
-459	available						
-460	especially						
-461	strong	stronger, strongest					
-462	rise	rises, rose, rising, risen					
-463	girl	girls					
-464	maybe						
-465	community	communities					
-466	else						
-467	particular	particulars					
-468	role	roles					
-469	join	joins, joined, joining					
-470	difficult						
-471	please	pleases, pleased, pleasing					
-472	detail	details, detailed, detailing					
-473	difference	differences, differenced, differencing					
-474	action	actions					
-475	health						
-476	eat	eats, ate, eating, eaten					
-477	step	steps, stepped, stepping					
-478	TRUE	trues, trued, truing, truer, truest					
-479	phone	phones, phoned, phoning					
-480	themselves						
-481	draw	draws, drew, drawing, drawn, drawings					
-482	white	whiter, whitest, whites					
-483	date	dates, dated, dating					
-484	practice	practices, practiced, practicing, practise, practised, practises, practising					
-485	model	models, modeled, modeling, modelled, modelling					
-486	raise	raises, raised, raising, raisings					
-487	customer	customers					
-488	front	fronts, fronted, fronting					
-489	explain	explains, explained, explaining					
-490	door	doors					
-491	outside	outsides					
-492	behind						
-493	economic	economics					
-494	site	sites, sited					
-495	approach	approaches, approached, approaching					
-496	teacher	teachers					
-497	land	lands, landed, landing, landings					
-498	charge	charges, charged, charging					
-499	finally						
-500	sign	signs, signed, signing					
+401	body	bodies, bodied, bodying	n: ร่างกาย, ตัว | n: ศพ	My whole body feels tired today.	วันนี้ร่างกายของฉันรู้สึกเหนื่อยไปหมด		🧍
+402	require	requires, required, requiring	v: ต้องการ, จำเป็นต้องมี, กำหนดให้	This job requires good English.	งานนี้ต้องใช้ภาษาอังกฤษที่ดี		
+403	wait	waits, waited, waiting	v: รอ, คอย	Please wait here for a moment.	กรุณารอตรงนี้สักครู่		⏳
+404	general	generals	adj: ทั่วไป, โดยรวม | n: นายพล	This is a general rule for everyone.	นี่เป็นกฎทั่วไปสำหรับทุกคน		
+405	appear	appears, appeared, appearing	v: ปรากฏ, ดูเหมือน, มาปรากฏตัว	A rainbow appeared after the rain.	รุ้งปรากฏขึ้นหลังฝนตก		🌈
+406	toward	towards	prep: ไปทาง, มุ่งหน้าสู่, ต่อ (ใช้กับความรู้สึก)	She walked toward the bus stop.	เธอเดินไปทางป้ายรถเมล์		
+407	team	teams, teamed, teaming	n: ทีม, กลุ่มคนที่ทำงานด้วยกัน	Our team won the game.	ทีมของเราชนะเกม		👥
+408	easy	easier, easiest	adj: ง่าย, สบาย	This question is easy.	คำถามข้อนี้ง่าย		
+409	individual	individuals	n: บุคคล, คนหนึ่ง | adj: เฉพาะตัว, รายบุคคล	Each individual has a different dream.	แต่ละคนมีความฝันที่ไม่เหมือนกัน		
+410	full	fuller, fullest	adj: เต็ม, อิ่ม, ครบ	The bottle is full of water.	ขวดนี้เต็มไปด้วยน้ำ		
+411	black	blacks, blacked, blacking, blacker, blackest	adj: สีดำ, มืด | n: สีดำ	He has a black cat.	เขามีแมวสีดำตัวหนึ่ง		🖤
+412	sense	senses, sensed, sensing	n: ความรู้สึก, สามัญสำนึก, ประสาทสัมผัส | v: รู้สึก, สัมผัสได้	It makes sense to leave early.	การออกเดินทางแต่เช้าก็สมเหตุสมผลดี		
+413	perhaps		adv: บางที, อาจจะ	Perhaps it will rain tonight.	บางทีคืนนี้ฝนอาจจะตก		
+414	add	adds, added, adding	v: เพิ่ม, บวก, ใส่เพิ่ม	Please add some sugar to the tea.	กรุณาใส่น้ำตาลเพิ่มในชานิดหน่อย		➕
+415	rule	rules, ruled, ruling, rulings	n: กฎ, ระเบียบ | v: ปกครอง, ครอบครอง	Everyone must follow the school rules.	ทุกคนต้องทำตามกฎของโรงเรียน		
+416	pass	passes, passed, passing	v: ผ่าน, ส่งให้, สอบผ่าน	Can you pass me the salt?	ช่วยส่งเกลือให้หน่อยได้ไหม		
+417	produce	produces, produced, producing	v: ผลิต, ทำให้เกิด	This factory produces toys.	โรงงานนี้ผลิตของเล่น		🏭
+418	sell	sells, sold, selling	v: ขาย	He sells fruit at the market.	เขาขายผลไม้ที่ตลาด	รูปอดีตคือ sold	🏷️
+419	short	shorts, shorted, shorting, shorter, shortest	adj: สั้น, เตี้ย | adj: ขาดแคลน	The movie was very short.	หนังเรื่องนั้นสั้นมาก		
+420	agree	agrees, agreed, agreeing	v: เห็นด้วย, ตกลง	I agree with your idea.	ฉันเห็นด้วยกับความคิดของคุณ		🤝
+421	law	laws	n: กฎหมาย	Stealing is against the law.	การขโมยผิดกฎหมาย		⚖️
+422	everything		pron: ทุกสิ่ง, ทุกอย่าง	Everything is ready for the party.	ทุกอย่างพร้อมสำหรับงานปาร์ตี้แล้ว		
+423	research	researches, researched, researching	n: การวิจัย, งานค้นคว้า | v: ค้นคว้า, วิจัย	She does research on sea animals.	เธอทำวิจัยเกี่ยวกับสัตว์ทะเล		🔬
+424	cover	covers, covered, covering, coverings	v: ปิด, คลุม, ครอบคลุม | n: ฝา, ปก	Please cover the food with a lid.	กรุณาเอาฝาปิดอาหารไว้		
+425	paper	papers, papered, papering	n: กระดาษ, หนังสือพิมพ์, เอกสาร	I need a piece of paper.	ฉันต้องการกระดาษหนึ่งแผ่น		📄
+426	position	positions, positioned, positioning	n: ตำแหน่ง, ท่าทาง, ที่ตั้ง | v: วางไว้ในตำแหน่ง	She has an important position at the bank.	เธอมีตำแหน่งสำคัญที่ธนาคาร		
+427	near	nears, neared, nearing, nearer, nearest	adj: ใกล้ | prep: ใกล้ ๆ | v: เข้าใกล้	My house is near the station.	บ้านของฉันอยู่ใกล้สถานี		
+428	human	humans	adj: เกี่ยวกับมนุษย์ | n: มนุษย์, คน	Humans need water to live.	มนุษย์ต้องการน้ำเพื่อมีชีวิตอยู่		🧑
+429	computer	computers	n: คอมพิวเตอร์	I use a computer every day.	ฉันใช้คอมพิวเตอร์ทุกวัน		💻
+430	situation	situations	n: สถานการณ์, สภาพการณ์	The situation is getting better.	สถานการณ์กำลังดีขึ้น		
+431	staff	staffs, staffed, staffing	n: พนักงาน, บุคลากร | v: จัดคนเข้าทำงาน	The hotel staff were very kind.	พนักงานของโรงแรมใจดีมาก		
+432	activity	activities	n: กิจกรรม, ความเคลื่อนไหว	We have many activities after school.	เรามีกิจกรรมมากมายหลังเลิกเรียน		
+433	film	films, filmed, filming	n: ภาพยนตร์, ฟิล์ม | v: ถ่ายทำ	We watched a funny film last night.	เมื่อคืนเราดูหนังตลกเรื่องหนึ่ง		🎬
+434	morning	mornings	n: ตอนเช้า	I drink coffee every morning.	ฉันดื่มกาแฟทุกเช้า		🌅
+435	war	wars, warred, warring	n: สงคราม	Many people hope for an end to the war.	หลายคนหวังให้สงครามยุติลง		
+436	account	accounts, accounted, accounting	n: บัญชี, รายงาน, คำบอกเล่า | v: อธิบาย (account for)	I opened a bank account today.	วันนี้ฉันเปิดบัญชีธนาคาร		
+437	shop	shops, shopped, shopping	n: ร้านค้า | v: ซื้อของ, ไปช้อปปิ้ง	There is a small shop near my house.	มีร้านเล็ก ๆ อยู่ใกล้บ้านของฉัน		🏪
+438	major	majors, majored, majoring	adj: สำคัญ, ใหญ่ | n: วิชาเอก	This is a major problem.	นี่เป็นปัญหาใหญ่		
+439	someone		pron: ใครบางคน	Someone is knocking at the door.	มีใครบางคนกำลังเคาะประตู		
+440	above		prep: เหนือ, สูงกว่า | adv: ข้างบน	The clock is above the door.	นาฬิกาอยู่เหนือประตู		
+441	design	designs, designed, designing	n: การออกแบบ, แบบ | v: ออกแบบ	She designs clothes for children.	เธอออกแบบเสื้อผ้าเด็ก		📐
+442	event	events	n: เหตุการณ์, งาน, กิจกรรม	The event starts at six o'clock.	งานเริ่มตอนหกโมงเย็น		
+443	special	specials	adj: พิเศษ	Today is a special day for me.	วันนี้เป็นวันพิเศษสำหรับฉัน		⭐
+444	sometimes		adv: บางครั้ง	Sometimes I walk to work.	บางครั้งฉันเดินไปทำงาน		
+445	condition	conditions, conditioned, conditioning, conditionings	n: เงื่อนไข, สภาพ | v: ปรับสภาพ	The car is in good condition.	รถคันนี้สภาพดี		
+446	carry	carries, carried, carrying	v: ถือ, ขน, พา, แบก	She carries a heavy bag every day.	เธอหิ้วกระเป๋าหนัก ๆ ทุกวัน		
+447	choose	chooses, chose, choosing, chosen	v: เลือก	You can choose any color.	คุณเลือกสีไหนก็ได้	รูปอดีตคือ chose / รูป V3 คือ chosen	
+448	father	fathers, fathered, fathering	n: พ่อ, บิดา | v: เป็นพ่อของ	My father works in a bank.	พ่อของฉันทำงานที่ธนาคาร		👨
+449	decision	decisions	n: การตัดสินใจ, คำตัดสิน	It was a difficult decision.	มันเป็นการตัดสินใจที่ยาก		
+450	table	tables, tabled	n: โต๊ะ, ตาราง | v: เสนอ (เข้าที่ประชุม)	The book is on the table.	หนังสืออยู่บนโต๊ะ		
+451	certain		adj: แน่นอน, แน่ใจ, บางอย่าง	I am certain he will come.	ฉันมั่นใจว่าเขาจะมา		
+452	forward	forwards, forwarded, forwarding	adv: ไปข้างหน้า, ต่อไป | v: ส่งต่อ	Please look forward, not back.	กรุณามองไปข้างหน้า อย่ามองย้อนหลัง		
+453	main		adj: หลัก, สำคัญที่สุด	The main door is closed.	ประตูหลักปิดอยู่		
+454	die	dies, died, dying	v: ตาย, เสียชีวิต	The flowers will die without water.	ดอกไม้จะตายถ้าไม่มีน้ำ		🥀
+455	bear	bears, bearing, born, bearings	v: ทน, แบกรับ, ให้กำเนิด	I can't bear this noise.	ฉันทนเสียงนี้ไม่ไหว	born เป็นรูปที่ใช้กับ "ถูกเกิด" เช่น I was born in May	
+456	cut	cuts, cutting, cuttings	v: ตัด, หั่น | n: รอยตัด, การลด	Please cut the cake into four pieces.	กรุณาตัดเค้กเป็นสี่ชิ้น	รูปอดีตคือ cut (เหมือนเดิม)	✂️
+457	describe	describes, described, describing	v: บรรยาย, อธิบายลักษณะ	Can you describe your teacher?	คุณช่วยบรรยายลักษณะของครูของคุณได้ไหม		
+458	himself		pron: ตัวเขาเอง	He made the cake himself.	เขาทำเค้กด้วยตัวเอง		
+459	available		adj: มีให้ใช้, ว่าง, หาได้	Is this seat available?	ที่นั่งนี้ว่างไหม		
+460	especially		adv: โดยเฉพาะ, เป็นพิเศษ	I like fruit, especially mangoes.	ฉันชอบผลไม้ โดยเฉพาะมะม่วง		
+461	strong	stronger, strongest	adj: แข็งแรง, เข้มแข็ง, รุนแรง	He is strong enough to lift the box.	เขาแข็งแรงพอจะยกกล่องนี้ได้		💪
+462	rise	rises, rose, rising, risen	v: ขึ้น, เพิ่มขึ้น, ลุกขึ้น | n: การเพิ่มขึ้น	The sun rises in the east.	ดวงอาทิตย์ขึ้นทางทิศตะวันออก	รูปอดีตคือ rose / รูป V3 คือ risen	
+463	girl	girls	n: เด็กผู้หญิง, สาว	The girl is reading a book.	เด็กผู้หญิงกำลังอ่านหนังสือ		👧
+464	maybe		adv: อาจจะ, บางที	Maybe we can go tomorrow.	บางทีเราอาจไปพรุ่งนี้		
+465	community	communities	n: ชุมชน, สังคม	Our community is very friendly.	ชุมชนของเราเป็นกันเองมาก		🏘️
+466	else		adv: อื่น, อีก	Would you like anything else?	คุณต้องการอะไรอีกไหม		
+467	particular	particulars	adj: เฉพาะ, พิเศษ, ประณีต	Is there a particular book you want?	มีหนังสือเล่มไหนเป็นพิเศษที่คุณอยากได้ไหม		
+468	role	roles	n: บทบาท, หน้าที่	She plays an important role in the team.	เธอมีบทบาทสำคัญในทีม		
+469	join	joins, joined, joining	v: เข้าร่วม, เชื่อมต่อ, ต่อเข้าด้วยกัน	Would you like to join us?	คุณอยากมาร่วมกับเราไหม		
+470	difficult		adj: ยาก, ลำบาก	The test was difficult.	ข้อสอบยากมาก		
+471	please	pleases, pleased, pleasing	v: ทำให้พอใจ | int: กรุณา, ได้โปรด	Please sit down.	กรุณานั่งลง		🙏
+472	detail	details, detailed, detailing	n: รายละเอียด | v: อธิบายโดยละเอียด	Please tell me every detail.	โปรดเล่ารายละเอียดทั้งหมดให้ฉันฟัง		
+473	difference	differences, differenced, differencing	n: ความแตกต่าง	What is the difference between these two?	สองอันนี้ต่างกันอย่างไร		
+474	action	actions	n: การกระทำ, การลงมือ	Actions speak louder than words.	การกระทำดังกว่าคำพูด		
+475	health		n: สุขภาพ	Good health is very important.	สุขภาพที่ดีสำคัญมาก		💪
+476	eat	eats, ate, eating, eaten	v: กิน, รับประทาน	We eat dinner at seven.	เรากินข้าวเย็นตอนเจ็ดโมง	รูปอดีตคือ ate / รูป V3 คือ eaten	🍽️
+477	step	steps, stepped, stepping	n: ก้าว, ขั้นตอน | v: ก้าว	Take one step at a time.	ค่อย ๆ ก้าวทีละก้าว		👣
+478	TRUE	trues, trued, truing, truer, truest	adj: จริง, ถูกต้อง, แท้	It is true that she is shy.	เป็นความจริงที่เธอขี้อาย		
+479	phone	phones, phoned, phoning	n: โทรศัพท์ | v: โทรหา	My phone is on the table.	โทรศัพท์ของฉันอยู่บนโต๊ะ		📱
+480	themselves		pron: ตัวพวกเขาเอง, ด้วยตัวเอง (พวกเขา)	The children cleaned the room themselves.	เด็ก ๆ ทำความสะอาดห้องกันเอง		
+481	draw	draws, drew, drawing, drawn, drawings	v: วาด, ลาก, ดึง	She likes to draw flowers.	เธอชอบวาดรูปดอกไม้	รูปอดีตคือ drew / รูป V3 คือ drawn	🖍️
+482	white	whiter, whitest, whites	adj: สีขาว | n: สีขาว, ไข่ขาว	The wall is white.	กำแพงเป็นสีขาว		🤍
+483	date	dates, dated, dating	n: วันที่, การนัดหมาย | v: ลงวันที่	What is today's date?	วันนี้วันที่เท่าไร		📅
+484	practice	practices, practiced, practicing, practise, practised, practises, practising	n: การฝึกซ้อม | v: ฝึก, ฝึกซ้อม	I practice English every day.	ฉันฝึกภาษาอังกฤษทุกวัน		
+485	model	models, modeled, modeling, modelled, modelling	n: แบบจำลอง, นางแบบ | v: เป็นแบบ, สวมโชว์	He built a model of the ship.	เขาประกอบโมเดลเรือลำนี้		
+486	raise	raises, raised, raising, raisings	v: ยกขึ้น, เลี้ยงดู, ระดม	Please raise your hand.	กรุณายกมือขึ้น		🙋
+487	customer	customers	n: ลูกค้า	The customer asked for a discount.	ลูกค้าขอลดราคา		
+488	front	fronts, fronted, fronting	n: ด้านหน้า, ส่วนหน้า	The car is in front of the house.	รถอยู่หน้าบ้าน		
+489	explain	explains, explained, explaining	v: อธิบาย	Can you explain this word to me?	คุณช่วยอธิบายคำนี้ให้ฉันฟังหน่อยได้ไหม		
+490	door	doors	n: ประตู	Please close the door.	กรุณาปิดประตู		🚪
+491	outside	outsides	adv: ข้างนอก | n: ด้านนอก | prep: ภายนอก	The children are playing outside.	เด็ก ๆ กำลังเล่นอยู่ข้างนอก		
+492	behind		prep: ข้างหลัง | adv: ข้างหลัง	The cat is hiding behind the sofa.	แมวซ่อนอยู่หลังโซฟา		
+493	economic	economics	adj: เกี่ยวกับเศรษฐกิจ	The economic situation is getting better.	สภาพเศรษฐกิจกำลังดีขึ้น		
+494	site	sites, sited	n: สถานที่, ที่ตั้ง, เว็บไซต์	This is a good site for a new school.	ที่นี่เป็นที่ตั้งที่ดีสำหรับโรงเรียนใหม่		
+495	approach	approaches, approached, approaching	v: เข้าใกล้, เข้าหา | n: วิธีการ, แนวทาง	The bus is approaching the stop.	รถเมล์กำลังเข้าใกล้ป้าย		
+496	teacher	teachers	n: ครู, อาจารย์	My teacher is very kind.	ครูของฉันใจดีมาก		👩‍🏫
+497	land	lands, landed, landing, landings	n: ที่ดิน, แผ่นดิน | v: ลงจอด	The farmer has a lot of land.	ชาวนามีที่ดินมากมาย		
+498	charge	charges, charged, charging	v: เรียกเก็บเงิน, คิดราคา, ชาร์จ | n: ค่าธรรมเนียม, ข้อกล่าวหา	The hotel charges 1,000 baht a night.	โรงแรมคิดคืนละ 1,000 บาท		
+499	finally		adv: ในที่สุด	We finally arrived home.	ในที่สุดเราก็ถึงบ้าน		
+500	sign	signs, signed, signing	n: ป้าย, เครื่องหมาย, สัญญาณ | v: เซ็นชื่อ	Please sign your name here.	กรุณาเซ็นชื่อตรงนี้		✍️

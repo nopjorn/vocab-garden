@@ -1,101 +1,101 @@
 rank	headword	forms	meanings	example_en	example_th	note	emoji
-1001	difficulty	difficulties					
-1002	purchase	purchases, purchased, purchasing					
-1003	shoot	shoots, shooting, shootings					
-1004	announce	announces, announced, announcing					
-1005	unless						
-1006	independent	independents					
-1007	recommend	recommends, recommended, recommending					
-1008	survey	surveys, surveyed, surveying					
-1009	majority	majorities					
-1010	stick	sticks, stuck, sticking					
-1011	request	requests, requested, requesting					
-1012	rich	richer, richest					
-1013	wind	winds, wound, winded, winding					
-1014	none						
-1015	exchange	exchanges, exchanged, exchanging					
-1016	budget	budgets, budgeted, budgeting					
-1017	famous						
-1018	blood	bloods, blooded, blooding					
-1019	appropriate	appropriates, appropriated, appropriating					
-1020	block	blocks, blocked, blocking					
-1021	warm	warms, warmed, warming, warmer, warmest					
-1022	count	counts, counted, counting					
-1023	scene	scenes					
-1024	writer	writers					
-1025	content	contents, contented, contenting					
-1026	prevent	prevents, prevented, preventing					
-1027	safe	safer, safest					
-1028	invite	invites, invited, inviting					
-1029	mix	mixes, mixed, mixing					
-1030	element	elements					
-1031	effective						
-1032	correct	corrects, corrected, correcting					
-1033	medical	medicals					
-1034	admit	admits, admitting, admitted					
-1035	beat	beats, beating, beaten, beatings					
-1036	telephone	telephones, telephoned, telephoning					
-1037	copy	copies, copied, copying					
-1038	committee	committees					
-1039	aware						
-1040	advice	advices					
-1041	handle	handles, handled, handling					
-1042	glass	glasses, glassed, glassing					
-1043	trial	trials, trialed, trialing, trialled, trialling					
-1044	stress	stresses, stressed					
-1045	radio	radios, radioed					
-1046	administration	administrations					
-1047	complex	complexes					
-1048	text	texts					
-1049	context	contexts					
-1050	ride	rides, rode, riding, ridden					
-1051	directly						
-1052	heavy	heavies, heavier, heaviest					
-1053	remove	removes, removed, removing					
-1054	conduct	conducts, conducted, conducting					
-1055	equipment	equipments					
-1056	otherwise						
-1057	title	titles, titled, titling					
-1058	extra	extras					
-1059	executive	executives					
-1060	chair	chairs, chaired, chairing					
-1061	expensive						
-1062	sample	samples, sampled, sampling, samplings					
-1063	sex	sexes					
-1064	deliver	delivers, delivered, delivering					
-1065	video	videos, videoed					
-1066	connection	connections, connexion, connexions					
-1067	primary	primaries					
-1068	weather	weathers, weathered, weathering					
-1069	collect	collects, collected, collecting					
-1070	inform	informs, informed, informing					
-1071	principle	principles, principled					
-1072	straight	straighter, straightest					
-1073	appeal	appeals, appealed, appealing					
-1074	highly						
-1075	trust	trusts, trusted, trusting					
-1076	wonderful						
-1077	flat	flats, flatted, flatting					
-1078	absolutely						
-1079	flow	flows, flowed, flowing					
-1080	fair	fairs, faired, fairing, fairer, fairest					
-1081	additional						
-1082	responsible						
-1083	farm	farms, farmed, farming					
-1084	collection	collections					
-1085	hang	hangs, hung, hanging, hanged, hangings					
-1086	negative	negatives					
-1087	band	bands, banded					
-1088	relative	relatives					
-1089	tour	tours, toured, touring					
-1090	alternative	alternatives					
-1091	software						
-1092	pair	pairs, paired, pairing, pairings					
-1093	ship	ships, shipped, shipping					
-1094	attitude	attitudes					
-1095	cheap	cheaper, cheapest					
-1096	double	doubles, doubled, doubling					
-1097	leg	legs, legged, legging, leggings					
-1098	observe	observes, observed, observing					
-1099	sentence	sentences, sentenced, sentencing					
-1100	print	prints, printed, printing, printings					
+1001	difficulty	difficulties	n: ความยาก, ความลำบาก, ปัญหา	I have difficulty sleeping at night.	ฉันนอนไม่ค่อยหลับตอนกลางคืน		
+1002	purchase	purchases, purchased, purchasing	v: ซื้อ | n: การซื้อ, ของที่ซื้อ	She purchased a new laptop.	เธอซื้อแล็ปท็อปเครื่องใหม่		🛍️
+1003	shoot	shoots, shooting, shootings	v: ยิง, ถ่าย (ภาพยนตร์) | n: หน่อ, ยอดอ่อน	The hunter tried to shoot the bird.	พรานพยายามยิงนก	รูปอดีตคือ shot	
+1004	announce	announces, announced, announcing	v: ประกาศ, แจ้งให้ทราบ	The school announced a new holiday.	โรงเรียนประกาศวันหยุดใหม่		📢
+1005	unless		conj: เว้นแต่, ถ้าไม่	We will go unless it rains.	เราจะไป เว้นแต่ฝนจะตก		
+1006	independent	independents	adj: เป็นอิสระ, ไม่ขึ้นกับใคร | n: ผู้สมัครอิสระ	She wants to be independent.	เธออยากพึ่งตัวเองได้		
+1007	recommend	recommends, recommended, recommending	v: แนะนำ, เสนอแนะ	Can you recommend a good restaurant?	คุณแนะนำร้านอาหารดี ๆ ได้ไหม		👍
+1008	survey	surveys, surveyed, surveying	n: การสำรวจ, แบบสอบถาม | v: สำรวจ	We did a survey about school lunch.	เราทำแบบสอบถามเรื่องอาหารกลางวันของโรงเรียน		
+1009	majority	majorities	n: คนส่วนใหญ่, เสียงข้างมาก	The majority of students walk to school.	นักเรียนส่วนใหญ่เดินไปโรงเรียน		
+1010	stick	sticks, stuck, sticking	n: ไม้, กิ่งไม้ | v: ติด, ปัก, แปะ	The boy picked up a stick.	เด็กชายหยิบไม้ท่อนหนึ่งขึ้นมา	stick ที่เป็นกริยา รูปอดีตคือ stuck	
+1011	request	requests, requested, requesting	n: คำขอ | v: ขอ, ร้องขอ	I have a small request.	ฉันมีเรื่องจะขอเล็กน้อย		
+1012	rich	richer, richest	adj: รวย, ร่ำรวย, อุดมสมบูรณ์	He became rich very young.	เขารวยตั้งแต่ยังหนุ่ม		💰
+1013	wind	winds, wound, winded, winding	n: ลม | v: พัน, ม้วน, ไขลาน	The wind is very strong today.	วันนี้ลมแรงมาก	wind (ลม) อ่านว่า วินด์ ส่วน wind (พัน, ม้วน) อ่านว่า ไวนด์ รูปอดีตคือ wound ซึ่งเป็นการ์ดเดียวกับ wound (บาดแผล) ในการ์ด wound	💨
+1014	none		pron: ไม่มีใคร, ไม่มีสักอย่าง	None of my friends came.	ไม่มีเพื่อนของฉันมาสักคน		
+1015	exchange	exchanges, exchanged, exchanging	v: แลกเปลี่ยน | n: การแลกเปลี่ยน	Can I exchange this shirt for a bigger one?	ฉันขอเปลี่ยนเสื้อตัวนี้เป็นตัวใหญ่กว่าได้ไหม		
+1016	budget	budgets, budgeted, budgeting	n: งบประมาณ | v: จัดสรรงบ	We have a small budget for the party.	เรามีงบสำหรับงานปาร์ตี้ไม่มาก		
+1017	famous		adj: มีชื่อเสียง, โด่งดัง	This restaurant is famous for its noodles.	ร้านอาหารนี้มีชื่อเสียงเรื่องก๋วยเตี๋ยว		
+1018	blood	bloods, blooded, blooding	n: เลือด	The nurse took some blood.	พยาบาลเจาะเลือดไปเล็กน้อย		🩸
+1019	appropriate	appropriates, appropriated, appropriating	adj: เหมาะสม, สมควร	Wear appropriate clothes for the interview.	ใส่เสื้อผ้าที่เหมาะสมสำหรับการสัมภาษณ์		
+1020	block	blocks, blocked, blocking	n: ก้อน, บล็อก, ตึก | v: ขวาง, บล็อก	A big truck blocked the road.	รถบรรทุกคันใหญ่ขวางถนนไว้		
+1021	warm	warms, warmed, warming, warmer, warmest	adj: อุ่น, อบอุ่น | v: อุ่น	The room is warm.	ห้องนี้อบอุ่น		🌤️
+1022	count	counts, counted, counting	v: นับ, มีค่า, นับรวม	Can you count to a hundred?	คุณนับถึงร้อยได้ไหม		🔢
+1023	scene	scenes	n: ฉาก, เหตุการณ์, ที่เกิดเหตุ	This is my favorite scene in the film.	นี่เป็นฉากที่ฉันชอบที่สุดในหนัง		
+1024	writer	writers	n: นักเขียน, ผู้เขียน	She wants to be a writer.	เธออยากเป็นนักเขียน		✍️
+1025	content	contents, contented, contenting	n: เนื้อหา, สิ่งที่อยู่ข้างใน | adj: พอใจ	I read the content of the letter.	ฉันอ่านเนื้อหาของจดหมาย	content (adj: พอใจ) ออกเสียงต่างจาก content (n: เนื้อหา)	
+1026	prevent	prevents, prevented, preventing	v: ป้องกัน, ขัดขวาง	Wash your hands to prevent disease.	ล้างมือเพื่อป้องกันโรค		
+1027	safe	safer, safest	adj: ปลอดภัย | n: ตู้เซฟ	This area is safe at night.	พื้นที่นี้ปลอดภัยตอนกลางคืน		🛡️
+1028	invite	invites, invited, inviting	v: เชิญ	She invited me to her party.	เธอเชิญฉันไปงานปาร์ตี้		💌
+1029	mix	mixes, mixed, mixing	v: ผสม, คลุกเคล้า | n: ส่วนผสม	Mix the eggs and flour.	ผสมไข่กับแป้งเข้าด้วยกัน		🥣
+1030	element	elements	n: ธาตุ, องค์ประกอบ, ส่วนหนึ่ง	Water is an important element of life.	น้ำเป็นองค์ประกอบสำคัญของชีวิต		
+1031	effective		adj: มีประสิทธิภาพ, ได้ผล	This medicine is very effective.	ยานี้ได้ผลดีมาก		
+1032	correct	corrects, corrected, correcting	adj: ถูกต้อง | v: แก้ให้ถูก	Please correct my mistakes.	กรุณาช่วยแก้ข้อผิดพลาดของฉันด้วย		✅
+1033	medical	medicals	adj: เกี่ยวกับการแพทย์	She is studying medical science.	เธอเรียนวิทยาศาสตร์การแพทย์		
+1034	admit	admits, admitting, admitted	v: ยอมรับ, สารภาพ, อนุญาตให้เข้า	He admitted that he was wrong.	เขายอมรับว่าตัวเองผิด		
+1035	beat	beats, beating, beaten, beatings	v: ตี, เอาชนะ, เต้น | n: จังหวะ	Our team beat theirs by two goals.	ทีมเราชนะทีมของพวกเขาสองประตู	รูปอดีตคือ beat / รูป V3 คือ beaten	
+1036	telephone	telephones, telephoned, telephoning	n: โทรศัพท์ | v: โทรศัพท์หา	May I use your telephone?	ขอใช้โทรศัพท์ของคุณหน่อยได้ไหม		☎️
+1037	copy	copies, copied, copying	n: สำเนา, เล่ม | v: คัดลอก, ลอกเลียน	Please make a copy of this page.	กรุณาถ่ายสำเนาหน้านี้ให้หน่อย		
+1038	committee	committees	n: คณะกรรมการ	The committee meets every Monday.	คณะกรรมการประชุมทุกวันจันทร์		
+1039	aware		adj: ตระหนัก, รู้ตัว	Are you aware of the problem?	คุณทราบเรื่องปัญหานี้ไหม		
+1040	advice	advices	n: คำแนะนำ	Can I ask you for some advice?	ขอปรึกษาคุณหน่อยได้ไหม	เป็นนามนับไม่ได้ ใช้ a piece of advice เมื่อต้องการนับ	
+1041	handle	handles, handled, handling	v: จัดการ, ถือ, จับ | n: ด้ามจับ, ที่จับ	She can handle difficult customers.	เธอรับมือลูกค้าที่เอาใจยากได้		
+1042	glass	glasses, glassed, glassing	n: แก้ว, กระจก, แว่น (glasses)	He drank a glass of milk.	เขาดื่มนมหนึ่งแก้ว	พหูพจน์ glasses หมายถึง "แว่นตา" ได้ด้วย	🥛
+1043	trial	trials, trialed, trialing, trialled, trialling	n: การพิจารณาคดี, การทดลอง | v: ทดลอง	The trial will start next week.	การพิจารณาคดีจะเริ่มสัปดาห์หน้า		
+1044	stress	stresses, stressed	n: ความเครียด, แรงเน้น | v: เน้น, เครียด	I feel stress before exams.	ฉันรู้สึกเครียดก่อนสอบ		
+1045	radio	radios, radioed	n: วิทยุ	He listens to the radio in the car.	เขาฟังวิทยุในรถ		📻
+1046	administration	administrations	n: การบริหาร, รัฐบาล	The school administration has a new rule.	ฝ่ายบริหารโรงเรียนมีกฎใหม่		
+1047	complex	complexes	adj: ซับซ้อน | n: กลุ่มอาคาร, ปมในใจ	This puzzle is too complex for me.	ปริศนานี้ซับซ้อนเกินไปสำหรับฉัน		
+1048	text	texts	n: ข้อความ, ตัวอักษร, เนื้อหา | v: ส่งข้อความ	I got a text from my friend.	ฉันได้รับข้อความจากเพื่อน		
+1049	context	contexts	n: บริบท, สถานการณ์รอบข้าง	You can guess the meaning from the context.	คุณเดาความหมายได้จากบริบท		
+1050	ride	rides, rode, riding, ridden	v: ขี่, นั่ง (รถ) | n: การนั่ง, การเดินทาง	I ride my bike to school.	ฉันปั่นจักรยานไปโรงเรียน	รูปอดีตคือ rode / รูป V3 คือ ridden	🚲
+1051	directly		adv: โดยตรง, ตรง ๆ	Please go directly to the office.	กรุณาไปที่สำนักงานโดยตรง		
+1052	heavy	heavies, heavier, heaviest	adj: หนัก, มาก, รุนแรง	This bag is too heavy.	กระเป๋าใบนี้หนักเกินไป		
+1053	remove	removes, removed, removing	v: เอาออก, ถอด, ย้ายออก	Please remove your shoes.	กรุณาถอดรองเท้า		
+1054	conduct	conducts, conducted, conducting	v: ดำเนินการ, ทำ, ประพฤติ | n: ความประพฤติ	The teacher conducted an experiment.	ครูทำการทดลองให้ดู		
+1055	equipment	equipments	n: อุปกรณ์, เครื่องมือ	The gym has new equipment.	ยิมนี้มีอุปกรณ์ใหม่	เป็นนามนับไม่ได้ เช่น some equipment	
+1056	otherwise		adv: ไม่เช่นนั้น, นอกจากนี้	Hurry up, otherwise we will be late.	รีบหน่อย ไม่งั้นเราจะสาย		
+1057	title	titles, titled, titling	n: ชื่อเรื่อง, ตำแหน่ง, คำนำหน้าชื่อ	What is the title of the book?	หนังสือเล่มนี้ชื่ออะไร		
+1058	extra	extras	adj: เพิ่มเติม | n: ของเพิ่ม, ตัวประกอบ | adv: เป็นพิเศษ	Do you need an extra pillow?	คุณต้องการหมอนเพิ่มไหม		
+1059	executive	executives	n: ผู้บริหาร | adj: เกี่ยวกับการบริหาร	He is an executive at a big company.	เขาเป็นผู้บริหารในบริษัทใหญ่แห่งหนึ่ง		
+1060	chair	chairs, chaired, chairing	n: เก้าอี้ | v: เป็นประธาน	Please sit on this chair.	เชิญนั่งบนเก้าอี้ตัวนี้		🪑
+1061	expensive		adj: แพง	This watch is too expensive.	นาฬิกาเรือนนี้แพงเกินไป		💸
+1062	sample	samples, sampled, sampling, samplings	n: ตัวอย่าง, ของชิมหรือของทดลอง | v: ชิม, สุ่มตัวอย่าง	They gave us a free sample.	พวกเขาแจกตัวอย่างให้เราฟรี		
+1063	sex	sexes	n: เพศ	Please write your age and sex on the form.	กรุณาเขียนอายุและเพศลงในแบบฟอร์ม		
+1064	deliver	delivers, delivered, delivering	v: ส่งมอบ, จัดส่ง, กล่าว (สุนทรพจน์)	The shop delivers food to your house.	ร้านนี้ส่งอาหารถึงบ้านคุณ		🚚
+1065	video	videos, videoed	n: วิดีโอ	We watched a funny video.	เราดูวิดีโอตลกเรื่องหนึ่ง		📹
+1066	connection	connections, connexion, connexions	n: การเชื่อมต่อ, ความเกี่ยวข้อง	I lost my internet connection.	อินเทอร์เน็ตของฉันหลุด		🔌
+1067	primary	primaries	adj: หลัก, ขั้นต้น | n: การเลือกตั้งขั้นต้น	She teaches in a primary school.	เธอสอนที่โรงเรียนประถม		
+1068	weather	weathers, weathered, weathering	n: อากาศ, สภาพอากาศ | v: ผ่านพ้นไปได้	The weather is nice today.	วันนี้อากาศดี		⛅
+1069	collect	collects, collected, collecting	v: เก็บ, รวบรวม, สะสม	He collects old coins.	เขาสะสมเหรียญเก่า		
+1070	inform	informs, informed, informing	v: แจ้ง, บอกให้ทราบ	Please inform me of any changes.	กรุณาแจ้งให้ฉันทราบหากมีการเปลี่ยนแปลง		
+1071	principle	principles, principled	n: หลักการ, หลักปฏิบัติ	He is a man of principle.	เขาเป็นคนมีหลักการ		
+1072	straight	straighter, straightest	adj: ตรง | adv: ตรง ๆ, ตรงไป	Draw a straight line.	วาดเส้นตรงหนึ่งเส้น		
+1073	appeal	appeals, appealed, appealing	n: เสน่ห์, การอุทธรณ์, การวิงวอน | v: อุทธรณ์, ดึงดูดใจ	The film appeals to young people.	หนังเรื่องนี้ดึงดูดใจวัยรุ่น		
+1074	highly		adv: อย่างมาก, สูง	She is a highly skilled nurse.	เธอเป็นพยาบาลที่มีทักษะสูง		
+1075	trust	trusts, trusted, trusting	n: ความไว้ใจ | v: ไว้ใจ, เชื่อใจ	I trust my best friend.	ฉันไว้ใจเพื่อนสนิทของฉัน		🤝
+1076	wonderful		adj: วิเศษ, ยอดเยี่ยม	We had a wonderful time.	เรามีช่วงเวลาที่วิเศษมาก		🌟
+1077	flat	flats, flatted, flatting	adj: แบน, ราบ | n: อพาร์ตเมนต์ (ภาษาอังกฤษแบบบริติช)	The road here is flat.	ถนนช่วงนี้ราบเรียบ		
+1078	absolutely		adv: อย่างแน่นอน, สิ้นเชิง	You are absolutely right.	คุณพูดถูกที่สุด		
+1079	flow	flows, flowed, flowing	v: ไหล | n: กระแส, การไหล	The river flows to the sea.	แม่น้ำไหลลงสู่ทะเล		🌊
+1080	fair	fairs, faired, fairing, fairer, fairest	adj: ยุติธรรม, พอสมควร | n: งานแสดง, ตลาดนัด	That is not fair.	นั่นไม่ยุติธรรม		⚖️
+1081	additional		adj: เพิ่มเติม	Please read the additional notes.	กรุณาอ่านบันทึกเพิ่มเติม		
+1082	responsible		adj: รับผิดชอบ, มีความรับผิดชอบ	She is a responsible student.	เธอเป็นนักเรียนที่มีความรับผิดชอบ		
+1083	farm	farms, farmed, farming	n: ฟาร์ม, ไร่นา | v: ทำการเกษตร	My uncle works on a farm.	ลุงของฉันทำงานในฟาร์ม		🚜
+1084	collection	collections	n: การสะสม, ชุดสะสม	She has a large stamp collection.	เธอมีแสตมป์สะสมเป็นจำนวนมาก		
+1085	hang	hangs, hung, hanging, hanged, hangings	v: แขวน, ห้อย	Please hang your coat here.	กรุณาแขวนเสื้อโค้ตไว้ตรงนี้	รูปอดีตคือ hung (ใช้ hanged กับการแขวนคอ)	
+1086	negative	negatives	adj: ในทางลบ, เชิงลบ | n: ด้านลบ	Try not to think in a negative way.	พยายามอย่าคิดในแง่ลบ		
+1087	band	bands, banded	n: วงดนตรี, แถบ, กลุ่ม	My brother plays in a band.	พี่ชายฉันเล่นอยู่ในวงดนตรี		🎸
+1088	relative	relatives	n: ญาติ | adj: สัมพัทธ์, เทียบกัน	All my relatives came to the party.	ญาติทุกคนของฉันมางานปาร์ตี้		
+1089	tour	tours, toured, touring	n: การท่องเที่ยว, ทัวร์ | v: ท่องเที่ยว	We took a tour of the old city.	เราไปเที่ยวชมเมืองเก่า		🧭
+1090	alternative	alternatives	n: ทางเลือกอื่น | adj: ที่เป็นทางเลือก	Do you have an alternative plan?	คุณมีแผนสำรองไหม		
+1091	software		n: ซอฟต์แวร์	I need new software for my computer.	ฉันต้องการซอฟต์แวร์ใหม่สำหรับคอมพิวเตอร์	นามนับไม่ได้ เช่น some software	
+1092	pair	pairs, paired, pairing, pairings	n: คู่, หนึ่งคู่ | v: จับคู่	I bought a new pair of shoes.	ฉันซื้อรองเท้าคู่ใหม่		
+1093	ship	ships, shipped, shipping	n: เรือ, เรือใหญ่ | v: ส่งสินค้า	The ship leaves at noon.	เรือออกตอนเที่ยง		🚢
+1094	attitude	attitudes	n: ทัศนคติ, ท่าที	He has a good attitude at work.	เขามีทัศนคติที่ดีในการทำงาน		
+1095	cheap	cheaper, cheapest	adj: ถูก, ราคาถูก	These shoes are cheap.	รองเท้าคู่นี้ราคาถูก		🏷️
+1096	double	doubles, doubled, doubling	adj: สองเท่า, คู่ | n: สองเท่า | v: เพิ่มเป็นสองเท่า	I ordered a double coffee.	ฉันสั่งกาแฟแบบสองเท่า		
+1097	leg	legs, legged, legging, leggings	n: ขา	My leg hurts after running.	ขาของฉันเจ็บหลังวิ่ง		🦵
+1098	observe	observes, observed, observing	v: สังเกต, ดู, ปฏิบัติตาม	We observe the stars at night.	เราดูดาวตอนกลางคืน		
+1099	sentence	sentences, sentenced, sentencing	n: ประโยค, คำพิพากษา | v: ตัดสินลงโทษ	Please write a sentence with this word.	กรุณาแต่งประโยคด้วยคำนี้		
+1100	print	prints, printed, printing, printings	v: พิมพ์, ปริ้นต์ | n: ลายพิมพ์, สิ่งพิมพ์	Can you print this page for me?	คุณช่วยปริ้นต์หน้านี้ให้ฉันได้ไหม		🖨️

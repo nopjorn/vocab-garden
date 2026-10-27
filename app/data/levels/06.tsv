@@ -1,101 +1,101 @@
 rank	headword	forms	meanings	example_en	example_th	note	emoji
-501	claim	claims, claimed, claiming					
-502	relationship	relationships					
-503	travel	travels, traveled, traveling, travelled, travelling					
-504	enjoy	enjoys, enjoyed, enjoying					
-505	death	deaths					
-506	nice	nicer, nicest					
-507	amount	amounts, amounted					
-508	improve	improves, improved, improving					
-509	picture	pictures, pictured, picturing					
-510	boy	boys					
-511	regard	regards, regarded, regarding					
-512	organization	organizations, organisation, organisations					
-513	happy	happier, happiest					
-514	couple	couples, coupled, coupling					
-515	act	acts, acted, acting					
-516	range	ranges, ranged, ranging					
-517	quality	qualities					
-518	project	projects, projected, projecting					
-519	round	rounds, rounded, rounding, rounder, roundest					
-520	opportunity	opportunities					
-521	road	roads					
-522	accord	accords, accorded, according					
-523	list	lists, listed, listing, listings					
-524	wish	wishes, wished, wishing					
-525	therefore						
-526	wear	wears, wore, wearing, worn					
-527	fund	funds, funded, funding					
-528	rest	rests, rested, resting					
-529	kid	kids, kidded, kidding					
-530	industry	industries					
-531	education	educations					
-532	measure	measures, measured, measuring					
-533	kill	kills, killed, killing, killings					
-534	serve	serves, served, serving, servings					
-535	likely	likelier, likeliest					
-536	certainly						
-537	national	nationals					
-538	itself						
-539	teach	teaches, taught, teaching, teachings					
-540	field	fields, fielded, fielding					
-541	security	securities					
-542	air	airs, aired, airing					
-543	benefit	benefits, benefited, benefiting, benefitted, benefitting					
-544	trade	trades, traded, trading					
-545	risk	risks, risked, risking					
-546	news						
-547	standard	standards					
-548	vote	votes, voted, voting					
-549	percent	percents					
-550	focus	focuses, focused, focusing, focussed, focuss, focusses, focussing					
-551	stage	stages, staged, staging					
-552	space	spaces, spaced, spacing					
-553	instead						
-554	realize	realizes, realized, realizing, realise, realises, realised, realising					
-555	usually						
-556	data						
-557	single	singles, singled, singling					
-558	address	addresses, addressed, addressing					
-559	performance	performances					
-560	chance	chances, chanced, chancing					
-561	accept	accepts, accepted, accepting					
-562	society	societies					
-563	technology	technologies					
-564	mention	mentions, mentioned, mentioning					
-565	choice	choices, choicer, choicest					
-566	save	saves, saved, saving, savings					
-567	common	commonest					
-568	culture	cultures, cultured, culturing					
-569	total	totals, totaled, totaling, totalled, totalling					
-570	demand	demands, demanded, demanding					
-571	material	materials					
-572	limit	limits, limited, limiting					
-573	listen	listens, listened, listening					
-574	due						
-575	wrong	wrongs, wronged, wronging					
-576	foot	foots, footed, footing, feet					
-577	effort	efforts					
-578	attention	attentions					
-579	upon						
-580	check	checks, checked, checking					
-581	complete	completes, completed, completing					
-582	lie	lies, lied, lying, lain					
-583	pick	picks, picked, picking					
-584	reduce	reduces, reduced, reducing					
-585	personal	personals					
-586	ground	grounds, grounded, grounding					
-587	animal	animals					
-588	arrive	arrives, arrived, arriving					
-589	patient	patients					
-590	current	currents					
-591	century	centuries					
-592	evidence	evidences, evidenced, evidencing					
-593	exist	exists, existed, existing					
-594	similar						
-595	fight	fights, fought, fighting					
-596	leader	leaders					
-597	fine	fines, fined, fining, finer, finest					
-598	street	streets					
-599	former	formers					
-600	contact	contacts, contacted, contacting					
+501	claim	claims, claimed, claiming	v: อ้าง, ยืนยันว่า, เรียกร้อง | n: ข้ออ้าง, การเรียกร้อง	He claims that he did not see the sign.	เขาอ้างว่าไม่เห็นป้าย		
+502	relationship	relationships	n: ความสัมพันธ์	They have a good relationship.	พวกเขามีความสัมพันธ์ที่ดีต่อกัน		🤝
+503	travel	travels, traveled, traveling, travelled, travelling	v: เดินทาง, ท่องเที่ยว | n: การเดินทาง	I love to travel by train.	ฉันชอบเดินทางด้วยรถไฟ		✈️
+504	enjoy	enjoys, enjoyed, enjoying	v: สนุกกับ, เพลิดเพลินกับ, ชอบ	I enjoy listening to music.	ฉันชอบฟังเพลง		
+505	death	deaths	n: ความตาย, การเสียชีวิต	The news of his death made us sad.	ข่าวการเสียชีวิตของเขาทำให้เราเศร้า		
+506	nice	nicer, nicest	adj: ดี, น่ารัก, ใจดี	She is a nice person.	เธอเป็นคนใจดี		😊
+507	amount	amounts, amounted	n: จำนวน, ปริมาณ | v: รวมเป็น (amount to)	Add a small amount of salt.	ใส่เกลือลงไปนิดเดียว		
+508	improve	improves, improved, improving	v: ปรับปรุงให้ดีขึ้น, ดีขึ้น	My English is improving every month.	ภาษาอังกฤษของฉันดีขึ้นทุกเดือน		📈
+509	picture	pictures, pictured, picturing	n: รูปภาพ, ภาพวาด | v: จินตนาการ	She hung a picture on the wall.	เธอแขวนรูปภาพไว้บนผนัง		🖼️
+510	boy	boys	n: เด็กผู้ชาย	The boy is playing football.	เด็กผู้ชายกำลังเล่นฟุตบอล		👦
+511	regard	regards, regarded, regarding	v: ถือว่า, มองว่า | n: ความเคารพ, ความเอาใจใส่	Many people regard him as a hero.	หลายคนถือว่าเขาเป็นวีรบุรุษ		
+512	organization	organizations, organisation, organisations	n: องค์กร, หน่วยงาน, การจัดระเบียบ	She works for a large organization.	เธอทำงานให้องค์กรขนาดใหญ่		
+513	happy	happier, happiest	adj: มีความสุข, ดีใจ	I am happy to see you.	ฉันดีใจที่ได้เจอคุณ		😀
+514	couple	couples, coupled, coupling	n: คู่, ใครสองคน, คู่รัก	A young couple lives next door.	คู่รักหนุ่มสาวอาศัยอยู่ข้างบ้าน		👫
+515	act	acts, acted, acting	v: แสดง, ทำ, กระทำ | n: การกระทำ, องก์ (ละคร)	He acted quickly to help us.	เขารีบลงมือช่วยเรา		
+516	range	ranges, ranged, ranging	n: ช่วง, ขอบเขต, ชุด | v: อยู่ในช่วง	The shop sells a wide range of shoes.	ร้านนี้ขายรองเท้าหลากหลายแบบ		
+517	quality	qualities	n: คุณภาพ | adj: มีคุณภาพ	This shirt is good quality.	เสื้อตัวนี้คุณภาพดี		
+518	project	projects, projected, projecting	n: โครงการ, งาน	We finished the school project today.	วันนี้เราทำโครงงานของโรงเรียนเสร็จ		
+519	round	rounds, rounded, rounding, rounder, roundest	adj: กลม | prep: รอบ ๆ | n: รอบ	The table is round.	โต๊ะตัวนี้กลม		⭕
+520	opportunity	opportunities	n: โอกาส	This is a great opportunity to learn.	นี่เป็นโอกาสที่ดีที่จะได้เรียนรู้		
+521	road	roads	n: ถนน	The road is very busy in the morning.	ถนนคับคั่งมากในตอนเช้า		🛣️
+522	accord	accords, accorded, according	v: ให้, ยอมรับ, สอดคล้อง	The new rule accords with the law.	กฎใหม่สอดคล้องกับกฎหมาย	ส่วนใหญ่พบในวลี according to (ตาม, อ้างตาม)	
+523	list	lists, listed, listing, listings	n: รายการ, รายชื่อ | v: ทำรายการ, ระบุ	I made a list of things to buy.	ฉันจดรายการของที่ต้องซื้อ		📝
+524	wish	wishes, wished, wishing	v: ปรารถนา, อยากให้ | n: ความปรารถนา	I wish you a happy birthday.	ขอให้คุณสุขสันต์วันเกิดนะ		🌠
+525	therefore		adv: ดังนั้น, ด้วยเหตุนี้	It was raining, therefore we stayed home.	ฝนตก เราจึงอยู่บ้าน		
+526	wear	wears, wore, wearing, worn	v: สวมใส่, ใส่, สึกหรอ	He wears a blue shirt to work.	เขาใส่เสื้อสีฟ้าไปทำงาน	รูปอดีตคือ wore / รูป V3 คือ worn	👕
+527	fund	funds, funded, funding	n: เงินทุน, กองทุน | v: ให้ทุน	The school raised funds for a new library.	โรงเรียนระดมทุนเพื่อสร้างห้องสมุดใหม่		
+528	rest	rests, rested, resting	n: การพัก, ส่วนที่เหลือ | v: พักผ่อน	You should rest after lunch.	คุณควรพักหลังกินข้าวเที่ยง		😴
+529	kid	kids, kidded, kidding	n: เด็ก (ภาษาพูด), เด็กหนุ่มสาว | v: ล้อเล่น	The kids are playing in the park.	เด็ก ๆ กำลังเล่นในสวนสาธารณะ		🧒
+530	industry	industries	n: อุตสาหกรรม, อุตสาหกรรมแขนงหนึ่ง	Tourism is an important industry in Thailand.	การท่องเที่ยวเป็นอุตสาหกรรมสำคัญของประเทศไทย		🏭
+531	education	educations	n: การศึกษา, ความรู้	Education is the key to success.	การศึกษาเป็นกุญแจสู่ความสำเร็จ		🎓
+532	measure	measures, measured, measuring	v: วัด, ประเมิน | n: มาตรการ, หน่วยวัด	Please measure the table first.	กรุณาวัดโต๊ะก่อน		📏
+533	kill	kills, killed, killing, killings	v: ฆ่า, ทำให้ตาย	Too much cold can kill the plants.	อากาศหนาวเกินไปทำให้ต้นไม้ตายได้		
+534	serve	serves, served, serving, servings	v: เสิร์ฟ, ให้บริการ, รับใช้	They serve breakfast until ten.	ที่นั่นเสิร์ฟอาหารเช้าจนถึงสิบโมง		🍽️
+535	likely	likelier, likeliest	adj: น่าจะเป็นไปได้, มีแนวโน้ม	It is likely to rain tonight.	คืนนี้ฝนน่าจะตก		
+536	certainly		adv: แน่นอน, อย่างแน่นอน	You can certainly ask me anything.	คุณถามอะไรฉันก็ได้แน่นอน		
+537	national	nationals	adj: เกี่ยวกับชาติ, ระดับประเทศ | n: พลเมือง	He is a national football player.	เขาเป็นนักฟุตบอลทีมชาติ		
+538	itself		pron: ตัวมันเอง	The cat cleaned itself.	แมวเลียทำความสะอาดตัวเอง		
+539	teach	teaches, taught, teaching, teachings	v: สอน	She teaches English at a school.	เธอสอนภาษาอังกฤษที่โรงเรียน	รูปอดีตคือ taught	👩‍🏫
+540	field	fields, fielded, fielding	n: ทุ่ง, สนาม, สาขาวิชา	The children are running in the field.	เด็ก ๆ กำลังวิ่งอยู่ในทุ่ง		
+541	security	securities	n: ความปลอดภัย, การรักษาความปลอดภัย	Security is very strict at the airport.	สนามบินรักษาความปลอดภัยเข้มงวดมาก		🔒
+542	air	airs, aired, airing	n: อากาศ, ลม, บรรยากาศ | v: ตากให้โล่ง, ออกอากาศ	I need some fresh air.	ฉันต้องการอากาศบริสุทธิ์หน่อย		
+543	benefit	benefits, benefited, benefiting, benefitted, benefitting	n: ประโยชน์, สวัสดิการ | v: ได้ประโยชน์	Exercise has many benefits.	การออกกำลังกายมีประโยชน์หลายอย่าง		
+544	trade	trades, traded, trading	n: การค้า, การแลกเปลี่ยน | v: ค้าขาย, แลก	The two countries trade rice and fruit.	สองประเทศนี้ค้าขายข้าวและผลไม้ระหว่างกัน		
+545	risk	risks, risked, risking	n: ความเสี่ยง | v: เสี่ยง	Driving fast is a big risk.	การขับรถเร็วเป็นความเสี่ยงใหญ่		
+546	news		n: ข่าว	I watch the news every evening.	ฉันดูข่าวทุกเย็น	news เป็นนามนับไม่ได้ ใช้กับ is เช่น The news is good	📰
+547	standard	standards	n: มาตรฐาน | adj: มาตรฐาน, ปกติ	The hotel meets high standards.	โรงแรมนี้ได้มาตรฐานสูง		
+548	vote	votes, voted, voting	v: ลงคะแนนเสียง | n: คะแนนเสียง	Everyone can vote in the election.	ทุกคนลงคะแนนในการเลือกตั้งได้		🗳️
+549	percent	percents	n: เปอร์เซ็นต์, ร้อยละ	About fifty percent of us walk to school.	เราประมาณห้าสิบเปอร์เซ็นต์เดินไปโรงเรียน		
+550	focus	focuses, focused, focusing, focussed, focuss, focusses, focussing	n: จุดสนใจ, จุดโฟกัส | v: โฟกัส, ตั้งใจ	Please focus on your work.	กรุณาตั้งใจทำงานของคุณ		
+551	stage	stages, staged, staging	n: เวที, ขั้นตอน, ระยะ | v: จัดแสดง	The singer walked onto the stage.	นักร้องเดินขึ้นเวที		🎤
+552	space	spaces, spaced, spacing	n: พื้นที่, ที่ว่าง, อวกาศ	There is no space for another chair.	ไม่มีที่ว่างสำหรับเก้าอี้อีกตัว		🚀
+553	instead		adv: แทน, แทนที่จะเป็นอย่างนั้น	I had tea instead of coffee.	ฉันดื่มชาแทนกาแฟ		
+554	realize	realizes, realized, realizing, realise, realises, realised, realising	v: ตระหนัก, รู้ตัว, เข้าใจ	I realized I forgot my keys.	ฉันรู้ตัวว่าลืมกุญแจ		
+555	usually		adv: โดยปกติ, มักจะ	I usually get up at six.	ฉันมักตื่นหกโมง		
+556	data		n: ข้อมูล	We need more data to decide.	เราต้องการข้อมูลเพิ่มเพื่อตัดสินใจ	มักใช้เป็นนามนับไม่ได้ เช่น The data is clear	
+557	single	singles, singled, singling	adj: เดียว, โสด | n: ตั๋วเที่ยวเดียว, เพลงเดี่ยว	She bought a single ticket.	เธอซื้อตั๋วใบเดียว		
+558	address	addresses, addressed, addressing	n: ที่อยู่, สุนทรพจน์ | v: กล่าวกับ, จัดการ (ปัญหา)	Please write your address here.	กรุณาเขียนที่อยู่ของคุณตรงนี้		🏠
+559	performance	performances	n: ผลงาน, การแสดง	The band gave a great performance.	วงดนตรีแสดงได้ยอดเยี่ยม		
+560	chance	chances, chanced, chancing	n: โอกาส, ความบังเอิญ	This is your last chance.	นี่เป็นโอกาสสุดท้ายของคุณ		🎲
+561	accept	accepts, accepted, accepting	v: ยอมรับ, รับ	She accepted the job offer.	เธอรับข้อเสนองาน		
+562	society	societies	n: สังคม, สมาคม	Society changes over time.	สังคมเปลี่ยนแปลงไปตามกาลเวลา		
+563	technology	technologies	n: เทคโนโลยี	New technology makes life easier.	เทคโนโลยีใหม่ทำให้ชีวิตง่ายขึ้น		
+564	mention	mentions, mentioned, mentioning	v: พูดถึง, กล่าวถึง | n: การกล่าวถึง	He mentioned his new job.	เขาพูดถึงงานใหม่ของเขา		
+565	choice	choices, choicer, choicest	n: ตัวเลือก, การเลือก | adj: ชั้นเลิศ	You have a choice between tea and coffee.	คุณเลือกได้ระหว่างชากับกาแฟ		
+566	save	saves, saved, saving, savings	v: ประหยัด, เก็บออม, ช่วยไว้ | n: การประหยัด	I want to save some money.	ฉันอยากเก็บเงินไว้บ้าง		🐷
+567	common	commonest	adj: ธรรมดา, ที่พบบ่อย, ที่ใช้ร่วมกัน	Smith is a common name.	สมิธเป็นชื่อที่พบบ่อย		
+568	culture	cultures, cultured, culturing	n: วัฒนธรรม	I like learning about other cultures.	ฉันชอบเรียนรู้เกี่ยวกับวัฒนธรรมอื่น ๆ		
+569	total	totals, totaled, totaling, totalled, totalling	n: ยอดรวม | adj: ทั้งหมด, รวม | v: รวมเป็น	The total cost is 500 baht.	ราคารวมทั้งหมดคือ 500 บาท		
+570	demand	demands, demanded, demanding	n: ความต้องการ, อุปสงค์ | v: เรียกร้อง, ต้องการ	There is a strong demand for fresh fruit.	มีความต้องการผลไม้สดสูง		
+571	material	materials	n: วัสดุ, เนื้อผ้า, เอกสาร	This bag is made of strong material.	กระเป๋าใบนี้ทำจากวัสดุที่แข็งแรง		
+572	limit	limits, limited, limiting	n: ขีดจำกัด | v: จำกัด	There is a limit of two bags per person.	จำกัดคนละสองถุง		
+573	listen	listens, listened, listening	v: ฟัง, ตั้งใจฟัง	Please listen to the teacher.	กรุณาฟังครูให้ดี	มักตามด้วย to เช่น listen to music	👂
+574	due		adj: ครบกำหนด, เนื่องจาก, ถึงกำหนด	The report is due on Friday.	รายงานต้องส่งภายในวันศุกร์		
+575	wrong	wrongs, wronged, wronging	adj: ผิด, ไม่ถูกต้อง | n: ความผิด	Sorry, I have the wrong number.	ขอโทษค่ะ ฉันโทรผิดเบอร์		❌
+576	foot	foots, footed, footing, feet	n: เท้า, ฐาน | n: ฟุต (หน่วยวัด)	My foot hurts after walking.	เท้าของฉันเจ็บหลังเดิน	พหูพจน์คือ feet	🦶
+577	effort	efforts	n: ความพยายาม, แรงที่ใช้	She put a lot of effort into her work.	เธอทุ่มเทความพยายามกับงานมาก		
+578	attention	attentions	n: ความสนใจ, ความเอาใจใส่	Please pay attention to the board.	กรุณาตั้งใจดูกระดาน		
+579	upon		prep: บน, เมื่อ (ภาษาทางการ)	Once upon a time, there lived a king.	กาลครั้งหนึ่งนานมาแล้ว มีกษัตริย์องค์หนึ่ง	ใช้คล้าย on แต่เป็นทางการกว่า พบบ่อยในวลี upon request	
+580	check	checks, checked, checking	v: ตรวจสอบ, เช็ก | n: การตรวจสอบ, ใบเช็ก	Please check your bag before you go.	กรุณาตรวจกระเป๋าของคุณก่อนไป		✅
+581	complete	completes, completed, completing	v: ทำให้เสร็จ, กรอกให้ครบ | adj: ครบ, สมบูรณ์	I completed my homework.	ฉันทำการบ้านเสร็จแล้ว		
+582	lie	lies, lied, lying, lain	v: นอน, วางอยู่ | v: โกหก | n: คำโกหก	The cat lies on the sofa.	แมวนอนอยู่บนโซฟา	lie (นอน) → lay, lain / lie (โกหก) → lied, lying	
+583	pick	picks, picked, picking	v: เลือก, เก็บ, หยิบ	Please pick a card.	กรุณาเลือกไพ่หนึ่งใบ		
+584	reduce	reduces, reduced, reducing	v: ลด, ทำให้น้อยลง	We should reduce the use of plastic.	เราควรลดการใช้พลาสติก		
+585	personal	personals	adj: ส่วนตัว	This is my personal phone.	นี่เป็นโทรศัพท์ส่วนตัวของฉัน		
+586	ground	grounds, grounded, grounding	n: พื้นดิน, พื้น, เหตุผล | v: ห้ามออกจากบ้าน	The ground is wet after the rain.	พื้นดินเปียกหลังฝนตก		
+587	animal	animals	n: สัตว์	A dog is a friendly animal.	สุนัขเป็นสัตว์ที่เป็นมิตร		🐾
+588	arrive	arrives, arrived, arriving	v: มาถึง, ถึง	The train arrives at nine.	รถไฟมาถึงตอนเก้าโมง		
+589	patient	patients	n: ผู้ป่วย | adj: อดทน, ใจเย็น	The doctor is talking to a patient.	หมอกำลังคุยกับคนไข้		🏥
+590	current	currents	n: กระแส (น้ำ ลม ไฟฟ้า) | adj: ปัจจุบัน	The current is strong in this river.	กระแสน้ำในแม่น้ำนี้แรง		
+591	century	centuries	n: ศตวรรษ, 100 ปี	This temple is over a century old.	วัดนี้มีอายุกว่าหนึ่งร้อยปี		
+592	evidence	evidences, evidenced, evidencing	n: หลักฐาน | v: แสดงให้เห็น	The police found new evidence.	ตำรวจพบหลักฐานใหม่		🔍
+593	exist	exists, existed, existing	v: มีอยู่, ดำรงอยู่	Dinosaurs no longer exist.	ไดโนเสาร์ไม่มีอีกแล้ว		
+594	similar		adj: คล้าย, คล้ายกัน	Our phones are similar.	โทรศัพท์ของเราคล้ายกัน		
+595	fight	fights, fought, fighting	v: ต่อสู้, ทะเลาะ | n: การต่อสู้	The two boys fight over a toy.	เด็กชายสองคนทะเลาะกันเรื่องของเล่น	รูปอดีตคือ fought	
+596	leader	leaders	n: ผู้นำ, หัวหน้า	She is a good leader.	เธอเป็นผู้นำที่ดี		
+597	fine	fines, fined, fining, finer, finest	adj: ดี, สบายดี, ละเอียด | n: ค่าปรับ	I am fine, thank you.	ฉันสบายดี ขอบคุณ		
+598	street	streets	n: ถนน, ย่านถนน	She lives on a quiet street.	เธออาศัยอยู่บนถนนที่เงียบสงบ		
+599	former	formers	adj: อดีต, ก่อนหน้านี้	He is a former teacher.	เขาเป็นอดีตครู		
+600	contact	contacts, contacted, contacting	n: การติดต่อ, ผู้ติดต่อ | v: ติดต่อ	Please contact me by email.	กรุณาติดต่อฉันทางอีเมล		📧

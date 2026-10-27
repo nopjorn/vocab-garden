@@ -1,101 +1,101 @@
 rank	headword	forms	meanings	example_en	example_th	note	emoji
-1701	religion	religions					
-1702	employer	employers					
-1703	reject	rejects, rejected, rejecting					
-1704	latter						
-1705	plate	plates, plated, plating					
-1706	ban	bans, banned, banning					
-1707	steal	steals, stole, stealing, stolen					
-1708	protest	protests, protested, protesting					
-1709	index	indexes, indexed, indexing, indices					
-1710	sad	sadder, saddest					
-1711	frequently						
-1712	circle	circles, circled, circling					
-1713	helpful						
-1714	command	commands, commanded, commanding					
-1715	attractive						
-1716	sick	sicker, sickest					
-1717	impression	impressions					
-1718	unable						
-1719	joke	jokes, joked, joking					
-1720	sky	skies					
-1721	column	columns, columned					
-1722	electronic	electronics					
-1723	impose	imposes, imposed, imposing					
-1724	criminal	criminals					
-1725	besides						
-1726	properly						
-1727	ancient	ancients					
-1728	coast	coasts, coasted, coasting					
-1729	ill	ills					
-1730	kick	kicks, kicked, kicking					
-1731	closely						
-1732	multiple	multiples					
-1733	yield	yields, yielded, yielding					
-1734	via						
-1735	legislation	legislations					
-1736	county	counties					
-1737	unlike						
-1738	mobile	mobiles					
-1739	assistant	assistants					
-1740	implement	implements, implemented, implementing					
-1741	chart	charts, charted, charting					
-1742	attach	attaches, attached, attaching					
-1743	hell	hells					
-1744	everywhere						
-1745	advise	advises, advised, advising					
-1746	household	households					
-1747	acknowledge	acknowledges, acknowledged, acknowledging					
-1748	reward	rewards, rewarded, rewarding					
-1749	east						
-1750	hat	hats, hatted					
-1751	academic	academics					
-1752	voter	voters					
-1753	meanwhile						
-1754	furthermore						
-1755	accuse	accuses, accused, accusing					
-1756	scientific						
-1757	wage	wages, waged, waging					
-1758	absence	absences					
-1759	construct	constructs, constructed, constructing					
-1760	remark	remarks, remarked, remarking					
-1761	medicine	medicines					
-1762	professor	professors, prof					
-1763	rare	rarer, rarest					
-1764	intention	intentions					
-1765	dozen	dozens					
-1766	settlement	settlements					
-1767	gap	gaps, gapped, gapping					
-1768	widely						
-1769	minimum	minima, minimums					
-1770	northern						
-1771	estate	estates					
-1772	equally						
-1773	expose	exposes, exposed, exposing					
-1774	alive						
-1775	shut	shuts					
-1776	victory	victories					
-1777	resolve	resolves, resolved, resolving					
-1778	critic	critics					
-1779	variable	variables					
-1780	enormous						
-1781	sweet	sweets, sweeter, sweetest					
-1782	permanent						
-1783	emotion	emotions					
-1784	pursue	pursues, pursued, pursuing					
-1785	tall	taller, tallest					
-1786	urge	urges, urged, urging, urgings					
-1787	enemy	enemies					
-1788	appoint	appoints, appointed, appointing					
-1789	milk	milks, milked, milking					
-1790	talent	talents, talented					
-1791	smell	smells, smelled, smelling					
-1792	prior	priors					
-1793	priority	priorities					
-1794	online						
-1795	phrase	phrases, phrased, phrasing					
-1796	pilot	pilots, piloted, piloting					
-1797	stable	stables, stabled, stabling					
-1798	merely						
-1799	resolution	resolutions					
-1800	communicate	communicates, communicated, communicating					
+1701	religion	religions	n: ศาสนา	Religion is important to many people.	ศาสนามีความสำคัญสำหรับหลายคน		
+1702	employer	employers	n: นายจ้าง	My employer gives us a day off every week.	นายจ้างของฉันให้หยุดสัปดาห์ละหนึ่งวัน		
+1703	reject	rejects, rejected, rejecting	v: ปฏิเสธ, ไม่รับ	She rejected the offer.	เธอปฏิเสธข้อเสนอนั้น		
+1704	latter		adj: ที่หลัง, หลัง (ในสองสิ่ง) | n: ตัวหลัง	I like tea and coffee, but I prefer the latter.	ฉันชอบทั้งชากับกาแฟ แต่ชอบอย่างหลังมากกว่า	ตรงข้ามกับ former (อย่างแรก)	
+1705	plate	plates, plated, plating	n: จาน, แผ่นโลหะ | v: เคลือบ	Please put the food on the plate.	กรุณาวางอาหารบนจาน		🍽️
+1706	ban	bans, banned, banning	v: ห้าม, ระงับ | n: การห้าม	The school banned phones in class.	โรงเรียนห้ามใช้โทรศัพท์ในห้องเรียน		🚫
+1707	steal	steals, stole, stealing, stolen	v: ขโมย	Someone stole my bike.	มีคนขโมยจักรยานของฉัน	รูปอดีตคือ stole / รูป V3 คือ stolen	
+1708	protest	protests, protested, protesting	n: การประท้วง | v: ประท้วง, คัดค้าน	People protested against the new law.	ผู้คนออกมาประท้วงกฎหมายใหม่		
+1709	index	indexes, indexed, indexing, indices	n: ดัชนี, สารบัญ, นิ้วชี้ | v: ทำดัชนี	Look at the index at the back of the book.	ดูสารบัญท้ายเล่มสิ		
+1710	sad	sadder, saddest	adj: เศร้า, เสียใจ	She felt sad when her friend left.	เธอรู้สึกเศร้าตอนเพื่อนจากไป		😢
+1711	frequently		adv: บ่อย ๆ	I frequently visit my grandmother.	ฉันไปเยี่ยมคุณยายบ่อย ๆ		
+1712	circle	circles, circled, circling	n: วงกลม | v: วนรอบ, วงล้อม	Draw a circle on the paper.	วาดวงกลมลงบนกระดาษ		⭕
+1713	helpful		adj: ช่วยเหลือ, เป็นประโยชน์	The staff were very helpful.	พนักงานช่วยเหลือเป็นอย่างดี		
+1714	command	commands, commanded, commanding	n: คำสั่ง, ความสามารถ | v: สั่ง, บัญชา	The captain gave a command.	กัปตันออกคำสั่ง		
+1715	attractive		adj: น่าดึงดูด, หน้าตาดี	This is an attractive offer.	นี่เป็นข้อเสนอที่น่าสนใจ		
+1716	sick	sicker, sickest	adj: ป่วย, ไม่สบาย	I feel sick today.	วันนี้ฉันรู้สึกไม่สบาย		🤒
+1717	impression	impressions	n: ความประทับใจ	She made a good impression on me.	เธอสร้างความประทับใจที่ดีให้ฉัน		
+1718	unable		adj: ไม่สามารถ	I am unable to come tonight.	คืนนี้ฉันมาไม่ได้	ตามด้วย to + กริยา เช่น unable to go	
+1719	joke	jokes, joked, joking	n: เรื่องตลก, มุกตลก | v: พูดเล่น	He told a funny joke.	เขาเล่ามุกตลกมุกหนึ่ง		😄
+1720	sky	skies	n: ท้องฟ้า	The sky is blue today.	วันนี้ท้องฟ้าสีฟ้า		🌤️
+1721	column	columns, columned	n: คอลัมน์, เสา, แถวตั้ง	Read the first column of the table.	อ่านคอลัมน์แรกของตาราง		
+1722	electronic	electronics	adj: เกี่ยวกับอิเล็กทรอนิกส์ | n: เครื่องใช้ไฟฟ้า	He sells electronic devices.	เขาขายอุปกรณ์อิเล็กทรอนิกส์		
+1723	impose	imposes, imposed, imposing	v: บังคับใช้, กำหนด	The school imposed a new rule.	โรงเรียนบังคับใช้กฎใหม่		
+1724	criminal	criminals	n: อาชญากร | adj: เกี่ยวกับอาชญากรรม	The police caught the criminal.	ตำรวจจับอาชญากรได้		
+1725	besides		adv: นอกจากนี้ | prep: นอกจาก	I am tired. Besides, it is too late.	ฉันเหนื่อย แล้วก็ดึกเกินไปด้วย		
+1726	properly		adv: อย่างถูกต้อง, เหมาะสม	Please wash your hands properly.	กรุณาล้างมืออย่างถูกวิธี		
+1727	ancient	ancients	adj: โบราณ	We visited an ancient temple.	เราไปเยี่ยมชมวัดโบราณ		🏺
+1728	coast	coasts, coasted, coasting	n: ชายฝั่ง | v: ไหลลงเอง	We drove along the coast.	เราขับรถเลียบชายฝั่ง		
+1729	ill	ills	adj: ป่วย, ไม่สบาย	He was ill for a week.	เขาป่วยอยู่หนึ่งสัปดาห์	ill ใช้ก่อนคำนามไม่ได้ ต้องใช้หลัง be เช่น He is ill	
+1730	kick	kicks, kicked, kicking	v: เตะ | n: การเตะ	He kicked the ball very hard.	เขาเตะบอลอย่างแรง		🦵
+1731	closely		adv: อย่างใกล้ชิด, อย่างละเอียด	Watch closely and learn.	ดูให้ดีแล้วเรียนรู้		
+1732	multiple	multiples	adj: หลายอย่าง, หลายตัว | n: ตัวคูณ	There are multiple ways to solve this.	มีหลายวิธีที่จะแก้ปัญหานี้		
+1733	yield	yields, yielded, yielding	v: ให้ผล, ยอมให้ | n: ผลผลิต	The farm yields a lot of rice.	ไร่นานี้ให้ผลผลิตข้าวมาก		
+1734	via		prep: ผ่าน, โดยทาง	We sent the photo via email.	เราส่งรูปทางอีเมล		
+1735	legislation	legislations	n: กฎหมาย, การออกกฎหมาย	The government passed new legislation.	รัฐบาลผ่านกฎหมายฉบับใหม่		
+1736	county	counties	n: เขตการปกครอง, มณฑล	He lives in a small county.	เขาอาศัยอยู่ในเขตเล็ก ๆ แห่งหนึ่ง	county เป็นหน่วยการปกครองในสหรัฐและอังกฤษ ไม่มีคำเรียกตรงกันในไทย	
+1737	unlike		prep: ต่างจาก, ไม่เหมือน	Unlike his brother, he likes quiet places.	ต่างจากพี่ชาย เขาชอบที่เงียบ ๆ		
+1738	mobile	mobiles	adj: เคลื่อนที่ได้ | n: โทรศัพท์มือถือ	I lost my mobile at the market.	ฉันทำโทรศัพท์มือถือหายที่ตลาด		📱
+1739	assistant	assistants	n: ผู้ช่วย	She is an assistant at the school.	เธอเป็นผู้ช่วยที่โรงเรียน		
+1740	implement	implements, implemented, implementing	v: นำไปใช้, ดำเนินการ | n: เครื่องมือ	The school will implement the new plan next month.	โรงเรียนจะนำแผนใหม่ไปใช้เดือนหน้า		
+1741	chart	charts, charted, charting	n: แผนภูมิ, กราฟ | v: วางแผนผัง	The chart shows our sales.	แผนภูมินี้แสดงยอดขายของเรา		📊
+1742	attach	attaches, attached, attaching	v: แนบ, ติด, ผูก	Please attach a photo to the form.	กรุณาแนบรูปถ่ายกับแบบฟอร์ม		📎
+1743	hell	hells	n: นรก	The film shows a scary view of hell.	หนังเรื่องนี้แสดงภาพนรกที่น่ากลัว	คำนี้ใช้เป็นคำอุทานหยาบเมื่อพูดสด ควรระวังเวลาใช้	
+1744	everywhere		adv: ทุกที่	Flowers grow everywhere in spring.	ดอกไม้ขึ้นทุกที่ในฤดูใบไม้ผลิ		
+1745	advise	advises, advised, advising	v: แนะนำ, ให้คำปรึกษา	The doctor advised me to rest.	หมอแนะนำให้ฉันพัก		
+1746	household	households	n: ครัวเรือน, บ้าน	Each household received a letter.	ทุกครัวเรือนได้รับจดหมายหนึ่งฉบับ		
+1747	acknowledge	acknowledges, acknowledged, acknowledging	v: ยอมรับ, ตอบรับ, ขอบคุณ	He acknowledged his mistake.	เขายอมรับว่าตัวเองผิด		
+1748	reward	rewards, rewarded, rewarding	n: รางวัล | v: ให้รางวัล	She received a reward for finding the dog.	เธอได้รับรางวัลที่หาสุนัขเจอ		🎁
+1749	east		n: ทิศตะวันออก | adj: ทางตะวันออก | adv: ไปทางตะวันออก	The sun rises in the east.	ดวงอาทิตย์ขึ้นทางทิศตะวันออก		
+1750	hat	hats, hatted	n: หมวก (มีปีก)	He wears a hat in the sun.	เขาสวมหมวกเวลาออกแดด		👒
+1751	academic	academics	adj: เกี่ยวกับการเรียน, วิชาการ | n: นักวิชาการ	She is good at academic subjects.	เธอเก่งวิชาการ		
+1752	voter	voters	n: ผู้ลงคะแนนเสียง	Every voter should go to the election.	ผู้มีสิทธิเลือกตั้งทุกคนควรไปเลือกตั้ง		🗳️
+1753	meanwhile		adv: ในขณะเดียวกัน	I will cook. Meanwhile, you can set the table.	ฉันจะทำอาหาร ระหว่างนั้นคุณจัดโต๊ะได้เลย		
+1754	furthermore		adv: ยิ่งกว่านั้น, นอกจากนี้	The room is cheap; furthermore, it is clean.	ห้องนี้ราคาถูก ยิ่งกว่านั้นยังสะอาดด้วย		
+1755	accuse	accuses, accused, accusing	v: กล่าวหา, ตั้งข้อหา	They accused him of stealing.	พวกเขากล่าวหาว่าเขาขโมยของ	มักตามด้วย of เช่น accuse someone of	
+1756	scientific		adj: เกี่ยวกับวิทยาศาสตร์	This is a scientific test.	นี่เป็นการทดสอบทางวิทยาศาสตร์		
+1757	wage	wages, waged, waging	n: ค่าจ้าง, ค่าแรง | v: ดำเนิน (สงคราม)	The workers asked for higher wages.	คนงานขอค่าแรงที่สูงขึ้น		
+1758	absence	absences	n: การขาด, การไม่อยู่	His absence was a surprise.	การที่เขาไม่มาเป็นเรื่องแปลกใจ		
+1759	construct	constructs, constructed, constructing	v: สร้าง, ก่อสร้าง	They constructed a bridge over the river.	พวกเขาสร้างสะพานข้ามแม่น้ำ		🏗️
+1760	remark	remarks, remarked, remarking	n: ข้อสังเกต, คำพูด | v: กล่าวถึง, สังเกต	She made a kind remark about my work.	เธอพูดชมงานของฉันอย่างใจดี		
+1761	medicine	medicines	n: ยา, วิชาแพทย์	Take this medicine twice a day.	กินยานี้วันละสองครั้ง		💊
+1762	professor	professors, prof	n: ศาสตราจารย์, อาจารย์มหาวิทยาลัย	The professor gave a long lecture.	ศาสตราจารย์บรรยายยาวมาก		
+1763	rare	rarer, rarest	adj: หายาก, น้อย	This flower is very rare.	ดอกไม้นี้หายากมาก		
+1764	intention	intentions	n: เจตนา, ความตั้งใจ	I have no intention of leaving.	ฉันไม่มีความตั้งใจจะลาออก		
+1765	dozen	dozens	n: หนึ่งโหล, สิบสองชิ้น	I bought a dozen eggs.	ฉันซื้อไข่หนึ่งโหล		🥚
+1766	settlement	settlements	n: การตั้งถิ่นฐาน, ข้อตกลง	The two sides reached a settlement.	ทั้งสองฝ่ายตกลงกันได้		
+1767	gap	gaps, gapped, gapping	n: ช่องว่าง, ช่องโหว่	There is a small gap in the fence.	มีช่องว่างเล็ก ๆ ที่รั้ว		
+1768	widely		adv: อย่างกว้างขวาง, ทั่วไป	This book is widely read.	หนังสือเล่มนี้มีคนอ่านกันอย่างกว้างขวาง		
+1769	minimum	minima, minimums	n: ขั้นต่ำ | adj: ต่ำสุด	The minimum age is eighteen.	อายุขั้นต่ำคือสิบแปดปี		
+1770	northern		adj: ทางเหนือ, ภาคเหนือ	Northern Thailand is cool in winter.	ภาคเหนือของไทยอากาศเย็นในหน้าหนาว		
+1771	estate	estates	n: ที่ดิน, ทรัพย์สิน, คฤหาสน์	He owns a large estate.	เขาเป็นเจ้าของที่ดินผืนใหญ่		
+1772	equally		adv: เท่า ๆ กัน	Please share the cake equally.	กรุณาแบ่งเค้กเท่า ๆ กัน		
+1773	expose	exposes, exposed, exposing	v: เปิดเผย, ทำให้เสี่ยง	Do not expose the film to light.	อย่าให้ฟิล์มโดนแสง		
+1774	alive		adj: มีชีวิต, ยังไม่ตาย	The fish is still alive.	ปลายังมีชีวิตอยู่		
+1775	shut	shuts	v: ปิด, ปิดลง | adj: ปิดอยู่	Please shut the door.	กรุณาปิดประตู	รูปอดีตคือ shut (เหมือนเดิม)	
+1776	victory	victories	n: ชัยชนะ	The team celebrated its victory.	ทีมฉลองชัยชนะ		🏆
+1777	resolve	resolves, resolved, resolving	v: แก้ปัญหา, ตัดสินใจ	They resolved the problem quickly.	พวกเขาแก้ปัญหาได้อย่างรวดเร็ว		
+1778	critic	critics	n: นักวิจารณ์, ผู้ตำหนิ	The critic liked the film.	นักวิจารณ์ชอบหนังเรื่องนี้		
+1779	variable	variables	n: ตัวแปร | adj: ที่เปลี่ยนแปลงได้	Weather is a variable factor.	อากาศเป็นปัจจัยที่เปลี่ยนแปลงได้		
+1780	enormous		adj: ใหญ่โตมาก, มหึมา	They live in an enormous house.	พวกเขาอาศัยอยู่ในบ้านหลังใหญ่โต		
+1781	sweet	sweets, sweeter, sweetest	adj: หวาน, น่ารัก | n: ขนมหวาน	This cake is too sweet.	เค้กนี้หวานเกินไป		🍬
+1782	permanent		adj: ถาวร	He found a permanent job.	เขาได้งานประจำ		
+1783	emotion	emotions	n: อารมณ์, ความรู้สึก	She could not hide her emotion.	เธอซ่อนอารมณ์ของตัวเองไม่อยู่		
+1784	pursue	pursues, pursued, pursuing	v: ไล่ตาม, ติดตาม, ทำต่อ	She wants to pursue her dream.	เธออยากไล่ตามความฝัน		
+1785	tall	taller, tallest	adj: สูง	My brother is very tall.	พี่ชายของฉันสูงมาก		
+1786	urge	urges, urged, urging, urgings	v: เร่ง, ผลักดัน, กระตุ้น | n: แรงกระตุ้น	I urge you to think again.	ฉันขอให้คุณคิดอีกครั้ง		
+1787	enemy	enemies	n: ศัตรู	A cat and a mouse are natural enemies.	แมวกับหนูเป็นศัตรูกันตามธรรมชาติ		
+1788	appoint	appoints, appointed, appointing	v: แต่งตั้ง, นัดหมาย	They appointed her as manager.	พวกเขาแต่งตั้งเธอเป็นผู้จัดการ		
+1789	milk	milks, milked, milking	n: นม | v: รีดนม	I drink milk every morning.	ฉันดื่มนมทุกเช้า		🥛
+1790	talent	talents, talented	n: พรสวรรค์, คนมีความสามารถ	She has a talent for singing.	เธอมีพรสวรรค์ด้านการร้องเพลง		
+1791	smell	smells, smelled, smelling	v: ได้กลิ่น, มีกลิ่น | n: กลิ่น	The soup smells delicious.	ซุปนี้กลิ่นหอมน่ากิน		👃
+1792	prior	priors	adj: ก่อนหน้า, ล่วงหน้า	You need prior permission.	คุณต้องขออนุญาตล่วงหน้า		
+1793	priority	priorities	n: ลำดับความสำคัญ, เรื่องเร่งด่วน	Safety is our first priority.	ความปลอดภัยเป็นเรื่องสำคัญอันดับแรกของเรา		
+1794	online		adj: ออนไลน์ | adv: ทางออนไลน์	I bought these shoes online.	ฉันซื้อรองเท้าคู่นี้ทางออนไลน์		🌐
+1795	phrase	phrases, phrased, phrasing	n: วลี, กลุ่มคำ | v: เรียบเรียงคำพูด	Learn this useful phrase.	ท่องวลีที่มีประโยชน์นี้ไว้		
+1796	pilot	pilots, piloted, piloting	n: นักบิน, ผู้นำร่อง | v: ขับ, ทดลอง	The pilot welcomed the passengers.	นักบินกล่าวต้อนรับผู้โดยสาร		👨‍✈️
+1797	stable	stables, stabled, stabling	adj: มั่นคง, คงที่ | n: คอกม้า	The weather has been stable this week.	สัปดาห์นี้อากาศคงที่		
+1798	merely		adv: เพียงแค่, เพียง	It is merely a small mistake.	มันเป็นแค่ความผิดพลาดเล็กน้อย		
+1799	resolution	resolutions	n: มติ, ความตั้งใจแน่วแน่, ความละเอียดภาพ	My resolution is to learn English.	ปณิธานของฉันคือเรียนภาษาอังกฤษ		
+1800	communicate	communicates, communicated, communicating	v: สื่อสาร, ติดต่อ	We communicate by email.	เราติดต่อกันทางอีเมล		💬

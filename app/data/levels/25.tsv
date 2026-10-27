@@ -1,101 +1,101 @@
 rank	headword	forms	meanings	example_en	example_th	note	emoji
-2401	dare	dares, dared, daring					
-2402	barrier	barriers					
-2403	rid	rids, ridded, ridding					
-2404	divorce	divorces, divorced, divorcing					
-2405	ruin	ruins, ruined, ruining					
-2406	bury	buries, buried, burying					
-2407	counsel	counsels, counselled, counseled, counselling, counseling					
-2408	tendency	tendencies					
-2409	frequent	frequents, frequented, frequenting					
-2410	motor	motors, motored, motoring					
-2411	survival	survivals					
-2412	counter	counters, countered, countering					
-2413	possess	possesses, possessed, possessing					
-2414	permission	permissions					
-2415	valley	valleys					
-2416	float	floats, floated, floating					
-2417	mad	madder, maddest					
-2418	greatly						
-2419	visible						
-2420	electric	electrics					
-2421	impressive						
-2422	evolution	evolutions					
-2423	awareness						
-2424	violent						
-2425	slave	slaves, slaved, slaving					
-2426	wealthy	wealthier, wealthiest					
-2427	architecture	architectures					
-2428	acceptable						
-2429	journal	journals, journaling					
-2430	coal	coals					
-2431	measurement	measurements					
-2432	random						
-2433	successfully						
-2434	depress	depresses, depressed, depressing					
-2435	illustration	illustrations					
-2436	burst	bursts, bursting					
-2437	privilege	privileges, privileged, privileging					
-2438	buyer	buyers					
-2439	mutual						
-2440	rail	rails, railed, railing, railings					
-2441	motivate	motivates, motivated, motivating					
-2442	laboratory	laboratories					
-2443	mortgage	mortgages, mortgaged, mortgaging					
-2444	promotion	promotions					
-2445	passion	passions					
-2446	champion	champions, championed, championing					
-2447	fulfill	fulfills, fulfilled, fulfilling, fulfil, fulfils, fulfiled, fulfiling					
-2448	dust	dusts, dusted, dusting					
-2449	dedicate	dedicates, dedicated, dedicating					
-2450	roughly						
-2451	skirt	skirts, skirted, skirting					
-2452	province	provinces					
-2453	march	marches, marched, marching					
-2454	evaluation	evaluations					
-2455	compromise	compromises, compromised, compromising					
-2456	accomplish	accomplishes, accomplished, accomplishing					
-2457	weakness	weaknesses					
-2458	announcement	announcements					
-2459	salt	salts, salted, salting					
-2460	glance	glances, glanced, glancing					
-2461	opera	operas					
-2462	contest	contests, contested, contesting					
-2463	brush	brushes, brushed, brushing, brushings					
-2464	embarrass	embarrasses, embarrassed, embarrassing					
-2465	gallery	galleries					
-2466	genetic						
-2467	aggressive						
-2468	chest	chests					
-2469	format	formats, formatted, formatting					
-2470	literary						
-2471	govern	governs, governed, governing					
-2472	embrace	embraces, embraced, embracing					
-2473	praise	praises, praised, praising					
-2474	silent						
-2475	pump	pumps, pumped, pumping					
-2476	publisher	publishers					
-2477	celebration	celebrations					
-2478	golf	golfs, golfed, golfing					
-2479	compensation	compensations					
-2480	classical						
-2481	weigh	weighs, weighed, weighing					
-2482	versus						
-2483	deficit	deficits					
-2484	modify	modifies, modified, modifying					
-2485	flash	flashes, flashed, flashing					
-2486	friendship	friendships					
-2487	profession	professions					
-2488	literally						
-2489	equation	equations					
-2490	gesture	gestures, gestured, gesturing					
-2491	entertain	entertains, entertained, entertaining					
-2492	fantastic						
-2493	assign	assigns, assigned, assigning					
-2494	inflation	inflations					
-2495	historic						
-2496	injure	injures, injured, injuring					
-2497	remote	remoter, remotest					
-2498	therapy	therapies					
-2499	orange	oranges					
-2500	twist	twists, twisted, twisting					
+2401	dare	dares, dared, daring	v: กล้า, บังอาจ | n: การท้าทาย	I dare you to jump into the pool.	ฉันท้าให้เธอกล้ากระโดดลงสระ		
+2402	barrier	barriers	n: สิ่งกีดขวาง, อุปสรรค	Language can be a barrier when you travel.	ภาษาอาจเป็นอุปสรรคเวลาเดินทาง		
+2403	rid	rids, ridded, ridding	v: กำจัดให้พ้น, ทำให้หมดไป	We got rid of the old sofa.	เราทิ้งโซฟาตัวเก่าไปแล้ว	มักอยู่ในวลี get rid of (กำจัด ทิ้ง)	
+2404	divorce	divorces, divorced, divorcing	n: การหย่า | v: หย่าร้าง	Her parents got a divorce last year.	พ่อแม่ของเธอหย่ากันเมื่อปีที่แล้ว		
+2405	ruin	ruins, ruined, ruining	v: ทำลาย, ทำให้เสียหาย | n: ซากปรักหักพัง	The rain ruined our picnic.	ฝนทำให้ปิกนิกของเราเสียหมด		
+2406	bury	buries, buried, burying	v: ฝัง, ซ่อนไว้	The dog buried a bone in the garden.	สุนัขฝังกระดูกไว้ในสวน		
+2407	counsel	counsels, counselled, counseled, counselling, counseling	n: คำปรึกษา, ที่ปรึกษากฎหมาย | v: ให้คำปรึกษา	She sought counsel from a lawyer.	เธอขอคำปรึกษาจากทนายความ		
+2408	tendency	tendencies	n: แนวโน้ม, ความโน้มเอียง	He has a tendency to be late.	เขามักจะมาสาย		
+2409	frequent	frequents, frequented, frequenting	adj: บ่อย, เป็นประจำ | v: ไปบ่อย ๆ	Frequent rain makes the roads wet.	ฝนที่ตกบ่อยทำให้ถนนเปียก	frequent (กริยา) ออกเสียงต่างจาก frequent (คุณศัพท์)	
+2410	motor	motors, motored, motoring	n: มอเตอร์, เครื่องยนต์	The motor of this fan is loud.	มอเตอร์ของพัดลมตัวนี้เสียงดัง		
+2411	survival	survivals	n: การอยู่รอด	Water is needed for survival.	น้ำจำเป็นต่อการอยู่รอด		
+2412	counter	counters, countered, countering	n: เคาน์เตอร์, เครื่องนับ | v: ตอบโต้	Please pay at the counter.	กรุณาจ่ายเงินที่เคาน์เตอร์		
+2413	possess	possesses, possessed, possessing	v: มี, เป็นเจ้าของ	He possesses a rare coin.	เขามีเหรียญหายากเหรียญหนึ่ง		
+2414	permission	permissions	n: การอนุญาต	You need permission to enter.	คุณต้องได้รับอนุญาตก่อนเข้า		
+2415	valley	valleys	n: หุบเขา	The village lies in a green valley.	หมู่บ้านตั้งอยู่ในหุบเขาสีเขียว		🏞️
+2416	float	floats, floated, floating	v: ลอย | n: ขบวนแห่, ทุ่นลอย	The leaf floated on the water.	ใบไม้ลอยอยู่บนน้ำ		
+2417	mad	madder, maddest	adj: บ้า, โกรธมาก	Mom was mad when I broke the vase.	แม่โกรธมากตอนที่ฉันทำแจกันแตก		
+2418	greatly		adv: อย่างมาก	I greatly enjoyed the concert.	ฉันเพลิดเพลินกับคอนเสิร์ตมาก		
+2419	visible		adj: มองเห็นได้, เห็นได้ชัด	The mountain is visible from my window.	มองเห็นภูเขาจากหน้าต่างบ้านฉัน		
+2420	electric	electrics	adj: เกี่ยวกับไฟฟ้า, ใช้ไฟฟ้า	We have an electric car.	เรามีรถยนต์ไฟฟ้า		⚡
+2421	impressive		adj: น่าประทับใจ	Her speech was very impressive.	สุนทรพจน์ของเธอน่าประทับใจมาก		
+2422	evolution	evolutions	n: วิวัฒนาการ, การพัฒนา	The evolution of phones has been fast.	วิวัฒนาการของโทรศัพท์เร็วมาก		
+2423	awareness		n: ความตระหนักรู้	We need more awareness of the problem.	เราต้องทำให้คนตระหนักถึงปัญหานี้มากขึ้น		
+2424	violent		adj: รุนแรง, ดุร้าย	The film has some violent scenes.	หนังเรื่องนี้มีฉากรุนแรงบางฉาก		
+2425	slave	slaves, slaved, slaving	n: ทาส | v: ทำงานหนักมาก	In the past, slaves had no freedom.	ในอดีตทาสไม่มีอิสรภาพ		
+2426	wealthy	wealthier, wealthiest	adj: ร่ำรวย	The wealthy family owns many hotels.	ครอบครัวร่ำรวยนี้เป็นเจ้าของโรงแรมหลายแห่ง		
+2427	architecture	architectures	n: สถาปัตยกรรม	I love the architecture of old temples.	ฉันชอบสถาปัตยกรรมของวัดเก่า ๆ		🏛️
+2428	acceptable		adj: ยอมรับได้, พอใจได้	Is this price acceptable to you?	ราคานี้คุณรับได้ไหม		
+2429	journal	journals, journaling	n: วารสาร, บันทึกประจำวัน	She keeps a journal every day.	เธอเขียนบันทึกประจำวันทุกวัน		📔
+2430	coal	coals	n: ถ่านหิน	The factory burns coal.	โรงงานนี้เผาถ่านหิน		
+2431	measurement	measurements	n: การวัด, ขนาด	Please check the measurements again.	กรุณาตรวจขนาดอีกครั้ง		📏
+2432	random		adj: สุ่ม, ไม่เจาะจง	Pick a random number.	เลือกตัวเลขสุ่มหนึ่งตัว		🎲
+2433	successfully		adv: อย่างประสบความสำเร็จ	She successfully finished the race.	เธอวิ่งจบการแข่งขันได้สำเร็จ		
+2434	depress	depresses, depressed, depressing	v: ทำให้เศร้า, ทำให้หดหู่	Rainy days depress me.	วันฝนตกทำให้ฉันหดหู่	depressed = รู้สึกหดหู่ / depressing = น่าหดหู่	
+2435	illustration	illustrations	n: ภาพประกอบ, ตัวอย่าง	The book has many beautiful illustrations.	หนังสือเล่มนี้มีภาพประกอบสวย ๆ มากมาย		🖼️
+2436	burst	bursts, bursting	v: ระเบิด, แตก, ปะทุ | n: การระเบิด	The balloon burst with a loud noise.	ลูกโป่งแตกเสียงดัง	รูปอดีตคือ burst (เหมือนเดิม)	💥
+2437	privilege	privileges, privileged, privileging	n: สิทธิพิเศษ | v: ให้สิทธิพิเศษ	Good students have the privilege of choosing books.	นักเรียนดีมีสิทธิพิเศษเลือกหนังสือได้		
+2438	buyer	buyers	n: ผู้ซื้อ	The buyer paid in cash.	ผู้ซื้อจ่ายด้วยเงินสด		
+2439	mutual		adj: ร่วมกัน, ซึ่งกันและกัน	We have a mutual friend.	เรามีเพื่อนที่รู้จักร่วมกัน		
+2440	rail	rails, railed, railing, railings	n: ราง, รั้วกั้น, รถไฟ	Hold the rail when you go up the stairs.	จับราวบันไดเวลาขึ้นบันได		🚆
+2441	motivate	motivates, motivated, motivating	v: กระตุ้น, สร้างแรงจูงใจ	A good teacher can motivate students.	ครูดี ๆ ช่วยสร้างแรงจูงใจให้นักเรียนได้	motivated = มีแรงจูงใจ	
+2442	laboratory	laboratories	n: ห้องปฏิบัติการ, ห้องแล็บ	The scientist works in a laboratory.	นักวิทยาศาสตร์ทำงานในห้องปฏิบัติการ		🔬
+2443	mortgage	mortgages, mortgaged, mortgaging	n: เงินกู้ซื้อบ้าน, สินเชื่อบ้าน	They pay a mortgage every month.	พวกเขาผ่อนบ้านทุกเดือน		🏠
+2444	promotion	promotions	n: การส่งเสริมการขาย, การเลื่อนตำแหน่ง	She got a promotion at work.	เธอได้เลื่อนตำแหน่งที่ทำงาน		
+2445	passion	passions	n: ความหลงใหล, ความรักอย่างลึกซึ้ง	Music is his passion.	ดนตรีคือสิ่งที่เขาหลงใหล		❤️‍🔥
+2446	champion	champions, championed, championing	n: แชมป์ | v: สนับสนุน	He is the world champion.	เขาเป็นแชมป์โลก		🏆
+2447	fulfill	fulfills, fulfilled, fulfilling, fulfil, fulfils, fulfiled, fulfiling	v: ทำให้สำเร็จ, ปฏิบัติตาม	She fulfilled her promise.	เธอทำตามสัญญา		
+2448	dust	dusts, dusted, dusting	n: ฝุ่น | v: ปัดฝุ่น	There is dust on the table.	มีฝุ่นอยู่บนโต๊ะ		
+2449	dedicate	dedicates, dedicated, dedicating	v: อุทิศ, ทุ่มเท	He dedicated the song to his mother.	เขาอุทิศเพลงนี้ให้แม่		
+2450	roughly		adv: ประมาณ, โดยคร่าว ๆ	The trip takes roughly two hours.	การเดินทางใช้เวลาประมาณสองชั่วโมง		
+2451	skirt	skirts, skirted, skirting	n: กระโปรง	She wore a long blue skirt.	เธอสวมกระโปรงยาวสีฟ้า		👗
+2452	province	provinces	n: จังหวัด, แคว้น	Chiang Mai is a province in the north.	เชียงใหม่เป็นจังหวัดทางภาคเหนือ		
+2453	march	marches, marched, marching	v: เดินแถว, เดินขบวน | n: การเดินขบวน, เดือนมีนาคม	The band marched down the street.	วงดนตรีเดินแถวไปตามถนน	March (ขึ้นต้นตัวใหญ่) = เดือนมีนาคม	
+2454	evaluation	evaluations	n: การประเมินผล	The evaluation of the course was positive.	ผลประเมินหลักสูตรนี้เป็นไปในทางที่ดี		
+2455	compromise	compromises, compromised, compromising	n: การประนีประนอม | v: ประนีประนอม, ทำให้เสียหาย	Both sides made a compromise.	ทั้งสองฝ่ายประนีประนอมกัน		
+2456	accomplish	accomplishes, accomplished, accomplishing	v: ทำให้สำเร็จ, บรรลุผล	She accomplished all her goals.	เธอทำเป้าหมายทั้งหมดสำเร็จ		
+2457	weakness	weaknesses	n: จุดอ่อน, ความอ่อนแอ	Shyness is one of his weaknesses.	ความขี้อายเป็นจุดอ่อนอย่างหนึ่งของเขา		
+2458	announcement	announcements	n: การประกาศ	The school made an announcement about the holiday.	โรงเรียนประกาศเรื่องวันหยุด		📢
+2459	salt	salts, salted, salting	n: เกลือ | v: ใส่เกลือ	Please pass the salt.	ช่วยส่งเกลือให้หน่อย		🧂
+2460	glance	glances, glanced, glancing	v: เหลือบมอง | n: การมองผ่าน ๆ	She glanced at her watch.	เธอเหลือบมองนาฬิกาข้อมือ		
+2461	opera	operas	n: โอเปร่า	We saw an opera in Bangkok.	เราไปดูโอเปร่าที่กรุงเทพฯ		🎭
+2462	contest	contests, contested, contesting	n: การแข่งขัน, การประกวด | v: โต้แย้ง	She won the singing contest.	เธอชนะการประกวดร้องเพลง		
+2463	brush	brushes, brushed, brushing, brushings	n: แปรง, พู่กัน | v: แปรง	I brush my teeth after meals.	ฉันแปรงฟันหลังกินข้าว		🪥
+2464	embarrass	embarrasses, embarrassed, embarrassing	v: ทำให้อาย, ทำให้อึดอัด	The question embarrassed her.	คำถามนี้ทำให้เธออาย	embarrassed = รู้สึกอาย / embarrassing = น่าอาย	
+2465	gallery	galleries	n: หอศิลป์, แกลเลอรี	We visited an art gallery.	เราไปเที่ยวหอศิลป์		🖼️
+2466	genetic		adj: เกี่ยวกับพันธุกรรม	Eye color is a genetic trait.	สีตาเป็นลักษณะทางพันธุกรรม		🧬
+2467	aggressive		adj: ก้าวร้าว, เชิงรุก	The dog looked aggressive.	สุนัขตัวนั้นดูก้าวร้าว		
+2468	chest	chests	n: หน้าอก, หีบ, ลัง	He has a pain in his chest.	เขาเจ็บหน้าอก		
+2469	format	formats, formatted, formatting	n: รูปแบบ, ฟอร์แมต | v: จัดรูปแบบ	What format should I use?	ฉันควรใช้รูปแบบไหน		
+2470	literary		adj: เกี่ยวกับวรรณกรรม	She loves literary classics.	เธอชอบวรรณกรรมคลาสสิก		
+2471	govern	governs, governed, governing	v: ปกครอง, ควบคุม	The king governed the country for forty years.	กษัตริย์ปกครองประเทศมาสี่สิบปี		
+2472	embrace	embraces, embraced, embracing	v: กอด, น้อมรับ | n: การกอด	She embraced her friend.	เธอกอดเพื่อนของเธอ		🤗
+2473	praise	praises, praised, praising	v: ชม, สรรเสริญ | n: คำชม	The teacher praised my work.	ครูชมผลงานของฉัน		👏
+2474	silent		adj: เงียบ, ไม่พูด	Please stay silent during the exam.	กรุณาเงียบระหว่างสอบ		
+2475	pump	pumps, pumped, pumping	n: ปั๊ม, เครื่องสูบ | v: สูบ	He used a pump to fill the tire.	เขาใช้ที่สูบเติมลมยาง		
+2476	publisher	publishers	n: ผู้จัดพิมพ์, สำนักพิมพ์	The publisher printed ten thousand copies.	สำนักพิมพ์พิมพ์หนังสือหนึ่งหมื่นเล่ม		
+2477	celebration	celebrations	n: การเฉลิมฉลอง, งานฉลอง	We had a big birthday celebration.	เราจัดงานวันเกิดใหญ่		🎉
+2478	golf	golfs, golfed, golfing	n: กอล์ฟ | v: เล่นกอล์ฟ	My father plays golf on Sundays.	พ่อของฉันเล่นกอล์ฟวันอาทิตย์		⛳
+2479	compensation	compensations	n: ค่าชดเชย, ค่าตอบแทน	He received compensation for his injury.	เขาได้รับค่าชดเชยสำหรับการบาดเจ็บ		
+2480	classical		adj: คลาสสิก, ดั้งเดิม	She loves classical music.	เธอชอบดนตรีคลาสสิก		🎻
+2481	weigh	weighs, weighed, weighing	v: ชั่งน้ำหนัก, มีน้ำหนัก	This bag weighs two kilos.	กระเป๋าใบนี้หนักสองกิโล		⚖️
+2482	versus		prep: ต่อ (ในการแข่งขัน), เทียบกับ	Tonight is Thailand versus Japan.	คืนนี้เป็นการแข่งขันไทยพบญี่ปุ่น	ย่อเป็น vs	
+2483	deficit	deficits	n: ภาวะขาดดุล, ยอดขาด	The company has a budget deficit.	บริษัทมีงบประมาณขาดดุล		
+2484	modify	modifies, modified, modifying	v: ปรับเปลี่ยน, ดัดแปลง	We modified the recipe a little.	เราปรับสูตรเล็กน้อย		
+2485	flash	flashes, flashed, flashing	n: แสงวาบ, แฟลช | v: ส่องแสงวาบ	The camera flash was too bright.	แฟลชกล้องสว่างเกินไป		⚡
+2486	friendship	friendships	n: มิตรภาพ	Our friendship is very important to me.	มิตรภาพของเราสำคัญกับฉันมาก		🤝
+2487	profession	professions	n: อาชีพ (ที่ต้องมีความเชี่ยวชาญ)	Teaching is a great profession.	การสอนเป็นอาชีพที่ยอดเยี่ยม		
+2488	literally		adv: จริง ๆ ตามตัวอักษร	The soup was literally boiling.	ซุปเดือดปุด ๆ ตามตัวอักษรเลย		
+2489	equation	equations	n: สมการ	Solve this equation, please.	กรุณาแก้สมการนี้		🧮
+2490	gesture	gestures, gestured, gesturing	n: ท่าทาง, การแสดงออก | v: ทำท่า	She made a kind gesture and helped him.	เธอแสดงน้ำใจโดยช่วยเขา		
+2491	entertain	entertains, entertained, entertaining	v: ต้อนรับแขก, ให้ความบันเทิง	She entertains her guests with music.	เธอสร้างความบันเทิงให้แขกด้วยดนตรี		
+2492	fantastic		adj: ยอดเยี่ยม, เหลือเชื่อ	We had a fantastic holiday.	เรามีวันหยุดที่ยอดเยี่ยมมาก		🌟
+2493	assign	assigns, assigned, assigning	v: มอบหมาย, ปันส่วน	The teacher assigned homework.	ครูมอบหมายการบ้าน		
+2494	inflation	inflations	n: เงินเฟ้อ, ภาวะเฟ้อ	Inflation makes food more expensive.	เงินเฟ้อทำให้อาหารแพงขึ้น		
+2495	historic		adj: เกี่ยวกับประวัติศาสตร์, สำคัญทางประวัติศาสตร์	It was a historic day for our country.	เป็นวันประวัติศาสตร์ของประเทศเรา	historic = สำคัญในประวัติศาสตร์ / historical = เกี่ยวกับประวัติศาสตร์	
+2496	injure	injures, injured, injuring	v: ทำให้บาดเจ็บ	He injured his leg playing football.	เขาขาเจ็บตอนเล่นฟุตบอล	injured = บาดเจ็บ	🤕
+2497	remote	remoter, remotest	adj: ห่างไกล, ระยะไกล	They live in a remote village.	พวกเขาอาศัยอยู่ในหมู่บ้านห่างไกล		
+2498	therapy	therapies	n: การบำบัด, การรักษา	She goes to therapy once a week.	เธอไปรับการบำบัดสัปดาห์ละครั้ง		
+2499	orange	oranges	n: ส้ม, สีส้ม | adj: สีส้ม	I drink orange juice every morning.	ฉันดื่มน้ำส้มทุกเช้า		🍊
+2500	twist	twists, twisted, twisting	v: บิด, ม้วน | n: การบิด, ความพลิกผัน	Twist the cap to open the bottle.	บิดฝาเพื่อเปิดขวด		

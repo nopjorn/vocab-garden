@@ -1,101 +1,101 @@
 rank	headword	forms	meanings	example_en	example_th	note	emoji
-2601	bless	blesses, blessed, blessing, blessings, blest					
-2602	airline	airlines					
-2603	amendment	amendments					
-2604	grandmother	grandmothers					
-2605	jury	juries					
-2606	cooperation						
-2607	civilian	civilians					
-2608	composition	compositions					
-2609	coin	coins, coined, coining					
-2610	regardless						
-2611	scan	scans, scanned, scanning					
-2612	bunch	bunches, bunched, bunching					
-2613	racial	racials					
-2614	greet	greets, greeted, greeting, greetings					
-2615	hopefully						
-2616	sanction	sanctions, sanctioned, sanctioning					
-2617	trick	tricks, tricked, tricking					
-2618	paragraph	paragraphs, paragraphed, paragraphing					
-2619	maker	makers					
-2620	chocolate	chocolates					
-2621	stimulate	stimulates, stimulated, stimulating					
-2622	belt	belts, belted, belting					
-2623	potato	potatoes					
-2624	narrative	narratives					
-2625	tissue	tissues					
-2626	barely						
-2627	invent	invents, invented, inventing					
-2628	tourism						
-2629	pro	pros					
-2630	stair	stairs					
-2631	hesitate	hesitates, hesitated, hesitating					
-2632	shine	shines, shined, shining, shone					
-2633	motivation	motivations					
-2634	romantic	romantics					
-2635	firmly						
-2636	interior	interiors					
-2637	stomach	stomachs, stomached, stomaching					
-2638	nowhere						
-2639	pray	prays, prayed, praying					
-2640	championship	championships					
-2641	servant	servants					
-2642	immigrant	immigrants					
-2643	excess	excesses					
-2644	complexity	complexities					
-2645	liability	liabilities					
-2646	surprisingly						
-2647	extract	extracts, extracted, extracting					
-2648	implementation	implementations					
-2649	bias	biases, biased, biasing					
-2650	differently						
-2651	catalog	catalogs, cataloged, cataloging, catalogue, catalogues, catalogued, cataloguing					
-2652	continuous						
-2653	golden						
-2654	stamp	stamps, stamped, stamping					
-2655	guideline	guidelines					
-2656	envelope	envelopes					
-2657	knife	knifes, knifed, knifing, knives					
-2658	biological						
-2659	consume	consumes, consumed, consuming					
-2660	luxury	luxuries					
-2661	weekly	weeklies					
-2662	wherever						
-2663	bite	bites, biting, bitten					
-2664	printer	printers					
-2665	firstly						
-2666	anxious						
-2667	adventure	adventures, adventured, adventuring					
-2668	fence	fences, fenced, fencing, fencings					
-2669	exhaust	exhausts, exhausted, exhausting					
-2670	attraction	attractions					
-2671	ocean	oceans					
-2672	quietly						
-2673	castle	castles, castled, castling					
-2674	veteran	veterans					
-2675	reflection	reflections					
-2676	nerve	nerves, nerved, nerving					
-2677	determination	determinations					
-2678	altogether						
-2679	fiction	fictions					
-2680	carpet	carpets, carpeted, carpeting					
-2681	cluster	clusters, clustered, clustering					
-2682	confusion	confusions					
-2683	hurry	hurries, hurried, hurrying					
-2684	logic	logics					
-2685	controversial						
-2686	raw	rawer, rawest					
-2687	grammar	grammars					
-2688	revise	revises, revised, revising					
-2689	hint	hints, hinted, hinting					
-2690	hook	hooks, hooked, hooking					
-2691	bell	bells, belled, belling					
-2692	liquid	liquids					
-2693	panic	panics, panicked, panicking					
-2694	uncle	uncles					
-2695	rice	rices					
-2696	slope	slopes					
-2697	happiness						
-2698	genuine						
-2699	vessel	vessels					
-2700	verb	verbs					
+2601	bless	blesses, blessed, blessing, blessings, blest	v: อวยพร, ประทานพร	May God bless your family.	ขอให้พระเจ้าอวยพรครอบครัวของคุณ	มักได้ยิน Bless you! พูดหลังมีคนจาม คล้าย "ขอให้สุขภาพดี"	🙏
+2602	airline	airlines	n: สายการบิน	This airline flies to Chiang Mai.	สายการบินนี้บินไปเชียงใหม่		✈️
+2603	amendment	amendments	n: การแก้ไขเพิ่มเติม (กฎหมาย)	The council voted on an amendment to the rule.	สภาลงคะแนนแก้ไขเพิ่มเติมกฎข้อนี้		
+2604	grandmother	grandmothers	n: ยาย, ย่า	My grandmother cooks the best curry.	คุณยายของฉันทำแกงอร่อยที่สุด	ภาษาอังกฤษไม่แยกย่า-ยาย	👵
+2605	jury	juries	n: คณะลูกขุน	The jury decided he was not guilty.	คณะลูกขุนตัดสินว่าเขาไม่ผิด		⚖️
+2606	cooperation		n: ความร่วมมือ	Thank you for your cooperation.	ขอบคุณสำหรับความร่วมมือ		
+2607	civilian	civilians	n: พลเรือน | adj: ที่ไม่ใช่ทหาร	Many civilians were helped by the soldiers.	ทหารช่วยพลเรือนจำนวนมาก		
+2608	composition	compositions	n: ส่วนประกอบ, ผลงาน (ดนตรี เรียงความ)	The composition of the soil is important.	ส่วนประกอบของดินสำคัญมาก		
+2609	coin	coins, coined, coining	n: เหรียญ | v: ตั้งคำใหม่	I found a coin on the street.	ฉันเจอเหรียญบนถนน		🪙
+2610	regardless		adv: ไม่ว่าอย่างไร, ไม่คำนึงถึง	Regardless of the weather, we will go.	ไม่ว่าอากาศจะเป็นอย่างไร เราจะไป	มักใช้ regardless of (ไม่ว่า, ไม่คำนึงถึง)	
+2611	scan	scans, scanned, scanning	v: สแกน, กวาดตามอง | n: การสแกน	Please scan this page for me.	ช่วยสแกนหน้านี้ให้ฉันหน่อย		
+2612	bunch	bunches, bunched, bunching	n: พวง, ช่อ, กลุ่ม	He gave her a bunch of flowers.	เขาให้ช่อดอกไม้แก่เธอ		💐
+2613	racial	racials	adj: เกี่ยวกับเชื้อชาติ	We should stop racial hate.	เราควรหยุดความเกลียดชังเรื่องเชื้อชาติ		
+2614	greet	greets, greeted, greeting, greetings	v: ทักทาย	She greeted me with a smile.	เธอทักทายฉันด้วยรอยยิ้ม		👋
+2615	hopefully		adv: หวังว่า	Hopefully, it will not rain tomorrow.	หวังว่าพรุ่งนี้ฝนจะไม่ตก		
+2616	sanction	sanctions, sanctioned, sanctioning	n: มาตรการลงโทษ, การอนุมัติ | v: อนุมัติ	Some countries put sanctions on trade.	บางประเทศใช้มาตรการลงโทษทางการค้า		
+2617	trick	tricks, tricked, tricking	n: กลเม็ด, เล่ห์กล, มุก | v: หลอก	The magician did a clever trick.	นักมายากลแสดงกลที่ชาญฉลาด		
+2618	paragraph	paragraphs, paragraphed, paragraphing	n: ย่อหน้า	Write one paragraph about your day.	เขียนหนึ่งย่อหน้าเกี่ยวกับวันของคุณ		
+2619	maker	makers	n: ผู้ผลิต, ผู้สร้าง	She is a famous cake maker.	เธอเป็นคนทำเค้กที่มีชื่อเสียง		
+2620	chocolate	chocolates	n: ช็อกโกแลต	I like dark chocolate.	ฉันชอบดาร์กช็อกโกแลต		🍫
+2621	stimulate	stimulates, stimulated, stimulating	v: กระตุ้น	Reading stimulates the brain.	การอ่านกระตุ้นสมอง		
+2622	belt	belts, belted, belting	n: เข็มขัด, สายพาน | v: ตี	He wears a black belt.	เขาคาดเข็มขัดสีดำ		
+2623	potato	potatoes	n: มันฝรั่ง	We had fried potatoes for lunch.	เรากินมันฝรั่งทอดเป็นอาหารกลางวัน		🥔
+2624	narrative	narratives	n: เรื่องเล่า, การเล่าเรื่อง | adj: เป็นเรื่องเล่า	The book has an interesting narrative.	หนังสือเล่มนี้มีเรื่องราวที่น่าสนใจ		
+2625	tissue	tissues	n: เนื้อเยื่อ, กระดาษทิชชู่	Can I have a tissue?	ขอทิชชู่หน่อยได้ไหม		
+2626	barely		adv: แทบจะไม่, เพียงแค่	I could barely hear him.	ฉันแทบไม่ได้ยินเขาเลย		
+2627	invent	invents, invented, inventing	v: ประดิษฐ์, คิดค้น	Who invented the telephone?	ใครเป็นผู้ประดิษฐ์โทรศัพท์		💡
+2628	tourism		n: การท่องเที่ยว, อุตสาหกรรมท่องเที่ยว	Tourism is important to Thailand.	การท่องเที่ยวสำคัญต่อประเทศไทย		
+2629	pro	pros	n: มืออาชีพ, ข้อดี (pros and cons)	He is a golf pro.	เขาเป็นโปรกอล์ฟ	พบบ่อยในวลี pros and cons (ข้อดีข้อเสีย)	
+2630	stair	stairs	n: บันได	Be careful on the stairs.	ระวังตอนเดินบนบันได	นิยมใช้พหูพจน์ stairs	🪜
+2631	hesitate	hesitates, hesitated, hesitating	v: ลังเล	Don't hesitate to ask me.	ไม่ต้องลังเลที่จะถามฉันนะ		
+2632	shine	shines, shined, shining, shone	v: ส่องแสง, เปล่งประกาย	The sun shines brightly today.	วันนี้ดวงอาทิตย์ส่องแสงจ้า	รูปอดีตคือ shone หรือ shined	☀️
+2633	motivation	motivations	n: แรงจูงใจ	She has a lot of motivation to study.	เธอมีแรงจูงใจที่จะเรียนมาก		
+2634	romantic	romantics	adj: โรแมนติก | n: คนโรแมนติก	They had a romantic dinner.	พวกเขากินมื้อค่ำแบบโรแมนติก		💕
+2635	firmly		adv: อย่างหนักแน่น, แน่น	He firmly closed the door.	เขาปิดประตูแน่นหนา		
+2636	interior	interiors	n: ภายใน, ด้านใน | adj: ภายใน	The interior of the house is clean.	ภายในบ้านสะอาด		
+2637	stomach	stomachs, stomached, stomaching	n: ท้อง, กระเพาะอาหาร	I have a pain in my stomach.	ฉันปวดท้อง		
+2638	nowhere		adv: ไม่มีที่ไหนเลย	There is nowhere to sit.	ไม่มีที่ให้นั่งเลย		
+2639	pray	prays, prayed, praying	v: สวดมนต์, อธิษฐาน	She prays every morning.	เธอสวดมนต์ทุกเช้า		🙏
+2640	championship	championships	n: การแข่งขันชิงแชมป์, ตำแหน่งแชมป์	Our team won the championship.	ทีมเราชนะการแข่งชิงแชมป์		🏆
+2641	servant	servants	n: คนรับใช้, ข้าราชการ	The servant brought tea to the guests.	คนรับใช้นำชามาให้แขก		
+2642	immigrant	immigrants	n: ผู้อพยพเข้าเมือง	Her grandparents were immigrants.	ปู่ย่าตายายของเธอเป็นผู้อพยพ		
+2643	excess	excesses	n: ส่วนเกิน, ความเกินพอดี	There is an excess of salt in this soup.	ซุปนี้เค็มเกินไป		
+2644	complexity	complexities	n: ความซับซ้อน	Nobody understands the complexity of the system.	ไม่มีใครเข้าใจความซับซ้อนของระบบนี้		
+2645	liability	liabilities	n: ความรับผิดชอบทางกฎหมาย, ภาระ	The company has a liability for the damage.	บริษัทต้องรับผิดชอบความเสียหายนี้		
+2646	surprisingly		adv: อย่างน่าประหลาดใจ	Surprisingly, the exam was easy.	น่าแปลกใจที่ข้อสอบง่าย		
+2647	extract	extracts, extracted, extracting	v: ดึงออก, สกัด | n: สารสกัด	The dentist extracted my tooth.	หมอฟันถอนฟันของฉัน		
+2648	implementation	implementations	n: การนำไปใช้, การดำเนินการ	The implementation of the plan starts today.	การดำเนินแผนนี้เริ่มวันนี้		
+2649	bias	biases, biased, biasing	n: อคติ, ความลำเอียง | v: ทำให้ลำเอียง	A good judge must not show bias.	ผู้พิพากษาที่ดีต้องไม่ลำเอียง		
+2650	differently		adv: แตกต่างกัน, ต่างออกไป	She thinks differently from me.	เธอคิดต่างจากฉัน		
+2651	catalog	catalogs, cataloged, cataloging, catalogue, catalogues, catalogued, cataloguing	n: แคตตาล็อก, รายการสินค้า	I looked through the catalog.	ฉันเปิดดูแคตตาล็อก	สะกดแบบอังกฤษคือ catalogue	
+2652	continuous		adj: ต่อเนื่อง, ไม่หยุด	There was continuous rain all day.	ฝนตกต่อเนื่องทั้งวัน		
+2653	golden		adj: สีทอง, ทอง	She has long golden hair.	เธอมีผมยาวสีทอง		
+2654	stamp	stamps, stamped, stamping	n: แสตมป์, ตราประทับ | v: ประทับตรา	I put a stamp on the letter.	ฉันติดแสตมป์บนจดหมาย		
+2655	guideline	guidelines	n: แนวทางปฏิบัติ	Please follow the safety guidelines.	กรุณาปฏิบัติตามแนวทางด้านความปลอดภัย		
+2656	envelope	envelopes	n: ซองจดหมาย	Put the letter in an envelope.	ใส่จดหมายลงในซอง		✉️
+2657	knife	knifes, knifed, knifing, knives	n: มีด	Be careful with the knife.	ระวังมีดด้วยนะ	พหูพจน์คือ knives	🔪
+2658	biological		adj: เกี่ยวกับชีววิทยา	It is a biological process.	เป็นกระบวนการทางชีววิทยา		
+2659	consume	consumes, consumed, consuming	v: บริโภค, กิน, ใช้	We consume too much plastic.	เราใช้พลาสติกมากเกินไป		
+2660	luxury	luxuries	n: ความหรูหรา, สิ่งฟุ่มเฟือย	They stayed at a luxury hotel.	พวกเขาพักที่โรงแรมหรู		💎
+2661	weekly	weeklies	adj: รายสัปดาห์ | n: นิตยสารรายสัปดาห์	There is a weekly meeting on Monday.	มีประชุมประจำสัปดาห์ทุกวันจันทร์		
+2662	wherever		conj: ที่ไหนก็ตาม	You can sit wherever you like.	คุณนั่งตรงไหนก็ได้ที่ชอบ		
+2663	bite	bites, biting, bitten	v: กัด, ต่อย | n: รอยกัด, การกัด	Does your dog bite strangers?	สุนัขของคุณกัดคนแปลกหน้าไหม	รูปอดีตคือ bit / รูป V3 คือ bitten	
+2664	printer	printers	n: เครื่องพิมพ์, คนพิมพ์	The printer is out of paper.	เครื่องพิมพ์กระดาษหมด		🖨️
+2665	firstly		adv: ประการแรก, ข้อแรก	Firstly, check the date.	ข้อแรก ตรวจดูวันที่ก่อน		
+2666	anxious		adj: กังวล, วิตก, กระหาย	She was anxious about the test.	เธอวิตกกังวลเรื่องการสอบ		
+2667	adventure	adventures, adventured, adventuring	n: การผจญภัย | v: เสี่ยง	They went on an adventure in the forest.	พวกเขาออกผจญภัยในป่า		🧗
+2668	fence	fences, fenced, fencing, fencings	n: รั้ว | v: ล้อมรั้ว, ฟันดาบ	The dog jumped over the fence.	สุนัขกระโดดข้ามรั้ว		
+2669	exhaust	exhausts, exhausted, exhausting	v: ทำให้เหนื่อยมาก, ใช้จนหมด | n: ท่อไอเสีย	The long walk exhausted me.	การเดินไกลทำให้ฉันเหนื่อยมาก	exhausted = เหนื่อยมาก	
+2670	attraction	attractions	n: สิ่งดึงดูด, สถานที่ท่องเที่ยว	The temple is a popular tourist attraction.	วัดแห่งนี้เป็นสถานที่ท่องเที่ยวยอดนิยม		
+2671	ocean	oceans	n: มหาสมุทร	The ship crossed the ocean.	เรือข้ามมหาสมุทร		🌊
+2672	quietly		adv: อย่างเงียบ ๆ	The children played quietly.	เด็ก ๆ เล่นกันเงียบ ๆ		
+2673	castle	castles, castled, castling	n: ปราสาท	The king lived in a castle.	กษัตริย์ประทับในปราสาท		🏰
+2674	veteran	veterans	n: ทหารผ่านศึก, ผู้มีประสบการณ์	He is a veteran of the war.	เขาเป็นทหารผ่านศึก		
+2675	reflection	reflections	n: เงาสะท้อน, การไตร่ตรอง	I saw my reflection in the window.	ฉันเห็นเงาของตัวเองในหน้าต่าง		
+2676	nerve	nerves, nerved, nerving	n: เส้นประสาท, ความกล้า	The doctor checked the nerve in my arm.	หมอตรวจเส้นประสาทที่แขน		
+2677	determination	determinations	n: ความมุ่งมั่น, การตัดสินใจ	She showed great determination.	เธอแสดงความมุ่งมั่นอย่างมาก		
+2678	altogether		adv: ทั้งหมด, โดยสิ้นเชิง	That is altogether different.	นั่นต่างกันโดยสิ้นเชิง		
+2679	fiction	fictions	n: นวนิยาย, เรื่องแต่ง	She prefers fiction to history books.	เธอชอบนิยายมากกว่าหนังสือประวัติศาสตร์		📚
+2680	carpet	carpets, carpeted, carpeting	n: พรม | v: ปูพรม	The room has a red carpet.	ห้องนี้ปูพรมสีแดง		
+2681	cluster	clusters, clustered, clustering	n: กลุ่ม, กลุ่มก้อน | v: รวมกลุ่ม	A cluster of stars appeared in the sky.	กลุ่มดาวปรากฏบนท้องฟ้า		
+2682	confusion	confusions	n: ความสับสน	There was confusion at the station.	สถานีเกิดความวุ่นวายสับสน		
+2683	hurry	hurries, hurried, hurrying	v: รีบ, เร่ง | n: ความรีบร้อน	Hurry up, or we will be late!	รีบหน่อย ไม่งั้นเราจะสาย		🏃
+2684	logic	logics	n: ตรรกะ, เหตุผล	There is no logic in his plan.	แผนของเขาไม่มีเหตุผลเลย		
+2685	controversial		adj: เป็นที่ถกเถียง	It is a controversial topic.	เป็นหัวข้อที่เป็นที่ถกเถียง		
+2686	raw	rawer, rawest	adj: ดิบ, สด, ยังไม่แปรรูป	Don't eat raw meat.	อย่ากินเนื้อดิบ		🥩
+2687	grammar	grammars	n: ไวยากรณ์	I study English grammar every day.	ฉันเรียนไวยากรณ์ภาษาอังกฤษทุกวัน		
+2688	revise	revises, revised, revising	v: ทบทวน, แก้ไขปรับปรุง	Please revise your essay.	กรุณาแก้ไขเรียงความของคุณ		
+2689	hint	hints, hinted, hinting	n: คำใบ้, เบาะแส | v: บอกเป็นนัย	Can you give me a hint?	ช่วยใบ้ให้ฉันหน่อยได้ไหม		
+2690	hook	hooks, hooked, hooking	n: ตะขอ, ที่แขวน | v: เกี่ยว	Hang your coat on the hook.	แขวนเสื้อโค้ตไว้บนตะขอ		🪝
+2691	bell	bells, belled, belling	n: ระฆัง, กริ่ง	The school bell rang at nine.	กริ่งโรงเรียนดังตอนเก้าโมง		🔔
+2692	liquid	liquids	n: ของเหลว | adj: เหลว	Water is a liquid.	น้ำเป็นของเหลว		💧
+2693	panic	panics, panicked, panicking	n: ความตื่นตระหนก | v: ตื่นตระหนก	Don't panic; stay calm.	อย่าตกใจ ใจเย็น ๆ		
+2694	uncle	uncles	n: ลุง, อา, น้า	My uncle lives in Phuket.	ลุงของฉันอยู่ที่ภูเก็ต	ภาษาอังกฤษไม่แยก ลุง-อา-น้า	👨
+2695	rice	rices	n: ข้าว (เมล็ดข้าวสุก), ข้าวสาร	We eat rice every day.	เรากินข้าวทุกวัน		🍚
+2696	slope	slopes	n: ทางลาด, เนิน	The ski slope was very steep.	ลานสกีนั้นชันมาก		
+2697	happiness		n: ความสุข	Happiness comes from small things.	ความสุขมาจากสิ่งเล็ก ๆ		😊
+2698	genuine		adj: แท้, จริงใจ	This is a genuine leather bag.	นี่เป็นกระเป๋าหนังแท้		
+2699	vessel	vessels	n: เรือ, ภาชนะ, หลอดเลือด	A large vessel entered the port.	เรือลำใหญ่เข้าสู่ท่าเรือ		🚢
+2700	verb	verbs	n: คำกริยา	"Run" is a verb.	"Run" เป็นคำกริยา		

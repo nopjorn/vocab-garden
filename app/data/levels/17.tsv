@@ -1,101 +1,101 @@
 rank	headword	forms	meanings	example_en	example_th	note	emoji
-1601	soft	softer, softest					
-1602	row	rows, rowed, rowing					
-1603	youth	youths					
-1604	lock	locks, locked, locking					
-1605	fuel	fuels, fueled, fueling					
-1606	expectation	expectations					
-1607	employment	employments					
-1608	celebrate	celebrates, celebrated, celebrating					
-1609	sexual						
-1610	shoulder	shoulders, shouldered					
-1611	breath	breaths					
-1612	increasingly						
-1613	import	imports, imported, importing					
-1614	bottle	bottles, bottled, bottling					
-1615	ourselves						
-1616	sheet	sheets, sheeted, sheeting					
-1617	engine	engines					
-1618	cast	casts, casted, casting, castings					
-1619	notion	notions					
-1620	conservative	conservatives					
-1621	journey	journeys, journeyed, journeying					
-1622	opposition	oppositions					
-1623	relief	reliefs					
-1624	debt	debts					
-1625	honor	honors, honored, honoring, honour, honours, honoured, honouring					
-1626	outcome	outcomes					
-1627	blame	blames, blamed, blaming					
-1628	explanation	explanations					
-1629	arise	arises, arose, arising, arisen					
-1630	musical	musicals					
-1631	recover	recovers, recovered, recovering					
-1632	dad	dads, daddy, daddies					
-1633	stretch	stretches, stretched, stretching					
-1634	declare	declares, declared, declaring					
-1635	retire	retires, retired, retiring					
-1636	tiny	tinier, tiniest					
-1637	careful						
-1638	suitable						
-1639	native	natives					
-1640	fruit	fruits, fruited, fruiting					
-1641	analyze	analyzes, analyzed, analyzing, analyse, analysed, analysing					
-1642	witness	witnesses, witnessed, witnessing					
-1643	mail	mails, mailed, mailing, mailings					
-1644	terrible						
-1645	researcher	researchers					
-1646	ordinary						
-1647	selection	selections					
-1648	anywhere						
-1649	mental						
-1650	participant	participants					
-1651	vision	visions					
-1652	personality	personalities					
-1653	specifically						
-1654	fat	fats, fatter, fattest					
-1655	entry	entries					
-1656	fellow	fellows					
-1657	chemical	chemicals					
-1658	capture	captures, captured, capturing					
-1659	tip	tips, tipped, tipping					
-1660	discount	discounts, discounted, discounting					
-1661	peak	peaks, peaked, peaking					
-1662	chairman	chairmen					
-1663	proportion	proportions, proportioned, proportioning					
-1664	ear	ears, eared					
-1665	disappear	disappears, disappeared, disappearing					
-1666	shout	shouts, shouted, shouting					
-1667	yard	yards					
-1668	constant	constants					
-1669	significantly						
-1670	hill	hills, hilled, hilling					
-1671	considerable						
-1672	instruction	instructions					
-1673	intelligence	intelligences					
-1674	ideal	ideals					
-1675	folk	folks					
-1676	surely						
-1677	guard	guards, guarded, guarding					
-1678	cat	cats					
-1679	somewhat						
-1680	kiss	kisses, kissed, kissing					
-1681	presentation	presentations					
-1682	joint	joints, jointed, jointing					
-1683	compete	competes, competed, competing					
-1684	poll	polls, polled, polling					
-1685	weak	weaker, weakest					
-1686	faith	faiths					
-1687	reduction	reductions					
-1688	reserve	reserves, reserved, reserving					
-1689	complaint	complaints					
-1690	bore	bores, bored, boring					
-1691	mission	missions					
-1692	somehow						
-1693	tone	tones, toned, toning					
-1694	neighborhood	neighborhoods, neighbourhood, neighbourhoods					
-1695	passenger	passengers					
-1696	justice	justices					
-1697	phase	phases, phased, phasing					
-1698	thin	thins, thinned, thinning, thinner, thinnest					
-1699	rush	rushes, rushed, rushing					
-1700	formal	formals					
+1601	soft	softer, softest	adj: นุ่ม, เบา (เสียง)	The pillow is very soft.	หมอนใบนี้นุ่มมาก		🧸
+1602	row	rows, rowed, rowing	n: แถว, แนว | v: พาย (เรือ)	We sat in the front row.	เรานั่งแถวหน้า		
+1603	youth	youths	n: เยาวชน, วัยหนุ่มสาว	Young people need good youth programs.	เยาวชนต้องการกิจกรรมดี ๆ สำหรับวัยรุ่น		
+1604	lock	locks, locked, locking	n: กุญแจล็อก, ที่ล็อก | v: ล็อก, ใส่กุญแจ	Please lock the door when you leave.	กรุณาล็อกประตูเมื่อออกไป		🔒
+1605	fuel	fuels, fueled, fueling	n: เชื้อเพลิง, น้ำมัน | v: เติมเชื้อเพลิง	The car needs more fuel.	รถต้องเติมน้ำมันเพิ่ม		⛽
+1606	expectation	expectations	n: ความคาดหวัง	She has high expectations for her students.	เธอคาดหวังสูงกับนักเรียนของเธอ		
+1607	employment	employments	n: การจ้างงาน, งาน	He found employment at a hotel.	เขาได้งานทำที่โรงแรม		
+1608	celebrate	celebrates, celebrated, celebrating	v: เฉลิมฉลอง, ฉลอง	We celebrate New Year with our family.	เราฉลองปีใหม่กับครอบครัว		🎉
+1609	sexual		adj: เกี่ยวกับเรื่องเพศ	The class teaches students about sexual health.	วิชานี้สอนนักเรียนเรื่องสุขภาพทางเพศ		
+1610	shoulder	shoulders, shouldered	n: ไหล่ | v: แบก	She put her bag on her shoulder.	เธอสะพายกระเป๋าไว้บนไหล่		
+1611	breath	breaths	n: ลมหายใจ, การหายใจ	Take a deep breath.	หายใจเข้าลึก ๆ		
+1612	increasingly		adv: มากขึ้นเรื่อย ๆ	Cities are becoming increasingly crowded.	เมืองต่าง ๆ แออัดมากขึ้นเรื่อย ๆ		
+1613	import	imports, imported, importing	v: นำเข้า | n: สินค้านำเข้า	Thailand imports oil from other countries.	ประเทศไทยนำเข้าน้ำมันจากประเทศอื่น		
+1614	bottle	bottles, bottled, bottling	n: ขวด | v: บรรจุขวด	I bought a bottle of water.	ฉันซื้อน้ำหนึ่งขวด		🍼
+1615	ourselves		pron: ตัวพวกเราเอง	We made the cake ourselves.	พวกเราทำเค้กกันเอง		
+1616	sheet	sheets, sheeted, sheeting	n: แผ่น, ผืน	I need a clean sheet of paper.	ฉันต้องการกระดาษสะอาดหนึ่งแผ่น		📄
+1617	engine	engines	n: เครื่องยนต์, หัวรถจักร	The car has a powerful engine.	รถคันนี้มีเครื่องยนต์แรง		
+1618	cast	casts, casted, casting, castings	v: โยน, ทอด, เลือกนักแสดง | n: นักแสดงทั้งหมด, เฝือก	The director cast her as the lead.	ผู้กำกับเลือกเธอให้แสดงนำ	รูปอดีตคือ cast (เหมือนเดิม)	
+1619	notion	notions	n: แนวคิด, ความเข้าใจ	I have no notion what he means.	ฉันไม่เข้าใจเลยว่าเขาหมายถึงอะไร		
+1620	conservative	conservatives	adj: อนุรักษ์นิยม, ระมัดระวัง | n: ผู้อนุรักษ์นิยม	My grandfather has conservative ideas.	คุณตาของฉันมีความคิดแบบอนุรักษ์นิยม		
+1621	journey	journeys, journeyed, journeying	n: การเดินทาง, ระยะทาง | v: เดินทาง	The journey to the island takes three hours.	การเดินทางไปเกาะใช้เวลาสามชั่วโมง		🚂
+1622	opposition	oppositions	n: ฝ่ายตรงข้าม, การคัดค้าน	There was strong opposition to the plan.	มีการคัดค้านแผนนี้อย่างหนัก		
+1623	relief	reliefs	n: ความโล่งใจ, การบรรเทา	It was a relief to hear the good news.	โล่งใจที่ได้ฟังข่าวดี		😮‍💨
+1624	debt	debts	n: หนี้	He paid all his debts.	เขาใช้หนี้ทั้งหมดแล้ว		
+1625	honor	honors, honored, honoring, honour, honours, honoured, honouring	n: เกียรติ, ความภาคภูมิใจ | v: ให้เกียรติ	It is an honor to meet you.	เป็นเกียรติที่ได้พบคุณ	สะกดแบบอังกฤษคือ honour	
+1626	outcome	outcomes	n: ผลลัพธ์	We are waiting for the outcome of the test.	เรากำลังรอผลของการทดสอบ		
+1627	blame	blames, blamed, blaming	v: โทษ, กล่าวโทษ | n: ความผิด	Do not blame yourself.	อย่าโทษตัวเองเลย		
+1628	explanation	explanations	n: คำอธิบาย	Can you give me an explanation?	คุณอธิบายให้ฉันฟังได้ไหม		
+1629	arise	arises, arose, arising, arisen	v: เกิดขึ้น, เกิดขึ้นมา	A new problem has arisen.	เกิดปัญหาใหม่ขึ้น	รูปอดีตคือ arose / รูป V3 คือ arisen	
+1630	musical	musicals	adj: เกี่ยวกับดนตรี, มีพรสวรรค์ทางดนตรี | n: ละครเพลง	She is a musical person.	เธอเป็นคนมีพรสวรรค์ทางดนตรี		🎶
+1631	recover	recovers, recovered, recovering	v: ฟื้นตัว, หายป่วย, ได้คืน	He is recovering from a cold.	เขากำลังฟื้นตัวจากหวัด		
+1632	dad	dads, daddy, daddies	n: พ่อ (ภาษาพูด)	My dad cooks every weekend.	พ่อของฉันทำอาหารทุกสุดสัปดาห์		👨
+1633	stretch	stretches, stretched, stretching	v: ยืด, เหยียด | n: ช่วงยาว, การยืด	Stretch your arms before you run.	ยืดแขนก่อนวิ่ง		🧘
+1634	declare	declares, declared, declaring	v: ประกาศ, แจ้ง, แถลง	The school declared a holiday.	โรงเรียนประกาศวันหยุด		
+1635	retire	retires, retired, retiring	v: เกษียณ, เลิกทำงาน	My father will retire next year.	พ่อของฉันจะเกษียณปีหน้า		
+1636	tiny	tinier, tiniest	adj: เล็กจิ๋ว	A tiny bird sat on my hand.	นกตัวเล็กจิ๋วเกาะอยู่บนมือฉัน		
+1637	careful		adj: ระมัดระวัง, รอบคอบ	Be careful on the stairs.	ระวังตอนเดินบนบันไดนะ		
+1638	suitable		adj: เหมาะสม, เหมาะกับ	This room is suitable for a small party.	ห้องนี้เหมาะกับงานปาร์ตี้เล็ก ๆ		
+1639	native	natives	adj: โดยกำเนิด, พื้นเมือง | n: ชาวพื้นเมือง	English is her native language.	ภาษาอังกฤษเป็นภาษาแม่ของเธอ		
+1640	fruit	fruits, fruited, fruiting	n: ผลไม้ | v: ออกผล	I eat fruit every day.	ฉันกินผลไม้ทุกวัน	เป็นนามนับไม่ได้ (fruit) ใช้พหูพจน์ fruits เมื่อพูดถึงหลายชนิด	🍎
+1641	analyze	analyzes, analyzed, analyzing, analyse, analysed, analysing	v: วิเคราะห์	The scientist will analyze the data.	นักวิทยาศาสตร์จะวิเคราะห์ข้อมูล		
+1642	witness	witnesses, witnessed, witnessing	n: พยาน | v: เป็นพยาน, เห็นกับตา	She was a witness to the accident.	เธอเป็นพยานเห็นอุบัติเหตุ		
+1643	mail	mails, mailed, mailing, mailings	n: จดหมาย, ไปรษณีย์ | v: ส่งทางไปรษณีย์	I checked the mail this morning.	เช้านี้ฉันเช็กจดหมาย		📬
+1644	terrible		adj: แย่มาก, น่ากลัว	The weather was terrible yesterday.	เมื่อวานอากาศแย่มาก		
+1645	researcher	researchers	n: นักวิจัย	The researcher studies sea animals.	นักวิจัยศึกษาสัตว์ทะเล		
+1646	ordinary		adj: ธรรมดา, สามัญ	It was an ordinary day.	วันนั้นเป็นวันธรรมดา ๆ วันหนึ่ง		
+1647	selection	selections	n: การเลือก, ชุดที่คัดมา	The shop has a good selection of books.	ร้านนี้มีหนังสือให้เลือกมากมาย		
+1648	anywhere		adv: ที่ไหนก็ได้, ที่ใด ๆ	I cannot find my keys anywhere.	ฉันหากุญแจไม่เจอที่ไหนเลย		
+1649	mental		adj: เกี่ยวกับจิตใจ, ทางจิต	Sleep is important for mental health.	การนอนสำคัญต่อสุขภาพจิต		
+1650	participant	participants	n: ผู้เข้าร่วม	There were fifty participants at the event.	มีผู้เข้าร่วมงานห้าสิบคน		
+1651	vision	visions	n: สายตา, วิสัยทัศน์, ภาพในฝัน	He has poor vision without glasses.	เขาสายตาไม่ดีถ้าไม่ใส่แว่น		👁️
+1652	personality	personalities	n: บุคลิกภาพ, นิสัย	She has a warm personality.	เธอมีบุคลิกอบอุ่น		
+1653	specifically		adv: โดยเฉพาะ, อย่างเจาะจง	I came here specifically to see you.	ฉันมาที่นี่เพื่อพบคุณโดยเฉพาะ		
+1654	fat	fats, fatter, fattest	adj: อ้วน | n: ไขมัน	Too much fat food is bad for you.	อาหารมันมากเกินไปไม่ดีต่อสุขภาพ		
+1655	entry	entries	n: การเข้า, รายการที่บันทึก, ทางเข้า	Entry to the museum is free.	เข้าชมพิพิธภัณฑ์ฟรี		
+1656	fellow	fellows	n: เพื่อนร่วมกลุ่ม, เพื่อน | adj: ร่วม	He is a fellow teacher at my school.	เขาเป็นเพื่อนครูที่โรงเรียนของฉัน		
+1657	chemical	chemicals	adj: เกี่ยวกับเคมี | n: สารเคมี	Do not mix these chemicals.	อย่าผสมสารเคมีเหล่านี้		🧪
+1658	capture	captures, captured, capturing	v: จับ, ถ่ายภาพ, ยึด | n: การจับกุม	The photo captured the beautiful sunset.	ภาพนี้จับภาพพระอาทิตย์ตกที่สวยงามไว้		📸
+1659	tip	tips, tipped, tipping	n: เคล็ดลับ, ทิป, ปลายแหลม | v: ให้ทิป	Thank you for the useful tips.	ขอบคุณสำหรับเคล็ดลับที่มีประโยชน์		
+1660	discount	discounts, discounted, discounting	n: ส่วนลด | v: ลดราคา	I got a ten percent discount.	ฉันได้ส่วนลดสิบเปอร์เซ็นต์		🏷️
+1661	peak	peaks, peaked, peaking	n: ยอด, จุดสูงสุด | v: ขึ้นถึงจุดสูงสุด	We reached the peak of the mountain.	เราขึ้นถึงยอดเขา		🏔️
+1662	chairman	chairmen	n: ประธาน (ที่ประชุม)	The chairman opened the meeting.	ประธานเปิดการประชุม	พหูพจน์คือ chairmen	
+1663	proportion	proportions, proportioned, proportioning	n: สัดส่วน, ส่วน	A large proportion of students walk to school.	นักเรียนส่วนใหญ่เดินไปโรงเรียน		
+1664	ear	ears, eared	n: หู	She whispered in my ear.	เธอกระซิบข้างหูฉัน		👂
+1665	disappear	disappears, disappeared, disappearing	v: หายไป, สูญหาย	My keys disappeared again.	กุญแจของฉันหายไปอีกแล้ว		
+1666	shout	shouts, shouted, shouting	v: ตะโกน | n: เสียงตะโกน	Please do not shout in the library.	กรุณาอย่าตะโกนในห้องสมุด		📣
+1667	yard	yards	n: สนามหญ้า, หลา (หน่วยวัด)	The children play in the yard.	เด็ก ๆ เล่นในสนามหญ้า		
+1668	constant	constants	adj: คงที่, ต่อเนื่อง | n: ค่าคงที่	The noise was constant all night.	เสียงดังไม่หยุดทั้งคืน		
+1669	significantly		adv: อย่างมีนัยสำคัญ, มาก	Prices rose significantly last year.	ราคาขึ้นมากเมื่อปีที่แล้ว		
+1670	hill	hills, hilled, hilling	n: เนินเขา, เนิน	We walked up the hill.	เราเดินขึ้นเนินเขา		⛰️
+1671	considerable		adj: มาก, ไม่น้อย	It took a considerable amount of time.	ใช้เวลาไปไม่น้อยเลย		
+1672	instruction	instructions	n: คำสั่ง, คำแนะนำ, การสอน	Please read the instructions carefully.	กรุณาอ่านคำแนะนำให้ละเอียด		
+1673	intelligence	intelligences	n: ความฉลาด, ปัญญา, ข่าวกรอง	He has high intelligence.	เขามีความฉลาดสูง		🧠
+1674	ideal	ideals	adj: ในอุดมคติ, สมบูรณ์แบบ | n: อุดมคติ	This is an ideal place for a picnic.	ที่นี่เป็นที่ที่เหมาะกับการปิกนิกมาก		
+1675	folk	folks	n: คนทั่วไป, ผู้คน | adj: พื้นบ้าน	Hello, folks!	สวัสดีทุกคน	folks เป็นคำภาษาพูดใช้เรียกคนหลายคน เช่น Hi folks	
+1676	surely		adv: แน่นอน, ย่อมต้อง	Surely you can see the difference.	คุณต้องเห็นความแตกต่างแน่ ๆ		
+1677	guard	guards, guarded, guarding	n: ยาม, ผู้คุ้มกัน | v: เฝ้า, ป้องกัน	The guard stood at the gate.	ยามยืนอยู่ที่ประตู		💂
+1678	cat	cats	n: แมว	My cat sleeps all day.	แมวของฉันนอนทั้งวัน		🐱
+1679	somewhat		adv: ค่อนข้าง, ในระดับหนึ่ง	I am somewhat tired today.	วันนี้ฉันค่อนข้างเหนื่อย		
+1680	kiss	kisses, kissed, kissing	v: จูบ | n: จูบ	She kissed her baby goodnight.	เธอหอมแก้มลูกก่อนนอน		😘
+1681	presentation	presentations	n: การนำเสนอ, การมอบ	I gave a presentation at school.	ฉันนำเสนอหน้าชั้นเรียน		
+1682	joint	joints, jointed, jointing	n: ข้อต่อ, ตำแหน่งที่ต่อกัน | adj: ร่วมกัน	My knee joint hurts.	ข้อเข่าของฉันเจ็บ		
+1683	compete	competes, competed, competing	v: แข่งขัน	Ten teams compete in the final.	สิบทีมแข่งขันกันในรอบสุดท้าย		🏁
+1684	poll	polls, polled, polling	n: การสำรวจความเห็น, การลงคะแนน	The poll shows most people like the plan.	ผลสำรวจแสดงว่าคนส่วนใหญ่ชอบแผนนี้		
+1685	weak	weaker, weakest	adj: อ่อนแอ, จาง	The tea is too weak.	ชาอ่อนเกินไป		
+1686	faith	faiths	n: ศรัทธา, ความเชื่อใจ	I have faith in you.	ฉันเชื่อมั่นในตัวคุณ		
+1687	reduction	reductions	n: การลดลง, ส่วนลด	There is a price reduction this week.	สัปดาห์นี้มีลดราคา		
+1688	reserve	reserves, reserved, reserving	v: จอง, สงวนไว้ | n: เงินสำรอง, เขตสงวน	I reserved a table for four.	ฉันจองโต๊ะสำหรับสี่คนไว้แล้ว		
+1689	complaint	complaints	n: คำร้องเรียน, เรื่องที่บ่น	I wrote a complaint to the hotel.	ฉันเขียนคำร้องเรียนไปยังโรงแรม		
+1690	bore	bores, bored, boring	v: เจาะ, ทำให้เบื่อ | n: คนน่าเบื่อ	The long speech bored everyone.	สุนทรพจน์ที่ยาวเหยียดทำให้ทุกคนเบื่อ	bore ยังเป็นรูปอดีตของ bear (ทน) ได้ด้วย / bored = รู้สึกเบื่อ boring = น่าเบื่อ	
+1691	mission	missions	n: ภารกิจ, คณะทูต	The team started a new mission.	ทีมเริ่มภารกิจใหม่		
+1692	somehow		adv: ด้วยวิธีใดวิธีหนึ่ง, ไม่รู้ทำไม	Somehow, I always forget my umbrella.	ไม่รู้เป็นไง ฉันลืมร่มทุกที		
+1693	tone	tones, toned, toning	n: น้ำเสียง, สี, โทน	Her tone was kind.	น้ำเสียงของเธออ่อนโยน		
+1694	neighborhood	neighborhoods, neighbourhood, neighbourhoods	n: ย่านที่อยู่อาศัย, ละแวกบ้าน	We live in a quiet neighborhood.	เราอาศัยอยู่ในละแวกที่เงียบสงบ		🏘️
+1695	passenger	passengers	n: ผู้โดยสาร	The passenger sat next to the window.	ผู้โดยสารนั่งข้างหน้าต่าง		
+1696	justice	justices	n: ความยุติธรรม, ผู้พิพากษา	Everyone wants justice.	ทุกคนต้องการความยุติธรรม		⚖️
+1697	phase	phases, phased, phasing	n: ระยะ, ช่วง, ขั้น	This is the first phase of the project.	นี่เป็นระยะแรกของโครงการ		
+1698	thin	thins, thinned, thinning, thinner, thinnest	adj: บาง, ผอม | v: ทำให้บางลง	The paper is very thin.	กระดาษนี้บางมาก		
+1699	rush	rushes, rushed, rushing	v: รีบเร่ง, พุ่ง | n: ความเร่งรีบ	Do not rush, we have time.	ไม่ต้องรีบ เรามีเวลา		
+1700	formal	formals	adj: เป็นทางการ	Please wear formal clothes.	กรุณาสวมชุดสุภาพเป็นทางการ		

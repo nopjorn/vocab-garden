@@ -1930,6 +1930,10 @@ function renderWotdSetup() {
     ),
   );
   $("wotd-pool-count").textContent = `สุ่มได้ ${wotdPool(today).length} คำ`;
+  const levelText = levels.size === allLevels.length ? "ทุกแปลง" : levels.size === 0 ? "ยังไม่ได้เลือกแปลง" : `${levels.size} แปลง`;
+  const chosenStages = STAGES.filter((stage) => stages.has(stage.id));
+  const stageText = chosenStages.length === STAGES.length ? "ทุกระยะ" : chosenStages.length === 0 ? "ยังไม่ได้เลือกระยะ" : chosenStages.map((stage) => stage.emoji).join("");
+  $("wotd-filter-summary").textContent = `${levelText} · ${stageText}`;
 }
 
 // สร้างไฟล์ปฏิทิน (.ics) นัดทุกวัน ให้ดาวน์โหลดไปเปิดด้วยแอปปฏิทิน

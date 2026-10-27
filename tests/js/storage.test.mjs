@@ -29,10 +29,23 @@ test("settings default to 10 new words a day starting from level 1 with the syst
     roundSize: 10,
     playLevels: null,
     playStatuses: ["new", "learning", "done"],
+    wotdLevels: null,
+    wotdStages: ["seed", "sprout", "growing", "tree"],
     quizMode: "flip",
     quizTyping: true,
     scheduler: "sm2",
   });
+});
+
+test("the random-word pool is saved, and invalid values fall back to all levels and all stages", () => {
+  const storage = createStorage(fakeStore());
+  storage.saveSettings({ ...DEFAULT_SETTINGS, wotdLevels: ["01", "sup"], wotdStages: ["tree"] });
+  assert.deepEqual(storage.loadSettings().wotdLevels, ["01", "sup"]);
+  assert.deepEqual(storage.loadSettings().wotdStages, ["tree"]);
+  const read = (saved) => createStorage(fakeStore({ "vg:settings": JSON.stringify(saved) })).loadSettings();
+  assert.equal(read({ wotdLevels: "all" }).wotdLevels, null);
+  assert.deepEqual(read({ wotdStages: ["bogus", "tree", "seed", "tree"] }).wotdStages, ["seed", "tree"]);
+  assert.deepEqual(read({ wotdStages: "none" }).wotdStages, ["seed", "sprout", "growing", "tree"]);
 });
 
 test("startLevel is saved and read back", () => {

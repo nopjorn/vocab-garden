@@ -1,101 +1,101 @@
 rank	headword	forms	meanings	example_en	example_th	note	emoji
-1901	cope	copes, coped, coping					
-1902	approximately						
-1903	accommodation	accommodations					
-1904	highlight	highlights, highlighted, highlighting					
-1905	reporter	reporters					
-1906	climate	climates					
-1907	shirt	shirts, shirted, shirting					
-1908	exception	exceptions					
-1909	corporation	corporations					
-1910	chip	chips, chipped, chipping					
-1911	winner	winners					
-1912	encounter	encounters, encountered, encountering					
-1913	brown	browns, browned, browning, browner, brownest					
-1914	breathe	breathes, breathed, breathing					
-1915	excuse	excuses, excused, excusing					
-1916	partly						
-1917	tennis						
-1918	urban						
-1919	confuse	confuses, confused, confusing					
-1920	southern						
-1921	output	outputs, outputted, outputting					
-1922	beauty	beauties					
-1923	massive						
-1924	install	installs, installed, installing					
-1925	calculate	calculates, calculated, calculating					
-1926	mouse	mouses, mice					
-1927	mathematics	mathematic, math, maths					
-1928	upper	uppers					
-1929	creation	creations					
-1930	occupy	occupies, occupied, occupying					
-1931	outline	outlines, outlined, outlining					
-1932	sufficient						
-1933	update	updates, updated, updating					
-1934	luck	lucks, lucked, lucking					
-1935	preserve	preserves, preserved, preserving					
-1936	split	splits, splitting					
-1937	swing	swings, swung, swinging					
-1938	illness	illnesses					
-1939	journalist	journalists					
-1940	sudden						
-1941	advertisement	advertisements, advertisment, advertisments					
-1942	consistent						
-1943	originally						
-1944	aside	asides					
-1945	comfort	comforts, comforted, comforting					
-1946	secondly						
-1947	severe	severer, severest					
-1948	gene	genes					
-1949	prospect	prospects, prospected, prospecting					
-1950	snow	snows, snowed, snowing					
-1951	plot	plots, plotted, plotting					
-1952	neck	necks, necked, necking					
-1953	criteria						
-1954	primarily						
-1955	integrate	integrates, integrated, integrating					
-1956	criticism	criticisms					
-1957	convention	conventions					
-1958	bet	bets, betted, betting					
-1959	retain	retains, retained, retaining					
-1960	sequence	sequences, sequenced, sequencing, sequencings					
-1961	plain	plains, plainer, plainest					
-1962	volunteer	volunteers, volunteered, volunteering					
-1963	rural						
-1964	calm	calms, calmed, calming, calmer, calmest					
-1965	abandon	abandons, abandoned, abandoning					
-1966	examination	examinations					
-1967	silence	silences, silenced, silencing					
-1968	rapidly						
-1969	efficient						
-1970	revolution	revolutions					
-1971	delight	delights, delighted, delighting					
-1972	spell	spells, spelled, spelling, spelt, spellings					
-1973	premise	premises, premised, premising					
-1974	lean	leans, leaned, leaning, leanings, leant, leaner, leanest					
-1975	dramatic	dramatics					
-1976	differ	differs, differed, differing					
-1977	grateful						
-1978	protein	proteins					
-1979	bike	bikes, biked, biking					
-1980	distribute	distributes, distributed, distributing					
-1981	intellectual	intellectuals					
-1982	derive	derives, derived, deriving					
-1983	crucial						
-1984	unemployment						
-1985	wheel	wheels, wheeled, wheeling					
-1986	crop	crops, cropped, cropping					
-1987	minority	minorities					
-1988	origin	origins					
-1989	interpretation	interpretations					
-1990	gentleman	gentlemen					
-1991	drama	dramas					
-1992	landscape	landscapes, landscaped, landscaping					
-1993	educate	educates, educated, educating					
-1994	toy	toys, toyed, toying					
-1995	fault	faults, faulted, faulting					
-1996	exhibit	exhibits, exhibited, exhibiting					
-1997	minor	minors					
-1998	hunt	hunts, hunted, hunting					
-1999	storm	storms, stormed, storming					
-2000	thick	thicker, thickest					
+1901	cope	copes, coped, coping	v: รับมือ, จัดการได้	She copes well with stress.	เธอรับมือกับความเครียดได้ดี	มักตามด้วย with เช่น cope with	
+1902	approximately		adv: ประมาณ, โดยประมาณ	It takes approximately an hour.	ใช้เวลาประมาณหนึ่งชั่วโมง		
+1903	accommodation	accommodations	n: ที่พัก	The hotel offers cheap accommodation.	โรงแรมนี้มีที่พักราคาถูก		🏨
+1904	highlight	highlights, highlighted, highlighting	v: เน้น, ไฮไลต์ | n: จุดเด่น	Please highlight the important words.	กรุณาไฮไลต์คำที่สำคัญ		🖍️
+1905	reporter	reporters	n: ผู้สื่อข่าว, นักข่าว	The reporter asked a question.	ผู้สื่อข่าวถามคำถามหนึ่ง		🎙️
+1906	climate	climates	n: ภูมิอากาศ, บรรยากาศ	The climate here is hot and wet.	ภูมิอากาศที่นี่ร้อนและชื้น		
+1907	shirt	shirts, shirted, shirting	n: เสื้อเชิ้ต	He wears a white shirt to work.	เขาใส่เสื้อเชิ้ตสีขาวไปทำงาน		👔
+1908	exception	exceptions	n: ข้อยกเว้น	There is an exception to every rule.	ทุกกฎมีข้อยกเว้น		
+1909	corporation	corporations	n: บริษัท, องค์กรขนาดใหญ่	He works for a large corporation.	เขาทำงานให้บริษัทขนาดใหญ่		
+1910	chip	chips, chipped, chipping	n: ชิป, มันฝรั่งทอด, เศษชิ้นเล็ก | v: บิ่น	The cup has a small chip.	ถ้วยใบนี้มีรอยบิ่นเล็ก ๆ		🍟
+1911	winner	winners	n: ผู้ชนะ	The winner got a gold medal.	ผู้ชนะได้เหรียญทอง		🏆
+1912	encounter	encounters, encountered, encountering	v: พบเจอ, เผชิญ | n: การเผชิญหน้า	We encountered a problem on the way.	เราเจอปัญหาระหว่างทาง		
+1913	brown	browns, browned, browning, browner, brownest	adj: สีน้ำตาล | n: สีน้ำตาล	She has big brown eyes.	เธอมีดวงตาสีน้ำตาลโต		🟤
+1914	breathe	breathes, breathed, breathing	v: หายใจ	Breathe slowly and relax.	หายใจช้า ๆ แล้วผ่อนคลาย	breathe (กริยา) ออกเสียงต่างจาก breath (นาม)	
+1915	excuse	excuses, excused, excusing	n: ข้ออ้าง, คำแก้ตัว | v: ให้อภัย, ยกโทษ	Excuse me, where is the station?	ขอโทษนะคะ สถานีอยู่ที่ไหน		
+1916	partly		adv: บางส่วน, ส่วนหนึ่ง	The road is partly closed.	ถนนปิดบางส่วน		
+1917	tennis		n: เทนนิส	We play tennis on Saturdays.	เราเล่นเทนนิสวันเสาร์		🎾
+1918	urban		adj: เกี่ยวกับเมือง, ในเมือง	Many people move to urban areas.	หลายคนย้ายเข้าไปอยู่ในเขตเมือง		🏙️
+1919	confuse	confuses, confused, confusing	v: ทำให้สับสน	The map confused me.	แผนที่นี้ทำให้ฉันสับสน	confused = สับสน / confusing = น่าสับสน	
+1920	southern		adj: ทางใต้, ภาคใต้	Southern Thailand has many beaches.	ภาคใต้ของไทยมีชายหาดมากมาย		
+1921	output	outputs, outputted, outputting	n: ผลผลิต, ข้อมูลที่ออก | v: ผลิต	The factory doubled its output.	โรงงานเพิ่มผลผลิตเป็นสองเท่า		
+1922	beauty	beauties	n: ความงาม, ความสวย	I love the beauty of this lake.	ฉันชอบความงามของทะเลสาบแห่งนี้		🌺
+1923	massive		adj: มหึมา, ใหญ่โต	A massive tree fell during the storm.	ต้นไม้ใหญ่ล้มลงในพายุ		
+1924	install	installs, installed, installing	v: ติดตั้ง, ลง (โปรแกรม)	He installed the new software.	เขาติดตั้งซอฟต์แวร์ตัวใหม่		
+1925	calculate	calculates, calculated, calculating	v: คำนวณ	Can you calculate the total cost?	คุณคิดราคารวมทั้งหมดได้ไหม		🧮
+1926	mouse	mouses, mice	n: หนู, เมาส์	A mouse ran across the floor.	หนูตัวหนึ่งวิ่งข้ามพื้น	พหูพจน์คือ mice / เมาส์คอมพิวเตอร์ใช้คำเดียวกัน (mouse) ได้ด้วย	🐭
+1927	mathematics	mathematic, math, maths	n: คณิตศาสตร์	Mathematics is my favorite subject.	คณิตศาสตร์เป็นวิชาที่ฉันชอบที่สุด	ภาษาพูดนิยมใช้ math (สหรัฐ) หรือ maths (อังกฤษ)	🧮
+1928	upper	uppers	adj: บน, ส่วนบน | n: ส่วนหน้าของรองเท้า	She lives on the upper floor.	เธออาศัยอยู่ชั้นบน		
+1929	creation	creations	n: การสร้าง, ผลงานสร้างสรรค์	The creation of the park took two years.	การสร้างสวนสาธารณะใช้เวลาสองปี		
+1930	occupy	occupies, occupied, occupying	v: ยึดครอง, ใช้พื้นที่, ทำให้ยุ่ง	The family occupies the whole second floor.	ครอบครัวนี้ใช้ชั้นสองทั้งชั้น		
+1931	outline	outlines, outlined, outlining	n: โครงร่าง, เค้าโครง | v: ร่างโครงร่าง	Write an outline before you start your essay.	เขียนโครงร่างก่อนเริ่มเรียงความ		
+1932	sufficient		adj: เพียงพอ	Is this amount sufficient?	จำนวนนี้พอไหม		
+1933	update	updates, updated, updating	v: อัปเดต, ปรับปรุงให้ทันสมัย | n: การอัปเดต	Please update the app.	กรุณาอัปเดตแอป		🔄
+1934	luck	lucks, lucked, lucking	n: โชค, ดวง	Good luck with your exam!	ขอให้โชคดีกับการสอบนะ		🍀
+1935	preserve	preserves, preserved, preserving	v: รักษา, สงวน, ถนอม | n: เขตสงวน, แยม	We must preserve the forest.	เราต้องรักษาป่าไว้		
+1936	split	splits, splitting	v: แยก, แบ่ง | n: การแยก, รอยแยก	Let's split the bill.	มาแบ่งจ่ายค่าอาหารกันเถอะ	รูปอดีตคือ split (เหมือนเดิม)	
+1937	swing	swings, swung, swinging	v: แกว่ง, โยก | n: ชิงช้า, การแกว่ง	The children swing in the park.	เด็ก ๆ เล่นชิงช้าในสวน	รูปอดีตคือ swung	
+1938	illness	illnesses	n: โรค, การเจ็บป่วย	She recovered from a long illness.	เธอหายจากการป่วยที่ยาวนาน		
+1939	journalist	journalists	n: นักข่าว, ผู้สื่อข่าว	The journalist wrote a story about the flood.	นักข่าวเขียนข่าวเกี่ยวกับน้ำท่วม		
+1940	sudden		adj: ฉับพลัน, กะทันหัน	There was a sudden noise.	มีเสียงดังขึ้นกะทันหัน		
+1941	advertisement	advertisements, advertisment, advertisments	n: โฆษณา	I saw an advertisement for a new phone.	ฉันเห็นโฆษณาโทรศัพท์รุ่นใหม่		📢
+1942	consistent		adj: สม่ำเสมอ, สอดคล้อง	She is a consistent student.	เธอเป็นนักเรียนที่ทำได้สม่ำเสมอ		
+1943	originally		adv: แต่เดิม, แรกเริ่ม	The house was originally a school.	บ้านหลังนี้เดิมเป็นโรงเรียน		
+1944	aside	asides	adv: ข้าง ๆ, ไปทางหนึ่ง | n: คำพูดแทรก	He stepped aside to let her pass.	เขาก้าวหลบไปข้าง ๆ ให้เธอผ่าน		
+1945	comfort	comforts, comforted, comforting	n: ความสบาย, การปลอบใจ | v: ปลอบโยน	She comforted the crying child.	เธอปลอบเด็กที่กำลังร้องไห้		
+1946	secondly		adv: ประการที่สอง, ข้อสอง	Firstly, it is cheap. Secondly, it is close.	ข้อแรก ราคาถูก ข้อสอง อยู่ใกล้	ใช้เรียงข้อโต้แย้ง ต่อจาก firstly	
+1947	severe	severer, severest	adj: รุนแรง, เข้มงวด	There was a severe storm last night.	เมื่อคืนมีพายุรุนแรง		
+1948	gene	genes	n: ยีน	Eye color comes from genes.	สีตามาจากยีน		🧬
+1949	prospect	prospects, prospected, prospecting	n: โอกาส, แนวโน้ม, ความหวัง	There is a good prospect of rain.	มีโอกาสสูงที่ฝนจะตก		
+1950	snow	snows, snowed, snowing	n: หิมะ | v: หิมะตก	It snows a lot in winter.	หน้าหนาวหิมะตกบ่อย		❄️
+1951	plot	plots, plotted, plotting	n: โครงเรื่อง, แปลงที่ดิน, แผนลับ | v: วางแผน, ลงจุดกราฟ	The plot of the film was easy to follow.	โครงเรื่องของหนังเข้าใจง่าย		
+1952	neck	necks, necked, necking	n: คอ	He wore a scarf around his neck.	เขาพันผ้าพันคอรอบคอ		
+1953	criteria		n: เกณฑ์, หลักเกณฑ์ (พหูพจน์ของ criterion)	What are the criteria for this job?	เกณฑ์ของงานนี้คืออะไร	เอกพจน์คือ criterion	
+1954	primarily		adv: เป็นหลัก, ส่วนใหญ่	The shop is primarily for tourists.	ร้านนี้เน้นนักท่องเที่ยวเป็นหลัก		
+1955	integrate	integrates, integrated, integrating	v: รวมเข้าด้วยกัน, ผสมผสาน	The school integrates music into every class.	โรงเรียนผสมดนตรีเข้าในทุกวิชา		
+1956	criticism	criticisms	n: การวิจารณ์, ข้อตำหนิ	He accepted the criticism calmly.	เขารับคำวิจารณ์อย่างสงบ		
+1957	convention	conventions	n: ธรรมเนียม, การประชุมใหญ่, อนุสัญญา	It is a convention to say thank you.	การกล่าวขอบคุณเป็นธรรมเนียม		
+1958	bet	bets, betted, betting	v: พนัน, เดิมพัน | n: การเดิมพัน	I bet he will be late again.	ฉันเดาว่าเขาจะมาสายอีกแน่	bet เป็นรูปเดียวกันทั้งอดีตและ V3 (ในภาษาพูด)	
+1959	retain	retains, retained, retaining	v: เก็บรักษาไว้, รักษา	Please retain your receipt.	กรุณาเก็บใบเสร็จไว้		
+1960	sequence	sequences, sequenced, sequencing, sequencings	n: ลำดับ, ชุด	Follow this sequence of steps.	ทำตามลำดับขั้นตอนนี้		
+1961	plain	plains, plainer, plainest	adj: เรียบ ๆ, ธรรมดา, ชัดเจน | n: ที่ราบ	She wore a plain white dress.	เธอสวมชุดสีขาวเรียบ ๆ		
+1962	volunteer	volunteers, volunteered, volunteering	n: อาสาสมัคร | v: อาสา	He volunteered to help at the event.	เขาอาสามาช่วยงาน		🙋
+1963	rural		adj: เกี่ยวกับชนบท	She grew up in a rural area.	เธอเติบโตในพื้นที่ชนบท		🌾
+1964	calm	calms, calmed, calming, calmer, calmest	adj: สงบ, เยือกเย็น | v: ทำให้สงบ	Stay calm and breathe slowly.	ใจเย็น ๆ แล้วหายใจช้า ๆ		
+1965	abandon	abandons, abandoned, abandoning	v: ทอดทิ้ง, ละทิ้ง	They abandoned the old house.	พวกเขาทิ้งบ้านเก่าหลังนั้น		
+1966	examination	examinations	n: การสอบ, การตรวจสอบ	I have an examination tomorrow.	พรุ่งนี้ฉันมีสอบ		📝
+1967	silence	silences, silenced, silencing	n: ความเงียบ | v: ทำให้เงียบ	There was silence in the room.	ในห้องเงียบสนิท		🤫
+1968	rapidly		adv: อย่างรวดเร็ว	The weather changed rapidly.	อากาศเปลี่ยนอย่างรวดเร็ว		
+1969	efficient		adj: มีประสิทธิภาพ, ประหยัดแรง	This machine is very efficient.	เครื่องนี้ทำงานได้ดีมาก		
+1970	revolution	revolutions	n: การปฏิวัติ, การหมุนรอบ	The industrial revolution changed the world.	การปฏิวัติอุตสาหกรรมเปลี่ยนโลก		
+1971	delight	delights, delighted, delighting	n: ความปีติยินดี | v: ทำให้ยินดี	The children screamed with delight.	เด็ก ๆ กรีดร้องด้วยความดีใจ		
+1972	spell	spells, spelled, spelling, spelt, spellings	v: สะกดคำ, ทำให้เกิด | n: คาถา, ช่วงเวลา	How do you spell your name?	ชื่อคุณสะกดว่าอย่างไร		
+1973	premise	premises, premised, premising	n: ข้อตั้ง, สถานที่ (premises) | v: ตั้งเป็นสมมติฐาน	No smoking on the premises.	ห้ามสูบบุหรี่ภายในอาคารนี้	premises (พหูพจน์) มักหมายถึง "บริเวณอาคาร"	
+1974	lean	leans, leaned, leaning, leanings, leant, leaner, leanest	v: เอน, พิง, โน้มตัว | adj: ผอม, ไม่ติดมัน	Do not lean on the glass door.	อย่าพิงประตูกระจก		
+1975	dramatic	dramatics	adj: น่าทึ่ง, ตื่นเต้น, เกี่ยวกับละคร	The film has a dramatic ending.	หนังเรื่องนี้จบอย่างน่าตื่นเต้น		
+1976	differ	differs, differed, differing	v: แตกต่างกัน, เห็นต่างกัน	Our opinions differ.	ความเห็นของเราต่างกัน		
+1977	grateful		adj: ซาบซึ้งบุญคุณ, กตัญญู	I am grateful for your help.	ฉันขอบคุณมากสำหรับความช่วยเหลือ		🙏
+1978	protein	proteins	n: โปรตีน	Eggs are a good source of protein.	ไข่เป็นแหล่งโปรตีนที่ดี		🥚
+1979	bike	bikes, biked, biking	n: จักรยาน, มอเตอร์ไซค์ | v: ปั่นจักรยาน	I go to school by bike.	ฉันปั่นจักรยานไปโรงเรียน		🚲
+1980	distribute	distributes, distributed, distributing	v: แจกจ่าย, กระจาย	The teacher distributed the papers.	ครูแจกกระดาษให้นักเรียน		
+1981	intellectual	intellectuals	adj: ทางปัญญา, ใช้ความคิด | n: ปัญญาชน	He enjoys intellectual games.	เขาชอบเกมที่ใช้ความคิด		
+1982	derive	derives, derived, deriving	v: ได้มาจาก, สืบเนื่องจาก	This word is derived from Latin.	คำนี้มาจากภาษาละติน	มักตามด้วย from เช่น derive from	
+1983	crucial		adj: สำคัญอย่างยิ่ง, เป็นหัวใจ	Sleep is crucial for good health.	การนอนสำคัญอย่างยิ่งต่อสุขภาพ		
+1984	unemployment		n: การว่างงาน	Unemployment is rising in the city.	การว่างงานในเมืองกำลังเพิ่มขึ้น		
+1985	wheel	wheels, wheeled, wheeling	n: ล้อ, พวงมาลัย | v: เข็น	The car has a flat wheel.	รถคันนี้ล้อแบน		🛞
+1986	crop	crops, cropped, cropping	n: พืชผล, ผลผลิตทางเกษตร | v: ตัด, ตัดแต่ง	Rice is the main crop here.	ข้าวเป็นพืชผลหลักที่นี่		🌾
+1987	minority	minorities	n: คนกลุ่มน้อย, เสียงข้างน้อย	Only a minority voted no.	มีเพียงส่วนน้อยที่ลงคะแนนไม่เห็นด้วย		
+1988	origin	origins	n: ต้นกำเนิด, ที่มา	What is the origin of this word?	คำนี้มีที่มาอย่างไร		
+1989	interpretation	interpretations	n: การตีความ, การแปลความ	There are two interpretations of the story.	เรื่องนี้ตีความได้สองแบบ		
+1990	gentleman	gentlemen	n: สุภาพบุรุษ, ผู้ชายสุภาพ	He is a real gentleman.	เขาเป็นสุภาพบุรุษตัวจริง	พหูพจน์คือ gentlemen	🎩
+1991	drama	dramas	n: ละคร, เหตุการณ์ระทึกขวัญ	She loves Thai drama on TV.	เธอชอบดูละครไทยทางทีวี		🎭
+1992	landscape	landscapes, landscaped, landscaping	n: ทิวทัศน์, ภูมิทัศน์ | v: จัดสวน	The landscape here is beautiful.	ทิวทัศน์ที่นี่สวยงามมาก		🏞️
+1993	educate	educates, educated, educating	v: ให้การศึกษา, อบรม	Parents want to educate their children.	พ่อแม่อยากให้การศึกษาแก่ลูก		
+1994	toy	toys, toyed, toying	n: ของเล่น | v: เล่น, ลองคิด	The baby plays with a toy car.	ทารกเล่นรถของเล่น		🧸
+1995	fault	faults, faulted, faulting	n: ความผิด, ข้อบกพร่อง | v: ตำหนิ	It is my fault, not yours.	เป็นความผิดของฉัน ไม่ใช่ของคุณ		
+1996	exhibit	exhibits, exhibited, exhibiting	v: จัดแสดง, แสดงให้เห็น | n: ของที่จัดแสดง	The museum exhibits old coins.	พิพิธภัณฑ์จัดแสดงเหรียญเก่า		
+1997	minor	minors	adj: เล็กน้อย, ไม่สำคัญ | n: ผู้เยาว์ | v: เรียนวิชารอง	It is only a minor problem.	มันเป็นแค่ปัญหาเล็กน้อย		
+1998	hunt	hunts, hunted, hunting	v: ล่า, ค้นหา | n: การล่า	The cat hunts mice at night.	แมวล่าหนูตอนกลางคืน		
+1999	storm	storms, stormed, storming	n: พายุ | v: โหมกระหน่ำ, บุก	A big storm is coming.	พายุลูกใหญ่กำลังมา		⛈️
+2000	thick	thicker, thickest	adj: หนา, ข้น, ทึบ	The soup is too thick.	ซุปนี้ข้นเกินไป		

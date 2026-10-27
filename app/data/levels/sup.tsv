@@ -1,53 +1,53 @@
 rank	headword	forms	meanings	example_en	example_th	note	emoji
-S1	Monday	Mondays					
-S2	Tuesday	Tuesdays					
-S3	Wednesday	Wednesdays					
-S4	Thursday	Thursdays					
-S5	Friday	Fridays					
-S6	Saturday	Saturdays					
-S7	Sunday	Sundays					
-S8	January	Januarys, Januaries					
-S9	February	Februarys, Februaries					
-S10	March	Marchs, marched, marching, marchings					
-S11	April	Aprils					
-S12	May	Mays					
-S13	June	Junes					
-S14	July	Julys					
-S15	August	Augusts					
-S16	September	Septembers					
-S17	October	Octobers					
-S18	November	Novembers					
-S19	December	Decembers					
-S20	two	twos					
-S21	three	threes, third, thirds					
-S22	four	fours, fourth, fourths					
-S23	five	fives, fifth, fifths					
-S24	six	sixs, sixth, sixths					
-S25	seven	sevens, seventh, sevenths					
-S26	eight	eights, eighth, eighths					
-S27	nine	nines, ninth, ninths					
-S28	ten	tens, tenth, tenths					
-S29	eleven	elevens, eleventh, elevenths					
-S30	twelve	twelves, twelfth, twelfths					
-S31	thirteen	thirteens, thirteenth, thirteenths					
-S32	fourteen	fourteens, fourteenth, fourteenths					
-S33	fifteen	fifteens, fifteenth, fifteenths					
-S34	sixteen	sixteens, sixteenth, sixteenths					
-S35	seventeen	seventeens, seventeenth, seventeenths					
-S36	eighteen	eighteens, eighteenth, eighteenths					
-S37	nineteen	nineteens, nineteenth, nineteenths					
-S38	twenty	twentys, twenties, twentieth, twentieths					
-S39	thirty	thirtys, thirties, thirtieth, thirtieths					
-S40	forty	fortys, forties, fortieth, fortieths					
-S41	fifty	fiftys, fifties, fiftieth, fiftieths					
-S42	sixty	sixtys, sixties, sixtieth, sixtieths					
-S43	seventy	seventys, seventies, seventieth, seventieths					
-S44	eighty	eightys, eighties, eightieth, eightieths					
-S45	ninety	ninetys, nineties, ninetieth, ninetieths					
-S46	hundred	hundreds, hundredth, hundredths					
-S47	thousand	thousands, thousandth, thousandths					
-S48	million	millions, millionth, millionths					
-S49	billion	billions, billionth, billionths					
-S50	trillion	trillions, trillionth, trillionths					
-S51	quadrillion	quadrillions, quadrillionth, quadrillionths					
-S52	quintillion	quintillions, quintillionth, quintillionths					
+S1	Monday	Mondays	n: วันจันทร์	I have English class on Monday.	ฉันมีเรียนภาษาอังกฤษวันจันทร์	ชื่อวันและชื่อเดือนในภาษาอังกฤษขึ้นต้นด้วยตัวพิมพ์ใหญ่เสมอ	
+S2	Tuesday	Tuesdays	n: วันอังคาร	The shop is closed on Tuesday.	ร้านปิดวันอังคาร	ใช้ on นำหน้าชื่อวัน	
+S3	Wednesday	Wednesdays	n: วันพุธ	We have a meeting on Wednesday.	เรามีประชุมวันพุธ		
+S4	Thursday	Thursdays	n: วันพฤหัสบดี	My sister arrives on Thursday.	พี่สาวของฉันมาถึงวันพฤหัสบดี		
+S5	Friday	Fridays	n: วันศุกร์	Friday is my favorite day.	วันศุกร์เป็นวันโปรดของฉัน		
+S6	Saturday	Saturdays	n: วันเสาร์	We go to the market on Saturday.	เราไปตลาดวันเสาร์		
+S7	Sunday	Sundays	n: วันอาทิตย์	I rest at home on Sunday.	ฉันพักผ่อนที่บ้านวันอาทิตย์		
+S8	January	Januarys, Januaries	n: เดือนมกราคม	January is cool in Thailand.	เดือนมกราคมอากาศเย็นในประเทศไทย	ใช้ in นำหน้าชื่อเดือน เช่น in January	
+S9	February	Februarys, Februaries	n: เดือนกุมภาพันธ์	February is the shortest month.	กุมภาพันธ์เป็นเดือนที่สั้นที่สุด		
+S10	March	Marchs, marched, marching, marchings	n: เดือนมีนาคม	March is hot in Thailand.	เดือนมีนาคมอากาศร้อนในประเทศไทย	march (ตัวเล็ก) ที่เป็นคำกริยา "เดินแถว" อยู่ที่การ์ด march	
+S11	April	Aprils	n: เดือนเมษายน	Songkran is in April.	สงกรานต์อยู่ในเดือนเมษายน		
+S12	May	Mays	n: เดือนพฤษภาคม	My birthday is in May.	วันเกิดของฉันอยู่ในเดือนพฤษภาคม	May (ตัวใหญ่) = เดือนพฤษภาคม ส่วน may (ตัวเล็ก) เป็นกริยาช่วย อยู่ที่การ์ด may	
+S13	June	Junes	n: เดือนมิถุนายน	The rainy season starts in June.	ฤดูฝนเริ่มในเดือนมิถุนายน		
+S14	July	Julys	n: เดือนกรกฎาคม	Many students go back to school in July.	นักเรียนหลายคนกลับไปโรงเรียนในเดือนกรกฎาคม		
+S15	August	Augusts	n: เดือนสิงหาคม	Mother's Day is in August.	วันแม่อยู่ในเดือนสิงหาคม		
+S16	September	Septembers	n: เดือนกันยายน	September is a rainy month.	เดือนกันยายนเป็นเดือนที่ฝนตกชุก		
+S17	October	Octobers	n: เดือนตุลาคม	The school holiday starts in October.	ปิดเทอมเริ่มในเดือนตุลาคม		
+S18	November	Novembers	n: เดือนพฤศจิกายน	Loy Krathong is in November.	ลอยกระทงอยู่ในเดือนพฤศจิกายน		
+S19	December	Decembers	n: เดือนธันวาคม	We celebrate New Year in December.	เราฉลองปีใหม่ในเดือนธันวาคม		
+S20	two	twos	num: สอง, 2	I have two brothers.	ฉันมีพี่ชายน้องชายสองคน		
+S21	three	threes, third, thirds	num: สาม, 3 | num: ที่สาม (third)	She lives on the third floor.	เธออาศัยอยู่ชั้นสาม	third = ที่สาม, ลำดับที่ 3	
+S22	four	fours, fourth, fourths	num: สี่, 4 | num: ที่สี่ (fourth)	There are four seasons in many countries.	หลายประเทศมีสี่ฤดู	fourth = ที่สี่, ลำดับที่ 4	
+S23	five	fives, fifth, fifths	num: ห้า, 5 | num: ที่ห้า (fifth)	I have five books.	ฉันมีหนังสือห้าเล่ม	fifth = ที่ห้า, ลำดับที่ 5	
+S24	six	sixs, sixth, sixths	num: หก, 6 | num: ที่หก (sixth)	The class starts at six o'clock.	คาบเรียนเริ่มหกโมง	sixth = ที่หก, ลำดับที่ 6	
+S25	seven	sevens, seventh, sevenths	num: เจ็ด, 7 | num: ที่เจ็ด (seventh)	There are seven days in a week.	หนึ่งสัปดาห์มีเจ็ดวัน	seventh = ที่เจ็ด, ลำดับที่ 7	
+S26	eight	eights, eighth, eighths	num: แปด, 8 | num: ที่แปด (eighth)	The shop opens at eight.	ร้านเปิดตอนแปดโมง	eighth = ที่แปด, ลำดับที่ 8	
+S27	nine	nines, ninth, ninths	num: เก้า, 9 | num: ที่เก้า (ninth)	My son is nine years old.	ลูกชายของฉันอายุเก้าขวบ	ninth = ที่เก้า, ลำดับที่ 9	
+S28	ten	tens, tenth, tenths	num: สิบ, 10 | num: ที่สิบ (tenth)	Count to ten, please.	กรุณานับถึงสิบ	tenth = ที่สิบ, ลำดับที่ 10	
+S29	eleven	elevens, eleventh, elevenths	num: สิบเอ็ด, 11	Eleven players are on the field.	มีผู้เล่นสิบเอ็ดคนอยู่ในสนาม	eleventh = ที่สิบเอ็ด	
+S30	twelve	twelves, twelfth, twelfths	num: สิบสอง, 12	A year has twelve months.	หนึ่งปีมีสิบสองเดือน	twelfth = ที่สิบสอง	
+S31	thirteen	thirteens, thirteenth, thirteenths	num: สิบสาม, 13	She is thirteen years old.	เธออายุสิบสามปี	thirteenth = ที่สิบสาม	
+S32	fourteen	fourteens, fourteenth, fourteenths	num: สิบสี่, 14	There are fourteen students in my class.	ห้องของฉันมีนักเรียนสิบสี่คน	fourteenth = ที่สิบสี่	
+S33	fifteen	fifteens, fifteenth, fifteenths	num: สิบห้า, 15	The class takes fifteen minutes.	คาบเรียนนี้ใช้เวลาสิบห้านาที	fifteenth = ที่สิบห้า	
+S34	sixteen	sixteens, sixteenth, sixteenths	num: สิบหก, 16	He will be sixteen next year.	ปีหน้าเขาจะอายุสิบหกปี	sixteenth = ที่สิบหก	
+S35	seventeen	seventeens, seventeenth, seventeenths	num: สิบเจ็ด, 17	There are seventeen apples in the box.	ในกล่องมีแอปเปิลสิบเจ็ดลูก	seventeenth = ที่สิบเจ็ด	
+S36	eighteen	eighteens, eighteenth, eighteenths	num: สิบแปด, 18	You can drive at eighteen.	คุณขับรถได้เมื่ออายุสิบแปดปี	eighteenth = ที่สิบแปด	
+S37	nineteen	nineteens, nineteenth, nineteenths	num: สิบเก้า, 19	My cousin is nineteen years old.	ลูกพี่ลูกน้องของฉันอายุสิบเก้าปี	nineteenth = ที่สิบเก้า	
+S38	twenty	twentys, twenties, twentieth, twentieths	num: ยี่สิบ, 20	There are twenty students here.	ที่นี่มีนักเรียนยี่สิบคน	twentieth = ที่ยี่สิบ / twenties (the twenties) = ช่วงอายุหรือทศวรรษที่ 20	
+S39	thirty	thirtys, thirties, thirtieth, thirtieths	num: สามสิบ, 30	It takes thirty minutes by bus.	ใช้เวลาสามสิบนาทีถ้านั่งรถเมล์	thirtieth = ที่สามสิบ	
+S40	forty	fortys, forties, fortieth, fortieths	num: สี่สิบ, 40	My father is forty years old.	พ่อของฉันอายุสี่สิบปี	fortieth = ที่สี่สิบ (สะกดว่า forty ไม่ใช่ fourty)	
+S41	fifty	fiftys, fifties, fiftieth, fiftieths	num: ห้าสิบ, 50	The book costs fifty baht.	หนังสือเล่มนี้ราคาห้าสิบบาท	fiftieth = ที่ห้าสิบ	
+S42	sixty	sixtys, sixties, sixtieth, sixtieths	num: หกสิบ, 60	An hour has sixty minutes.	หนึ่งชั่วโมงมีหกสิบนาที	sixtieth = ที่หกสิบ	
+S43	seventy	seventys, seventies, seventieth, seventieths	num: เจ็ดสิบ, 70	My grandmother is seventy years old.	คุณยายของฉันอายุเจ็ดสิบปี	seventieth = ที่เจ็ดสิบ	
+S44	eighty	eightys, eighties, eightieth, eightieths	num: แปดสิบ, 80	The old man is eighty.	ชายชราอายุแปดสิบ	eightieth = ที่แปดสิบ	
+S45	ninety	ninetys, nineties, ninetieth, ninetieths	num: เก้าสิบ, 90	The test score was ninety.	คะแนนสอบคือเก้าสิบ	ninetieth = ที่เก้าสิบ	
+S46	hundred	hundreds, hundredth, hundredths	num: หนึ่งร้อย, 100	There are a hundred students in the hall.	มีนักเรียนหนึ่งร้อยคนในห้องโถง	hundredth = ที่หนึ่งร้อย / hundreds of = หลายร้อย	
+S47	thousand	thousands, thousandth, thousandths	num: หนึ่งพัน, 1,000	The room can hold a thousand people.	ห้องนี้จุคนได้หนึ่งพันคน	thousandth = ที่หนึ่งพัน / thousands of = หลายพัน	
+S48	million	millions, millionth, millionths	num: หนึ่งล้าน, 1,000,000	The city has one million people.	เมืองนี้มีประชากรหนึ่งล้านคน	millionth = ที่หนึ่งล้าน / millions of = หลายล้าน	
+S49	billion	billions, billionth, billionths	num: หนึ่งพันล้าน, 1,000,000,000	The company earns a billion dollars a year.	บริษัทนี้ได้เงินหนึ่งพันล้านดอลลาร์ต่อปี	billion = 1,000 ล้าน (ไม่ใช่ล้านล้าน) / billionth = ที่หนึ่งพันล้าน	
+S50	trillion	trillions, trillionth, trillionths	num: หนึ่งล้านล้าน, 1,000,000,000,000	The country's debt is one trillion dollars.	หนี้ของประเทศนี้อยู่ที่หนึ่งล้านล้านดอลลาร์	trillion = 1,000,000 ล้าน (หนึ่งล้านล้าน) / trillionth = ที่หนึ่งล้านล้าน	
+S51	quadrillion	quadrillions, quadrillionth, quadrillionths	num: หนึ่งพันล้านล้าน, 1,000,000,000,000,000	A quadrillion is a very big number.	ควอดริลเลียนเป็นตัวเลขที่ใหญ่มาก	quadrillion = 1,000 ล้านล้าน ใช้น้อยมากในชีวิตประจำวัน	
+S52	quintillion	quintillions, quintillionth, quintillionths	num: หนึ่งล้านล้านล้าน, 1,000,000,000,000,000,000	A quintillion has eighteen zeros.	ควินทิลเลียนมีศูนย์สิบแปดตัว	quintillion = 1,000,000 ล้านล้าน ใช้น้อยมากในชีวิตประจำวัน	

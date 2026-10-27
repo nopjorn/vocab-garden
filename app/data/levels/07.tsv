@@ -1,101 +1,101 @@
 rank	headword	forms	meanings	example_en	example_th	note	emoji
-601	particularly						
-602	wife	wives					
-603	sport	sports, sported, sporting					
-604	prepare	prepares, prepared, preparing					
-605	discuss	discusses, discussed, discussing					
-606	response	responses					
-607	voice	voices, voiced, voicing					
-608	piece	pieces, pieced, piecing					
-609	finish	finishes, finished, finishing					
-610	suppose	supposes, supposed, supposing					
-611	apply	applies, applied, applying					
-612	president	presidents					
-613	fire	fires, fired, firing, firings					
-614	compare	compares, compared, comparing					
-615	court	courts, courted, courting					
-616	police	polices, policed, policing					
-617	store	stores, stored, storing					
-618	poor	poorer, poorest					
-619	knowledge						
-620	laugh	laughs, laughed, laughing					
-621	arm	arms, armed, arming					
-622	heart	hearts, hearted					
-623	source	sources, sourced, sourcing					
-624	employee	employees					
-625	manage	manages, managed, managing					
-626	simply						
-627	bank	banks, banked, banking					
-628	firm	firms, firmed, firming, firmer, firmest					
-629	cell	cells, celled					
-630	article	articles, articled, articling					
-631	fast	fasts, fasted, fasting, faster, fastest					
-632	attack	attacks, attacked, attacking					
-633	foreign						
-634	surprise	surprises, surprised, surprising					
-635	feature	features, featured, featuring					
-636	factor	factors, factored, factoring, factorings					
-637	pretty	pretties, prettying, prettier, prettiest					
-638	recently						
-639	affect	affects, affected, affecting					
-640	drop	drops, dropped, dropping					
-641	recent						
-642	relate	relates, related, relating					
-643	official	officials					
-644	financial	financials					
-645	miss	misses, missed, missing					
-646	art	arts					
-647	campaign	campaigns, campaigned, campaigning					
-648	private						
-649	pause	pauses, paused, pausing					
-650	everyone						
-651	forget	forgets, forgot, forgetting, forgotten					
-652	page	pages, paged, paging					
-653	worry	worries, worried, worrying					
-654	summer	summers, summered					
-655	drink	drinks, drank, drunk, drinking					
-656	opinion	opinions, opinioned					
-657	park	parks, parked, parking					
-658	represent	represents, represented, representing					
-659	key	keys, keyed, keying					
-660	inside	insides					
-661	manager	managers					
-662	international	internationals					
-663	contain	contains, contained, containing					
-664	notice	notices, noticed, noticing					
-665	wonder	wonders, wondered, wondering, wonderings					
-666	nature	natures, natured					
-667	structure	structures, structured, structuring					
-668	section	sections, sectioned, sectioning					
-669	myself						
-670	exactly						
-671	plant	plants, planted, planting, plantings					
-672	paint	paints, painted, painting, paintings					
-673	worker	workers					
-674	press	presses, pressed, pressing, pressings					
-675	whatever						
-676	necessary	necessaries					
-677	region	regions					
-678	growth	growths					
-679	evening	evenings					
-680	influence	influences, influenced, influencing					
-681	respect	respects, respected, respecting					
-682	various						
-683	catch	catches, caught, catching					
-684	thus						
-685	skill	skills, skilled					
-686	attempt	attempts, attempted, attempting					
-687	son	sons					
-688	simple	simpler, simplest					
-689	medium	mediums					
-690	average	averages, averaged, averaging					
-691	stock	stocks, stocked, stocking					
-692	management	managements					
-693	character	characters					
-694	bed	beds, bedded, bedding, beddings					
-695	hit	hits, hitting					
-696	establish	establishes, established, establishing					
-697	indeed						
-698	final	finals					
-699	economy	economies					
-700	fit	fits, fitted, fitting, fitter, fittest, fittings					
+601	particularly		adv: โดยเฉพาะ, เป็นพิเศษ	I particularly like the last song.	ฉันชอบเพลงสุดท้ายเป็นพิเศษ		
+602	wife	wives	n: ภรรยา	His wife is a doctor.	ภรรยาของเขาเป็นหมอ	พหูพจน์คือ wives	👩
+603	sport	sports, sported, sporting	n: กีฬา | v: อวดสวมใส่	Football is my favorite sport.	ฟุตบอลเป็นกีฬาที่ฉันชอบที่สุด		⚽
+604	prepare	prepares, prepared, preparing	v: เตรียม, เตรียมตัว	I am preparing dinner now.	ตอนนี้ฉันกำลังเตรียมอาหารเย็น		
+605	discuss	discusses, discussed, discussing	v: พูดคุย, หารือ, ปรึกษา	We will discuss the plan tomorrow.	พรุ่งนี้เราจะหารือเรื่องแผนกัน	ไม่ต้องมี about ตามหลัง discuss	
+606	response	responses	n: คำตอบ, การตอบสนอง	I am waiting for your response.	ฉันกำลังรอคำตอบของคุณ		
+607	voice	voices, voiced, voicing	n: เสียง, เสียงพูด | v: แสดงความเห็น	She has a beautiful voice.	เธอมีเสียงไพเราะ		🗣️
+608	piece	pieces, pieced, piecing	n: ชิ้น, อัน, ท่อน	Would you like a piece of cake?	คุณอยากได้เค้กสักชิ้นไหม		🍰
+609	finish	finishes, finished, finishing	v: ทำให้เสร็จ, จบ | n: การเสร็จสิ้น, ผิวเคลือบ	I finished my homework at nine.	ฉันทำการบ้านเสร็จตอนเก้าโมง		🏁
+610	suppose	supposes, supposed, supposing	v: สมมติว่า, คิดว่า, น่าจะ	I suppose you are right.	ฉันคิดว่าคุณพูดถูก		
+611	apply	applies, applied, applying	v: สมัคร, ใช้, ทา	She applied for a job at the bank.	เธอสมัครงานที่ธนาคาร		
+612	president	presidents	n: ประธานาธิบดี, ประธาน	The president gave a short speech.	ประธานาธิบดีกล่าวสุนทรพจน์สั้น ๆ		
+613	fire	fires, fired, firing, firings	n: ไฟ, เพลิงไหม้ | v: ยิง, ไล่ออก	Please call the police if there is a fire.	ถ้ามีไฟไหม้ กรุณาโทรหาตำรวจ		🔥
+614	compare	compares, compared, comparing	v: เปรียบเทียบ	Let's compare the two phones.	มาเปรียบเทียบโทรศัพท์สองเครื่องนี้กัน		
+615	court	courts, courted, courting	n: ศาล, สนาม (กีฬา) | v: เกี้ยวพาราสี	He went to court yesterday.	เมื่อวานเขาไปศาล		⚖️
+616	police	polices, policed, policing	n: ตำรวจ	The police are looking for a boy.	ตำรวจกำลังตามหาเด็กชายคนหนึ่ง	ใช้เป็นพหูพจน์เสมอ เช่น The police are here	👮
+617	store	stores, stored, storing	n: ร้านค้า, คลัง | v: เก็บ, เก็บรักษา	I went to the store to buy milk.	ฉันไปร้านเพื่อซื้อนม		🏬
+618	poor	poorer, poorest	adj: จน, แย่, น่าสงสาร	The poor man had no food.	ชายผู้ยากจนไม่มีอาหารกิน		
+619	knowledge		n: ความรู้	Knowledge is power.	ความรู้คือพลัง		📚
+620	laugh	laughs, laughed, laughing	v: หัวเราะ | n: เสียงหัวเราะ	The baby laughed at the cat.	ทารกหัวเราะให้แมว		😂
+621	arm	arms, armed, arming	n: แขน, อาวุธ | v: ติดอาวุธ	She broke her arm last week.	สัปดาห์ที่แล้วเธอแขนหัก		💪
+622	heart	hearts, hearted	n: หัวใจ, ใจกลาง	My heart beats fast when I run.	หัวใจฉันเต้นเร็วเวลาวิ่ง		❤️
+623	source	sources, sourced, sourcing	n: แหล่ง, ต้นกำเนิด, แหล่งข้อมูล	The river is the source of our water.	แม่น้ำเป็นแหล่งน้ำของเรา		
+624	employee	employees	n: พนักงาน, ลูกจ้าง	The company has fifty employees.	บริษัทนี้มีพนักงานห้าสิบคน		
+625	manage	manages, managed, managing	v: จัดการ, บริหาร, ทำได้สำเร็จ	She manages a small shop.	เธอบริหารร้านเล็ก ๆ ร้านหนึ่ง		
+626	simply		adv: อย่างง่าย ๆ, เพียงแค่	Simply press the green button.	เพียงกดปุ่มสีเขียว		
+627	bank	banks, banked, banking	n: ธนาคาร, ริมฝั่ง	I need to go to the bank.	ฉันต้องไปธนาคาร		🏦
+628	firm	firms, firmed, firming, firmer, firmest	n: บริษัท, ห้างหุ้นส่วน | adj: แน่น, หนักแน่น	My father works for a law firm.	พ่อของฉันทำงานที่บริษัทกฎหมายแห่งหนึ่ง		
+629	cell	cells, celled	n: เซลล์, ห้องขัง, แบตเตอรี่	The doctor looked at a cell under the microscope.	หมอดูเซลล์ผ่านกล้องจุลทรรศน์		🔬
+630	article	articles, articled, articling	n: บทความ, สิ่งของ	I read an interesting article this morning.	เช้านี้ฉันอ่านบทความที่น่าสนใจ		📰
+631	fast	fasts, fasted, fasting, faster, fastest	adj: เร็ว | adv: อย่างรวดเร็ว | v: อดอาหาร	This car is very fast.	รถคันนี้เร็วมาก		⚡
+632	attack	attacks, attacked, attacking	v: โจมตี, จู่โจม | n: การโจมตี	The dog attacked the thief.	สุนัขกระโจนใส่ขโมย		
+633	foreign		adj: ต่างประเทศ, ต่างชาติ	She wants to study in a foreign country.	เธออยากไปเรียนต่อต่างประเทศ		🌍
+634	surprise	surprises, surprised, surprising	n: เซอร์ไพรส์, เรื่องที่ไม่คาดคิด | v: ทำให้ประหลาดใจ	The party was a big surprise.	งานปาร์ตี้นั้นเป็นเซอร์ไพรส์ครั้งใหญ่		🎁
+635	feature	features, featured, featuring	n: ลักษณะเด่น, คุณสมบัติ | v: มี...เป็นจุดเด่น	This phone has a great camera feature.	โทรศัพท์เครื่องนี้มีฟีเจอร์กล้องที่ยอดเยี่ยม		
+636	factor	factors, factored, factoring, factorings	n: ปัจจัย, องค์ประกอบ	Price is an important factor.	ราคาเป็นปัจจัยสำคัญ		
+637	pretty	pretties, prettying, prettier, prettiest	adj: สวย, น่ารัก | adv: ค่อนข้าง	She wore a pretty dress.	เธอสวมชุดสวย ๆ		🌸
+638	recently		adv: เมื่อไม่นานมานี้, เมื่อเร็ว ๆ นี้	I recently moved to a new house.	เมื่อไม่นานมานี้ฉันย้ายไปอยู่บ้านใหม่		
+639	affect	affects, affected, affecting	v: มีผลต่อ, ส่งผลกระทบ	The weather affects my mood.	อากาศส่งผลต่ออารมณ์ของฉัน	affect เป็นกริยา ส่วน effect เป็นคำนาม	
+640	drop	drops, dropped, dropping	v: ทำตก, ลดลง | n: หยด, การลดลง	Be careful not to drop the glass.	ระวังอย่าทำแก้วตกนะ		💧
+641	recent		adj: ล่าสุด, เมื่อไม่นานมานี้	She read a recent report.	เธออ่านรายงานล่าสุด		
+642	relate	relates, related, relating	v: เกี่ยวข้อง, เชื่อมโยง, เล่าเรื่อง	These two problems are related.	ปัญหาสองข้อนี้เกี่ยวข้องกัน		
+643	official	officials	n: เจ้าหน้าที่, ข้าราชการ | adj: เป็นทางการ	An official came to check the school.	เจ้าหน้าที่คนหนึ่งมาตรวจโรงเรียน		
+644	financial	financials	adj: เกี่ยวกับการเงิน	He asked for financial help.	เขาขอความช่วยเหลือทางการเงิน		💰
+645	miss	misses, missed, missing	v: พลาด, คิดถึง, ตกหล่น | n: การพลาด	I missed the last bus.	ฉันพลาดรถเมล์เที่ยวสุดท้าย		
+646	art	arts	n: ศิลปะ, งานศิลป์	She loves art and music.	เธอชอบศิลปะและดนตรี		🎨
+647	campaign	campaigns, campaigned, campaigning	n: การรณรงค์, การหาเสียง | v: รณรงค์	The campaign helps keep the beach clean.	แคมเปญนี้ช่วยรักษาความสะอาดของชายหาด		
+648	private		adj: ส่วนตัว, ไม่เปิดเผย	This is a private room.	นี่เป็นห้องส่วนตัว		🔒
+649	pause	pauses, paused, pausing	v: หยุดชั่วคราว, พัก | n: การหยุดพัก	Please pause the video.	กรุณากดหยุดวิดีโอไว้ก่อน		⏸️
+650	everyone		pron: ทุกคน	Everyone is here today.	วันนี้ทุกคนมาครบ		
+651	forget	forgets, forgot, forgetting, forgotten	v: ลืม	Don't forget your umbrella.	อย่าลืมร่มของคุณ	รูปอดีตคือ forgot / รูป V3 คือ forgotten	
+652	page	pages, paged, paging	n: หน้า (กระดาษ), หน้าเว็บ	Please open your book to page ten.	กรุณาเปิดหนังสือไปที่หน้าสิบ		📖
+653	worry	worries, worried, worrying	v: กังวล, เป็นห่วง | n: ความกังวล	Don't worry about me.	ไม่ต้องห่วงฉันนะ		😟
+654	summer	summers, summered	n: ฤดูร้อน	We go to the beach every summer.	เราไปทะเลทุกหน้าร้อน		☀️
+655	drink	drinks, drank, drunk, drinking	v: ดื่ม | n: เครื่องดื่ม	I drink water every morning.	ฉันดื่มน้ำทุกเช้า	รูปอดีตคือ drank / รูป V3 คือ drunk	🥤
+656	opinion	opinions, opinioned	n: ความคิดเห็น	In my opinion, this film is great.	ในความเห็นของฉัน หนังเรื่องนี้ยอดเยี่ยม		
+657	park	parks, parked, parking	n: สวนสาธารณะ | v: จอดรถ	We walk in the park after dinner.	เราเดินเล่นในสวนสาธารณะหลังกินข้าวเย็น		🌳
+658	represent	represents, represented, representing	v: เป็นตัวแทน, หมายถึง, แสดงถึง	This flag represents our country.	ธงนี้เป็นสัญลักษณ์แทนประเทศของเรา		
+659	key	keys, keyed, keying	n: กุญแจ, ปุ่ม, หัวใจสำคัญ | adj: สำคัญ	I lost the key to my room.	ฉันทำกุญแจห้องหาย		🔑
+660	inside	insides	adv: ข้างใน | prep: ภายใน | n: ด้านใน	The cat is sleeping inside.	แมวกำลังนอนอยู่ข้างใน		
+661	manager	managers	n: ผู้จัดการ	The manager is in a meeting.	ผู้จัดการกำลังประชุมอยู่		
+662	international	internationals	adj: ระหว่างประเทศ, สากล	He works for an international company.	เขาทำงานให้บริษัทระหว่างประเทศ		🌐
+663	contain	contains, contained, containing	v: บรรจุ, มีอยู่ข้างใน	This box contains old photos.	กล่องนี้มีรูปเก่า ๆ อยู่ข้างใน		
+664	notice	notices, noticed, noticing	v: สังเกตเห็น, รู้สึกตัว | n: ประกาศ, ใบแจ้ง	I noticed a new shop on the street.	ฉันสังเกตเห็นร้านใหม่บนถนน		
+665	wonder	wonders, wondered, wondering, wonderings	v: สงสัย, อยากรู้ | n: สิ่งมหัศจรรย์	I wonder where he is.	ฉันสงสัยว่าเขาอยู่ที่ไหน		🤔
+666	nature	natures, natured	n: ธรรมชาติ, นิสัย	I love walking in nature.	ฉันชอบเดินเล่นในธรรมชาติ		🌿
+667	structure	structures, structured, structuring	n: โครงสร้าง | v: จัดโครงสร้าง	The structure of the bridge is strong.	โครงสร้างของสะพานนี้แข็งแรง		
+668	section	sections, sectioned, sectioning	n: ส่วน, แผนก, หมวด	I work in the sales section.	ฉันทำงานในแผนกขาย		
+669	myself		pron: ตัวฉันเอง	I made this cake myself.	ฉันทำเค้กนี้ด้วยตัวเอง		
+670	exactly		adv: ตรงเป๊ะ, พอดี, แน่นอน	That is exactly what I need.	นั่นคือสิ่งที่ฉันต้องการพอดีเลย		
+671	plant	plants, planted, planting, plantings	n: พืช, ต้นไม้, โรงงาน | v: ปลูก	She planted a tree in the garden.	เธอปลูกต้นไม้ในสวน		🪴
+672	paint	paints, painted, painting, paintings	n: สี | v: ทาสี, วาดภาพ	He paints the wall white.	เขาทาผนังเป็นสีขาว		🎨
+673	worker	workers	n: คนงาน, ผู้ปฏิบัติงาน	The workers start at eight.	คนงานเริ่มงานตอนแปดโมง		
+674	press	presses, pressed, pressing, pressings	v: กด, บีบ, รีด | n: สื่อมวลชน	Press the button to start.	กดปุ่มเพื่อเริ่ม		
+675	whatever		pron: อะไรก็ตาม | adj: ไม่ว่าอะไร	You can eat whatever you like.	คุณกินอะไรก็ได้ที่ชอบ		
+676	necessary	necessaries	adj: จำเป็น	Water is necessary for life.	น้ำจำเป็นต่อชีวิต		
+677	region	regions	n: ภูมิภาค, เขต	This region is famous for its rice.	ภูมิภาคนี้มีชื่อเสียงเรื่องข้าว		
+678	growth	growths	n: การเติบโต, การเพิ่มขึ้น	Plants need sun for growth.	พืชต้องการแสงแดดเพื่อการเติบโต		🌱
+679	evening	evenings	n: ตอนเย็น, ช่วงค่ำ	We eat dinner in the evening.	เรากินข้าวเย็นตอนเย็น		🌆
+680	influence	influences, influenced, influencing	n: อิทธิพล | v: มีอิทธิพลต่อ, ชักจูง	Friends can influence your choices.	เพื่อนมีอิทธิพลต่อการเลือกของคุณได้		
+681	respect	respects, respected, respecting	n: ความเคารพ | v: เคารพ, นับถือ	We should respect our teachers.	เราควรเคารพครูของเรา		
+682	various		adj: หลากหลาย, ต่าง ๆ	The shop sells various kinds of tea.	ร้านนี้ขายชาหลายชนิด		
+683	catch	catches, caught, catching	v: จับ, รับ, ทัน (รถ)	I caught the bus at seven.	ฉันขึ้นรถเมล์ทันตอนเจ็ดโมง	รูปอดีตคือ caught	
+684	thus		adv: ดังนั้น, ด้วยเหตุนี้	He was ill, thus he stayed home.	เขาไม่สบาย จึงอยู่บ้าน		
+685	skill	skills, skilled	n: ทักษะ, ความชำนาญ	Cooking is a useful skill.	การทำอาหารเป็นทักษะที่มีประโยชน์		
+686	attempt	attempts, attempted, attempting	v: พยายาม, ลอง | n: ความพยายาม	He attempted to open the window.	เขาพยายามเปิดหน้าต่าง		
+687	son	sons	n: ลูกชาย	My son is five years old.	ลูกชายของฉันอายุห้าขวบ		👦
+688	simple	simpler, simplest	adj: ง่าย, เรียบง่าย	This is a simple recipe.	นี่เป็นสูตรอาหารที่ง่าย		
+689	medium	mediums	adj: ปานกลาง, ขนาดกลาง | n: สื่อ	I ordered a medium coffee.	ฉันสั่งกาแฟขนาดกลาง		
+690	average	averages, averaged, averaging	n: ค่าเฉลี่ย | adj: โดยเฉลี่ย, ธรรมดา	The average age of the class is twelve.	อายุเฉลี่ยของคนในห้องนี้คือสิบสองปี		
+691	stock	stocks, stocked, stocking	n: หุ้น, สินค้าคงคลัง, ซุป | v: เก็บสินค้า	The shop has plenty of stock.	ร้านนี้มีสินค้าอยู่เยอะ		
+692	management	managements	n: การบริหาร, ฝ่ายบริหาร	Good management saves time and money.	การบริหารที่ดีช่วยประหยัดเวลาและเงิน		
+693	character	characters	n: ตัวละคร, ลักษณะนิสัย, ตัวอักษร	She is my favorite character in the book.	เธอเป็นตัวละครที่ฉันชอบที่สุดในหนังสือ		
+694	bed	beds, bedded, bedding, beddings	n: เตียง, ท้องน้ำ	I go to bed at ten.	ฉันเข้านอนตอนสี่ทุ่ม		🛏️
+695	hit	hits, hitting	v: ตี, ชน, โดน | n: การตี, เพลงฮิต	He hit the ball hard.	เขาตีลูกบอลแรง ๆ	รูปอดีตคือ hit (เหมือนเดิม)	
+696	establish	establishes, established, establishing	v: ก่อตั้ง, สร้าง, พิสูจน์	The school was established in 1990.	โรงเรียนนี้ก่อตั้งเมื่อปี 1990		
+697	indeed		adv: จริง ๆ แล้ว, อย่างแท้จริง	It was indeed a long day.	วันนี้เป็นวันที่ยาวนานจริง ๆ		
+698	final	finals	adj: สุดท้าย | n: รอบชิงชนะเลิศ, การสอบปลายภาค	This is the final question.	นี่เป็นคำถามข้อสุดท้าย		
+699	economy	economies	n: เศรษฐกิจ, ความประหยัด	The economy is growing slowly.	เศรษฐกิจกำลังเติบโตอย่างช้า ๆ		
+700	fit	fits, fitted, fitting, fitter, fittest, fittings	v: พอดี, เหมาะ | adj: แข็งแรง, ฟิต	These shoes fit me well.	รองเท้าคู่นี้ใส่พอดีกับฉัน		

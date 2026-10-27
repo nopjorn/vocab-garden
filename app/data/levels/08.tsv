@@ -1,101 +1,101 @@
 rank	headword	forms	meanings	example_en	example_th	note	emoji
-701	guy	guys, guyed, guying					
-702	function	functions, functioned, functioning					
-703	yesterday	yesterdays					
-704	image	images, imaged, imaging					
-705	size	sizes, sized, sizing					
-706	behavior	behaviors, behaviour, behaviours					
-707	addition	additions					
-708	determine	determines, determined, determining					
-709	station	stations, stationed, stationing					
-710	population	populations					
-711	fail	fails, failed, failing, failings					
-712	environment	environments					
-713	production	productions					
-714	contract	contracts, contracted, contracting					
-715	player	players					
-716	comment	comments, commented, commenting					
-717	enter	enters, entered, entering					
-718	occur	occurs, occurred, occurring					
-719	alone						
-720	significant						
-721	drug	drugs, drugged, drugging					
-722	wall	walls, walled, walling					
-723	series						
-724	direct	directs, directed, directing					
-725	success	successes					
-726	tomorrow	tomorrows					
-727	director	directors					
-728	clearly						
-729	lack	lacks, lacked, lacking					
-730	review	reviews, reviewed, reviewing					
-731	depend	depends, depended, depending					
-732	race	races, raced, racing					
-733	recognize	recognizes, recognized, recognizing, recognise, recognises, recognised, recognising					
-734	window	windows, windowed, windowing					
-735	purpose	purposes, purposed, purposing					
-736	department	departments					
-737	gain	gains, gained, gaining					
-738	tree	trees					
-739	college	colleges					
-740	argue	argues, argued, arguing					
-741	board	boards, boarded, boarding					
-742	holiday	holidays, holidayed, holidaying					
-743	mark	marks, marked, marking, markings					
-744	church	churches, churched, churching					
-745	machine	machines, machined, machining					
-746	achieve	achieves, achieved, achieving					
-747	item	items					
-748	prove	proves, proved, proving, proven					
-749	cent	cents					
-750	season	seasons, seasoned, seasoning, seasonings					
-751	floor	floors, floored, flooring, floorings					
-752	stuff	stuffs, stuffed, stuffing					
-753	wide	wider, widest					
-754	anyone						
-755	method	methods					
-756	analysis	analyses					
-757	election	elections					
-758	military	militaries					
-759	hotel	hotels					
-760	club	clubs, clubbed, clubbing					
-761	below						
-762	movie	movies					
-763	doctor	doctors, doctored, doctoring					
-764	discussion	discussions					
-765	sorry	sorrier, sorriest					
-766	challenge	challenges, challenged, challenging					
-767	nation	nations					
-768	nearly						
-769	statement	statements					
-770	link	links, linked, linking					
-771	despite						
-772	introduce	introduces, introduced, introducing					
-773	advantage	advantages, advantaged					
-774	ready	readies, readied, readying, readier, readiest					
-775	marry	marries, married, marrying					
-776	strike	strikes, struck, striking					
-777	mile	miles					
-778	seek	seeks, sought, seeking					
-779	ability	abilities					
-780	unit	units					
-781	card	cards, carded, carding					
-782	hospital	hospitals					
-783	quickly						
-784	interview	interviews, interviewed, interviewing					
-785	agreement	agreements					
-786	release	releases, released, releasing					
-787	tax	taxes, taxed, taxing					
-788	solution	solutions					
-789	capital	capitals					
-790	popular						
-791	specific	specifics					
-792	beautiful						
-793	fear	fears, feared, fearing					
-794	aim	aims, aimed, aiming					
-795	television	televisions					
-796	serious						
-797	target	targets, targeted, targeting					
-798	degree	degrees					
-799	pull	pulls, pulled, pulling					
-800	red	reds, redder, reddest					
+701	guy	guys, guyed, guying	n: ผู้ชาย, หนุ่ม ๆ (ภาษาพูด)	That guy is my neighbor.	ผู้ชายคนนั้นเป็นเพื่อนบ้านของฉัน	guys ใช้เรียกกลุ่มคนได้ทั้งชายหญิงในภาษาพูด เช่น Hi guys	
+702	function	functions, functioned, functioning	n: หน้าที่, ฟังก์ชัน, งานเลี้ยง | v: ทำงาน, ใช้การได้	This button has a special function.	ปุ่มนี้มีหน้าที่พิเศษ		
+703	yesterday	yesterdays	adv: เมื่อวาน | n: เมื่อวานนี้	I saw him yesterday.	เมื่อวานฉันเจอเขา		
+704	image	images, imaged, imaging	n: ภาพ, รูปลักษณ์, ภาพลักษณ์	The image on the screen is clear.	ภาพบนหน้าจอคมชัด		🖼️
+705	size	sizes, sized, sizing	n: ขนาด, ไซซ์	What size shoes do you wear?	คุณใส่รองเท้าไซซ์อะไร		📏
+706	behavior	behaviors, behaviour, behaviours	n: พฤติกรรม, ความประพฤติ	His behavior in class is very good.	ความประพฤติของเขาในห้องเรียนดีมาก		
+707	addition	additions	n: การเพิ่ม, ส่วนที่เพิ่มเข้ามา	In addition, we need more chairs.	นอกจากนี้ เรายังต้องการเก้าอี้เพิ่ม	พบบ่อยในวลี in addition (นอกจากนี้) และ in addition to (นอกเหนือจาก)	
+708	determine	determines, determined, determining	v: ตัดสินใจ, กำหนด, หาให้แน่ชัด	We need to determine the best way.	เราต้องหาวิธีที่ดีที่สุดให้ได้		
+709	station	stations, stationed, stationing	n: สถานี | v: ประจำการ	The train station is near my house.	สถานีรถไฟอยู่ใกล้บ้านฉัน		🚉
+710	population	populations	n: ประชากร	The population of this city is growing.	ประชากรของเมืองนี้กำลังเพิ่มขึ้น		
+711	fail	fails, failed, failing, failings	v: ล้มเหลว, สอบตก	He failed the driving test.	เขาสอบใบขับขี่ไม่ผ่าน		
+712	environment	environments	n: สภาพแวดล้อม, สิ่งแวดล้อม	We must protect the environment.	เราต้องปกป้องสิ่งแวดล้อม		🌏
+713	production	productions	n: การผลิต, ผลผลิต	The production of rice starts in May.	การผลิตข้าวเริ่มในเดือนพฤษภาคม		
+714	contract	contracts, contracted, contracting	n: สัญญา | v: ทำสัญญา, หดตัว, ติด (โรค)	He signed a contract with the company.	เขาเซ็นสัญญากับบริษัท		📄
+715	player	players	n: ผู้เล่น, เครื่องเล่น	He is the best player on the team.	เขาเป็นผู้เล่นที่เก่งที่สุดในทีม		
+716	comment	comments, commented, commenting	n: ความคิดเห็น, คอมเมนต์ | v: แสดงความเห็น	She left a nice comment on my photo.	เธอคอมเมนต์ดี ๆ ใต้รูปของฉัน		💬
+717	enter	enters, entered, entering	v: เข้าไป, ป้อน (ข้อมูล), เข้าร่วม	Please enter the room quietly.	กรุณาเข้าห้องอย่างเงียบ ๆ		🚪
+718	occur	occurs, occurred, occurring	v: เกิดขึ้น, บังเกิด	The accident occurred last night.	อุบัติเหตุเกิดขึ้นเมื่อคืนนี้		
+719	alone		adj: อยู่คนเดียว | adv: โดยลำพัง	She lives alone.	เธออยู่คนเดียว		
+720	significant		adj: สำคัญ, มีนัยสำคัญ, มาก	There is a significant change in the weather.	อากาศเปลี่ยนไปมากอย่างเห็นได้ชัด		
+721	drug	drugs, drugged, drugging	n: ยา, ยาเสพติด | v: วางยา	The doctor gave me a new drug.	หมอให้ยาตัวใหม่แก่ฉัน		💊
+722	wall	walls, walled, walling	n: ผนัง, กำแพง	There is a clock on the wall.	มีนาฬิกาแขวนอยู่บนผนัง		🧱
+723	series		n: ชุด, ลำดับ, ซีรีส์	I am watching a new TV series.	ฉันกำลังดูซีรีส์ทีวีเรื่องใหม่	เอกพจน์และพหูพจน์สะกดเหมือนกัน คือ series	
+724	direct	directs, directed, directing	adj: ตรง, โดยตรง | v: ชี้นำ, สั่งการ, กำกับ	Is there a direct flight to Tokyo?	มีเที่ยวบินตรงไปโตเกียวไหม		
+725	success	successes	n: ความสำเร็จ	Hard work leads to success.	ความขยันนำไปสู่ความสำเร็จ		🏆
+726	tomorrow	tomorrows	adv: พรุ่งนี้ | n: วันพรุ่งนี้	I will see you tomorrow.	พรุ่งนี้เจอกันนะ		
+727	director	directors	n: ผู้อำนวยการ, ผู้กำกับ	The director of the film is famous.	ผู้กำกับหนังเรื่องนี้มีชื่อเสียง		🎬
+728	clearly		adv: อย่างชัดเจน, แน่นอน	He spoke clearly and slowly.	เขาพูดชัดเจนและช้า ๆ		
+729	lack	lacks, lacked, lacking	n: การขาดแคลน | v: ขาด, ไม่มี	The town has a lack of water.	เมืองนี้ขาดแคลนน้ำ		
+730	review	reviews, reviewed, reviewing	n: การทบทวน, บทวิจารณ์ | v: ทบทวน, รีวิว	I will review my notes tonight.	คืนนี้ฉันจะทบทวนโน้ตของฉัน		
+731	depend	depends, depended, depending	v: ขึ้นอยู่กับ, พึ่งพา	It depends on the weather.	มันขึ้นอยู่กับสภาพอากาศ	ตามด้วย on เสมอ เช่น depend on	
+732	race	races, raced, racing	n: การแข่งขัน (วิ่ง), เชื้อชาติ | v: แข่งขัน	He won the race.	เขาชนะการแข่งขันครั้งนั้น		🏃
+733	recognize	recognizes, recognized, recognizing, recognise, recognises, recognised, recognising	v: จำได้, ยอมรับ, ตระหนัก	I recognize your voice.	ฉันจำเสียงของคุณได้		
+734	window	windows, windowed, windowing	n: หน้าต่าง	Please open the window.	กรุณาเปิดหน้าต่าง		🪟
+735	purpose	purposes, purposed, purposing	n: จุดประสงค์, เป้าหมาย	What is the purpose of your visit?	จุดประสงค์ในการมาของคุณคืออะไร		
+736	department	departments	n: แผนก, ภาควิชา, กรม	She works in the sales department.	เธอทำงานในแผนกขาย		
+737	gain	gains, gained, gaining	v: ได้มา, เพิ่มขึ้น (น้ำหนัก) | n: กำไร, ผลที่ได้	I gained two kilos this month.	เดือนนี้ฉันน้ำหนักขึ้นสองกิโล		
+738	tree	trees	n: ต้นไม้	There is a big tree in front of my house.	มีต้นไม้ใหญ่อยู่หน้าบ้านฉัน		🌳
+739	college	colleges	n: วิทยาลัย, มหาวิทยาลัย	My sister goes to college in Bangkok.	พี่สาวฉันเรียนมหาวิทยาลัยในกรุงเทพฯ		🏫
+740	argue	argues, argued, arguing	v: โต้เถียง, ถกเถียง, ยืนยัน	They argue about money all the time.	พวกเขาเถียงกันเรื่องเงินตลอดเวลา		
+741	board	boards, boarded, boarding	n: กระดาน, คณะกรรมการ | v: ขึ้น (เรือ เครื่องบิน)	Please write your name on the board.	กรุณาเขียนชื่อของคุณบนกระดาน		
+742	holiday	holidays, holidayed, holidaying	n: วันหยุด, การพักร้อน	We are going on holiday next week.	สัปดาห์หน้าเราจะไปเที่ยวพักผ่อนกัน		🏖️
+743	mark	marks, marked, marking, markings	n: เครื่องหมาย, คะแนน | v: ทำเครื่องหมาย, ตรวจให้คะแนน	I got a good mark in math.	ฉันได้คะแนนคณิตศาสตร์ดี		
+744	church	churches, churched, churching	n: โบสถ์	The church is on the corner.	โบสถ์อยู่ตรงหัวมุม		⛪
+745	machine	machines, machined, machining	n: เครื่องจักร, เครื่อง	This machine makes ice.	เครื่องนี้ทำน้ำแข็ง		⚙️
+746	achieve	achieves, achieved, achieving	v: บรรลุ, ทำสำเร็จ	She achieved her dream.	เธอทำความฝันให้เป็นจริงได้		
+747	item	items	n: รายการ, สิ่งของ, ชิ้น	Please check every item on the list.	กรุณาตรวจทุกรายการในลิสต์		
+748	prove	proves, proved, proving, proven	v: พิสูจน์, แสดงให้เห็น	Can you prove that you are right?	คุณพิสูจน์ได้ไหมว่าคุณถูก	รูป V3 คือ proven (หรือ proved ก็ได้)	
+749	cent	cents	n: เซนต์ (หน่วยเงิน), เหรียญเล็ก	The candy costs fifty cents.	ลูกอมนี้ราคาห้าสิบเซนต์		
+750	season	seasons, seasoned, seasoning, seasonings	n: ฤดู, ช่วงเวลา | v: ปรุงรส	Summer is my favorite season.	ฤดูร้อนเป็นฤดูที่ฉันชอบที่สุด		🍂
+751	floor	floors, floored, flooring, floorings	n: พื้น, ชั้น (ของตึก)	My room is on the second floor.	ห้องของฉันอยู่ชั้นสอง		
+752	stuff	stuffs, stuffed, stuffing	n: ข้าวของ, สิ่งของ | v: ยัดใส่	I have a lot of stuff in my room.	ในห้องฉันมีข้าวของเยอะมาก		
+753	wide	wider, widest	adj: กว้าง, ใหญ่	The river is very wide here.	แม่น้ำตรงนี้กว้างมาก		
+754	anyone		pron: ใครก็ได้, ใคร (ในประโยคปฏิเสธและคำถาม)	Does anyone know the answer?	มีใครรู้คำตอบไหม		
+755	method	methods	n: วิธี, วิธีการ	This is an easy method to learn words.	นี่เป็นวิธีง่าย ๆ ในการเรียนรู้คำศัพท์		
+756	analysis	analyses	n: การวิเคราะห์	The analysis shows a clear result.	ผลวิเคราะห์แสดงให้เห็นผลที่ชัดเจน	พหูพจน์คือ analyses	
+757	election	elections	n: การเลือกตั้ง	The election will be held in May.	การเลือกตั้งจะจัดขึ้นในเดือนพฤษภาคม		🗳️
+758	military	militaries	adj: เกี่ยวกับทหาร | n: กองทัพ, ทหาร	He used to work in the military.	เขาเคยทำงานในกองทัพ		
+759	hotel	hotels	n: โรงแรม	We stayed at a small hotel.	เราพักที่โรงแรมเล็ก ๆ แห่งหนึ่ง		🏨
+760	club	clubs, clubbed, clubbing	n: ชมรม, สโมสร, ไม้กอล์ฟ	I joined the music club.	ฉันเข้าชมรมดนตรี		
+761	below		prep: ข้างล่าง, ต่ำกว่า | adv: ข้างล่าง	Write your name below the line.	เขียนชื่อของคุณไว้ใต้เส้น		
+762	movie	movies	n: ภาพยนตร์, หนัง	Let's watch a movie tonight.	คืนนี้ไปดูหนังกันเถอะ		🍿
+763	doctor	doctors, doctored, doctoring	n: หมอ, แพทย์ | v: ปลอมแปลง	I have to see a doctor.	ฉันต้องไปพบหมอ		👩‍⚕️
+764	discussion	discussions	n: การพูดคุย, การอภิปราย	We had a long discussion about the plan.	เราพูดคุยกันยาวเรื่องแผน		
+765	sorry	sorrier, sorriest	adj: เสียใจ, ขอโทษ, สงสาร	I am sorry for being late.	ขอโทษที่มาสาย		
+766	challenge	challenges, challenged, challenging	n: ความท้าทาย | v: ท้าทาย, โต้แย้ง	Learning a new language is a challenge.	การเรียนภาษาใหม่เป็นเรื่องท้าทาย		
+767	nation	nations	n: ประเทศ, ชาติ	Thailand is a beautiful nation.	ไทยเป็นประเทศที่สวยงาม		
+768	nearly		adv: เกือบ	It is nearly midnight.	ตอนนี้เกือบเที่ยงคืนแล้ว		
+769	statement	statements	n: คำแถลง, ข้อความ, ใบแจ้งยอด	The police made a short statement.	ตำรวจแถลงสั้น ๆ		
+770	link	links, linked, linking	n: ลิงก์, ความเชื่อมโยง | v: เชื่อมโยง	Click the link to open the page.	คลิกลิงก์เพื่อเปิดหน้านั้น		🔗
+771	despite		prep: ถึงแม้ว่า, แม้จะ	We went out despite the rain.	เราออกไปข้างนอกทั้งที่ฝนตก	ตามด้วยคำนามหรือ -ing เช่น despite the rain	
+772	introduce	introduces, introduced, introducing	v: แนะนำ (ให้รู้จัก), นำเข้ามา	Let me introduce my friend.	ให้ฉันแนะนำเพื่อนของฉันนะ		
+773	advantage	advantages, advantaged	n: ข้อได้เปรียบ, ข้อดี	Speaking English is an advantage.	การพูดภาษาอังกฤษได้เป็นข้อได้เปรียบ		
+774	ready	readies, readied, readying, readier, readiest	adj: พร้อม, เตรียมพร้อม	Dinner is ready.	อาหารเย็นพร้อมแล้ว		
+775	marry	marries, married, marrying	v: แต่งงาน, สมรส	They married last year.	พวกเขาแต่งงานกันเมื่อปีที่แล้ว		💍
+776	strike	strikes, struck, striking	v: ตี, โจมตี, ประทับใจ | n: การนัดหยุดงาน	The clock struck twelve.	นาฬิกาตีบอกเวลาเที่ยง	รูปอดีตคือ struck	
+777	mile	miles	n: ไมล์ (หน่วยวัดระยะทาง)	The park is one mile from here.	สวนสาธารณะอยู่ห่างจากที่นี่หนึ่งไมล์		
+778	seek	seeks, sought, seeking	v: แสวงหา, พยายามหา	Many people seek help online.	หลายคนขอความช่วยเหลือทางออนไลน์	รูปอดีตคือ sought	
+779	ability	abilities	n: ความสามารถ	She has the ability to speak three languages.	เธอมีความสามารถพูดได้สามภาษา		
+780	unit	units	n: หน่วย, ส่วน, แผนก	This book has ten units.	หนังสือเล่มนี้มีสิบบท		
+781	card	cards, carded, carding	n: บัตร, การ์ด, ไพ่	I will send you a birthday card.	ฉันจะส่งการ์ดวันเกิดให้คุณ		💳
+782	hospital	hospitals	n: โรงพยาบาล	My mother works at a hospital.	แม่ของฉันทำงานที่โรงพยาบาล		🏥
+783	quickly		adv: อย่างรวดเร็ว	He quickly finished his lunch.	เขากินข้าวเที่ยงเสร็จอย่างรวดเร็ว		
+784	interview	interviews, interviewed, interviewing	n: การสัมภาษณ์ | v: สัมภาษณ์	I have a job interview tomorrow.	พรุ่งนี้ฉันมีสัมภาษณ์งาน		🎤
+785	agreement	agreements	n: ข้อตกลง, สัญญา	Both sides reached an agreement.	ทั้งสองฝ่ายตกลงกันได้		
+786	release	releases, released, releasing	v: ปล่อย, ออกฉาย, ปลดปล่อย | n: การเผยแพร่	The band will release a new song.	วงดนตรีจะปล่อยเพลงใหม่		
+787	tax	taxes, taxed, taxing	n: ภาษี | v: เก็บภาษี	We pay tax every year.	เราจ่ายภาษีทุกปี		
+788	solution	solutions	n: ทางแก้ไข, คำตอบ, สารละลาย	We need a solution to this problem.	เราต้องการทางแก้ปัญหานี้		
+789	capital	capitals	n: เมืองหลวง, ทุน | adj: ตัวพิมพ์ใหญ่	Bangkok is the capital of Thailand.	กรุงเทพฯ เป็นเมืองหลวงของประเทศไทย		
+790	popular		adj: เป็นที่นิยม, ยอดนิยม	This song is very popular.	เพลงนี้ได้รับความนิยมมาก		
+791	specific	specifics	adj: เฉพาะเจาะจง, แน่ชัด	Do you have a specific question?	คุณมีคำถามเฉพาะเจาะจงไหม		
+792	beautiful		adj: สวยงาม	She has a beautiful smile.	เธอมีรอยยิ้มที่สวยงาม		🌺
+793	fear	fears, feared, fearing	n: ความกลัว | v: กลัว	Fear can stop us from trying.	ความกลัวอาจทำให้เราไม่กล้าลอง		😨
+794	aim	aims, aimed, aiming	n: เป้าหมาย, จุดมุ่งหมาย | v: ตั้งเป้า, เล็ง	Our aim is to finish by Friday.	เป้าหมายของเราคือทำให้เสร็จภายในวันศุกร์		🎯
+795	television	televisions	n: โทรทัศน์, ทีวี	We watch television after dinner.	เราดูโทรทัศน์หลังกินข้าวเย็น		📺
+796	serious		adj: จริงจัง, ร้ายแรง	This is a serious problem.	นี่เป็นปัญหาร้ายแรง		
+797	target	targets, targeted, targeting	n: เป้าหมาย, เป้า | v: เล็งไปที่	Our sales target is 100 boxes.	เป้าการขายของเราคือ 100 กล่อง		🎯
+798	degree	degrees	n: องศา, ระดับ, ปริญญา	It is thirty degrees today.	วันนี้อากาศสามสิบองศา		🌡️
+799	pull	pulls, pulled, pulling	v: ดึง, ลาก	Please pull the door to open it.	กรุณาดึงประตูเพื่อเปิด		
+800	red	reds, redder, reddest	adj: สีแดง | n: สีแดง	She wore a red dress.	เธอสวมชุดสีแดง		🔴

@@ -1,101 +1,101 @@
 rank	headword	forms	meanings	example_en	example_th	note	emoji
-1301	flower	flowers, flowered, flowering					
-1302	crisis	crises					
-1303	settle	settles, settled, settling					
-1304	boat	boats, boated, boating					
-1305	aid	aids, aided, aiding					
-1306	fan	fans, fanned, fanning					
-1307	kitchen	kitchens					
-1308	twice						
-1309	fresh	fresher, freshest					
-1310	delay	delays, delayed, delaying					
-1311	safety	safeties					
-1312	engineer	engineers, engineered, engineering					
-1313	quiet	quiets, quieted, quieting, quieter, quietest					
-1314	insurance	insurances					
-1315	nurse	nurses, nursed, nursing					
-1316	divide	divides, divided, dividing					
-1317	length	lengths					
-1318	investigation	investigations					
-1319	package	packages, packaged, packaging					
-1320	somewhere						
-1321	expand	expands, expanded, expanding					
-1322	commit	commits, committing, committed					
-1323	obvious						
-1324	jump	jumps, jumped, jumping					
-1325	weapon	weapons					
-1326	relatively						
-1327	host	hosts, hosted, hosting					
-1328	winter	winters, wintered, wintering					
-1329	district	districts					
-1330	broad	broader, broadest					
-1331	tire	tires, tired, tiring					
-1332	spring	springs, sprang, sprung, springing					
-1333	spirit	spirits, spirited, spiriting					
-1334	lunch	lunches, lunched, lunching					
-1335	actual						
-1336	pool	pools, pooled, pooling					
-1337	battle	battles, battled, battling					
-1338	tradition	traditions					
-1339	cash	cashes, cashed, cashing					
-1340	hardly						
-1341	award	awards, awarded, awarding					
-1342	coach	coaches, coached, coaching					
-1343	experiment	experiments, experimented, experimenting					
-1344	consideration	considerations					
-1345	strange	strangest					
-1346	code	codes, coded, coding					
-1347	possibly						
-1348	threat	threats					
-1349	accident	accidents					
-1350	impossible						
-1351	revenue	revenues					
-1352	enable	enables, enabled, enabling					
-1353	afraid						
-1354	active	actives					
-1355	conclude	concludes, concluded, concluding					
-1356	religious						
-1357	cancer	cancers					
-1358	convince	convinces, convinced, convincing					
-1359	vary	varies, varied, varying					
-1360	environmental						
-1361	sun	suns, sunned, sunning					
-1362	healthy	healthier, healthiest					
-1363	blow	blows, blew, blowing, blown					
-1364	volume	volumes					
-1365	location	locations					
-1366	invest	invests, invested, investing					
-1367	proceed	proceeds, proceeded, proceeding, proceedings					
-1368	wash	washes, washed, washing					
-1369	actor	actors					
-1370	glad	gladder, gladdest					
-1371	tape	tapes, taped, taping					
-1372	whereas						
-1373	opposite	opposites					
-1374	stone	stones, stoned, stoning					
-1375	sum	sums, summed, summing					
-1376	murder	murders, murdered, murdering					
-1377	monitor	monitors, monitored, monitoring					
-1378	soldier	soldiers, soldiered, soldiering					
-1379	finance	finances, financed, financing, financings					
-1380	hate	hates, hated, hating					
-1381	egg	eggs, egged, egging					
-1382	concert	concerts, concerted					
-1383	shock	shocks, shocked, shocking					
-1384	comfortable						
-1385	usual						
-1386	carefully						
-1387	pack	packs, packed, packing					
-1388	recall	recalls, recalled					
-1389	wine	wines, wining					
-1390	camera	cameras					
-1391	swim	swims, swam, swimming, swum					
-1392	manufacture	manufactures, manufactured, manufacturing					
-1393	theater	theaters, theatre, theatres					
-1394	cycle	cycles, cycled, cycling					
-1395	coffee	coffees					
-1396	totally						
-1397	museum	museums					
-1398	visitor	visitors					
-1399	freedom	freedoms					
-1400	construction	constructions					
+1301	flower	flowers, flowered, flowering	n: ดอกไม้ | v: ออกดอก	She gave me a flower.	เธอให้ดอกไม้ฉันหนึ่งดอก		🌸
+1302	crisis	crises	n: วิกฤต	The country faces an economic crisis.	ประเทศกำลังเผชิญวิกฤตเศรษฐกิจ	พหูพจน์คือ crises	
+1303	settle	settles, settled, settling	v: ตั้งถิ่นฐาน, ยุติ, ทำให้สงบ	They settled in a small town.	พวกเขาตั้งรกรากในเมืองเล็ก ๆ		
+1304	boat	boats, boated, boating	n: เรือ, เรือเล็ก	We crossed the river by boat.	เราข้ามแม่น้ำด้วยเรือ		⛵
+1305	aid	aids, aided, aiding	n: ความช่วยเหลือ, อุปกรณ์ช่วย | v: ช่วยเหลือ	The nurse gave first aid.	พยาบาลปฐมพยาบาลให้		
+1306	fan	fans, fanned, fanning	n: แฟนคลับ, พัดลม, ผู้ชื่นชอบ	He is a big fan of football.	เขาเป็นแฟนบอลตัวยง		🌀
+1307	kitchen	kitchens	n: ห้องครัว	My mother is cooking in the kitchen.	แม่ของฉันกำลังทำอาหารในครัว		🍳
+1308	twice		adv: สองครั้ง, สองเท่า	I go to the gym twice a week.	ฉันไปยิมสัปดาห์ละสองครั้ง		
+1309	fresh	fresher, freshest	adj: สด, สดชื่น, ใหม่	These vegetables are fresh.	ผักเหล่านี้สด		🥬
+1310	delay	delays, delayed, delaying	n: ความล่าช้า | v: เลื่อน, ทำให้ล่าช้า	The flight has a one-hour delay.	เที่ยวบินล่าช้าไปหนึ่งชั่วโมง		
+1311	safety	safeties	n: ความปลอดภัย	Safety comes first.	ความปลอดภัยต้องมาก่อน		
+1312	engineer	engineers, engineered, engineering	n: วิศวกร | v: ออกแบบ, ก่อสร้าง	My uncle is an engineer.	ลุงของฉันเป็นวิศวกร		👷
+1313	quiet	quiets, quieted, quieting, quieter, quietest	adj: เงียบ | n: ความเงียบสงบ	Please be quiet in the library.	กรุณาเงียบในห้องสมุด		🤫
+1314	insurance	insurances	n: ประกันภัย, การประกัน	I bought car insurance.	ฉันซื้อประกันรถยนต์		
+1315	nurse	nurses, nursed, nursing	n: พยาบาล | v: ดูแลคนป่วย	The nurse took my temperature.	พยาบาลวัดไข้ให้ฉัน		👩‍⚕️
+1316	divide	divides, divided, dividing	v: แบ่ง, หาร	Divide the cake into six pieces.	แบ่งเค้กเป็นหกชิ้น		➗
+1317	length	lengths	n: ความยาว, ระยะเวลา	What is the length of this table?	โต๊ะนี้ยาวเท่าไร		📏
+1318	investigation	investigations	n: การสอบสวน, การสืบสวน	The police started an investigation.	ตำรวจเริ่มการสอบสวน		🔍
+1319	package	packages, packaged, packaging	n: พัสดุ, หีบห่อ | v: บรรจุหีบห่อ	I got a package from my aunt.	ฉันได้รับพัสดุจากป้า		📦
+1320	somewhere		adv: ที่ไหนสักแห่ง	I left my keys somewhere.	ฉันลืมกุญแจไว้ที่ไหนสักแห่ง		
+1321	expand	expands, expanded, expanding	v: ขยาย, ขยายตัว	The company wants to expand its business.	บริษัทอยากขยายธุรกิจ		
+1322	commit	commits, committing, committed	v: ทำ (ความผิด), ให้คำมั่น, ผูกมัด	He committed to learning English every day.	เขาให้คำมั่นว่าจะเรียนภาษาอังกฤษทุกวัน		
+1323	obvious		adj: ชัดเจน, เห็นได้ชัด	It is obvious that she is tired.	เห็นได้ชัดว่าเธอเหนื่อย		
+1324	jump	jumps, jumped, jumping	v: กระโดด, พุ่ง | n: การกระโดด	The cat jumped onto the sofa.	แมวกระโดดขึ้นโซฟา		🤸
+1325	weapon	weapons	n: อาวุธ	The police found a weapon.	ตำรวจพบอาวุธชิ้นหนึ่ง		
+1326	relatively		adv: ค่อนข้าง, เมื่อเทียบกัน	The test was relatively easy.	ข้อสอบค่อนข้างง่าย		
+1327	host	hosts, hosted, hosting	n: เจ้าภาพ, พิธีกร | v: เป็นเจ้าภาพ, จัดงาน	She will host the party at her house.	เธอจะเป็นเจ้าภาพจัดงานที่บ้านของเธอ		
+1328	winter	winters, wintered, wintering	n: ฤดูหนาว	It is cold in winter.	ฤดูหนาวอากาศหนาว		❄️
+1329	district	districts	n: เขต, อำเภอ, ย่าน	This district has many old temples.	ย่านนี้มีวัดเก่าหลายแห่ง		
+1330	broad	broader, broadest	adj: กว้าง, กว้างขวาง	The river is broad and slow.	แม่น้ำสายนี้กว้างและไหลช้า		
+1331	tire	tires, tired, tiring	n: ยางรถ (tire) | v: เหนื่อย, ทำให้เหนื่อย	The car has a flat tire.	รถคันนี้ยางแบน	tired = เหนื่อย / tiring = ที่ทำให้เหนื่อย	
+1332	spring	springs, sprang, sprung, springing	n: ฤดูใบไม้ผลิ, สปริง, น้ำพุ | v: กระโดด, ผุดขึ้น	Flowers bloom in spring.	ดอกไม้บานในฤดูใบไม้ผลิ		🌱
+1333	spirit	spirits, spirited, spiriting	n: จิตวิญญาณ, ขวัญกำลังใจ, วิญญาณ	The team has a strong spirit.	ทีมนี้มีจิตวิญญาณนักสู้		
+1334	lunch	lunches, lunched, lunching	n: อาหารกลางวัน | v: กินข้าวเที่ยง	Let's have lunch together.	มากินข้าวเที่ยงด้วยกันเถอะ		🍱
+1335	actual		adj: จริง, ตามจริง	What was the actual price?	ราคาจริงเท่าไร	actual ไม่ได้แปลว่า "ปัจจุบัน" แต่แปลว่า "ตามความเป็นจริง"	
+1336	pool	pools, pooled, pooling	n: สระน้ำ, สระว่ายน้ำ, บ่อ	The children swim in the pool.	เด็ก ๆ ว่ายน้ำในสระ		🏊
+1337	battle	battles, battled, battling	n: การต่อสู้, ศึก | v: ต่อสู้	The soldiers fought a long battle.	ทหารต่อสู้ในศึกที่ยาวนาน		
+1338	tradition	traditions	n: ประเพณี	We follow this old tradition every year.	เราทำตามประเพณีเก่านี้ทุกปี		
+1339	cash	cashes, cashed, cashing	n: เงินสด | v: เปลี่ยนเป็นเงินสด	Do you accept cash?	รับเงินสดไหม		💵
+1340	hardly		adv: แทบจะไม่	I hardly know him.	ฉันแทบไม่รู้จักเขา	hardly ไม่ได้แปลว่า "อย่างหนัก" (hard)	
+1341	award	awards, awarded, awarding	n: รางวัล | v: มอบรางวัล	She won an award for her painting.	เธอได้รางวัลจากภาพวาดของเธอ		🏅
+1342	coach	coaches, coached, coaching	n: โค้ช, ผู้ฝึกสอน | v: ฝึกสอน	The coach taught us how to swim.	โค้ชสอนเราว่ายน้ำ		
+1343	experiment	experiments, experimented, experimenting	n: การทดลอง | v: ทดลอง	We did an experiment in science class.	เราทำการทดลองในคาบวิทยาศาสตร์		🧪
+1344	consideration	considerations	n: การพิจารณา, ความเอาใจใส่	Thank you for your consideration.	ขอบคุณที่กรุณาพิจารณา		
+1345	strange	strangest	adj: แปลก, ประหลาด	I heard a strange noise last night.	เมื่อคืนฉันได้ยินเสียงแปลก ๆ		
+1346	code	codes, coded, coding	n: รหัส, ประมวลกฎหมาย | v: เขียนโค้ด	Please enter the secret code.	กรุณาใส่รหัสลับ		
+1347	possibly		adv: เป็นไปได้, อาจจะ	Could you possibly help me?	คุณพอจะช่วยฉันได้ไหม		
+1348	threat	threats	n: ภัยคุกคาม, การข่มขู่	The storm is a threat to the village.	พายุเป็นภัยคุกคามต่อหมู่บ้าน		
+1349	accident	accidents	n: อุบัติเหตุ	He had an accident on his bike.	เขาประสบอุบัติเหตุตอนขี่จักรยาน		🚑
+1350	impossible		adj: เป็นไปไม่ได้	It is impossible to finish this today.	เป็นไปไม่ได้ที่จะทำสิ่งนี้เสร็จวันนี้		
+1351	revenue	revenues	n: รายได้ (ขององค์กร)	The shop's revenue grew last year.	รายได้ของร้านเพิ่มขึ้นเมื่อปีที่แล้ว		
+1352	enable	enables, enabled, enabling	v: ทำให้สามารถ, เปิดให้ใช้	This app enables you to learn words easily.	แอปนี้ทำให้คุณเรียนคำศัพท์ได้ง่าย		
+1353	afraid		adj: กลัว, เกรง	I am afraid of the dark.	ฉันกลัวความมืด		😨
+1354	active	actives	adj: คล่องแคล่ว, กระตือรือร้น, ใช้งานอยู่	My grandfather is still very active.	คุณตาของฉันยังกระฉับกระเฉงมาก		
+1355	conclude	concludes, concluded, concluding	v: สรุป, จบลง	We concluded that the plan was good.	เราสรุปว่าแผนนี้ดี		
+1356	religious		adj: เกี่ยวกับศาสนา, เคร่งศาสนา	They have different religious beliefs.	พวกเขามีความเชื่อทางศาสนาต่างกัน		
+1357	cancer	cancers	n: มะเร็ง	Doctors are working to cure cancer.	แพทย์พยายามหาวิธีรักษามะเร็ง		
+1358	convince	convinces, convinced, convincing	v: โน้มน้าว, ทำให้เชื่อ	He convinced me to join the club.	เขาโน้มน้าวให้ฉันเข้าชมรม		
+1359	vary	varies, varied, varying	v: แตกต่างกัน, เปลี่ยนแปลง	Prices vary from shop to shop.	ราคาแตกต่างกันไปตามร้าน		
+1360	environmental		adj: เกี่ยวกับสิ่งแวดล้อม	We must solve environmental problems.	เราต้องแก้ปัญหาสิ่งแวดล้อม		🌱
+1361	sun	suns, sunned, sunning	n: ดวงอาทิตย์, แสงแดด	The sun rises early in summer.	พระอาทิตย์ขึ้นเช้าในหน้าร้อน		☀️
+1362	healthy	healthier, healthiest	adj: มีสุขภาพดี, ดีต่อสุขภาพ	Fruit is a healthy snack.	ผลไม้เป็นของว่างที่ดีต่อสุขภาพ		🥗
+1363	blow	blows, blew, blowing, blown	v: พัด, เป่า | n: ลมกระโชก, การตี	The wind blew my hat off.	ลมพัดหมวกของฉันปลิวไป	รูปอดีตคือ blew / รูป V3 คือ blown	💨
+1364	volume	volumes	n: ปริมาตร, ระดับเสียง, เล่ม	Please turn down the volume.	กรุณาลดเสียงลงหน่อย		🔉
+1365	location	locations	n: สถานที่, ที่ตั้ง	This is a good location for a shop.	ที่นี่เป็นทำเลที่ดีสำหรับเปิดร้าน		📍
+1366	invest	invests, invested, investing	v: ลงทุน	She invested her money in a small business.	เธอเอาเงินไปลงทุนในธุรกิจเล็ก ๆ		
+1367	proceed	proceeds, proceeded, proceeding, proceedings	v: ดำเนินต่อไป, เดินหน้า	Please proceed to gate five.	กรุณาไปที่ประตูหมายเลขห้า		
+1368	wash	washes, washed, washing	v: ล้าง, ซัก	I wash my hands before eating.	ฉันล้างมือก่อนกินข้าว		🧼
+1369	actor	actors	n: นักแสดง, ผู้แสดง	The actor is very famous.	นักแสดงคนนี้มีชื่อเสียงมาก		🎭
+1370	glad	gladder, gladdest	adj: ดีใจ, ยินดี	I am glad to see you.	ฉันดีใจที่ได้เจอคุณ		
+1371	tape	tapes, taped, taping	n: เทป, แถบกาว | v: บันทึกเทป, แปะเทป	She used tape to fix the box.	เธอใช้เทปแปะซ่อมกล่อง		
+1372	whereas		conj: ในขณะที่, แต่ว่า	He likes tea, whereas I like coffee.	เขาชอบชา แต่ฉันชอบกาแฟ		
+1373	opposite	opposites	adj: ตรงข้าม | n: สิ่งที่ตรงกันข้าม | prep: ตรงข้ามกับ	The bank is on the opposite side of the street.	ธนาคารอยู่อีกฝั่งหนึ่งของถนน		
+1374	stone	stones, stoned, stoning	n: หิน, ก้อนหิน | v: ปาหิน	He threw a stone into the lake.	เขาขว้างก้อนหินลงทะเลสาบ		🪨
+1375	sum	sums, summed, summing	n: ผลรวม, จำนวนเงิน | v: รวม	The sum of two and three is five.	ผลรวมของสองกับสามคือห้า		
+1376	murder	murders, murdered, murdering	n: การฆาตกรรม | v: ฆ่าคน	The detective is solving a murder case.	นักสืบกำลังไขคดีฆาตกรรม		
+1377	monitor	monitors, monitored, monitoring	n: จอมอนิเตอร์, ผู้คุมสอบ | v: ติดตาม, เฝ้าดู	The nurse monitors the patient every hour.	พยาบาลเฝ้าดูอาการคนไข้ทุกชั่วโมง		🖥️
+1378	soldier	soldiers, soldiered, soldiering	n: ทหาร	The soldier stood at the gate.	ทหารยืนอยู่ที่ประตู		
+1379	finance	finances, financed, financing, financings	n: การเงิน | v: ให้เงินทุน	She studies finance at university.	เธอเรียนด้านการเงินที่มหาวิทยาลัย		
+1380	hate	hates, hated, hating	v: เกลียด, ไม่ชอบอย่างมาก	I hate waiting in line.	ฉันเกลียดการต่อแถวรอ		
+1381	egg	eggs, egged, egging	n: ไข่	I had two eggs for breakfast.	ฉันกินไข่สองฟองเป็นอาหารเช้า		🥚
+1382	concert	concerts, concerted	n: คอนเสิร์ต	We went to a rock concert last night.	เมื่อคืนเราไปดูคอนเสิร์ตร็อก		🎶
+1383	shock	shocks, shocked, shocking	n: ความตกใจ, การช็อก | v: ทำให้ตกใจ	The news came as a shock.	ข่าวนี้ทำให้ตกใจมาก		
+1384	comfortable		adj: สบาย, สะดวกสบาย	This sofa is very comfortable.	โซฟาตัวนี้นั่งสบายมาก		🛋️
+1385	usual		adj: ปกติ, ตามเคย	He came at the usual time.	เขามาตามเวลาที่ปกติ		
+1386	carefully		adv: อย่างระมัดระวัง	Please drive carefully.	กรุณาขับรถอย่างระมัดระวัง		
+1387	pack	packs, packed, packing	v: แพ็ก, เก็บของ | n: ห่อ, ชุด	I need to pack my bag tonight.	คืนนี้ฉันต้องจัดกระเป๋า		🎒
+1388	recall	recalls, recalled	v: นึกออก, จำได้ | n: การเรียกคืน (สินค้า)	I cannot recall his name.	ฉันนึกชื่อเขาไม่ออก		
+1389	wine	wines, wining	n: ไวน์	They drank a glass of red wine.	พวกเขาดื่มไวน์แดงหนึ่งแก้ว		🍷
+1390	camera	cameras	n: กล้อง	I bought a new camera.	ฉันซื้อกล้องตัวใหม่		📷
+1391	swim	swims, swam, swimming, swum	v: ว่ายน้ำ	I swim in the pool every morning.	ฉันว่ายน้ำในสระทุกเช้า	รูปอดีตคือ swam / รูป V3 คือ swum	🏊
+1392	manufacture	manufactures, manufactured, manufacturing	v: ผลิต (จำนวนมาก) | n: การผลิต	This factory manufactures cars.	โรงงานนี้ผลิตรถยนต์		🏭
+1393	theater	theaters, theatre, theatres	n: โรงละคร, โรงภาพยนตร์	We saw a play at the theater.	เราไปดูละครเวทีที่โรงละคร		🎭
+1394	cycle	cycles, cycled, cycling	n: วงจร, วัฏจักร, จักรยาน | v: ปั่นจักรยาน	The water cycle is an important topic.	วัฏจักรของน้ำเป็นหัวข้อสำคัญ		🚴
+1395	coffee	coffees	n: กาแฟ	I drink coffee every morning.	ฉันดื่มกาแฟทุกเช้า		☕
+1396	totally		adv: ทั้งหมด, สิ้นเชิง	I totally forgot about it.	ฉันลืมเรื่องนั้นไปหมดเลย		
+1397	museum	museums	n: พิพิธภัณฑ์	We visited a museum on Sunday.	วันอาทิตย์เราไปเที่ยวพิพิธภัณฑ์		🏛️
+1398	visitor	visitors	n: ผู้มาเยือน, นักท่องเที่ยว	The museum has many visitors.	พิพิธภัณฑ์นี้มีผู้เข้าชมมากมาย		
+1399	freedom	freedoms	n: อิสรภาพ, เสรีภาพ	Everyone wants freedom.	ทุกคนต้องการอิสรภาพ		🕊️
+1400	construction	constructions	n: การก่อสร้าง, สิ่งก่อสร้าง	The construction of the bridge took two years.	การก่อสร้างสะพานใช้เวลาสองปี		🏗️

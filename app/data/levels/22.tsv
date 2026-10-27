@@ -1,101 +1,101 @@
 rank	headword	forms	meanings	example_en	example_th	note	emoji
-2101	formula	formulas, formulae					
-2102	alter	alters, altered, altering					
-2103	perceive	perceives, perceived, perceiving					
-2104	routine	routines					
-2105	sink	sinks, sank, sinking, sunk					
-2106	stare	stares, stared, staring					
-2107	anymore						
-2108	hero	heroes					
-2109	supporter	supporters					
-2110	convert	converts, converted, converting					
-2111	steady	steadies, steadied, steadying, steadier, steadiest					
-2112	meter	meters, metered, metering, metre, metres					
-2113	truck	trucks, trucked, trucking					
-2114	nose	noses, nosed, nosing					
-2115	beside						
-2116	sail	sails, sailed, sailing					
-2117	disaster	disasters					
-2118	pace	paces, paced, pacing					
-2119	heavily						
-2120	devote	devotes, devoted, devoting					
-2121	terrorist	terrorists					
-2122	justify	justifies, justified, justifying					
-2123	vital	vitals					
-2124	fascinate	fascinates, fascinated, fascinating					
-2125	external	externals					
-2126	spare	spares, spared, sparing, sparer, sparest					
-2127	whenever						
-2128	depression	depressions					
-2129	guilty	guiltier, guiltiest					
-2130	underlie	underlies, underlying, underlain					
-2131	mom	moms, mommy, mommies					
-2132	distinction	distinctions					
-2133	satisfaction	satisfactions					
-2134	incorporate	incorporates, incorporated, incorporating					
-2135	pour	pours, poured, pouring					
-2136	sweep	sweeps, swept, sweeping, sweepings					
-2137	obligation	obligations					
-2138	sir						
-2139	evaluate	evaluates, evaluated, evaluating					
-2140	anger	angers, angered					
-2141	pub	pubs					
-2142	perception	perceptions					
-2143	naturally						
-2144	currency	currencies					
-2145	database	databases					
-2146	initially						
-2147	territory	territories					
-2148	stream	streams, streamed, streaming					
-2149	rarely						
-2150	height	heights					
-2151	apparent						
-2152	western	westerns					
-2153	expansion	expansions					
-2154	constantly						
-2155	muscle	muscles, muscled					
-2156	scare	scares, scared, scaring					
-2157	badly						
-2158	everyday						
-2159	boundary	boundaries					
-2160	ratio	ratios					
-2161	essay	essays, essayed, essaying					
-2162	scream	screams, screamed, screaming					
-2163	withdraw	withdraws, withdrew, withdrawing, withdrawn					
-2164	pollution	pollutions					
-2165	disorder	disorders, disordered, disordering					
-2166	furniture						
-2167	symbol	symbols					
-2168	apartment	apartments					
-2169	demonstration	demonstrations					
-2170	analyst	analysts					
-2171	platform	platforms					
-2172	steel	steels, steeled, steeling					
-2173	cake	cakes, caked, caking					
-2174	transform	transforms, transformed, transforming					
-2175	wound	wounds, wounded, wounding					
-2176	restriction	restrictions					
-2177	foundation	foundations					
-2178	designer	designers					
-2179	strain	strains, strained, straining					
-2180	innovation	innovations					
-2181	album	albums					
-2182	singer	singers					
-2183	trail	trails, trailed, trailing					
-2184	trap	traps, trapped, trapping, trappings					
-2185	loose	looses, loosed, loosing, looser, loosest					
-2186	extension	extensions					
-2187	wealth						
-2188	gradually						
-2189	tank	tanks, tanked, tanking					
-2190	evil	evils, eviler, evilest					
-2191	remarkable						
-2192	tune	tunes, tuned, tuning					
-2193	grass	grasses, grassed, grassing					
-2194	invitation	invitations					
-2195	transition	transitions, transitioned, transitioning					
-2196	frighten	frightens, frightened, frightening					
-2197	bid	bids, bade, bidding					
-2198	breed	breeds, bred, breeding					
-2199	extraordinary						
-2200	brilliant						
+2101	formula	formulas, formulae	n: สูตร (คณิตศาสตร์ วิทยาศาสตร์), สูตรสำเร็จ	Do you know the formula for the area of a circle?	คุณรู้สูตรหาพื้นที่วงกลมไหม	พหูพจน์ formulas หรือ formulae	
+2102	alter	alters, altered, altering	v: เปลี่ยน, ดัดแปลง	She altered her plan at the last minute.	เธอเปลี่ยนแผนตอนนาทีสุดท้าย		
+2103	perceive	perceives, perceived, perceiving	v: รับรู้, เข้าใจ, มองเห็น	Children perceive colors differently from adults.	เด็กรับรู้สีต่างจากผู้ใหญ่		
+2104	routine	routines	n: กิจวัตร | adj: ประจำ	My morning routine starts at six.	กิจวัตรตอนเช้าของฉันเริ่มหกโมง		
+2105	sink	sinks, sank, sinking, sunk	v: จม, ทรุด | n: อ่างล้างจาน	The boat began to sink.	เรือเริ่มจม	รูปอดีตคือ sank / รูป V3 คือ sunk	
+2106	stare	stares, stared, staring	v: จ้องมอง | n: การจ้อง	Don't stare at people.	อย่าจ้องมองคนอื่น		
+2107	anymore		adv: อีกต่อไป (ในประโยคปฏิเสธ), ตอนนี้	I don't live here anymore.	ฉันไม่ได้อาศัยอยู่ที่นี่อีกแล้ว	ใช้ในประโยคปฏิเสธ เช่น not … anymore	
+2108	hero	heroes	n: วีรบุรุษ, ฮีโร่, ตัวเอก	The firefighter is a real hero.	นักดับเพลิงเป็นฮีโร่ตัวจริง	พหูพจน์คือ heroes	🦸
+2109	supporter	supporters	n: ผู้สนับสนุน, แฟนคลับ	He is a loyal supporter of the team.	เขาเป็นผู้สนับสนุนทีมนี้อย่างซื่อสัตย์		
+2110	convert	converts, converted, converting	v: เปลี่ยน, แปลง | n: ผู้เปลี่ยนความเชื่อ	Convert the file into a PDF.	แปลงไฟล์เป็น PDF		
+2111	steady	steadies, steadied, steadying, steadier, steadiest	adj: มั่นคง, สม่ำเสมอ | v: ทำให้มั่นคง	Keep a steady speed.	ขับด้วยความเร็วสม่ำเสมอ		
+2112	meter	meters, metered, metering, metre, metres	n: เมตร, มิเตอร์	The room is five meters long.	ห้องนี้ยาวห้าเมตร	สะกดแบบอังกฤษคือ metre	📏
+2113	truck	trucks, trucked, trucking	n: รถบรรทุก | v: ขนส่งด้วยรถบรรทุก	A truck carried the furniture.	รถบรรทุกขนเฟอร์นิเจอร์มา		🚚
+2114	nose	noses, nosed, nosing	n: จมูก	She has a small nose.	เธอมีจมูกเล็ก		👃
+2115	beside		prep: ข้าง ๆ, ติดกับ	She sat beside me.	เธอนั่งข้าง ๆ ฉัน		
+2116	sail	sails, sailed, sailing	v: แล่นเรือ, ล่องเรือ | n: ใบเรือ	We sailed across the bay.	เราแล่นเรือข้ามอ่าว		⛵
+2117	disaster	disasters	n: ภัยพิบัติ, หายนะ	The flood was a terrible disaster.	น้ำท่วมครั้งนั้นเป็นภัยพิบัติร้ายแรง		
+2118	pace	paces, paced, pacing	n: ก้าว, จังหวะ, ความเร็ว | v: เดินไปมา	He walks at a slow pace.	เขาเดินก้าวช้า ๆ		
+2119	heavily		adv: อย่างหนัก, มาก	It rained heavily all night.	ฝนตกหนักตลอดคืน		
+2120	devote	devotes, devoted, devoting	v: อุทิศ, ทุ่มเท	She devoted her life to teaching.	เธออุทิศชีวิตให้กับการสอน		
+2121	terrorist	terrorists	n: ผู้ก่อการร้าย	The news is about a terrorist attack.	ข่าวนี้เกี่ยวกับการโจมตีของผู้ก่อการร้าย		
+2122	justify	justifies, justified, justifying	v: แก้ตัว, ให้เหตุผลสนับสนุน	Nothing can justify violence.	ไม่มีอะไรที่เป็นเหตุผลให้ใช้ความรุนแรงได้		
+2123	vital	vitals	adj: สำคัญยิ่ง, จำเป็นต่อชีวิต	Water is vital for life.	น้ำเป็นสิ่งจำเป็นอย่างยิ่งต่อชีวิต		
+2124	fascinate	fascinates, fascinated, fascinating	v: ทำให้หลงใหล, ทำให้สนใจมาก	Space fascinates me.	อวกาศทำให้ฉันหลงใหล	fascinated = หลงใหล / fascinating = น่าหลงใหล	
+2125	external	externals	adj: ภายนอก	The external walls are painted white.	กำแพงภายนอกทาสีขาว		
+2126	spare	spares, spared, sparing, sparer, sparest	adj: สำรอง, ว่าง | v: ละเว้น, เหลือไว้ให้	Do you have a spare pen?	คุณมีปากกาสำรองไหม		
+2127	whenever		conj: เมื่อไรก็ตาม, ทุกครั้งที่	Call me whenever you need help.	โทรหาฉันเมื่อไรก็ได้ที่คุณต้องการความช่วยเหลือ		
+2128	depression	depressions	n: ภาวะซึมเศร้า, ความหดหู่, เศรษฐกิจตกต่ำ	She felt depression after the move.	เธอรู้สึกหดหู่หลังย้ายบ้าน		
+2129	guilty	guiltier, guiltiest	adj: รู้สึกผิด, มีความผิด	I feel guilty about forgetting her birthday.	ฉันรู้สึกผิดที่ลืมวันเกิดเธอ		
+2130	underlie	underlies, underlying, underlain	v: เป็นพื้นฐานของ, อยู่เบื้องหลัง	Trust underlies every good friendship.	ความไว้ใจเป็นพื้นฐานของมิตรภาพที่ดีทุกอย่าง		
+2131	mom	moms, mommy, mommies	n: แม่ (ภาษาพูด)	My mom cooks the best soup.	แม่ของฉันทำซุปอร่อยที่สุด	สะกดแบบอังกฤษคือ mum	👩
+2132	distinction	distinctions	n: ความแตกต่าง, ความโดดเด่น	There is a clear distinction between the two words.	สองคำนี้มีความแตกต่างกันชัดเจน		
+2133	satisfaction	satisfactions	n: ความพึงพอใจ	Customer satisfaction is our goal.	ความพึงพอใจของลูกค้าคือเป้าหมายของเรา		
+2134	incorporate	incorporates, incorporated, incorporating	v: รวมเข้าไว้, ผนวก	The chef incorporated fresh herbs into the dish.	พ่อครัวใส่สมุนไพรสดลงในอาหารจานนี้		
+2135	pour	pours, poured, pouring	v: เท, หลั่ง, ตกหนัก	Please pour some tea into my cup.	กรุณารินชาใส่ถ้วยให้ฉันหน่อย		🫗
+2136	sweep	sweeps, swept, sweeping, sweepings	v: กวาด | n: การกวาด, การกวาดล้าง	She swept the floor every morning.	เธอกวาดพื้นทุกเช้า	รูปอดีตคือ swept	🧹
+2137	obligation	obligations	n: หน้าที่, ข้อผูกมัด	It is our obligation to help.	เป็นหน้าที่ของเราที่ต้องช่วย		
+2138	sir		n: ท่าน, คุณ (เรียกชายอย่างสุภาพ)	Excuse me, sir, is this seat free?	ขอโทษครับ ที่นั่งนี้ว่างไหมครับ	ใช้เรียกผู้ชายอย่างสุภาพ ผู้หญิงใช้ madam	
+2139	evaluate	evaluates, evaluated, evaluating	v: ประเมิน, ตีค่า	The teacher will evaluate our work.	ครูจะประเมินผลงานของเรา		
+2140	anger	angers, angered	n: ความโกรธ | v: ทำให้โกรธ	He shouted in anger.	เขาตะโกนด้วยความโกรธ		😠
+2141	pub	pubs	n: ผับ, ร้านเหล้า	We met at a pub after work.	เรานัดเจอกันที่ผับหลังเลิกงาน		🍺
+2142	perception	perceptions	n: การรับรู้, ความเข้าใจ	Our perception of time changes as we get older.	การรับรู้เวลาของเราเปลี่ยนไปเมื่อโตขึ้น		
+2143	naturally		adv: ตามธรรมชาติ, แน่นอน	She sings naturally and without fear.	เธอร้องเพลงได้เป็นธรรมชาติและไม่กลัว		
+2144	currency	currencies	n: สกุลเงิน, เงินตรา	The currency of Thailand is the baht.	สกุลเงินของประเทศไทยคือบาท		💱
+2145	database	databases	n: ฐานข้อมูล	The library keeps a database of books.	ห้องสมุดมีฐานข้อมูลของหนังสือ		🗄️
+2146	initially		adv: ตอนแรก, ในเบื้องต้น	Initially, I did not like the food.	ตอนแรกฉันไม่ชอบอาหารนี้		
+2147	territory	territories	n: ดินแดน, เขตแดน	This is a large territory.	นี่เป็นดินแดนที่กว้างใหญ่		
+2148	stream	streams, streamed, streaming	n: ลำธาร, สายน้ำ, กระแส | v: สตรีม, ไหล	We sat by the stream.	เรานั่งอยู่ริมลำธาร		
+2149	rarely		adv: ไม่ค่อย, นาน ๆ ครั้ง	I rarely eat fast food.	ฉันแทบไม่กินฟาสต์ฟู้ด		
+2150	height	heights	n: ความสูง	What is your height?	คุณสูงเท่าไร		
+2151	apparent		adj: ชัดเจน, เห็นได้ชัด	It was apparent that he was tired.	เห็นได้ชัดว่าเขาเหนื่อย		
+2152	western	westerns	adj: ตะวันตก, แบบตะวันตก | n: หนังคาวบอย	He likes Western music.	เขาชอบเพลงตะวันตก		
+2153	expansion	expansions	n: การขยาย, การเติบโต	The company announced an expansion.	บริษัทประกาศขยายกิจการ		
+2154	constantly		adv: อย่างต่อเนื่อง, ตลอดเวลา	The baby is constantly crying.	ทารกร้องไห้ตลอดเวลา		
+2155	muscle	muscles, muscled	n: กล้ามเนื้อ	He has strong arm muscles.	เขามีกล้ามแขนแข็งแรง		💪
+2156	scare	scares, scared, scaring	v: ทำให้ตกใจ, ทำให้กลัว | n: ความตกใจ	The loud noise scared the cat.	เสียงดังทำให้แมวตกใจ	scared = กลัว / scary = น่ากลัว	😱
+2157	badly		adv: แย่, ร้ายแรง	He played badly in the match.	เขาเล่นได้แย่ในแมตช์นั้น		
+2158	everyday		adj: ประจำวัน, ธรรมดาทั่วไป	These are everyday words.	นี่เป็นคำศัพท์ที่ใช้ในชีวิตประจำวัน		
+2159	boundary	boundaries	n: เส้นแบ่งเขต, ขอบเขต	A fence marks the boundary of the garden.	รั้วบอกขอบเขตของสวน		
+2160	ratio	ratios	n: อัตราส่วน	The ratio of boys to girls is one to one.	อัตราส่วนเด็กชายต่อเด็กหญิงคือหนึ่งต่อหนึ่ง		
+2161	essay	essays, essayed, essaying	n: เรียงความ | v: พยายาม	I wrote an essay about my family.	ฉันเขียนเรียงความเรื่องครอบครัวของฉัน		✍️
+2162	scream	screams, screamed, screaming	v: กรีดร้อง | n: เสียงกรีดร้อง	The children screamed with joy.	เด็ก ๆ กรีดร้องด้วยความดีใจ		
+2163	withdraw	withdraws, withdrew, withdrawing, withdrawn	v: ถอน, ถอนตัว, ถอนเงิน	I withdrew some money from the bank.	ฉันถอนเงินจากธนาคารมาบ้าง	รูปอดีตคือ withdrew / รูป V3 คือ withdrawn	
+2164	pollution	pollutions	n: มลพิษ	Air pollution is a big problem in the city.	มลพิษทางอากาศเป็นปัญหาใหญ่ในเมือง		
+2165	disorder	disorders, disordered, disordering	n: ความผิดปกติ, ความวุ่นวาย	The room was in complete disorder.	ห้องรกไปหมด		
+2166	furniture		n: เฟอร์นิเจอร์	We bought new furniture for the living room.	เราซื้อเฟอร์นิเจอร์ใหม่สำหรับห้องนั่งเล่น	เป็นนามนับไม่ได้ เช่น a piece of furniture	🛋️
+2167	symbol	symbols	n: สัญลักษณ์	A heart is a symbol of love.	หัวใจเป็นสัญลักษณ์ของความรัก		
+2168	apartment	apartments	n: อพาร์ตเมนต์, ห้องชุด	I live in a small apartment.	ฉันอาศัยอยู่ในอพาร์ตเมนต์เล็ก ๆ		🏢
+2169	demonstration	demonstrations	n: การสาธิต, การชุมนุมเดินขบวน	The cook gave a demonstration of how to make noodles.	พ่อครัวสาธิตวิธีทำก๋วยเตี๋ยว		
+2170	analyst	analysts	n: นักวิเคราะห์	An analyst studies the market every day.	นักวิเคราะห์ศึกษาตลาดทุกวัน		
+2171	platform	platforms	n: ชานชาลา, แพลตฟอร์ม, เวที	The train leaves from platform three.	รถไฟออกจากชานชาลาที่สาม		🚉
+2172	steel	steels, steeled, steeling	n: เหล็กกล้า, เหล็ก	The bridge is made of steel.	สะพานนี้ทำจากเหล็กกล้า		
+2173	cake	cakes, caked, caking	n: เค้ก, ก้อน	She baked a cake for my birthday.	เธออบเค้กให้วันเกิดฉัน		🎂
+2174	transform	transforms, transformed, transforming	v: เปลี่ยนแปลงรูป, เปลี่ยนโฉม	The caterpillar transforms into a butterfly.	หนอนผีเสื้อเปลี่ยนรูปเป็นผีเสื้อ		🦋
+2175	wound	wounds, wounded, wounding	n: บาดแผล | v: ทำให้บาดเจ็บ	The nurse cleaned the wound.	พยาบาลทำความสะอาดบาดแผล	wound ที่เป็นรูปอดีตของ wind (พัน, ม้วน) อยู่ที่การ์ด wind	🩹
+2176	restriction	restrictions	n: ข้อจำกัด, ข้อห้าม	There is a speed restriction on this road.	ถนนเส้นนี้มีข้อจำกัดความเร็ว		
+2177	foundation	foundations	n: รากฐาน, มูลนิธิ	Trust is the foundation of friendship.	ความไว้ใจเป็นรากฐานของมิตรภาพ		
+2178	designer	designers	n: นักออกแบบ	She is a fashion designer.	เธอเป็นนักออกแบบแฟชั่น		
+2179	strain	strains, strained, straining	n: ความตึงเครียด, ความเครียด | v: ดึงจนตึง, ฝืนใช้	Too much strain can hurt your back.	การฝืนมากเกินไปทำให้หลังเจ็บได้		
+2180	innovation	innovations	n: นวัตกรรม, สิ่งใหม่	The company is known for innovation.	บริษัทนี้มีชื่อเสียงเรื่องนวัตกรรม		
+2181	album	albums	n: อัลบั้ม	I bought the singer's new album.	ฉันซื้ออัลบั้มใหม่ของนักร้องคนนี้		💿
+2182	singer	singers	n: นักร้อง	The singer has a beautiful voice.	นักร้องคนนี้มีเสียงไพเราะ		🎤
+2183	trail	trails, trailed, trailing	n: เส้นทางเดิน, รอยเท้า | v: ลากไป, ตามหลัง	We followed the trail to the lake.	เราเดินตามทางไปที่ทะเลสาบ		
+2184	trap	traps, trapped, trapping, trappings	n: กับดัก | v: ดักจับ, ทำให้ติดอยู่	The mouse is in the trap.	หนูติดกับดักอยู่		
+2185	loose	looses, loosed, loosing, looser, loosest	adj: หลวม, ไม่แน่น	These trousers are too loose.	กางเกงตัวนี้หลวมเกินไป	loose (หลวม) ต่างจาก lose (สูญเสีย)	
+2186	extension	extensions	n: การขยาย, สายต่อ, เบอร์ต่อ	Can I get extension 123, please?	ขอต่อเบอร์ภายใน 123 หน่อยค่ะ		
+2187	wealth		n: ความมั่งคั่ง, ทรัพย์สิน	Health is more important than wealth.	สุขภาพสำคัญกว่าความร่ำรวย		
+2188	gradually		adv: ค่อย ๆ, ทีละน้อย	The weather gradually got warmer.	อากาศค่อย ๆ อุ่นขึ้น		
+2189	tank	tanks, tanked, tanking	n: ถัง, รถถัง	The water tank is empty.	ถังน้ำว่างเปล่า		
+2190	evil	evils, eviler, evilest	adj: ชั่วร้าย | n: ความชั่วร้าย	The story has an evil queen.	เรื่องนี้มีราชินีใจร้าย		
+2191	remarkable		adj: น่าทึ่ง, โดดเด่น	She made remarkable progress.	เธอพัฒนาขึ้นอย่างน่าทึ่ง		
+2192	tune	tunes, tuned, tuning	n: ทำนอง, เพลง | v: จูน, ปรับเสียง	He hummed a happy tune.	เขาฮัมทำนองเพลงอย่างอารมณ์ดี		🎵
+2193	grass	grasses, grassed, grassing	n: หญ้า | v: ปลูกหญ้า	The cow is eating grass.	วัวกำลังกินหญ้า		🌾
+2194	invitation	invitations	n: คำเชิญ, การ์ดเชิญ	I got an invitation to her wedding.	ฉันได้รับการ์ดเชิญไปงานแต่งงานของเธอ		💌
+2195	transition	transitions, transitioned, transitioning	n: การเปลี่ยนผ่าน	Starting school is a big transition.	การเริ่มเข้าโรงเรียนเป็นช่วงเปลี่ยนผ่านที่ใหญ่		
+2196	frighten	frightens, frightened, frightening	v: ทำให้ตกใจกลัว	The thunder frightened the dog.	เสียงฟ้าร้องทำให้สุนัขกลัว	frightened = กลัว / frightening = น่ากลัว	
+2197	bid	bids, bade, bidding	v: ประมูล, เสนอราคา | n: ราคาที่เสนอ	He bid ten dollars for the painting.	เขาเสนอราคาสิบดอลลาร์สำหรับภาพวาดนั้น	รูปอดีตคือ bid หรือ bade (คำสั่งโบราณ)	
+2198	breed	breeds, bred, breeding	v: ผสมพันธุ์, เลี้ยง, เพาะพันธุ์ | n: พันธุ์	Farmers breed cows for milk.	เกษตรกรเพาะเลี้ยงวัวเพื่อเอานม	รูปอดีตคือ bred	
+2199	extraordinary		adj: ยอดเยี่ยมเหนือธรรมดา, พิเศษมาก	She has an extraordinary talent.	เธอมีพรสวรรค์พิเศษเหนือคนทั่วไป		
+2200	brilliant		adj: เฉลียวฉลาด, ยอดเยี่ยม, สว่างจ้า	That is a brilliant idea!	นั่นเป็นความคิดที่ยอดเยี่ยมมาก		💡

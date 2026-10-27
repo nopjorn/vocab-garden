@@ -1,101 +1,101 @@
 rank	headword	forms	meanings	example_en	example_th	note	emoji
-801	husband	husbands, husbanded, husbanding					
-802	access	accesses, accessed, accessing					
-803	movement	movements					
-804	treat	treats, treated, treating					
-805	identify	identifies, identified, identifying					
-806	loss	losses					
-807	shall						
-808	modern	moderns					
-809	pressure	pressures, pressured, pressuring					
-810	bus	buses, bused, busing					
-811	treatment	treatments					
-812	conference	conferences, conferenced, conferencing, conferencings					
-813	yourself	yourselves					
-814	supply	supplies, supplied, supplying					
-815	village	villages					
-816	worth						
-817	natural	naturals					
-818	express	expresses, expressed, expressing					
-819	indicate	indicates, indicated, indicating					
-820	attend	attends, attended, attending					
-821	brother	brothers					
-822	investment	investments					
-823	score	scores, scored, scoring, scorings					
-824	organize	organizes, organized, organizing, organise, organises, organised, organising					
-825	trip	trips, tripped, tripping					
-826	beyond						
-827	sleep	sleeps, slept, sleeping					
-828	fish	fishes, fished, fishing					
-829	promise	promises, promised, promising					
-830	potential	potentials					
-831	energy	energies					
-832	trouble	troubles, troubled, troubling					
-833	relation	relations					
-834	touch	touches, touched, touching					
-835	file	files, filed, filing, filings					
-836	middle	middles, middled, middling					
-837	bar	bars, barred, barring					
-838	suffer	suffers, suffered, suffering, sufferred, sufferring					
-839	strategy	strategies					
-840	deep	deeper, deepest, deeps					
-841	except	excepts, excepted, excepting					
-842	clean	cleans, cleaned, cleaning, cleanings					
-843	tend	tends, tended, tending					
-844	advance	advances, advanced, advancing					
-845	fill	fills, filled, filling, fillings					
-846	star	stars, starred, starring					
-847	network	networks, networked, networking					
-848	generally						
-849	operation	operations					
-850	match	matches, matched, matching					
-851	avoid	avoids, avoided, avoiding					
-852	seat	seats, seated, seating					
-853	throw	throws, threw, throwing, thrown					
-854	task	tasks, tasked, tasking					
-855	normal	normals					
-856	goal	goals					
-857	associate	associates, associated, associating					
-858	blue	blues, blued, bluing, bluer, bluest					
-859	positive	positives					
-860	option	options					
-861	box	boxes, boxed, boxing					
-862	huge	huger, hugest					
-863	message	messages, messaged, messaging					
-864	instance	instances, instanced, instancing					
-865	style	styles, styled, styling					
-866	refer	refers, referred, referring, refered, refering					
-867	cold	colder, coldest, colds					
-868	push	pushes, pushed, pushing					
-869	quarter	quarters, quartered, quartering					
-870	assume	assumes, assumed, assuming					
-871	baby	babies, babied, babying					
-872	successful						
-873	sing	sings, sang, singing, sung					
-874	doubt	doubts, doubted, doubting					
-875	competition	competitions					
-876	theory	theories					
-877	propose	proposes, proposed, proposing					
-878	reference	references, referenced, referencing					
-879	argument	arguments					
-880	adult	adults					
-881	fly	flies, flew, flying, flown					
-882	document	documents, documented, documenting					
-883	pattern	patterns, patterned, patterning					
-884	application	applications					
-885	hot	hots, hotter, hottest					
-886	obviously						
-887	unclear						
-888	bill	bills, billed, billing					
-889	search	searches, searched, searching					
-890	separate	separates, separated, separating					
-891	central	centrals					
-892	career	careers, careered, careering					
-893	anyway	anyways					
-894	speech	speeches					
-895	dog	dogs, dogged, dogging					
-896	officer	officers, officered, officering					
-897	throughout						
-898	oil	oils, oiled, oiling					
-899	dress	dresses, dressed, dressing					
-900	profit	profits, profited, profiting					
+801	husband	husbands, husbanded, husbanding	n: สามี	Her husband cooks dinner every night.	สามีของเธอทำอาหารเย็นทุกคืน		👨
+802	access	accesses, accessed, accessing	n: การเข้าถึง, ทางเข้า | v: เข้าถึง, เข้าใช้	Do you have access to the internet?	คุณเข้าอินเทอร์เน็ตได้ไหม		
+803	movement	movements	n: การเคลื่อนไหว, ขบวนการ	I saw a slight movement in the bushes.	ฉันเห็นบางอย่างขยับเล็กน้อยในพุ่มไม้		
+804	treat	treats, treated, treating	v: ปฏิบัติต่อ, รักษา, เลี้ยง | n: ของขวัญเล็ก ๆ, ของอร่อย	She treats everyone with kindness.	เธอปฏิบัติต่อทุกคนด้วยความใจดี		
+805	identify	identifies, identified, identifying	v: ระบุ, บ่งชี้, จำได้	Can you identify the person in this photo?	คุณบอกได้ไหมว่าคนในรูปนี้คือใคร		
+806	loss	losses	n: การสูญเสีย, ความขาดทุน	We felt the loss of our old teacher.	เรารู้สึกเสียใจกับการจากไปของครูคนเก่า		
+807	shall		modal: จะ (ใช้กับ I และ we ในประโยคสุภาพหรือข้อเสนอ)	Shall we go now?	เราไปกันเลยดีไหม	ใช้ในประโยคเสนอหรือชวน เช่น Shall I help you? ในภาษาพูดทั่วไปคนมักใช้ will หรือ should แทน	
+808	modern	moderns	adj: ทันสมัย, สมัยใหม่	This is a modern building.	นี่เป็นอาคารทันสมัย		
+809	pressure	pressures, pressured, pressuring	n: ความกดดัน, แรงดัน | v: กดดัน	I feel a lot of pressure at work.	ฉันรู้สึกกดดันมากในที่ทำงาน		
+810	bus	buses, bused, busing	n: รถบัส, รถเมล์	I take the bus to school.	ฉันนั่งรถเมล์ไปโรงเรียน		🚌
+811	treatment	treatments	n: การรักษา, การปฏิบัติต่อ	The treatment worked very well.	การรักษาได้ผลดีมาก		
+812	conference	conferences, conferenced, conferencing, conferencings	n: การประชุมใหญ่, การประชุมวิชาการ	She went to a conference in Chiang Mai.	เธอไปประชุมที่เชียงใหม่		
+813	yourself	yourselves	pron: ตัวคุณเอง	Please help yourself to some cake.	เชิญหยิบเค้กทานตามสบายเลย	yourself ใช้กับคนเดียว ส่วน yourselves ใช้กับหลายคน	
+814	supply	supplies, supplied, supplying	n: การจัดหา, สิ่งที่จัดหามา | v: จัดหา, ส่งมอบ	The shop supplies fresh fruit every day.	ร้านนี้จัดส่งผลไม้สดทุกวัน		
+815	village	villages	n: หมู่บ้าน	My grandmother lives in a small village.	คุณยายของฉันอาศัยอยู่ในหมู่บ้านเล็ก ๆ		🏘️
+816	worth		adj: มีค่า, คุ้มค่า	This old book is worth a lot of money.	หนังสือเก่าเล่มนี้มีมูลค่าสูง		
+817	natural	naturals	adj: ธรรมชาติ, เป็นธรรมดา	This juice has a natural taste.	น้ำผลไม้นี้มีรสธรรมชาติ		
+818	express	expresses, expressed, expressing	v: แสดงออก, บอกความรู้สึก | adj: ด่วน	She expressed her thanks with a smile.	เธอแสดงความขอบคุณด้วยรอยยิ้ม		
+819	indicate	indicates, indicated, indicating	v: บ่งชี้, แสดงให้เห็น, ชี้	The sign indicates the way to the park.	ป้ายนี้ชี้ทางไปสวนสาธารณะ		
+820	attend	attends, attended, attending	v: เข้าร่วม, ไป (ประชุม เรียน)	I attend English class on Mondays.	ฉันเรียนภาษาอังกฤษทุกวันจันทร์		
+821	brother	brothers	n: พี่ชาย, น้องชาย	My brother plays football every day.	พี่ชายของฉันเล่นฟุตบอลทุกวัน		👦
+822	investment	investments	n: การลงทุน	Buying a house is a big investment.	การซื้อบ้านเป็นการลงทุนครั้งใหญ่		
+823	score	scores, scored, scoring, scorings	n: คะแนน, ผลสกอร์ | v: ทำคะแนน, ทำประตู	What was the final score?	คะแนนสุดท้ายเป็นเท่าไร		
+824	organize	organizes, organized, organizing, organise, organises, organised, organising	v: จัด, จัดระเบียบ	She organized a party for her friend.	เธอจัดปาร์ตี้ให้เพื่อน		
+825	trip	trips, tripped, tripping	n: การเดินทาง, ทริป | v: สะดุด	We took a short trip to the sea.	เราไปเที่ยวทะเลสั้น ๆ		🧳
+826	beyond		prep: เกินกว่า, ไกลออกไป	The shop is just beyond the bridge.	ร้านอยู่เลยสะพานไปนิดเดียว		
+827	sleep	sleeps, slept, sleeping	v: นอน, หลับ | n: การนอนหลับ	I sleep eight hours every night.	ฉันนอนแปดชั่วโมงทุกคืน	รูปอดีตคือ slept	😴
+828	fish	fishes, fished, fishing	n: ปลา | v: ตกปลา	We had fish for dinner.	เรากินปลาเป็นอาหารเย็น	พหูพจน์มักเป็น fish (เหมือนเดิม)	🐟
+829	promise	promises, promised, promising	n: คำมั่นสัญญา | v: สัญญา	I promise to call you tonight.	ฉันสัญญาว่าจะโทรหาคุณคืนนี้		🤞
+830	potential	potentials	n: ศักยภาพ, ความเป็นไปได้ | adj: ที่มีศักยภาพ	This young player has great potential.	นักเตะหนุ่มคนนี้มีศักยภาพสูง		
+831	energy	energies	n: พลังงาน, แรง	I have no energy this morning.	เช้านี้ฉันไม่มีแรงเลย		⚡
+832	trouble	troubles, troubled, troubling	n: ปัญหา, ความยุ่งยาก | v: รบกวน	I am in trouble with my teacher.	ฉันมีเรื่องกับครู		
+833	relation	relations	n: ความสัมพันธ์, ญาติ	There is a relation between sleep and health.	การนอนกับสุขภาพมีความเกี่ยวข้องกัน		
+834	touch	touches, touched, touching	v: สัมผัส, แตะ, ซาบซึ้ง | n: การสัมผัส	Please do not touch the paintings.	กรุณาอย่าสัมผัสภาพวาด		✋
+835	file	files, filed, filing, filings	n: แฟ้ม, ไฟล์ | v: เก็บเข้าแฟ้ม, ยื่น	I saved the file on my computer.	ฉันบันทึกไฟล์ไว้ในคอมพิวเตอร์		📁
+836	middle	middles, middled, middling	n: ตรงกลาง | adj: กลาง	He sat in the middle of the room.	เขานั่งอยู่กลางห้อง		
+837	bar	bars, barred, barring	n: บาร์, แท่ง, คาน | v: กีดขวาง	We had a drink at the bar.	เราดื่มกันที่บาร์		
+838	suffer	suffers, suffered, suffering, sufferred, sufferring	v: ทุกข์ทรมาน, ได้รับความเสียหาย	Many people suffer from headaches.	หลายคนเป็นทุกข์เพราะปวดหัว		
+839	strategy	strategies	n: กลยุทธ์, แผน	We need a new strategy.	เราต้องการกลยุทธ์ใหม่		
+840	deep	deeper, deepest, deeps	adj: ลึก, ล้ำลึก	The lake is very deep.	ทะเลสาบนี้ลึกมาก		
+841	except	excepts, excepted, excepting	prep: ยกเว้น | conj: เว้นแต่	Everyone came except Tom.	ทุกคนมา ยกเว้นทอม		
+842	clean	cleans, cleaned, cleaning, cleanings	adj: สะอาด | v: ทำความสะอาด	Please clean your room.	กรุณาทำความสะอาดห้องของคุณ		🧹
+843	tend	tends, tended, tending	v: มีแนวโน้ม, มักจะ, ดูแล	I tend to wake up early.	ฉันมักจะตื่นเช้า		
+844	advance	advances, advanced, advancing	v: ก้าวหน้า, ล่วงหน้า | n: ความก้าวหน้า | adj: ล่วงหน้า	Technology advances very quickly.	เทคโนโลยีก้าวหน้าเร็วมาก		
+845	fill	fills, filled, filling, fillings	v: เติม, ใส่ให้เต็ม	Please fill the glass with water.	กรุณาเติมน้ำให้เต็มแก้ว		
+846	star	stars, starred, starring	n: ดาว, ดารา | v: แสดงนำ	I can see many stars tonight.	คืนนี้ฉันเห็นดาวเยอะมาก		⭐
+847	network	networks, networked, networking	n: เครือข่าย | v: สร้างเครือข่าย	The network is down again.	ระบบเครือข่ายล่มอีกแล้ว		🌐
+848	generally		adv: โดยทั่วไป	The food here is generally good.	อาหารที่นี่โดยทั่วไปอร่อยดี		
+849	operation	operations	n: การดำเนินการ, การผ่าตัด, การทำงาน	The operation took two hours.	การผ่าตัดใช้เวลาสองชั่วโมง		
+850	match	matches, matched, matching	n: การแข่งขัน, ไม้ขีดไฟ | v: เข้ากัน, จับคู่	These two socks do not match.	ถุงเท้าสองข้างนี้ไม่เข้าคู่กัน		
+851	avoid	avoids, avoided, avoiding	v: หลีกเลี่ยง	Try to avoid heavy traffic.	พยายามหลีกเลี่ยงช่วงรถติด		
+852	seat	seats, seated, seating	n: ที่นั่ง | v: ให้นั่ง	Is this seat free?	ที่นั่งนี้ว่างไหม		💺
+853	throw	throws, threw, throwing, thrown	v: ขว้าง, โยน	He threw the ball to his dog.	เขาโยนบอลให้สุนัขของเขา	รูปอดีตคือ threw / รูป V3 คือ thrown	
+854	task	tasks, tasked, tasking	n: งาน, ภารกิจ	My task today is to clean the kitchen.	งานของฉันวันนี้คือทำความสะอาดห้องครัว		
+855	normal	normals	adj: ปกติ, ธรรมดา	Is this normal?	แบบนี้ปกติไหม		
+856	goal	goals	n: เป้าหมาย, ประตู (กีฬา)	My goal is to speak English well.	เป้าหมายของฉันคือพูดภาษาอังกฤษให้ดี		🥅
+857	associate	associates, associated, associating	v: เกี่ยวข้อง, คบหา | n: เพื่อนร่วมงาน	People often associate red with love.	คนมักเชื่อมสีแดงกับความรัก		
+858	blue	blues, blued, bluing, bluer, bluest	adj: สีฟ้า, สีน้ำเงิน | n: สีฟ้า	The sky is blue today.	วันนี้ท้องฟ้าเป็นสีฟ้า		🔵
+859	positive	positives	adj: ในทางบวก, มั่นใจ | n: ข้อดี	Try to keep a positive attitude.	พยายามรักษาทัศนคติที่ดีไว้		
+860	option	options	n: ตัวเลือก	You have three options.	คุณมีสามตัวเลือก		
+861	box	boxes, boxed, boxing	n: กล่อง | v: ใส่กล่อง, ชกมวย	There is a box on the table.	มีกล่องใบหนึ่งอยู่บนโต๊ะ		📦
+862	huge	huger, hugest	adj: ใหญ่โต, มหึมา	They live in a huge house.	พวกเขาอาศัยอยู่ในบ้านหลังใหญ่โต		
+863	message	messages, messaged, messaging	n: ข้อความ, สาร | v: ส่งข้อความ	I got a message from my mother.	ฉันได้รับข้อความจากแม่		💬
+864	instance	instances, instanced, instancing	n: ตัวอย่าง, กรณี	In this instance, I agree with you.	ในกรณีนี้ ฉันเห็นด้วยกับคุณ	พบบ่อยในวลี for instance (ตัวอย่างเช่น)	
+865	style	styles, styled, styling	n: สไตล์, แบบ, ลีลา | v: ออกแบบทรง	I like her style of dressing.	ฉันชอบสไตล์การแต่งตัวของเธอ		
+866	refer	refers, referred, referring, refered, refering	v: อ้างถึง, ส่งไปดู, ปรึกษา	Please refer to page ten.	กรุณาดูหน้าสิบ		
+867	cold	colder, coldest, colds	adj: หนาว, เย็น | n: หวัด, ความหนาว	It is very cold today.	วันนี้หนาวมาก		🥶
+868	push	pushes, pushed, pushing	v: ผลัก, ดัน, กด	Please push the door.	กรุณาผลักประตู		
+869	quarter	quarters, quartered, quartering	n: หนึ่งในสี่, ไตรมาส, ย่าน	I ate a quarter of the pizza.	ฉันกินพิซซ่าไปหนึ่งในสี่		
+870	assume	assumes, assumed, assuming	v: สมมติ, คาดว่า, เข้าใจเอาเองว่า	I assume you are tired.	ฉันเดาว่าคุณคงเหนื่อย		
+871	baby	babies, babied, babying	n: ทารก, เด็กเล็ก	The baby is sleeping.	ทารกกำลังหลับ		👶
+872	successful		adj: ประสบความสำเร็จ	She is a successful teacher.	เธอเป็นครูที่ประสบความสำเร็จ		
+873	sing	sings, sang, singing, sung	v: ร้องเพลง	She sings in the school choir.	เธอร้องเพลงในคณะประสานเสียงของโรงเรียน	รูปอดีตคือ sang / รูป V3 คือ sung	🎤
+874	doubt	doubts, doubted, doubting	n: ความสงสัย, ข้อสงสัย | v: สงสัย, ไม่เชื่อ	I have no doubt that he will win.	ฉันไม่สงสัยเลยว่าเขาจะชนะ		
+875	competition	competitions	n: การแข่งขัน, การประกวด	She won the singing competition.	เธอชนะการประกวดร้องเพลง		🏆
+876	theory	theories	n: ทฤษฎี, แนวคิด	This is only a theory.	นี่เป็นเพียงทฤษฎี		
+877	propose	proposes, proposed, proposing	v: เสนอ, ขอแต่งงาน	I propose a short break.	ฉันขอเสนอให้พักสั้น ๆ		
+878	reference	references, referenced, referencing	n: การอ้างอิง, หนังสือรับรอง	Please include a reference in your essay.	กรุณาใส่แหล่งอ้างอิงในเรียงความของคุณ		
+879	argument	arguments	n: การโต้เถียง, ข้อโต้แย้ง	They had an argument about money.	พวกเขาทะเลาะกันเรื่องเงิน		
+880	adult	adults	n: ผู้ใหญ่ | adj: โตเต็มวัย	The ticket for an adult is 100 baht.	ตั๋วผู้ใหญ่ราคา 100 บาท		🧑
+881	fly	flies, flew, flying, flown	v: บิน, นั่งเครื่องบิน	Birds fly south in winter.	นกบินไปทางใต้ในฤดูหนาว	รูปอดีตคือ flew / รูป V3 คือ flown	✈️
+882	document	documents, documented, documenting	n: เอกสาร | v: บันทึกเป็นเอกสาร	Please bring your documents tomorrow.	กรุณานำเอกสารมาพรุ่งนี้		📄
+883	pattern	patterns, patterned, patterning	n: รูปแบบ, ลวดลาย, แบบ	The dress has a flower pattern.	ชุดนี้มีลายดอกไม้		
+884	application	applications	n: การสมัคร, ใบสมัคร, แอปพลิเคชัน	I sent my application yesterday.	เมื่อวานฉันส่งใบสมัครไปแล้ว		
+885	hot	hots, hotter, hottest	adj: ร้อน, เผ็ด	The soup is too hot.	ซุปร้อนเกินไป		🌶️
+886	obviously		adv: อย่างชัดเจน, แน่นอนว่า	He is obviously tired.	เห็นได้ชัดว่าเขาเหนื่อย		
+887	unclear		adj: ไม่ชัดเจน, ไม่แน่ใจ	The answer is still unclear.	คำตอบยังไม่ชัดเจน		
+888	bill	bills, billed, billing	n: ใบเรียกเก็บเงิน, ธนบัตร, บิล	Can I have the bill, please?	ขอบิลด้วยค่ะ		🧾
+889	search	searches, searched, searching	v: ค้นหา | n: การค้นหา	I search for recipes online.	ฉันค้นหาสูตรอาหารทางอินเทอร์เน็ต		🔎
+890	separate	separates, separated, separating	v: แยก, แยกออก | adj: แยกต่างหาก	Please separate the red socks from the white ones.	กรุณาแยกถุงเท้าสีแดงออกจากสีขาว		
+891	central	centrals	adj: ส่วนกลาง, ที่เป็นศูนย์กลาง	The central station is very busy.	สถานีกลางคับคั่งมาก		
+892	career	careers, careered, careering	n: อาชีพ, เส้นทางการงาน	She has a long career in teaching.	เธอทำงานด้านการสอนมายาวนาน		
+893	anyway	anyways	adv: อย่างไรก็ตาม, ยังไงก็ได้	It rained, but we went out anyway.	ฝนตก แต่เราก็ออกไปอยู่ดี		
+894	speech	speeches	n: การพูด, สุนทรพจน์, คำพูด	He gave a short speech at the party.	เขากล่าวสุนทรพจน์สั้น ๆ ในงานปาร์ตี้		
+895	dog	dogs, dogged, dogging	n: สุนัข, หมา	My dog loves to swim.	สุนัขของฉันชอบว่ายน้ำ		🐶
+896	officer	officers, officered, officering	n: เจ้าหน้าที่, ตำรวจ, นายทหาร	The officer asked for my ID.	เจ้าหน้าที่ขอดูบัตรประจำตัวของฉัน		👮
+897	throughout		prep: ตลอด, ทั่ว	It rained throughout the night.	ฝนตกตลอดทั้งคืน		
+898	oil	oils, oiled, oiling	n: น้ำมัน | v: ทาน้ำมัน	Please add a little oil to the pan.	กรุณาใส่น้ำมันลงกระทะนิดหน่อย		🛢️
+899	dress	dresses, dressed, dressing	n: ชุดกระโปรง, เสื้อผ้า | v: แต่งตัว, สวมเสื้อผ้า	She wore a long red dress.	เธอสวมชุดกระโปรงยาวสีแดง		👗
+900	profit	profits, profited, profiting	n: กำไร, ผลประโยชน์ | v: ได้กำไร	The shop made a good profit this year.	ร้านนี้ได้กำไรดีในปีนี้		💰

@@ -1,101 +1,101 @@
 rank	headword	forms	meanings	example_en	example_th	note	emoji
-901	guess	guesses, guessed, guessing					
-902	fun						
-903	protect	protects, protected, protecting					
-904	resource	resources, resourced, resourcing					
-905	science	sciences					
-906	disease	diseases, diseased					
-907	balance	balances, balanced, balancing					
-908	damage	damages, damaged, damaging					
-909	basis						
-910	author	authors, authored, authoring					
-911	basic	basics					
-912	encourage	encourages, encouraged, encouraging					
-913	hair	hairs, haired					
-914	male	males					
-915	operate	operates, operated, operating					
-916	reflect	reflects, reflected, reflecting					
-917	exercise	exercises, exercised, exercising					
-918	useful						
-919	restaurant	restaurants					
-920	income	incomes					
-921	property	properties					
-922	previous						
-923	dark	darker, darkest					
-924	imagine	imagines, imagined, imagining, imaginings					
-925	okay	okays, okayed, okaying, ok					
-926	earn	earns, earned, earning, earnings					
-927	daughter	daughters					
-928	post	posts, posted, posting, postings					
-929	newspaper	newspapers					
-930	define	defines, defined, defining					
-931	conclusion	conclusions					
-932	clock	clocks, clocked, clocking					
-933	everybody						
-934	weekend	weekends, weekending					
-935	perform	performs, performed, performing					
-936	professional	professionals					
-937	mine	mines, mined, mining					
-938	debate	debates, debated, debating					
-939	memory	memories					
-940	green	greens, greened, greening, greener, greenest					
-941	song	songs					
-942	object	objects, objected, objecting					
-943	maintain	maintains, maintained, maintaining					
-944	credit	credits, credited, crediting					
-945	ring	rings, ringed, rang, ringing, rung					
-946	discover	discovers, discovered, discovering					
-947	dead	deader, deadest					
-948	afternoon	afternoons					
-949	prefer	prefers, preferred, preferring, prefered, prefering					
-950	extend	extends, extended, extending					
-951	possibility	possibilities					
-952	direction	directions					
-953	facility	facilities					
-954	variety	varieties					
-955	daily	dailies					
-956	clothes						
-957	screen	screens, screened, screening, screenings					
-958	track	tracks, tracked, tracking					
-959	dance	dances, danced, dancing					
-960	completely						
-961	female	females					
-962	responsibility	responsibilities					
-963	original	originals					
-964	sister	sisters					
-965	rock	rocks, rocked, rocking					
-966	dream	dreams, dreamed, dreaming, dreamt					
-967	nor						
-968	university	universities					
-969	easily						
-970	agency	agencies					
-971	dollar	dollars					
-972	garden	gardens, gardened, gardening					
-973	fix	fixes, fixed, fixing, fixings					
-974	ahead						
-975	cross	crosses, crossed, crossing, crossings					
-976	yeah						
-977	candidate	candidates					
-978	weight	weights, weighted, weighting, weightings					
-979	legal						
-980	proposal	proposals					
-981	version	versions, versioned					
-982	conversation	conversations					
-983	somebody						
-984	pound	pounds, pounded, pounding, poundings					
-985	magazine	magazines					
-986	shape	shapes, shaped, shaping					
-987	sea	seas					
-988	immediately						
-989	welcome	welcomes, welcomed, welcoming					
-990	smile	smiles, smiled, smiling					
-991	communication	communications					
-992	agent	agents					
-993	traditional						
-994	replace	replaces, replaced, replacing					
-995	judge	judges, judged, judging					
-996	herself						
-997	suddenly						
-998	generation	generations					
-999	estimate	estimates, estimated, estimating					
-1000	favorite	favorites, favourite, favourites					
+901	guess	guesses, guessed, guessing	v: เดา, คาดเดา | n: การเดา	Can you guess my age?	คุณเดาอายุฉันได้ไหม		
+902	fun		n: ความสนุก | adj: สนุก	We had a lot of fun at the party.	เราสนุกกันมากในงานปาร์ตี้		🎉
+903	protect	protects, protected, protecting	v: ปกป้อง, คุ้มครอง	Wear a hat to protect your head.	สวมหมวกเพื่อป้องกันศีรษะ		🛡️
+904	resource	resources, resourced, resourcing	n: ทรัพยากร, แหล่งข้อมูล	Water is an important natural resource.	น้ำเป็นทรัพยากรธรรมชาติที่สำคัญ		
+905	science	sciences	n: วิทยาศาสตร์	My brother loves science.	พี่ชายของฉันชอบวิทยาศาสตร์		🔬
+906	disease	diseases, diseased	n: โรค, โรคภัย	The disease spreads quickly.	โรคนี้แพร่กระจายเร็ว		
+907	balance	balances, balanced, balancing	n: ความสมดุล, ยอดคงเหลือ | v: ทรงตัว, ทำให้สมดุล	It is hard to keep my balance on ice.	ทรงตัวบนน้ำแข็งยากมาก		⚖️
+908	damage	damages, damaged, damaging	n: ความเสียหาย | v: ทำให้เสียหาย	The storm caused a lot of damage.	พายุทำให้เกิดความเสียหายมาก		
+909	basis		n: พื้นฐาน, หลักการ	Trust is the basis of friendship.	ความไว้ใจเป็นพื้นฐานของมิตรภาพ	พหูพจน์คือ bases	
+910	author	authors, authored, authoring	n: ผู้เขียน, นักเขียน | v: เขียน	The author wrote ten books.	นักเขียนคนนี้เขียนหนังสือสิบเล่ม		✍️
+911	basic	basics	adj: พื้นฐาน, เบื้องต้น	I learn basic English first.	ฉันเรียนภาษาอังกฤษพื้นฐานก่อน		
+912	encourage	encourages, encouraged, encouraging	v: ให้กำลังใจ, สนับสนุน	My teacher encourages me to read.	ครูให้กำลังใจฉันให้อ่านหนังสือ		
+913	hair	hairs, haired	n: ผม, เส้นผม	She has long black hair.	เธอมีผมยาวสีดำ		💇
+914	male	males	adj: เพศชาย | n: เพศชาย, ตัวผู้	A male lion has a big mane.	สิงโตตัวผู้มีแผงคอใหญ่		
+915	operate	operates, operated, operating	v: ทำงาน (เครื่อง), ผ่าตัด, ดำเนินการ	Do you know how to operate this machine?	คุณรู้วิธีใช้เครื่องนี้ไหม		
+916	reflect	reflects, reflected, reflecting	v: สะท้อน, ใคร่ครวญ	The lake reflects the blue sky.	ทะเลสาบสะท้อนท้องฟ้าสีฟ้า		
+917	exercise	exercises, exercised, exercising	n: การออกกำลังกาย, แบบฝึกหัด | v: ออกกำลังกาย	I exercise every morning.	ฉันออกกำลังกายทุกเช้า		🏃
+918	useful		adj: มีประโยชน์	This app is very useful.	แอปนี้มีประโยชน์มาก		
+919	restaurant	restaurants	n: ร้านอาหาร	We had dinner at a nice restaurant.	เรากินข้าวเย็นที่ร้านอาหารดี ๆ แห่งหนึ่ง		🍴
+920	income	incomes	n: รายได้	Her income is higher than mine.	รายได้ของเธอสูงกว่าของฉัน		💵
+921	property	properties	n: ทรัพย์สิน, อสังหาริมทรัพย์, คุณสมบัติ	This property belongs to my family.	ทรัพย์สินนี้เป็นของครอบครัวฉัน		
+922	previous		adj: ก่อนหน้า, ที่แล้ว	Please look at the previous page.	กรุณาดูหน้าก่อนหน้า		
+923	dark	darker, darkest	adj: มืด, สีเข้ม	It gets dark early in winter.	ฤดูหนาวฟ้ามืดเร็ว		🌑
+924	imagine	imagines, imagined, imagining, imaginings	v: จินตนาการ, นึกภาพ	Imagine you are on a beach.	ลองนึกภาพว่าคุณอยู่ที่ชายหาด		💭
+925	okay	okays, okayed, okaying, ok	adj: โอเค, ได้ | adv: ตกลง	Is it okay if I sit here?	ฉันนั่งตรงนี้ได้ไหม		👌
+926	earn	earns, earned, earning, earnings	v: หาเงินได้, ได้รับ	She earns a good salary.	เธอได้เงินเดือนดี		💰
+927	daughter	daughters	n: ลูกสาว	Their daughter is ten years old.	ลูกสาวของพวกเขาอายุสิบขวบ		👧
+928	post	posts, posted, posting, postings	n: เสาหลัก, ไปรษณีย์, ตำแหน่ง | v: โพสต์, ส่งไปรษณีย์	I will post the letter tomorrow.	พรุ่งนี้ฉันจะส่งจดหมาย		📮
+929	newspaper	newspapers	n: หนังสือพิมพ์	My father reads a newspaper every morning.	พ่อของฉันอ่านหนังสือพิมพ์ทุกเช้า		📰
+930	define	defines, defined, defining	v: กำหนดความหมาย, นิยาม	Can you define this word?	คุณช่วยบอกความหมายของคำนี้ได้ไหม		
+931	conclusion	conclusions	n: ข้อสรุป	What is your conclusion?	ข้อสรุปของคุณคืออะไร		
+932	clock	clocks, clocked, clocking	n: นาฬิกา (ตั้งหรือแขวน) | v: จับเวลา	The clock on the wall is slow.	นาฬิกาบนผนังเดินช้า		🕰️
+933	everybody		pron: ทุกคน	Everybody likes her.	ทุกคนชอบเธอ		
+934	weekend	weekends, weekending	n: วันหยุดสุดสัปดาห์	What do you do on the weekend?	คุณทำอะไรช่วงสุดสัปดาห์		
+935	perform	performs, performed, performing	v: แสดง, ปฏิบัติ, ทำงาน	The band will perform tonight.	คืนนี้วงดนตรีจะขึ้นแสดง		🎭
+936	professional	professionals	adj: มืออาชีพ, เป็นทางการ | n: ผู้เชี่ยวชาญ	She is a professional singer.	เธอเป็นนักร้องมืออาชีพ		
+937	mine	mines, mined, mining	n: เหมือง | v: ขุด, ทำเหมือง	Many people work in the mine.	หลายคนทำงานในเหมือง	mine ที่แปลว่า "ของฉัน" อยู่ที่การ์ด I	⛏️
+938	debate	debates, debated, debating	n: การโต้วาที, การอภิปราย | v: โต้วาที, ถกเถียง	We had a debate about school uniforms.	เราโต้วาทีกันเรื่องชุดนักเรียน		
+939	memory	memories	n: ความทรงจำ, ความจำ	I have a good memory for faces.	ฉันจำหน้าคนได้ดี		
+940	green	greens, greened, greening, greener, greenest	adj: สีเขียว | n: สีเขียว, สนามหญ้า	The grass is green.	หญ้าเป็นสีเขียว		🟢
+941	song	songs	n: เพลง	She sang a beautiful song.	เธอร้องเพลงไพเราะเพลงหนึ่ง		🎵
+942	object	objects, objected, objecting	n: วัตถุ, สิ่งของ, จุดประสงค์ | v: คัดค้าน	There is a strange object on the floor.	มีสิ่งของแปลก ๆ อยู่บนพื้น		
+943	maintain	maintains, maintained, maintaining	v: รักษา, ดูแล, ยืนยัน	You should maintain a healthy weight.	คุณควรรักษาน้ำหนักให้สมส่วน		
+944	credit	credits, credited, crediting	n: เครดิต, ความเชื่อถือ, คะแนนหน่วยกิต | v: ให้เครดิต	You can pay by credit card.	คุณจ่ายด้วยบัตรเครดิตได้		💳
+945	ring	rings, ringed, rang, ringing, rung	n: แหวน, เสียงกริ่ง | v: ดัง, โทรหา	The phone rang three times.	โทรศัพท์ดังสามครั้ง	รูปอดีตคือ rang / รูป V3 คือ rung	💍
+946	discover	discovers, discovered, discovering	v: ค้นพบ, พบ	Scientists discovered a new star.	นักวิทยาศาสตร์ค้นพบดาวดวงใหม่		🔭
+947	dead	deader, deadest	adj: ตายแล้ว, ไม่มีชีวิต	The flowers are dead.	ดอกไม้เหล่านี้ตายแล้ว		
+948	afternoon	afternoons	n: ตอนบ่าย	I take a nap in the afternoon.	ฉันงีบหลับตอนบ่าย		
+949	prefer	prefers, preferred, preferring, prefered, prefering	v: ชอบมากกว่า, เลือกมากกว่า	I prefer tea to coffee.	ฉันชอบชามากกว่ากาแฟ		
+950	extend	extends, extended, extending	v: ขยาย, ยืดออก, ต่อเวลา	They extended the road to the sea.	พวกเขาต่อถนนไปจนถึงทะเล		
+951	possibility	possibilities	n: ความเป็นไปได้	There is a possibility of rain.	มีโอกาสที่ฝนจะตก		
+952	direction	directions	n: ทิศทาง, คำแนะนำ	Can you give me directions to the station?	คุณบอกทางไปสถานีให้ฉันได้ไหม	directions (พหูพจน์) มักแปลว่า "การบอกทาง" หรือ "คำแนะนำวิธีทำ"	🧭
+953	facility	facilities	n: สิ่งอำนวยความสะดวก, สถานที่	The hotel has a swimming pool and other facilities.	โรงแรมมีสระว่ายน้ำและสิ่งอำนวยความสะดวกอื่น ๆ		
+954	variety	varieties	n: ความหลากหลาย, หลายชนิด	The market sells a variety of fruit.	ตลาดนี้ขายผลไม้หลายชนิด		
+955	daily	dailies	adj: ทุกวัน, ประจำวัน | adv: ทุกวัน	This is my daily routine.	นี่เป็นกิจวัตรประจำวันของฉัน		
+956	clothes		n: เสื้อผ้า	I need to wash my clothes.	ฉันต้องซักเสื้อผ้า	ใช้เป็นพหูพจน์เสมอ เช่น These clothes are new	👚
+957	screen	screens, screened, screening, screenings	n: หน้าจอ, ฉาก | v: ฉาย, คัดกรอง	The screen of my phone is broken.	หน้าจอโทรศัพท์ของฉันแตก		
+958	track	tracks, tracked, tracking	n: ราง, ร่องรอย, เพลง | v: ติดตาม	The train left the track.	รถไฟตกรางแล้ว		
+959	dance	dances, danced, dancing	v: เต้นรำ | n: การเต้นรำ	They dance in the street at night.	พวกเขาเต้นรำบนถนนตอนกลางคืน		💃
+960	completely		adv: อย่างสมบูรณ์, ทั้งหมด	I completely forgot about the meeting.	ฉันลืมเรื่องการประชุมไปเสียสนิท		
+961	female	females	adj: เพศหญิง | n: เพศหญิง, ตัวเมีย	A female cat had four babies.	แมวตัวเมียออกลูกสี่ตัว		
+962	responsibility	responsibilities	n: ความรับผิดชอบ, หน้าที่	Taking care of a pet is a big responsibility.	การเลี้ยงสัตว์เป็นความรับผิดชอบใหญ่		
+963	original	originals	adj: ดั้งเดิม, แรกเริ่ม | n: ของแท้, ต้นฉบับ	This is the original recipe.	นี่เป็นสูตรดั้งเดิม		
+964	sister	sisters	n: พี่สาว, น้องสาว	My sister is a nurse.	พี่สาวของฉันเป็นพยาบาล		👧
+965	rock	rocks, rocked, rocking	n: หิน, ดนตรีร็อก | v: โยก, สั่น	He sat on a big rock.	เขานั่งบนก้อนหินก้อนใหญ่		🪨
+966	dream	dreams, dreamed, dreaming, dreamt	n: ความฝัน | v: ฝัน, ใฝ่ฝัน	I had a strange dream last night.	เมื่อคืนฉันฝันแปลก ๆ		💭
+967	nor		conj: และไม่, ก็ไม่ (ใช้กับ neither)	He neither smokes nor drinks.	เขาไม่สูบบุหรี่และไม่ดื่มเหล้า	ใช้คู่กับ neither หรือ not เช่น neither … nor …	
+968	university	universities	n: มหาวิทยาลัย	She studies at a university in Bangkok.	เธอเรียนอยู่ที่มหาวิทยาลัยแห่งหนึ่งในกรุงเทพฯ		🎓
+969	easily		adv: อย่างง่ายดาย, ได้ง่าย ๆ	She learned to swim easily.	เธอหัดว่ายน้ำได้อย่างง่ายดาย		
+970	agency	agencies	n: หน่วยงาน, บริษัทตัวแทน	He works for a travel agency.	เขาทำงานที่บริษัทท่องเที่ยว		
+971	dollar	dollars	n: ดอลลาร์	This book costs ten dollars.	หนังสือเล่มนี้ราคาสิบดอลลาร์		💵
+972	garden	gardens, gardened, gardening	n: สวน | v: ทำสวน	We grow flowers in our garden.	เราปลูกดอกไม้ในสวนของเรา		🌷
+973	fix	fixes, fixed, fixing, fixings	v: ซ่อม, แก้ไข, กำหนด	Can you fix my bike?	คุณซ่อมจักรยานให้ฉันได้ไหม		🔧
+974	ahead		adv: ข้างหน้า, ล่วงหน้า	Please go ahead of me.	เชิญไปข้างหน้าฉันก่อนเลย		
+975	cross	crosses, crossed, crossing, crossings	v: ข้าม, ผ่านไปอีกฝั่ง | n: ไม้กางเขน, กากบาท	Be careful when you cross the road.	ระวังตอนข้ามถนนนะ		
+976	yeah		int: ใช่ (ภาษาพูด), เออ	Yeah, I know what you mean.	ใช่ ฉันเข้าใจที่คุณหมายถึง	ใช้ในภาษาพูดไม่เป็นทางการ แทน yes	
+977	candidate	candidates	n: ผู้สมัคร, ผู้ลงสมัคร	There are five candidates for the job.	มีผู้สมัครงานนี้ห้าคน		
+978	weight	weights, weighted, weighting, weightings	n: น้ำหนัก, ตุ้มน้ำหนัก | v: ถ่วงน้ำหนัก	What is your weight?	น้ำหนักตัวคุณเท่าไร		⚖️
+979	legal		adj: ถูกกฎหมาย, เกี่ยวกับกฎหมาย	It is legal to drive at eighteen.	ขับรถได้อย่างถูกกฎหมายเมื่ออายุสิบแปด		
+980	proposal	proposals	n: ข้อเสนอ, แผนที่เสนอ	Everyone liked her proposal.	ทุกคนชอบข้อเสนอของเธอ		
+981	version	versions, versioned	n: เวอร์ชัน, ฉบับ	This is the latest version of the app.	นี่เป็นแอปเวอร์ชันล่าสุด		
+982	conversation	conversations	n: บทสนทนา, การพูดคุย	We had a long conversation on the phone.	เราคุยโทรศัพท์กันนาน		💬
+983	somebody		pron: ใครสักคน	Somebody left a bag here.	ใครสักคนลืมกระเป๋าไว้ที่นี่		
+984	pound	pounds, pounded, pounding, poundings	n: ปอนด์ (เงินหรือน้ำหนัก) | v: ทุบ, เต้นรัว	This costs five pounds.	ของชิ้นนี้ราคาห้าปอนด์		💷
+985	magazine	magazines	n: นิตยสาร	I read a fashion magazine.	ฉันอ่านนิตยสารแฟชั่น		📖
+986	shape	shapes, shaped, shaping	n: รูปร่าง, รูปทรง | v: ปั้น, ทำให้เป็นรูป	The cake has a heart shape.	เค้กนี้เป็นรูปหัวใจ		
+987	sea	seas	n: ทะเล	We swim in the sea every summer.	เราว่ายน้ำในทะเลทุกหน้าร้อน		🌊
+988	immediately		adv: ทันที	Please answer immediately.	กรุณาตอบทันที		
+989	welcome	welcomes, welcomed, welcoming	v: ต้อนรับ | adj: เป็นที่ต้อนรับ | int: ยินดีต้อนรับ	We welcome you to our home.	เรายินดีต้อนรับคุณสู่บ้านของเรา		👋
+990	smile	smiles, smiled, smiling	n: รอยยิ้ม | v: ยิ้ม	She smiled at me.	เธอยิ้มให้ฉัน		😊
+991	communication	communications	n: การสื่อสาร	Good communication helps a team.	การสื่อสารที่ดีช่วยให้ทีมทำงานได้ดี		
+992	agent	agents	n: ตัวแทน, เอเย่นต์	The agent showed us a house.	ตัวแทนพาเราไปดูบ้านหลังหนึ่ง		
+993	traditional		adj: ตามประเพณี, ดั้งเดิม	We eat traditional Thai food.	เรากินอาหารไทยแบบดั้งเดิม		
+994	replace	replaces, replaced, replacing	v: แทนที่, เปลี่ยน	I need to replace this old phone.	ฉันต้องเปลี่ยนโทรศัพท์เครื่องเก่านี้		
+995	judge	judges, judged, judging	n: ผู้พิพากษา, กรรมการตัดสิน | v: ตัดสิน, ตัดสินใจ	Do not judge a book by its cover.	อย่าตัดสินหนังสือจากปก		⚖️
+996	herself		pron: ตัวเธอเอง	She made the dress herself.	เธอตัดชุดนี้ด้วยตัวเอง		
+997	suddenly		adv: ทันใดนั้น, จู่ ๆ	Suddenly it started to rain.	จู่ ๆ ฝนก็ตกลงมา		
+998	generation	generations	n: รุ่น, คนรุ่นเดียวกัน, การให้กำเนิด	My grandmother's generation grew up without phones.	คนรุ่นคุณยายของฉันโตมาโดยไม่มีโทรศัพท์		
+999	estimate	estimates, estimated, estimating	v: ประมาณ, ประเมิน | n: การประมาณ	I estimate the trip will take two hours.	ฉันประมาณว่าการเดินทางจะใช้เวลาสองชั่วโมง		
+1000	favorite	favorites, favourite, favourites	adj: โปรดปราน, ชอบที่สุด | n: สิ่งที่ชอบที่สุด	Blue is my favorite color.	สีฟ้าเป็นสีที่ฉันชอบที่สุด		❤️

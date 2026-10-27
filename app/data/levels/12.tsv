@@ -1,101 +1,101 @@
 rank	headword	forms	meanings	example_en	example_th	note	emoji
-1101	progress	progresses, progressed, progressing					
-1102	truth	truths					
-1103	nobody	nobodies					
-1104	examine	examines, examined, examining					
-1105	lay	lays, laid, laying					
-1106	speed	speeds, sped, speeded, speeding					
-1107	politics						
-1108	reply	replies, replied, replying					
-1109	display	displays, displayed, displaying					
-1110	transfer	transfers, transferred, transferring, transfering					
-1111	perfect	perfects, perfected, perfecting					
-1112	slightly						
-1113	overall						
-1114	intend	intends, intended, intending					
-1115	user	users					
-1116	respond	responds, responded, responding					
-1117	dinner	dinners					
-1118	slow	slows, slowed, slowing, slower, slowest					
-1119	regular	regulars					
-1120	physical	physicals					
-1121	apart						
-1122	suit	suits, suited, suiting					
-1123	federal	federals					
-1124	reveal	reveals, revealed, revealing, revealled, revealling					
-1125	percentage	percentages					
-1126	peace	peaces					
-1127	status						
-1128	crime	crimes					
-1129	decline	declines, declined, declining					
-1130	decade	decades					
-1131	launch	launches, launched, launching					
-1132	warn	warns, warned, warning, warnings					
-1133	consumer	consumers					
-1134	favor	favors, favored, favoring, favour, favours, favoured, favouring					
-1135	dry	dries, dried, drying, drier, driest					
-1136	partner	partners, partnered, partnering					
-1137	institution	institutions					
-1138	spot	spots, spotted, spotting					
-1139	horse	horses, horsed, horsing					
-1140	eventually						
-1141	heat	heats, heated, heating					
-1142	excite	excites, excited, exciting					
-1143	reader	readers					
-1144	importance						
-1145	distance	distances, distanced, distancing					
-1146	guide	guides, guided, guiding					
-1147	grant	grants, granted, granting					
-1148	taxi	taxis, taxiing, taxies					
-1149	feed	feeds, fed, feeding, feedings					
-1150	pain	pains, pained, paining					
-1151	sector	sectors					
-1152	mistake	mistakes, mistook, mistaking					
-1153	ensure	ensures, ensured, ensuring					
-1154	satisfy	satisfies, satisfied, satisfying					
-1155	chief	chiefs					
-1156	cool	cools, cooled, cooling, coolest					
-1157	expert	experts					
-1158	wave	waves, waved, waving					
-1159	south						
-1160	labor	labors, labored, laboring, labour, labours, laboured, labouring					
-1161	surface	surfaces, surfaced, surfacing					
-1162	library	libraries					
-1163	excellent						
-1164	edge	edges, edged, edging					
-1165	camp	camps, camped, camping					
-1166	audience	audiences					
-1167	lift	lifts, lifted, lifting					
-1168	procedure	procedures					
-1169	email	emails, emailed, emailing					
-1170	global						
-1171	struggle	struggles, struggled, struggling					
-1172	advertise	advertises, advertised, advertising, advertize, advertizes, advertized, advertizing					
-1173	select	selects, selected, selecting					
-1174	surround	surrounds, surrounded, surrounding, surroundings					
-1175	extent	extents					
-1176	river	rivers					
-1177	annual	annuals					
-1178	fully						
-1179	contrast	contrasts, contrasted, contrasting					
-1180	roll	rolls, rolled, rolling					
-1181	reality	realities					
-1182	photograph	photographs, photographed, photographing					
-1183	artist	artists					
-1184	conflict	conflicts, conflicted, conflicting					
-1185	entire						
-1186	presence	presences					
-1187	crowd	crowds, crowded, crowding					
-1188	corner	corners, cornered, cornering					
-1189	gas	gases, gassed, gassing, gasses					
-1190	shift	shifts, shifted, shifting					
-1191	net	nets, netted, netting					
-1192	category	categories					
-1193	secretary	secretaries					
-1194	defense	defenses, defence, defences					
-1195	quick	quicker, quickest					
-1196	cook	cooks, cooked, cooking					
-1197	spread	spreads, spreading					
-1198	nuclear						
-1199	scale	scales, scaled, scaling					
-1200	driver	drivers					
+1101	progress	progresses, progressed, progressing	n: ความก้าวหน้า | v: ก้าวหน้า, คืบหน้า	You are making good progress in English.	คุณพัฒนาภาษาอังกฤษได้ดีขึ้นเรื่อย ๆ		📈
+1102	truth	truths	n: ความจริง	Please tell me the truth.	กรุณาบอกความจริงกับฉัน		
+1103	nobody	nobodies	pron: ไม่มีใคร	Nobody knows the answer.	ไม่มีใครรู้คำตอบ		
+1104	examine	examines, examined, examining	v: ตรวจ, ตรวจสอบ, สอบสวน	The doctor examined my eyes.	หมอตรวจดวงตาของฉัน		🩺
+1105	lay	lays, laid, laying	v: วาง, วางลง, ออกไข่	She lays the book on the table.	เธอวางหนังสือไว้บนโต๊ะ	รูปอดีตคือ laid (ส่วน lay ที่เป็นรูปอดีตของ lie = นอน อยู่ในการ์ด lie)	
+1106	speed	speeds, sped, speeded, speeding	n: ความเร็ว | v: ขับเร็ว, เร่ง	The car drove at high speed.	รถคันนั้นขับด้วยความเร็วสูง	รูปอดีตคือ sped หรือ speeded	🏎️
+1107	politics		n: การเมือง	He does not like to talk about politics.	เขาไม่ชอบคุยเรื่องการเมือง	มักใช้เป็นนามเอกพจน์ เช่น Politics is difficult	
+1108	reply	replies, replied, replying	v: ตอบ, ตอบกลับ | n: คำตอบ	Please reply to my email.	กรุณาตอบอีเมลของฉันด้วย		↩️
+1109	display	displays, displayed, displaying	v: แสดง, จัดแสดง | n: การแสดง, หน้าจอ	The shop displays toys in the window.	ร้านจัดของเล่นโชว์ไว้หน้าต่าง		
+1110	transfer	transfers, transferred, transferring, transfering	v: ย้าย, โอน | n: การย้าย, การโอน	I want to transfer some money to my mother.	ฉันอยากโอนเงินให้แม่		
+1111	perfect	perfects, perfected, perfecting	adj: สมบูรณ์แบบ | v: ทำให้สมบูรณ์แบบ	Today is a perfect day for a picnic.	วันนี้เป็นวันที่เหมาะกับการปิกนิกที่สุด		💯
+1112	slightly		adv: เล็กน้อย, นิดหน่อย	I am slightly tired.	ฉันเหนื่อยนิดหน่อย		
+1113	overall		adv: โดยรวม, ทั้งหมด | adj: โดยรวม	Overall, the trip was great.	โดยรวมแล้วการเดินทางครั้งนี้ยอดเยี่ยม		
+1114	intend	intends, intended, intending	v: ตั้งใจ, มีเจตนา	I intend to study abroad.	ฉันตั้งใจจะไปเรียนต่อต่างประเทศ		
+1115	user	users	n: ผู้ใช้	The app has a million users.	แอปนี้มีผู้ใช้ล้านคน		
+1116	respond	responds, responded, responding	v: ตอบสนอง, ตอบ	He did not respond to my message.	เขาไม่ตอบข้อความของฉัน		
+1117	dinner	dinners	n: อาหารเย็น, มื้อค่ำ	We have dinner at seven.	เรากินอาหารเย็นตอนทุ่มหนึ่ง		🍲
+1118	slow	slows, slowed, slowing, slower, slowest	adj: ช้า | v: ชะลอ, ทำให้ช้าลง	The internet is very slow today.	วันนี้อินเทอร์เน็ตช้ามาก		🐢
+1119	regular	regulars	adj: เป็นประจำ, ปกติ | n: ลูกค้าประจำ	He is a regular customer here.	เขาเป็นลูกค้าประจำที่นี่		
+1120	physical	physicals	adj: ทางกาย, ทางร่างกาย | n: การตรวจร่างกาย	Physical exercise is good for you.	การออกกำลังกายดีต่อสุขภาพของคุณ		
+1121	apart		adv: แยกออก, ห่างกัน	The two towns are ten miles apart.	สองเมืองนี้อยู่ห่างกันสิบไมล์		
+1122	suit	suits, suited, suiting	n: ชุดสูท, คดีความ | v: เหมาะกับ	He wore a black suit.	เขาสวมชุดสูทสีดำ		🤵
+1123	federal	federals	adj: เกี่ยวกับรัฐบาลกลาง, สหพันธรัฐ	The federal government made a new law.	รัฐบาลกลางออกกฎหมายใหม่		
+1124	reveal	reveals, revealed, revealing, revealled, revealling	v: เปิดเผย, เผยให้เห็น	The test revealed a problem.	การทดสอบเผยให้เห็นปัญหาข้อหนึ่ง		
+1125	percentage	percentages	n: เปอร์เซ็นต์, สัดส่วน	What percentage of students passed?	นักเรียนสอบผ่านกี่เปอร์เซ็นต์		
+1126	peace	peaces	n: สันติภาพ, ความสงบ	Everyone wants peace.	ทุกคนต้องการสันติภาพ		🕊️
+1127	status		n: สถานะ, ฐานะ	What is your marital status?	สถานภาพสมรสของคุณคืออะไร		
+1128	crime	crimes	n: อาชญากรรม	Crime is low in this town.	เมืองนี้มีอาชญากรรมน้อย		
+1129	decline	declines, declined, declining	v: ลดลง, ปฏิเสธ | n: การลดลง	I declined the invitation politely.	ฉันปฏิเสธคำเชิญอย่างสุภาพ		
+1130	decade	decades	n: ทศวรรษ, สิบปี	He has lived here for a decade.	เขาอาศัยอยู่ที่นี่มาสิบปีแล้ว		
+1131	launch	launches, launched, launching	v: เปิดตัว, ปล่อย (ยาน), เริ่ม	The company will launch a new phone.	บริษัทจะเปิดตัวโทรศัพท์รุ่นใหม่		🚀
+1132	warn	warns, warned, warning, warnings	v: เตือน, แจ้งเตือน	I warned him about the hot soup.	ฉันเตือนเขาเรื่องซุปร้อน		⚠️
+1133	consumer	consumers	n: ผู้บริโภค, ลูกค้า	Consumers want lower prices.	ผู้บริโภคอยากได้ราคาที่ถูกลง		
+1134	favor	favors, favored, favoring, favour, favours, favoured, favouring	n: ความช่วยเหลือ, ความโปรดปราน | v: สนับสนุน, เข้าข้าง	Can you do me a favor?	ช่วยฉันหน่อยได้ไหม		
+1135	dry	dries, dried, drying, drier, driest	adj: แห้ง | v: ทำให้แห้ง, ตาก	The clothes are dry.	เสื้อผ้าแห้งแล้ว		🏜️
+1136	partner	partners, partnered, partnering	n: หุ้นส่วน, คู่หู, คู่ครอง | v: เป็นคู่กัน	She is my business partner.	เธอเป็นหุ้นส่วนธุรกิจของฉัน		🤝
+1137	institution	institutions	n: สถาบัน, องค์กร	This university is a famous institution.	มหาวิทยาลัยแห่งนี้เป็นสถาบันที่มีชื่อเสียง		
+1138	spot	spots, spotted, spotting	n: จุด, ตำหนิ, สถานที่ | v: มองเห็น, สังเกตเห็น	This is a good spot for a picnic.	ตรงนี้เป็นที่ที่ดีสำหรับปิกนิก		
+1139	horse	horses, horsed, horsing	n: ม้า	She rides a horse every weekend.	เธอขี่ม้าทุกสุดสัปดาห์		🐴
+1140	eventually		adv: ในที่สุด, ท้ายที่สุด	He eventually found his keys.	ในที่สุดเขาก็เจอกุญแจ	eventually ไม่ได้แปลว่า "เหตุการณ์" ใช้แปลว่า "ในที่สุด" เท่านั้น	
+1141	heat	heats, heated, heating	n: ความร้อน | v: ทำให้ร้อน, อุ่น	The heat from the sun is strong.	ความร้อนจากแสงแดดแรงมาก		🔥
+1142	excite	excites, excited, exciting	v: ทำให้ตื่นเต้น	The big news excited everyone.	ข่าวใหญ่ทำให้ทุกคนตื่นเต้น	excited = รู้สึกตื่นเต้น / exciting = น่าตื่นเต้น	
+1143	reader	readers	n: ผู้อ่าน	She is a fast reader.	เธอเป็นคนอ่านเร็ว		📚
+1144	importance		n: ความสำคัญ	Exercise is of great importance.	การออกกำลังกายมีความสำคัญมาก		
+1145	distance	distances, distanced, distancing	n: ระยะทาง, ระยะห่าง	What is the distance to the airport?	ถึงสนามบินไกลแค่ไหน		📏
+1146	guide	guides, guided, guiding	n: ไกด์, คู่มือ | v: นำทาง, แนะนำ	Our guide was very friendly.	ไกด์ของเราเป็นกันเองมาก		🧭
+1147	grant	grants, granted, granting	v: ให้, ยินยอม, อนุมัติ | n: เงินทุนสนับสนุน	The school granted him a scholarship.	โรงเรียนให้ทุนการศึกษาแก่เขา		
+1148	taxi	taxis, taxiing, taxies	n: แท็กซี่	We took a taxi to the airport.	เราขึ้นแท็กซี่ไปสนามบิน		🚕
+1149	feed	feeds, fed, feeding, feedings	v: ให้อาหาร, เลี้ยง | n: อาหารสัตว์	I feed my cat twice a day.	ฉันให้อาหารแมววันละสองครั้ง	รูปอดีตคือ fed	🍼
+1150	pain	pains, pained, paining	n: ความเจ็บปวด | v: ทำให้เจ็บปวด	I feel a pain in my back.	ฉันรู้สึกเจ็บที่หลัง		🤕
+1151	sector	sectors	n: ภาค, ส่วนหนึ่งของเศรษฐกิจ	He works in the tourism sector.	เขาทำงานในภาคการท่องเที่ยว		
+1152	mistake	mistakes, mistook, mistaking	n: ข้อผิดพลาด | v: เข้าใจผิด, สับสน	I made a mistake on the test.	ฉันทำผิดพลาดในข้อสอบ	รูปอดีตคือ mistook	
+1153	ensure	ensures, ensured, ensuring	v: ทำให้แน่ใจ, รับรอง	Please ensure the door is locked.	กรุณาตรวจให้แน่ใจว่าประตูล็อกแล้ว		
+1154	satisfy	satisfies, satisfied, satisfying	v: ทำให้พอใจ, ตอบสนองความต้องการ	The food satisfied everyone.	อาหารนี้ถูกใจทุกคน	satisfied = พอใจ / satisfying = น่าพอใจ	
+1155	chief	chiefs	n: หัวหน้า | adj: หลัก, สำคัญที่สุด	The chief of the village is kind.	ผู้ใหญ่บ้านใจดี		
+1156	cool	cools, cooled, cooling, coolest	adj: เย็น, เท่ | v: ทำให้เย็น	The water in the lake is cool.	น้ำในทะเลสาบเย็นสบาย		😎
+1157	expert	experts	n: ผู้เชี่ยวชาญ | adj: ชำนาญ	She is an expert in birds.	เธอเป็นผู้เชี่ยวชาญด้านนก		
+1158	wave	waves, waved, waving	n: คลื่น | v: โบกมือ, สั่นไหว	The children waved goodbye.	เด็ก ๆ โบกมือลา		🌊
+1159	south		n: ทิศใต้ | adj: ทางใต้ | adv: ไปทางใต้	They live in the south of Thailand.	พวกเขาอาศัยอยู่ทางภาคใต้ของประเทศไทย		
+1160	labor	labors, labored, laboring, labour, labours, laboured, labouring	n: แรงงาน, การทำงานหนัก | v: ทำงานหนัก	Labor costs are rising.	ค่าแรงสูงขึ้น	สะกดแบบอังกฤษคือ labour	
+1161	surface	surfaces, surfaced, surfacing	n: พื้นผิว, ผิวหน้า | v: โผล่ขึ้นมา	The surface of the table is smooth.	พื้นผิวของโต๊ะเรียบ		
+1162	library	libraries	n: ห้องสมุด	I study at the library after class.	ฉันอ่านหนังสือที่ห้องสมุดหลังเลิกเรียน		📚
+1163	excellent		adj: ยอดเยี่ยม, ดีเยี่ยม	Her English is excellent.	ภาษาอังกฤษของเธอดีเยี่ยม		🌟
+1164	edge	edges, edged, edging	n: ขอบ, ริม, ข้อได้เปรียบ	Do not sit on the edge of the table.	อย่านั่งที่ขอบโต๊ะ		
+1165	camp	camps, camped, camping	n: ค่าย, แคมป์ | v: ตั้งแคมป์	We camped by the river last weekend.	สุดสัปดาห์ที่แล้วเราตั้งแคมป์ริมแม่น้ำ		⛺
+1166	audience	audiences	n: ผู้ชม, ผู้ฟัง	The audience clapped loudly.	ผู้ชมปรบมือเสียงดัง		👏
+1167	lift	lifts, lifted, lifting	v: ยกขึ้น, ยก | n: ลิฟต์, การให้โดยสาร	Can you lift this box?	คุณยกกล่องนี้ไหวไหม		🏋️
+1168	procedure	procedures	n: ขั้นตอน, กระบวนการ	Please follow the safety procedure.	กรุณาทำตามขั้นตอนความปลอดภัย		
+1169	email	emails, emailed, emailing	n: อีเมล | v: ส่งอีเมล	I will email you the photos.	ฉันจะส่งรูปให้คุณทางอีเมล		📧
+1170	global		adj: ทั่วโลก, ระดับโลก	Climate change is a global problem.	การเปลี่ยนแปลงสภาพอากาศเป็นปัญหาระดับโลก		🌍
+1171	struggle	struggles, struggled, struggling	v: ดิ้นรน, ต่อสู้ | n: การต่อสู้, ความยากลำบาก	He struggled to open the jar.	เขาพยายามอย่างหนักเพื่อเปิดขวดโหล		
+1172	advertise	advertises, advertised, advertising, advertize, advertizes, advertized, advertizing	v: โฆษณา	The shop advertises on the radio.	ร้านนี้โฆษณาทางวิทยุ		📢
+1173	select	selects, selected, selecting	v: เลือก, คัดเลือก | adj: ที่คัดแล้ว	Please select one answer.	กรุณาเลือกคำตอบเดียว		
+1174	surround	surrounds, surrounded, surrounding, surroundings	v: ล้อมรอบ	The garden is surrounded by a fence.	สวนนี้มีรั้วล้อมรอบ		
+1175	extent	extents	n: ขอบเขต, ระดับ	I do not know the extent of the damage.	ฉันไม่รู้ว่าความเสียหายมากแค่ไหน	พบบ่อยในวลี to some extent (ในระดับหนึ่ง)	
+1176	river	rivers	n: แม่น้ำ	We crossed the river by boat.	เราข้ามแม่น้ำด้วยเรือ		🏞️
+1177	annual	annuals	adj: ประจำปี, รายปี	We have an annual school party.	เรามีงานปาร์ตี้ของโรงเรียนทุกปี		
+1178	fully		adv: อย่างเต็มที่, ทั้งหมด	I am fully ready.	ฉันพร้อมเต็มที่แล้ว		
+1179	contrast	contrasts, contrasted, contrasting	n: ความแตกต่าง | v: เปรียบเทียบให้เห็นความต่าง	There is a big contrast between day and night.	กลางวันกับกลางคืนต่างกันมาก		
+1180	roll	rolls, rolled, rolling	v: กลิ้ง, ม้วน | n: ม้วน, ขนมปังก้อนเล็ก	The ball rolled down the hill.	ลูกบอลกลิ้งลงเนินเขา		
+1181	reality	realities	n: ความเป็นจริง	Sometimes reality is harder than dreams.	บางครั้งความจริงก็ยากกว่าความฝัน		
+1182	photograph	photographs, photographed, photographing	n: รูปถ่าย | v: ถ่ายรูป	She took a photograph of the sunset.	เธอถ่ายรูปพระอาทิตย์ตก		📷
+1183	artist	artists	n: ศิลปิน	The artist painted a beautiful picture.	ศิลปินวาดภาพที่สวยงามภาพหนึ่ง		🎨
+1184	conflict	conflicts, conflicted, conflicting	n: ความขัดแย้ง, ข้อพิพาท | v: ขัดแย้ง	They had a conflict about money.	พวกเขามีความขัดแย้งเรื่องเงิน		
+1185	entire		adj: ทั้งหมด, ทั้ง	I spent the entire day reading.	ฉันใช้เวลาทั้งวันอ่านหนังสือ		
+1186	presence	presences	n: การมีอยู่, การปรากฏตัว	Her presence made everyone happy.	การที่เธออยู่ด้วยทำให้ทุกคนมีความสุข		
+1187	crowd	crowds, crowded, crowding	n: ฝูงชน | v: รวมตัวกัน, แออัด	A big crowd was waiting outside.	ฝูงชนจำนวนมากรออยู่ข้างนอก		👥
+1188	corner	corners, cornered, cornering	n: มุม, หัวมุม | v: ต้อนให้จนมุม	The bank is on the corner.	ธนาคารอยู่ตรงหัวมุม		
+1189	gas	gases, gassed, gassing, gasses	n: แก๊ส, น้ำมัน (สหรัฐ)	We cook with gas.	เราหุงอาหารด้วยแก๊ส		
+1190	shift	shifts, shifted, shifting	v: เปลี่ยน, ย้าย | n: กะ (ทำงาน), การเปลี่ยนแปลง	She works the night shift.	เธอทำงานกะกลางคืน		
+1191	net	nets, netted, netting	n: ตาข่าย, เครือข่าย | adj: สุทธิ	The fisherman pulled in the net.	ชาวประมงดึงอวนขึ้นมา		🥅
+1192	category	categories	n: ประเภท, หมวดหมู่	Please choose a category.	กรุณาเลือกหมวดหมู่		
+1193	secretary	secretaries	n: เลขานุการ	The secretary answered the phone.	เลขานุการรับโทรศัพท์		
+1194	defense	defenses, defence, defences	n: การป้องกัน, ฝ่ายรับ	Our team has a strong defense.	ทีมของเรามีแนวรับที่แข็งแกร่ง	สะกดแบบอังกฤษคือ defence	
+1195	quick	quicker, quickest	adj: เร็ว, ฉับไว	Can I ask you a quick question?	ขอถามคำถามสั้น ๆ หน่อยได้ไหม		
+1196	cook	cooks, cooked, cooking	v: ทำอาหาร, หุง | n: คนทำอาหาร, พ่อครัว	My father cooks dinner on Sundays.	พ่อของฉันทำอาหารเย็นทุกวันอาทิตย์		🍳
+1197	spread	spreads, spreading	v: แพร่กระจาย, ทา, ขยายออก | n: การแพร่กระจาย	He spread butter on the bread.	เขาทาเนยบนขนมปัง	รูปอดีตคือ spread (เหมือนเดิม)	
+1198	nuclear		adj: เกี่ยวกับนิวเคลียร์, ปรมาณู	Nuclear power makes electricity.	พลังงานนิวเคลียร์ผลิตไฟฟ้าได้		
+1199	scale	scales, scaled, scaling	n: ขนาด, มาตราส่วน, เกล็ด | v: ปีน, ปรับขนาด	The map has a scale of one to a thousand.	แผนที่นี้มีมาตราส่วนหนึ่งต่อหนึ่งพัน		
+1200	driver	drivers	n: คนขับ, ผู้ขับรถ	The bus driver was very polite.	คนขับรถเมล์สุภาพมาก		🚌

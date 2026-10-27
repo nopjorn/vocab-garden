@@ -1,101 +1,101 @@
 rank	headword	forms	meanings	example_en	example_th	note	emoji
-2301	apologize	apologizes, apologized, apologizing, apologise, apologises, apologised, apologising					
-2302	approval	approvals					
-2303	grab	grabs, grabbed, grabbing					
-2304	entitle	entitles, entitled, entitling					
-2305	lend	lends, lent, lending					
-2306	involvement	involvements					
-2307	exposure	exposures					
-2308	conventional						
-2309	digital	digitals					
-2310	translate	translates, translated, translating					
-2311	edit	edits, edited, editing					
-2312	formation	formations					
-2313	deposit	deposits, deposited, depositing					
-2314	pleasant	pleasanter, pleasantest					
-2315	overseas	oversea					
-2316	advocate	advocates, advocated, advocating					
-2317	establishment	establishments					
-2318	summary	summaries					
-2319	rough	roughs, roughed, roughing, rougher, roughest					
-2320	pen	pens, penned, penning					
-2321	recovery	recoveries					
-2322	seal	seals, sealed, sealing, sealings					
-2323	tube	tubes, tubed, tubing					
-2324	tower	towers, towered, towering					
-2325	characterize	characterizes, characterized, characterizing, characterise, characterises, characterised, characterising					
-2326	specify	specifies, specified, specifying					
-2327	exact	exacts, exacted, exacting					
-2328	spin	spins, spun, spinning					
-2329	operator	operators					
-2330	infant	infants					
-2331	dig	digs, dug, digging					
-2332	drag	drags, dragged, dragging					
-2333	mount	mounts, mounted, mounting, mountings					
-2334	wrap	wraps, wrapped, wrapping, wrappings					
-2335	anticipate	anticipates, anticipated, anticipating					
-2336	dependent	dependents					
-2337	specialize	specializes, specialized, specializing, specialise, specialises, specialised, specialising					
-2338	angle	angles, angled, angling					
-2339	chicken	chickens, chickened					
-2340	anxiety	anxieties					
-2341	virus	viruses					
-2342	precisely						
-2343	rival	rivals, rivaled, rivaling, rivalled, rivalling					
-2344	offense	offenses, offence, offences					
-2345	detect	detects, detected, detecting					
-2346	teenager	teenagers					
-2347	admire	admires, admired, admiring					
-2348	moderate	moderates, moderated, moderating					
-2349	surgery	surgeries					
-2350	musician	musicians					
-2351	significance	significances					
-2352	shower	showers, showered, showering					
-2353	illegal						
-2354	charity	charities					
-2355	universal	universals					
-2356	cigarette	cigarettes					
-2357	constitute	constitutes, constituted, constituting					
-2358	adequate						
-2359	consultant	consultants					
-2360	historian	historians					
-2361	cousin	cousins					
-2362	visual	visuals					
-2363	stupid	stupider, stupidest					
-2364	keen	keens, keened, keening, keener, keenest					
-2365	ethnic	ethnics					
-2366	twin	twins					
-2367	clinical						
-2368	eastern						
-2369	forecast	forecasts, forecasted, forecasting					
-2370	segment	segments, segmented, segmenting					
-2371	custom	customs					
-2372	adapt	adapts, adapted, adapting					
-2373	sand	sands, sanded, sanding					
-2374	cap	caps, capped, capping					
-2375	prompt	prompts, prompted, prompting, promptings					
-2376	charm	charms, charmed, charming					
-2377	react	reacts, reacted, reacting					
-2378	lecture	lectures, lectured, lecturing					
-2379	venture	ventures, ventured, venturing					
-2380	compound	compounds, compounded, compounding					
-2381	rescue	rescues, rescued, rescuing					
-2382	mess	messes, messed, messing					
-2383	preference	preferences					
-2384	comprehensive						
-2385	incentive	incentives					
-2386	league	leagues					
-2387	dialog	dialogs, dialoged, dialoging, dialogue, dialogues, dialogued, dialoguing					
-2388	cream	creams, creamed, creaming					
-2389	rapid						
-2390	cancel	cancels, canceled, canceling, cancelled, cancelling					
-2391	regret	regrets, regretted, regretting					
-2392	dismiss	dismisses, dismissed, dismissing					
-2393	margin	margins					
-2394	beneath						
-2395	opponent	opponents					
-2396	resist	resists, resisted, resisting					
-2397	capability	capabilities					
-2398	absolute	absolutes					
-2399	correspond	corresponds, corresponded, corresponding					
-2400	stroke	strokes, stroked, stroking					
+2301	apologize	apologizes, apologized, apologizing, apologise, apologises, apologised, apologising	v: ขอโทษ, กล่าวคำขอโทษ	I apologize for being late.	ฉันขอโทษที่มาสาย		🙇
+2302	approval	approvals	n: การอนุมัติ, ความเห็นชอบ	We need your approval to start.	เราต้องการการอนุมัติของคุณเพื่อเริ่ม		
+2303	grab	grabs, grabbed, grabbing	v: คว้า, หยิบอย่างเร็ว	Grab your coat; it's cold outside.	หยิบเสื้อโค้ตไปด้วย ข้างนอกหนาวนะ		
+2304	entitle	entitles, entitled, entitling	v: ให้สิทธิ์, ตั้งชื่อ	This ticket entitles you to a free drink.	ตั๋วใบนี้ให้สิทธิ์คุณรับเครื่องดื่มฟรี		
+2305	lend	lends, lent, lending	v: ให้ยืม	Can you lend me your pen?	คุณให้ฉันยืมปากกาหน่อยได้ไหม	รูปอดีตคือ lent / lend = ให้ยืม, borrow = ยืมมา	
+2306	involvement	involvements	n: การมีส่วนเกี่ยวข้อง, การเข้าร่วม	Her involvement in the project was important.	การมีส่วนร่วมของเธอในโครงการสำคัญมาก		
+2307	exposure	exposures	n: การเผชิญ, การถูกเปิดเผย	Too much exposure to the sun is bad for your skin.	ตากแดดมากเกินไปไม่ดีต่อผิว		
+2308	conventional		adj: ตามแบบแผน, ปกติ, ธรรมดา	We cook with a conventional oven.	เราทำอาหารด้วยเตาอบธรรมดา		
+2309	digital	digitals	adj: ดิจิทัล | n: เครื่องดิจิทัล	I bought a digital camera.	ฉันซื้อกล้องดิจิทัล		📷
+2310	translate	translates, translated, translating	v: แปล	Can you translate this sentence into English?	คุณช่วยแปลประโยคนี้เป็นภาษาอังกฤษได้ไหม		
+2311	edit	edits, edited, editing	v: แก้ไข, ตัดต่อ	Please edit my essay.	ช่วยแก้เรียงความของฉันหน่อย		✏️
+2312	formation	formations	n: การก่อตัว, รูปแบบ	The formation of clouds needs water.	การก่อตัวของเมฆต้องใช้น้ำ		
+2313	deposit	deposits, deposited, depositing	n: เงินฝาก, เงินมัดจำ | v: ฝาก, วางมัดจำ	I made a deposit at the bank.	ฉันฝากเงินที่ธนาคาร		
+2314	pleasant	pleasanter, pleasantest	adj: ยินดี, น่าพอใจ, สบาย	We had a pleasant evening.	เรามีช่วงเย็นที่น่ารื่นรมย์		
+2315	overseas	oversea	adv: ต่างประเทศ | adj: ในต่างประเทศ	She works overseas.	เธอทำงานต่างประเทศ		🌍
+2316	advocate	advocates, advocated, advocating	v: สนับสนุน, เรียกร้อง | n: ผู้สนับสนุน	He advocates for clean air.	เขาเรียกร้องให้มีอากาศสะอาด		
+2317	establishment	establishments	n: การก่อตั้ง, สถานประกอบการ	She runs a small business establishment.	เธอดูแลสถานประกอบการเล็ก ๆ		
+2318	summary	summaries	n: บทสรุป, สรุปความ	Please write a short summary of the story.	กรุณาเขียนสรุปเรื่องสั้น ๆ		
+2319	rough	roughs, roughed, roughing, rougher, roughest	adj: หยาบ, ไม่เรียบ, คร่าว ๆ	The sea was rough last night.	เมื่อคืนทะเลมีคลื่นแรง		
+2320	pen	pens, penned, penning	n: ปากกา, คอก	Can I borrow your pen?	ขอยืมปากกาคุณหน่อยได้ไหม		🖊️
+2321	recovery	recoveries	n: การฟื้นตัว, การกู้คืน	She made a quick recovery.	เธอฟื้นตัวเร็ว		
+2322	seal	seals, sealed, sealing, sealings	n: ตราประทับ, แมวน้ำ | v: ปิดผนึก	Seal the box with tape.	ปิดกล่องด้วยเทป		🦭
+2323	tube	tubes, tubed, tubing	n: หลอด, ท่อ, รถไฟใต้ดินลอนดอน	Squeeze the tube to get the cream.	บีบหลอดเพื่อเอาครีมออกมา		
+2324	tower	towers, towered, towering	n: หอคอย, ตึกสูง | v: สูงตระหง่าน	We climbed the tower for a view.	เราปีนขึ้นหอคอยเพื่อชมวิว		🗼
+2325	characterize	characterizes, characterized, characterizing, characterise, characterises, characterised, characterising	v: บรรยายลักษณะ, เป็นลักษณะเฉพาะ	Warm weather characterizes this region.	อากาศอบอุ่นเป็นลักษณะเด่นของภูมิภาคนี้		
+2326	specify	specifies, specified, specifying	v: ระบุ, กำหนด	Please specify your size.	กรุณาระบุไซซ์ของคุณ		
+2327	exact	exacts, exacted, exacting	adj: ตรงเป๊ะ, แม่นยำ	What is the exact time?	เวลาที่แน่นอนคือเท่าไร		
+2328	spin	spins, spun, spinning	v: หมุน, ปั่น | n: การหมุน	The top spins very fast.	ลูกข่างหมุนเร็วมาก	รูปอดีตคือ spun	
+2329	operator	operators	n: ผู้ปฏิบัติการ, พนักงานรับสาย	Please wait for the operator.	กรุณารอพนักงานรับสายสักครู่		
+2330	infant	infants	n: ทารก, เด็กอ่อน	The infant is sleeping.	ทารกกำลังหลับ		👶
+2331	dig	digs, dug, digging	v: ขุด	The dog dug a hole in the garden.	สุนัขขุดหลุมในสวน	รูปอดีตคือ dug	
+2332	drag	drags, dragged, dragging	v: ลาก, ดึง	He dragged the box across the floor.	เขาลากกล่องข้ามพื้น		
+2333	mount	mounts, mounted, mounting, mountings	v: ปีนขึ้น, ติดตั้ง, เพิ่มขึ้น | n: ภูเขา	He mounted the horse and rode away.	เขาขึ้นม้าแล้วควบไป		
+2334	wrap	wraps, wrapped, wrapping, wrappings	v: ห่อ, พัน	Please wrap the gift in paper.	กรุณาห่อของขวัญด้วยกระดาษ		🎁
+2335	anticipate	anticipates, anticipated, anticipating	v: คาดการณ์, คาดหวัง	We anticipate heavy rain tomorrow.	เราคาดว่าพรุ่งนี้ฝนจะตกหนัก		
+2336	dependent	dependents	adj: ขึ้นอยู่กับ, พึ่งพา | n: ผู้อยู่ในอุปการะ	Children are dependent on their parents.	เด็กพึ่งพาพ่อแม่		
+2337	specialize	specializes, specialized, specializing, specialise, specialises, specialised, specialising	v: เชี่ยวชาญเฉพาะทาง	She specializes in children's books.	เธอเชี่ยวชาญด้านหนังสือเด็ก		
+2338	angle	angles, angled, angling	n: มุม (เรขาคณิต), มุมมอง | v: ตั้งเป็นมุม, ตกปลา	This angle is ninety degrees.	มุมนี้เก้าสิบองศา		📐
+2339	chicken	chickens, chickened	n: ไก่, เนื้อไก่	We had fried chicken for dinner.	เรากินไก่ทอดเป็นอาหารเย็น		🍗
+2340	anxiety	anxieties	n: ความกังวล, ความวิตก	She felt anxiety before the test.	เธอรู้สึกกังวลก่อนสอบ		
+2341	virus	viruses	n: ไวรัส, เชื้อไวรัส	A virus caused the cold.	เชื้อไวรัสทำให้เกิดหวัด		🦠
+2342	precisely		adv: อย่างแม่นยำ, เป๊ะ ๆ	It is precisely three o'clock.	ตอนนี้บ่ายสามโมงตรงเป๊ะ		
+2343	rival	rivals, rivaled, rivaling, rivalled, rivalling	n: คู่แข่ง | v: เทียบเท่า, แข่งกับ	The two shops are rivals.	สองร้านนี้เป็นคู่แข่งกัน		
+2344	offense	offenses, offence, offences	n: ความผิด, การรุกราน, ฝ่ายรุก	Stealing is a serious offense.	การขโมยเป็นความผิดร้ายแรง	สะกดแบบอังกฤษคือ offence	
+2345	detect	detects, detected, detecting	v: ตรวจพบ, สังเกตเห็น	The machine can detect smoke.	เครื่องนี้ตรวจจับควันได้		
+2346	teenager	teenagers	n: วัยรุ่น (13–19 ปี)	My brother is a teenager.	พี่ชายของฉันเป็นวัยรุ่น		
+2347	admire	admires, admired, admiring	v: ชื่นชม, ยกย่อง	I admire your courage.	ฉันชื่นชมความกล้าของคุณ		
+2348	moderate	moderates, moderated, moderating	adj: ปานกลาง, พอประมาณ | v: ทำให้เบาลง	The hotel has moderate prices.	โรงแรมนี้ราคาปานกลาง		
+2349	surgery	surgeries	n: การผ่าตัด	He had surgery on his knee.	เขาผ่าตัดหัวเข่า		🏥
+2350	musician	musicians	n: นักดนตรี	The musician plays the guitar.	นักดนตรีเล่นกีตาร์		🎸
+2351	significance	significances	n: ความสำคัญ, ความหมาย	Do you understand the significance of this day?	คุณเข้าใจความสำคัญของวันนี้ไหม		
+2352	shower	showers, showered, showering	n: ฝักบัว, ฝนที่ตกสั้น ๆ | v: อาบน้ำฝักบัว	I take a shower every morning.	ฉันอาบน้ำทุกเช้า		🚿
+2353	illegal		adj: ผิดกฎหมาย	It is illegal to park here.	การจอดรถตรงนี้ผิดกฎหมาย		
+2354	charity	charities	n: การกุศล, องค์กรการกุศล	She gives money to charity.	เธอบริจาคเงินให้การกุศล		
+2355	universal	universals	adj: สากล, ใช้ได้ทั่วไป	Music is a universal language.	ดนตรีเป็นภาษาสากล		
+2356	cigarette	cigarettes	n: บุหรี่	Cigarette smoke is bad for your health.	ควันบุหรี่ไม่ดีต่อสุขภาพ		🚬
+2357	constitute	constitutes, constituted, constituting	v: ประกอบเป็น, ถือเป็น	Twelve months constitute a year.	สิบสองเดือนประกอบเป็นหนึ่งปี		
+2358	adequate		adj: เพียงพอ, เหมาะสม	Do we have adequate food for everyone?	เรามีอาหารพอสำหรับทุกคนไหม		
+2359	consultant	consultants	n: ที่ปรึกษา, ผู้เชี่ยวชาญ	She works as a business consultant.	เธอทำงานเป็นที่ปรึกษาด้านธุรกิจ		
+2360	historian	historians	n: นักประวัติศาสตร์	The historian wrote about the old city.	นักประวัติศาสตร์เขียนเรื่องเมืองเก่า		
+2361	cousin	cousins	n: ลูกพี่ลูกน้อง	My cousin lives in Chiang Mai.	ลูกพี่ลูกน้องของฉันอยู่เชียงใหม่		
+2362	visual	visuals	adj: เกี่ยวกับการมองเห็น | n: ภาพ, สื่อภาพ	The teacher used visual aids.	ครูใช้สื่อรูปภาพประกอบการสอน		
+2363	stupid	stupider, stupidest	adj: โง่	It was a stupid mistake.	เป็นความผิดพลาดที่โง่มาก		
+2364	keen	keens, keened, keening, keener, keenest	adj: กระตือรือร้น, ชอบมาก, เฉียบ	She is keen to learn English.	เธอกระตือรือร้นที่จะเรียนภาษาอังกฤษ		
+2365	ethnic	ethnics	adj: เกี่ยวกับชาติพันธุ์ | n: ชนกลุ่มน้อย	The city has many ethnic restaurants.	เมืองนี้มีร้านอาหารชาติพันธุ์หลากหลาย		
+2366	twin	twins	n: ฝาแฝด | adj: คู่	My twin sister has the same hair color.	พี่สาวฝาแฝดของฉันมีสีผมเหมือนกัน		👯
+2367	clinical		adj: เกี่ยวกับคลินิก, ทางการแพทย์	The drug is in clinical tests.	ยานี้อยู่ในช่วงทดสอบทางคลินิก		
+2368	eastern		adj: ทางตะวันออก, แบบตะวันออก	Eastern Thailand has many fruit farms.	ภาคตะวันออกของไทยมีสวนผลไม้มากมาย		
+2369	forecast	forecasts, forecasted, forecasting	n: การพยากรณ์ | v: พยากรณ์	The weather forecast says it will rain.	พยากรณ์อากาศบอกว่าฝนจะตก		🌦️
+2370	segment	segments, segmented, segmenting	n: ส่วน, ช่วง | v: แบ่งเป็นส่วน	The orange has ten segments.	ส้มลูกนี้มีสิบกลีบ		🍊
+2371	custom	customs	n: ธรรมเนียม, ประเพณี, ศุลกากร	It is a custom to take off shoes at home.	เป็นธรรมเนียมที่จะถอดรองเท้าก่อนเข้าบ้าน	customs (พหูพจน์) = ศุลกากร	
+2372	adapt	adapts, adapted, adapting	v: ปรับตัว, ดัดแปลง	Children adapt quickly to new places.	เด็กปรับตัวกับที่ใหม่ได้เร็ว		
+2373	sand	sands, sanded, sanding	n: ทราย | v: ขัดด้วยกระดาษทราย	Children play in the sand.	เด็ก ๆ เล่นทราย		🏖️
+2374	cap	caps, capped, capping	n: หมวกแก๊ป, ฝา, เพดาน (ราคา)	He wore a red cap.	เขาสวมหมวกแก๊ปสีแดง		🧢
+2375	prompt	prompts, prompted, prompting, promptings	adj: ทันที, รวดเร็ว | v: กระตุ้น, ชักนำ | n: ข้อความเตือน	She was prompt in answering my letter.	เธอตอบจดหมายฉันทันที		
+2376	charm	charms, charmed, charming	n: เสน่ห์, เครื่องราง | v: ทำให้หลงใหล	The small town has a lot of charm.	เมืองเล็ก ๆ แห่งนี้มีเสน่ห์มาก		
+2377	react	reacts, reacted, reacting	v: ตอบสนอง, ปฏิกิริยา	How did he react to the news?	เขาตอบสนองต่อข่าวนี้อย่างไร		
+2378	lecture	lectures, lectured, lecturing	n: การบรรยาย, การสอนหน้าชั้น | v: บรรยาย, ดุ	The professor gave a long lecture.	ศาสตราจารย์บรรยายยาวมาก		
+2379	venture	ventures, ventured, venturing	n: กิจการเสี่ยง, การผจญภัย | v: กล้าเสี่ยง	They started a new business venture.	พวกเขาเริ่มกิจการใหม่ที่ต้องเสี่ยง		
+2380	compound	compounds, compounded, compounding	n: สารประกอบ, บริเวณ | adj: ประกอบ | v: ทำให้แย่ลง	Water is a compound of hydrogen and oxygen.	น้ำเป็นสารประกอบของไฮโดรเจนกับออกซิเจน		
+2381	rescue	rescues, rescued, rescuing	v: ช่วยชีวิต, กู้ภัย | n: การช่วยเหลือ	Firefighters rescued the cat from the tree.	นักดับเพลิงช่วยแมวลงจากต้นไม้		🚒
+2382	mess	messes, messed, messing	n: ความรก, ความยุ่งเหยิง | v: ทำให้รก	Your room is a mess.	ห้องคุณรกมาก		
+2383	preference	preferences	n: ความชอบ, สิ่งที่ชอบมากกว่า	Do you have a preference for tea or coffee?	คุณชอบชาหรือกาแฟมากกว่ากัน		
+2384	comprehensive		adj: ครอบคลุม, ครบถ้วน	This book is a comprehensive guide.	หนังสือเล่มนี้เป็นคู่มือที่ครอบคลุม		
+2385	incentive	incentives	n: สิ่งจูงใจ, แรงจูงใจ	A bonus is a good incentive to work hard.	โบนัสเป็นแรงจูงใจที่ดีให้ทำงานหนัก		
+2386	league	leagues	n: ลีก, สมาคม	Our team won the league.	ทีมเราชนะลีก		
+2387	dialog	dialogs, dialoged, dialoging, dialogue, dialogues, dialogued, dialoguing	n: บทสนทนา, การเจรจา	The dialog between the two actors was funny.	บทสนทนาระหว่างนักแสดงสองคนตลกมาก	สะกดแบบอังกฤษคือ dialogue	
+2388	cream	creams, creamed, creaming	n: ครีม, สีครีม | v: ตีให้ข้น	I like cream in my coffee.	ฉันชอบใส่ครีมในกาแฟ		
+2389	rapid		adj: รวดเร็ว	The city has seen rapid growth.	เมืองนี้เติบโตอย่างรวดเร็ว		
+2390	cancel	cancels, canceled, canceling, cancelled, cancelling	v: ยกเลิก	The flight was canceled because of the storm.	เที่ยวบินถูกยกเลิกเพราะพายุ		❌
+2391	regret	regrets, regretted, regretting	v: เสียใจ, เสียดาย | n: ความเสียใจ	I regret not studying harder.	ฉันเสียใจที่ไม่ได้อ่านหนังสือให้มากกว่านี้		
+2392	dismiss	dismisses, dismissed, dismissing	v: ไล่ออก, ปล่อยให้กลับ, ปัดทิ้ง	The teacher dismissed the class at noon.	ครูปล่อยนักเรียนกลับตอนเที่ยง		
+2393	margin	margins	n: ระยะขอบ, ส่วนต่าง	Leave a wide margin on the page.	เว้นขอบกระดาษให้กว้าง ๆ		
+2394	beneath		prep: ข้างใต้, ใต้	The cat is sleeping beneath the table.	แมวนอนอยู่ใต้โต๊ะ		
+2395	opponent	opponents	n: คู่ต่อสู้, ฝ่ายตรงข้าม	He beat his opponent easily.	เขาเอาชนะคู่ต่อสู้ได้ง่าย ๆ		
+2396	resist	resists, resisted, resisting	v: ต่อต้าน, ทนต่อ	It is hard to resist cake!	ห้ามใจให้ไม่กินเค้กยากจัง		
+2397	capability	capabilities	n: ความสามารถ, ศักยภาพ	The phone has the capability to take clear photos.	โทรศัพท์เครื่องนี้ถ่ายรูปได้ชัด		
+2398	absolute	absolutes	adj: สมบูรณ์, เด็ดขาด | n: ค่าสัมบูรณ์	I have absolute trust in her.	ฉันไว้ใจเธอเต็มที่		
+2399	correspond	corresponds, corresponded, corresponding	v: ตรงกัน, สอดคล้อง, ติดต่อทางจดหมาย	Your answer corresponds with mine.	คำตอบของคุณตรงกับของฉัน		
+2400	stroke	strokes, stroked, stroking	n: จังหวะ, อาการหลอดเลือดสมอง, การลูบ | v: ลูบ	He stroked the cat gently.	เขาลูบแมวเบา ๆ		

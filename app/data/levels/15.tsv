@@ -1,101 +1,101 @@
 rank	headword	forms	meanings	example_en	example_th	note	emoji
-1401	dear	dears, dearer, dearest					
-1402	objective	objectives					
-1403	moreover						
-1404	onto						
-1405	historical						
-1406	oppose	opposes, opposed, opposing					
-1407	branch	branches, branched, branching					
-1408	vehicle	vehicles					
-1409	scientist	scientists					
-1410	route	routes					
-1411	bind	binds, binding					
-1412	belong	belongs, belonged, belonging, belongings					
-1413	taste	tastes, tasted, tasting, tastings					
-1414	tonight						
-1415	fashion	fashions, fashioned, fashioning					
-1416	danger	dangers					
-1417	bomb	bombs, bombed, bombing, bombings					
-1418	army	armies					
-1419	dangerous						
-1420	decrease	decreases, decreased, decreasing					
-1421	hurt	hurts, hurting					
-1422	council	councils					
-1423	editor	editors					
-1424	normally						
-1425	sight	sights, sighted, sighting, sightings					
-1426	generate	generates, generated, generating					
-1427	gift	gifts, gifted, gifting					
-1428	delivery	deliveries					
-1429	deny	denies, denied, denying					
-1430	guest	guests					
-1431	anybody						
-1432	bedroom	bedrooms					
-1433	quote	quotes, quoted, quoting					
-1434	climb	climbs, climbed, climbing					
-1435	basically						
-1436	violence						
-1437	minister	ministers, ministered, ministering					
-1438	mainly						
-1439	mouth	mouths, mouthed, mouthing					
-1440	noise	noises					
-1441	manner	manners, mannered					
-1442	gun	guns, gunned, gunning					
-1443	square	squares, squared, squaring, squarer, squarest					
-1444	occasion	occasions, occasioned, occasioning					
-1445	familiar	familiars					
-1446	ignore	ignores, ignored, ignoring					
-1447	destroy	destroys, destroyed, destroying					
-1448	affair	affairs					
-1449	civil						
-1450	locate	locates, located, locating					
-1451	citizen	citizens					
-1452	temperature	temperatures					
-1453	gold						
-1454	domestic	domestics					
-1455	load	loads, loaded, loading					
-1456	belief	beliefs					
-1457	troop	troops					
-1458	technical						
-1459	remind	reminds, reminded, reminding					
-1460	arrangement	arrangements					
-1461	skin	skins, skinned, skinning					
-1462	prison	prisons					
-1463	switch	switches, switched, switching					
-1464	acquire	acquires, acquired, acquiring					
-1465	corporate						
-1466	fairly						
-1467	wood	woods, wooded					
-1468	participate	participates, participated, participating					
-1469	tough	tougher, toughest					
-1470	tear	tears, tore, tearing					
-1471	representative	representatives					
-1472	capacity	capacities					
-1473	border	borders, bordered, bordering					
-1474	shake	shakes, shook, shaking, shaken					
-1475	assessment	assessments					
-1476	shoe	shoes, shoed, shod					
-1477	ought	oughtn, oughta, outta					
-1478	ad	ads					
-1479	fee	fees					
-1480	hall	halls					
-1481	regulation	regulations					
-1482	escape	escapes, escaped, escaping					
-1483	studio	studios					
-1484	proper						
-1485	relax	relaxes, relaxed, relaxing					
-1486	tourist	tourists					
-1487	component	components					
-1488	afford	affords, afforded, affording					
-1489	lawyer	lawyers					
-1490	suspect	suspects, suspected, suspecting					
-1491	cup	cups, cupped, cupping					
-1492	description	descriptions					
-1493	confidence	confidences					
-1494	industrial	industrials					
-1495	complain	complains, complained, complaining					
-1496	perspective	perspectives					
-1497	error	errors					
-1498	arrest	arrests, arrested, arresting					
-1499	assess	assesses, assessed, assessing					
-1500	register	registers, registered, registering					
+1401	dear	dears, dearer, dearest	adj: ที่รัก, แพง, เคารพ (ในจดหมาย) | n: ที่รัก	Dear Anna, thank you for the gift.	แอนนาที่รัก ขอบคุณสำหรับของขวัญนะ	ใช้ขึ้นต้นจดหมายหรืออีเมล เช่น Dear Mr. Smith	
+1402	objective	objectives	n: วัตถุประสงค์, เป้าหมาย | adj: เป็นกลาง, ตามข้อเท็จจริง	Our objective is to finish by noon.	วัตถุประสงค์ของเราคือทำให้เสร็จภายในเที่ยง		🎯
+1403	moreover		adv: ยิ่งกว่านั้น, นอกจากนี้	The hotel is cheap; moreover, it is clean.	โรงแรมนี้ราคาถูก ยิ่งกว่านั้นยังสะอาดด้วย		
+1404	onto		prep: ขึ้นไปบน, ลงไปบน	The cat jumped onto the table.	แมวกระโดดขึ้นไปบนโต๊ะ		
+1405	historical		adj: เกี่ยวกับประวัติศาสตร์	We visited a historical city.	เราไปเที่ยวเมืองประวัติศาสตร์		🏛️
+1406	oppose	opposes, opposed, opposing	v: ต่อต้าน, คัดค้าน	Many people oppose the new law.	หลายคนคัดค้านกฎหมายใหม่		
+1407	branch	branches, branched, branching	n: กิ่ง, สาขา	The bird sat on a branch.	นกเกาะอยู่บนกิ่งไม้		🌿
+1408	vehicle	vehicles	n: ยานพาหนะ	This vehicle can carry six people.	ยานพาหนะคันนี้นั่งได้หกคน		🚗
+1409	scientist	scientists	n: นักวิทยาศาสตร์	The scientist works in a lab.	นักวิทยาศาสตร์ทำงานในห้องแล็บ		🔬
+1410	route	routes	n: เส้นทาง, ทาง	Which route do you take to work?	คุณไปทำงานทางไหน		🛣️
+1411	bind	binds, binding	v: ผูก, มัด, ผูกมัด	Bind the papers together with string.	มัดกระดาษรวมกันด้วยเชือก	รูปอดีตคือ bound	
+1412	belong	belongs, belonged, belonging, belongings	v: เป็นของ, อยู่ในกลุ่ม	This book belongs to me.	หนังสือเล่มนี้เป็นของฉัน		
+1413	taste	tastes, tasted, tasting, tastings	n: รสชาติ | v: ชิมรส, มีรส	This soup tastes great.	ซุปนี้รสชาติดีมาก		👅
+1414	tonight		adv: คืนนี้ | n: คืนนี้	I am free tonight.	คืนนี้ฉันว่าง		🌙
+1415	fashion	fashions, fashioned, fashioning	n: แฟชั่น, สมัยนิยม | v: ทำขึ้น	She loves fashion and design.	เธอชอบแฟชั่นและการออกแบบ		👗
+1416	danger	dangers	n: อันตราย	There is danger ahead.	ข้างหน้ามีอันตราย		⚠️
+1417	bomb	bombs, bombed, bombing, bombings	n: ระเบิด | v: วางระเบิด, ถล่มด้วยระเบิด	The police found a bomb near the station.	ตำรวจพบระเบิดใกล้สถานี		💣
+1418	army	armies	n: กองทัพบก, ทหาร	My uncle joined the army.	ลุงของฉันเข้ากองทัพ		
+1419	dangerous		adj: อันตราย	It is dangerous to swim here.	การว่ายน้ำตรงนี้อันตราย		⚠️
+1420	decrease	decreases, decreased, decreasing	v: ลดลง, ทำให้ลดลง | n: การลดลง	The price decreased last month.	ราคาลดลงเมื่อเดือนที่แล้ว		📉
+1421	hurt	hurts, hurting	v: เจ็บ, ทำให้เจ็บ, ทำร้าย | adj: บาดเจ็บ	My foot hurts.	เท้าของฉันเจ็บ	รูปอดีตคือ hurt (เหมือนเดิม)	🤕
+1422	council	councils	n: สภา, คณะกรรมการ	The city council made a new plan.	สภาเมืองทำแผนใหม่		
+1423	editor	editors	n: บรรณาธิการ, คนตัดต่อ	The editor checked my article.	บรรณาธิการตรวจบทความของฉัน		
+1424	normally		adv: โดยปกติ, ตามปกติ	I normally get up at six.	โดยปกติฉันตื่นหกโมง		
+1425	sight	sights, sighted, sighting, sightings	n: การมองเห็น, ภาพที่เห็น, สถานที่น่าชม	I lost sight of him in the crowd.	ฉันมองไม่เห็นเขาแล้วในฝูงชน		
+1426	generate	generates, generated, generating	v: สร้าง, ผลิต (ไฟฟ้า ความคิด)	Solar panels generate electricity.	แผงโซลาร์เซลล์ผลิตไฟฟ้า		
+1427	gift	gifts, gifted, gifting	n: ของขวัญ, พรสวรรค์	She gave me a nice gift.	เธอให้ของขวัญดี ๆ แก่ฉัน		🎁
+1428	delivery	deliveries	n: การส่งของ, การคลอดบุตร	The delivery will arrive tomorrow.	ของจะมาส่งพรุ่งนี้		🚚
+1429	deny	denies, denied, denying	v: ปฏิเสธ, ไม่ยอมรับ	He denied that he broke the window.	เขาปฏิเสธว่าไม่ได้ทำหน้าต่างแตก		
+1430	guest	guests	n: แขก, ผู้มาพัก	We have three guests tonight.	คืนนี้เรามีแขกสามคน		
+1431	anybody		pron: ใครก็ได้, ใคร	Is anybody home?	มีใครอยู่บ้านไหม		
+1432	bedroom	bedrooms	n: ห้องนอน	My bedroom is on the second floor.	ห้องนอนของฉันอยู่ชั้นสอง		🛏️
+1433	quote	quotes, quoted, quoting	v: อ้างคำพูด, ยกมา, เสนอราคา | n: คำพูดที่อ้าง	She quoted a line from the poem.	เธออ้างถึงข้อความหนึ่งบรรทัดจากบทกวี		
+1434	climb	climbs, climbed, climbing	v: ปีน, ไต่	We climbed the hill together.	เราปีนเนินเขาด้วยกัน		🧗
+1435	basically		adv: โดยพื้นฐานแล้ว, ที่จริงแล้ว	Basically, I agree with you.	โดยหลักแล้วฉันเห็นด้วยกับคุณ		
+1436	violence		n: ความรุนแรง	We must stop violence in schools.	เราต้องหยุดความรุนแรงในโรงเรียน		
+1437	minister	ministers, ministered, ministering	n: รัฐมนตรี, บาทหลวง	The minister gave a short speech.	รัฐมนตรีกล่าวสุนทรพจน์สั้น ๆ		
+1438	mainly		adv: ส่วนใหญ่, เป็นหลัก	The team is mainly young players.	ทีมนี้ส่วนใหญ่เป็นผู้เล่นหนุ่มสาว		
+1439	mouth	mouths, mouthed, mouthing	n: ปาก	Open your mouth wide, please.	กรุณาอ้าปากกว้าง ๆ		👄
+1440	noise	noises	n: เสียงดัง, เสียงรบกวน	The noise from the street woke me up.	เสียงจากถนนปลุกฉันตื่น		🔊
+1441	manner	manners, mannered	n: กิริยา, วิธี, ท่าที	He has good manners.	เขามีมารยาทดี	manners (พหูพจน์) = มารยาท	
+1442	gun	guns, gunned, gunning	n: ปืน	The police officer has a gun.	ตำรวจถือปืน		
+1443	square	squares, squared, squaring, squarer, squarest	n: สี่เหลี่ยมจัตุรัส, จัตุรัส | adj: เป็นสี่เหลี่ยม	We met in the town square.	เรานัดเจอกันที่จัตุรัสของเมือง		
+1444	occasion	occasions, occasioned, occasioning	n: โอกาส, เหตุการณ์สำคัญ	We save this wine for special occasions.	เราเก็บไวน์ขวดนี้ไว้ใช้ในโอกาสพิเศษ		
+1445	familiar	familiars	adj: คุ้นเคย, รู้จักดี	Your face looks familiar.	หน้าคุณดูคุ้น ๆ		
+1446	ignore	ignores, ignored, ignoring	v: เพิกเฉย, ไม่สนใจ	Please do not ignore the warning.	กรุณาอย่าเพิกเฉยต่อคำเตือน		
+1447	destroy	destroys, destroyed, destroying	v: ทำลาย	The storm destroyed many houses.	พายุทำลายบ้านหลายหลัง		💥
+1448	affair	affairs	n: เรื่อง, กิจการ, ธุระ	That is my own affair.	นั่นเป็นเรื่องของฉันเอง		
+1449	civil		adj: เกี่ยวกับพลเมือง, ทางแพ่ง	Everyone has civil rights.	ทุกคนมีสิทธิพลเมือง		
+1450	locate	locates, located, locating	v: หาที่ตั้ง, ตั้งอยู่	The hotel is located near the beach.	โรงแรมตั้งอยู่ใกล้ชายหาด		📍
+1451	citizen	citizens	n: พลเมือง, ประชาชน	She is a Thai citizen.	เธอเป็นพลเมืองไทย		
+1452	temperature	temperatures	n: อุณหภูมิ, ไข้	The temperature is thirty degrees.	อุณหภูมิอยู่ที่สามสิบองศา		🌡️
+1453	gold		n: ทอง | adj: สีทอง	She wore a gold ring.	เธอสวมแหวนทอง		🥇
+1454	domestic	domestics	adj: ในประเทศ, ในบ้าน | n: คนรับใช้	This is a domestic flight.	นี่เป็นเที่ยวบินในประเทศ		
+1455	load	loads, loaded, loading	n: ของที่บรรทุก, ภาระ | v: บรรทุก, โหลด	He loaded the boxes onto the truck.	เขาขนกล่องขึ้นรถบรรทุก		
+1456	belief	beliefs	n: ความเชื่อ	Her belief in hard work is strong.	เธอเชื่อมั่นในการทำงานหนักอย่างมาก		
+1457	troop	troops	n: กองทหาร, กลุ่มคน	The troops arrived at the border.	กองทหารมาถึงชายแดน	มักใช้เป็นพหูพจน์ troops	
+1458	technical		adj: เกี่ยวกับเทคนิค, ทางเทคนิค	We had a technical problem.	เรามีปัญหาทางเทคนิค		
+1459	remind	reminds, reminded, reminding	v: เตือนความจำ, ทำให้นึกถึง	Please remind me to call my mother.	ช่วยเตือนฉันให้โทรหาแม่ด้วยนะ		⏰
+1460	arrangement	arrangements	n: การจัดการ, ข้อตกลง, การจัดเตรียม	We made arrangements for the trip.	เราจัดเตรียมเรื่องการเดินทางไว้แล้ว		
+1461	skin	skins, skinned, skinning	n: ผิวหนัง, เปลือก	She has soft skin.	เธอมีผิวนุ่ม		
+1462	prison	prisons	n: คุก, เรือนจำ	He spent five years in prison.	เขาอยู่ในคุกห้าปี		
+1463	switch	switches, switched, switching	n: สวิตช์ | v: เปลี่ยน, สลับ	Please switch off the light.	กรุณาปิดไฟด้วย		💡
+1464	acquire	acquires, acquired, acquiring	v: ได้มา, ซื้อกิจการ	She acquired new skills at work.	เธอได้ทักษะใหม่จากการทำงาน		
+1465	corporate		adj: ขององค์กร, ของบริษัท	The company has a corporate office downtown.	บริษัทมีสำนักงานใหญ่อยู่ในเมือง		
+1466	fairly		adv: ค่อนข้าง, ยุติธรรม	The test was fairly easy.	ข้อสอบค่อนข้างง่าย		
+1467	wood	woods, wooded	n: ไม้, ป่าละเมาะ	The table is made of wood.	โต๊ะนี้ทำจากไม้		🪵
+1468	participate	participates, participated, participating	v: มีส่วนร่วม, เข้าร่วม	Everyone participated in the game.	ทุกคนเข้าร่วมเล่นเกม		
+1469	tough	tougher, toughest	adj: แข็งแกร่ง, เหนียว, ยาก	This meat is tough.	เนื้อนี้เหนียว		
+1470	tear	tears, tore, tearing	v: ฉีก, ขาด | n: รอยฉีก	She tore the paper in half.	เธอฉีกกระดาษเป็นสองส่วน	รูปอดีตคือ tore / รูป V3 คือ torn (tear ที่แปลว่า น้ำตา เป็นคำนามอีกคำที่สะกดเหมือนกัน แต่ออกเสียงต่างกัน)	
+1471	representative	representatives	n: ตัวแทน | adj: เป็นตัวแทน, เป็นตัวอย่างที่ดี	Each class sends one representative.	แต่ละห้องส่งตัวแทนหนึ่งคน		
+1472	capacity	capacities	n: ความจุ, ความสามารถ	The hall has a capacity of 500 people.	ห้องโถงนี้จุคนได้ 500 คน		
+1473	border	borders, bordered, bordering	n: ชายแดน, ขอบ | v: ติดกับ	The two countries share a long border.	สองประเทศมีพรมแดนติดกันยาว		
+1474	shake	shakes, shook, shaking, shaken	v: เขย่า, สั่น	Shake the bottle before use.	เขย่าขวดก่อนใช้	รูปอดีตคือ shook / รูป V3 คือ shaken	
+1475	assessment	assessments	n: การประเมิน	The teacher gave an assessment of my work.	ครูประเมินงานของฉัน		
+1476	shoe	shoes, shoed, shod	n: รองเท้า	I need a new pair of shoes.	ฉันต้องการรองเท้าคู่ใหม่		👟
+1477	ought	oughtn, oughta, outta	modal: ควรจะ (ใช้กับ to)	You ought to see a doctor.	คุณควรไปพบหมอ	ตามด้วย to + กริยา เช่น ought to go	
+1478	ad	ads	n: โฆษณา	I saw an ad for a new phone.	ฉันเห็นโฆษณาโทรศัพท์รุ่นใหม่	ย่อมาจาก advertisement	📢
+1479	fee	fees	n: ค่าธรรมเนียม, ค่าบริการ	There is a small fee for entry.	มีค่าเข้าชมเล็กน้อย		
+1480	hall	halls	n: ห้องโถง, โถงทางเดิน	Please wait in the hall.	กรุณารอในห้องโถง		
+1481	regulation	regulations	n: กฎระเบียบ, ข้อบังคับ	There are strict regulations for drivers.	มีข้อบังคับที่เข้มงวดสำหรับคนขับรถ		
+1482	escape	escapes, escaped, escaping	v: หลบหนี, รอดพ้น | n: การหลบหนี	The bird escaped from its cage.	นกหนีออกจากกรง		
+1483	studio	studios	n: สตูดิโอ	The singer is working in a studio.	นักร้องกำลังทำงานอยู่ในสตูดิโอ		🎙️
+1484	proper		adj: เหมาะสม, ถูกต้อง	Use the proper tool for the job.	ใช้เครื่องมือที่เหมาะสมกับงาน		
+1485	relax	relaxes, relaxed, relaxing	v: ผ่อนคลาย, พักผ่อน	I relax by listening to music.	ฉันผ่อนคลายด้วยการฟังเพลง		😌
+1486	tourist	tourists	n: นักท่องเที่ยว	Many tourists visit this beach.	นักท่องเที่ยวมากมายมาเที่ยวชายหาดนี้		🧳
+1487	component	components	n: ส่วนประกอบ, ชิ้นส่วน	This is the main component of the engine.	นี่เป็นชิ้นส่วนหลักของเครื่องยนต์		
+1488	afford	affords, afforded, affording	v: มีเงินพอจะซื้อ, สามารถจ่ายได้	I cannot afford a new car.	ฉันไม่มีเงินพอซื้อรถคันใหม่	มักใช้กับ can / cannot	
+1489	lawyer	lawyers	n: ทนายความ	My aunt is a lawyer.	ป้าของฉันเป็นทนายความ		⚖️
+1490	suspect	suspects, suspected, suspecting	v: สงสัย, เดา | n: ผู้ต้องสงสัย	I suspect he forgot the meeting.	ฉันสงสัยว่าเขาลืมการประชุม		
+1491	cup	cups, cupped, cupping	n: ถ้วย, แก้วมีหู	Would you like a cup of tea?	คุณอยากดื่มชาสักถ้วยไหม		☕
+1492	description	descriptions	n: คำบรรยาย, รายละเอียด	Please write a short description.	กรุณาเขียนคำบรรยายสั้น ๆ		
+1493	confidence	confidences	n: ความมั่นใจ	She speaks with confidence.	เธอพูดอย่างมั่นใจ		
+1494	industrial	industrials	adj: เกี่ยวกับอุตสาหกรรม	This is an industrial area.	นี่เป็นเขตอุตสาหกรรม		🏭
+1495	complain	complains, complained, complaining	v: บ่น, ร้องเรียน	He complained about the noise.	เขาบ่นเรื่องเสียงดัง		
+1496	perspective	perspectives	n: มุมมอง, ทัศนคติ	She sees things from a different perspective.	เธอมองเรื่องต่าง ๆ จากอีกมุมหนึ่ง		
+1497	error	errors	n: ข้อผิดพลาด	There is an error in the report.	มีข้อผิดพลาดในรายงาน		
+1498	arrest	arrests, arrested, arresting	v: จับกุม | n: การจับกุม	The police arrested a thief.	ตำรวจจับขโมยได้คนหนึ่ง		
+1499	assess	assesses, assessed, assessing	v: ประเมิน, ตรวจสอบ	The doctor will assess your health.	หมอจะประเมินสุขภาพของคุณ		
+1500	register	registers, registered, registering	v: ลงทะเบียน, สมัคร | n: ทะเบียน, สมุดบันทึก	Please register before the class starts.	กรุณาลงทะเบียนก่อนเริ่มเรียน		📝

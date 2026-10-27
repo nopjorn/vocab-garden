@@ -1,101 +1,101 @@
 rank	headword	forms	meanings	example_en	example_th	note	emoji
-1501	asset	assets					
-1502	signal	signals, signaled, signaling, signalled, signalling					
-1503	finger	fingers, fingered, fingering					
-1504	relevant						
-1505	explore	explores, explored, exploring					
-1506	leadership	leaderships					
-1507	commitment	commitments					
-1508	wake	wakes, woke, waking, woken, waked					
-1509	necessarily						
-1510	bright	brighter, brightest					
-1511	frame	frames, framed, framing					
-1512	slowly						
-1513	bond	bonds, bonded, bonding					
-1514	hire	hires, hired, hiring					
-1515	hole	holes, holed, holing					
-1516	tie	ties, tied, tying					
-1517	internal	internals					
-1518	chain	chains, chained, chaining					
-1519	literature	literatures					
-1520	victim	victims					
-1521	threaten	threatens, threatened, threatening					
-1522	division	divisions					
-1523	secure	secures, secured, securing					
-1524	amaze	amazes, amazed, amazing					
-1525	device	devices					
-1526	birth	births, birthed, birthing					
-1527	forest	forests, forested, foresting					
-1528	label	labels, labeled, labeling, labelled, labelling					
-1529	root	roots, rooted, rooting					
-1530	factory	factories					
-1531	expense	expenses, expensed, expensing					
-1532	channel	channels, channeled, channelled, channelling, channeling					
-1533	investigate	investigates, investigated, investigating					
-1534	recommendation	recommendations					
-1535	rank	ranks, ranked, ranking, rankings					
-1536	typical						
-1537	west						
-1538	friendly	friendlier, friendliest					
-1539	resident	residents					
-1540	provision	provisions, provisioned, provisioning					
-1541	concentrate	concentrates, concentrated, concentrating					
-1542	plenty						
-1543	export	exports, exported, exporting					
-1544	entirely						
-1545	strongly						
-1546	bridge	bridges, bridged, bridging					
-1547	consist	consists, consisted, consisting					
-1548	graduate	graduates, graduated, graduating					
-1549	brand	brands, branded, branding					
-1550	moral	morals					
-1551	insist	insists, insisted, insisting					
-1552	combination	combinations					
-1553	abuse	abuses, abused, abusing					
-1554	ice	ices, iced					
-1555	principal	principals					
-1556	master	masters, mastered, mastering					
-1557	definitely						
-1558	session	sessions					
-1559	grade	grades, graded, grading					
-1560	nevertheless						
-1561	predict	predicts, predicted, predicting					
-1562	previously						
-1563	protection	protections					
-1564	largely						
-1565	wed	weds, wedded, wedding, weddings					
-1566	rent	rents, rented, renting					
-1567	shot	shots					
-1568	appearance	appearances					
-1569	reasonable						
-1570	guarantee	guarantees, guaranteed, guaranteeing, guaranty, guaranties					
-1571	till	tills, tilled, tilling					
-1572	theme	themes, themed					
-1573	judgment	judgments					
-1574	odd	odder, oddest					
-1575	approve	approves, approved, approving					
-1576	loan	loans, loaned, loaning					
-1577	definition	definitions					
-1578	elect	elects, elected, electing					
-1579	atmosphere	atmospheres					
-1580	farmer	farmers					
-1581	comparison	comparisons					
-1582	characteristic	characteristics					
-1583	license	licenses, licensed, licensing, licence, licences, licenced, licencing					
-1584	rely	relies, relied, relying					
-1585	narrow	narrows, narrowed, narrowing, narrower, narrowest					
-1586	succeed	succeeds, succeeded, succeeding					
-1587	identity	identities					
-1588	desk	desks					
-1589	permit	permits, permitted, permitting					
-1590	seriously						
-1591	wild	wilder, wildest, wilds					
-1592	empty	empties, emptied, emptying, emptier, emptiest					
-1593	commission	commissions, commissioned, commissioning					
-1594	unique						
-1595	association	associations					
-1596	instrument	instruments, instrumented					
-1597	investor	investors					
-1598	practical						
-1599	tea	teas					
-1600	lovely	lovelier, loveliest					
+1501	asset	assets	n: ทรัพย์สิน, สิ่งมีค่า, จุดแข็ง	Her English is a great asset at work.	ภาษาอังกฤษของเธอเป็นจุดแข็งในการทำงาน		
+1502	signal	signals, signaled, signaling, signalled, signalling	n: สัญญาณ | v: ส่งสัญญาณ	The driver gave a signal before turning.	คนขับให้สัญญาณก่อนเลี้ยว		🚦
+1503	finger	fingers, fingered, fingering	n: นิ้วมือ	I cut my finger.	ฉันมีดบาดนิ้ว		☝️
+1504	relevant		adj: เกี่ยวข้อง, ตรงประเด็น	Is this question relevant to the topic?	คำถามนี้เกี่ยวข้องกับหัวข้อไหม		
+1505	explore	explores, explored, exploring	v: สำรวจ, ค้นหา	We explored the old town on foot.	เราเดินสำรวจเมืองเก่า		🧭
+1506	leadership	leaderships	n: ความเป็นผู้นำ, ภาวะผู้นำ	Good leadership helps the team.	ความเป็นผู้นำที่ดีช่วยทีมได้		
+1507	commitment	commitments	n: ความมุ่งมั่น, พันธะ	She shows great commitment to her work.	เธอทุ่มเทให้กับงานมาก		
+1508	wake	wakes, woke, waking, woken, waked	v: ตื่น, ปลุก | n: งานศพ, รอยคลื่นท้ายเรือ	I wake up at six every day.	ฉันตื่นหกโมงทุกวัน	รูปอดีตคือ woke / รูป V3 คือ woken	⏰
+1509	necessarily		adv: จำเป็นต้อง, ไปเสียทั้งหมด (ใช้ในประโยคปฏิเสธ)	Expensive food is not necessarily good.	อาหารแพงไม่ได้แปลว่าอร่อยเสมอไป	มักใช้ในประโยคปฏิเสธ เช่น not necessarily (ไม่เสมอไป)	
+1510	bright	brighter, brightest	adj: สว่าง, ฉลาด, สดใส	The room is bright and clean.	ห้องนี้สว่างและสะอาด		🌞
+1511	frame	frames, framed, framing	n: กรอบ, โครงสร้าง | v: ใส่กรอบ	I put the photo in a frame.	ฉันใส่รูปลงในกรอบ		🖼️
+1512	slowly		adv: อย่างช้า ๆ	Please speak slowly.	กรุณาพูดช้า ๆ		🐢
+1513	bond	bonds, bonded, bonding	n: พันธะ, ความผูกพัน, พันธบัตร | v: ผูกพัน	There is a strong bond between the two sisters.	สองพี่น้องมีความผูกพันกันแน่นแฟ้น		
+1514	hire	hires, hired, hiring	v: จ้าง, เช่า | n: การจ้าง	The company wants to hire new staff.	บริษัทอยากจ้างพนักงานใหม่		
+1515	hole	holes, holed, holing	n: รู, หลุม	There is a hole in my sock.	ถุงเท้าของฉันมีรู		🕳️
+1516	tie	ties, tied, tying	v: ผูก, มัด | n: เน็คไท, คะแนนเสมอ	Can you tie your shoes?	คุณผูกเชือกรองเท้าเองได้ไหม		
+1517	internal	internals	adj: ภายใน	This is an internal rule of the school.	นี่เป็นกฎภายในของโรงเรียน		
+1518	chain	chains, chained, chaining	n: โซ่, ห่วงโซ่, เครือร้าน | v: ล่ามโซ่	The dog is tied with a chain.	สุนัขถูกล่ามด้วยโซ่		⛓️
+1519	literature	literatures	n: วรรณกรรม	She studies English literature.	เธอเรียนวรรณกรรมอังกฤษ		📚
+1520	victim	victims	n: เหยื่อ, ผู้ตกเป็นเหยื่อ	The victim called the police.	ผู้เสียหายโทรแจ้งตำรวจ		
+1521	threaten	threatens, threatened, threatening	v: ข่มขู่, คุกคาม	The storm threatens the small village.	พายุคุกคามหมู่บ้านเล็ก ๆ		
+1522	division	divisions	n: การแบ่ง, ฝ่าย, แผนก	Please do the division on paper.	กรุณาทำการหารบนกระดาษ		➗
+1523	secure	secures, secured, securing	adj: ปลอดภัย, มั่นคง | v: ทำให้ปลอดภัย, ได้มา	Make sure the door is secure.	ตรวจให้แน่ใจว่าประตูแน่นหนา		🔒
+1524	amaze	amazes, amazed, amazing	v: ทำให้ประหลาดใจมาก, ทำให้ทึ่ง	The magic show amazed the children.	การแสดงมายากลทำให้เด็ก ๆ ทึ่ง	amazed = รู้สึกทึ่ง / amazing = น่าทึ่ง	
+1525	device	devices	n: อุปกรณ์, เครื่องมือ	This device keeps food cold.	อุปกรณ์นี้ช่วยแช่อาหารให้เย็น		📱
+1526	birth	births, birthed, birthing	n: การเกิด, กำเนิด	What is your date of birth?	คุณเกิดวันที่เท่าไร		👶
+1527	forest	forests, forested, foresting	n: ป่า	We walked through the forest.	เราเดินผ่านป่า		🌲
+1528	label	labels, labeled, labeling, labelled, labelling	n: ป้าย, ฉลาก | v: ติดป้าย, ตีตรา	Read the label before you take the medicine.	อ่านฉลากก่อนกินยา		🏷️
+1529	root	roots, rooted, rooting	n: ราก, ต้นเหตุ | v: หยั่งราก	The roots of this tree are very deep.	รากของต้นไม้นี้ลึกมาก		🌱
+1530	factory	factories	n: โรงงาน	My father works in a factory.	พ่อของฉันทำงานในโรงงาน		🏭
+1531	expense	expenses, expensed, expensing	n: ค่าใช้จ่าย	Travel expenses are high this year.	ค่าเดินทางปีนี้สูง		💸
+1532	channel	channels, channeled, channelled, channelling, channeling	n: ช่อง (ทีวี), ช่องทาง, ช่องแคบ	Which channel do you want to watch?	คุณอยากดูช่องไหน		📺
+1533	investigate	investigates, investigated, investigating	v: สืบสวน, ตรวจสอบ	The police will investigate the accident.	ตำรวจจะสอบสวนอุบัติเหตุ		🔍
+1534	recommendation	recommendations	n: คำแนะนำ, จดหมายรับรอง	The teacher wrote me a recommendation.	ครูเขียนจดหมายรับรองให้ฉัน		
+1535	rank	ranks, ranked, ranking, rankings	n: ระดับ, ยศ, อันดับ | v: จัดอันดับ	This hotel is ranked first in the city.	โรงแรมนี้ได้อันดับหนึ่งของเมือง		
+1536	typical		adj: ทั่วไป, เป็นแบบฉบับ	This is a typical Thai dish.	นี่เป็นอาหารไทยแบบฉบับ		
+1537	west		n: ทิศตะวันตก | adj: ทางตะวันตก | adv: ไปทางตะวันตก	The sun sets in the west.	ดวงอาทิตย์ตกทางทิศตะวันตก		
+1538	friendly	friendlier, friendliest	adj: เป็นมิตร, อัธยาศัยดี	The people here are very friendly.	คนที่นี่เป็นมิตรมาก		
+1539	resident	residents	n: ผู้อยู่อาศัย, ชาวบ้าน	The residents asked for a new park.	ชาวบ้านขอสวนสาธารณะแห่งใหม่		
+1540	provision	provisions, provisioned, provisioning	n: การจัดหา, ข้อกำหนด, เสบียง	The hotel makes provision for guests with children.	โรงแรมจัดบริการไว้สำหรับแขกที่มีเด็ก		
+1541	concentrate	concentrates, concentrated, concentrating	v: ตั้งสมาธิ, ใส่ใจ	I cannot concentrate with this noise.	ฉันตั้งสมาธิไม่ได้เพราะเสียงนี้		
+1542	plenty		pron: มากมาย, เหลือเฟือ | adv: มากพอ	We have plenty of time.	เรามีเวลาเหลือเฟือ		
+1543	export	exports, exported, exporting	v: ส่งออก | n: สินค้าส่งออก	Thailand exports a lot of rice.	ประเทศไทยส่งออกข้าวจำนวนมาก		🚢
+1544	entirely		adv: ทั้งหมด, ทั้งสิ้น	I entirely agree with you.	ฉันเห็นด้วยกับคุณทั้งหมด		
+1545	strongly		adv: อย่างหนักแน่น, อย่างแรง	I strongly believe in you.	ฉันเชื่อมั่นในตัวคุณอย่างยิ่ง		
+1546	bridge	bridges, bridged, bridging	n: สะพาน | v: เชื่อมช่องว่าง	We walked across the bridge.	เราเดินข้ามสะพาน		🌉
+1547	consist	consists, consisted, consisting	v: ประกอบด้วย, ประกอบขึ้นจาก	The team consists of ten players.	ทีมประกอบด้วยผู้เล่นสิบคน	มักตามด้วย of เช่น consist of	
+1548	graduate	graduates, graduated, graduating	n: ผู้สำเร็จการศึกษา | v: จบการศึกษา	She graduated from university last year.	เธอจบมหาวิทยาลัยเมื่อปีที่แล้ว		🎓
+1549	brand	brands, branded, branding	n: ยี่ห้อ, แบรนด์ | v: ตีตรา	This is a famous brand of shoes.	นี่เป็นรองเท้ายี่ห้อดัง		
+1550	moral	morals	adj: เกี่ยวกับศีลธรรม | n: บทเรียนข้อคิด	The story has a good moral.	เรื่องนี้มีข้อคิดที่ดี		
+1551	insist	insists, insisted, insisting	v: ยืนกราน, เรียกร้อง	He insisted on paying for lunch.	เขาขอเป็นคนจ่ายค่าข้าวกลางวันให้ได้		
+1552	combination	combinations	n: การผสมผสาน, ส่วนผสม	Red and blue is a nice combination.	สีแดงกับสีฟ้าเป็นการผสมที่สวย		
+1553	abuse	abuses, abused, abusing	v: ใช้ในทางที่ผิด, ทำร้าย | n: การใช้ผิด, การทารุณ	We must not abuse animals.	เราต้องไม่ทารุณสัตว์	abuse (กริยา) ออกเสียงต่างจาก abuse (นาม)	
+1554	ice	ices, iced	n: น้ำแข็ง | v: เคลือบหน้าด้วยไอซิ่ง	Would you like ice in your drink?	คุณอยากใส่น้ำแข็งในเครื่องดื่มไหม		🧊
+1555	principal	principals	n: ครูใหญ่, ผู้อำนวยการ, เงินต้น | adj: สำคัญที่สุด	The principal spoke to the students.	ครูใหญ่พูดกับนักเรียน		
+1556	master	masters, mastered, mastering	n: ผู้เชี่ยวชาญ, เจ้านาย | v: เชี่ยวชาญ	He wants to master English.	เขาอยากเก่งภาษาอังกฤษ		
+1557	definitely		adv: แน่นอน, ชัดเจน	I will definitely come to your party.	ฉันจะไปงานปาร์ตี้ของคุณแน่นอน		
+1558	session	sessions	n: การประชุม, ช่วง, รอบ	The first session starts at nine.	ช่วงแรกเริ่มตอนเก้าโมง		
+1559	grade	grades, graded, grading	n: เกรด, ชั้นปี, ระดับ | v: ให้คะแนน	She got good grades this year.	ปีนี้เธอได้เกรดดี		
+1560	nevertheless		adv: อย่างไรก็ตาม, ถึงกระนั้น	It was raining; nevertheless, we went out.	ฝนตก แต่ถึงอย่างนั้นเราก็ออกไป		
+1561	predict	predicts, predicted, predicting	v: ทำนาย, คาดการณ์	Nobody can predict the weather exactly.	ไม่มีใครทำนายอากาศได้แม่นยำ		
+1562	previously		adv: ก่อนหน้านี้, แต่ก่อน	I had met him previously.	ฉันเคยเจอเขามาก่อนหน้านี้		
+1563	protection	protections	n: การป้องกัน, การคุ้มครอง	Sunscreen gives protection from the sun.	ครีมกันแดดช่วยป้องกันแสงแดด		🛡️
+1564	largely		adv: ส่วนใหญ่, เป็นส่วนมาก	The rain was largely over by noon.	ฝนหยุดเกือบทั้งหมดตอนเที่ยง		
+1565	wed	weds, wedded, wedding, weddings	v: แต่งงาน (ภาษาเก่า, ทางการ)	They will wed in June.	พวกเขาจะแต่งงานกันเดือนมิถุนายน	ใช้ในข่าวหรือภาษาเขียน ในภาษาพูดทั่วไปใช้ get married	💒
+1566	rent	rents, rented, renting	v: เช่า | n: ค่าเช่า	I rent a small room near the station.	ฉันเช่าห้องเล็ก ๆ ใกล้สถานี		🏠
+1567	shot	shots	n: การยิง, ภาพถ่าย, การฉีดยา	He took a good shot of the sunset.	เขาถ่ายภาพพระอาทิตย์ตกได้สวย	shot ที่เป็นรูปอดีตของ shoot อยู่ที่การ์ด shoot	
+1568	appearance	appearances	n: รูปลักษณ์, การปรากฏตัว	Her appearance changed after the haircut.	หลังตัดผม หน้าตาของเธอเปลี่ยนไป		
+1569	reasonable		adj: สมเหตุสมผล, ราคาไม่แพงเกินไป	The price is reasonable.	ราคานี้สมเหตุสมผล		
+1570	guarantee	guarantees, guaranteed, guaranteeing, guaranty, guaranties	n: การรับประกัน | v: รับประกัน	The shop guarantees the phone for one year.	ร้านรับประกันโทรศัพท์หนึ่งปี		
+1571	till	tills, tilled, tilling	prep: จนกระทั่ง | n: ลิ้นชักเก็บเงิน	Wait here till I come back.	รอตรงนี้จนกว่าฉันจะกลับมา	ภาษาพูดมักใช้แทน until	
+1572	theme	themes, themed	n: หัวข้อ, ธีม	The theme of the party is the sea.	ธีมของงานปาร์ตี้คือทะเล		
+1573	judgment	judgments	n: การตัดสิน, วิจารณญาณ	I trust her judgment.	ฉันเชื่อวิจารณญาณของเธอ		
+1574	odd	odder, oddest	adj: แปลก, คี่ (เลข)	Three is an odd number.	สามเป็นเลขคี่		
+1575	approve	approves, approved, approving	v: อนุมัติ, เห็นชอบ	The teacher approved my plan.	ครูอนุมัติแผนของฉัน		👍
+1576	loan	loans, loaned, loaning	n: เงินกู้ | v: ให้ยืม	He took a loan to buy a house.	เขากู้เงินเพื่อซื้อบ้าน		
+1577	definition	definitions	n: คำนิยาม, ความหมาย	Can you give me the definition of this word?	คุณช่วยบอกความหมายของคำนี้ได้ไหม		
+1578	elect	elects, elected, electing	v: เลือก (ด้วยการลงคะแนน)	They elected a new president.	พวกเขาเลือกประธานาธิบดีคนใหม่		
+1579	atmosphere	atmospheres	n: บรรยากาศ	The restaurant has a warm atmosphere.	ร้านอาหารนี้มีบรรยากาศอบอุ่น		
+1580	farmer	farmers	n: ชาวนา, เกษตรกร	The farmer is feeding the chickens.	ชาวนากำลังให้อาหารไก่		🧑‍🌾
+1581	comparison	comparisons	n: การเปรียบเทียบ	There is no comparison between them.	สองสิ่งนี้เทียบกันไม่ได้		
+1582	characteristic	characteristics	n: ลักษณะเฉพาะ, คุณสมบัติ	Honesty is her best characteristic.	ความซื่อสัตย์เป็นลักษณะที่ดีที่สุดของเธอ		
+1583	license	licenses, licensed, licensing, licence, licences, licenced, licencing	n: ใบอนุญาต | v: อนุญาต	You need a license to drive.	คุณต้องมีใบขับขี่ถึงจะขับรถได้	สะกดแบบอังกฤษ (นาม) คือ licence	
+1584	rely	relies, relied, relying	v: พึ่งพา, ไว้ใจ	You can rely on me.	คุณพึ่งฉันได้เสมอ	มักตามด้วย on เช่น rely on	
+1585	narrow	narrows, narrowed, narrowing, narrower, narrowest	adj: แคบ | v: ทำให้แคบลง	The road is narrow here.	ถนนตรงนี้แคบ		
+1586	succeed	succeeds, succeeded, succeeding	v: ประสบความสำเร็จ, สืบทอด	She succeeded in finding a job.	เธอหางานได้สำเร็จ		
+1587	identity	identities	n: ตัวตน, เอกลักษณ์, อัตลักษณ์	Please show your identity card.	กรุณาแสดงบัตรประจำตัว		🪪
+1588	desk	desks	n: โต๊ะทำงาน	My desk is next to the window.	โต๊ะทำงานของฉันอยู่ข้างหน้าต่าง		
+1589	permit	permits, permitted, permitting	v: อนุญาต | n: ใบอนุญาต	Smoking is not permitted here.	ที่นี่ห้ามสูบบุหรี่		
+1590	seriously		adv: อย่างจริงจัง, อย่างหนัก	He was seriously ill.	เขาป่วยหนัก		
+1591	wild	wilder, wildest, wilds	adj: ป่า, ดุร้าย, ไม่เชื่อง | n: ป่าธรรมชาติ	Wild animals live in the forest.	สัตว์ป่าอาศัยอยู่ในป่า		🐅
+1592	empty	empties, emptied, emptying, emptier, emptiest	adj: ว่างเปล่า | v: เทออก, ทำให้ว่าง	The bottle is empty.	ขวดนี้ว่างเปล่า		
+1593	commission	commissions, commissioned, commissioning	n: คณะกรรมการ, ค่านายหน้า | v: ว่าจ้าง, มอบหมาย	The artist got a commission to paint a portrait.	ศิลปินได้รับว่าจ้างให้วาดภาพเหมือน		
+1594	unique		adj: เอกลักษณ์, ไม่เหมือนใคร	Every snowflake is unique.	เกล็ดหิมะทุกเกล็ดไม่เหมือนกัน		
+1595	association	associations	n: สมาคม, ความสัมพันธ์	She joined a sports association.	เธอเข้าร่วมสมาคมกีฬา		
+1596	instrument	instruments, instrumented	n: เครื่องดนตรี, เครื่องมือ	He plays three musical instruments.	เขาเล่นเครื่องดนตรีได้สามชนิด		🎻
+1597	investor	investors	n: นักลงทุน	The investor bought shares in the company.	นักลงทุนซื้อหุ้นของบริษัทนี้		
+1598	practical		adj: ใช้ได้จริง, เป็นประโยชน์ในทางปฏิบัติ	This is a practical way to save money.	นี่เป็นวิธีประหยัดเงินที่ทำได้จริง		
+1599	tea	teas	n: ชา	Would you like some tea?	คุณอยากดื่มชาไหม		🍵
+1600	lovely	lovelier, loveliest	adj: น่ารัก, งดงาม, ดีมาก	What a lovely garden!	สวนสวยจังเลย		🌷

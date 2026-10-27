@@ -1,101 +1,101 @@
 rank	headword	forms	meanings	example_en	example_th	note	emoji
-2201	adviser	advisers					
-2202	stem	stems, stemmed, stemming					
-2203	reverse	reverses, reversed, reversing					
-2204	mode	modes					
-2205	mirror	mirrors, mirrored, mirroring					
-2206	awful						
-2207	pose	poses, posed, posing					
-2208	adjust	adjusts, adjusted, adjusting					
-2209	creative						
-2210	nowadays						
-2211	poem	poems					
-2212	agricultural						
-2213	competitor	competitors					
-2214	alcohol	alcohols					
-2215	festival	festivals					
-2216	vegetable	vegetables					
-2217	van	vans					
-2218	confident	confidents					
-2219	planet	planets					
-2220	curve	curves, curved, curving					
-2221	knee	knees, kneed, kneeing					
-2222	overcome	overcomes, overcame, overcoming					
-2223	web	webs, webbed, webbing, webbings					
-2224	depth	depths					
-2225	entrance	entrances, entranced, entrancing					
-2226	log	logs, logged, logging					
-2227	giant	giants					
-2228	god	gods					
-2229	portion	portions, portioned, portioning					
-2230	substance	substances					
-2231	extensive						
-2232	interpret	interprets, interpreted, interpreting					
-2233	independence	independences					
-2234	sugar	sugars, sugared					
-2235	inner	inners					
-2236	harm	harms, harmed, harming					
-2237	consult	consults, consulted, consulting					
-2238	pink	pinks, pinked, pinking, pinker, pinkest					
-2239	shadow	shadows					
-2240	strip	strips, stripped, stripping					
-2241	smooth	smoothed, smoothing, smoother, smoothest					
-2242	intervention	interventions					
-2243	impress	impresses, impressed, impressing					
-2244	exam	exams					
-2245	vice	vices					
-2246	radical	radicals					
-2247	similarly						
-2248	behave	behaves, behaved, behaving					
-2249	loud	louder, loudest					
-2250	dimension	dimensions, dimensioned, dimensioning					
-2251	subsequent						
-2252	infection	infections					
-2253	jacket	jackets					
-2254	efficiency	efficiencies					
-2255	dirty	dirties, dirtied, dirtying, dirtier, dirtiest					
-2256	statistic	statistics					
-2257	regularly						
-2258	resort	resorts, resorted, resorting					
-2259	iron	irons, ironed, ironing					
-2260	broadcast	broadcasts, broadcasted, broadcasting					
-2261	membership	memberships					
-2262	bread	breads, breaded, breading					
-2263	blind	blinds, blinded, blinding, blinder, blindest					
-2264	pure	purer, purest					
-2265	bloody	bloodies, bloodied, bloodying, bloodier, bloodiest					
-2266	ally	allies, allied					
-2267	quantity	quantities					
-2268	bend	bends, bended, bending, bent					
-2269	mature	matures, matured, maturing					
-2270	briefly						
-2271	alarm	alarms, alarmed, alarming					
-2272	disturb	disturbs, disturbed, disturbing					
-2273	sustain	sustains, sustained, sustaining					
-2274	flood	floods, flooded, flooding					
-2275	poverty						
-2276	crazy	crazier, craziest, crazies					
-2277	cite	cites, cited, citing					
-2278	newly						
-2279	parallel	parallels, paralleled, paralleling					
-2280	gender	genders, gendered					
-2281	sponsor	sponsors, sponsored, sponsoring					
-2282	boot	boots, booted, booting					
-2283	accurate						
-2284	dealer	dealers					
-2285	button	buttons, buttoned, buttoning					
-2286	burden	burdens, burdened, burdening					
-2287	desert	deserts, deserted, deserting					
-2288	mate	mates, mated, mating					
-2289	occasionally						
-2290	shareholder	shareholders					
-2291	bowl	bowls, bowled, bowling					
-2292	discovery	discoveries					
-2293	resistance	resistances					
-2294	bath	baths					
-2295	frequency	frequencies					
-2296	criticize	criticizes, criticized, criticizing, criticise, criticises, criticised, criticising					
-2297	tap	taps, tapped, tapping					
-2298	philosophy	philosophies					
-2299	lip	lips, lipped					
-2300	attribute	attributes, attributed, attributing					
+2201	adviser	advisers	n: ที่ปรึกษา	My adviser helped me choose a course.	ที่ปรึกษาช่วยฉันเลือกวิชาเรียน	สะกดอีกแบบคือ advisor	
+2202	stem	stems, stemmed, stemming	n: ลำต้น, ก้าน | v: เกิดจาก, หยุด	The flower has a long green stem.	ดอกไม้นี้มีก้านยาวสีเขียว		🌷
+2203	reverse	reverses, reversed, reversing	v: ย้อนกลับ, กลับด้าน | n: ด้านหลัง, การถอย | adj: ตรงข้าม	Please reverse the car slowly.	กรุณาถอยรถช้า ๆ		
+2204	mode	modes	n: โหมด, รูปแบบ, วิธี	Please turn your phone to silent mode.	กรุณาตั้งโทรศัพท์เป็นโหมดเงียบ		
+2205	mirror	mirrors, mirrored, mirroring	n: กระจกเงา | v: สะท้อน	She looked at herself in the mirror.	เธอมองตัวเองในกระจก		🪞
+2206	awful		adj: แย่มาก, น่ากลัว	The food was awful.	อาหารแย่มาก		
+2207	pose	poses, posed, posing	v: ทำให้เกิด (ปัญหา), โพสท่า | n: ท่าทาง	The photographer asked us to pose.	ช่างภาพให้เราโพสท่า		📸
+2208	adjust	adjusts, adjusted, adjusting	v: ปรับ, ปรับให้เข้ากับ	Please adjust the volume.	กรุณาปรับระดับเสียงหน่อย		
+2209	creative		adj: สร้างสรรค์, มีความคิดสร้างสรรค์	She is a very creative artist.	เธอเป็นศิลปินที่มีความคิดสร้างสรรค์มาก		
+2210	nowadays		adv: ปัจจุบันนี้, สมัยนี้	Nowadays, many people shop online.	สมัยนี้หลายคนซื้อของออนไลน์		
+2211	poem	poems	n: บทกวี	She wrote a poem about the sea.	เธอเขียนบทกวีเกี่ยวกับทะเล		📜
+2212	agricultural		adj: เกี่ยวกับการเกษตร	This is an agricultural country.	นี่เป็นประเทศเกษตรกรรม		🌾
+2213	competitor	competitors	n: คู่แข่ง	He beat his main competitor.	เขาเอาชนะคู่แข่งหลักได้		
+2214	alcohol	alcohols	n: แอลกอฮอล์, เครื่องดื่มมึนเมา	Don't drink alcohol before driving.	อย่าดื่มแอลกอฮอล์ก่อนขับรถ		
+2215	festival	festivals	n: เทศกาล, งานเฉลิมฉลอง	The music festival starts tomorrow.	เทศกาลดนตรีเริ่มพรุ่งนี้		🎪
+2216	vegetable	vegetables	n: ผัก	I eat vegetables every day.	ฉันกินผักทุกวัน		🥦
+2217	van	vans	n: รถตู้	The family travels in a van.	ครอบครัวนี้เดินทางด้วยรถตู้		🚐
+2218	confident	confidents	adj: มั่นใจ	She feels confident about the test.	เธอมั่นใจเรื่องการสอบ		
+2219	planet	planets	n: ดาวเคราะห์	Earth is a beautiful planet.	โลกเป็นดาวเคราะห์ที่งดงาม		🪐
+2220	curve	curves, curved, curving	n: เส้นโค้ง | v: โค้ง, เลี้ยว	The road makes a sharp curve.	ถนนหักโค้งแรง		
+2221	knee	knees, kneed, kneeing	n: หัวเข่า	My knee hurts when I run.	เข่าของฉันเจ็บเวลาวิ่ง		
+2222	overcome	overcomes, overcame, overcoming	v: เอาชนะ, ฝ่าฟัน	She overcame her fear of water.	เธอเอาชนะความกลัวน้ำได้	รูปอดีตคือ overcame / รูป V3 คือ overcome	
+2223	web	webs, webbed, webbing, webbings	n: ใยแมงมุม, เว็บ, เครือข่าย	A spider made a web in the corner.	แมงมุมชักใยอยู่ตรงมุมห้อง		🕸️
+2224	depth	depths	n: ความลึก	What is the depth of the pool?	สระนี้ลึกเท่าไร		
+2225	entrance	entrances, entranced, entrancing	n: ทางเข้า	The entrance is on the left.	ทางเข้าอยู่ทางซ้าย	entrance (ทางเข้า) ต่างจาก entrance (ทำให้หลงใหล) ที่ออกเสียงต่างกัน	🚪
+2226	log	logs, logged, logging	n: ท่อนไม้, บันทึก | v: บันทึก, ลงชื่อเข้า	He wrote the time in the log.	เขาจดเวลาลงในบันทึก		🪵
+2227	giant	giants	n: ยักษ์ | adj: ใหญ่มาก	The giant in the story was kind.	ยักษ์ในเรื่องนั้นใจดี		
+2228	god	gods	n: เทพเจ้า, พระเจ้า	Many people pray to God.	หลายคนสวดอ้อนวอนต่อพระเจ้า	God (ขึ้นต้นตัวใหญ่) หมายถึงพระเจ้าองค์เดียว / god (ตัวเล็ก) หมายถึงเทพเจ้า	
+2229	portion	portions, portioned, portioning	n: ส่วน, ปริมาณที่ได้รับ | v: แบ่งเป็นส่วน	This portion is too big for me.	จานนี้ใหญ่เกินไปสำหรับฉัน		🍽️
+2230	substance	substances	n: สาร, เนื้อหา, สาระสำคัญ	This substance is dangerous.	สารนี้อันตราย		
+2231	extensive		adj: กว้างขวาง, ครอบคลุม	The book has an extensive list of words.	หนังสือเล่มนี้มีรายการคำศัพท์ครอบคลุมมาก		
+2232	interpret	interprets, interpreted, interpreting	v: ตีความ, แปลความ, ล่าม	She interprets for foreign guests.	เธอเป็นล่ามให้แขกต่างชาติ		
+2233	independence	independences	n: ความเป็นอิสระ, เอกราช	The country gained independence in 1950.	ประเทศนี้ได้เอกราชในปี 1950		
+2234	sugar	sugars, sugared	n: น้ำตาล | v: ใส่น้ำตาล	Would you like sugar in your coffee?	คุณอยากใส่น้ำตาลในกาแฟไหม		🍬
+2235	inner	inners	adj: ภายใน, ด้านใน	Her inner strength helped her.	ความเข้มแข็งในใจช่วยเธอไว้		
+2236	harm	harms, harmed, harming	n: อันตราย, ความเสียหาย | v: ทำร้าย	Smoking can harm your health.	การสูบบุหรี่ทำร้ายสุขภาพได้		
+2237	consult	consults, consulted, consulting	v: ปรึกษา, ขอคำแนะนำ	You should consult a doctor.	คุณควรปรึกษาหมอ		
+2238	pink	pinks, pinked, pinking, pinker, pinkest	adj: สีชมพู | n: สีชมพู	She wore a pink dress.	เธอสวมชุดสีชมพู		🌸
+2239	shadow	shadows	n: เงา, เงามืด	Our shadows were long in the evening.	เงาของเรายาวตอนเย็น		
+2240	strip	strips, stripped, stripping	n: แถบ, ริ้ว | v: ปอก, ถอดเสื้อผ้า	She cut the paper into strips.	เธอตัดกระดาษเป็นแถบยาว ๆ		
+2241	smooth	smoothed, smoothing, smoother, smoothest	adj: เรียบ, ราบรื่น | v: ทำให้เรียบ	The road is smooth here.	ถนนตรงนี้เรียบ		
+2242	intervention	interventions	n: การเข้าแทรกแซง, การเข้าช่วยเหลือ	The doctor's early intervention saved him.	การรักษาตั้งแต่เนิ่น ๆ ของหมอช่วยชีวิตเขาไว้		
+2243	impress	impresses, impressed, impressing	v: ทำให้ประทับใจ	The singer impressed everyone.	นักร้องคนนี้ทำให้ทุกคนประทับใจ	impressed = ประทับใจ / impressive = น่าประทับใจ	
+2244	exam	exams	n: การสอบ	I have an English exam tomorrow.	พรุ่งนี้ฉันมีสอบภาษาอังกฤษ		📝
+2245	vice	vices	n: นิสัยเสีย, ความชั่ว	Lying is a vice.	การโกหกเป็นนิสัยเสีย	vice ในคำเช่น vice president แปลว่า "รอง"	
+2246	radical	radicals	adj: รุนแรง, สุดโต่ง, ปฏิรูปอย่างใหญ่หลวง | n: ผู้หัวรุนแรง	The school made a radical change.	โรงเรียนเปลี่ยนแปลงครั้งใหญ่		
+2247	similarly		adv: เช่นเดียวกัน, ในทำนองเดียวกัน	Dogs bark; similarly, cats meow.	สุนัขเห่า ส่วนแมวร้องเหมียว ในทำนองเดียวกัน		
+2248	behave	behaves, behaved, behaving	v: ประพฤติ, ปฏิบัติตัว	Please behave in the library.	กรุณาประพฤติตัวดี ๆ ในห้องสมุด		
+2249	loud	louder, loudest	adj: เสียงดัง	The music is too loud.	เพลงเสียงดังเกินไป		🔊
+2250	dimension	dimensions, dimensioned, dimensioning	n: มิติ, ขนาด, แง่มุม	What are the dimensions of the room?	ห้องนี้กว้างยาวเท่าไร		
+2251	subsequent		adj: ภายหลัง, ต่อมา	Subsequent events proved him right.	เหตุการณ์ที่ตามมาพิสูจน์ว่าเขาถูก		
+2252	infection	infections	n: การติดเชื้อ	She has an ear infection.	เธอหูติดเชื้อ		
+2253	jacket	jackets	n: แจ็กเก็ต, เสื้อคลุม	Take a jacket with you.	เอาแจ็กเก็ตไปด้วยนะ		🧥
+2254	efficiency	efficiencies	n: ประสิทธิภาพ	The new machine improved our efficiency.	เครื่องใหม่ช่วยให้เราทำงานได้มีประสิทธิภาพขึ้น		
+2255	dirty	dirties, dirtied, dirtying, dirtier, dirtiest	adj: สกปรก, เปื้อน	My shoes are dirty.	รองเท้าของฉันสกปรก		
+2256	statistic	statistics	n: สถิติ, ตัวเลข	The statistics show that fewer people smoke.	สถิติแสดงว่าคนสูบบุหรี่น้อยลง	statistics (วิชาสถิติ) เป็นเอกพจน์	📊
+2257	regularly		adv: เป็นประจำ, สม่ำเสมอ	I exercise regularly.	ฉันออกกำลังกายสม่ำเสมอ		
+2258	resort	resorts, resorted, resorting	n: รีสอร์ต, ที่พักผ่อน | v: หันไปพึ่ง	We stayed at a beach resort.	เราพักที่รีสอร์ตริมทะเล		🏖️
+2259	iron	irons, ironed, ironing	n: เหล็ก, เตารีด | v: รีดผ้า	I need to iron my shirt.	ฉันต้องรีดเสื้อ		
+2260	broadcast	broadcasts, broadcasted, broadcasting	v: ถ่ายทอด, ออกอากาศ | n: การออกอากาศ	The station broadcasts the news every hour.	สถานีออกอากาศข่าวทุกชั่วโมง	รูปอดีตคือ broadcast หรือ broadcasted	📡
+2261	membership	memberships	n: การเป็นสมาชิก, สมาชิกภาพ	I bought a gym membership.	ฉันสมัครสมาชิกยิม		
+2262	bread	breads, breaded, breading	n: ขนมปัง	I eat bread for breakfast.	ฉันกินขนมปังเป็นอาหารเช้า		🍞
+2263	blind	blinds, blinded, blinding, blinder, blindest	adj: ตาบอด | v: ทำให้ตาบอด | n: ม่าน	The blind man crossed the street with help.	ชายตาบอดข้ามถนนโดยมีคนช่วย		
+2264	pure	purer, purest	adj: บริสุทธิ์, ล้วน	This is pure gold.	นี่เป็นทองบริสุทธิ์		
+2265	bloody	bloodies, bloodied, bloodying, bloodier, bloodiest	adj: เปื้อนเลือด, นองเลือด	There was blood on the floor, and the knife was bloody.	มีเลือดบนพื้น และมีดเปื้อนเลือด	ในภาษาพูดแบบบริติชใช้เป็นคำแสลงเน้นอารมณ์ได้ด้วย ควรระวังเวลาใช้	
+2266	ally	allies, allied	n: พันธมิตร | v: เป็นพันธมิตร	The two countries are allies.	สองประเทศนี้เป็นพันธมิตรกัน		
+2267	quantity	quantities	n: ปริมาณ, จำนวน	A large quantity of rice was sold.	ข้าวถูกขายไปเป็นปริมาณมาก		
+2268	bend	bends, bended, bending, bent	v: งอ, โค้ง, ก้ม | n: ทางโค้ง	Bend your knees when you lift a box.	งอเข่าตอนยกกล่อง	รูปอดีตคือ bent	
+2269	mature	matures, matured, maturing	adj: เติบโตเต็มที่, สุก | v: เติบโต, สุกงอม	She is mature for her age.	เธอโตเกินวัย		
+2270	briefly		adv: สั้น ๆ, ชั่วครู่	Let me briefly explain the plan.	ขออธิบายแผนสั้น ๆ		
+2271	alarm	alarms, alarmed, alarming	n: สัญญาณเตือน, นาฬิกาปลุก | v: ทำให้ตกใจ	The fire alarm went off.	สัญญาณเตือนไฟไหม้ดังขึ้น		🚨
+2272	disturb	disturbs, disturbed, disturbing	v: รบกวน, ทำให้เสียสมาธิ	Please do not disturb me.	กรุณาอย่ารบกวนฉัน		
+2273	sustain	sustains, sustained, sustaining	v: ค้ำจุน, รักษาไว้, ทนทาน	We need food to sustain our energy.	เราต้องการอาหารเพื่อรักษาพลังงานไว้		
+2274	flood	floods, flooded, flooding	n: น้ำท่วม | v: ท่วม	The flood destroyed many houses.	น้ำท่วมทำลายบ้านหลายหลัง		🌊
+2275	poverty		n: ความยากจน	Many families live in poverty.	หลายครอบครัวอยู่ในความยากจน		
+2276	crazy	crazier, craziest, crazies	adj: บ้า, คลั่ง	That idea sounds crazy.	ความคิดนั้นฟังดูบ้ามาก		🤪
+2277	cite	cites, cited, citing	v: อ้างอิง, ยกมา	She cited three books in her essay.	เธออ้างอิงหนังสือสามเล่มในเรียงความ		
+2278	newly		adv: ใหม่ ๆ, เมื่อไม่นานมานี้	The newly built bridge is very long.	สะพานที่เพิ่งสร้างเสร็จยาวมาก		
+2279	parallel	parallels, paralleled, paralleling	adj: ขนาน, คู่ขนาน | n: สิ่งที่คล้ายกัน	The two roads are parallel.	ถนนสองสายนี้ขนานกัน		
+2280	gender	genders, gendered	n: เพศ (ทางสังคม)	Gender should not limit your dreams.	เพศไม่ควรจำกัดความฝันของคุณ		
+2281	sponsor	sponsors, sponsored, sponsoring	n: ผู้สนับสนุน, สปอนเซอร์ | v: สนับสนุน	A bank sponsors the football match.	ธนาคารแห่งหนึ่งเป็นสปอนเซอร์การแข่งขันฟุตบอล		
+2282	boot	boots, booted, booting	n: รองเท้าบูต | v: เปิดเครื่อง	He wore boots in the rain.	เขาสวมรองเท้าบูตตอนฝนตก		👢
+2283	accurate		adj: ถูกต้อง, แม่นยำ	The clock is accurate.	นาฬิกาเรือนนี้เดินตรง		
+2284	dealer	dealers	n: ผู้ค้า, ตัวแทนจำหน่าย	The car dealer gave us a good price.	ตัวแทนขายรถให้ราคาที่ดีกับเรา		
+2285	button	buttons, buttoned, buttoning	n: กระดุม, ปุ่ม | v: ติดกระดุม	Press the red button to stop.	กดปุ่มสีแดงเพื่อหยุด		🔘
+2286	burden	burdens, burdened, burdening	n: ภาระ | v: เป็นภาระ	Carrying that heavy bag was a burden.	การแบกกระเป๋าหนัก ๆ ใบนั้นเป็นภาระ		
+2287	desert	deserts, deserted, deserting	n: ทะเลทราย | v: ทิ้ง, หนีทหาร	Camels live in the desert.	อูฐอาศัยอยู่ในทะเลทราย	desert (ทะเลทราย) ต่างจาก dessert (ของหวาน)	🏜️
+2288	mate	mates, mated, mating	n: เพื่อน, คู่ | v: ผสมพันธุ์	He went out with his mates.	เขาไปเที่ยวกับเพื่อน ๆ		
+2289	occasionally		adv: เป็นครั้งคราว	I occasionally eat out.	ฉันกินข้าวนอกบ้านเป็นครั้งคราว		
+2290	shareholder	shareholders	n: ผู้ถือหุ้น	The shareholders met in May.	ผู้ถือหุ้นมาประชุมกันในเดือนพฤษภาคม		
+2291	bowl	bowls, bowled, bowling	n: ชาม | v: ขว้างลูก (คริกเก็ต)	She filled the bowl with soup.	เธอตักซุปใส่ชามจนเต็ม		🍜
+2292	discovery	discoveries	n: การค้นพบ	The discovery changed science.	การค้นพบนี้เปลี่ยนวิทยาศาสตร์		🔭
+2293	resistance	resistances	n: การต่อต้าน, ความต้านทาน	There was strong resistance to the change.	มีการต่อต้านการเปลี่ยนแปลงอย่างหนัก		
+2294	bath	baths	n: การอาบน้ำ, อ่างอาบน้ำ	I take a bath every evening.	ฉันอาบน้ำทุกเย็น		🛁
+2295	frequency	frequencies	n: ความถี่, ความบ่อย	What is the frequency of the buses?	รถเมล์มาบ่อยแค่ไหน		
+2296	criticize	criticizes, criticized, criticizing, criticise, criticises, criticised, criticising	v: วิจารณ์, ตำหนิ	Do not criticize others too quickly.	อย่าตำหนิผู้อื่นเร็วเกินไป		
+2297	tap	taps, tapped, tapping	n: ก๊อกน้ำ | v: แตะเบา ๆ	Turn off the tap, please.	กรุณาปิดก๊อกน้ำด้วย		🚰
+2298	philosophy	philosophies	n: ปรัชญา	He studies philosophy at university.	เขาเรียนปรัชญาที่มหาวิทยาลัย		
+2299	lip	lips, lipped	n: ริมฝีปาก	She put red color on her lips.	เธอทาสีแดงที่ริมฝีปาก		👄
+2300	attribute	attributes, attributed, attributing	v: ถือว่าเป็นผลจาก, ระบุว่าเป็นของ | n: คุณลักษณะ	She attributes her success to hard work.	เธอถือว่าความสำเร็จมาจากการทำงานหนัก		

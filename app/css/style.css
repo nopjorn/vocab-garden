@@ -892,18 +892,21 @@ select {
 }
 
 /* แปลงที่ยังไม่เริ่ม: เบาลง ไม่แย่งสายตาจากแปลงที่กำลังเรียน */
-.level-fresh {
+.level-fresh,
+.plot.plot-fresh {
   background: transparent;
   border-style: dashed;
   box-shadow: none;
 }
 
-.level-fresh .level-badge {
+.level-fresh .level-badge,
+.plot-fresh .level-badge {
   background: var(--surface-2);
   color: var(--muted);
 }
 
-.level-fresh .level-sub {
+.level-fresh .level-sub,
+.plot-fresh .level-sub {
   position: absolute;
   width: 1px;
   height: 1px;

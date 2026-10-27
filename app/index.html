@@ -102,6 +102,12 @@
         <button type="button" id="wotd-speak" class="wotd-speak" aria-label="ฟังเสียงอ่าน" hidden>🔊</button>
       </div>
 
+      <section id="missions" class="missions" aria-labelledby="missions-title" hidden>
+        <h2 id="missions-title">🎯 ภารกิจวันนี้</h2>
+        <ul id="missions-list" class="missions-list"></ul>
+        <p id="missions-note" class="muted small"></p>
+      </section>
+
       </div>
 
       <div class="home-main">
@@ -339,7 +345,7 @@
           <span id="play-pool-count" class="muted small"></span>
           <span id="play-filter-summary" class="fold-preview"></span>
         </summary>
-        <p class="muted small">เลือกครั้งเดียว ใช้กับแฟลชการ์ด จับคู่คำ เรียงตัวอักษร และฟังแล้วเลือก (ทายคำปริศนาประจำวันใช้คำชุดเดียวกันทุกคน จึงไม่ขึ้นกับตัวเลือกนี้)</p>
+        <p class="muted small">เลือกครั้งเดียว ใช้กับแฟลชการ์ด จับคู่คำ เรียงตัวอักษร เรียงประโยค ท้าทาย 60 วินาที ฟังแล้วเลือก และฟังแล้วพิมพ์ (ทายคำปริศนาประจำวันใช้คำชุดเดียวกันทุกคน จึงไม่ขึ้นกับตัวเลือกนี้)</p>
         <div class="flash-head">
           <strong>เลือกแปลง</strong>
           <span class="flash-quick">
@@ -390,6 +396,18 @@
             <span class="game-info"><strong>เรียงตัวอักษร</strong><span class="muted small">ดูคำแปลไทยแล้วเรียงตัวอักษรที่สลับไว้ให้เป็นคำอังกฤษ 5 ข้อ</span><span id="scramble-best" class="small"></span></span>
           </a>
         </li>
+        <li>
+          <a class="game-card" href="#/play/sentence">
+            <span class="game-emoji" aria-hidden="true">🧱</span>
+            <span class="game-info"><strong>เรียงประโยค</strong><span class="muted small">ดูคำแปลไทยแล้วเรียงคำที่สลับไว้ให้เป็นประโยคอังกฤษ 5 ข้อ ฝึกลำดับคำไปด้วย</span><span id="sentence-best" class="small"></span></span>
+          </a>
+        </li>
+        <li>
+          <a class="game-card" href="#/play/blitz">
+            <span class="game-emoji" aria-hidden="true">⚡</span>
+            <span class="game-info"><strong>ท้าทาย 60 วินาที</strong><span class="muted small">เลือกคำแปลให้ถูกมากที่สุดภายใน 1 นาที เก็บสถิติสูงสุดไว้ชนกับตัวเอง</span><span id="blitz-best" class="small"></span></span>
+          </a>
+        </li>
       </ul>
     </section>
 
@@ -418,6 +436,59 @@
         <p id="scramble-summary" class="muted"></p>
         <p id="scramble-marks" class="big-marks" aria-hidden="true"></p>
         <button type="button" id="scramble-again" class="primary wide">🔁 เล่นอีกรอบ</button>
+        <a href="#/play" class="button wide">กลับไปหน้าเกม</a>
+      </div>
+    </section>
+
+    <section id="view-sentence" hidden>
+      <div class="study-top">
+        <a href="#/play" class="close" aria-label="กลับไปหน้าเกม">✕</a>
+        <strong class="game-title">🧱 เรียงประโยค</strong>
+        <span id="sentence-count" class="muted small"></span>
+      </div>
+      <div id="sentence-play">
+        <p class="muted small center-text">แตะคำเรียงตามลำดับให้เป็นประโยคอังกฤษที่มีความหมายตามนี้ แตะคำที่วางแล้วเพื่อเอากลับ</p>
+        <p id="sentence-meaning" class="scramble-meaning" lang="th"></p>
+        <p class="center-text"><button type="button" id="sentence-speak" class="listen-btn" aria-label="ฟังประโยคภาษาอังกฤษ">🔊</button></p>
+        <div id="sentence-slots" class="sentence-row sentence-slots empty" aria-label="ประโยคที่เรียงแล้ว"></div>
+        <div id="sentence-tiles" class="sentence-row" aria-label="คำที่ให้เรียง"></div>
+        <p id="sentence-feedback" class="quiz-feedback" role="status" hidden></p>
+        <div class="row scramble-actions">
+          <button type="button" id="sentence-undo">⌫ ลบ</button>
+          <button type="button" id="sentence-hint">💡 ใบ้ (ได้ 1 แต้ม)</button>
+          <button type="button" id="sentence-skip">🤷 ข้าม</button>
+        </div>
+        <button type="button" id="sentence-next" class="primary wide" hidden>ต่อไป ➡️</button>
+      </div>
+      <div id="sentence-result" class="done-card" hidden>
+        <p class="big-emoji celebrate" aria-hidden="true">🧱</p>
+        <h2 id="sentence-title"></h2>
+        <p id="sentence-summary" class="muted"></p>
+        <p id="sentence-marks" class="big-marks" aria-hidden="true"></p>
+        <button type="button" id="sentence-again" class="primary wide">🔁 เล่นอีกรอบ</button>
+        <a href="#/play" class="button wide">กลับไปหน้าเกม</a>
+      </div>
+    </section>
+
+    <section id="view-blitz" hidden>
+      <div class="study-top">
+        <a href="#/play" class="close" aria-label="กลับไปหน้าเกม">✕</a>
+        <strong class="game-title">⚡ ท้าทาย 60 วินาที</strong>
+        <span id="blitz-score" class="muted small"></span>
+      </div>
+      <div id="blitz-play">
+        <p id="blitz-time" class="blitz-time" role="timer" aria-live="off"></p>
+        <div id="blitz-bar" class="blitz-bar" role="progressbar" aria-label="เวลาที่เหลือ" aria-valuemin="0" aria-valuemax="60"><span id="blitz-fill"></span></div>
+        <p class="muted small center-text">เลือกคำแปลไทยที่ถูกให้ได้มากที่สุด ตอบผิดเสียเวลานิดหน่อยเท่านั้น ไม่หักคะแนน</p>
+        <p id="blitz-word" class="exam-prompt" lang="en"></p>
+        <ul id="blitz-options" class="quiz-options" aria-label="ตัวเลือกคำแปล"></ul>
+      </div>
+      <div id="blitz-result" class="done-card" hidden>
+        <p class="big-emoji celebrate" aria-hidden="true">⚡</p>
+        <h2 id="blitz-title"></h2>
+        <p id="blitz-final" class="blitz-final"></p>
+        <p id="blitz-summary" class="muted"></p>
+        <button type="button" id="blitz-again" class="primary wide">🔁 เล่นอีกรอบ</button>
         <a href="#/play" class="button wide">กลับไปหน้าเกม</a>
       </div>
     </section>
@@ -834,7 +905,7 @@
 
       <h2>ความเป็นส่วนตัว</h2>
       <ul>
-        <li>ความคืบหน้า การตั้งค่า ประวัติการทวนรายวัน สถิติรายวัน (คำใหม่ ต้นไม้ใหญ่ ครั้งที่ตอบไม่ได้) ผลการตอบแต่ละครั้งแบบย่อ (วัน คำ คะแนน ระยะทวน เก็บล่าสุด 3,000 ครั้ง ใช้คำนวณอัตราจำได้) วันพักของสตรีค โน้ตช่วยจำที่คุณเขียน สถิติเกม เหรียญ และดอกไม้ที่ได้ เก็บอยู่ในเครื่องของคุณเท่านั้น (ที่ localStorage คีย์ขึ้นต้นด้วย <code>vg:</code>)
+        <li>ความคืบหน้า การตั้งค่า ประวัติการทวนรายวัน สถิติรายวัน (คำใหม่ ต้นไม้ใหญ่ ครั้งที่ตอบไม่ได้) ผลการตอบแต่ละครั้งแบบย่อ (วัน คำ คะแนน ระยะทวน เก็บล่าสุด 3,000 ครั้ง ใช้คำนวณอัตราจำได้) วันที่ทำภารกิจประจำวันครบ วันพักของสตรีค โน้ตช่วยจำที่คุณเขียน สถิติเกม เหรียญ และดอกไม้ที่ได้ เก็บอยู่ในเครื่องของคุณเท่านั้น (ที่ localStorage คีย์ขึ้นต้นด้วย <code>vg:</code>)
           ไม่ถูกส่งออกไปที่ไหน แอปยังเก็บสำเนาอัตโนมัติของข้อมูลเหล่านี้ไว้ในเบราว์เซอร์ของเครื่องนี้ (IndexedDB ชื่อ <code>vg-snapshots</code>) ลบได้ที่ ตั้งค่า → สำเนาอัตโนมัติในเครื่อง</li>
         <li>ไม่มีการสมัครสมาชิก ไม่มีคุกกี้ ไม่มีโฆษณา และไม่มีเครื่องมือวิเคราะห์หรือติดตามผู้ใช้</li>
         <li>เสียงอ่านใช้บริการเสียงของเครื่องและเบราว์เซอร์ของคุณ บางเบราว์เซอร์อาจส่งข้อความที่อ่านไปประมวลผลกับผู้ให้บริการเสียงของเบราว์เซอร์นั้น

@@ -72,15 +72,36 @@ export const DECORATIONS = [
 
 export const ownedDecorations = (medals) => DECORATIONS.filter((decoration) => decoration.medal in medals);
 
-// ธีมตามเทศกาลที่ผูกกับวันที่แน่นอนของปี (วันที่ลอยกระทงเปลี่ยนตามดวงจันทร์ จึงยังไม่ทำ)
+// ธีมตามเทศกาลที่ผูกกับวันที่แน่นอนของปี
 const SEASONS = [
   { id: "songkran", emoji: "💦", title: "สุขสันต์วันสงกรานต์", months: [[3, 13, 15]] },
   { id: "newyear", emoji: "🎆", title: "สุขสันต์ปีใหม่", months: [[11, 29, 31], [0, 1, 3]] },
 ];
 
+// วันลอยกระทง (ขึ้น 15 ค่ำ เดือน 12) เปลี่ยนตามดวงจันทร์ จึงเขียนเป็นตารางล่วงหน้า [ปี ค.ศ., เดือนนับจาก 0, วันที่]
+// 2026 ยืนยันจากสื่อไทยหลายแห่ง (อังคารที่ 24 พ.ย. 2569) · 2027 และ 2028 มาจากแหล่งเดียว/ค่าประมาณ ควรเทียบกับประกาศทางการเมื่อใกล้ถึงปีนั้น
+// ปีที่ไม่อยู่ในตารางจะไม่ขึ้นธีม (ไม่เดา) เมื่อใกล้หมดตารางให้เพิ่มปีต่อ
+export const LOY_KRATHONG_DATES = [
+  [2026, 10, 24],
+  [2027, 10, 14],
+  [2028, 10, 2],
+];
+export const LOY_KRATHONG = { id: "loykrathong", emoji: "🪷", title: "สุขสันต์วันลอยกระทง" };
+const LOY_BEFORE_DAYS = 2; // ขึ้นธีมล่วงหน้ากี่วัน
+const LOY_AFTER_DAYS = 1; // และต่อหลังวันงานอีกกี่วัน
+
+const startOfDay = (year, month, day) => Date.UTC(year, month, day) / 86400000;
+
 // เทศกาลของวันนั้น (ไม่ใช่ช่วงเทศกาล = null) month นับจาก 0 ตาม JavaScript
 export function seasonOf(date = new Date()) {
   const month = date.getMonth();
   const day = date.getDate();
-  return SEASONS.find((season) => season.months.some(([m, from, to]) => m === month && day >= from && day <= to)) || null;
+  const fixed = SEASONS.find((season) => season.months.some(([m, from, to]) => m === month && day >= from && day <= to));
+  if (fixed) return fixed;
+  const today = startOfDay(date.getFullYear(), month, day);
+  const loy = LOY_KRATHONG_DATES.some(([year, m, d]) => {
+    const offset = today - startOfDay(year, m, d);
+    return offset >= -LOY_BEFORE_DAYS && offset <= LOY_AFTER_DAYS;
+  });
+  return loy ? LOY_KRATHONG : null;
 }

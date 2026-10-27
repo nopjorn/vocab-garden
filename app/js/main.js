@@ -22,6 +22,7 @@ import { formatSeconds } from "./match.js";
 import { askBadgePermission, canBadge, showBadge } from "./badge.js";
 import { LISTEN_COUNT, dictationMax } from "./listen.js";
 import { maxScore } from "./scramble.js";
+import { allDone, missionProgress } from "./missions.js";
 import { AGAIN, GOOD, HARD, STAGES, buildQueue, dayNumber, grade, isDue, knownCard, stageOf } from "./srs.js";
 import {
   DAILY_GOAL_CHOICES,
@@ -45,8 +46,8 @@ import { recallBetween, recallStats } from "./recall.js";
 import { SUPPORT_LINKS } from "./support.js";
 import { isNewer, parseSwVersion } from "./update.js";
 
-const VIEWS = ["loading", "error", "home", "study", "done", "garden", "plot", "play", "match", "flash", "wordle", "scramble", "listen", "dictation", "placement", "exam", "settings", "about", "changelog"];
-const TAB_OF_VIEW = { plot: "garden", changelog: "about", match: "play", flash: "play", wordle: "play", scramble: "play", listen: "play", dictation: "play", placement: "settings", exam: "garden" }; // หน้าที่ไม่มีแท็บของตัวเอง ให้ไฮไลต์แท็บนี้แทน
+const VIEWS = ["loading", "error", "home", "study", "done", "garden", "plot", "play", "match", "flash", "wordle", "scramble", "sentence", "blitz", "listen", "dictation", "placement", "exam", "settings", "about", "changelog"];
+const TAB_OF_VIEW = { plot: "garden", changelog: "about", match: "play", flash: "play", wordle: "play", scramble: "play", sentence: "play", blitz: "play", listen: "play", dictation: "play", placement: "settings", exam: "garden" }; // หน้าที่ไม่มีแท็บของตัวเอง ให้ไฮไลต์แท็บนี้แทน
 const REQUEUE_GAP = 3; // คำที่ตอบ "ยังจำไม่ได้" จะกลับมาอีกครั้งหลังการ์ดใบอื่นอีก 3 ใบ
 const SWIPE_DISTANCE = 90; // ปัดเกินกี่ px ถึงนับเป็นการให้คะแนน
 const SWIPE_PREVIEW = 40; // ปัดเกินกี่ px ถึงเริ่มขึ้นป้ายบนการ์ด
@@ -377,6 +378,7 @@ function renderHome() {
   announceRest(habit);
   $("garden-total").textContent = `แปลแล้ว ${translated.length.toLocaleString()} / ${state.words.length.toLocaleString()} คำ`;
 
+  renderMissions(today);
   renderWeekly(today, habit.active);
   renderWordOfDay(today);
   $("levels").replaceChildren(...levelItems());
@@ -904,6 +906,43 @@ function finishSession() {
   }
 }
 
+// ---------- ภารกิจประจำวัน ----------
+
+// ภารกิจ 3 ข้อของวันนี้ คำนวณจากข้อมูลที่เก็บอยู่แล้ว (ดู missions.js) ครบแล้วบันทึกวันนั้นไว้ครั้งเดียว
+function todayMissions(day) {
+  return missionProgress(day, state.settings.dailyGoal, {
+    reviews: storage.loadHistory()[day] || 0,
+    games: storage.loadGames().days[day] || 0,
+    planted: storage.loadLog()[day]?.n || 0,
+    answers: storage.loadAnswers(),
+  });
+}
+
+function checkMissions() {
+  const day = dayNumber();
+  if (!allDone(todayMissions(day)) || !storage.markMissionsDone(day)) return;
+  setTimeout(() => {
+    toast("🎯 ทำภารกิจวันนี้ครบทั้ง 3 ข้อแล้ว เก่งมาก!");
+    launchConfetti(24);
+    fx("finish");
+  }, 1200);
+}
+
+function renderMissions(day) {
+  const progress = todayMissions(day);
+  $("missions").hidden = translatedWords().length === 0;
+  $("missions-list").replaceChildren(
+    ...progress.map((mission) => {
+      const item = el("li", `mission${mission.done ? " done" : ""}`);
+      item.append(el("span", "mission-mark", mission.done ? "✅" : mission.emoji), el("span", "mission-title", mission.title));
+      item.append(el("span", "mission-count muted small", mission.done ? "ครบ" : `${mission.value}/${mission.target}`));
+      return item;
+    }),
+  );
+  const days = storage.loadMissions().length;
+  $("missions-note").textContent = allDone(progress) ? "🎉 ครบทั้ง 3 ข้อแล้ว พรุ่งนี้มีภารกิจใหม่" : days > 0 ? `ทำครบมาแล้ว ${days} วัน` : "ภารกิจเป็นของสนุก ๆ ไม่ได้ล็อกอะไรไว้ ข้ามได้เสมอ";
+}
+
 // ---------- เหรียญความสำเร็จ ----------
 
 // ข้อมูลที่ใช้ตัดสินเหรียญ ณ ตอนนี้ (events = เหตุการณ์ตอนจบรอบ)
@@ -927,6 +966,7 @@ function medalContext(events = {}) {
 
 // ตรวจเหรียญใหม่ บันทึก และแจ้งในแอป (หน่วงเล็กน้อยไม่ให้ป้ายอื่นทับทันที)
 function checkMedals(events = {}) {
+  checkMissions();
   checkFlowers();
   const fresh = newMedals(medalContext(events), storage.loadMedals());
   if (fresh.length === 0) return;
@@ -1017,6 +1057,10 @@ function renderPlay() {
   $("match-best").textContent = best ? `🏆 ดีที่สุด ${formatSeconds(best)}` : "";
   const scrambleBest = storage.loadGames().best.scramble;
   $("scramble-best").textContent = scrambleBest ? `🏆 คะแนนสูงสุด ${scrambleBest}/${maxScore()}` : "";
+  const sentenceBest = storage.loadGames().best.sentence;
+  $("sentence-best").textContent = sentenceBest ? `🏆 คะแนนสูงสุด ${sentenceBest} แต้ม` : "";
+  const blitzBest = storage.loadGames().best.blitz;
+  $("blitz-best").textContent = blitzBest ? `🏆 ทำได้สูงสุด ${blitzBest} ข้อ` : "";
   $("listen-card").hidden = !canSpeak();
   $("dictation-card").hidden = !canSpeak();
   const dictationBest = storage.loadGames().best.dictation;
@@ -1909,6 +1953,8 @@ const SCREEN_LOADERS = {
   flash: () => import("./screens/flash.js"),
   match: () => import("./screens/match.js"),
   scramble: () => import("./screens/scramble.js"),
+  sentence: () => import("./screens/sentence.js"),
+  blitz: () => import("./screens/blitz.js"),
   placement: () => import("./screens/placement.js"),
   dictation: () => import("./screens/dictation.js"),
   listen: () => import("./screens/listen.js"),
@@ -1973,6 +2019,7 @@ function route() {
   }
   state.session = null;
   loaded.match?.stop();
+  loaded.blitz?.stop();
   const screen = screenFor(page, argument);
   if (screen) {
     openScreen(screen, argument);

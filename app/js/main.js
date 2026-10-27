@@ -291,18 +291,37 @@ function renderWeekly(today, active) {
 }
 
 // ศัพท์ของวันนี้: คำเดียวกันทั้งวัน แตะเพื่อดูรายละเอียด (ไม่เปลี่ยนตารางทวน)
+// กดปุ่ม 🎲 เพื่อสุ่มคำอื่นได้ เฉพาะวันนั้น (พรุ่งนี้กลับไปเป็นคำประจำวัน)
+let wotdPick = null; // { day, word } คำที่สุ่มเองในวันนั้น
+
+function currentWordOfDay(today) {
+  return wotdPick?.day === today ? wotdPick.word : wordOfDay(translatedWords(), today);
+}
+
+function shuffleWordOfDay(today) {
+  const words = translatedWords();
+  const current = currentWordOfDay(today);
+  const others = words.filter((word) => word !== current);
+  if (others.length === 0) return;
+  wotdPick = { day: today, word: others[Math.floor(Math.random() * others.length)] };
+  renderWordOfDay(today);
+}
+
 function renderWordOfDay(today) {
-  const word = wordOfDay(translatedWords(), today);
+  const word = currentWordOfDay(today);
   $("wotd").hidden = !word;
   if (!word) return;
+  const shuffled = wotdPick?.day === today;
   const info = plantInfo(state.cards[word.headword], today);
   const sense = word.senses[0];
+  $("wotd-label").textContent = shuffled ? "🎲 คำสุ่ม" : "💡 ศัพท์ของวันนี้";
   $("wotd-word").replaceChildren(treeEl(info.stage.id, { wilted: info.wilted }), word.headword);
   $("wotd-meaning").textContent = sense ? `${sense.label} · ${sense.text}` : "";
   $("wotd-example").textContent = word.exampleEn;
   $("wotd-open").onclick = () => openWordDialog(word);
   $("wotd-speak").hidden = !canSpeak();
   $("wotd-speak").onclick = () => speakWord(word.headword);
+  $("wotd-shuffle").onclick = () => shuffleWordOfDay(today);
 }
 
 // คำนวณวันพักถึงปัจจุบัน (รันซ้ำได้ ผลเดิม) แล้วคืนประวัติกับสถานะวันพัก

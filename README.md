@@ -58,6 +58,7 @@
 | ไฟล์ต้นฉบับ NGSL ใน `ngsl-source/` | CC BY-SA 4.0 โดยผู้จัดทำ NGSL |
 | ชุดข้อมูลคำศัพท์ที่ดัดแปลงจาก NGSL ใน `app/data/` (คำแปลไทย ประโยคตัวอย่าง ฯลฯ) | CC BY-SA 4.0 (ดู [app/data/LICENSE](app/data/LICENSE)) |
 | ฟอนต์ Anuphan ใน `app/fonts/` (ของตกแต่งหน้าตา ไม่ใช่ข้อมูลคำศัพท์) | SIL OFL 1.1 โดย Cadson Demak (ดู [app/fonts/OFL.txt](app/fonts/OFL.txt) และ [app/fonts/README.md](app/fonts/README.md)) |
+| สูตรคำนวณวันทวนแบบ FSRS ใน `app/js/fsrs.js` (วิธีคำนวณ ไม่ใช่ข้อมูลคำศัพท์) | แนวคิดและสูตรจาก FSRS ของ Jarrett Ye และ [open-spaced-repetition](https://github.com/open-spaced-repetition) (MIT) โค้ดเขียนใหม่ในโปรเจคนี้ |
 
 ## ร่วมพัฒนาและสนับสนุน
 

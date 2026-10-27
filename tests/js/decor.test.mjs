@@ -2,7 +2,7 @@ import { test } from "node:test";
 import assert from "node:assert/strict";
 
 import { MEDALS } from "../../app/js/achievements.js";
-import { DECORATIONS, FLOWERS, bloomedLevels, flowerId, flowerOf, ownedDecorations, seasonOf } from "../../app/js/decor.js";
+import { DECORATIONS, FLOWERS, LOY_KRATHONG_DATES, bloomedLevels, flowerId, flowerOf, ownedDecorations, seasonOf } from "../../app/js/decor.js";
 
 const LEVELS = [...Array.from({ length: 28 }, (_, index) => String(index + 1).padStart(2, "0")), "sup"];
 
@@ -48,4 +48,23 @@ test("seasons follow fixed dates of the year", () => {
   assert.equal(seasonOf(new Date(2026, 11, 31)).id, "newyear");
   assert.equal(seasonOf(new Date(2027, 0, 2)).id, "newyear");
   assert.equal(seasonOf(new Date(2026, 5, 1)), null);
+});
+
+test("Loy Krathong shows from two days before to one day after the listed dates only", () => {
+  assert.equal(seasonOf(new Date(2026, 10, 21)), null);
+  assert.equal(seasonOf(new Date(2026, 10, 22)).id, "loykrathong");
+  assert.equal(seasonOf(new Date(2026, 10, 24)).id, "loykrathong");
+  assert.equal(seasonOf(new Date(2026, 10, 25)).id, "loykrathong");
+  assert.equal(seasonOf(new Date(2026, 10, 26)), null);
+  // ข้ามเดือนได้: งาน 2 พ.ย. 2028 ขึ้นธีมตั้งแต่ 31 ต.ค.
+  assert.equal(seasonOf(new Date(2028, 9, 31)).id, "loykrathong");
+  // ปีที่ไม่อยู่ในตารางไม่ขึ้นธีม
+  assert.equal(seasonOf(new Date(2029, 10, 15)), null);
+});
+
+test("fixed festivals still win and the Loy Krathong table is in date order", () => {
+  assert.equal(seasonOf(new Date(2026, 3, 14)).id, "songkran");
+  const stamps = LOY_KRATHONG_DATES.map(([y, m, d]) => Date.UTC(y, m, d));
+  assert.deepEqual(stamps, [...stamps].sort((a, b) => a - b));
+  for (const [, month] of LOY_KRATHONG_DATES) assert.ok(month === 9 || month === 10, "Loy Krathong falls in late Oct or Nov");
 });

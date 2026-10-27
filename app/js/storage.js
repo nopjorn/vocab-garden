@@ -2,6 +2,7 @@
 // คีย์ทุกตัวขึ้นต้นด้วย vg: เพราะทุก repo ใต้ nopjorn.github.io ใช้ storage ร่วมกัน
 // ความคืบหน้าผูกกับคำหลัก (ไม่ใช่อันดับ) เพื่อรองรับ NGSL เวอร์ชันใหม่
 
+import { withDone } from "./missions.js";
 import { ANSWER_KEEP, mergeAnswers } from "./recall.js";
 
 export const SCHEMA = 1;
@@ -20,6 +21,7 @@ const KEYS = {
   backup: "vg:backup",
   answers: "vg:answers",
   fsrs: "vg:fsrs",
+  missions: "vg:missions",
 };
 const HISTORY_KEEP_DAYS = 400; // เก็บประวัติการทวนรายวันย้อนหลังไม่เกินนี้
 export const SPEECH_RATE_CHOICES = [0.7, 0.9, 1.1]; // ช้า / ปกติ / เร็ว
@@ -147,6 +149,12 @@ function validFsrs(memory) {
     }
   }
   return clean;
+}
+
+// วันที่ทำภารกิจประจำวันครบ [เลขวัน] (ดู missions.js) รายการที่ไม่ใช่จำนวนเต็มถูกตัดทิ้ง (ไม่ใช่อาร์เรย์ = null)
+function validMissions(days) {
+  if (!Array.isArray(days)) return null;
+  return [...new Set(days.filter(Number.isInteger))].sort((a, b) => a - b);
 }
 
 // โน้ตช่วยจำ { [คำหลัก]: ข้อความ } เก็บเฉพาะข้อความที่ไม่ว่างและตัดให้ไม่เกิน NOTE_MAX (ไม่ใช่ object = null)
@@ -467,6 +475,16 @@ export function createStorage(store = globalThis.localStorage) {
     saveFsrs(memory) {
       write(KEYS.fsrs, memory);
     },
+    // วันที่ทำภารกิจประจำวันครบ คืน true ถ้าวันนี้เพิ่งบันทึกเป็นครั้งแรก
+    loadMissions() {
+      return validMissions(read(KEYS.missions, null)) || [];
+    },
+    markMissionsDone(today) {
+      const days = this.loadMissions();
+      if (days.includes(today)) return false;
+      write(KEYS.missions, withDone(days, today));
+      return true;
+    },
     // ผลการตอบแบบย่อ (ใช้คำนวณอัตราจำได้ ดู recall.js) เก็บล่าสุด ANSWER_KEEP ครั้ง
     loadAnswers() {
       return validAnswers(read(KEYS.answers, null)) || [];
@@ -492,6 +510,7 @@ export function createStorage(store = globalThis.localStorage) {
         log: this.loadLog(),
         answers: this.loadAnswers(),
         fsrs: this.loadFsrs(),
+        missions: this.loadMissions(),
       };
     },
     // คืนจำนวนคำที่มีหลังนำเข้า หรือโยน Error ถ้าไฟล์ไม่ถูกต้อง
@@ -551,6 +570,9 @@ export function createStorage(store = globalThis.localStorage) {
         }
         this.saveFsrs(memory);
       } else this.saveFsrs(fsrs);
+      // ไฟล์สำรองเก่า (ก่อนมีภารกิจประจำวัน) ไม่มีค่านี้ ให้คงของเดิมไว้ ตอนรวมข้อมูลเอาวันที่ครบจากทั้งสองฝั่ง
+      const missions = data.missions === undefined ? null : validMissions(data.missions);
+      if (missions) write(KEYS.missions, merge ? validMissions([...this.loadMissions(), ...missions]) : missions);
       return Object.keys(cards).length;
     },
 

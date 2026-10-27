@@ -2856,6 +2856,120 @@ html[data-text-size="large"] {
   box-shadow: none;
 }
 
+/* เรียงประโยค: แผ่นคำยาวไม่เท่ากัน ขึ้นบรรทัดใหม่ได้ */
+.sentence-row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px;
+  margin: 0 auto 16px;
+}
+
+.sentence-slots {
+  min-height: 64px;
+  padding: 10px;
+  background: var(--surface-2);
+  border: 2px dashed var(--border);
+  border-radius: var(--radius);
+}
+
+.sentence-slots:not(.empty) {
+  border-style: solid;
+  border-color: var(--brand-strong);
+  background: var(--brand-soft);
+}
+
+.sentence-chip {
+  min-height: 44px;
+  padding: 8px 14px;
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--text);
+  background: var(--surface);
+  border: 2px solid var(--border);
+  border-radius: 12px;
+  box-shadow: 0 3px 0 var(--border);
+}
+
+.sentence-chip:disabled {
+  opacity: 0.35;
+  box-shadow: none;
+}
+
+.sentence-slots .sentence-chip:disabled {
+  opacity: 1;
+}
+
+/* ท้าทาย 60 วินาที */
+.blitz-time {
+  margin: 0 0 6px;
+  font-size: 1.4rem;
+  font-weight: 800;
+  text-align: center;
+}
+
+.blitz-bar {
+  height: 10px;
+  margin-bottom: 12px;
+  overflow: hidden;
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+}
+
+.blitz-bar span {
+  display: block;
+  width: 100%;
+  height: 100%;
+  background: var(--brand-strong);
+}
+
+.blitz-final {
+  margin: 0 0 4px;
+  font-size: 2.4rem;
+  font-weight: 800;
+  color: var(--link);
+}
+
+/* ภารกิจประจำวัน */
+.missions {
+  margin: 0 0 16px;
+  padding: 14px 16px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-sm);
+}
+
+.missions h2 {
+  margin: 0 0 8px;
+  font-size: 1.05rem;
+}
+
+.missions-list {
+  list-style: none;
+  margin: 0 0 6px;
+  padding: 0;
+  display: grid;
+  gap: 8px;
+}
+
+.mission {
+  display: grid;
+  grid-template-columns: 1.6rem 1fr auto;
+  align-items: center;
+  gap: 8px;
+}
+
+.mission.done .mission-title {
+  color: var(--muted);
+  text-decoration: line-through;
+}
+
+.missions p {
+  margin: 0;
+}
+
 .scramble-actions {
   justify-content: center;
   margin-bottom: 12px;
@@ -2868,7 +2982,8 @@ html[data-text-size="large"] {
 }
 
 @media (prefers-reduced-motion: no-preference) {
-  .scramble-slots.shake {
+  .scramble-slots.shake,
+  .sentence-slots.shake {
     animation: wordle-shake 0.35s;
   }
 }
@@ -3071,6 +3186,8 @@ html[data-text-size="large"] {
   #view-done,
   #view-wordle,
   #view-scramble,
+  #view-sentence,
+  #view-blitz,
   #view-match,
   #view-settings,
   #view-about,
@@ -3146,6 +3263,8 @@ html[data-text-size="large"] {
   #view-done,
   #view-wordle,
   #view-scramble,
+  #view-sentence,
+  #view-blitz,
   #view-match,
   #view-listen,
   #view-dictation,

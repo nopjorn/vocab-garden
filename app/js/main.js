@@ -40,14 +40,16 @@ import {
 } from "./storage.js";
 import { entriesSince, inlineParts, parseChangelog } from "./changelog.js";
 import { issueUrl } from "./report.js";
+import { MILESTONES, coverageOfRanks, coverageOfTop, knownRanks, parseFrequency, percentText } from "./coverage.js";
+import { describeForms } from "./forms.js";
 import { fsrsGrade } from "./fsrs.js";
 import { recentDays, stageCounts, streakOf, totalReviews } from "./stats.js";
 import { recallBetween, recallStats } from "./recall.js";
 import { SUPPORT_LINKS } from "./support.js";
 import { isNewer, parseSwVersion } from "./update.js";
 
-const VIEWS = ["loading", "error", "home", "study", "done", "garden", "plot", "play", "match", "flash", "wordle", "scramble", "sentence", "blitz", "listen", "dictation", "placement", "exam", "settings", "about", "changelog"];
-const TAB_OF_VIEW = { plot: "garden", changelog: "about", match: "play", flash: "play", wordle: "play", scramble: "play", sentence: "play", blitz: "play", listen: "play", dictation: "play", placement: "settings", exam: "garden" }; // หน้าที่ไม่มีแท็บของตัวเอง ให้ไฮไลต์แท็บนี้แทน
+const VIEWS = ["loading", "error", "home", "study", "done", "garden", "plot", "play", "match", "flash", "wordle", "scramble", "sentence", "blitz", "confuse", "listen", "dictation", "placement", "exam", "settings", "about", "changelog"];
+const TAB_OF_VIEW = { plot: "garden", changelog: "about", match: "play", flash: "play", wordle: "play", scramble: "play", sentence: "play", blitz: "play", confuse: "play", listen: "play", dictation: "play", placement: "settings", exam: "garden" }; // หน้าที่ไม่มีแท็บของตัวเอง ให้ไฮไลต์แท็บนี้แทน
 const REQUEUE_GAP = 3; // คำที่ตอบ "ยังจำไม่ได้" จะกลับมาอีกครั้งหลังการ์ดใบอื่นอีก 3 ใบ
 const SWIPE_DISTANCE = 90; // ปัดเกินกี่ px ถึงนับเป็นการให้คะแนน
 const SWIPE_PREVIEW = 40; // ปัดเกินกี่ px ถึงเริ่มขึ้นป้ายบนการ์ด
@@ -467,10 +469,10 @@ function showCard() {
   );
   $("card-emoji").textContent = word.emoji;
   $("card-emoji").hidden = !word.emoji;
-  $("card-forms").textContent = word.forms.length ? `รูปคำอื่น: ${word.forms.join(", ")}` : "";
-  $("card-forms").hidden = word.forms.length === 0;
+  renderForms($("card-forms"), word);
   $("card-example-en").textContent = word.exampleEn;
   $("card-example-th").textContent = word.exampleTh;
+  renderExtra("card", word);
   $("card-note").textContent = word.note ? `💡 ${word.note}` : "";
   $("card-note").hidden = !word.note;
   renderCardNote(word);
@@ -479,6 +481,45 @@ function showCard() {
   state.session.quiz = quizFor(word);
   renderQuiz(word); // ข้อพิมพ์ย้ายโฟกัสไปที่ช่องพิมพ์
   if (state.settings.autoSpeak && !["cloze", "type"].includes(state.session.quiz?.type)) speakWord(word.headword);
+}
+
+// รูปคำอื่นของคำ (คอลัมน์ forms ของ NGSL) พร้อมคำอธิบายว่าแต่ละรูปคืออะไร เช่น worked = อดีต (V2) · ไม่แน่ใจ = แสดงเฉพาะรูปคำ
+function renderForms(container, word) {
+  const forms = describeForms(word);
+  container.hidden = forms.length === 0;
+  if (forms.length === 0) return;
+  container.replaceChildren(
+    "รูปคำอื่น: ",
+    ...forms.flatMap(({ form, label }, index) => {
+      const item = el("span", "form-item");
+      item.append(el("strong", "", form));
+      item.lastChild.lang = "en";
+      if (label) item.append(" ", el("span", "form-label", label));
+      return index === 0 ? [item] : [" · ", item];
+    }),
+  );
+}
+
+// ประโยคตัวอย่างที่ 2 และคำที่มักใช้คู่กัน (มีเฉพาะคำที่เขียนข้อมูลเพิ่มไว้ ดู data/extra/) prefix = card หรือ word
+function renderExtra(prefix, word) {
+  const hasExample = Boolean(word.example2En);
+  const hasColloc = word.collocations.length > 0;
+  $(`${prefix}-extra`).hidden = !hasExample && !hasColloc;
+  $(`${prefix}-example2-en`).textContent = word.example2En;
+  $(`${prefix}-example2-th`).textContent = word.example2Th;
+  $(`${prefix}-example2-en`).parentElement.hidden = !hasExample;
+  $(`${prefix}-example2-th`).hidden = !hasExample;
+  $(`${prefix}-colloc-title`).hidden = !hasColloc;
+  $(`${prefix}-colloc`).hidden = !hasColloc;
+  $(`${prefix}-colloc`).replaceChildren(
+    ...word.collocations.map(({ phrase, meaning }) => {
+      const item = el("li");
+      const english = el("strong", "", phrase);
+      english.lang = "en";
+      item.append(english, el("span", "muted", ` — ${meaning}`));
+      return item;
+    }),
+  );
 }
 
 // ---------- โน้ตช่วยจำ ----------
@@ -546,7 +587,7 @@ function renderQuiz(word) {
   }
   if (quiz.type === "cloze") {
     $("card-word").replaceChildren(quiz.before, el("span", "blank", "＿＿＿＿"), quiz.after);
-    $("card-hint").textContent = `เติมคำที่หายไป · ${word.exampleTh}`;
+    $("card-hint").textContent = `เติมคำที่หายไป · ${quiz.hintTh || word.exampleTh}`;
   } else {
     $("card-hint").textContent = "เลือกคำแปลที่ถูกต้อง";
   }
@@ -1059,6 +1100,8 @@ function renderPlay() {
   $("scramble-best").textContent = scrambleBest ? `🏆 คะแนนสูงสุด ${scrambleBest}/${maxScore()}` : "";
   const sentenceBest = storage.loadGames().best.sentence;
   $("sentence-best").textContent = sentenceBest ? `🏆 คะแนนสูงสุด ${sentenceBest} แต้ม` : "";
+  const confuseBest = storage.loadGames().best.confuse;
+  $("confuse-best").textContent = confuseBest ? `🏆 ถูกมากสุด ${confuseBest}/8` : "";
   const blitzBest = storage.loadGames().best.blitz;
   $("blitz-best").textContent = blitzBest ? `🏆 ทำได้สูงสุด ${blitzBest} ข้อ` : "";
   $("listen-card").hidden = !canSpeak();
@@ -1250,6 +1293,7 @@ function renderGarden() {
   $("g-week").setAttribute("aria-label", `ทวน 7 วันล่าสุด: ${week.map((entry) => entry.count).join(", ")} ครั้ง`);
   $("g-empty").hidden = totalReviews(days) > 0;
   renderRecall(today);
+  renderCoverage();
   renderCalendar(active, today, rest.frozen);
   renderPlots(today);
   renderLeeches();
@@ -1280,6 +1324,45 @@ function renderRecall(today) {
         row.title = `จำได้ ${bucket.remembered} จาก ${bucket.total} ครั้ง`;
         return row;
       }),
+  );
+}
+
+// รู้กี่คำ ≈ อ่านเข้าใจข้อความกี่เปอร์เซ็นต์ (ดู coverage.js) ไฟล์ความถี่โหลดเมื่อเปิดหน้าสวนครั้งแรกเท่านั้น
+let frequencyPromise = null;
+
+function loadFrequency() {
+  frequencyPromise ||= fetch("data/frequency.tsv")
+    .then((response) => {
+      if (!response.ok) throw new Error(`โหลดไฟล์ความถี่ไม่สำเร็จ (${response.status})`);
+      return response.text();
+    })
+    .then(parseFrequency)
+    .catch(() => {
+      frequencyPromise = null; // ลองใหม่ได้ครั้งหน้า
+      return null;
+    });
+  return frequencyPromise;
+}
+
+async function renderCoverage() {
+  const frequency = await loadFrequency();
+  $("g-cover").hidden = !frequency;
+  if (!frequency) return;
+  const ranks = knownRanks(translatedWords(), state.cards);
+  $("g-cover-rate").textContent = percentText(coverageOfRanks(ranks, frequency));
+  $("g-cover-sub").textContent = ranks.length > 0 ? `ปลูกแล้ว ${ranks.length.toLocaleString()} คำ ครอบคลุมราวนี้ของข้อความทั่วไป` : "ยังไม่ได้ปลูกคำ เริ่มท่องแล้วตัวเลขจะขึ้นที่นี่";
+  $("g-cover-steps").replaceChildren(
+    ...MILESTONES.map((count) => {
+      const percent = coverageOfTop(count, frequency);
+      const reached = ranks.length >= count;
+      const row = el("li", `stage-row${reached ? " reached" : ""}`);
+      const bar = el("div", "stage-bar");
+      const fill = el("span", `seg seg-${reached ? "tree" : "growing"}`);
+      fill.style.width = `${percent}%`;
+      bar.append(fill);
+      row.append(el("span", "stage-name", `${count.toLocaleString()} คำแรก${reached ? " ✅" : ""}`), bar, el("strong", "stage-count", percentText(percent)));
+      return row;
+    }),
   );
 }
 
@@ -1613,10 +1696,10 @@ function openWordDialog(word) {
       return item;
     }),
   );
-  $("word-forms").textContent = word.forms.length ? `รูปคำอื่น: ${word.forms.join(", ")}` : "";
-  $("word-forms").hidden = word.forms.length === 0;
+  renderForms($("word-forms"), word);
   $("word-example-en").textContent = word.exampleEn;
   $("word-example-th").textContent = word.exampleTh;
+  renderExtra("word", word);
   $("word-stats").textContent = card ? `ทวนไปแล้ว ${card.reps} ครั้ง · เคยลืม ${card.lapses} ครั้ง` : "";
   renderWordNote(word);
   $("word-edit-note").onclick = () => openNoteDialog(word);
@@ -1955,6 +2038,7 @@ const SCREEN_LOADERS = {
   scramble: () => import("./screens/scramble.js"),
   sentence: () => import("./screens/sentence.js"),
   blitz: () => import("./screens/blitz.js"),
+  confuse: () => import("./screens/confuse.js"),
   placement: () => import("./screens/placement.js"),
   dictation: () => import("./screens/dictation.js"),
   listen: () => import("./screens/listen.js"),

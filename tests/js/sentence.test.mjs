@@ -64,3 +64,21 @@ test("scores: 2 for clean, 1 for hint, 0 for skip", () => {
   assert.equal(roundScore(["clean", "hint", "skip", "clean", "clean"]), 7);
   assert.equal(maxScore(), 10);
 });
+
+test("a word with a second example may be asked with either sentence, never both in one round", () => {
+  const words = [
+    { ...word("a", "I like green apples a lot."), example2En: "She walks to school every day.", example2Th: "เธอเดินไปโรงเรียนทุกวัน" },
+    word("b", "We often eat rice for lunch."),
+    word("c", "They played football after class."),
+    word("d", "My brother reads a book daily."),
+    word("e", "The dog sleeps under the table."),
+  ];
+  const seen = new Set();
+  for (let seed = 1; seed < 40; seed += 1) {
+    const round = buildSentenceRound(words, seeded(seed * 50_000_000));
+    const forA = round.filter((item) => item.word.headword === "a");
+    assert.equal(forA.length, 1);
+    seen.add(forA[0].answer);
+  }
+  assert.deepEqual([...seen].sort(), ["I like green apples a lot.", "She walks to school every day."]);
+});

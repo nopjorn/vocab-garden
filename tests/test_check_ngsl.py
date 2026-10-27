@@ -8,6 +8,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT / "scripts"))
 
+import build_frequency  # noqa: E402
 import check_ngsl  # noqa: E402
 
 CREDIT = f"> {check_ngsl.OFFICIAL_ATTRIBUTION}\n\n- {check_ngsl.LICENSE_URL}\n- {check_ngsl.OFFICIAL_SITE}\n"
@@ -158,3 +159,26 @@ class RepositoryTest(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+class FrequencyFileTest(unittest.TestCase):
+    def setUp(self):
+        self.tmp = tempfile.TemporaryDirectory()
+        self.addCleanup(self.tmp.cleanup)
+        self.root = Path(self.tmp.name)
+        shutil.copytree(ROOT / "ngsl-source", self.root / "ngsl-source")
+        (self.root / "app/data").mkdir(parents=True)
+        shutil.copy(ROOT / "app/data/frequency.tsv", self.root / "app/data/frequency.tsv")
+
+    def test_committed_frequency_file_matches_the_stats_file(self):
+        self.assertEqual(build_frequency.check(self.root), [])
+        self.assertTrue(build_frequency.build(self.root).startswith("rank\tper_million\n1\t60910\n"))
+
+    def test_an_edited_frequency_is_reported(self):
+        path = self.root / "app/data/frequency.tsv"
+        path.write_text(path.read_text(encoding="utf-8").replace("1\t60910", "1\t99999"), encoding="utf-8")
+        self.assertEqual(len(build_frequency.check(self.root)), 1)
+
+    def test_a_missing_frequency_file_is_reported(self):
+        (self.root / "app/data/frequency.tsv").unlink()
+        self.assertEqual(len(build_frequency.check(self.root)), 1)

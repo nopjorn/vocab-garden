@@ -27,6 +27,15 @@ Changes made to the NGSL
   file writes "i").
 - Added Thai meanings, parts of speech, original example sentences with
   Thai translations, and usage notes.
+- Added frequency.tsv: the "Adjusted Frequency per Million" value of each
+  ranked word, copied from "NGSL 1.2 with basic statistics" (used only to
+  see frequency ranking, e.g. to estimate text coverage).
+- Added extra/NN.tsv (levels 1-4): original second example sentences with
+  Thai translations and common word combinations (collocations) for the
+  words of those levels.
+- Added confusables.json: original explanations and practice sentences for
+  pairs of NGSL words that learners often confuse (all words are NGSL 1.2
+  headwords).
 
 The full history of changes is recorded in CHANGELOG.md under
 "ข้อมูลคำศัพท์" (word data).

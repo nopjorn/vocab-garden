@@ -1,0 +1,814 @@
+{
+ "version": 1,
+ "note": "คู่คำที่คนไทยมักสับสน แต่งขึ้นเองทั้งหมด เผยแพร่เป็น CC BY-SA 4.0 (ดู app/data/LICENSE) ทุกคำอยู่ใน NGSL 1.2",
+ "pairs": [
+  {
+   "id": "borrow-lend",
+   "words": [
+    "borrow",
+    "lend"
+   ],
+   "note": "borrow = ยืมของจากคนอื่นมาใช้ (เราเป็นฝ่ายขอยืม) ส่วน lend = ให้คนอื่นยืมของของเรา (เราเป็นฝ่ายให้ยืม) จำง่าย ๆ: borrow ... from + คน, lend + คน + ของ (lend → lent)",
+   "items": [
+    {
+     "en": "Can I ___ your umbrella? It's raining.",
+     "options": [
+      "borrow",
+      "lend"
+     ],
+     "answer": "borrow",
+     "th": "ขอยืมร่มของคุณได้ไหม ฝนตกอยู่",
+     "why": "เราเป็นคนขอยืมของมาใช้ จึงใช้ borrow"
+    },
+    {
+     "en": "She ___ me her bike for the weekend.",
+     "options": [
+      "lent",
+      "borrowed"
+     ],
+     "answer": "lent",
+     "th": "เธอให้ฉันยืมจักรยานของเธอตลอดสุดสัปดาห์",
+     "why": "เธอเป็นเจ้าของที่ให้ยืม จึงใช้ lend (อดีตคือ lent)"
+    },
+    {
+     "en": "I had to ___ money from my brother to pay the rent.",
+     "options": [
+      "borrow",
+      "lend"
+     ],
+     "answer": "borrow",
+     "th": "ฉันต้องยืมเงินจากพี่ชายมาจ่ายค่าเช่า",
+     "why": "มี from ตามหลัง คือยืมมาจากใคร จึงใช้ borrow"
+    }
+   ]
+  },
+  {
+   "id": "say-tell",
+   "words": [
+    "say",
+    "tell"
+   ],
+   "note": "say ตามด้วยสิ่งที่พูด (say hello, say that ...) ไม่ต้องมีผู้ฟังตามหลังทันที ส่วน tell ต้องมีผู้ฟังตามหลัง (tell me, tell her the truth) เสมอ",
+   "items": [
+    {
+     "en": "He ___ goodbye and left.",
+     "options": [
+      "said",
+      "told"
+     ],
+     "answer": "said",
+     "th": "เขาพูดลาแล้วก็จากไป",
+     "why": "ไม่มีผู้ฟังตามหลัง ตามด้วยสิ่งที่พูด จึงใช้ said"
+    },
+    {
+     "en": "Please ___ me your name again.",
+     "options": [
+      "tell",
+      "say"
+     ],
+     "answer": "tell",
+     "th": "ช่วยบอกชื่อคุณให้ฉันฟังอีกครั้งหน่อย",
+     "why": "มีผู้ฟัง (me) ตามหลัง จึงใช้ tell"
+    },
+    {
+     "en": "She ___ us that the shop was closed.",
+     "options": [
+      "told",
+      "said"
+     ],
+     "answer": "told",
+     "th": "เธอบอกพวกเราว่าร้านปิดแล้ว",
+     "why": "มี us เป็นผู้ฟัง จึงใช้ told (said us ผิด)"
+    }
+   ]
+  },
+  {
+   "id": "speak-talk",
+   "words": [
+    "speak",
+    "talk"
+   ],
+   "note": "speak = พูดเป็นภาษาใดภาษาหนึ่ง หรือพูดค่อนข้างเป็นทางการ (speak English) ส่วน talk = คุยกัน สนทนาไปมา (talk with a friend, talk about school)",
+   "items": [
+    {
+     "en": "Do you ___ English?",
+     "options": [
+      "speak",
+      "talk"
+     ],
+     "answer": "speak",
+     "th": "คุณพูดภาษาอังกฤษได้ไหม",
+     "why": "พูดภาษาใดภาษาหนึ่ง ใช้ speak"
+    },
+    {
+     "en": "Let's sit down and ___ for a while.",
+     "options": [
+      "talk",
+      "speak"
+     ],
+     "answer": "talk",
+     "th": "มานั่งคุยกันสักพักเถอะ",
+     "why": "คุยกันสบาย ๆ ใช้ talk"
+    },
+    {
+     "en": "The teacher ___ four languages.",
+     "options": [
+      "speaks",
+      "talks"
+     ],
+     "answer": "speaks",
+     "th": "ครูคนนี้พูดได้สี่ภาษา",
+     "why": "บอกว่าพูดได้ภาษาอะไร ใช้ speak (talks four languages ผิด)"
+    }
+   ]
+  },
+  {
+   "id": "hear-listen",
+   "words": [
+    "hear",
+    "listen"
+   ],
+   "note": "hear = ได้ยินเอง โดยไม่ต้องตั้งใจ (I hear a noise) ส่วน listen = ตั้งใจฟัง และต้องมี to เมื่อตามด้วยสิ่งที่ฟัง (listen to music)",
+   "items": [
+    {
+     "en": "I can't ___ you. It's too noisy here.",
+     "options": [
+      "hear",
+      "listen"
+     ],
+     "answer": "hear",
+     "th": "ฉันได้ยินคุณไม่ชัดเลย ที่นี่เสียงดังเกินไป",
+     "why": "เรื่องได้ยินหรือไม่ได้ยิน ใช้ hear"
+    },
+    {
+     "en": "Please ___ carefully to the teacher.",
+     "options": [
+      "listen",
+      "hear"
+     ],
+     "answer": "listen",
+     "th": "ช่วยตั้งใจฟังครูให้ดี ๆ",
+     "why": "ตั้งใจฟัง และมี to ตามหลัง จึงใช้ listen"
+    },
+    {
+     "en": "Did you ___ that sound just now?",
+     "options": [
+      "hear",
+      "listen"
+     ],
+     "answer": "hear",
+     "th": "เมื่อกี้คุณได้ยินเสียงนั้นไหม",
+     "why": "ถามว่าได้ยินไหม ไม่ได้ตั้งใจฟัง ใช้ hear"
+    }
+   ]
+  },
+  {
+   "id": "see-look-watch",
+   "words": [
+    "see",
+    "look",
+    "watch"
+   ],
+   "note": "see = มองเห็น (ไม่ต้องตั้งใจ) · look (at) = ตั้งใจมองไปที่สิ่งหนึ่ง ต้องมี at ตามหลัง · watch = ดูของที่เคลื่อนไหวหรือเกิดขึ้นตามเวลา เช่น ทีวี การ์ตูน การแข่งขัน",
+   "items": [
+    {
+     "en": "I can ___ a bird in that tree.",
+     "options": [
+      "see",
+      "look",
+      "watch"
+     ],
+     "answer": "see",
+     "th": "ฉันเห็นนกอยู่บนต้นไม้ต้นนั้น",
+     "why": "เห็นเอง ไม่ได้ตั้งใจจ้อง ใช้ see"
+    },
+    {
+     "en": "___ at this photo! It's so funny.",
+     "options": [
+      "Look",
+      "See",
+      "Watch"
+     ],
+     "answer": "Look",
+     "th": "ดูรูปนี้สิ ตลกมาก",
+     "why": "ตั้งใจให้มองที่รูป และมี at ตามหลัง ใช้ look"
+    },
+    {
+     "en": "My brother likes to ___ cartoons after school.",
+     "options": [
+      "watch",
+      "see",
+      "look"
+     ],
+     "answer": "watch",
+     "th": "น้องชายชอบดูการ์ตูนหลังเลิกเรียน",
+     "why": "ดูของที่เคลื่อนไหวอย่างการ์ตูน ใช้ watch"
+    }
+   ]
+  },
+  {
+   "id": "make-do",
+   "words": [
+    "make",
+    "do"
+   ],
+   "note": "make = สร้างหรือทำให้เกิดสิ่งใหม่ (make a cake, make a plan, make a mistake) ส่วน do = ทำกิจกรรมหรืองานที่มีอยู่แล้ว (do homework, do the dishes, do your best)",
+   "items": [
+    {
+     "en": "I need to ___ my homework before dinner.",
+     "options": [
+      "do",
+      "make"
+     ],
+     "answer": "do",
+     "th": "ฉันต้องทำการบ้านให้เสร็จก่อนอาหารเย็น",
+     "why": "do homework เป็นคำที่ใช้คู่กัน"
+    },
+    {
+     "en": "Let's ___ a cake for her birthday.",
+     "options": [
+      "make",
+      "do"
+     ],
+     "answer": "make",
+     "th": "มาทำเค้กให้เธอวันเกิดกันเถอะ",
+     "why": "สร้างสิ่งของขึ้นมาใหม่ ใช้ make"
+    },
+    {
+     "en": "Everyone can ___ a mistake.",
+     "options": [
+      "make",
+      "do"
+     ],
+     "answer": "make",
+     "th": "ใคร ๆ ก็ทำผิดพลาดได้",
+     "why": "make a mistake เป็นคำที่ใช้คู่กัน"
+    }
+   ]
+  },
+  {
+   "id": "bring-take",
+   "words": [
+    "bring",
+    "take"
+   ],
+   "note": "bring = เอามาที่นี่ หรือเอามาหาคนพูด ส่วน take = เอาไปที่อื่น เอาออกจากที่ที่พูดถึง คิดภาพว่ามีใครเป็นจุดอ้างอิง: ของมาหาเรา = bring, ของไปจากเรา = take",
+   "items": [
+    {
+     "en": "Can you ___ me a glass of water?",
+     "options": [
+      "bring",
+      "take"
+     ],
+     "answer": "bring",
+     "th": "ช่วยเอาน้ำมาให้ฉันสักแก้วได้ไหม",
+     "why": "เอามาหาผู้พูด ใช้ bring"
+    },
+    {
+     "en": "I'll ___ the dog to the park now.",
+     "options": [
+      "take",
+      "bring"
+     ],
+     "answer": "take",
+     "th": "ฉันจะพาหมาไปสวนสาธารณะตอนนี้เลย",
+     "why": "พาไปที่อื่น ใช้ take"
+    },
+    {
+     "en": "Don't forget to ___ your ID card when you come to the office.",
+     "options": [
+      "bring",
+      "take"
+     ],
+     "answer": "bring",
+     "th": "อย่าลืมเอาบัตรประจำตัวมาด้วยเวลามาที่ออฟฟิศ",
+     "why": "ผู้พูดอยู่ที่ออฟฟิศ ให้เอามาที่นี่ ใช้ bring"
+    }
+   ]
+  },
+  {
+   "id": "learn-study",
+   "words": [
+    "learn",
+    "study"
+   ],
+   "note": "learn = ได้ความรู้หรือทักษะมา ผลลัพธ์ (learn to swim, learn a new word) ส่วน study = ตั้งใจเรียน อ่านหนังสือ ทบทวน กระบวนการ (study for a test, study law)",
+   "items": [
+    {
+     "en": "Children ___ to walk when they are about one year old.",
+     "options": [
+      "learn",
+      "study"
+     ],
+     "answer": "learn",
+     "th": "เด็ก ๆ หัดเดินได้เมื่ออายุประมาณหนึ่งขวบ",
+     "why": "ได้ทักษะใหม่ ใช้ learn"
+    },
+    {
+     "en": "I have to ___ hard for the exam tonight.",
+     "options": [
+      "study",
+      "learn"
+     ],
+     "answer": "study",
+     "th": "ฉันต้องอ่านหนังสือหนักมากสำหรับสอบคืนนี้",
+     "why": "ทุ่มเทอ่านเพื่อสอบ ใช้ study"
+    },
+    {
+     "en": "She wants to ___ medicine at university.",
+     "options": [
+      "study",
+      "learn"
+     ],
+     "answer": "study",
+     "th": "เธออยากเรียนแพทย์ที่มหาวิทยาลัย",
+     "why": "เรียนเป็นสาขาวิชา ใช้ study"
+    }
+   ]
+  },
+  {
+   "id": "fun-funny",
+   "words": [
+    "fun",
+    "funny"
+   ],
+   "note": "fun = สนุก ได้ความเพลิดเพลิน (have fun, a fun game) ส่วน funny = ตลก ทำให้หัวเราะ หรือแปลก ๆ (a funny joke) ไม่ได้แปลว่าสนุกเสมอไป",
+   "items": [
+    {
+     "en": "We had a lot of ___ at the beach.",
+     "options": [
+      "fun",
+      "funny"
+     ],
+     "answer": "fun",
+     "th": "เราสนุกมากที่ชายหาด",
+     "why": "have a lot of fun = สนุก (a lot of funny ผิด)"
+    },
+    {
+     "en": "He told a very ___ joke, and everyone laughed.",
+     "options": [
+      "funny",
+      "fun"
+     ],
+     "answer": "funny",
+     "th": "เขาเล่ามุกตลกมาก ทุกคนหัวเราะกัน",
+     "why": "ทำให้หัวเราะ ใช้ funny"
+    },
+    {
+     "en": "A trip to the zoo sounds like ___!",
+     "options": [
+      "fun",
+      "funny"
+     ],
+     "answer": "fun",
+     "th": "ไปสวนสัตว์ฟังดูสนุกจัง",
+     "why": "sounds like fun = ฟังดูสนุก"
+    }
+   ]
+  },
+  {
+   "id": "affect-effect",
+   "words": [
+    "affect",
+    "effect"
+   ],
+   "note": "affect เป็นกริยา แปลว่า ส่งผลต่อ (Rain affects traffic.) ส่วน effect เป็นคำนาม แปลว่า ผลที่เกิดขึ้น (Rain has an effect on traffic.) จำ: Affect = Action (กริยา), Effect = End result (ผลลัพธ์)",
+   "items": [
+    {
+     "en": "Too much sugar can ___ your health.",
+     "options": [
+      "affect",
+      "effect"
+     ],
+     "answer": "affect",
+     "th": "น้ำตาลมากเกินไปส่งผลต่อสุขภาพของคุณได้",
+     "why": "ตามหลัง can ต้องเป็นกริยา ใช้ affect"
+    },
+    {
+     "en": "The new rule had a big ___ on students.",
+     "options": [
+      "effect",
+      "affect"
+     ],
+     "answer": "effect",
+     "th": "กฎใหม่ส่งผลอย่างมากกับนักเรียน",
+     "why": "ตามหลัง a big ต้องเป็นคำนาม ใช้ effect"
+    },
+    {
+     "en": "Loud noise can ___ how well you sleep.",
+     "options": [
+      "affect",
+      "effect"
+     ],
+     "answer": "affect",
+     "th": "เสียงดังอาจส่งผลต่อการนอนหลับของคุณ",
+     "why": "ต้องการกริยา ใช้ affect"
+    }
+   ]
+  },
+  {
+   "id": "job-work",
+   "words": [
+    "job",
+    "work"
+   ],
+   "note": "job = งานที่ทำเป็นอาชีพ นับได้ (a job, two jobs) ส่วน work = การทำงานหรือภาระงานโดยรวม นับไม่ได้ (a lot of work ไม่ต้องเติม s)",
+   "items": [
+    {
+     "en": "She found a new ___ last month.",
+     "options": [
+      "job",
+      "work"
+     ],
+     "answer": "job",
+     "th": "เธอได้งานใหม่เมื่อเดือนที่แล้ว",
+     "why": "มี a นำหน้า เป็นงานอาชีพที่นับได้ ใช้ job"
+    },
+    {
+     "en": "I have a lot of ___ to do today.",
+     "options": [
+      "work",
+      "job"
+     ],
+     "answer": "work",
+     "th": "วันนี้ฉันมีงานต้องทำเยอะมาก",
+     "why": "a lot of + งานรวม ๆ ที่นับไม่ได้ ใช้ work"
+    },
+    {
+     "en": "He has two ___ now: one in the morning and one at night.",
+     "options": [
+      "jobs",
+      "works"
+     ],
+     "answer": "jobs",
+     "th": "ตอนนี้เขามีงานสองอย่าง เช้าอย่างหนึ่ง กลางคืนอีกอย่าง",
+     "why": "นับจำนวนงานอาชีพได้ ใช้ jobs"
+    }
+   ]
+  },
+  {
+   "id": "tall-high",
+   "words": [
+    "tall",
+    "high"
+   ],
+   "note": "tall = สูงในแนวตั้งของคน ต้นไม้ หรืออาคารที่ผอมสูง ส่วน high = อยู่สูงจากพื้น หรือระดับที่สูง (a high mountain, high prices)",
+   "items": [
+    {
+     "en": "My brother is very ___.",
+     "options": [
+      "tall",
+      "high"
+     ],
+     "answer": "tall",
+     "th": "พี่ชายของฉันสูงมาก",
+     "why": "ความสูงของคน ใช้ tall"
+    },
+    {
+     "en": "The price of rice is too ___ now.",
+     "options": [
+      "high",
+      "tall"
+     ],
+     "answer": "high",
+     "th": "ตอนนี้ราคาข้าวสูงเกินไป",
+     "why": "ระดับราคา ใช้ high"
+    },
+    {
+     "en": "The plane is flying ___ above the clouds.",
+     "options": [
+      "high",
+      "tall"
+     ],
+     "answer": "high",
+     "th": "เครื่องบินบินสูงอยู่เหนือก้อนเมฆ",
+     "why": "อยู่สูงจากพื้น ใช้ high"
+    }
+   ]
+  },
+  {
+   "id": "also-too-either",
+   "words": [
+    "also",
+    "too",
+    "either"
+   ],
+   "note": "also วางหน้ากริยาหรือกลางประโยค (I also like tea) · too วางท้ายประโยคบอกเล่า (I like tea too) · either วางท้ายประโยคปฏิเสธ (I don't like tea either)",
+   "items": [
+    {
+     "en": "She plays the piano and she ___ sings.",
+     "options": [
+      "also",
+      "too",
+      "either"
+     ],
+     "answer": "also",
+     "th": "เธอเล่นเปียโนและร้องเพลงด้วย",
+     "why": "วางหน้ากริยา sings ใช้ also"
+    },
+    {
+     "en": "I'm hungry. Are you hungry ___?",
+     "options": [
+      "too",
+      "either",
+      "also"
+     ],
+     "answer": "too",
+     "th": "ฉันหิว คุณหิวด้วยไหม",
+     "why": "ท้ายประโยคบอกเล่า/คำถาม ใช้ too"
+    },
+    {
+     "en": "I don't like spicy food, and my sister doesn't like it ___.",
+     "options": [
+      "either",
+      "too",
+      "also"
+     ],
+     "answer": "either",
+     "th": "ฉันไม่ชอบอาหารเผ็ด และพี่สาวก็ไม่ชอบเหมือนกัน",
+     "why": "ประโยคปฏิเสธ ใช้ either ไว้ท้ายประโยค"
+    }
+   ]
+  },
+  {
+   "id": "lose-miss",
+   "words": [
+    "lose",
+    "miss"
+   ],
+   "note": "lose = ทำหาย หรือแพ้ (lose a key, lose a game) ส่วน miss = พลาด ไม่ทัน (miss the bus) หรือคิดถึง (I miss you)",
+   "items": [
+    {
+     "en": "I always ___ my keys!",
+     "options": [
+      "lose",
+      "miss"
+     ],
+     "answer": "lose",
+     "th": "ฉันทำกุญแจหายอยู่เรื่อยเลย",
+     "why": "ทำของหาย ใช้ lose"
+    },
+    {
+     "en": "Hurry up, or we will ___ the last train.",
+     "options": [
+      "miss",
+      "lose"
+     ],
+     "answer": "miss",
+     "th": "เร็วเข้า ไม่งั้นเราจะตกรถไฟขบวนสุดท้าย",
+     "why": "ไปไม่ทันรถ ใช้ miss"
+    },
+    {
+     "en": "I ___ my grandmother when I'm away from home.",
+     "options": [
+      "miss",
+      "lose"
+     ],
+     "answer": "miss",
+     "th": "ฉันคิดถึงคุณยายเวลาที่อยู่ห่างบ้าน",
+     "why": "คิดถึงใครสักคน ใช้ miss"
+    }
+   ]
+  },
+  {
+   "id": "rise-raise",
+   "words": [
+    "rise",
+    "raise"
+   ],
+   "note": "rise = ขึ้นเอง ไม่มีกรรมตามหลัง (The sun rises; rose, risen) ส่วน raise = ยกหรือทำให้สูงขึ้น ต้องมีกรรมตามหลัง (raise your hand, raise prices; raised, raised)",
+   "items": [
+    {
+     "en": "The sun ___ in the east.",
+     "options": [
+      "rises",
+      "raises"
+     ],
+     "answer": "rises",
+     "th": "ดวงอาทิตย์ขึ้นทางทิศตะวันออก",
+     "why": "ขึ้นเองและไม่มีกรรมตามหลัง ใช้ rise"
+    },
+    {
+     "en": "Please ___ your hand if you know the answer.",
+     "options": [
+      "raise",
+      "rise"
+     ],
+     "answer": "raise",
+     "th": "ถ้ารู้คำตอบ ช่วยยกมือหน่อย",
+     "why": "ยกมือ มีกรรม (your hand) ใช้ raise"
+    },
+    {
+     "en": "The shop is going to ___ its prices next month.",
+     "options": [
+      "raise",
+      "rise"
+     ],
+     "answer": "raise",
+     "th": "ร้านจะขึ้นราคาสินค้าเดือนหน้า",
+     "why": "ทำให้ราคาสูงขึ้น มีกรรม (its prices) ใช้ raise"
+    }
+   ]
+  },
+  {
+   "id": "much-many",
+   "words": [
+    "much",
+    "many"
+   ],
+   "note": "many ใช้กับนามนับได้ (many friends) ส่วน much ใช้กับนามนับไม่ได้ (much water, much time) ในประโยคบอกเล่าทั่วไป คนมักใช้ a lot of แทนทั้งคู่",
+   "items": [
+    {
+     "en": "How ___ books do you have?",
+     "options": [
+      "many",
+      "much"
+     ],
+     "answer": "many",
+     "th": "คุณมีหนังสือกี่เล่ม",
+     "why": "books นับได้ ใช้ many"
+    },
+    {
+     "en": "I don't have ___ time today.",
+     "options": [
+      "much",
+      "many"
+     ],
+     "answer": "much",
+     "th": "วันนี้ฉันไม่ค่อยมีเวลา",
+     "why": "time นับไม่ได้ ใช้ much"
+    },
+    {
+     "en": "There aren't ___ people in the park.",
+     "options": [
+      "many",
+      "much"
+     ],
+     "answer": "many",
+     "th": "ในสวนสาธารณะมีคนไม่มาก",
+     "why": "people นับได้ ใช้ many"
+    }
+   ]
+  },
+  {
+   "id": "few-little",
+   "words": [
+    "few",
+    "little"
+   ],
+   "note": "few + นามนับได้พหูพจน์ (few friends = มีเพื่อนน้อย) ส่วน little + นามนับไม่ได้ (little water = น้ำน้อย) ถ้ามี a นำหน้า (a few / a little) แปลว่ามีอยู่บ้าง ความหมายดีขึ้น",
+   "items": [
+    {
+     "en": "I have only a ___ coins in my pocket.",
+     "options": [
+      "few",
+      "little"
+     ],
+     "answer": "few",
+     "th": "ฉันมีเหรียญอยู่ในกระเป๋าแค่ไม่กี่เหรียญ",
+     "why": "coins นับได้ ใช้ few"
+    },
+    {
+     "en": "There is very ___ milk left.",
+     "options": [
+      "little",
+      "few"
+     ],
+     "answer": "little",
+     "th": "เหลือนมน้อยมาก",
+     "why": "milk นับไม่ได้ ใช้ little"
+    },
+    {
+     "en": "Can I ask you a ___ questions?",
+     "options": [
+      "few",
+      "little"
+     ],
+     "answer": "few",
+     "th": "ขอถามคำถามสองสามข้อได้ไหม",
+     "why": "questions นับได้ ใช้ a few"
+    }
+   ]
+  },
+  {
+   "id": "quiet-quite",
+   "words": [
+    "quiet",
+    "quite"
+   ],
+   "note": "quiet = เงียบ ส่วน quite = ค่อนข้าง พอสมควร สองคำสะกดต่างกันแค่ตัวท้าย (e กับ t) ระวังเขียนสลับ",
+   "items": [
+    {
+     "en": "Please be ___ in the library.",
+     "options": [
+      "quiet",
+      "quite"
+     ],
+     "answer": "quiet",
+     "th": "ช่วยเงียบ ๆ ในห้องสมุดด้วยนะ",
+     "why": "ให้เงียบ ใช้ quiet"
+    },
+    {
+     "en": "The test was ___ easy.",
+     "options": [
+      "quite",
+      "quiet"
+     ],
+     "answer": "quite",
+     "th": "ข้อสอบค่อนข้างง่าย",
+     "why": "ขยายคำว่า easy ใช้ quite"
+    },
+    {
+     "en": "It's a ___ town with few cars.",
+     "options": [
+      "quiet",
+      "quite"
+     ],
+     "answer": "quiet",
+     "th": "เป็นเมืองเงียบสงบที่มีรถไม่กี่คัน",
+     "why": "บรรยายเมือง ใช้ quiet"
+    }
+   ]
+  },
+  {
+   "id": "beside-besides",
+   "words": [
+    "beside",
+    "besides"
+   ],
+   "note": "beside = ข้าง ๆ ติดกับ (sit beside me) ส่วน besides = นอกจากนี้ หรือ นอกจาก ... แล้ว (Besides English, I speak Thai.) เติม s แล้วความหมายเปลี่ยนไปเลย",
+   "items": [
+    {
+     "en": "She sat ___ her best friend.",
+     "options": [
+      "beside",
+      "besides"
+     ],
+     "answer": "beside",
+     "th": "เธอนั่งข้าง ๆ เพื่อนสนิท",
+     "why": "บอกตำแหน่ง ข้าง ๆ ใช้ beside"
+    },
+    {
+     "en": "___ cooking, he also likes painting.",
+     "options": [
+      "Besides",
+      "Beside"
+     ],
+     "answer": "Besides",
+     "th": "นอกจากทำอาหารแล้ว เขายังชอบวาดรูปอีกด้วย",
+     "why": "แปลว่า นอกจาก ใช้ besides"
+    },
+    {
+     "en": "There is a small garden ___ the house.",
+     "options": [
+      "beside",
+      "besides"
+     ],
+     "answer": "beside",
+     "th": "มีสวนเล็ก ๆ อยู่ข้างบ้าน",
+     "why": "บอกตำแหน่ง ใช้ beside"
+    }
+   ]
+  },
+  {
+   "id": "already-yet",
+   "words": [
+    "already",
+    "yet"
+   ],
+   "note": "already = แล้ว ใช้ในประโยคบอกเล่า (I've already eaten.) ส่วน yet = ยัง ใช้ในประโยคปฏิเสธและคำถาม (I haven't eaten yet. Have you eaten yet?)",
+   "items": [
+    {
+     "en": "I have ___ finished my homework.",
+     "options": [
+      "already",
+      "yet"
+     ],
+     "answer": "already",
+     "th": "ฉันทำการบ้านเสร็จแล้ว",
+     "why": "ประโยคบอกเล่า ใช้ already"
+    },
+    {
+     "en": "Have you seen that movie ___?",
+     "options": [
+      "yet",
+      "already"
+     ],
+     "answer": "yet",
+     "th": "คุณดูหนังเรื่องนั้นหรือยัง",
+     "why": "คำถาม ใช้ yet"
+    },
+    {
+     "en": "She hasn't called me ___.",
+     "options": [
+      "yet",
+      "already"
+     ],
+     "answer": "yet",
+     "th": "เธอยังไม่ได้โทรหาฉันเลย",
+     "why": "ประโยคปฏิเสธ ใช้ yet"
+    }
+   ]
+  }
+ ]
+}

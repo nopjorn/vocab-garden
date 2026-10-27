@@ -5,6 +5,7 @@
 2. ข้อความเครดิตทางการ ลิงก์ license และลิงก์เว็บทางการ ต้องอยู่ครบทุกไฟล์ที่กำหนด
 3. ห้ามมีลิงก์ไปโดเมน .org ของ NGSL ซึ่งไม่ใช่เว็บทางการแล้ว
 4. คอลัมน์ของ NGSL (rank, headword, forms) ในชุดข้อมูลทุกด่านต้องตรงกับไฟล์ต้นฉบับ ครบทุกคำ ไม่ขาด ไม่เกิน
+5. app/data/frequency.tsv (ความถี่ต่อล้านคำ) ต้องตรงกับไฟล์ stats ของ NGSL
 
     python3 scripts/check_ngsl.py
 """
@@ -18,6 +19,7 @@ import subprocess
 import sys
 from pathlib import Path
 
+import build_frequency
 import ngsl_data
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -152,7 +154,7 @@ def check_dataset(root: Path) -> list[str]:
 
 
 def run_checks(root: Path) -> list[str]:
-    return check_sources(root) + check_attribution(root) + check_unofficial_links(root) + check_dataset(root)
+    return check_sources(root) + check_attribution(root) + check_unofficial_links(root) + check_dataset(root) + build_frequency.check(root)
 
 
 def report_error(message: str) -> None:

@@ -14,7 +14,14 @@ def precache_list():
     files = set(re.findall(r'"([^"]+)"', block))
     if "LEVELS.map" in block:
         files |= {f"data/levels/{path.stem}.tsv" for path in (APP / "data/levels").glob("*.tsv")}
+    if "EXTRA_LEVELS.map" in block:
+        files |= {f"data/extra/{level}.tsv" for level in extra_levels(source)}
     return files
+
+
+def extra_levels(source):
+    """ค่า EXTRA_LEVELS ในไฟล์ JS (sw.js หรือ data.js)"""
+    return re.findall(r'"(\d\d)"', re.search(r"const EXTRA_LEVELS = \[(.*?)\];", source, re.S).group(1))
 
 
 class ServiceWorkerTest(unittest.TestCase):
@@ -26,6 +33,13 @@ class ServiceWorkerTest(unittest.TestCase):
     def test_precache_files_exist(self):
         missing = {name for name in precache_list() - {"./"} if not (APP / name).is_file()}
         self.assertEqual(missing, set())
+
+    def test_extra_levels_match_between_sw_data_and_files(self):
+        sw = extra_levels((APP / "sw.js").read_text(encoding="utf-8"))
+        data = extra_levels((APP / "js/data.js").read_text(encoding="utf-8").replace("export const", "const"))
+        on_disk = sorted(path.stem for path in (APP / "data/extra").glob("*.tsv"))
+        self.assertEqual(sw, data)
+        self.assertEqual(sorted(sw), on_disk)
 
     def test_levels_in_sw_match_dataset(self):
         source = (APP / "sw.js").read_text(encoding="utf-8")

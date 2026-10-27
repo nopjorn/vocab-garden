@@ -34,7 +34,7 @@ function renderExamQuestion() {
   $("exam-count").textContent = `ข้อ ${exam.index + 1}/${EXAM_COUNT}`;
   if (question.type === "cloze") {
     $("exam-prompt").replaceChildren(question.before, el("span", "blank", "＿＿＿＿"), question.after);
-    $("exam-hint").textContent = `เติมคำที่หายไป · ${word.exampleTh}`;
+    $("exam-hint").textContent = `เติมคำที่หายไป · ${question.hintTh || word.exampleTh}`;
   } else {
     $("exam-prompt").textContent = word.headword;
     $("exam-hint").textContent = "เลือกคำแปลที่ถูกต้อง";

@@ -70,8 +70,7 @@ export function shapeOf(token, headword) {
 }
 
 // หาคำที่จะเว้นว่างในประโยคตัวอย่าง (คำหลักหรือรูปคำอื่นของมัน ยาวอย่างน้อย 3 ตัวอักษร และไม่ใช่ส่วนของคำย่อ เช่น don't)
-export function findBlank(word) {
-  const sentence = word.exampleEn;
+export function findBlank(word, sentence = word.exampleEn) {
   const wanted = new Set([word.headword, ...word.forms].map((form) => form.toLowerCase()));
   for (const match of sentence.matchAll(/[A-Za-z]+/g)) {
     const token = match[0];
@@ -90,8 +89,11 @@ const capitalize = (text) => text.charAt(0).toUpperCase() + text.slice(1);
 
 // เติมคำในประโยค: ตัวหลอกเป็นคำอื่นรูปเดียวกัน (คำหลัก / -s / -ing / -ed) ชนิดคำเดียวกันก่อน
 export function clozeQuestion(word, pool, rng = Math.random) {
-  const blank = findBlank(word);
+  // คำที่มีประโยคตัวอย่างที่ 2 สุ่มใช้ประโยคไหนก็ได้ เพื่อไม่ให้เจอประโยคเดิมซ้ำ ๆ (ถ้าประโยคที่สุ่มได้เติมคำไม่ได้ ใช้ประโยคแรก)
+  const second = word.example2En && rng() < 0.5 ? findBlank(word, word.example2En) : null;
+  const blank = second || findBlank(word);
   if (!blank) return null;
+  const hintTh = second ? word.example2Th : word.exampleTh;
   const pos = word.senses[0]?.pos;
   const capital = blank.answer[0] !== blank.answer[0].toLowerCase();
   const shown = (text) => (capital ? capitalize(text) : text);
@@ -117,6 +119,7 @@ export function clozeQuestion(word, pool, rng = Math.random) {
     type: "cloze",
     before: blank.before,
     after: blank.after,
+    hintTh,
     ...withAnswer(blank.answer, wrong.map(shown)),
   };
 }

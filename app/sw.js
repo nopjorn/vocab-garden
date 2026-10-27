@@ -4,12 +4,14 @@
 // PRECACHE ต้องมีทุกไฟล์ใน app/ (tests/test_pwa.py ตรวจให้)
 // Safari เทียบแค่ไฟล์ sw.js ไม่ดู version.js ที่ import มา จึงต้องเขียนเลข version ไว้ในไฟล์นี้ด้วย
 // ขยับ version ทุกครั้งต้องแก้บรรทัดด้านล่างให้ตรงกับ app/version.js (tests/test_pwa.py ตรวจให้)
-// sw-version: 0.46.0
+// sw-version: 0.47.0
 
 importScripts("version.js");
 
 const CACHE = `vg-${self.VG_VERSION}`;
 const LEVELS = [...Array.from({ length: 28 }, (_, index) => String(index + 1).padStart(2, "0")), "sup"];
+// ด่านที่มีไฟล์ข้อมูลเพิ่ม data/extra/NN.tsv ต้องตรงกับ EXTRA_LEVELS ใน js/data.js (tests/test_pwa.py ตรวจให้)
+const EXTRA_LEVELS = ["01", "02", "03", "04"];
 const PRECACHE = [
   "./",
   "index.html",
@@ -23,6 +25,9 @@ const PRECACHE = [
   "js/data.js",
   "js/srs.js",
   "js/fsrs.js",
+  "js/forms.js",
+  "js/coverage.js",
+  "js/confuse.js",
   "js/sentence.js",
   "js/blitz.js",
   "js/missions.js",
@@ -64,6 +69,7 @@ const PRECACHE = [
   "js/screens/scramble.js",
   "js/screens/sentence.js",
   "js/screens/blitz.js",
+  "js/screens/confuse.js",
   "js/screens/placement.js",
   "js/screens/dictation.js",
   "js/screens/listen.js",
@@ -74,7 +80,10 @@ const PRECACHE = [
   "icons/icon-maskable-512.png",
   "icons/apple-touch-icon.png",
   "data/LICENSE",
+  "data/frequency.tsv",
+  "data/confusables.json",
   ...LEVELS.map((level) => `data/levels/${level}.tsv`),
+  ...EXTRA_LEVELS.map((level) => `data/extra/${level}.tsv`),
 ];
 
 self.addEventListener("install", (event) => {

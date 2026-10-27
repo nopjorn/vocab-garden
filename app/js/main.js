@@ -1900,6 +1900,12 @@ function saveWotdSetup(change) {
   renderWotdSetup();
 }
 
+// บันทึกแปลงที่สุ่มได้ (เลือกครบทุกแปลงเก็บเป็น null = ทุกแปลง เหมือนแปลงที่ใช้เล่น)
+function saveWotdLevels(next) {
+  const allLevels = playableLevels();
+  saveWotdSetup({ wotdLevels: allLevels.every((item) => next.has(item)) ? null : allLevels.filter((item) => next.has(item)) });
+}
+
 function renderWotdSetup() {
   const today = dayNumber();
   const allLevels = playableLevels();
@@ -1913,7 +1919,7 @@ function renderWotdSetup() {
         const next = new Set(levels);
         if (on) next.add(level);
         else next.delete(level);
-        saveWotdSetup({ wotdLevels: allLevels.every((item) => next.has(item)) ? null : allLevels.filter((item) => next.has(item)) });
+        saveWotdLevels(next);
       });
     }),
   );
@@ -2239,6 +2245,10 @@ function bindEvents() {
   $("share-garden").addEventListener("click", shareGarden);
   $("play-all").addEventListener("click", () => savePlayLevels(new Set(playableLevels())));
   $("play-none").addEventListener("click", () => savePlayLevels(new Set()));
+  $("wotd-levels-all").addEventListener("click", () => saveWotdLevels(new Set(playableLevels())));
+  $("wotd-levels-none").addEventListener("click", () => saveWotdLevels(new Set()));
+  $("wotd-levels-learned").addEventListener("click", () => saveWotdLevels(new Set(playableLevels().filter((level) => plantedIn(level) > 0))));
+  $("wotd-levels-fresh").addEventListener("click", () => saveWotdLevels(new Set(playableLevels().filter((level) => plantedIn(level) === 0))));
   // สลับไปแปลงก่อนหน้า/ถัดไปโดยแทนที่หน้าเดิมในประวัติ ปุ่มย้อนกลับจะกลับไปหน้าสวนทีเดียว ไม่ต้องไล่กลับทีละแปลง
   for (const id of ["plot-prev", "plot-next"]) {
     $(id).addEventListener("click", (event) => {

@@ -140,3 +140,50 @@ class RepositoryDataTest(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+class ConfusablesTest(unittest.TestCase):
+    @classmethod
+    def setUpClass(cls):
+        cls.rows = ngsl_data.load_base_rows(ROOT)
+
+    def check(self, data):
+        root = Path(tempfile.mkdtemp())
+        self.addCleanup(shutil.rmtree, root)
+        (root / "app/data").mkdir(parents=True)
+        import json
+
+        (root / validate_data.CONFUSABLES_PATH).write_text(json.dumps(data, ensure_ascii=False), encoding="utf-8")
+        return validate_data.check_confusables(root, self.rows)
+
+    def pair(self, **changes):
+        item = {"en": "Can I ___ your pen?", "options": ["borrow", "lend"], "answer": "borrow", "th": "ขอยืมปากกาได้ไหม", "why": "ขอยืมมาใช้ ใช้ borrow"}
+        pair = {"id": "borrow-lend", "words": ["borrow", "lend"], "note": "borrow คือยืมมา", "items": [item, item, item]}
+        pair.update(changes)
+        return {"pairs": [pair]}
+
+    def test_the_committed_file_is_valid(self):
+        self.assertEqual(validate_data.check_confusables(ROOT, self.rows), [])
+
+    def test_a_valid_pair_passes(self):
+        self.assertEqual(self.check(self.pair()), [])
+
+    def test_words_must_be_ngsl_headwords(self):
+        self.assertTrue(any("ไม่ใช่คำหลักของ NGSL" in e for e in self.check(self.pair(words=["borrow", "zzzz"]))))
+
+    def test_blank_answer_and_options_are_checked(self):
+        bad = {"en": "No blank here.", "options": ["borrow", "borrow"], "answer": "lend", "th": "x", "why": "y"}
+        errors = self.check(self.pair(items=[bad, bad, bad]))
+        joined = "\n".join(errors)
+        self.assertIn("ช่องว่าง", joined)
+        self.assertIn("ไม่ซ้ำกัน", joined)
+        self.assertIn("answer ต้องอยู่ใน options", joined)
+        self.assertIn("th ต้องเป็นภาษาไทย", joined)
+
+    def test_options_must_belong_to_the_pair(self):
+        item = {"en": "Can I ___ your pen?", "options": ["borrow", "bring"], "answer": "borrow", "th": "ไทย", "why": "ไทย"}
+        self.assertTrue(any("ไม่ใช่คำหรือรูปคำ" in e for e in self.check(self.pair(items=[item, item, item]))))
+
+    def test_inflected_options_are_allowed(self):
+        item = {"en": "She ___ me a bike.", "options": ["lent", "borrowed"], "answer": "lent", "th": "ไทย", "why": "ไทย"}
+        self.assertEqual(self.check(self.pair(items=[item, item, item])), [])

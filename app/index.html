@@ -153,6 +153,12 @@
               <button type="button" id="speak-example" class="speak small" aria-label="ฟังเสียงประโยค">🔊</button></p>
             <p id="card-example-th" class="muted"></p>
           </div>
+          <div id="card-extra" class="extra" hidden>
+            <p><span id="card-example2-en" lang="en"></span></p>
+            <p id="card-example2-th" class="muted"></p>
+            <p id="card-colloc-title" class="small"><strong>คำที่มักใช้คู่กัน</strong></p>
+            <ul id="card-colloc" class="colloc"></ul>
+          </div>
           <p id="card-note" class="note small"></p>
           <p id="card-mynote" class="mynote" hidden></p>
           <button type="button" id="edit-note" class="linklike small">✏️ เพิ่มโน้ตช่วยจำ</button>
@@ -286,6 +292,15 @@
         </div>
       </section>
 
+      <section id="g-cover" class="cover" aria-labelledby="g-cover-title" hidden>
+        <h2 id="g-cover-title">🔭 รู้กี่คำ อ่านเข้าใจได้แค่ไหน</h2>
+        <p class="recall-main"><strong id="g-cover-rate" class="recall-rate"></strong> <span id="g-cover-sub" class="muted small"></span></p>
+        <ul id="g-cover-steps" class="stage-rows"></ul>
+        <p class="muted small">ประมาณจากความถี่ของคำใน corpus ของ NGSL (ไฟล์ stats) คูณกับที่ทีม NGSL ระบุว่า 2,809 คำนี้ครอบคลุมราว 92% ของข้อความทั่วไป
+          นับเฉพาะคำที่ปลูกแล้ว (ไม่ใช่เมล็ด) และคำที่มีอันดับ ไม่นับคำเสริม เป็นเพียงค่าประมาณคร่าว ๆ ไม่ใช่ผลทดสอบการอ่านของคุณ
+          ข้อมูลเวอร์ชัน NGSL 1.2</p>
+      </section>
+
       <h2>📅 ปฏิทินสวน</h2>
       <p id="cal-summary" class="muted small"></p>
       <div class="cal-wrap">
@@ -408,6 +423,12 @@
             <span class="game-info"><strong>ท้าทาย 60 วินาที</strong><span class="muted small">เลือกคำแปลให้ถูกมากที่สุดภายใน 1 นาที เก็บสถิติสูงสุดไว้ชนกับตัวเอง</span><span id="blitz-best" class="small"></span></span>
           </a>
         </li>
+        <li>
+          <a class="game-card" href="#/play/confuse">
+            <span class="game-emoji" aria-hidden="true">🔍</span>
+            <span class="game-info"><strong>คู่คำที่ควรระวัง</strong><span class="muted small">borrow / lend, say / tell, hear / listen และอีกหลายคู่ที่คนไทยมักสับสน อ่านคำอธิบายแล้วฝึกเลือกคำ 8 ข้อ</span><span id="confuse-best" class="small"></span></span>
+          </a>
+        </li>
       </ul>
     </section>
 
@@ -489,6 +510,35 @@
         <p id="blitz-final" class="blitz-final"></p>
         <p id="blitz-summary" class="muted"></p>
         <button type="button" id="blitz-again" class="primary wide">🔁 เล่นอีกรอบ</button>
+        <a href="#/play" class="button wide">กลับไปหน้าเกม</a>
+      </div>
+    </section>
+
+    <section id="view-confuse" hidden>
+      <div class="study-top">
+        <a href="#/play" class="close" aria-label="กลับไปหน้าเกม">✕</a>
+        <strong class="game-title">🔍 คู่คำที่ควรระวัง</strong>
+        <span id="confuse-count" class="muted small"></span>
+      </div>
+      <div id="confuse-intro">
+        <p class="muted small">คำที่คนไทยมักใช้สลับกัน เช่น borrow กับ lend อ่านคำอธิบายสั้น ๆ ของแต่ละคู่ แล้วลองฝึกเลือกคำให้ถูกกับประโยค 8 ข้อ</p>
+        <p><button type="button" id="confuse-start" class="primary wide">🔍 ฝึกเลือกคำ 8 ข้อ</button></p>
+        <div id="confuse-list" class="confuse-list"></div>
+      </div>
+      <div id="confuse-play" hidden>
+        <p class="muted small center-text">เลือกคำที่เติมช่องว่างได้ถูกต้อง</p>
+        <p id="confuse-sentence" class="exam-prompt" lang="en"></p>
+        <p id="confuse-th" class="muted center-text"></p>
+        <ul id="confuse-options" class="quiz-options" aria-label="ตัวเลือกคำ"></ul>
+        <p id="confuse-feedback" class="quiz-feedback" role="status" hidden></p>
+        <button type="button" id="confuse-next" class="primary wide" hidden>ต่อไป ➡️</button>
+      </div>
+      <div id="confuse-result" class="done-card" hidden>
+        <p class="big-emoji celebrate" aria-hidden="true">🔍</p>
+        <h2 id="confuse-title"></h2>
+        <p id="confuse-summary" class="muted"></p>
+        <button type="button" id="confuse-again" class="primary wide">🔁 ฝึกอีกรอบ</button>
+        <button type="button" id="confuse-back" class="wide">📖 กลับไปอ่านคำอธิบาย</button>
         <a href="#/play" class="button wide">กลับไปหน้าเกม</a>
       </div>
     </section>
@@ -938,6 +988,11 @@
         <ul id="word-senses" class="senses"></ul>
         <p id="word-forms" class="forms small" hidden></p>
         <p class="word-example"><span id="word-example-en" lang="en"></span><br><span id="word-example-th" class="muted"></span></p>
+        <div id="word-extra" class="extra" hidden>
+          <p class="word-example"><span id="word-example2-en" lang="en"></span><br><span id="word-example2-th" class="muted"></span></p>
+          <p id="word-colloc-title" class="small"><strong>คำที่มักใช้คู่กัน</strong></p>
+          <ul id="word-colloc" class="colloc"></ul>
+        </div>
         <p id="word-stats" class="muted small"></p>
         <p id="word-note" class="mynote" hidden></p>
       </div>

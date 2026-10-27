@@ -27,11 +27,20 @@ export function buildSentenceRound(only, rng = Math.random, count = SENTENCE_COU
   const seen = new Set();
   const eligible = [];
   for (const word of only) {
-    if (!word.translated || !word.exampleEn || !word.exampleTh) continue;
-    const tokens = tokensOf(word.exampleEn);
-    if (tokens.length < MIN_TOKENS || tokens.length > MAX_TOKENS || seen.has(word.exampleEn)) continue;
-    seen.add(word.exampleEn);
-    eligible.push({ word, answer: word.exampleEn, meaning: word.exampleTh, tokens });
+    if (!word.translated) continue;
+    // ประโยคตัวอย่างที่ใช้ได้ของคำนี้ (ประโยคที่ 1 และ 2 ถ้ามี) สุ่มหนึ่งประโยคต่อคำ
+    const options = [
+      [word.exampleEn, word.exampleTh],
+      [word.example2En, word.example2Th],
+    ].filter(([en, th]) => {
+      if (!en || !th) return false;
+      const size = tokensOf(en).length;
+      return size >= MIN_TOKENS && size <= MAX_TOKENS && !seen.has(en);
+    });
+    if (options.length === 0) continue;
+    const [en, th] = options.length > 1 ? options[Math.floor(rng() * options.length)] : options[0];
+    seen.add(en);
+    eligible.push({ word, answer: en, meaning: th, tokens: tokensOf(en) });
   }
   if (eligible.length < count) return null;
   return shuffle(eligible, rng)

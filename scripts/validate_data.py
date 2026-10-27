@@ -9,6 +9,7 @@ example_en และ example_th ครบ ส่วน note ใส่หรื�
 
 from __future__ import annotations
 
+import json
 import os
 import re
 import sys
@@ -68,6 +69,139 @@ def check_row(row: list[str]) -> list[str]:
     return problems
 
 
+CONFUSABLES_PATH = "app/data/confusables.json"
+CONFUSABLE_BLANK = "___"
+
+
+def check_confusables(root: Path, base_rows=None) -> list[str]:
+    """ตรวจ app/data/confusables.json: ทุกคำต้องอยู่ใน NGSL, ประโยคมีช่องว่างเดียว, ตัวเลือกเป็นคำหรือรูปคำของคู่นั้น"""
+    path = root / CONFUSABLES_PATH
+    if not path.is_file():
+        return []
+    try:
+        data = json.loads(path.read_text(encoding="utf-8"))
+    except ValueError as error:
+        return [f"{CONFUSABLES_PATH} อ่านเป็น JSON ไม่ได้ ({error})"]
+    rows = base_rows if base_rows is not None else ngsl_data.load_base_rows(root)
+    forms_of = {row.headword.lower(): {form.lower() for form in row.forms.split(ngsl_data.FORMS_SEPARATOR) if form} for row in rows}
+    errors = []
+    seen_ids = set()
+    for pair in data.get("pairs", []):
+        label = f"{CONFUSABLES_PATH} ({pair.get('id', '?')})"
+        if not re.fullmatch(r"[a-z]+(-[a-z]+)+", str(pair.get("id", ""))):
+            errors.append(f"{label}: id ต้องเป็นคำภาษาอังกฤษพิมพ์เล็กคั่นด้วย - เช่น borrow-lend")
+        if pair.get("id") in seen_ids:
+            errors.append(f"{label}: id ซ้ำ")
+        seen_ids.add(pair.get("id"))
+        words = pair.get("words", [])
+        if not 2 <= len(words) <= 3:
+            errors.append(f"{label}: ต้องมี 2–3 คำ")
+        allowed = set()
+        for word in words:
+            if word.lower() not in forms_of:
+                errors.append(f"{label}: {word} ไม่ใช่คำหลักของ NGSL 1.2")
+            allowed |= {word.lower()} | forms_of.get(word.lower(), set())
+        if not THAI_RE.search(pair.get("note", "")):
+            errors.append(f"{label}: note ต้องเป็นภาษาไทย")
+        items = pair.get("items", [])
+        if len(items) < 3:
+            errors.append(f"{label}: ต้องมีข้อฝึกอย่างน้อย 3 ข้อ")
+        for number, item in enumerate(items, start=1):
+            where = f"{label} ข้อ {number}"
+            if item.get("en", "").count(CONFUSABLE_BLANK) != 1:
+                errors.append(f"{where}: en ต้องมีช่องว่าง {CONFUSABLE_BLANK} หนึ่งช่อง")
+            options = item.get("options", [])
+            if not 2 <= len(options) <= 3 or len({option.lower() for option in options}) != len(options):
+                errors.append(f"{where}: options ต้องมี 2–3 ตัวและไม่ซ้ำกัน")
+            if item.get("answer") not in options:
+                errors.append(f"{where}: answer ต้องอยู่ใน options")
+            for option in options:
+                if option.lower() not in allowed:
+                    errors.append(f"{where}: ตัวเลือก {option} ไม่ใช่คำหรือรูปคำของ {', '.join(words)}")
+            for name in ("th", "why"):
+                if not THAI_RE.search(item.get(name, "")):
+                    errors.append(f"{where}: {name} ต้องเป็นภาษาไทย")
+    return errors
+
+
+EXTRA_DIR = "app/data/extra"
+EXTRA_COLUMNS = ["headword", "example2_en", "example2_th", "collocations"]
+EXTRA_MAX_WORDS = 12
+COLLOCATION_MAX = 4
+
+
+def check_extra_row(row: list[str], base: dict[str, list[str]]) -> list[str]:
+    """ตรวจหนึ่งแถวของไฟล์ extra: ประโยคตัวอย่างที่ 2 และคำที่มักใช้คู่กัน (กติกาใน docs/translation-guide.md)"""
+    if len(row) != len(EXTRA_COLUMNS):
+        return [f"ต้องมี {len(EXTRA_COLUMNS)} คอลัมน์ (ตอนนี้มี {len(row)})"]
+    fields = dict(zip(EXTRA_COLUMNS, row))
+    problems = [f"{name} มีช่องว่างหัวหรือท้าย" for name, value in fields.items() if value != value.strip()]
+    head = fields["headword"]
+    if head not in base:
+        return problems + [f"{head} ไม่ใช่คำในด่านนี้"]
+    level_row = dict(zip(ngsl_data.COLUMNS, base[head]))
+    words = [head] + [form for form in level_row["forms"].split(ngsl_data.FORMS_SEPARATOR) if form]
+    if not level_row["meanings"]:
+        problems.append("ใส่ข้อมูลเพิ่มได้เฉพาะคำที่แปลแล้ว")
+    for name in ("example2_en", "example2_th"):
+        if not fields[name]:
+            problems.append(f"{name} ว่างอยู่ (ถ้าไม่มีข้อมูลเพิ่ม ไม่ต้องใส่คำนั้นในไฟล์)")
+    if fields["example2_en"]:
+        if not uses_word(fields["example2_en"], words):
+            problems.append("example2_en ต้องมีคำหลักหรือรูปคำของคำนี้อยู่ในประโยค")
+        if len(fields["example2_en"].split()) > EXTRA_MAX_WORDS:
+            problems.append(f"example2_en ยาวเกิน {EXTRA_MAX_WORDS} คำ")
+        if fields["example2_en"] == level_row["example_en"]:
+            problems.append("example2_en ต้องไม่ซ้ำกับประโยคตัวอย่างเดิม")
+    if fields["example2_th"] and not THAI_RE.search(fields["example2_th"]):
+        problems.append("example2_th ต้องเป็นภาษาไทย")
+    if fields["collocations"]:
+        items = fields["collocations"].split("; ")
+        if len(items) > COLLOCATION_MAX:
+            problems.append(f"collocations ใส่ได้ไม่เกิน {COLLOCATION_MAX} วลี")
+        for item in items:
+            phrase, _, meaning = item.partition("=")
+            if not phrase or not meaning:
+                problems.append(f'วลี "{item}" ต้องเป็นรูปแบบ "วลีอังกฤษ=ความหมายไทย" คั่นแต่ละวลีด้วย "; "')
+            elif not uses_word(phrase, words):
+                problems.append(f'วลี "{phrase}" ต้องมีคำหลักหรือรูปคำของคำนี้')
+            elif not THAI_RE.search(meaning):
+                problems.append(f'วลี "{phrase}" ต้องมีความหมายภาษาไทย')
+    return problems
+
+
+def check_extra(root: Path) -> list[str]:
+    """ตรวจ app/data/extra/NN.tsv ทุกไฟล์เทียบกับด่านที่ตรงกัน"""
+    folder = root / EXTRA_DIR
+    if not folder.is_dir():
+        return []
+    errors = []
+    for path in sorted(folder.glob("*.tsv")):
+        rel = path.relative_to(root).as_posix()
+        level_file = ngsl_data.level_path(root, path.stem)
+        if path.stem not in ngsl_data.level_names() or not level_file.is_file():
+            errors.append(f"{rel} ไม่ตรงกับไฟล์ด่านใด ๆ")
+            continue
+        if b"\r" in path.read_bytes():
+            errors.append(f"{rel} ต้องใช้ line ending แบบ LF")
+        lines = path.read_text(encoding="utf-8").split("\n")
+        if lines[0].split("\t") != EXTRA_COLUMNS:
+            errors.append(f"{rel} หัวตารางต้องเป็น {', '.join(EXTRA_COLUMNS)}")
+            continue
+        _, rows = ngsl_data.read_level(level_file)
+        base = {row[1]: row for row in rows if len(row) == len(ngsl_data.COLUMNS)}
+        seen = set()
+        for number, line in enumerate(lines[1:], start=2):
+            if not line:
+                continue
+            row = line.split("\t")
+            if row[0] in seen:
+                errors.append(f"{rel} บรรทัด {number} ({row[0]}): คำซ้ำ")
+            seen.add(row[0])
+            errors += [f"{rel} บรรทัด {number} ({row[0]}): {problem}" for problem in check_extra_row(row, base)]
+    return errors
+
+
 def validate(root: Path) -> tuple[list[str], int, int]:
     """คืนรายการปัญหา จำนวนคำที่แปลแล้ว และจำนวนคำทั้งหมด"""
     errors = []
@@ -86,6 +220,8 @@ def validate(root: Path) -> tuple[list[str], int, int]:
             translated += bool(len(row) == len(ngsl_data.COLUMNS) and row[3])
             for problem in check_row(row):
                 errors.append(f"{rel} บรรทัด {line} ({row[1] if len(row) > 1 else '?'}): {problem}")
+    errors += check_confusables(root)
+    errors += check_extra(root)
     return errors, translated, total
 
 

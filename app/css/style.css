@@ -1959,6 +1959,27 @@ kbd {
   gap: 10px;
 }
 
+.extra {
+  margin-top: 6px;
+  padding-top: 6px;
+  border-top: 1px dashed var(--border);
+}
+
+.colloc {
+  margin: 4px 0 0;
+  padding-left: 1.2rem;
+  font-size: 0.92rem;
+}
+
+.form-item {
+  white-space: nowrap;
+}
+
+.form-label {
+  font-size: 0.78rem;
+  color: var(--muted);
+}
+
 .recall-main {
   display: flex;
   align-items: baseline;
@@ -2900,6 +2921,22 @@ html[data-text-size="large"] {
   opacity: 1;
 }
 
+/* คู่คำที่ควรระวัง */
+.confuse-list {
+  display: grid;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.confuse-note {
+  margin: 8px 14px;
+}
+
+.confuse-examples {
+  margin: 0 14px 12px;
+  padding-left: 1.2rem;
+}
+
 /* ท้าทาย 60 วินาที */
 .blitz-time {
   margin: 0 0 6px;
@@ -3188,6 +3225,7 @@ html[data-text-size="large"] {
   #view-scramble,
   #view-sentence,
   #view-blitz,
+  #view-confuse,
   #view-match,
   #view-settings,
   #view-about,
@@ -3265,6 +3303,7 @@ html[data-text-size="large"] {
   #view-scramble,
   #view-sentence,
   #view-blitz,
+  #view-confuse,
   #view-match,
   #view-listen,
   #view-dictation,

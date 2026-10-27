@@ -190,3 +190,18 @@ test("real data: how many big trees can be asked by typing", () => {
   }
   assert.ok(typeable.length >= 60, `พิมพ์ได้ ${typeable.length} จาก ${words.length}`);
 });
+
+test("cloze can use the second example sentence and carries its Thai hint", async () => {
+  const { clozeQuestion } = await import("../../app/js/quiz.js");
+  const mk = (headword, exampleEn) => ({ headword, forms: [`${headword}s`], senses: [{ pos: "n", label: "n", text: `คำ${headword}` }], exampleEn, exampleTh: "ไทยหนึ่ง", example2En: "", example2Th: "" });
+  const target = { ...mk("house", "The house is big."), example2En: "We bought a house last year.", example2Th: "ไทยสอง" };
+  const pool = [target, mk("river", "The river is long."), mk("tree", "The tree is tall."), mk("road", "The road is wide.")];
+  const first = clozeQuestion(target, pool, () => 0.9);
+  assert.equal(first.hintTh, "ไทยหนึ่ง");
+  assert.equal(first.before, "The ");
+  const second = clozeQuestion(target, pool, () => 0.1);
+  assert.equal(second.hintTh, "ไทยสอง");
+  assert.equal(second.before, "We bought a ");
+  // คำที่ไม่มีประโยคที่ 2 ใช้ประโยคแรกเสมอ
+  assert.equal(clozeQuestion(pool[1], pool, () => 0.1).hintTh, "ไทยหนึ่ง");
+});

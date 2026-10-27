@@ -2970,7 +2970,7 @@ html[data-text-size="large"] {
 
 /* ภารกิจประจำวัน */
 .missions {
-  margin: 0 0 16px;
+  margin: 14px 0 16px;
   padding: 14px 16px;
   background: var(--surface);
   border: 1px solid var(--border);

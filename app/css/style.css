@@ -1959,6 +1959,19 @@ kbd {
   gap: 10px;
 }
 
+.recall-main {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  margin: 0 0 8px;
+}
+
+.recall-rate {
+  font-size: 1.8rem;
+  line-height: 1;
+  color: var(--link);
+}
+
 .stage-bar {
   height: 12px;
   background: var(--surface-2);

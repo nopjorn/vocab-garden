@@ -2,6 +2,8 @@
 // คีย์ทุกตัวขึ้นต้นด้วย vg: เพราะทุก repo ใต้ nopjorn.github.io ใช้ storage ร่วมกัน
 // ความคืบหน้าผูกกับคำหลัก (ไม่ใช่อันดับ) เพื่อรองรับ NGSL เวอร์ชันใหม่
 
+import { ANSWER_KEEP, mergeAnswers } from "./recall.js";
+
 export const SCHEMA = 1;
 const KEYS = {
   progress: "vg:progress",
@@ -16,12 +18,15 @@ const KEYS = {
   log: "vg:log",
   weekSeen: "vg:week-seen",
   backup: "vg:backup",
+  answers: "vg:answers",
+  fsrs: "vg:fsrs",
 };
 const HISTORY_KEEP_DAYS = 400; // เก็บประวัติการทวนรายวันย้อนหลังไม่เกินนี้
 export const SPEECH_RATE_CHOICES = [0.7, 0.9, 1.1]; // ช้า / ปกติ / เร็ว
 export const THEME_CHOICES = ["auto", "light", "dark"];
 export const TEXT_SIZE_CHOICES = ["normal", "large"];
 export const MENU_POSITION_CHOICES = ["bottom", "dock", "top"]; // เมนูหลักบนมือถือ/iPad: ลอยด้านล่าง (ค่าเริ่มต้น) / ชิดขอบจอล่าง / อยู่ในแถบด้านบนเหมือนจอคอม
+export const SCHEDULER_CHOICES = ["sm2", "fsrs"]; // ตัวกำหนดวันทวน: แบบเดิม (SM-2 ฉบับย่อ) / FSRS (ทดลอง)
 export const QUIZ_MODE_CHOICES = ["flip", "mixed"]; // พลิกการ์ดแบบเดิม / ผสมหลายแบบตามระยะของต้นไม้
 export const NOTE_MAX = 200; // โน้ตช่วยจำยาวได้ไม่เกินกี่ตัวอักษร
 export const DAILY_GOAL_CHOICES = [10, 20, 30]; // เป้าหมายรายวัน (จำนวนครั้งที่ตอบ)
@@ -45,6 +50,7 @@ export const DEFAULT_SETTINGS = {
   playStatuses: [...PLAY_STATUS_IDS],
   quizMode: "flip",
   quizTyping: true,
+  scheduler: "sm2",
 };
 export const LAST_LEVEL = 28;
 export const NEW_PER_DAY_CHOICES = [5, 10, 20];
@@ -113,6 +119,32 @@ function validLog(log) {
     if (!Number.isInteger(Number(day)) || entry === null || typeof entry !== "object") continue;
     const count = (value) => (Number.isInteger(value) && value >= 0 ? value : 0);
     clean[day] = { n: count(entry.n), t: count(entry.t), a: count(entry.a) };
+  }
+  return clean;
+}
+
+// ผลการตอบแบบย่อ [[เลขวัน, คำหลัก, คะแนน 1–3, ระยะทวนก่อนตอบ]] (ดู recall.js) รายการที่ผิดรูปแบบถูกตัดทิ้ง (ไม่ใช่อาร์เรย์ = null)
+function validAnswers(answers) {
+  if (!Array.isArray(answers)) return null;
+  const clean = answers.filter(
+    (entry) =>
+      Array.isArray(entry) && entry.length === 4 && Number.isInteger(entry[0]) && typeof entry[1] === "string" && entry[1].length > 0 && entry[1].length <= 64 &&
+      [1, 2, 3].includes(entry[2]) && Number.isInteger(entry[3]) && entry[3] >= 0,
+  );
+  return clean.slice(-ANSWER_KEEP);
+}
+
+// ความจำแบบ FSRS { [คำหลัก]: [stability, difficulty] } (ดู fsrs.js) รายการที่ผิดรูปแบบถูกตัดทิ้ง (ไม่ใช่ object = null)
+function validFsrs(memory) {
+  if (memory === null || typeof memory !== "object" || Array.isArray(memory)) return null;
+  const clean = {};
+  for (const [headword, entry] of Object.entries(memory)) {
+    if (
+      headword !== "__proto__" && headword.length <= 64 && Array.isArray(entry) && entry.length === 2 &&
+      entry.every(Number.isFinite) && entry[0] > 0 && entry[0] <= 36500 && entry[1] >= 1 && entry[1] <= 10
+    ) {
+      clean[headword] = [entry[0], entry[1]];
+    }
   }
   return clean;
 }
@@ -272,6 +304,7 @@ export function createStorage(store = globalThis.localStorage) {
         playStatuses: validPlayStatuses(saved.playStatuses),
         quizMode: pick(QUIZ_MODE_CHOICES, saved.quizMode, DEFAULT_SETTINGS.quizMode),
         quizTyping: saved.quizTyping !== false,
+        scheduler: pick(SCHEDULER_CHOICES, saved.scheduler, DEFAULT_SETTINGS.scheduler),
       };
     },
     saveSettings(settings) {
@@ -427,6 +460,22 @@ export function createStorage(store = globalThis.localStorage) {
       write(KEYS.rest, rest);
     },
 
+    // ความจำแบบ FSRS ของแต่ละคำ (ใช้เมื่อเลือกตัวกำหนดวันทวนแบบ FSRS ในตั้งค่า) แยกจาก vg:progress
+    loadFsrs() {
+      return validFsrs(read(KEYS.fsrs, null)) || {};
+    },
+    saveFsrs(memory) {
+      write(KEYS.fsrs, memory);
+    },
+    // ผลการตอบแบบย่อ (ใช้คำนวณอัตราจำได้ ดู recall.js) เก็บล่าสุด ANSWER_KEEP ครั้ง
+    loadAnswers() {
+      return validAnswers(read(KEYS.answers, null)) || [];
+    },
+    addAnswer(today, headword, rating, ivl) {
+      const answers = this.loadAnswers();
+      answers.push([today, headword, rating, ivl]);
+      write(KEYS.answers, answers.slice(-ANSWER_KEEP));
+    },
     exportData(version, now = new Date()) {
       return {
         app: "vocab-garden",
@@ -441,6 +490,8 @@ export function createStorage(store = globalThis.localStorage) {
         games: this.loadGames(),
         medals: this.loadMedals(),
         log: this.loadLog(),
+        answers: this.loadAnswers(),
+        fsrs: this.loadFsrs(),
       };
     },
     // คืนจำนวนคำที่มีหลังนำเข้า หรือโยน Error ถ้าไฟล์ไม่ถูกต้อง
@@ -488,6 +539,18 @@ export function createStorage(store = globalThis.localStorage) {
         }
         write(KEYS.log, merged);
       }
+      // ไฟล์สำรองเก่า (ก่อนเก็บผลการตอบ) ไม่มีผลการตอบ ให้คงของเดิมไว้ ไฟล์ใหม่รวมเข้ากับที่มีอยู่ (ตัดซ้ำ)
+      const answers = data.answers === undefined ? null : validAnswers(data.answers);
+      if (answers) write(KEYS.answers, merge ? mergeAnswers(this.loadAnswers(), answers) : answers);
+      // ความจำแบบ FSRS: ตามการ์ดที่ถูกเลือก (ไฟล์สำรองเก่าไม่มีค่านี้ แอปจะคำนวณเริ่มต้นจากการ์ดเอง)
+      const fsrs = data.fsrs === undefined ? {} : validFsrs(data.fsrs) || {};
+      if (merge) {
+        const memory = this.loadFsrs();
+        for (const [headword, entry] of Object.entries(fsrs)) {
+          if (!local[headword] || cards[headword] === incoming[headword]) memory[headword] = entry;
+        }
+        this.saveFsrs(memory);
+      } else this.saveFsrs(fsrs);
       return Object.keys(cards).length;
     },
 

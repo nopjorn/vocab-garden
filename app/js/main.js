@@ -28,6 +28,7 @@ import {
   NEW_PER_DAY_CHOICES,
   NOTE_MAX,
   QUIZ_MODE_CHOICES,
+  SCHEDULER_CHOICES,
   REVIEW_CAP_CHOICES,
   ROUND_SIZE_CHOICES,
   MENU_POSITION_CHOICES,
@@ -38,7 +39,9 @@ import {
 } from "./storage.js";
 import { entriesSince, inlineParts, parseChangelog } from "./changelog.js";
 import { issueUrl } from "./report.js";
+import { fsrsGrade } from "./fsrs.js";
 import { recentDays, stageCounts, streakOf, totalReviews } from "./stats.js";
+import { recallBetween, recallStats } from "./recall.js";
 import { SUPPORT_LINKS } from "./support.js";
 import { isNewer, parseSwVersion } from "./update.js";
 
@@ -55,6 +58,7 @@ const state = {
   cards: storage.loadCards(),
   settings: storage.loadSettings(),
   notes: storage.loadNotes(),
+  fsrs: storage.loadFsrs(),
   session: null,
 };
 
@@ -263,6 +267,7 @@ function levelItems() {
 // สรุปสัปดาห์ที่แล้ว: โชว์ที่หน้าหลังครั้งแรกของสัปดาห์ใหม่ จนกว่าจะกดปิด (สัปดาห์ที่ไม่ได้ท่องเลยไม่โชว์)
 function renderWeekly(today, active) {
   const report = weeklyReport(active, storage.loadLog(), today, storage.loadWeekSeen());
+  const answers = storage.loadAnswers();
   $("weekly").hidden = !report;
   if (!report) return;
   const { week, previous } = report;
@@ -273,6 +278,8 @@ function renderWeekly(today, active) {
     lines.push(`🌱 ปลูกใหม่ ${week.planted} คำ`, `🌳 โตเป็นต้นไม้ใหญ่ ${week.trees} ต้น`);
     if (week.rate !== null) lines.push(`🎯 ตอบจำได้ ${week.rate}%`);
   }
+  const recall = recallBetween(answers, week.start, week.start + 6);
+  if (recall.rate !== null) lines.push(`🧠 คำที่เคยเรียนแล้ว จำได้ ${recall.rate}% (แม่น ${recall.good} · พอจำได้ ${recall.hard} · ลืม ${recall.again})`);
   $("weekly-list").replaceChildren(...lines.map((line) => el("li", "", line)));
   $("weekly-dismiss").onclick = () => {
     storage.saveWeekSeen(report.markSeen);
@@ -680,6 +687,15 @@ function celebrate(word, before, after, rating) {
   }
 }
 
+// กำหนดวันทวนตามตัวกำหนดที่เลือกในตั้งค่า (แบบเดิม หรือ FSRS ที่เก็บความจำแยกไว้ใน vg:fsrs)
+function schedule(word, before, rating, day) {
+  if (state.settings.scheduler !== "fsrs") return grade(before, rating, day, Math.random);
+  const result = fsrsGrade(before, state.fsrs[word.headword], rating, day, Math.random);
+  state.fsrs[word.headword] = result.mem;
+  storage.saveFsrs(state.fsrs);
+  return result.card;
+}
+
 function answer(rating) {
   const session = state.session;
   const word = session.queue.shift();
@@ -688,11 +704,12 @@ function answer(rating) {
 
   // โหมดฝึกไม่แตะความคืบหน้า ประวัติ หรือเป้าหมายของวัน
   if (!session.practice) {
-    card = grade(before, rating, session.day, Math.random);
+    card = schedule(word, before, rating, session.day);
     state.cards[word.headword] = card;
     storage.saveCards(state.cards);
     updateAppBadge();
     const count = storage.addReview(session.day);
+    storage.addAnswer(session.day, word.headword, rating, before ? before.ivl : 0);
     storage.addLog(session.day, { n: before ? 0 : 1, t: stageMove(before, card)?.stage.id === "tree" ? 1 : 0, a: rating === AGAIN ? 1 : 0 });
     if (!before) storage.saveNewCount(session.day, storage.newCountToday(session.day) + 1);
     session.answered += 1;
@@ -1188,10 +1205,38 @@ function renderGarden() {
   );
   $("g-week").setAttribute("aria-label", `ทวน 7 วันล่าสุด: ${week.map((entry) => entry.count).join(", ")} ครั้ง`);
   $("g-empty").hidden = totalReviews(days) > 0;
+  renderRecall(today);
   renderCalendar(active, today, rest.frozen);
   renderPlots(today);
   renderLeeches();
   renderMedals();
+}
+
+// อัตราจำได้ย้อนหลัง RECALL_DAYS วัน (นับเฉพาะคำที่เคยเรียนแล้ว) แยกตามระยะของต้นไม้ก่อนตอบ
+function renderRecall(today) {
+  const stats = recallStats(storage.loadAnswers(), today);
+  $("g-recall-empty").hidden = stats.total > 0;
+  $("g-recall-body").hidden = stats.total === 0;
+  if (stats.total === 0) return;
+  $("g-recall-rate").textContent = `${stats.rate}%`;
+  $("g-recall-sub").textContent = `จำได้ ${stats.remembered} จาก ${stats.total} ครั้งที่ทวนคำที่เคยเรียนแล้ว`;
+  const names = { sprout: "ต้นอ่อน", growing: "กำลังโต", tree: "ต้นไม้ใหญ่" };
+  $("g-recall-stages").replaceChildren(
+    ...Object.entries(stats.byStage)
+      .filter(([, bucket]) => bucket.total > 0)
+      .map(([id, bucket]) => {
+        const row = el("li", "stage-row");
+        const bar = el("div", "stage-bar");
+        const fill = el("span", `seg seg-${id}`);
+        fill.style.width = `${bucket.rate}%`;
+        bar.append(fill);
+        const name = el("span", "stage-name");
+        name.append(treeEl(id), ` ${names[id]}`);
+        row.append(name, bar, el("strong", "stage-count", `${bucket.rate}%`));
+        row.title = `จำได้ ${bucket.remembered} จาก ${bucket.total} ครั้ง`;
+        return row;
+      }),
+  );
 }
 
 // ปฏิทินสวน: ช่องละหนึ่งวัน สีเข้มตามจำนวนที่ทวน (รวมวันที่เล่นเกม) คอลัมน์ละหนึ่งสัปดาห์
@@ -1623,6 +1668,7 @@ const SPEECH_RATE_LABELS = { 0.7: "ช้า", 0.9: "ปกติ", 1.1: "เร
 const THEME_LABELS = { auto: "ตามเครื่อง", light: "สว่าง", dark: "มืด" };
 const TEXT_SIZE_LABELS = { normal: "ปกติ", large: "ใหญ่" };
 const MENU_POSITION_LABELS = { bottom: "ด้านล่าง (ลอย)", dock: "ด้านล่าง (ชิดขอบจอ)", top: "ด้านบน" };
+const SCHEDULER_LABELS = { sm2: "แบบเดิม (SM-2 ฉบับย่อ)", fsrs: "FSRS (ทดลอง)" };
 const QUIZ_MODE_LABELS = { flip: "พลิกการ์ด (แบบเดิม)", mixed: "ผสมหลายแบบ" };
 const DAILY_GOAL_LABELS = Object.fromEntries(DAILY_GOAL_CHOICES.map((count) => [count, `${count} ครั้ง`]));
 const REVIEW_CAP_LABELS = Object.fromEntries(REVIEW_CAP_CHOICES.map((count) => [count, count ? `ไม่เกิน ${count} ครั้ง` : "ไม่จำกัด"]));
@@ -1662,6 +1708,7 @@ function renderSettings() {
   fillSelect($("text-size"), TEXT_SIZE_CHOICES, state.settings.textSize, TEXT_SIZE_LABELS);
   fillSelect($("menu-position"), MENU_POSITION_CHOICES, state.settings.menuPosition, MENU_POSITION_LABELS);
   fillSelect($("quiz-mode"), QUIZ_MODE_CHOICES, state.settings.quizMode, QUIZ_MODE_LABELS);
+  fillSelect($("scheduler"), SCHEDULER_CHOICES, state.settings.scheduler, SCHEDULER_LABELS);
   $("quiz-typing").checked = state.settings.quizTyping;
   fillSelect($("daily-goal"), DAILY_GOAL_CHOICES, state.settings.dailyGoal, DAILY_GOAL_LABELS);
   fillSelect($("review-cap"), REVIEW_CAP_CHOICES, state.settings.reviewCap, REVIEW_CAP_LABELS);
@@ -1825,6 +1872,7 @@ function reloadFromStorage() {
   state.cards = storage.loadCards();
   state.settings = storage.loadSettings();
   state.notes = storage.loadNotes();
+  state.fsrs = storage.loadFsrs();
   applyAppearance();
   renderSettings();
   updateAppBadge();
@@ -2138,6 +2186,7 @@ function bindEvents() {
   $("text-size").addEventListener("change", (event) => updateSetting({ textSize: event.target.value }));
   $("menu-position").addEventListener("change", (event) => updateSetting({ menuPosition: event.target.value }));
   $("quiz-mode").addEventListener("change", (event) => updateSetting({ quizMode: event.target.value }));
+  $("scheduler").addEventListener("change", (event) => updateSetting({ scheduler: event.target.value }));
   $("quiz-typing").addEventListener("change", (event) => updateSetting({ quizTyping: event.target.checked }));
   $("daily-goal").addEventListener("change", (event) => {
     updateSetting({ dailyGoal: Number(event.target.value) });

@@ -151,6 +151,15 @@ class RepositoryTest(unittest.TestCase):
         version = versioning.current_version(ROOT)
         versioning.check_changelog((ROOT / "CHANGELOG.md").read_text(encoding="utf-8"), version)
 
+    def test_every_version_follows_the_previous_one_and_categories_are_not_repeated(self):
+        # กันหัวข้อเวอร์ชันถูกเขียนทับ (เคยเกิดกับ 0.47.1) ซึ่งทำให้เวอร์ชันข้ามขั้นหรือหมวดซ้ำในเวอร์ชันเดียว
+        entries = versioning.parse_changelog((ROOT / "CHANGELOG.md").read_text(encoding="utf-8"))
+        for newer, older in zip(entries, entries[1:]):
+            self.assertIn(newer.version, versioning.next_versions(older.version), f"{older.version} → {newer.version}")
+        for entry in entries:
+            headings = [line for line in entry.body.splitlines() if line.startswith("### ")]
+            self.assertEqual(len(headings), len(set(headings)), f"เวอร์ชัน {entry.version} มีหมวดซ้ำ")
+
 
 if __name__ == "__main__":
     unittest.main()

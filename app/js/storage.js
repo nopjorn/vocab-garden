@@ -283,10 +283,27 @@ export function createStorage(store = globalThis.localStorage) {
       return fallback;
     }
   };
-  const write = (key, value) => target.setItem(key, JSON.stringify(value));
+  // บันทึกไม่สำเร็จ (เช่น พื้นที่เต็ม ซึ่งทุก repo ใต้ nopjorn.github.io ใช้ร่วมกัน) ต้องไม่ทำให้รอบท่องค้าง
+  // ปกติแจ้งผ่าน onWriteError แล้วไปต่อ แต่ตอนนำเข้าไฟล์ (strict) ต้องโยน Error เพื่อไม่ให้บอกว่านำเข้าสำเร็จทั้งที่ไม่ได้เก็บ
+  const hooks = { onWriteError: null };
+  let strict = false;
+  const write = (key, value) => {
+    try {
+      target.setItem(key, JSON.stringify(value));
+      return true;
+    } catch (error) {
+      if (strict) throw new Error("บันทึกข้อมูลไม่สำเร็จ พื้นที่เก็บข้อมูลของเบราว์เซอร์อาจเต็ม");
+      hooks.onWriteError?.(error);
+      return false;
+    }
+  };
 
   return {
     persistent,
+
+    setWriteErrorHandler(handler) {
+      hooks.onWriteError = handler;
+    },
 
     loadCards() {
       const saved = read(KEYS.progress, null);
@@ -526,7 +543,15 @@ export function createStorage(store = globalThis.localStorage) {
     },
     // คืนจำนวนคำที่มีหลังนำเข้า หรือโยน Error ถ้าไฟล์ไม่ถูกต้อง
     // merge = false: ทับของเดิมตามไฟล์ (กู้คืน) · merge = true: รวมกับที่มี การ์ดคำเดียวกันเอาฝั่งที่ตอบล่าสุด (ซิงก์ข้ามเครื่อง)
-    importData(data, { merge = false } = {}) {
+    importData(data, options = {}) {
+      strict = true;
+      try {
+        return this.importDataStrict(data, options);
+      } finally {
+        strict = false;
+      }
+    },
+    importDataStrict(data, { merge = false } = {}) {
       if (!data || data.app !== "vocab-garden" || data.schema !== SCHEMA) {
         throw new Error("ไฟล์นี้ไม่ใช่ไฟล์สำรองของ Vocab Garden");
       }

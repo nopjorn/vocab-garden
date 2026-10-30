@@ -311,3 +311,41 @@ test("the menu position defaults to the floating bottom bar and only accepts bot
   target.saveSettings({ ...target.loadSettings(), menuPosition: "left" });
   assert.equal(target.loadSettings().menuPosition, "bottom");
 });
+
+function fullStore() {
+  const store = fakeStore();
+  store.setItem = (key) => {
+    if (key !== "vg:test") throw new DOMException("quota", "QuotaExceededError");
+  };
+  return store;
+}
+
+test("a failed save does not throw and reports the error once per failure", () => {
+  const storage = createStorage(fullStore());
+  const errors = [];
+  storage.setWriteErrorHandler((error) => errors.push(error.name));
+  assert.doesNotThrow(() => storage.saveCards({ the: { due: 1, ivl: 1, ease: 2.5, reps: 1, lapses: 0 } }));
+  assert.deepEqual(errors, ["QuotaExceededError"]);
+});
+
+test("importing a backup fails loudly when the data cannot be saved", () => {
+  const source = createStorage(fakeStore());
+  source.saveCards({ the: { due: 1, ivl: 1, ease: 2.5, reps: 1, lapses: 0 } });
+  const backup = source.exportData("0.0.0");
+  const storage = createStorage(fullStore());
+  assert.throws(() => storage.importData(backup), /บันทึกข้อมูลไม่สำเร็จ/);
+  // หลังนำเข้าไม่สำเร็จ การบันทึกปกติกลับมาไม่โยน error
+  assert.doesNotThrow(() => storage.saveCards({}));
+});
+
+test("two storage objects on the same store see each other's saved cards (what a second tab relies on)", () => {
+  const store = fakeStore();
+  const tabA = createStorage(store);
+  const tabB = createStorage(store);
+  const card = { due: 5, ivl: 3, ease: 2.5, reps: 1, lapses: 0 };
+  tabA.saveCards({ the: card });
+  const latest = tabB.loadCards();
+  latest.be = card;
+  tabB.saveCards(latest);
+  assert.deepEqual(Object.keys(tabA.loadCards()).sort(), ["be", "the"]);
+});

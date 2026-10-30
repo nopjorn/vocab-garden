@@ -5,7 +5,7 @@ import { launchConfetti } from "../confetti.js";
 import { EXAM_COUNT, TIERS, buildExam, examMedalIds, examReady, rescheduleMissed, tierOf } from "../exam.js";
 import { dayNumber } from "../srs.js";
 
-let $, el, show, toast, fx, state, storage, checkMedals;
+let $, el, show, toast, fx, state, storage, checkMedals, refreshShared;
 
 const exam = { level: null, items: [], index: 0, results: [], answered: false };
 
@@ -89,6 +89,7 @@ function finishExam() {
   const tier = tierOf(score);
   const missed = exam.items.filter((_, index) => !exam.results[index]).map((item) => item.word);
 
+  refreshShared(); // อ่านค่าล่าสุดก่อนแก้ เผื่อเปิดแอปไว้หลายแท็บ
   // คำที่ตอบผิดถูกนัดทวนเร็วขึ้น ระยะห่างการทวนไม่เปลี่ยน
   missed.forEach((word) => {
     state.cards[word.headword] = rescheduleMissed(state.cards[word.headword], today);
@@ -123,7 +124,7 @@ function finishExam() {
 }
 
 export function bind(ctx) {
-  ({ $, el, show, toast, fx, state, storage, checkMedals } = ctx);
+  ({ $, el, show, toast, fx, state, storage, checkMedals, refreshShared } = ctx);
   $("exam-options").addEventListener("click", (event) => {
     const button = event.target.closest(".quiz-option");
     if (button) chooseExamOption(Number(button.dataset.index));

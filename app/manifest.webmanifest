@@ -1,7 +1,7 @@
 {
   "name": "Vocab Garden",
   "short_name": "Vocab Garden",
-  "description": "ท่องศัพท์ภาษาอังกฤษพื้นฐานจาก NGSL ใช้ฟรี",
+  "description": "ท่องศัพท์ภาษาอังกฤษพื้นฐานจาก NGSL 1.2 ใช้ฟรี",
   "lang": "th",
   "start_url": "./",
   "scope": "./",

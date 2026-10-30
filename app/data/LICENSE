@@ -27,6 +27,9 @@ Changes made to the NGSL
   file writes "i").
 - Added Thai meanings, parts of speech, original example sentences with
   Thai translations, and usage notes.
+- Added an "emoji" column: one mnemonic emoji for concrete words (for
+  example house, child, write). It is our own addition and is not part of
+  the NGSL.
 - Added frequency.tsv: the "Adjusted Frequency per Million" value of each
   ranked word, copied from "NGSL 1.2 with basic statistics" (used only to
   see frequency ranking, e.g. to estimate text coverage).

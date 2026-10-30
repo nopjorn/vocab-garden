@@ -67,6 +67,15 @@ const state = {
 
 const $ = (id) => document.getElementById(id);
 
+// ความคืบหน้า ความจำ FSRS โน้ต และการตั้งค่า ถูกถือไว้ในหน่วยความจำของแต่ละแท็บ ถ้าเปิดแอปไว้หลายแท็บ
+// ต้องอ่านค่าล่าสุดจาก storage ก่อนแก้แล้วเขียนกลับทุกครั้ง ไม่งั้นแท็บที่เปิดค้างไว้จะเขียนทับงานของแท็บอื่น
+function refreshShared() {
+  state.cards = storage.loadCards();
+  state.settings = storage.loadSettings();
+  state.notes = storage.loadNotes();
+  state.fsrs = storage.loadFsrs();
+}
+
 function el(tag, className, text) {
   const node = document.createElement(tag);
   if (className) node.className = className;
@@ -769,6 +778,7 @@ function schedule(word, before, rating, day) {
 
 function answer(rating) {
   const session = state.session;
+  if (!session.practice) refreshShared();
   const word = session.queue.shift();
   const before = state.cards[word.headword];
   let card = before;
@@ -849,6 +859,7 @@ function continueRound() {
 function markKnown() {
   const session = state.session;
   if (session.practice) return;
+  refreshShared();
   const word = session.queue.shift();
   const before = state.cards[word.headword];
   state.cards[word.headword] = knownCard(before, session.day);
@@ -1554,6 +1565,7 @@ const canSkip = (word) => stageOf(state.cards[word.headword]).id !== "tree";
 
 // ข้ามคำที่ผู้เรียนรู้อยู่แล้วให้เป็นต้นไม้ใหญ่เลย (ทวนอีกทีในอีก 30 วัน) ไม่นับเป็นการทวนของวัน
 function skipWordsAsKnown(words) {
+  refreshShared();
   const day = dayNumber();
   let fresh = 0;
   let grown = 0;
@@ -1847,6 +1859,7 @@ function fillSelect(select, choices, current, labels) {
 }
 
 function updateSetting(change) {
+  refreshShared();
   state.settings = { ...state.settings, ...change };
   storage.saveSettings(state.settings);
   applyAppearance();
@@ -2131,7 +2144,7 @@ const loaded = {};
 const pending = {};
 
 // ของที่หน้าเหล่านี้ใช้ร่วมกับ main.js
-const screenContext = () => ({ $, el, show, toast, fx, state, storage, speakWord, translatedWords, poolOrBack, checkMedals, updateSetting, playPool, playFilterText, fillSelect });
+const screenContext = () => ({ $, el, show, toast, fx, state, storage, speakWord, translatedWords, poolOrBack, checkMedals, updateSetting, playPool, playFilterText, fillSelect, refreshShared });
 
 function screenFor(page, argument) {
   if (page === "exam" || page === "placement") return page;
@@ -2370,11 +2383,13 @@ function bindEvents() {
   });
 
   $("new-per-day").addEventListener("change", (event) => {
+    refreshShared();
     state.settings = { ...state.settings, newPerDay: Number(event.target.value) };
     storage.saveSettings(state.settings);
     toast(`ตั้งคำใหม่เป็นวันละ ${state.settings.newPerDay} คำแล้ว`);
   });
   $("start-level").addEventListener("change", (event) => {
+    refreshShared();
     state.settings = { ...state.settings, startLevel: Number(event.target.value) };
     storage.saveSettings(state.settings);
     toast(`คำใหม่จะมาจากแปลง ${state.settings.startLevel} เป็นต้นไป`);
@@ -2585,6 +2600,52 @@ async function registerServiceWorker() {
   }
 }
 
+// ---------- ข้ามวัน หลายแท็บ และพื้นที่เก็บข้อมูลเต็ม ----------
+
+// หน้าที่วาดใหม่ได้เองโดยไม่รบกวนผู้ใช้ (เกมที่เล่นค้างอยู่ไม่ถูกเริ่มใหม่)
+function redrawablePage() {
+  const page = location.hash.replace(/^#\/?/, "").split("/")[0] || "home";
+  return ["home", "garden", "settings"].includes(page);
+}
+
+// แอปที่เปิดค้างไว้ข้ามตี 4 (เช่น แอปบนหน้าจอโฮมที่ถูกพักไว้) ต้องขึ้นวันใหม่เอง ไม่ใช่ค้างตัวเลขของเมื่อวานจนกว่าจะกดเปลี่ยนหน้า
+let shownDay = dayNumber();
+function checkNewDay() {
+  const day = dayNumber();
+  if (day === shownDay || state.words.length === 0) return;
+  shownDay = day;
+  refreshShared();
+  if (state.session) {
+    // รอบท่องที่ค้างข้ามวันยังบันทึกเป็นวันเดิม จบรอบนั้น (ที่ตอบไปแล้วบันทึกครบ) แล้วเริ่มวันใหม่จากหน้าหลัก
+    state.session = null;
+    toast("ขึ้นวันใหม่แล้ว 🌅 ที่ตอบไปแล้วบันทึกไว้ครบ เริ่มรอบของวันนี้ได้เลย");
+    if (location.hash === "#/") route();
+    else location.hash = "#/";
+  } else if (redrawablePage()) {
+    route();
+  }
+}
+
+// แท็บอื่นเปลี่ยนความคืบหน้า (เปิดแอปหลายแท็บ) อ่านค่าใหม่เข้ามา จะได้ไม่เขียนทับงานของแท็บอื่น
+let storageRedraw = 0;
+window.addEventListener("storage", (event) => {
+  if ((event.key !== null && !event.key.startsWith("vg:")) || event.newValue === event.oldValue) return;
+  refreshShared();
+  // รอสักครู่ให้เขียนครบหลายคีย์ก่อนค่อยวาดใหม่ (การวาดหน้าหลักเขียนข้อมูลบางอย่างด้วย จึงไม่วาดทันทีทุกครั้ง)
+  clearTimeout(storageRedraw);
+  storageRedraw = setTimeout(() => {
+    if (!state.session && state.words.length > 0 && redrawablePage()) route();
+  }, 300);
+});
+
+// เขียนข้อมูลไม่สำเร็จ (พื้นที่เต็ม): แจ้งเตือนให้ส่งออกไฟล์สำรอง ไม่เตือนถี่เกินไป
+let lastWriteWarning = 0;
+storage.setWriteErrorHandler(() => {
+  if (Date.now() - lastWriteWarning < 20000) return;
+  lastWriteWarning = Date.now();
+  toast("⚠️ บันทึกไม่สำเร็จ พื้นที่เก็บข้อมูลของเบราว์เซอร์อาจเต็ม ไปที่ ตั้งค่า แล้วส่งออกไฟล์สำรองไว้ก่อนนะ");
+});
+
 document.querySelectorAll(".app-version").forEach((node) => {
   node.textContent = self.VG_VERSION;
 });
@@ -2596,8 +2657,12 @@ renderSupport();
 lockZoomInInstalledApp();
 $("check-update").onclick = () => checkForNewVersion({ manual: true });
 document.addEventListener("visibilitychange", () => {
-  if (document.visibilityState === "visible") checkForNewVersion();
+  if (document.visibilityState === "visible") {
+    checkNewDay();
+    checkForNewVersion();
+  }
 });
+setInterval(checkNewDay, 60 * 1000);
 setInterval(checkForNewVersion, UPDATE_CHECK_MS);
 checkForNewVersion();
 bindEvents();

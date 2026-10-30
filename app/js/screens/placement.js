@@ -5,7 +5,7 @@ import { canSpeak } from "../speech.js";
 import { buildPlacement, estimateKnown, knownWords, recommendLevel, scorePlacement } from "../placement.js";
 import { dayNumber, knownCard } from "../srs.js";
 
-let $, el, show, toast, fx, state, storage, speakWord, translatedWords, checkMedals, updateSetting;
+let $, el, show, toast, fx, state, storage, speakWord, translatedWords, checkMedals, updateSetting, refreshShared;
 
 const placement = { items: [], answers: [], index: 0, result: null };
 
@@ -100,9 +100,10 @@ function skipPlacementKnown() {
   const words = placement.fresh || [];
   if (words.length === 0) return;
   if (!confirm(`ข้าม ${words.length} คำที่ตอบว่ารู้จักให้เป็นต้นไม้ใหญ่เลยใช่ไหม? (คำเหล่านี้จะมาทวนอีกทีในอีก 30 วัน)`)) return;
+  refreshShared(); // อ่านค่าล่าสุดก่อนแก้ เผื่อเปิดแอปไว้หลายแท็บ
   const day = dayNumber();
   words.forEach((word) => {
-    state.cards[word.headword] = knownCard(null, day);
+    state.cards[word.headword] = knownCard(state.cards[word.headword], day);
   });
   storage.saveCards(state.cards);
   storage.addLog(day, { n: words.length, t: words.length });
@@ -113,7 +114,7 @@ function skipPlacementKnown() {
 }
 
 export function bind(ctx) {
-  ({ $, el, show, toast, fx, state, storage, speakWord, translatedWords, checkMedals, updateSetting } = ctx);
+  ({ $, el, show, toast, fx, state, storage, speakWord, translatedWords, checkMedals, updateSetting, refreshShared } = ctx);
   $("placement-start").addEventListener("click", startPlacement);
   $("placement-yes").addEventListener("click", () => answerPlacement(true));
   $("placement-no").addEventListener("click", () => answerPlacement(false));

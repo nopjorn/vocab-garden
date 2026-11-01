@@ -395,7 +395,7 @@ function openGift() {
   $("gift-title").textContent = gift.title;
   $("gift-rarity").textContent = `${rarity.stars} ${rarity.label}`;
   $("gift-rarity").dataset.rarity = gift.rarity;
-  $("gift-progress").textContent = `เก็บของขวัญได้ ${ownedGifts(storage.loadMedals()).length}/${GIFTS.length} ชิ้น ดูทั้งหมดได้ที่ สวน → ดอกไม้และของแต่งสวน`;
+  $("gift-progress").textContent = `เก็บของขวัญได้ ${ownedGifts(storage.loadMedals()).length}/${GIFTS.length} ชิ้น ดูทั้งหมดได้ที่ สวน → ภาพรวม → ดอกไม้และของแต่งสวน`;
   $("gift-dialog").hidden = false;
   $("gift-open").focus();
 }
@@ -1467,7 +1467,21 @@ function poolOrBack() {
 
 // ---------- สวนของฉัน ----------
 
+// มือถือและ iPad แนวตั้ง: หน้าสวนยาวมาก จึงแบ่งเป็นแท็บย่อย แปลง / ภาพรวม / สถิติ
+// จอกว้างแสดงทุกส่วนพร้อมกันเป็นสองคอลัมน์อยู่แล้ว (เงื่อนไขต้องตรงกับ media query ของจอกว้างใน style.css)
+const WIDE_LAYOUT = matchMedia("(min-width: 960px) and (hover: hover) and (pointer: fine), (min-width: 960px) and (orientation: landscape) and (pointer: coarse)");
+let gardenTab = "plots";
+
+function applyGardenTab() {
+  const tabbed = !WIDE_LAYOUT.matches;
+  $("garden-tabs").hidden = !tabbed;
+  if (tabbed) $("view-garden").dataset.tab = gardenTab;
+  else delete $("view-garden").dataset.tab;
+  document.querySelectorAll("[data-garden-tab]").forEach((button) => button.setAttribute("aria-pressed", String(button.dataset.gardenTab === gardenTab)));
+}
+
 function renderGarden() {
+  applyGardenTab();
   const today = dayNumber();
   const { history: days, active, rest } = refreshHabit(today);
   const { current, best } = streakOf(active, today, rest.frozen);
@@ -2234,6 +2248,14 @@ function bindEvents() {
   $("flip").addEventListener("click", flip);
   $("know").addEventListener("click", markKnown);
   $("undo").addEventListener("click", undoLastAnswer);
+  $("garden-tabs").addEventListener("click", (event) => {
+    const button = event.target.closest("[data-garden-tab]");
+    if (!button) return;
+    gardenTab = button.dataset.gardenTab;
+    applyGardenTab();
+    window.scrollTo(0, 0);
+  });
+  WIDE_LAYOUT.addEventListener("change", applyGardenTab);
   for (const id of ["welcome-start", "welcome-placement", "welcome-close"]) $(id).addEventListener("click", closeWelcome);
   window.addEventListener("beforeinstallprompt", (event) => {
     event.preventDefault();

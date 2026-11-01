@@ -511,6 +511,63 @@ select {
   margin-top: 16px;
 }
 
+/* หน้าตั้งค่าแบ่งเป็นกลุ่มที่พับได้ */
+.settings-group {
+  margin: 12px 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.settings-group > summary {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  gap: 2px 10px;
+  padding: 10px 0;
+  cursor: pointer;
+  list-style: none;
+}
+
+.settings-group > summary::-webkit-details-marker {
+  display: none;
+}
+
+.settings-group > summary::after {
+  content: "▾";
+  grid-column: 2;
+  grid-row: 1 / span 2;
+  color: var(--muted);
+}
+
+.settings-group[open] > summary::after {
+  content: "▴";
+}
+
+.settings-group > summary h2 {
+  margin: 0;
+}
+
+.settings-group[open] {
+  padding-bottom: 16px;
+}
+
+.settings-group h3 {
+  margin: 16px 0 8px;
+  font-size: 1rem;
+}
+
+#view-settings .settings-group .panel + .panel,
+#view-settings .settings-group .fold {
+  margin-top: 12px;
+}
+
+.more > summary {
+  display: inline-block;
+  margin: 4px 0;
+  color: var(--link);
+  font-size: 0.9rem;
+  cursor: pointer;
+}
+
 .panel label[for] {
   font-weight: 600;
   margin-right: 8px;
@@ -3481,6 +3538,51 @@ html[data-text-size="large"] {
   gap: 12px;
   padding: 6px 0;
   border-bottom: 1px solid var(--border);
+}
+
+/* ===== แท็บย่อยของหน้าสวน (เฉพาะจอแคบ main.js ใส่ data-tab ให้) ===== */
+.garden-tabs {
+  display: flex;
+  gap: 6px;
+  margin: 4px 0 12px;
+  padding: 4px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+}
+
+.garden-tabs[hidden] {
+  display: none;
+}
+
+.garden-tabs button {
+  flex: 1;
+  min-height: 40px;
+  padding: 6px 8px;
+  border: 0;
+  border-radius: 999px;
+  background: transparent;
+  box-shadow: none;
+  font-size: 0.95rem;
+}
+
+.garden-tabs button[aria-pressed="true"] {
+  background: var(--btn-bg);
+  color: #fff;
+}
+
+#view-garden[data-tab="plots"] .garden-top > :not(.sky, .page-head, .garden-tabs),
+#view-garden[data-tab="stats"] .garden-top > :not(.sky, .page-head, .garden-tabs),
+#view-garden[data-tab="overview"] .garden-plots > *,
+#view-garden[data-tab="stats"] .garden-plots > *,
+#view-garden[data-tab="overview"] .garden-rest > *,
+#view-garden[data-tab="plots"] .garden-rest > * {
+  display: none !important;
+}
+
+#view-garden[data-tab] .garden-plots > h2:first-child,
+#view-garden[data-tab] .garden-rest > h2:first-child {
+  margin-top: 0.5rem;
 }
 
 /* ===== จอคอมที่ใช้เมาส์ และ iPad แนวนอน (กว้างตั้งแต่ 960px) =====

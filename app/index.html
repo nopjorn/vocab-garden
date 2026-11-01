@@ -246,6 +246,11 @@
         <h1>สวนของฉัน 🌳</h1>
         <button type="button" id="share-garden" class="icon-btn" aria-label="แชร์สวนของฉัน" title="แชร์สวนของฉัน (สร้างรูปสรุปสวน ไม่มีชื่อหรือข้อมูลส่วนตัว)">📤</button>
       </div>
+      <div id="garden-tabs" class="garden-tabs" role="group" aria-label="เลือกส่วนของหน้าสวน" hidden>
+        <button type="button" data-garden-tab="plots">🌳 แปลง</button>
+        <button type="button" data-garden-tab="overview">🏅 ภาพรวม</button>
+        <button type="button" data-garden-tab="stats">📊 สถิติ</button>
+      </div>
 
       <div class="stat-cards">
         <div class="stat-card"><strong id="g-streak">0</strong><span>🔥 วันติดต่อกัน</span></div>
@@ -317,7 +322,7 @@
 
       <section id="g-recall" class="recall" aria-labelledby="g-recall-title">
         <h2 id="g-recall-title">🎯 อัตราจำได้ (30 วันล่าสุด)</h2>
-        <p id="g-recall-empty" class="muted small">ยังไม่มีข้อมูล ทวนคำที่เคยเรียนไปสักพัก ตัวเลขจะขึ้นที่นี่ (เริ่มเก็บตั้งแต่เวอร์ชัน 0.45.0)</p>
+        <p id="g-recall-empty" class="muted small">ยังไม่มีข้อมูล ทวนคำที่เคยเรียนไปสักพัก ตัวเลขจะขึ้นที่นี่</p>
         <div id="g-recall-body" hidden>
           <p class="recall-main"><strong id="g-recall-rate" class="recall-rate"></strong> <span id="g-recall-sub" class="muted small"></span></p>
           <ul id="g-recall-stages" class="stage-rows"></ul>
@@ -344,8 +349,7 @@
 
       <h2>7 วันที่ผ่านมา</h2>
       <div id="g-week" class="week" role="img"></div>
-      <p id="g-empty" class="muted small">ยังไม่มีประวัติการทวน ลองท่องศัพท์สักรอบ แล้วสถิติจะมาขึ้นที่นี่
-        (ประวัตินับตั้งแต่เวอร์ชัน 0.6.0 เป็นต้นไป)</p>
+      <p id="g-empty" class="muted small">ยังไม่มีประวัติการทวน ลองท่องศัพท์สักรอบ แล้วสถิติจะมาขึ้นที่นี่</p>
       </div>
     </section>
 
@@ -826,6 +830,8 @@
     <section id="view-settings" hidden>
       <h1>ตั้งค่า</h1>
 
+      <details id="settings-learn" class="settings-group" open>
+        <summary><h2>📚 การเรียน</h2><span class="muted small">คำใหม่ต่อวัน แปลงเริ่มต้น วิธีทวน เป้าหมาย</span></summary>
       <div class="panel">
         <p>
           <label for="new-per-day">คำใหม่ต่อวัน</label>
@@ -864,41 +870,29 @@
         <div id="wotd-stages" class="flash-statuses"></div>
       </details>
 
-      <h2 id="sound-heading">เสียงอ่าน</h2>
-      <div id="sound-panel" class="panel">
-        <label class="check"><input type="checkbox" id="auto-speak"> เล่นเสียงคำศัพท์อัตโนมัติเมื่อขึ้นการ์ดใหม่</label>
-        <p>
-          <label for="speech-rate">ความเร็วเสียง</label>
-          <select id="speech-rate"></select>
-        </p>
-        <p><button type="button" id="speech-test">🔊 ลองฟัง</button></p>
-        <p class="tip small">บางเครื่อง (เช่น iPhone) อาจต้องแตะหน้าจอหนึ่งครั้งก่อน เสียงจึงจะเล่นอัตโนมัติ
-          เสียงมาจากเครื่องของคุณ ถ้าไม่ได้ยินให้เช็คว่าไม่ได้ปิดเสียงเครื่องไว้</p>
-      </div>
-
-      <h2>วิธีทวน</h2>
+      <h3>วิธีทวน</h3>
       <div class="panel">
         <p>
           <label for="quiz-mode">รูปแบบการทวน</label>
           <select id="quiz-mode"></select>
         </p>
         <label class="check"><input type="checkbox" id="quiz-typing"> ให้พิมพ์คำตอบเองสำหรับต้นไม้ใหญ่ 🌳</label>
-        <p class="tip small">"ผสมหลายแบบ": คำใหม่ยังเป็นการ์ดให้ดูก่อน ต้นอ่อน 🌱 ตอบด้วยการเลือกคำแปล ต้นกำลังโต 🌿
+        <details class="more"><summary>อ่านเพิ่ม</summary><p class="tip small">"ผสมหลายแบบ": คำใหม่ยังเป็นการ์ดให้ดูก่อน ต้นอ่อน 🌱 ตอบด้วยการเลือกคำแปล ต้นกำลังโต 🌿
           เติมคำที่หายไปในประโยคตัวอย่าง ส่วนต้นไม้ใหญ่ 🌳 ดูคำแปลไทยแล้วพิมพ์คำอังกฤษเอง (ถ้าไม่อยากพิมพ์ ปิดช่องด้านบนได้
           ต้นไม้ใหญ่จะเติมคำแทน) ตอบถูกนับเป็น "จำได้แม่น" ตอบผิดหรือกด "ไม่รู้" นับเป็น "ยังจำไม่ได้"
           พิมพ์ถูกแต่ใช้ตัวช่วยใบ้ หรือสะกดผิดแค่ตัวเดียว นับเป็น "พอจำได้"
-          การนึกคำเองช่วยให้จำได้นานกว่าการพลิกดูคำแปลอย่างเดียว</p>
+          การนึกคำเองช่วยให้จำได้นานกว่าการพลิกดูคำแปลอย่างเดียว</p></details>
         <p>
           <label for="scheduler">ตัวกำหนดวันทวน</label>
           <select id="scheduler"></select>
         </p>
-        <p class="tip small">"แบบเดิม" คือ SM-2 ฉบับย่อที่แอปใช้มาตลอด ส่วน "FSRS (ทดลอง)" ใช้แบบจำลองความจำที่คำนวณระยะทวนจากความยากของแต่ละคำ
+        <details class="more"><summary>อ่านเพิ่ม</summary><p class="tip small">"แบบเดิม" คือ SM-2 ฉบับย่อที่แอปใช้มาตลอด ส่วน "FSRS (ทดลอง)" ใช้แบบจำลองความจำที่คำนวณระยะทวนจากความยากของแต่ละคำ
           และโอกาสที่จะจำได้ตอนทวน ใช้ค่าเริ่มต้นของ FSRS-5 ยังไม่ได้ปรับตามข้อมูลของคุณ สลับกลับไปกลับมาได้เสมอ ความคืบหน้าไม่หาย
           คำที่เรียนมาแล้วจะเริ่มจากระยะทวนเดิม ถ้าอยากดูว่าแบบไหนเหมาะกับคุณ ดูที่ "อัตราจำได้" ในหน้าสวน
-          FSRS เป็นผลงานของ Jarrett Ye และชุมชน open-spaced-repetition (ใบอนุญาต MIT) โค้ดในแอปนี้เขียนใหม่ตามสูตรที่เผยแพร่</p>
+          FSRS เป็นผลงานของ Jarrett Ye และชุมชน open-spaced-repetition (ใบอนุญาต MIT) โค้ดในแอปนี้เขียนใหม่ตามสูตรที่เผยแพร่</p></details>
       </div>
 
-      <h2>นิสัยการท่อง</h2>
+      <h3>นิสัยการท่อง</h3>
       <div class="panel">
         <p>
           <label for="daily-goal">เป้าหมายต่อวัน</label>
@@ -913,19 +907,37 @@
           <select id="round-size"></select>
         </p>
         <p class="tip small">แบ่งการท่องเป็นรอบย่อย จบแต่ละรอบจะถามว่าจะไปต่อหรือพักก่อน (ที่ทวนไปแล้วบันทึกไว้เรียบร้อย) เริ่มง่ายขึ้นเพราะแค่ไม่กี่นาทีก็จบรอบได้</p>
-        <p class="tip small">นับเป็นจำนวนครั้งที่ตอบ ถ้าคำค้างทวนเยอะกว่าเพดาน แอปจะทยอยทวนวันละส่วน (เริ่มจากคำที่ค้างนานสุด)
+        <details class="more"><summary>อ่านเพิ่ม</summary><p class="tip small">นับเป็นจำนวนครั้งที่ตอบ ถ้าคำค้างทวนเยอะกว่าเพดาน แอปจะทยอยทวนวันละส่วน (เริ่มจากคำที่ค้างนานสุด)
           และงดคำใหม่ชั่วคราวจนกว่าคำค้างจะเบาลง ตั้ง "ไม่จำกัด" ถ้าอยากทวนให้หมดในวันเดียว
-          การแตะเรียนเฉพาะแปลงจากหน้าหลักไม่ถูกจำกัดด้วยเพดานนี้</p>
+          การแตะเรียนเฉพาะแปลงจากหน้าหลักไม่ถูกจำกัดด้วยเพดานนี้</p></details>
+      </div>
+      </details>
+
+      <details id="settings-sound" class="settings-group">
+        <summary><h2>🔊 เสียง</h2><span class="muted small">เสียงอ่าน ความเร็ว เสียงประกอบ</span></summary>
+      <h3 id="sound-heading">เสียงอ่าน</h3>
+      <div id="sound-panel" class="panel">
+        <label class="check"><input type="checkbox" id="auto-speak"> เล่นเสียงคำศัพท์อัตโนมัติเมื่อขึ้นการ์ดใหม่</label>
+        <p>
+          <label for="speech-rate">ความเร็วเสียง</label>
+          <select id="speech-rate"></select>
+        </p>
+        <p><button type="button" id="speech-test">🔊 ลองฟัง</button></p>
+        <p class="tip small">บางเครื่อง (เช่น iPhone) อาจต้องแตะหน้าจอหนึ่งครั้งก่อน เสียงจึงจะเล่นอัตโนมัติ
+          เสียงมาจากเครื่องของคุณ ถ้าไม่ได้ยินให้เช็คว่าไม่ได้ปิดเสียงเครื่องไว้</p>
       </div>
 
-      <h2>ความสนุก</h2>
+      <h3>เสียงประกอบ</h3>
       <div class="panel">
         <label class="check"><input type="checkbox" id="sound-fx"> เสียงประกอบและแรงสั่นเบา ๆ เวลาตอบถูก ได้คอมโบ หรือต้นไม้โต</label>
         <p class="tip small">ปิดไว้เป็นค่าเริ่มต้น เผื่อคุณท่องในที่สาธารณะ เสียงสร้างในเครื่องไม่มีการโหลดอะไรเพิ่ม
           แรงสั่นใช้ได้เฉพาะ Android (iPhone ไม่รองรับ) ส่วนคอนเฟตตีจะหยุดเองถ้าเครื่องตั้ง "ลดการเคลื่อนไหว"</p>
       </div>
 
-      <h2>หน้าตา</h2>
+      </details>
+
+      <details id="settings-look" class="settings-group">
+        <summary><h2>🎨 หน้าตา</h2><span class="muted small">ธีม ขนาดตัวอักษร ตำแหน่งเมนู</span></summary>
       <div class="panel">
         <p>
           <label for="theme">ธีม</label>
@@ -943,7 +955,10 @@
           ใช้กับมือถือและ iPad (จอคอมที่ใช้เมาส์แสดงเมนูด้านบนอยู่แล้ว)</p>
       </div>
 
-      <h2>เตือนให้มาท่อง</h2>
+      </details>
+
+      <details id="settings-remind" class="settings-group">
+        <summary><h2>⏰ เตือนให้มาท่อง</h2><span class="muted small">นัดในปฏิทิน ตัวเลขบนไอคอนแอป</span></summary>
       <div class="panel">
         <p>สร้างนัดในแอปปฏิทินของเครื่อง ซ้ำทุกวันตามเวลาที่เลือก แล้วแอปปฏิทินจะแจ้งเตือนเอง ไม่ต้องอนุญาตการแจ้งเตือนของเว็บ
           และไม่มีข้อมูลใด ๆ ออกจากเครื่องคุณ</p>
@@ -960,7 +975,10 @@
         </div>
       </div>
 
-      <h2>สำรองความคืบหน้า</h2>
+      </details>
+
+      <details id="settings-backup" class="settings-group">
+        <summary><h2>💾 สำรองและล้างข้อมูล</h2><span class="muted small">ส่งออก นำเข้า สำเนาอัตโนมัติ ล้างความคืบหน้า</span></summary>
       <div class="panel">
         <p>ความคืบหน้าเก็บอยู่ในเครื่องนี้เท่านั้น ส่งออกไฟล์สำรองเก็บไว้ (เลือกบันทึกลงไฟล์ AirDrop หรือส่งเมลได้) หรือใช้ย้ายไปเครื่องอื่นได้</p>
         <p id="backup-last" class="muted small"></p>
@@ -968,9 +986,9 @@
           <button type="button" id="export">ส่งออกไฟล์สำรอง</button>
           <label class="button">นำเข้าไฟล์สำรอง<input type="file" id="import" accept=".json,application/json" hidden></label>
         </div>
-        <p class="tip small">🔄 <strong>ใช้หลายเครื่อง:</strong> นำเข้าไฟล์จะ <strong>รวม</strong> กับความคืบหน้าในเครื่อง
+        <details class="more"><summary>อ่านเพิ่ม</summary><p class="tip small">🔄 <strong>ใช้หลายเครื่อง:</strong> นำเข้าไฟล์จะ <strong>รวม</strong> กับความคืบหน้าในเครื่อง
           คำที่มีทั้งสองฝั่งจะเอาฝั่งที่ตอบล่าสุด ไม่ทับกัน ส่งออกไฟล์ไปเก็บใน iCloud Drive หรือ Google Drive แล้วเปิดนำเข้าที่อีกเครื่องได้
-          (ใช้การตั้งค่าจากไฟล์เฉพาะตอนเครื่องนี้ยังไม่มีความคืบหน้า)</p>
+          (ใช้การตั้งค่าจากไฟล์เฉพาะตอนเครื่องนี้ยังไม่มีความคืบหน้า)</p></details>
         <p class="tip small">💡 บน iPhone และ iPad: Safari กับแอปที่เพิ่มไว้บนหน้าจอโฮมเก็บข้อมูลแยกกัน
           แนะนำให้เปิดจากไอคอนบนหน้าจอโฮมเป็นหลัก ถ้าจะย้าย ให้ใช้ไฟล์สำรอง</p>
         <details id="snapshots" class="snapshots">
@@ -986,10 +1004,11 @@
         </details>
       </div>
 
-      <h2>ล้างข้อมูล</h2>
+      <h3>ล้างข้อมูล</h3>
       <div class="panel">
         <button type="button" id="reset" class="danger">ล้างความคืบหน้าทั้งหมด</button>
       </div>
+      </details>
     </section>
 
     <section id="view-about" hidden>

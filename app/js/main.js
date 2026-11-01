@@ -13,6 +13,7 @@ import { wordOfDay } from "./daily.js";
 import { EXAM_COUNT, bestTier, examReady } from "./exam.js";
 import { DECORATIONS, bloomedLevels, flowerId, flowerOf, ownedDecorations, seasonOf } from "./decor.js";
 import { COMEBACK_DAYS, MEDALS, isEarlyBird, isPerfectRound, newMedals } from "./achievements.js";
+import { GIFTS, RARITIES, giftId, giftedOn, ownedGifts, pickGift } from "./gifts.js";
 import { applySky } from "./sky.js";
 import { treeEl } from "./tree-art.js";
 import { LEECH_LAPSES, PLOT_FILTERS, dueLabel, leechWords, matchesQuery, plantInfo, plantMatchesFilter, plantedInLevel, plotFilterCounts, plotSummary, reviewedToday } from "./garden.js";
@@ -354,9 +355,61 @@ function announceRest({ usedNow, earned, rest }) {
 function checkGoal(day, count) {
   if (count < state.settings.dailyGoal || storage.loadDaily(day).goalDone) return;
   storage.saveGoalDone(day);
-  toast(`🎯 ถึงเป้าวันนี้แล้ว! ทวนไป ${count} ครั้ง`);
+  const gift = giveGift(day);
+  toast(`🎯 ถึงเป้าวันนี้แล้ว! ทวนไป ${count} ครั้ง${gift ? " ได้กล่องของขวัญจากสวน 🎁 เปิดดูได้ตอนจบรอบ" : ""}`);
   launchConfetti();
   fx("finish");
+}
+
+// ---------- ของขวัญจากสวน ----------
+
+// ถึงเป้าของวันแล้วได้ของขวัญ 1 ชิ้น (สุ่มจากของที่ยังไม่มี) บันทึกทันทีกันหาย แล้วรอให้ผู้ใช้กดเปิดเอง
+let pendingGift = null;
+
+function giveGift(day) {
+  const medals = storage.loadMedals();
+  if (giftedOn(medals, day)) return null;
+  const gift = pickGift(medals);
+  if (!gift) return null;
+  storage.addMedals([giftId(gift)], day);
+  pendingGift = gift;
+  renderGiftButtons();
+  return gift;
+}
+
+function renderGiftButtons() {
+  $("done-gift").hidden = !pendingGift;
+  $("home-gift").hidden = !pendingGift;
+}
+
+function openGift() {
+  if (!pendingGift) return;
+  const gift = pendingGift;
+  const rarity = RARITIES[gift.rarity];
+  $("gift-box").hidden = false;
+  $("gift-reveal").hidden = true;
+  $("gift-open").hidden = false;
+  $("gift-close").hidden = true;
+  $("gift-emoji").textContent = gift.emoji;
+  $("gift-title").textContent = gift.title;
+  $("gift-rarity").textContent = `${rarity.stars} ${rarity.label}`;
+  $("gift-rarity").dataset.rarity = gift.rarity;
+  $("gift-progress").textContent = `เก็บของขวัญได้ ${ownedGifts(storage.loadMedals()).length}/${GIFTS.length} ชิ้น ดูทั้งหมดได้ที่ สวน → ดอกไม้และของแต่งสวน`;
+  $("gift-dialog").hidden = false;
+  $("gift-open").focus();
+}
+
+function revealGift() {
+  const legendary = pendingGift?.rarity === "legendary";
+  pendingGift = null;
+  renderGiftButtons();
+  $("gift-box").hidden = true;
+  $("gift-reveal").hidden = false;
+  $("gift-open").hidden = true;
+  $("gift-close").hidden = false;
+  $("gift-close").focus();
+  launchConfetti(legendary ? 64 : 24);
+  fx(legendary ? "finish" : "grow");
 }
 
 // ตัวเลขบนไอคอนแอป = จำนวนคำที่ถึงเวลาทวนทั้งหมด (ไม่ถูกจำกัดด้วยเพดานต่อวัน) ล้างเมื่อปิดตัวเลือกหรือไม่มีคำค้าง
@@ -408,6 +461,7 @@ function renderHome() {
   announceRest(habit);
   $("garden-total").textContent = `แปลแล้ว ${translated.length.toLocaleString()} / ${state.words.length.toLocaleString()} คำ`;
 
+  renderGiftButtons();
   renderMissions(today);
   renderWeekly(today, habit.active);
   renderWordOfDay(today);
@@ -840,6 +894,7 @@ function pauseRound() {
   $("done-more").hidden = true;
   $("done-continue").hidden = false;
   $("done-undo").hidden = !lastAnswer;
+  renderGiftButtons();
   $("done-continue").textContent = `▶️ ไปต่ออีก ${Math.min(state.settings.roundSize, session.queue.length)} ใบ`;
   $("done-home").textContent = "พักก่อน กลับไปดูสวน 🌳";
   $("done-home").classList.remove("primary");
@@ -1016,6 +1071,7 @@ function finishSession() {
   $("done-growth").hidden = lines.length === 0;
 
   $("done-undo").hidden = !lastAnswer;
+  renderGiftButtons();
   const { practice, answered: total, hadAgain, away } = state.session;
   state.session = null;
   show("done");
@@ -1123,9 +1179,10 @@ function checkFlowers() {
 function renderDecor(unlocked) {
   const flowers = LEVELS.filter((level) => flowerId(level) in unlocked);
   const decorations = ownedDecorations(unlocked);
+  const gifts = ownedGifts(unlocked);
   const season = seasonOf();
-  $("decor-count").textContent = `${flowers.length + decorations.length}/${LEVELS.length + DECORATIONS.length}`;
-  $("decor-preview").textContent = [season?.emoji, ...flowers.map((level) => flowerOf(level, LEVELS).emoji), ...decorations.map((decoration) => decoration.emoji)]
+  $("decor-count").textContent = `${flowers.length + decorations.length + gifts.length}/${LEVELS.length + DECORATIONS.length + GIFTS.length}`;
+  $("decor-preview").textContent = [season?.emoji, ...flowers.map((level) => flowerOf(level, LEVELS).emoji), ...decorations.map((decoration) => decoration.emoji), ...gifts.map((gift) => gift.emoji)]
     .filter(Boolean)
     .join("");
   $("season-note").hidden = !season;
@@ -1150,6 +1207,16 @@ function renderDecor(unlocked) {
     ...DECORATIONS.map((decoration) =>
       chip(decoration.emoji, decoration.title, `ได้จากเหรียญ "${medalTitle(decoration.medal)}"`, decoration.medal in unlocked),
     ),
+  );
+  // ของขวัญที่ยังไม่ได้ไม่บอกชื่อ ให้ลุ้นตอนเปิดกล่อง
+  $("gift-list").replaceChildren(
+    ...GIFTS.map((gift) => {
+      const got = giftId(gift) in unlocked;
+      const rarity = RARITIES[gift.rarity];
+      const item = chip(gift.emoji, got ? gift.title : rarity.stars, "สุ่มได้จากกล่องของขวัญเมื่อทำครบเป้าของวัน", got);
+      if (!got) item.firstChild.textContent = "❔";
+      return item;
+    }),
   );
 }
 
@@ -2110,6 +2177,12 @@ function bindEvents() {
   $("flip").addEventListener("click", flip);
   $("know").addEventListener("click", markKnown);
   $("undo").addEventListener("click", undoLastAnswer);
+  $("done-gift").addEventListener("click", openGift);
+  $("home-gift").addEventListener("click", openGift);
+  $("gift-open").addEventListener("click", revealGift);
+  $("gift-close").addEventListener("click", () => {
+    $("gift-dialog").hidden = true;
+  });
   $("done-undo").addEventListener("click", undoLastAnswer);
   $("report").addEventListener("click", (event) => event.stopPropagation());
   $("share-garden").addEventListener("click", shareGarden);

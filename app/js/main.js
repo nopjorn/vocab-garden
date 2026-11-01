@@ -68,10 +68,20 @@ function el(tag, className, text) {
   return node;
 }
 
+let shownView = null;
+
 function show(view) {
   VIEWS.forEach((name) => {
     $(`view-${name}`).hidden = name !== view;
   });
+  // เปลี่ยนหน้า: หน้าใหม่ค่อย ๆ ปรากฏ (CSS .view-enter หยุดเองเมื่อเครื่องตั้ง "ลดการเคลื่อนไหว") วาดหน้าเดิมซ้ำไม่ต้องเล่น
+  if (view !== shownView) {
+    const page = $(`view-${view}`);
+    page.classList.remove("view-enter");
+    void page.offsetWidth; // ให้แอนิเมชันเริ่มใหม่ทุกครั้ง
+    page.classList.add("view-enter");
+    shownView = view;
+  }
   document.body.classList.toggle("studying", view === "study");
   document.querySelectorAll("[data-tab]").forEach((tab) => {
     if (tab.dataset.tab === (TAB_OF_VIEW[view] || view)) tab.setAttribute("aria-current", "page");

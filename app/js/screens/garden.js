@@ -443,6 +443,10 @@ export function bind(ctx) {
     if (!button) return;
     gardenTab = button.dataset.gardenTab;
     applyGardenTab();
+    const page = $("view-garden");
+    page.classList.remove("view-enter");
+    void page.offsetWidth;
+    page.classList.add("view-enter");
     window.scrollTo(0, 0);
   });
   WIDE_LAYOUT.addEventListener("change", applyGardenTab);

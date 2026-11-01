@@ -363,7 +363,7 @@
           <span id="play-pool-count" class="muted small"></span>
           <span id="play-filter-summary" class="fold-preview"></span>
         </summary>
-        <p class="muted small">เลือกครั้งเดียว ใช้กับแฟลชการ์ด จับคู่คำ เรียงตัวอักษร เรียงประโยค ท้าทาย 60 วินาที ฟังแล้วเลือก และฟังแล้วพิมพ์ (ทายคำปริศนาประจำวันใช้คำชุดเดียวกันทุกคน จึงไม่ขึ้นกับตัวเลือกนี้)</p>
+        <p class="muted small">เลือกครั้งเดียว ใช้กับแฟลชการ์ด จับคู่คำ เรียงตัวอักษร เรียงประโยค ท้าทาย 60 วินาที ฟังแล้วเลือก ฟังแล้วพิมพ์ และฟังทวนระหว่างเดินทาง (ทายคำปริศนาประจำวันใช้คำชุดเดียวกันทุกคน จึงไม่ขึ้นกับตัวเลือกนี้)</p>
         <div class="flash-head">
           <strong>เลือกแปลง</strong>
           <span class="flash-quick">
@@ -400,6 +400,12 @@
           <a class="game-card" href="#/play/dictation">
             <span class="game-emoji" aria-hidden="true">⌨️</span>
             <span class="game-info"><strong>ฟังแล้วพิมพ์</strong><span class="muted small">ฟังเสียงอ่านแล้วพิมพ์คำอังกฤษที่ได้ยิน 6 ข้อ ฝึกสะกดไปพร้อมกัน (ต้องเปิดเสียงเครื่อง)</span><span id="dictation-best" class="small"></span></span>
+          </a>
+        </li>
+        <li id="commute-card">
+          <a class="game-card" href="#/play/commute">
+            <span class="game-emoji" aria-hidden="true">🚌</span>
+            <span class="game-info"><strong>ฟังทวนระหว่างเดินทาง</strong><span class="muted small">เปิดฟังวนไปเรื่อย ๆ: อ่านคำอังกฤษ เว้นจังหวะให้นึก แล้วอ่านความหมายไทย ไม่ต้องแตะจอ และไม่เปลี่ยนวันทวน (ต้องเปิดเสียงเครื่อง)</span></span>
           </a>
         </li>
         <li>
@@ -568,6 +574,30 @@
         <button type="button" id="listen-again" class="primary wide">🔁 เล่นอีกรอบ</button>
         <a href="#/play" class="button wide">กลับไปหน้าเกม</a>
       </div>
+    </section>
+
+    <section id="view-commute" hidden>
+      <div class="study-top">
+        <a href="#/play" class="close" aria-label="กลับไปหน้าเกม">✕</a>
+        <strong class="game-title">🚌 ฟังทวน</strong>
+        <span id="commute-count" class="muted small"></span>
+      </div>
+      <div class="commute-card" aria-live="polite">
+        <p id="commute-word" class="commute-word" lang="en"></p>
+        <p id="commute-meaning" class="commute-meaning"></p>
+        <p id="commute-example" class="muted" lang="en" hidden></p>
+      </div>
+      <div class="commute-controls">
+        <button type="button" id="commute-prev" aria-label="คำก่อนหน้า">⏮️</button>
+        <button type="button" id="commute-toggle" class="primary" aria-pressed="false">▶️ เริ่มฟัง</button>
+        <button type="button" id="commute-next" aria-label="คำถัดไป">⏭️</button>
+      </div>
+      <p id="commute-no-thai" class="notice small" hidden>เครื่องนี้ไม่มีเสียงอ่านภาษาไทย แอปจะอ่านเฉพาะภาษาอังกฤษ แล้วขึ้นความหมายไทยบนจอแทน (เพิ่มเสียงไทยได้ในการตั้งค่าการช่วยการเข้าถึงของเครื่อง)</p>
+      <div class="commute-options">
+        <label>เว้นจังหวะให้นึก <select id="commute-pause"></select></label>
+        <label class="check"><input type="checkbox" id="commute-example-on"> อ่านประโยคตัวอย่างด้วย</label>
+      </div>
+      <p class="muted small">ใช้คำชุดเดียวกับที่เลือกไว้ใน 🎯 คำที่ใช้เล่น คำที่ถึงเวลาทวนขึ้นก่อน ฟังครบ 10 คำนับเป็นการเล่นเกมของวันนั้น · ระหว่างฟังแอปจะพยายามให้จอเปิดค้างไว้ ถ้าล็อกจอหรือสลับแอป เสียงอาจหยุด · คีย์ลัด: เว้นวรรค = เล่น/หยุด, ← → = คำก่อนหน้า/ถัดไป</p>
     </section>
 
     <section id="view-dictation" hidden>

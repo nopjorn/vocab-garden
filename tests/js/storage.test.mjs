@@ -34,7 +34,17 @@ test("settings default to 10 new words a day starting from level 1 with the syst
     quizMode: "flip",
     quizTyping: true,
     scheduler: "sm2",
+    commutePause: 2,
+    commuteExample: false,
   });
+});
+
+test("commute settings keep valid values only", () => {
+  const read = (saved) => createStorage(fakeStore({ "vg:settings": JSON.stringify(saved) })).loadSettings();
+  assert.equal(read({ commutePause: 3, commuteExample: true }).commutePause, 3);
+  assert.equal(read({ commutePause: 3, commuteExample: true }).commuteExample, true);
+  assert.equal(read({ commutePause: 9, commuteExample: "yes" }).commutePause, 2);
+  assert.equal(read({ commutePause: 9, commuteExample: "yes" }).commuteExample, false);
 });
 
 test("the random-word pool is saved, and invalid values fall back to all levels and all stages", () => {

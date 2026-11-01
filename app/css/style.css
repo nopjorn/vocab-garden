@@ -2157,6 +2157,65 @@ kbd {
   border-radius: 6px;
 }
 
+/* ===== ฟังทวนระหว่างเดินทาง ===== */
+.commute-card {
+  display: grid;
+  gap: 10px;
+  align-content: center;
+  min-height: 260px;
+  margin: 8px 0 16px;
+  padding: 24px 20px;
+  text-align: center;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 32px;
+  box-shadow: var(--shadow-md);
+}
+
+.commute-word {
+  margin: 0;
+  font-size: 2.6rem;
+  font-weight: 800;
+  line-height: 1.2;
+  overflow-wrap: anywhere;
+}
+
+.commute-meaning {
+  margin: 0;
+  font-size: 1.3rem;
+  font-weight: 600;
+  transition: opacity 0.3s;
+}
+
+.commute-meaning.is-hidden {
+  opacity: 0;
+}
+
+.commute-controls {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.commute-controls button {
+  min-width: 56px;
+  min-height: 56px;
+  font-size: 1.2rem;
+}
+
+.commute-controls .primary {
+  flex: 1;
+  max-width: 240px;
+}
+
+.commute-options {
+  display: grid;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
 /* ===== การเข้าถึง ===== */
 html[data-text-size="large"] {
   font-size: 118%;

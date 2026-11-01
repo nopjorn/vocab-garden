@@ -48,8 +48,8 @@ import { recallBetween, recallStats } from "./recall.js";
 import { SUPPORT_LINKS } from "./support.js";
 import { isNewer, parseSwVersion } from "./update.js";
 
-const VIEWS = ["loading", "error", "home", "study", "done", "garden", "plot", "play", "match", "flash", "wordle", "scramble", "sentence", "blitz", "confuse", "listen", "dictation", "placement", "exam", "settings", "about", "changelog"];
-const TAB_OF_VIEW = { plot: "garden", changelog: "about", match: "play", flash: "play", wordle: "play", scramble: "play", sentence: "play", blitz: "play", confuse: "play", listen: "play", dictation: "play", placement: "settings", exam: "garden" }; // หน้าที่ไม่มีแท็บของตัวเอง ให้ไฮไลต์แท็บนี้แทน
+const VIEWS = ["loading", "error", "home", "study", "done", "garden", "plot", "play", "match", "flash", "wordle", "scramble", "sentence", "blitz", "confuse", "listen", "dictation", "commute", "placement", "exam", "settings", "about", "changelog"];
+const TAB_OF_VIEW = { plot: "garden", changelog: "about", match: "play", flash: "play", wordle: "play", scramble: "play", sentence: "play", blitz: "play", confuse: "play", listen: "play", dictation: "play", commute: "play", placement: "settings", exam: "garden" }; // หน้าที่ไม่มีแท็บของตัวเอง ให้ไฮไลต์แท็บนี้แทน
 const REQUEUE_GAP = 3; // คำที่ตอบ "ยังจำไม่ได้" จะกลับมาอีกครั้งหลังการ์ดใบอื่นอีก 3 ใบ
 const SWIPE_DISTANCE = 90; // ปัดเกินกี่ px ถึงนับเป็นการให้คะแนน
 const SWIPE_PREVIEW = 40; // ปัดเกินกี่ px ถึงเริ่มขึ้นป้ายบนการ์ด
@@ -1198,6 +1198,7 @@ function renderPlay() {
   $("blitz-best").textContent = blitzBest ? `🏆 ทำได้สูงสุด ${blitzBest} ข้อ` : "";
   $("listen-card").hidden = !canSpeak();
   $("dictation-card").hidden = !canSpeak();
+  $("commute-card").hidden = !canSpeak();
   const dictationBest = storage.loadGames().best.dictation;
   $("dictation-best").textContent = dictationBest ? `🏆 คะแนนสูงสุด ${dictationBest}/${dictationMax()}` : "";
   const listenBest = storage.loadGames().best.listen;
@@ -2191,6 +2192,7 @@ const SCREEN_LOADERS = {
   placement: () => import("./screens/placement.js"),
   dictation: () => import("./screens/dictation.js"),
   listen: () => import("./screens/listen.js"),
+  commute: () => import("./screens/commute.js"),
   wordle: () => import("./screens/wordle.js"),
 };
 const loaded = {};
@@ -2254,6 +2256,7 @@ function route() {
   forgetAnswer();
   loaded.match?.stop();
   loaded.blitz?.stop();
+  loaded.commute?.stop();
   const screen = screenFor(page, argument);
   if (screen) {
     openScreen(screen, argument);

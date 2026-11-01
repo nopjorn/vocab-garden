@@ -23,6 +23,7 @@ import { canBadge, showBadge } from "./badge.js";
 import { LISTEN_COUNT, dictationMax } from "./listen.js";
 import { maxScore } from "./scramble.js";
 import { allDone, missionProgress } from "./missions.js";
+import { completedMonths, monthlyProgress } from "./monthly.js";
 import { AGAIN, GOOD, HARD, STAGES, buildQueue, dayNumber, grade, isDue, knownCard, stageOf } from "./srs.js";
 import { NOTE_MAX, createStorage } from "./storage.js";
 import { entriesSince, inlineParts, parseChangelog } from "./changelog.js";
@@ -463,6 +464,7 @@ function renderHome() {
 
   renderGiftButtons();
   renderMissions(today);
+  renderMonthly(today);
   renderWeekly(today, habit.active);
   renderWordOfDay(today);
   $("levels").replaceChildren(...levelItems());
@@ -1123,6 +1125,40 @@ function renderMissions(day) {
   $("missions-note").textContent = allDone(progress) ? "🎉 ครบทั้ง 3 ข้อแล้ว พรุ่งนี้มีภารกิจใหม่" : days > 0 ? `ทำครบมาแล้ว ${days} วัน` : "ภารกิจเป็นของสนุก ๆ ไม่ได้ล็อกอะไรไว้ ข้ามได้เสมอ";
 }
 
+// ---------- ชาเลนจ์ประจำเดือน ----------
+
+function monthlyNow(day) {
+  return monthlyProgress(day, { history: storage.loadHistory(), log: storage.loadLog(), games: storage.loadGames().days });
+}
+
+// ทำสำเร็จแล้วเก็บรหัสเดือนไว้ใน vg:medals ครั้งเดียว
+function checkMonthly() {
+  const day = dayNumber();
+  const progress = monthlyNow(day);
+  if (!progress.done || progress.month.id in storage.loadMedals()) return;
+  storage.addMedals([progress.month.id], day);
+  setTimeout(() => {
+    toast(`🏆 ทำชาเลนจ์เดือน${progress.month.name}สำเร็จแล้ว! ${progress.title}`);
+    launchConfetti(48);
+    fx("finish");
+  }, 1800);
+}
+
+function renderMonthly(day) {
+  const progress = monthlyNow(day);
+  const done = completedMonths(storage.loadMedals()).length;
+  $("monthly").hidden = translatedWords().length === 0;
+  $("monthly-title").textContent = `🏆 ชาเลนจ์เดือน${progress.month.name}`;
+  $("monthly-goal").textContent = `${progress.challenge.emoji} ${progress.title}`;
+  $("monthly-count").textContent = progress.done ? "สำเร็จ ✅" : `${progress.value}/${progress.target} ${progress.challenge.unit}`;
+  $("monthly-fill").style.width = `${progress.percent}%`;
+  $("monthly-bar").setAttribute("aria-valuenow", progress.percent);
+  const left = progress.daysLeft === 0 ? "วันนี้วันสุดท้ายของเดือน" : `เหลืออีก ${progress.daysLeft} วัน`;
+  $("monthly-note").textContent = progress.done
+    ? `🎉 สำเร็จแล้ว เดือนหน้ามีชาเลนจ์ใหม่${done > 1 ? ` · ทำสำเร็จมาแล้ว ${done} เดือน` : ""}`
+    : `${left}${done > 0 ? ` · ทำสำเร็จมาแล้ว ${done} เดือน` : ""}`;
+}
+
 // ---------- เหรียญความสำเร็จ ----------
 
 // ข้อมูลที่ใช้ตัดสินเหรียญ ณ ตอนนี้ (events = เหตุการณ์ตอนจบรอบ)
@@ -1147,6 +1183,7 @@ function medalContext(events = {}) {
 // ตรวจเหรียญใหม่ บันทึก และแจ้งในแอป (หน่วงเล็กน้อยไม่ให้ป้ายอื่นทับทันที)
 function checkMedals(events = {}) {
   checkMissions();
+  checkMonthly();
   checkFlowers();
   const fresh = newMedals(medalContext(events), storage.loadMedals());
   if (fresh.length === 0) return;

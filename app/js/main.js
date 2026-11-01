@@ -7,37 +7,23 @@ import { playSfx } from "./sfx.js";
 import { STATUSES, matchingWords, statusOf } from "./flash.js";
 import { CARD_HEIGHT, CARD_WIDTH, buildCardData, drawCard } from "./sharecard.js";
 import { compareText, weeklyReport } from "./weekly.js";
-import { buildIcs, parseTime } from "./reminder.js";
 import { buildCalendar, cellLabel } from "./calendar.js";
-import { SNAPSHOT_REASONS, backupDue, backupText, canSnapshot, clearSnapshots, daysSinceBackup, formatSnapshotTime, hasSnapshot, listSnapshots, loadSnapshot, markSince, saveSnapshot } from "./backup.js";
+import { backupDue, backupText, canSnapshot, daysSinceBackup, hasSnapshot, markSince, saveSnapshot } from "./backup.js";
 import { wordOfDay } from "./daily.js";
 import { EXAM_COUNT, bestTier, examReady } from "./exam.js";
-import { DECORATIONS, FLOWERS, bloomedLevels, flowerId, flowerOf, ownedDecorations, seasonOf } from "./decor.js";
+import { DECORATIONS, bloomedLevels, flowerId, flowerOf, ownedDecorations, seasonOf } from "./decor.js";
 import { COMEBACK_DAYS, MEDALS, isEarlyBird, isPerfectRound, newMedals } from "./achievements.js";
 import { applySky } from "./sky.js";
 import { treeEl } from "./tree-art.js";
 import { LEECH_LAPSES, PLOT_FILTERS, dueLabel, leechWords, matchesQuery, plantInfo, plantMatchesFilter, plantedInLevel, plotFilterCounts, plotSummary, reviewedToday } from "./garden.js";
 import { daysAway, goalProgress, mergeDays, settleRest } from "./habit.js";
 import { formatSeconds } from "./match.js";
-import { askBadgePermission, canBadge, showBadge } from "./badge.js";
+import { canBadge, showBadge } from "./badge.js";
 import { LISTEN_COUNT, dictationMax } from "./listen.js";
 import { maxScore } from "./scramble.js";
 import { allDone, missionProgress } from "./missions.js";
 import { AGAIN, GOOD, HARD, STAGES, buildQueue, dayNumber, grade, isDue, knownCard, stageOf } from "./srs.js";
-import {
-  DAILY_GOAL_CHOICES,
-  NEW_PER_DAY_CHOICES,
-  NOTE_MAX,
-  QUIZ_MODE_CHOICES,
-  SCHEDULER_CHOICES,
-  REVIEW_CAP_CHOICES,
-  ROUND_SIZE_CHOICES,
-  MENU_POSITION_CHOICES,
-  SPEECH_RATE_CHOICES,
-  TEXT_SIZE_CHOICES,
-  THEME_CHOICES,
-  createStorage,
-} from "./storage.js";
+import { NOTE_MAX, createStorage } from "./storage.js";
 import { entriesSince, inlineParts, parseChangelog } from "./changelog.js";
 import { issueUrl } from "./report.js";
 import { MILESTONES, coverageOfRanks, coverageOfTop, knownRanks, parseFrequency, percentText } from "./coverage.js";
@@ -312,6 +298,11 @@ function wotdPool(today) {
   const levels = levelSetOf(state.settings.wotdLevels);
   const stages = new Set(state.settings.wotdStages);
   return translatedWords().filter((word) => levels.has(word.level) && stages.has(plantInfo(state.cards[word.headword], today).stage.id));
+}
+
+// ตั้งค่าคำที่สุ่มได้เปลี่ยน: คำที่สุ่มไว้อาจไม่อยู่ในกองใหม่แล้ว
+function resetWotdPick() {
+  wotdPick = null;
 }
 
 function shuffleWordOfDay(today) {
@@ -1890,17 +1881,6 @@ function renderSupport() {
 
 // ---------- ตั้งค่า ----------
 
-const SPEECH_RATE_LABELS = { 0.7: "ช้า", 0.9: "ปกติ", 1.1: "เร็ว" };
-const THEME_LABELS = { auto: "ตามเครื่อง", light: "สว่าง", dark: "มืด" };
-const TEXT_SIZE_LABELS = { normal: "ปกติ", large: "ใหญ่" };
-const MENU_POSITION_LABELS = { bottom: "ด้านล่าง (ลอย)", dock: "ด้านล่าง (ชิดขอบจอ)", top: "ด้านบน" };
-const SCHEDULER_LABELS = { sm2: "แบบเดิม (SM-2 ฉบับย่อ)", fsrs: "FSRS (ทดลอง)" };
-const QUIZ_MODE_LABELS = { flip: "พลิกการ์ด (แบบเดิม)", mixed: "ผสมหลายแบบ" };
-const DAILY_GOAL_LABELS = Object.fromEntries(DAILY_GOAL_CHOICES.map((count) => [count, `${count} ครั้ง`]));
-const REVIEW_CAP_LABELS = Object.fromEntries(REVIEW_CAP_CHOICES.map((count) => [count, count ? `ไม่เกิน ${count} ครั้ง` : "ไม่จำกัด"]));
-
-const ROUND_SIZE_LABELS = Object.fromEntries(ROUND_SIZE_CHOICES.map((count) => [count, count ? `${count} ใบ` : "ไม่แบ่งรอบ"]));
-
 function fillSelect(select, choices, current, labels) {
   select.replaceChildren(
     ...choices.map((choice) => {
@@ -1917,114 +1897,6 @@ function updateSetting(change) {
   state.settings = { ...state.settings, ...change };
   storage.saveSettings(state.settings);
   applyAppearance();
-}
-
-function renderSettings() {
-  const levels = [...new Set(translatedWords().map((word) => word.level))].filter((level) => level !== "sup");
-  const startLevel = $("start-level");
-  startLevel.replaceChildren(
-    ...levels.map((level) => {
-      const option = el("option", "", `แปลง ${Number(level)}`);
-      option.value = Number(level);
-      option.selected = Number(level) === state.settings.startLevel;
-      return option;
-    }),
-  );
-  fillSelect($("speech-rate"), SPEECH_RATE_CHOICES, state.settings.speechRate, SPEECH_RATE_LABELS);
-  fillSelect($("theme"), THEME_CHOICES, state.settings.theme, THEME_LABELS);
-  fillSelect($("text-size"), TEXT_SIZE_CHOICES, state.settings.textSize, TEXT_SIZE_LABELS);
-  fillSelect($("menu-position"), MENU_POSITION_CHOICES, state.settings.menuPosition, MENU_POSITION_LABELS);
-  fillSelect($("quiz-mode"), QUIZ_MODE_CHOICES, state.settings.quizMode, QUIZ_MODE_LABELS);
-  fillSelect($("scheduler"), SCHEDULER_CHOICES, state.settings.scheduler, SCHEDULER_LABELS);
-  $("quiz-typing").checked = state.settings.quizTyping;
-  fillSelect($("daily-goal"), DAILY_GOAL_CHOICES, state.settings.dailyGoal, DAILY_GOAL_LABELS);
-  fillSelect($("review-cap"), REVIEW_CAP_CHOICES, state.settings.reviewCap, REVIEW_CAP_LABELS);
-  fillSelect($("round-size"), ROUND_SIZE_CHOICES, state.settings.roundSize, ROUND_SIZE_LABELS);
-  $("auto-speak").checked = state.settings.autoSpeak;
-  $("sound-fx").checked = state.settings.sound;
-  $("badge-setting").hidden = !canBadge();
-  $("app-badge").checked = state.settings.appBadge;
-  $("sound-panel").hidden = !canSpeak();
-  $("sound-heading").hidden = !canSpeak();
-  renderBackupInfo();
-  renderSnapshots();
-  renderWotdSetup();
-  const select = $("new-per-day");
-  select.replaceChildren(
-    ...NEW_PER_DAY_CHOICES.map((count) => {
-      const option = el("option", "", `${count} คำ`);
-      option.value = count;
-      option.selected = count === state.settings.newPerDay;
-      return option;
-    }),
-  );
-}
-
-// ตั้งค่าคำที่สุ่มได้ (ปุ่ม 🎲 ในการ์ดศัพท์ของวันนี้): แปลงและระยะของต้นไม้
-function saveWotdSetup(change) {
-  wotdPick = null; // คำที่สุ่มไว้อาจไม่อยู่ในกองใหม่แล้ว
-  updateSetting(change);
-  renderWotdSetup();
-}
-
-// บันทึกแปลงที่สุ่มได้ (เลือกครบทุกแปลงเก็บเป็น null = ทุกแปลง เหมือนแปลงที่ใช้เล่น)
-function saveWotdLevels(next) {
-  const allLevels = playableLevels();
-  saveWotdSetup({ wotdLevels: allLevels.every((item) => next.has(item)) ? null : allLevels.filter((item) => next.has(item)) });
-}
-
-function renderWotdSetup() {
-  const today = dayNumber();
-  const allLevels = playableLevels();
-  const levels = levelSetOf(state.settings.wotdLevels);
-  const stages = new Set(state.settings.wotdStages);
-  const words = translatedWords();
-  $("wotd-levels").replaceChildren(
-    ...allLevels.map((level) => {
-      const count = words.filter((word) => word.level === level).length;
-      return checkbox(levels.has(level), `${levelTitle(level).replace(/:.*/, "")} (${count})`, (on) => {
-        const next = new Set(levels);
-        if (on) next.add(level);
-        else next.delete(level);
-        saveWotdLevels(next);
-      });
-    }),
-  );
-  const inChosen = words.filter((word) => levels.has(word.level));
-  const stageCount = (id) => inChosen.filter((word) => plantInfo(state.cards[word.headword], today).stage.id === id).length;
-  $("wotd-stages").replaceChildren(
-    ...STAGES.map((stage) =>
-      checkbox(stages.has(stage.id), `${stage.emoji} ${stage.label} (${stageCount(stage.id)})`, (on) => {
-        const next = new Set(stages);
-        if (on) next.add(stage.id);
-        else next.delete(stage.id);
-        saveWotdSetup({ wotdStages: STAGES.map((item) => item.id).filter((id) => next.has(id)) });
-      }),
-    ),
-  );
-  $("wotd-pool-count").textContent = `สุ่มได้ ${wotdPool(today).length} คำ`;
-  const levelText = levels.size === allLevels.length ? "ทุกแปลง" : levels.size === 0 ? "ยังไม่ได้เลือกแปลง" : `${levels.size} แปลง`;
-  const chosenStages = STAGES.filter((stage) => stages.has(stage.id));
-  const stageText = chosenStages.length === STAGES.length ? "ทุกระยะ" : chosenStages.length === 0 ? "ยังไม่ได้เลือกระยะ" : chosenStages.map((stage) => stage.emoji).join("");
-  $("wotd-filter-summary").textContent = `${levelText} · ${stageText}`;
-}
-
-// สร้างไฟล์ปฏิทิน (.ics) นัดทุกวัน ให้ดาวน์โหลดไปเปิดด้วยแอปปฏิทิน
-function makeReminder() {
-  const time = parseTime($("reminder-time").value);
-  if (!time) {
-    toast("เลือกเวลาที่อยากให้เตือนก่อนนะ");
-    return;
-  }
-  const link = el("a");
-  const blob = new Blob([buildIcs(time, new Date(), location.origin + location.pathname)], { type: "text/calendar;charset=utf-8" });
-  link.href = URL.createObjectURL(blob);
-  link.download = "vocab-garden-reminder.ics";
-  document.body.append(link);
-  link.click();
-  link.remove();
-  setTimeout(() => URL.revokeObjectURL(link.href), 1000);
-  toast("สร้างไฟล์นัดแล้ว เปิดไฟล์ด้วยแอปปฏิทินเพื่อเพิ่มการเตือน 📅");
 }
 
 // ส่งออกไฟล์สำรอง: เครื่องที่รองรับจะเปิดเมนูแชร์ให้เลือกปลายทางเอง (บันทึกลงไฟล์ AirDrop เมล ฯลฯ) ไม่รองรับก็ดาวน์โหลดตรง ๆ
@@ -2102,81 +1974,6 @@ async function takeSnapshot(kind, reason = null) {
   }
 }
 
-const SNAPSHOT_KIND_LABELS = { daily: "สำเนาต้นวัน", manual: "สำเนาที่เก็บเอง" };
-const snapshotLabel = (info) =>
-  `${SNAPSHOT_KIND_LABELS[info.kind] || SNAPSHOT_REASONS[info.reason] || "สำเนาก่อนเปลี่ยนข้อมูล"} · เก็บเมื่อ ${formatSnapshotTime(info.at)}`;
-
-async function renderSnapshots() {
-  $("snapshots").hidden = !canSnapshot();
-  if (!canSnapshot()) return;
-  let list = [];
-  try {
-    list = await listSnapshots();
-  } catch {
-    $("snapshots").hidden = true;
-    return;
-  }
-  $("snapshot-clear").hidden = list.length === 0;
-  $("snapshot-latest").textContent = list.length > 0 ? `สำเนาล่าสุดเก็บเมื่อ ${formatSnapshotTime(list[0].at)}` : "";
-  const items = list.map((info) => {
-    const button = el("button", "", "กู้คืน");
-    button.type = "button";
-    button.addEventListener("click", () => restoreSnapshot(info));
-    const item = el("li", "snapshot-item");
-    item.append(el("span", "", `${snapshotLabel(info)} · ${info.count} คำ`), button);
-    return item;
-  });
-  $("snapshot-list").replaceChildren(...(items.length > 0 ? items : [el("li", "muted small", "ยังไม่มีสำเนา จะเก็บให้ทุกวันที่เปิดแอป")]));
-}
-
-async function restoreSnapshot(info) {
-  if (!confirm(`กู้คืนสำเนา "${snapshotLabel(info)}" ใช่ไหม? ความคืบหน้าตอนนี้จะถูกแทนที่ (ระบบเก็บสำเนาก่อนกู้คืนไว้ให้ 1 ชุด)`)) return;
-  try {
-    const snapshot = await loadSnapshot(info.id);
-    if (!snapshot) throw new Error("ไม่พบสำเนานี้แล้ว");
-    await takeSnapshot("before", "restore");
-    storage.importData(snapshot.data);
-    reloadFromStorage();
-    toast("กู้คืนสำเนาเรียบร้อย");
-  } catch (error) {
-    toast(error.message || "กู้คืนสำเนาไม่สำเร็จ");
-  }
-  renderSnapshots();
-}
-
-// โหลดข้อมูลจาก localStorage เข้าหน้าจออีกครั้ง หลังนำเข้า กู้คืน หรือล้าง
-function reloadFromStorage() {
-  state.cards = storage.loadCards();
-  state.settings = storage.loadSettings();
-  state.notes = storage.loadNotes();
-  state.fsrs = storage.loadFsrs();
-  applyAppearance();
-  renderSettings();
-  updateAppBadge();
-}
-
-// นำเข้าแบบรวมกับความคืบหน้าในเครื่อง: การ์ดคำเดียวกันเอาฝั่งที่ตอบล่าสุด ใช้ซิงก์ข้ามเครื่องด้วยไฟล์สำรองได้
-async function importBackup(file) {
-  try {
-    const data = JSON.parse(await file.text());
-    await takeSnapshot("before", "import");
-    const count = storage.importData(data, { merge: true });
-    reloadFromStorage();
-    toast(`รวมความคืบหน้าจากไฟล์แล้ว ตอนนี้มี ${count} คำ`);
-  } catch (error) {
-    toast(error instanceof SyntaxError ? "อ่านไฟล์ไม่ได้ ไฟล์อาจเสียหาย" : error.message);
-  }
-}
-
-async function resetProgress() {
-  if (!confirm("ล้างความคืบหน้าทั้งหมดใช่ไหม? ระบบจะเก็บสำเนาก่อนล้างไว้ในเครื่อง 1 ชุด กู้คืนได้ที่ ตั้งค่า → สำเนาอัตโนมัติ (แนะนำให้ส่งออกไฟล์สำรองก่อนด้วย)")) return;
-  await takeSnapshot("before", "reset");
-  storage.reset();
-  reloadFromStorage();
-  renderSnapshots();
-  toast("ล้างความคืบหน้าแล้ว");
-}
-
 // ---------- หน้าที่โหลดเมื่อเปิดใช้ (เกม สอบ ทดสอบวัดระดับ) ----------
 
 // แต่ละหน้าอยู่ในไฟล์ของตัวเองใน screens/ ดึงมาเมื่อเข้าเส้นทางครั้งแรก หน้าแรกจึงโหลดน้อยลง
@@ -2194,15 +1991,19 @@ const SCREEN_LOADERS = {
   listen: () => import("./screens/listen.js"),
   commute: () => import("./screens/commute.js"),
   wordle: () => import("./screens/wordle.js"),
+  settings: () => import("./screens/settings.js"),
 };
 const loaded = {};
 const pending = {};
 
 // ของที่หน้าเหล่านี้ใช้ร่วมกับ main.js
-const screenContext = () => ({ $, el, show, toast, fx, state, storage, speakWord, translatedWords, poolOrBack, checkMedals, updateSetting, playPool, playFilterText, fillSelect, refreshShared });
+const screenContext = () => ({
+  ...{ $, el, show, toast, fx, state, storage, speakWord, translatedWords, poolOrBack, checkMedals, updateSetting, playPool, playFilterText, fillSelect, refreshShared },
+  ...{ applyAppearance, updateAppBadge, playableLevels, levelSetOf, checkbox, wotdPool, resetWotdPick, plantedIn, takeSnapshot, renderBackupInfo, exportBackup },
+});
 
 function screenFor(page, argument) {
-  if (page === "exam" || page === "placement") return page;
+  if (page === "exam" || page === "placement" || page === "settings") return page;
   if (page === "play" && Object.hasOwn(SCREEN_LOADERS, argument)) return argument;
   return null;
 }
@@ -2272,9 +2073,6 @@ function route() {
     renderGarden();
     show("garden");
     if (fromPlot) window.scrollTo(0, gardenScroll);
-  } else if (page === "settings") {
-    renderSettings();
-    show("settings");
   } else if (page === "about") {
     show("about");
   } else if (page === "changelog") {
@@ -2317,10 +2115,6 @@ function bindEvents() {
   $("share-garden").addEventListener("click", shareGarden);
   $("play-all").addEventListener("click", () => savePlayLevels(new Set(playableLevels())));
   $("play-none").addEventListener("click", () => savePlayLevels(new Set()));
-  $("wotd-levels-all").addEventListener("click", () => saveWotdLevels(new Set(playableLevels())));
-  $("wotd-levels-none").addEventListener("click", () => saveWotdLevels(new Set()));
-  $("wotd-levels-learned").addEventListener("click", () => saveWotdLevels(new Set(playableLevels().filter((level) => plantedIn(level) > 0))));
-  $("wotd-levels-fresh").addEventListener("click", () => saveWotdLevels(new Set(playableLevels().filter((level) => plantedIn(level) === 0))));
   // สลับไปแปลงก่อนหน้า/ถัดไปโดยแทนที่หน้าเดิมในประวัติ ปุ่มย้อนกลับจะกลับไปหน้าสวนทีเดียว ไม่ต้องไล่กลับทีละแปลง
   for (const id of ["plot-prev", "plot-next"]) {
     $(id).addEventListener("click", (event) => {
@@ -2448,85 +2242,12 @@ function bindEvents() {
     }
   });
 
-  $("new-per-day").addEventListener("change", (event) => {
-    refreshShared();
-    state.settings = { ...state.settings, newPerDay: Number(event.target.value) };
-    storage.saveSettings(state.settings);
-    toast(`ตั้งคำใหม่เป็นวันละ ${state.settings.newPerDay} คำแล้ว`);
-  });
-  $("start-level").addEventListener("change", (event) => {
-    refreshShared();
-    state.settings = { ...state.settings, startLevel: Number(event.target.value) };
-    storage.saveSettings(state.settings);
-    toast(`คำใหม่จะมาจากแปลง ${state.settings.startLevel} เป็นต้นไป`);
-  });
-  $("auto-speak").addEventListener("change", (event) => updateSetting({ autoSpeak: event.target.checked }));
-  $("speech-rate").addEventListener("change", (event) => {
-    updateSetting({ speechRate: Number(event.target.value) });
-    speakWord("Hello, welcome to Vocab Garden");
-  });
-  $("sound-fx").addEventListener("change", (event) => {
-    updateSetting({ sound: event.target.checked });
-    fx("combo"); // ลองฟังทันทีที่เปิด (การแตะเป็นการกระทำของผู้ใช้ เบราว์เซอร์จึงยอมให้เล่นเสียง)
-  });
-  $("app-badge").addEventListener("change", async (event) => {
-    const box = event.target;
-    if (box.checked && !(await askBadgePermission())) {
-      box.checked = false;
-      toast("ต้องอนุญาตการแจ้งเตือนของแอปนี้ก่อน ตัวเลขบนไอคอนจึงจะขึ้นได้");
-      return;
-    }
-    updateSetting({ appBadge: box.checked });
-    updateAppBadge();
-    toast(box.checked ? "จะแสดงตัวเลขคำที่ต้องทวนบนไอคอนแอปแล้ว 🔢" : "ปิดตัวเลขบนไอคอนแอปแล้ว");
-  });
-  $("speech-test").addEventListener("click", () => speakWord("Hello, welcome to Vocab Garden"));
-  $("theme").addEventListener("change", (event) => updateSetting({ theme: event.target.value }));
-  $("text-size").addEventListener("change", (event) => updateSetting({ textSize: event.target.value }));
-  $("menu-position").addEventListener("change", (event) => updateSetting({ menuPosition: event.target.value }));
-  $("quiz-mode").addEventListener("change", (event) => updateSetting({ quizMode: event.target.value }));
-  $("scheduler").addEventListener("change", (event) => updateSetting({ scheduler: event.target.value }));
-  $("quiz-typing").addEventListener("change", (event) => updateSetting({ quizTyping: event.target.checked }));
-  $("daily-goal").addEventListener("change", (event) => {
-    updateSetting({ dailyGoal: Number(event.target.value) });
-    toast(`ตั้งเป้าหมายวันละ ${state.settings.dailyGoal} ครั้งแล้ว`);
-  });
-  $("round-size").addEventListener("change", (event) => {
-    updateSetting({ roundSize: Number(event.target.value) });
-    toast(state.settings.roundSize ? `พักถามทุก ๆ ${state.settings.roundSize} ใบแล้ว` : "ไม่แบ่งรอบแล้ว ท่องรวดเดียวจนจบ");
-  });
-  $("review-cap").addEventListener("change", (event) => {
-    updateSetting({ reviewCap: Number(event.target.value) });
-    toast(state.settings.reviewCap ? `วันนี้ทวนได้ไม่เกิน ${state.settings.reviewCap} ครั้ง` : "ทวนได้ไม่จำกัดต่อวัน");
-  });
   matchMedia("(prefers-color-scheme: dark)").addEventListener("change", applyAppearance);
-  $("reminder-make").addEventListener("click", makeReminder);
-  $("export").addEventListener("click", exportBackup);
   $("backup-now").addEventListener("click", exportBackup);
   $("backup-later").addEventListener("click", () => {
     storage.saveBackupMeta({ ...storage.loadBackupMeta(), asked: dayNumber() });
     renderBackupReminder();
   });
-  $("snapshot-now").addEventListener("click", async () => {
-    const saved = await takeSnapshot("manual");
-    toast(saved ? "เก็บสำเนาตอนนี้แล้ว 💾" : "เก็บสำเนาไม่ได้ ยังไม่มีความคืบหน้า หรือเบราว์เซอร์ไม่รองรับ");
-    renderSnapshots();
-  });
-  $("snapshot-clear").addEventListener("click", async () => {
-    if (!confirm("ลบสำเนาอัตโนมัติทั้งหมดในเครื่องนี้ใช่ไหม? ความคืบหน้าปัจจุบันไม่หาย")) return;
-    try {
-      await clearSnapshots();
-    } catch {
-      // ลบไม่ได้ก็แสดงรายการเดิม
-    }
-    renderSnapshots();
-  });
-  $("import").addEventListener("change", (event) => {
-    const [file] = event.target.files;
-    if (file) importBackup(file);
-    event.target.value = "";
-  });
-  $("reset").addEventListener("click", resetProgress);
 }
 
 async function init() {

@@ -59,6 +59,7 @@ export const DEFAULT_SETTINGS = {
   scheduler: "sm2",
   commutePause: 2,
   commuteExample: false, // ฟังทวน: อ่านประโยคตัวอย่างต่อท้ายด้วย
+  welcomed: false, // ปิดการ์ดต้อนรับผู้ใช้ใหม่ในหน้าหลักแล้ว
 };
 export const LAST_LEVEL = 28;
 export const NEW_PER_DAY_CHOICES = [5, 10, 20];
@@ -346,6 +347,7 @@ export function createStorage(store = globalThis.localStorage) {
         scheduler: pick(SCHEDULER_CHOICES, saved.scheduler, DEFAULT_SETTINGS.scheduler),
         commutePause: pick(COMMUTE_PAUSE_CHOICES, saved.commutePause, DEFAULT_SETTINGS.commutePause),
         commuteExample: saved.commuteExample === true,
+        welcomed: saved.welcomed === true,
       };
     },
     saveSettings(settings) {

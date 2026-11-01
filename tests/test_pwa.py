@@ -1,5 +1,7 @@
 import json
 import re
+import subprocess
+import sys
 import unittest
 from pathlib import Path
 
@@ -27,7 +29,7 @@ def extra_levels(source):
 class ServiceWorkerTest(unittest.TestCase):
     def test_precache_covers_every_app_file(self):
         app_files = {path.relative_to(APP).as_posix() for path in APP.rglob("*") if path.is_file()}
-        missing = app_files - precache_list() - {"sw.js"}
+        missing = app_files - precache_list() - {"sw.js", "asset-hashes.js"}
         self.assertEqual(missing, set(), "เพิ่มไฟล์เหล่านี้ใน PRECACHE ของ app/sw.js")
 
     def test_precache_files_exist(self):
@@ -45,6 +47,17 @@ class ServiceWorkerTest(unittest.TestCase):
         source = (APP / "sw.js").read_text(encoding="utf-8")
         self.assertIn("Array.from({ length: 28 }", source)
         self.assertEqual(len(list((APP / "data/levels").glob("*.tsv"))), 29)
+
+    def test_asset_hashes_are_up_to_date(self):
+        # service worker คัดลอกไฟล์ที่ hash ไม่เปลี่ยนจาก cache เดิม ถ้า hash เก่าค้างอยู่ ผู้ใช้จะได้ไฟล์เวอร์ชันเก่า
+        result = subprocess.run([sys.executable, str(ROOT / "scripts/asset_hashes.py"), "--check"], capture_output=True, text=True)
+        self.assertEqual(result.returncode, 0, result.stderr + "รัน: python3 scripts/asset_hashes.py")
+
+    def test_asset_hashes_cover_precache(self):
+        source = (APP / "asset-hashes.js").read_text(encoding="utf-8")
+        hashes = json.loads(source[source.index("{") : source.rindex("}") + 1])
+        self.assertEqual(set(hashes), precache_list() - {"./", "version.js"})
+        self.assertIn('importScripts("version.js", "asset-hashes.js")', (APP / "sw.js").read_text(encoding="utf-8"))
 
     def test_sw_version_matches_app_version(self):
         # Safari ติดตั้ง service worker ใหม่ก็ต่อเมื่อไฟล์ sw.js เปลี่ยน

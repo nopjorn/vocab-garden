@@ -522,6 +522,42 @@ export function createStorage(store = globalThis.localStorage) {
       answers.push([today, headword, rating, ivl]);
       write(KEYS.answers, answers.slice(-ANSWER_KEEP));
     },
+    // ย้อนคำตอบล่าสุดของรอบท่อง (ปุ่ม ↩️ ย้อน): คืนการ์ดและความจำ FSRS ของคำนั้นเป็นค่าก่อนตอบ แล้วหักตัวนับของวันออก
+    // undo = { headword, card, fsrs, log, answer, newCard } card/fsrs = ค่าก่อนตอบ (undefined = ยังไม่เคยมี)
+    // fsrs ใส่เฉพาะตอนที่ตอบด้วย FSRS (ไม่มีคีย์ fsrs = ไม่แตะ vg:fsrs) คืนจำนวนการทวนของวันนั้นหลังหัก
+    undoAnswer(today, undo) {
+      const { headword } = undo;
+      const cards = this.loadCards();
+      if (undo.card) cards[headword] = undo.card;
+      else delete cards[headword];
+      this.saveCards(cards);
+      if ("fsrs" in undo) {
+        const memory = this.loadFsrs();
+        if (undo.fsrs) memory[headword] = undo.fsrs;
+        else delete memory[headword];
+        this.saveFsrs(memory);
+      }
+      const days = this.loadHistory();
+      if (days[today] > 0) days[today] -= 1;
+      if (days[today] === 0) delete days[today];
+      this.saveHistory(days);
+      const log = this.loadLog();
+      if (log[today] && undo.log) {
+        const entry = log[today];
+        log[today] = { n: Math.max(0, entry.n - (undo.log.n || 0)), t: Math.max(0, entry.t - (undo.log.t || 0)), a: Math.max(0, entry.a - (undo.log.a || 0)) };
+        write(KEYS.log, log);
+      }
+      if (undo.answer) {
+        const answers = this.loadAnswers();
+        const index = answers.findLastIndex(([day, word]) => day === today && word === headword);
+        if (index >= 0) {
+          answers.splice(index, 1);
+          write(KEYS.answers, answers);
+        }
+      }
+      if (undo.newCard) this.saveNewCount(today, Math.max(0, this.newCountToday(today) - 1));
+      return days[today] || 0;
+    },
     exportData(version, now = new Date()) {
       return {
         app: "vocab-garden",

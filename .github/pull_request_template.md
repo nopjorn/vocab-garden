@@ -10,6 +10,7 @@
 ## ✅ Checklist
 
 - [ ] ขยับเลขใน `app/version.js`
+- [ ] แก้บรรทัด `// sw-version:` ใน `app/sw.js` ให้ตรงกับ `app/version.js`
 - [ ] เพิ่มหัวข้อเวอร์ชันนี้ไว้บนสุดของ `CHANGELOG.md` (ภาษาไทย)
 - [ ] ติ๊กงานที่เสร็จใน `TODO.md`
 - [ ] CI ผ่านทั้งหมด

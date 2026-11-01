@@ -349,3 +349,38 @@ test("two storage objects on the same store see each other's saved cards (what a
   tabB.saveCards(latest);
   assert.deepEqual(Object.keys(tabA.loadCards()).sort(), ["be", "the"]);
 });
+
+test("undoAnswer restores the card and removes the day's counters for that answer", () => {
+  const storage = createStorage(fakeStore());
+  const before = { reps: 1, ivl: 1, ease: 2.5, due: 10, lapses: 0 };
+  storage.saveCards({ go: before });
+  storage.addReview(10);
+  // ตอบคำใหม่ (house) แล้วย้อน
+  storage.saveCards({ go: before, house: { reps: 1, ivl: 1, ease: 2.5, due: 11, lapses: 0 } });
+  storage.addReview(10);
+  storage.addAnswer(10, "go", 3, 1);
+  storage.addAnswer(10, "house", 1, 0);
+  storage.addLog(10, { n: 1, a: 1 });
+  storage.saveNewCount(10, 1);
+  const count = storage.undoAnswer(10, { headword: "house", card: undefined, log: { n: 1, t: 0, a: 1 }, answer: true, newCard: true });
+  assert.equal(count, 1);
+  assert.deepEqual(storage.loadCards(), { go: before });
+  assert.deepEqual(storage.loadHistory(), { 10: 1 });
+  assert.deepEqual(storage.loadAnswers(), [[10, "go", 3, 1]]);
+  assert.deepEqual(storage.loadLog()[10], { n: 0, t: 0, a: 0 });
+  assert.equal(storage.newCountToday(10), 0);
+});
+
+test("undoAnswer puts back the previous card and FSRS memory only when given", () => {
+  const storage = createStorage(fakeStore());
+  const before = { reps: 2, ivl: 3, ease: 2.5, due: 12, lapses: 0 };
+  storage.saveCards({ go: { reps: 3, ivl: 8, ease: 2.6, due: 20, lapses: 0 } });
+  storage.saveFsrs({ go: [9, 5], the: [2, 5] });
+  storage.addReview(12);
+  storage.undoAnswer(12, { headword: "go", card: before, log: { n: 0, t: 0, a: 0 } });
+  assert.deepEqual(storage.loadCards(), { go: before });
+  assert.deepEqual(storage.loadFsrs(), { go: [9, 5], the: [2, 5] });
+  assert.deepEqual(storage.loadHistory(), {});
+  storage.undoAnswer(12, { headword: "go", card: before, fsrs: undefined });
+  assert.deepEqual(storage.loadFsrs(), { the: [2, 5] });
+});

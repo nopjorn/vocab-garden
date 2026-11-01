@@ -472,6 +472,7 @@ function startSession(level = null, practice = null, extra = false) {
     roundStart: 0,
     away: practice ? null : daysAway(mergeDays(storage.loadHistory(), storage.loadGames().days), day),
   };
+  forgetAnswer();
   $("practice-note").hidden = !practice;
   $("know").hidden = Boolean(practice);
   show("study");
@@ -779,26 +780,32 @@ function schedule(word, before, rating, day) {
 function answer(rating) {
   const session = state.session;
   if (!session.practice) refreshShared();
+  const snapshot = snapshotSession(session);
   const word = session.queue.shift();
   const before = state.cards[word.headword];
   let card = before;
 
   // โหมดฝึกไม่แตะความคืบหน้า ประวัติ หรือเป้าหมายของวัน
   if (!session.practice) {
+    const usesFsrs = state.settings.scheduler === "fsrs";
+    const fsrsBefore = state.fsrs[word.headword];
     card = schedule(word, before, rating, session.day);
     state.cards[word.headword] = card;
     storage.saveCards(state.cards);
     updateAppBadge();
     const count = storage.addReview(session.day);
     storage.addAnswer(session.day, word.headword, rating, before ? before.ivl : 0);
-    storage.addLog(session.day, { n: before ? 0 : 1, t: stageMove(before, card)?.stage.id === "tree" ? 1 : 0, a: rating === AGAIN ? 1 : 0 });
+    const log = { n: before ? 0 : 1, t: stageMove(before, card)?.stage.id === "tree" ? 1 : 0, a: rating === AGAIN ? 1 : 0 };
+    storage.addLog(session.day, log);
     if (!before) storage.saveNewCount(session.day, storage.newCountToday(session.day) + 1);
+    rememberAnswer(snapshot, word, { headword: word.headword, card: before, ...(usesFsrs ? { fsrs: fsrsBefore } : {}), log, answer: true, newCard: !before });
     session.answered += 1;
     celebrate(word, before, card, rating);
     checkGoal(session.day, count);
     nudgeNote(word, card, rating);
     checkMedals();
   } else {
+    rememberAnswer(snapshot, word, null);
     session.answered += 1;
     celebrate(word, before, card, rating);
   }
@@ -841,6 +848,7 @@ function pauseRound() {
   $("done-tomorrow").hidden = true;
   $("done-more").hidden = true;
   $("done-continue").hidden = false;
+  $("done-undo").hidden = !lastAnswer;
   $("done-continue").textContent = `▶️ ไปต่ออีก ${Math.min(state.settings.roundSize, session.queue.length)} ใบ`;
   $("done-home").textContent = "พักก่อน กลับไปดูสวน 🌳";
   $("done-home").classList.remove("primary");
@@ -860,6 +868,7 @@ function markKnown() {
   const session = state.session;
   if (session.practice) return;
   refreshShared();
+  const snapshot = snapshotSession(session);
   const word = session.queue.shift();
   const before = state.cards[word.headword];
   state.cards[word.headword] = knownCard(before, session.day);
@@ -867,13 +876,56 @@ function markKnown() {
   if (move) recordGrowth(session.grown, word.headword, move);
   storage.saveCards(state.cards);
   const count = storage.addReview(session.day);
-  storage.addLog(session.day, { n: before ? 0 : 1, t: move?.stage.id === "tree" ? 1 : 0 });
+  const log = { n: before ? 0 : 1, t: move?.stage.id === "tree" ? 1 : 0 };
+  storage.addLog(session.day, log);
+  rememberAnswer(snapshot, word, { headword: word.headword, card: before, log });
   session.answered += 1;
   session.learned.add(word.headword);
   toast(`${word.headword} ข้ามไปเป็นต้นไม้ใหญ่แล้ว 🌳`);
   checkGoal(session.day, count);
   checkMedals();
   nextCard();
+}
+
+// ---------- ย้อนคำตอบล่าสุด ----------
+
+// ปัดพลาดหรือกดเลขผิดแล้วย้อนได้ 1 ใบ: เก็บสำเนารอบก่อนตอบ และข้อมูลที่ต้องคืนใน storage (null = โหมดฝึก ไม่ได้บันทึกอะไร)
+// เหรียญ ภารกิจ และการฉลองถึงเป้าที่เกิดไปแล้วไม่ถูกถอนคืน ย้อนได้จนกว่าจะตอบใบถัดไปหรือออกจากหน้านี้
+let lastAnswer = null;
+
+function snapshotSession(session) {
+  return { ...session, queue: [...session.queue], learned: new Set(session.learned), grown: new Map(session.grown), nudged: new Set(session.nudged), quiz: null };
+}
+
+function rememberAnswer(snapshot, word, undo) {
+  lastAnswer = { snapshot, headword: word.headword, undo };
+  $("undo").hidden = false;
+}
+
+function forgetAnswer() {
+  lastAnswer = null;
+  $("undo").hidden = true;
+  $("done-undo").hidden = true;
+}
+
+function undoLastAnswer() {
+  const last = lastAnswer;
+  if (!last || swipe.busy) return;
+  forgetAnswer();
+  if (last.snapshot.day !== dayNumber()) {
+    toast("ขึ้นวันใหม่แล้ว ย้อนคำตอบของเมื่อวานไม่ได้");
+    return;
+  }
+  if (last.undo) {
+    storage.undoAnswer(last.snapshot.day, last.undo);
+    refreshShared();
+    updateAppBadge();
+  }
+  state.session = last.snapshot;
+  show("study");
+  renderCombo();
+  showCard();
+  toast(`↩️ ย้อนคำตอบของ ${last.headword} แล้ว ตอบใหม่ได้เลย`);
 }
 
 // ---------- ปัดการ์ด ----------
@@ -972,6 +1024,7 @@ function finishSession() {
   $("done-growth").replaceChildren(...lines.map((line) => el("li", "", line)));
   $("done-growth").hidden = lines.length === 0;
 
+  $("done-undo").hidden = !lastAnswer;
   const { practice, answered: total, hadAgain, away } = state.session;
   state.session = null;
   show("done");
@@ -2198,6 +2251,7 @@ function route() {
     return;
   }
   state.session = null;
+  forgetAnswer();
   loaded.match?.stop();
   loaded.blitz?.stop();
   const screen = screenFor(page, argument);
@@ -2254,6 +2308,8 @@ function bindEvents() {
   bindSwipe();
   $("flip").addEventListener("click", flip);
   $("know").addEventListener("click", markKnown);
+  $("undo").addEventListener("click", undoLastAnswer);
+  $("done-undo").addEventListener("click", undoLastAnswer);
   $("report").addEventListener("click", (event) => event.stopPropagation());
   $("share-garden").addEventListener("click", shareGarden);
   $("play-all").addEventListener("click", () => savePlayLevels(new Set(playableLevels())));
@@ -2353,9 +2409,16 @@ function bindEvents() {
   });
 
   document.addEventListener("keydown", (event) => {
-    if (!state.session || event.altKey || event.ctrlKey || event.metaKey) return;
+    if (event.altKey || event.ctrlKey || event.metaKey) return;
     if (event.target.closest("input, select, textarea")) return;
     if (document.querySelector(".modal:not([hidden])")) return; // กำลังเปิดหน้าต่างอยู่ (เช่น โน้ตช่วยจำ)
+    // Z หรือ Backspace = ย้อนคำตอบล่าสุด (ใช้ได้ทั้งระหว่างท่องและหน้าจบรอบ)
+    if ((event.key === "z" || event.key === "Z" || event.key === "Backspace") && lastAnswer && (!$("view-study").hidden || !$("view-done").hidden)) {
+      event.preventDefault();
+      undoLastAnswer();
+      return;
+    }
+    if (!state.session) return;
     const quiz = state.session.quiz;
     if (quiz) {
       // ทวนแบบผสม: 1–4 เลือกคำตอบ เว้นวรรค/Enter ไปต่อ (ไม่ปัดการ์ด ไม่ให้คะแนนเอง)

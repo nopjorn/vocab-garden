@@ -1141,6 +1141,15 @@ body.studying {
   white-space: nowrap;
 }
 
+.undo {
+  flex: none;
+  min-height: 36px;
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-size: 0.9rem;
+  white-space: nowrap;
+}
+
 .combo.pop {
   animation: combo-pop 0.35s ease-out;
 }

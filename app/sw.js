@@ -4,9 +4,9 @@
 // PRECACHE ต้องมีทุกไฟล์ใน app/ (tests/test_pwa.py ตรวจให้)
 // Safari เทียบแค่ไฟล์ sw.js ไม่ดู version.js ที่ import มา จึงต้องเขียนเลข version ไว้ในไฟล์นี้ด้วย
 // ขยับ version ทุกครั้งต้องแก้บรรทัดด้านล่างให้ตรงกับ app/version.js (tests/test_pwa.py ตรวจให้)
-// sw-version: 0.56.2
+// sw-version: 0.56.3
 
-importScripts("version.js");
+importScripts("version.js", "asset-hashes.js");
 
 const CACHE = `vg-${self.VG_VERSION}`;
 const LEVELS = [...Array.from({ length: 28 }, (_, index) => String(index + 1).padStart(2, "0")), "sup"];
@@ -92,11 +92,52 @@ const PRECACHE = [
   ...EXTRA_LEVELS.map((level) => `data/extra/${level}.tsv`),
 ];
 
+// hash ของแต่ละไฟล์ (asset-hashes.js สร้างด้วย scripts/asset_hashes.py) เก็บไว้ใน cache ด้วยคีย์นี้ ใช้เทียบตอนอัปเดตครั้งถัดไป
+const HASHES = self.VG_ASSETS || {};
+const HASH_KEY = "asset-hashes.json";
+const hashOf = (url) => HASHES[url === "./" ? "index.html" : url];
+
+// cache ของเวอร์ชันก่อนที่มีรายการ hash (ไม่มี = ติดตั้งครั้งแรก หรือเวอร์ชันก่อนยังไม่เก็บ hash)
+async function previousCache() {
+  for (const key of await caches.keys()) {
+    if (!key.startsWith("vg-") || key === CACHE) continue;
+    const cache = await caches.open(key);
+    const saved = await cache.match(HASH_KEY);
+    if (saved) return { cache, hashes: await saved.json() };
+  }
+  return null;
+}
+
+// ติดตั้งเวอร์ชันใหม่: ไฟล์ที่ hash ไม่เปลี่ยนคัดลอกจาก cache เดิม ที่เหลือโหลดใหม่
+// - อัปเดตเวอร์ชัน: โหลดด้วย cache: "reload" ข้าม HTTP cache เพื่อให้ได้ไฟล์ของเวอร์ชันใหม่จริง
+// - ติดตั้งครั้งแรก (ยังไม่มี cache ของแอปนี้เลย): หน้าเว็บเพิ่งโหลดไฟล์ชุดเดียวกันมา ใช้ HTTP cache ได้ ไม่ต้องโหลดซ้ำ
+async function install() {
+  const first = !(await caches.keys()).some((key) => key.startsWith("vg-") && key !== CACHE);
+  const previous = await previousCache();
+  const cache = await caches.open(CACHE);
+  try {
+    await Promise.all(
+      PRECACHE.map(async (url) => {
+        const hash = hashOf(url);
+        if (previous && hash && previous.hashes[url] === hash) {
+          const kept = await previous.cache.match(url);
+          if (kept) return cache.put(url, kept);
+        }
+        const response = await fetch(new Request(url, { cache: first ? "default" : "reload" }));
+        if (!response.ok) throw new Error(`โหลด ${url} ไม่สำเร็จ (${response.status})`);
+        return cache.put(url, response);
+      }),
+    );
+    const saved = Object.fromEntries(PRECACHE.map((url) => [url, hashOf(url)]).filter(([, hash]) => hash));
+    await cache.put(HASH_KEY, new Response(JSON.stringify(saved), { headers: { "Content-Type": "application/json" } }));
+  } catch (error) {
+    await caches.delete(CACHE); // ติดตั้งไม่ครบ ไม่เก็บ cache ครึ่ง ๆ กลาง ๆ ไว้ (เบราว์เซอร์จะลองติดตั้งใหม่ภายหลัง)
+    throw error;
+  }
+}
+
 self.addEventListener("install", (event) => {
-  // cache: "reload" ข้าม HTTP cache เพื่อให้ได้ไฟล์ของเวอร์ชันใหม่จริง
-  event.waitUntil(
-    caches.open(CACHE).then((cache) => cache.addAll(PRECACHE.map((url) => new Request(url, { cache: "reload" })))),
-  );
+  event.waitUntil(install());
 });
 
 self.addEventListener("activate", (event) => {

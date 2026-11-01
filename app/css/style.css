@@ -2157,6 +2157,76 @@ kbd {
   border-radius: 6px;
 }
 
+/* ===== ของขวัญจากสวน ===== */
+.gift-btn {
+  margin-bottom: 12px;
+  background: var(--warning-bg);
+  border-color: var(--warning-bg);
+  font-weight: 700;
+}
+
+.gift-modal {
+  text-align: center;
+}
+
+.gift-box {
+  margin: 8px 0 16px;
+  font-size: 5rem;
+  line-height: 1;
+  animation: gift-wiggle 1.4s ease-in-out infinite;
+}
+
+.gift-emoji {
+  margin: 4px 0;
+  font-size: 5rem;
+  line-height: 1.1;
+  animation: gift-pop 0.5s ease-out;
+}
+
+.gift-title {
+  margin: 0;
+  font-size: 1.3rem;
+  font-weight: 800;
+}
+
+.gift-rarity {
+  margin: 4px 0 8px;
+  font-weight: 700;
+}
+
+.gift-rarity[data-rarity="legendary"] {
+  color: var(--link);
+}
+
+@keyframes gift-wiggle {
+  0%, 70%, 100% {
+    transform: rotate(0);
+  }
+  78% {
+    transform: rotate(-8deg);
+  }
+  86% {
+    transform: rotate(8deg);
+  }
+  94% {
+    transform: rotate(-4deg);
+  }
+}
+
+@keyframes gift-pop {
+  0% {
+    transform: scale(0.3);
+    opacity: 0;
+  }
+  70% {
+    transform: scale(1.15);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
 /* ===== ฟังทวนระหว่างเดินทาง ===== */
 .commute-card {
   display: grid;

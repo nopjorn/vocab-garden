@@ -36,6 +36,7 @@ test("settings default to 10 new words a day starting from level 1 with the syst
     scheduler: "sm2",
     commutePause: 2,
     commuteExample: false,
+    welcomed: false,
   });
 });
 

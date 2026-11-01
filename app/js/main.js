@@ -421,6 +421,25 @@ function updateAppBadge() {
   showBadge(due, state.settings.appBadge);
 }
 
+// ---------- ต้อนรับผู้ใช้ใหม่ ----------
+
+// แสดงจนกว่าจะเริ่มปลูกคำแรก ทำแบบทดสอบ หรือกดปิด (จำไว้ใน vg:settings)
+let installPrompt = null; // Android / คอม: ปุ่มติดตั้งแอปของเบราว์เซอร์ (beforeinstallprompt)
+const isInstalled = () => window.matchMedia("(display-mode: standalone)").matches || navigator.standalone === true;
+
+function renderWelcome() {
+  const show = !state.settings.welcomed && Object.keys(state.cards).length === 0;
+  $("welcome").hidden = !show;
+  if (!show) return;
+  $("welcome-install").hidden = isInstalled();
+  $("welcome-install-btn").hidden = !installPrompt;
+}
+
+function closeWelcome() {
+  if (!state.settings.welcomed) updateSetting({ welcomed: true });
+  $("welcome").hidden = true;
+}
+
 function renderHome() {
   const today = dayNumber();
   const queue = todayQueue(today);
@@ -429,6 +448,7 @@ function renderHome() {
   const totalDue = translatedWords().filter((word) => isDue(state.cards[word.headword], today)).length;
   updateAppBadge();
   renderBackupReminder();
+  renderWelcome();
   $("greeting").textContent = greeting();
   $("due-count").textContent = dueCount;
   $("new-count").textContent = queue.length - dueCount;
@@ -2214,6 +2234,19 @@ function bindEvents() {
   $("flip").addEventListener("click", flip);
   $("know").addEventListener("click", markKnown);
   $("undo").addEventListener("click", undoLastAnswer);
+  for (const id of ["welcome-start", "welcome-placement", "welcome-close"]) $(id).addEventListener("click", closeWelcome);
+  window.addEventListener("beforeinstallprompt", (event) => {
+    event.preventDefault();
+    installPrompt = event;
+    if (!$("welcome").hidden) $("welcome-install-btn").hidden = false;
+  });
+  $("welcome-install-btn").addEventListener("click", async () => {
+    if (!installPrompt) return;
+    installPrompt.prompt();
+    await installPrompt.userChoice.catch(() => null);
+    installPrompt = null;
+    $("welcome-install-btn").hidden = true;
+  });
   $("done-gift").addEventListener("click", openGift);
   $("home-gift").addEventListener("click", openGift);
   $("gift-open").addEventListener("click", revealGift);
@@ -2453,8 +2486,7 @@ async function checkForNewVersion({ manual = false } = {}) {
 
 // แอปที่เปิดจากไอคอนบนหน้าจอโฮมควรเหมือนแอปทั่วไป ไม่ให้ซูมหน้าได้ (เปิดผ่านเบราว์เซอร์ปกติยังซูมได้เพื่อการเข้าถึง)
 function lockZoomInInstalledApp() {
-  const installed = window.matchMedia("(display-mode: standalone)").matches || navigator.standalone === true;
-  if (!installed) return;
+  if (!isInstalled()) return;
   document
     .querySelector('meta[name="viewport"]')
     ?.setAttribute("content", "width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover");

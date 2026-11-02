@@ -31,8 +31,8 @@ export function meaningOf(word) {
 
 const glossesOf = (text) => text.split(/,\s*/);
 
-function withAnswer(answer, wrong) {
-  const options = shuffle([{ text: answer, correct: true }, ...wrong.map((text) => ({ text, correct: false }))]);
+function withAnswer(answer, wrong, rng = Math.random) {
+  const options = shuffle([{ text: answer, correct: true }, ...wrong.map((text) => ({ text, correct: false }))], rng);
   return { options, answerIndex: options.findIndex((option) => option.correct), answerText: answer };
 }
 
@@ -56,7 +56,7 @@ export function choiceQuestion(word, pool, rng = Math.random) {
     if (!wrong.includes(candidate.text)) wrong.push(candidate.text);
   }
   if (wrong.length < OPTION_COUNT - 1) return null;
-  return { type: "choice", ...withAnswer(answer, wrong) };
+  return { type: "choice", ...withAnswer(answer, wrong, rng) };
 }
 
 // รูปของคำที่ปรากฏในประโยคเทียบกับคำหลัก ใช้เลือกตัวหลอกให้หน้าตาคล้ายกัน (คำตอบจะได้ไม่โดดเด่น)

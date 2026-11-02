@@ -5,6 +5,18 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <title>Vocab Garden</title>
   <meta name="description" content="ท่องศัพท์ภาษาอังกฤษพื้นฐานจาก NGSL 1.2 ใช้ฟรี">
+  <!-- ภาพตัวอย่างเมื่อแชร์ลิงก์ใน LINE / Facebook / X (ต้องเป็น URL เต็ม) -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Vocab Garden">
+  <meta property="og:locale" content="th_TH">
+  <meta property="og:title" content="Vocab Garden — ท่องศัพท์อังกฤษพื้นฐาน ปลูกคำละต้น">
+  <meta property="og:description" content="ท่องศัพท์ภาษาอังกฤษพื้นฐานจาก NGSL 1.2 สำหรับคนไทย ใช้ฟรี เล่นเกมและท้าเพื่อนได้ (ไม่ใช่แอปทางการของ NGSL)">
+  <meta property="og:url" content="https://nopjorn.github.io/vocab-garden/">
+  <meta property="og:image" content="https://nopjorn.github.io/vocab-garden/icons/og-image.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="ไอคอนต้นกล้าของ Vocab Garden พร้อมข้อความ ท่องศัพท์อังกฤษพื้นฐาน ปลูกคำละต้น ใช้ฟรี">
+  <meta name="twitter:card" content="summary_large_image">
   <meta name="color-scheme" content="light dark">
   <meta name="theme-color" content="#059669">
   <meta name="mobile-web-app-capable" content="yes">
@@ -467,6 +479,12 @@
           </a>
         </li>
         <li>
+          <a class="game-card" href="#/play/duel">
+            <span class="game-emoji" aria-hidden="true">🤝</span>
+            <span class="game-info"><strong>ท้าเพื่อน</strong><span class="muted small">เล่น 60 วินาทีแล้วส่งลิงก์ให้เพื่อน เพื่อนจะได้คำถามชุดเดียวกันทุกข้อ แล้วมาดูกันว่าใครตอบได้มากกว่า</span></span>
+          </a>
+        </li>
+        <li>
           <a class="game-card" href="#/play/confuse">
             <span class="game-emoji" aria-hidden="true">🔍</span>
             <span class="game-info"><strong>คู่คำที่ควรระวัง</strong><span class="muted small">borrow / lend, say / tell, hear / listen และอีกหลายคู่ที่คนไทยมักสับสน อ่านคำอธิบายแล้วฝึกเลือกคำ 8 ข้อ</span><span id="confuse-best" class="small"></span></span>
@@ -537,8 +555,16 @@
     <section id="view-blitz" hidden>
       <div class="study-top">
         <a href="#/play" class="close" aria-label="กลับไปหน้าเกม">✕</a>
-        <strong class="game-title">⚡ ท้าทาย 60 วินาที</strong>
+        <strong id="blitz-heading" class="game-title">⚡ ท้าทาย 60 วินาที</strong>
         <span id="blitz-score" class="muted small"></span>
+      </div>
+      <div id="blitz-intro" class="done-card" hidden>
+        <p id="blitz-intro-emoji" class="big-emoji" aria-hidden="true">🤝</p>
+        <h2 id="blitz-intro-title"></h2>
+        <p id="blitz-intro-text"></p>
+        <p class="muted small">ทั้งสองฝั่งได้คำและตัวเลือกเรียงเหมือนกันทุกข้อ ตอบผิดไม่หักคะแนน ลิงก์มีแค่เลขชุดคำถาม แปลงที่ใช้ และคะแนน ไม่มีข้อมูลอื่นของคุณ</p>
+        <button type="button" id="blitz-intro-start" class="primary wide">⚡ เริ่มเลย</button>
+        <a href="#/play" class="button wide">กลับไปหน้าเกม</a>
       </div>
       <div id="blitz-play">
         <p id="blitz-time" class="blitz-time" role="timer" aria-live="off"></p>
@@ -552,6 +578,9 @@
         <h2 id="blitz-title"></h2>
         <p id="blitz-final" class="blitz-final"></p>
         <p id="blitz-summary" class="muted"></p>
+        <p id="blitz-verdict" class="duel-verdict" hidden></p>
+        <button type="button" id="blitz-share" class="primary wide" hidden>📨 ส่งลิงก์ท้าเพื่อน</button>
+        <button type="button" id="blitz-rematch" class="primary wide" hidden>🔁 ท้ากลับด้วยชุดใหม่</button>
         <button type="button" id="blitz-again" class="primary wide">🔁 เล่นอีกรอบ</button>
         <a href="#/play" class="button wide">กลับไปหน้าเกม</a>
       </div>

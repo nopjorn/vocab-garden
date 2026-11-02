@@ -3225,6 +3225,16 @@ html[data-text-size="large"] {
   color: var(--link);
 }
 
+/* ผลการท้าเพื่อน */
+.duel-verdict {
+  margin: 4px 0 14px;
+  padding: 10px 14px;
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  font-weight: 700;
+}
+
 /* ภารกิจประจำวัน */
 .missions {
   margin: 14px 0 16px;

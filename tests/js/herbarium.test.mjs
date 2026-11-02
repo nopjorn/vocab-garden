@@ -26,6 +26,8 @@ test("pages stay even when the word is forgotten later, newest first", () => {
   assert.equal(pages[1].reps, 0, "a page without a card still shows");
   assert.match(pageNote(pages[0]), /ทวน 8 ครั้ง · เคยลืม 1 ครั้ง$/);
   assert.match(pageNote(pages[2]), /ทวนอีกนิด/);
+  const spotted = herbariumPages(words, { house: tree }, { house: 1 }, { house: 3 });
+  assert.match(pageNote(spotted[0]), /✨ เจอจริง 3 ครั้ง/);
 });
 
 test("dates are shown in Thai with the Buddhist year", () => {

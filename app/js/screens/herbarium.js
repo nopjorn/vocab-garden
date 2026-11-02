@@ -27,7 +27,8 @@ function openHerbarium() {
   const today = dayNumber();
   const words = translatedWords();
   storage.pressPages(treeHeadwords(words, state.cards), today);
-  shown = herbariumPages(words, state.cards, storage.loadGarden().pressed);
+  const garden = storage.loadGarden();
+  shown = herbariumPages(words, state.cards, garden.pressed, garden.spotted);
   $("herbarium-total").textContent = `${shown.length} หน้า`;
   $("herbarium-empty").hidden = shown.length > 0;
   $("herbarium-pages").replaceChildren(

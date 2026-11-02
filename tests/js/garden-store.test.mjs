@@ -15,7 +15,7 @@ function fakeStore(initial = {}) {
 }
 
 test("the garden store starts empty and drops bad values", () => {
-  assert.deepEqual(createStorage(fakeStore()).loadGarden(), { bugs: {}, caught: 0, visits: [], souvenirs: {}, pressed: {} });
+  assert.deepEqual(createStorage(fakeStore()).loadGarden(), { bugs: {}, caught: 0, visits: [], souvenirs: {}, pressed: {}, spotted: {}, spottedOn: {} });
   const messy = fakeStore({ "vg:garden": JSON.stringify({ bugs: { house: 3, bad: -1, odd: 1.5, ["x".repeat(65)]: 2 }, caught: "lots" }) });
   assert.deepEqual(bugsOf(createStorage(messy).loadGarden()), { bugs: { house: 3 }, caught: 0 });
   assert.deepEqual(bugsOf(createStorage(fakeStore({ "vg:garden": "[1,2]" })).loadGarden()), { bugs: {}, caught: 0 });
@@ -70,4 +70,24 @@ test("visits are cleaned, capped and merged", () => {
   const merged = mergeGarden({ bugs: {}, caught: 0, visits: ["1-0", "3-1"], souvenirs: { acorn: 1 }, pressed: {} }, { bugs: {}, caught: 0, visits: ["2-0", "1-0"], souvenirs: { acorn: 3, shell: 1 }, pressed: {} });
   assert.deepEqual(merged.visits, ["1-0", "2-0", "3-1"]);
   assert.deepEqual(merged.souvenirs, { acorn: 3, shell: 1 });
+});
+
+test("spotting a word in real life counts once a day and merges by the larger count", () => {
+  const storage = createStorage(fakeStore());
+  assert.equal(storage.spotWord("house", 10), 1);
+  assert.equal(storage.spotWord("house", 10), 0, "only once a day");
+  assert.equal(storage.spotWord("house", 11), 2);
+  assert.equal(storage.spotWord("go", 11), 1);
+  const garden = storage.loadGarden();
+  assert.deepEqual(garden.spotted, { house: 2, go: 1 });
+  assert.deepEqual(garden.spottedOn, { house: 11, go: 11 });
+  const merged = mergeGarden(garden, { ...garden, spotted: { house: 1, eat: 4 }, spottedOn: { house: 9, eat: 12 } });
+  assert.deepEqual(merged.spotted, { house: 2, go: 1, eat: 4 });
+  assert.deepEqual(merged.spottedOn, { house: 11, go: 11, eat: 12 });
+});
+
+test("ten real-life spots earn the spotter medal", async () => {
+  const { newMedals } = await import("../../app/js/achievements.js");
+  assert.equal(newMedals({ spotted: 9 }, {}).some((medal) => medal.id === "spotter"), false);
+  assert.equal(newMedals({ spotted: 10 }, {}).some((medal) => medal.id === "spotter"), true);
 });

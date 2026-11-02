@@ -23,12 +23,19 @@ export const monthLabel = (day) => {
 
 // หน้าในสมุด เก็บล่าสุดก่อน วันเดียวกันเรียงตามลำดับในชุดข้อมูล
 // { word, day, reps, lapses, stillTree } คำที่หาไม่เจอในชุดข้อมูล (เช่น ข้อมูลเก่า) ข้ามไป
-export function herbariumPages(words, cards, pressed) {
+export function herbariumPages(words, cards, pressed, spotted = {}) {
   return words
     .filter((word) => word.headword in pressed)
     .map((word) => {
       const card = cards[word.headword];
-      return { word, day: pressed[word.headword], reps: card?.reps || 0, lapses: card?.lapses || 0, stillTree: Boolean(card) && stageOf(card).id === "tree" };
+      return {
+        word,
+        day: pressed[word.headword],
+        reps: card?.reps || 0,
+        lapses: card?.lapses || 0,
+        spotted: spotted[word.headword] || 0,
+        stillTree: Boolean(card) && stageOf(card).id === "tree",
+      };
     })
     .sort((a, b) => b.day - a.day || a.word.order - b.word.order);
 }
@@ -45,4 +52,4 @@ export function byMonth(pages) {
 }
 
 export const pageNote = (page) =>
-  `เก็บเมื่อ ${dayLabel(page.day)} · ทวน ${page.reps} ครั้ง${page.lapses ? ` · เคยลืม ${page.lapses} ครั้ง` : ""}${page.stillTree ? "" : " · ตอนนี้ต้องทวนอีกนิด 💧"}`;
+  `เก็บเมื่อ ${dayLabel(page.day)} · ทวน ${page.reps} ครั้ง${page.lapses ? ` · เคยลืม ${page.lapses} ครั้ง` : ""}${page.spotted ? ` · ✨ เจอจริง ${page.spotted} ครั้ง` : ""}${page.stillTree ? "" : " · ตอนนี้ต้องทวนอีกนิด 💧"}`;

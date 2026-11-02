@@ -186,6 +186,7 @@ function validNotes(notes) {
 // ของเล่นในสวนที่ไม่ใช่ความคืบหน้าของการ์ด เก็บรวมใน vg:garden
 //   bugs: { [คำ]: จำนวนครั้งที่ลืมตอนไล่แมลงได้ } คำที่ลืมเพิ่มหลังจากนั้นจะกลับมาเป็นแมลงอีก · caught: ไล่แมลงได้กี่ตัวแล้ว
 //   pressed: { [คำ]: วันที่เก็บลงสมุดพันธุ์ไม้ } คำที่โตเป็นต้นไม้ใหญ่แล้ว หน้าในสมุดไม่หายแม้ภายหลังลืม
+//   spotted: { [คำ]: จำนวนครั้งที่เจอในชีวิตจริง } · spottedOn: { [คำ]: วันล่าสุดที่กด } (กดได้คำละครั้งต่อวัน)
 //   visits: ["วัน-รอบ"] รอบที่นักเดินทางมาเยี่ยมแล้วตอบไปแล้ว (ล่าสุด VISIT_KEEP รอบ) · souvenirs: { [รหัสของฝาก]: จำนวน }
 const countOf = (value) => (Number.isInteger(value) && value >= 0 ? value : 0);
 const isWordKey = (key) => key !== "__proto__" && key.length > 0 && key.length <= 64;
@@ -217,6 +218,8 @@ function validGarden(garden) {
     visits: validVisits(garden.visits),
     souvenirs: validWordCounts(garden.souvenirs),
     pressed: validWordCounts(garden.pressed),
+    spotted: validWordCounts(garden.spotted),
+    spottedOn: validWordCounts(garden.spottedOn),
   };
 }
 
@@ -235,13 +238,17 @@ function minCounts(a, b) {
   return merged;
 }
 
-export function mergeGarden(local, incoming) {
+export function mergeGarden(localGarden, incomingGarden) {
+  const local = validGarden(localGarden) || EMPTY_GARDEN();
+  const incoming = validGarden(incomingGarden) || EMPTY_GARDEN();
   return {
     bugs: maxCounts(local.bugs, incoming.bugs),
     caught: Math.max(local.caught, incoming.caught),
     visits: validVisits([...local.visits, ...incoming.visits]),
     souvenirs: maxCounts(local.souvenirs, incoming.souvenirs),
     pressed: minCounts(local.pressed, incoming.pressed), // เก็บลงสมุดวันไหน เอาวันที่เก่ากว่า
+    spotted: maxCounts(local.spotted, incoming.spotted),
+    spottedOn: maxCounts(local.spottedOn, incoming.spottedOn),
   };
 }
 
@@ -608,6 +615,15 @@ export function createStorage(store = globalThis.localStorage) {
       });
       write(KEYS.garden, garden);
       return fresh;
+    },
+    // เจอคำนี้ในชีวิตจริง: นับเพิ่มคำละครั้งต่อวัน คืนจำนวนครั้งหลังนับ (0 = วันนี้กดไปแล้ว)
+    spotWord(headword, today) {
+      const garden = this.loadGarden();
+      if (garden.spottedOn[headword] === today) return 0;
+      garden.spotted[headword] = (garden.spotted[headword] || 0) + 1;
+      garden.spottedOn[headword] = today;
+      write(KEYS.garden, garden);
+      return garden.spotted[headword];
     },
     // นักเดินทางมาเยี่ยม: บันทึกว่ารอบนี้ตอบแล้ว ตอบถูกได้ของฝาก (giftId = null เมื่อตอบผิด) คืน false ถ้ารอบนี้ตอบไปแล้ว
     recordVisit(day, slot, giftId) {

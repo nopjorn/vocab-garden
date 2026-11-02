@@ -1748,6 +1748,7 @@ const screenContext = () => ({
 
 function screenFor(page, argument) {
   if (page === "exam" || page === "placement" || page === "settings" || page === "garden") return page;
+  if (page === "play" && argument === "duel") return "blitz"; // ท้าเพื่อนใช้หน้าเดียวกับท้าทาย 60 วินาที
   if (page === "play" && Object.hasOwn(SCREEN_LOADERS, argument)) return argument;
   return null;
 }
@@ -1809,6 +1810,10 @@ function route() {
   loaded.blitz?.stop();
   loaded.commute?.stop();
   gardenReturn = fromPlot ? gardenScroll : null;
+  if (page === "duel") {
+    openScreen("blitz", { code: argument || "" }); // ลิงก์ท้าที่เพื่อนส่งมา #/duel/<รหัส>
+    return;
+  }
   const screen = screenFor(page, argument);
   if (screen) {
     openScreen(screen, argument);

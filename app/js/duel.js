@@ -3,20 +3,12 @@
 // ทั้งสองฝั่งสร้างคำถามจากชุดข้อมูลในแอปเหมือนกัน ด้วยตัวสุ่มที่ตั้งต้นจาก seed เดียวกัน จึงได้คำและตัวเลือกเรียงเหมือนกันทุกข้อ
 // (ถ้าเปิดลิงก์ด้วยแอปคนละเวอร์ชันที่คำแปลต่างกัน คำถามบางข้ออาจต่างไปเล็กน้อย)
 
+import { seededRandom } from "./rng.js";
+
+export { seededRandom };
+
 export const DUEL_FORMAT = "1"; // ขึ้นต้นรหัสลิงก์ ถ้าวันหน้าเปลี่ยนวิธีสร้างคำถาม ให้ขยับเลขนี้ ลิงก์เก่าจะได้ไม่เพี้ยน
 export const MAX_SCORE = 999;
-
-// ตัวสุ่มที่กำหนดผลได้ (mulberry32) seed เดียวกันได้ลำดับเลขเดียวกันทุกเครื่อง
-export function seededRandom(seed) {
-  let value = seed >>> 0;
-  return () => {
-    value = (value + 0x6d2b79f5) >>> 0;
-    let mixed = value;
-    mixed = Math.imul(mixed ^ (mixed >>> 15), mixed | 1);
-    mixed ^= mixed + Math.imul(mixed ^ (mixed >>> 7), mixed | 61);
-    return ((mixed ^ (mixed >>> 14)) >>> 0) / 4294967296;
-  };
-}
 
 export const newSeed = (rng = Math.random) => Math.floor(rng() * 4294967296) >>> 0;
 

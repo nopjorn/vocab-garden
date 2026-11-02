@@ -33,8 +33,8 @@ import { recallBetween } from "./recall.js";
 import { SUPPORT_LINKS } from "./support.js";
 import { isNewer, parseSwVersion } from "./update.js";
 
-const VIEWS = ["loading", "error", "home", "study", "done", "garden", "plot", "play", "match", "flash", "wordle", "scramble", "sentence", "blitz", "confuse", "listen", "dictation", "commute", "placement", "exam", "settings", "about", "changelog"];
-const TAB_OF_VIEW = { plot: "garden", changelog: "about", match: "play", flash: "play", wordle: "play", scramble: "play", sentence: "play", blitz: "play", confuse: "play", listen: "play", dictation: "play", commute: "play", placement: "settings", exam: "garden" }; // หน้าที่ไม่มีแท็บของตัวเอง ให้ไฮไลต์แท็บนี้แทน
+const VIEWS = ["loading", "error", "home", "study", "done", "garden", "plot", "play", "match", "flash", "wordle", "scramble", "sentence", "blitz", "confuse", "listen", "dictation", "commute", "placement", "exam", "bugs", "settings", "about", "changelog"];
+const TAB_OF_VIEW = { plot: "garden", changelog: "about", match: "play", flash: "play", wordle: "play", scramble: "play", sentence: "play", blitz: "play", confuse: "play", listen: "play", dictation: "play", commute: "play", placement: "settings", exam: "garden", bugs: "garden" }; // หน้าที่ไม่มีแท็บของตัวเอง ให้ไฮไลต์แท็บนี้แทน
 const REQUEUE_GAP = 3; // คำที่ตอบ "ยังจำไม่ได้" จะกลับมาอีกครั้งหลังการ์ดใบอื่นอีก 3 ใบ
 const SWIPE_DISTANCE = 90; // ปัดเกินกี่ px ถึงนับเป็นการให้คะแนน
 const SWIPE_PREVIEW = 40; // ปัดเกินกี่ px ถึงเริ่มขึ้นป้ายบนการ์ด
@@ -1203,6 +1203,7 @@ function medalContext(events = {}) {
     wordleWins: games.wordleStats?.won || 0,
     matchBest: games.best.match ?? null,
     scrambleBest: games.best.scramble || 0,
+    bugsCaught: storage.loadGarden().caught,
     ...events,
   };
 }
@@ -1735,6 +1736,7 @@ const SCREEN_LOADERS = {
   wordle: () => import("./screens/wordle.js"),
   settings: () => import("./screens/settings.js"),
   garden: () => import("./screens/garden.js"),
+  bugs: () => import("./screens/bugs.js"),
 };
 const loaded = {};
 const pending = {};
@@ -1747,7 +1749,7 @@ const screenContext = () => ({
 });
 
 function screenFor(page, argument) {
-  if (page === "exam" || page === "placement" || page === "settings" || page === "garden") return page;
+  if (page === "exam" || page === "placement" || page === "settings" || page === "garden" || page === "bugs") return page;
   if (page === "play" && argument === "duel") return "blitz"; // ท้าเพื่อนใช้หน้าเดียวกับท้าทาย 60 วินาที
   if (page === "play" && Object.hasOwn(SCREEN_LOADERS, argument)) return argument;
   return null;

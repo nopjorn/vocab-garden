@@ -4,6 +4,7 @@
 //   bestStreak           = สตรีคที่ยาวที่สุด
 //   notes                = จำนวนโน้ตช่วยจำที่เขียน
 //   gamePlays wordleWins matchBest(ms) scrambleBest = สถิติเกมในแท็บ เกม
+//   bugsCaught           = จำนวนแมลงที่ไล่ได้ (vg:garden)
 //   examTier = ระดับเหรียญของการสอบปลายแปลงที่เพิ่งจบ (bronze / silver / gold ไม่ผ่าน = null)
 //   perfectRound earlyBird comeback = เหตุการณ์ตอนจบรอบ (ไม่เก็บถาวร ตัดสินตอนจบรอบเท่านั้น)
 
@@ -26,6 +27,7 @@ export const MEDALS = [
   { id: "match-fast", emoji: "⏱️", title: "มือไว", desc: "จับคู่คำให้เสร็จภายใน 20 วินาที", test: (c) => c.matchBest !== null && c.matchBest <= 20000 },
   { id: "exam-first", emoji: "🎓", title: "นักสอบ", desc: "สอบปลายแปลงผ่านครั้งแรก (ได้เหรียญทองแดงขึ้นไป)", test: (c) => c.examTier !== null },
   { id: "exam-gold", emoji: "🥇", title: "ยอดเยี่ยม", desc: "สอบปลายแปลงได้เหรียญทอง", test: (c) => c.examTier === "gold" },
+  { id: "bug-catcher", emoji: "🦋", title: "นักไล่แมลง", desc: "ไล่แมลงออกจากสวนครบ 10 ตัว", test: (c) => c.bugsCaught >= 10 },
   { id: "scramble-perfect", emoji: "🧠", title: "เรียงเก่ง", desc: "เรียงตัวอักษรได้เต็ม 10 แต้ม", test: (c) => c.scrambleBest >= 10 },
 ];
 
@@ -38,6 +40,7 @@ export const EMPTY_CONTEXT = {
   wordleWins: 0,
   matchBest: null,
   scrambleBest: 0,
+  bugsCaught: 0,
   examTier: null,
   perfectRound: false,
   earlyBird: false,

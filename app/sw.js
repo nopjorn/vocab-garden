@@ -4,7 +4,7 @@
 // PRECACHE ต้องมีทุกไฟล์ใน app/ (tests/test_pwa.py ตรวจให้)
 // Safari เทียบแค่ไฟล์ sw.js ไม่ดู version.js ที่ import มา จึงต้องเขียนเลข version ไว้ในไฟล์นี้ด้วย
 // ขยับ version ทุกครั้งต้องแก้บรรทัดด้านล่างให้ตรงกับ app/version.js (tests/test_pwa.py ตรวจให้)
-// sw-version: 0.57.0
+// sw-version: 0.58.0
 
 importScripts("version.js", "asset-hashes.js");
 
@@ -31,6 +31,7 @@ const PRECACHE = [
   "js/sentence.js",
   "js/blitz.js",
   "js/duel.js",
+  "js/bugs.js",
   "js/missions.js",
   "js/recall.js",
   "js/storage.js",
@@ -73,6 +74,7 @@ const PRECACHE = [
   "js/screens/scramble.js",
   "js/screens/sentence.js",
   "js/screens/blitz.js",
+  "js/screens/bugs.js",
   "js/screens/confuse.js",
   "js/screens/placement.js",
   "js/screens/dictation.js",

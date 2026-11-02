@@ -22,6 +22,7 @@ const KEYS = {
   answers: "vg:answers",
   fsrs: "vg:fsrs",
   missions: "vg:missions",
+  garden: "vg:garden",
 };
 const HISTORY_KEEP_DAYS = 400; // เก็บประวัติการทวนรายวันย้อนหลังไม่เกินนี้
 export const SPEECH_RATE_CHOICES = [0.7, 0.9, 1.1]; // ช้า / ปกติ / เร็ว
@@ -180,6 +181,39 @@ function validNotes(notes) {
     }
   }
   return clean;
+}
+
+// ของเล่นในสวนที่ไม่ใช่ความคืบหน้าของการ์ด เก็บรวมใน vg:garden
+//   bugs: { [คำ]: จำนวนครั้งที่ลืมตอนไล่แมลงได้ } คำที่ลืมเพิ่มหลังจากนั้นจะกลับมาเป็นแมลงอีก · caught: ไล่แมลงได้กี่ตัวแล้ว
+const countOf = (value) => (Number.isInteger(value) && value >= 0 ? value : 0);
+const isWordKey = (key) => key !== "__proto__" && key.length > 0 && key.length <= 64;
+
+function validWordCounts(value) {
+  const clean = {};
+  if (value && typeof value === "object" && !Array.isArray(value)) {
+    for (const [headword, count] of Object.entries(value)) {
+      if (isWordKey(headword) && Number.isInteger(count) && count >= 0) clean[headword] = count;
+    }
+  }
+  return clean;
+}
+
+function validGarden(garden) {
+  if (garden === null || typeof garden !== "object" || Array.isArray(garden)) return null;
+  return { bugs: validWordCounts(garden.bugs), caught: countOf(garden.caught) };
+}
+
+const EMPTY_GARDEN = () => validGarden({});
+
+// รวมข้อมูลสวนสองเครื่อง: คำเดียวกันเอาค่าที่มากกว่า ตัวนับเอาค่าที่มากกว่า
+function maxCounts(a, b) {
+  const merged = { ...a };
+  for (const [key, value] of Object.entries(b)) merged[key] = Math.max(merged[key] ?? 0, value);
+  return merged;
+}
+
+export function mergeGarden(local, incoming) {
+  return { bugs: maxCounts(local.bugs, incoming.bugs), caught: Math.max(local.caught, incoming.caught) };
 }
 
 // เหรียญที่ได้แล้ว { [รหัสเหรียญ]: เลขวันที่ได้ } เหรียญไม่หาย แม้เงื่อนไขเปลี่ยนภายหลัง
@@ -520,6 +554,21 @@ export function createStorage(store = globalThis.localStorage) {
       write(KEYS.missions, withDone(days, today));
       return true;
     },
+    // ของเล่นในสวน (แมลง ฯลฯ ดู validGarden)
+    loadGarden() {
+      return validGarden(read(KEYS.garden, null)) || EMPTY_GARDEN();
+    },
+    saveGarden(garden) {
+      write(KEYS.garden, garden);
+    },
+    // ไล่แมลงของคำนี้ได้ จำจำนวนครั้งที่ลืมไว้ ถ้าลืมเพิ่มอีกแมลงจะกลับมา คืนข้อมูลสวนหลังบันทึก
+    catchBug(headword, lapses) {
+      const garden = this.loadGarden();
+      garden.bugs[headword] = lapses;
+      garden.caught += 1;
+      write(KEYS.garden, garden);
+      return garden;
+    },
     // ผลการตอบแบบย่อ (ใช้คำนวณอัตราจำได้ ดู recall.js) เก็บล่าสุด ANSWER_KEEP ครั้ง
     loadAnswers() {
       return validAnswers(read(KEYS.answers, null)) || [];
@@ -582,6 +631,7 @@ export function createStorage(store = globalThis.localStorage) {
         answers: this.loadAnswers(),
         fsrs: this.loadFsrs(),
         missions: this.loadMissions(),
+        garden: this.loadGarden(),
       };
     },
     // คืนจำนวนคำที่มีหลังนำเข้า หรือโยน Error ถ้าไฟล์ไม่ถูกต้อง
@@ -652,6 +702,9 @@ export function createStorage(store = globalThis.localStorage) {
       // ไฟล์สำรองเก่า (ก่อนมีภารกิจประจำวัน) ไม่มีค่านี้ ให้คงของเดิมไว้ ตอนรวมข้อมูลเอาวันที่ครบจากทั้งสองฝั่ง
       const missions = data.missions === undefined ? null : validMissions(data.missions);
       if (missions) write(KEYS.missions, merge ? validMissions([...this.loadMissions(), ...missions]) : missions);
+      // ไฟล์สำรองเก่า (ก่อน v0.58.0) ไม่มีข้อมูลสวน ให้คงของเดิมไว้
+      const garden = data.garden === undefined ? null : validGarden(data.garden);
+      if (garden) write(KEYS.garden, merge ? mergeGarden(this.loadGarden(), garden) : garden);
       return Object.keys(cards).length;
     },
 

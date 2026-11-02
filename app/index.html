@@ -321,6 +321,10 @@
 
       <div id="leech-section" hidden>
         <h2>🧠 คำที่ลืมบ่อย</h2>
+        <div id="bug-box" class="bug-box" hidden>
+          <p><strong id="bug-count"></strong><br><span class="muted small">คำที่ลืมบ่อยกลายเป็นแมลงตัวเล็ก ๆ เกาะต้นไม้ ไล่ได้ด้วยการตอบคำนั้นให้ถูก 3 แบบติดกัน ตอบผิดไม่เสียอะไร และไม่เปลี่ยนวันทวน</span></p>
+          <a href="#/bugs" class="button primary">🐛 ไล่แมลง</a>
+        </div>
         <p class="muted small">คำที่เคยจำได้แล้วกลับลืมตั้งแต่ 3 ครั้งขึ้นไป แตะที่คำเพื่อเขียนโน้ตช่วยจำของตัวเอง เช่น คำไทยที่เสียงคล้ายหรือเรื่องเล่าสั้น ๆ
           แล้วฝึกเฉพาะกลุ่มนี้ได้ การฝึกไม่เปลี่ยนวันทวนของคำ</p>
         <ul id="leech-list" class="leech-list"></ul>
@@ -726,6 +730,35 @@
         <button type="button" id="placement-skip" class="wide" hidden></button>
         <button type="button" id="placement-again" class="wide">🔁 ทำใหม่</button>
         <a href="#/settings" class="button wide">กลับไปหน้าตั้งค่า</a>
+      </div>
+    </section>
+
+    <section id="view-bugs" hidden>
+      <div class="study-top">
+        <a href="#/garden" class="close" aria-label="กลับไปหน้าสวน">✕</a>
+        <strong class="game-title">🐛 ไล่แมลง</strong>
+        <span id="bugs-count" class="muted small"></span>
+      </div>
+      <div id="bugs-play">
+        <p id="bugs-step" class="muted small center-text"></p>
+        <p class="bug-target"><span class="bug-crawl" aria-hidden="true">🐛</span> <span id="bugs-word" lang="en"></span>
+          <button type="button" id="bugs-speak" class="listen-btn" aria-label="ฟังเสียง">🔊</button></p>
+        <p id="bugs-prompt" class="exam-prompt"></p>
+        <p id="bugs-hint" class="muted small center-text"></p>
+        <ul id="bugs-options" class="quiz-options" aria-label="ตัวเลือกคำตอบ"></ul>
+        <form id="bugs-form" class="dictation-form" autocomplete="off" hidden>
+          <input id="bugs-input" type="text" lang="en" autocapitalize="off" autocorrect="off" spellcheck="false" enterkeyhint="done" aria-label="พิมพ์คำภาษาอังกฤษ">
+          <button type="submit" class="primary">ตรวจ</button>
+        </form>
+        <p id="bugs-feedback" class="quiz-feedback" role="status" hidden></p>
+        <button type="button" id="bugs-next" class="primary wide" hidden>ต่อไป ➡️</button>
+      </div>
+      <div id="bugs-result" class="done-card" hidden>
+        <p class="big-emoji celebrate" aria-hidden="true">🦋</p>
+        <h2 id="bugs-title"></h2>
+        <p id="bugs-summary" class="muted"></p>
+        <button type="button" id="bugs-again" class="primary wide">🐛 ไล่ต่ออีกรอบ</button>
+        <a href="#/garden" class="button wide">กลับไปที่สวน</a>
       </div>
     </section>
 

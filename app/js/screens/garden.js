@@ -5,6 +5,7 @@ import { buildCalendar, cellLabel } from "../calendar.js";
 import { MILESTONES, coverageOfRanks, coverageOfTop, knownRanks, parseFrequency, percentText } from "../coverage.js";
 import { levelTitle } from "../data.js";
 import { EXAM_COUNT, bestTier, examReady } from "../exam.js";
+import { bugSet } from "../bugs.js";
 import { PLOT_FILTERS, leechWords, matchesQuery, plantInfo, plantMatchesFilter, plotFilterCounts, plotSummary } from "../garden.js";
 import { recallStats } from "../recall.js";
 import { STAGES, dayNumber, stageOf } from "../srs.js";
@@ -156,9 +157,21 @@ function renderCalendar(active, today, frozen) {
   $("cal-grid").setAttribute("aria-label", `ปฏิทินสวน ท่อง ${calendar.activeDays} วัน ใน ${calendar.weeks} สัปดาห์ล่าสุด`);
 }
 
+// แมลงที่ยังเกาะต้นไม้อยู่ (คำที่ลืมบ่อยที่ยังไม่ได้ไล่)
+const currentBugs = () => bugSet(translatedWords(), state.cards, storage.loadGarden().bugs);
+
+function bugMark() {
+  const mark = el("span", "bug-mark", "🐛");
+  mark.setAttribute("aria-hidden", "true");
+  return mark;
+}
+
 function renderLeeches() {
   const leeches = leechWords(translatedWords(), state.cards, 12);
   $("leech-section").hidden = leeches.length === 0;
+  const bugs = currentBugs().size;
+  $("bug-box").hidden = bugs === 0;
+  $("bug-count").textContent = `🐛 มีแมลงเกาะต้นไม้อยู่ ${bugs} ตัว`;
   $("leech-list").replaceChildren(
     ...leeches.map((word) => {
       const item = el("li");
@@ -177,14 +190,16 @@ function renderLeeches() {
 }
 
 // แปลงสวน: ด่านละแปลง คำละต้น ต้นที่ถึงเวลาทวนเหี่ยวจนกว่าจะรดน้ำ
-function plantButton(word, today) {
+function plantButton(word, today, bugs) {
   const info = plantInfo(state.cards[word.headword], today);
+  const bug = bugs.has(word.headword);
   const button = el("button", `plant${info.planted ? "" : " seed"}${info.wilted ? " wilted" : ""}`);
   button.append(treeEl(info.stage.id, { wilted: info.wilted }));
+  if (bug) button.append(bugMark());
   button.type = "button";
   button.dataset.headword = word.headword;
   button.title = word.headword;
-  button.setAttribute("aria-label", `${word.headword} ${info.stage.label}${info.wilted ? " ต้องรดน้ำ" : ""}`);
+  button.setAttribute("aria-label", `${word.headword} ${info.stage.label}${info.wilted ? " ต้องรดน้ำ" : ""}${bug ? " มีแมลงเกาะ" : ""}`);
   return button;
 }
 
@@ -282,8 +297,9 @@ function renderPlots(today) {
 // ---------- หน้าของแต่ละแปลง (#/garden/<แปลง>) ----------
 
 // แถวในมุมมองรายการ: ช่องติ๊ก "รู้แล้ว" + ตัวคำและความหมาย แตะที่คำเพื่อดูรายละเอียด
-function wordRow(word, today) {
+function wordRow(word, today, bugs) {
   const info = plantInfo(state.cards[word.headword], today);
+  const bug = bugs.has(word.headword);
   const row = el("li", `word-row${info.wilted ? " wilted" : ""}`);
   if (canSkip(word)) {
     const label = el("label", "word-check");
@@ -306,11 +322,12 @@ function wordRow(word, today) {
   main.dataset.headword = word.headword;
   const emoji = el("span", "word-row-emoji");
   emoji.append(treeEl(info.stage.id, { wilted: info.wilted }));
+  if (bug) emoji.append(bugMark());
   emoji.setAttribute("aria-hidden", "true");
   const name = el("strong", "", word.headword);
   name.lang = "en";
   main.append(emoji, name, el("span", "word-row-meaning", word.senses[0]?.text || ""));
-  main.setAttribute("aria-label", `${word.headword} ${info.stage.label}${info.wilted ? " ต้องรดน้ำ" : ""}`);
+  main.setAttribute("aria-label", `${word.headword} ${info.stage.label}${info.wilted ? " ต้องรดน้ำ" : ""}${bug ? " มีแมลงเกาะ" : ""}`);
   row.append(main);
   return row;
 }
@@ -381,8 +398,9 @@ function renderPlotPage(level) {
   for (const [id, view] of [["plot-view-grid", "grid"], ["plot-view-list", "list"]]) $(id).setAttribute("aria-pressed", String(plotPage.view === view));
   $("plot-grid").hidden = list;
   $("plot-list").hidden = !list;
-  $("plot-grid").replaceChildren(...(list ? [] : shown.map((word) => plantButton(word, today))));
-  $("plot-list").replaceChildren(...(list ? shown.map((word) => wordRow(word, today)) : []));
+  const bugs = currentBugs();
+  $("plot-grid").replaceChildren(...(list ? [] : shown.map((word) => plantButton(word, today, bugs))));
+  $("plot-list").replaceChildren(...(list ? shown.map((word) => wordRow(word, today, bugs)) : []));
   $("plot-select-bar").hidden = !list || !shown.some(canSkip);
   plotPage.shown = shown;
   updateSelectBar();

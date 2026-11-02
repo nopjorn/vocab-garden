@@ -1,16 +1,118 @@
 {
+  "id": "./",
   "name": "Vocab Garden",
   "short_name": "Vocab Garden",
   "description": "ท่องศัพท์ภาษาอังกฤษพื้นฐานจาก NGSL 1.2 ใช้ฟรี",
   "lang": "th",
+  "dir": "ltr",
   "start_url": "./",
   "scope": "./",
   "display": "standalone",
   "background_color": "#f6f8f3",
   "theme_color": "#059669",
+  "categories": [
+    "education"
+  ],
   "icons": [
-    { "src": "icons/icon-192.png", "sizes": "192x192", "type": "image/png" },
-    { "src": "icons/icon-512.png", "sizes": "512x512", "type": "image/png" },
-    { "src": "icons/icon-maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+    {
+      "src": "icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    },
+    {
+      "src": "icons/icon-maskable-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "เริ่มท่องศัพท์",
+      "short_name": "ท่องศัพท์",
+      "description": "ทวนคำที่ถึงเวลาและปลูกคำใหม่ของวันนี้",
+      "url": "./#/study",
+      "icons": [
+        {
+          "src": "icons/icon-192.png",
+          "sizes": "192x192",
+          "type": "image/png"
+        }
+      ]
+    },
+    {
+      "name": "สวนของฉัน",
+      "short_name": "สวน",
+      "description": "ดูต้นไม้ในแต่ละแปลง",
+      "url": "./#/garden",
+      "icons": [
+        {
+          "src": "icons/icon-192.png",
+          "sizes": "192x192",
+          "type": "image/png"
+        }
+      ]
+    },
+    {
+      "name": "เกม",
+      "short_name": "เกม",
+      "description": "เล่นเกมทบทวนคำศัพท์",
+      "url": "./#/play",
+      "icons": [
+        {
+          "src": "icons/icon-192.png",
+          "sizes": "192x192",
+          "type": "image/png"
+        }
+      ]
+    },
+    {
+      "name": "ท้าเพื่อน",
+      "short_name": "ท้าเพื่อน",
+      "description": "เล่น 60 วินาทีแล้วส่งลิงก์ท้าเพื่อน",
+      "url": "./#/play/duel",
+      "icons": [
+        {
+          "src": "icons/icon-192.png",
+          "sizes": "192x192",
+          "type": "image/png"
+        }
+      ]
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "screenshots/narrow-home.jpg",
+      "sizes": "780x1688",
+      "type": "image/jpeg",
+      "form_factor": "narrow",
+      "label": "หน้าหลัก: เป้าหมายวันนี้ คำที่ต้องทวน และคำใหม่"
+    },
+    {
+      "src": "screenshots/narrow-garden.jpg",
+      "sizes": "780x1688",
+      "type": "image/jpeg",
+      "form_factor": "narrow",
+      "label": "แปลงสวน: คำละหนึ่งต้น โตตามที่ทวน"
+    },
+    {
+      "src": "screenshots/narrow-play.jpg",
+      "sizes": "780x1688",
+      "type": "image/jpeg",
+      "form_factor": "narrow",
+      "label": "เกมทบทวนคำศัพท์หลายแบบ"
+    },
+    {
+      "src": "screenshots/wide-garden.jpg",
+      "sizes": "1280x800",
+      "type": "image/jpeg",
+      "form_factor": "wide",
+      "label": "สวนของฉันบนจอคอม"
+    }
   ]
 }

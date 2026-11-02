@@ -75,6 +75,37 @@ class ManifestTest(unittest.TestCase):
             self.assertTrue((APP / icon["src"]).is_file(), icon["src"])
         self.assertTrue(any(icon.get("purpose") == "maskable" for icon in manifest["icons"]))
 
+    def test_manifest_shortcuts_and_screenshots(self):
+        manifest = json.loads((APP / "manifest.webmanifest").read_text(encoding="utf-8"))
+        self.assertEqual(manifest["id"], "./")
+        self.assertIn("education", manifest["categories"])
+        # ปุ่มทางลัดเมื่อกดค้างที่ไอคอน: ต้องเปิดเส้นทางในแอปเอง (#/...) และมีชื่อภาษาไทย
+        routes = {"study", "garden", "play"}
+        for shortcut in manifest["shortcuts"]:
+            self.assertRegex(shortcut["url"], r"^\./#/[a-z/]+$")
+            self.assertTrue(shortcut["name"].strip())
+            for icon in shortcut.get("icons", []):
+                self.assertTrue((APP / icon["src"]).is_file(), icon["src"])
+        self.assertTrue(routes <= {shortcut["url"].split("/")[2] for shortcut in manifest["shortcuts"]})
+        # ภาพหน้าจอในหน้าติดตั้ง: มีไฟล์จริง ขนาดตรงกับที่ระบุ และมีทั้งจอแคบและจอกว้าง
+        for shot in manifest["screenshots"]:
+            path = APP / shot["src"]
+            self.assertTrue(path.is_file(), shot["src"])
+            self.assertEqual(jpeg_size(path.read_bytes()), tuple(int(n) for n in shot["sizes"].split("x")), shot["src"])
+            self.assertTrue(shot["label"].strip())
+        self.assertEqual({shot["form_factor"] for shot in manifest["screenshots"]}, {"narrow", "wide"})
+
+
+def jpeg_size(data):
+    """(กว้าง, สูง) ของไฟล์ JPEG อ่านจาก marker SOF"""
+    index = 2
+    while index < len(data):
+        marker, length = data[index + 1], int.from_bytes(data[index + 2 : index + 4], "big")
+        if 0xC0 <= marker <= 0xC3:
+            return int.from_bytes(data[index + 7 : index + 9], "big"), int.from_bytes(data[index + 5 : index + 7], "big")
+        index += 2 + length
+    return None
+
 
 if __name__ == "__main__":
     unittest.main()

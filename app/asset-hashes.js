@@ -116,5 +116,9 @@ self.VG_ASSETS = {
   "js/weather.js": "34c923c21091e960",
   "js/weekly.js": "09bbff6cac77a015",
   "js/wordle.js": "c85df41182ff4a20",
-  "manifest.webmanifest": "55280200beadac52"
+  "manifest.webmanifest": "60b01eef78632a87",
+  "screenshots/narrow-garden.jpg": "83b83933ad715cfc",
+  "screenshots/narrow-home.jpg": "079d36cac6e26d50",
+  "screenshots/narrow-play.jpg": "34358f3a46c608c2",
+  "screenshots/wide-garden.jpg": "7def821ea1a8297f"
 };

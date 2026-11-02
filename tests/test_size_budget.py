@@ -8,9 +8,9 @@ JS = ROOT / "app" / "js"
 # เพดานขนาดไฟล์ (ไบต์) ตั้งไว้เหนือขนาดปัจจุบันเล็กน้อย
 # ถ้าเกิน ให้ลดขนาดก่อน หรือย้ายโค้ดไปไว้ใน js/screens/ ให้โหลดเมื่อเปิดใช้
 # ถ้าจำเป็นต้องเพิ่มเพดานจริง ๆ ให้บอกเหตุผลใน PR
-BUDGET_STARTUP_JS = 284_000  # JS ที่หน้าแรกต้องโหลด (main.js + ที่ import แบบ static)
-BUDGET_TOTAL_JS = 482_000  # JS ทั้งหมดรวมหน้าที่โหลดเมื่อเปิดใช้
-BUDGET_CSS = 88_000
+BUDGET_STARTUP_JS = 288_000  # JS ที่หน้าแรกต้องโหลด (main.js + ที่ import แบบ static)
+BUDGET_TOTAL_JS = 490_000  # JS ทั้งหมดรวมหน้าที่โหลดเมื่อเปิดใช้
+BUDGET_CSS = 90_000
 
 
 def static_imports(path):

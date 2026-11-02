@@ -3225,6 +3225,114 @@ html[data-text-size="large"] {
   color: var(--link);
 }
 
+/* เรื่องสั้น */
+.stories-list {
+  display: grid;
+  gap: 10px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.story-card {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 12px 16px;
+  color: var(--text);
+  text-decoration: none;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-sm);
+}
+
+.story-card .story-emoji {
+  font-size: 2rem;
+  line-height: 1;
+}
+
+.story-card .story-info {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.story-title {
+  margin: 12px 0 0;
+}
+
+.story-body p {
+  font-size: 1.12rem;
+  line-height: 1.8;
+}
+
+.story-para {
+  margin: 0 0 16px;
+  padding: 12px 14px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+}
+
+.story-para p {
+  margin: 0 0 8px;
+}
+
+.story-para .story-th {
+  font-size: 1rem;
+  color: var(--muted);
+}
+
+.story-tools {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.story-tools button {
+  min-height: 36px;
+  padding: 4px 12px;
+  font-size: 0.9rem;
+}
+
+.story-word {
+  display: inline;
+  min-height: 0;
+  padding: 0;
+  font: inherit;
+  color: inherit;
+  background: none;
+  border: 0;
+  border-bottom: 2px dotted var(--muted);
+  border-radius: 0;
+  box-shadow: none;
+  cursor: pointer;
+}
+
+.story-word.planted {
+  color: var(--link);
+  border-bottom-style: solid;
+  border-bottom-color: var(--link);
+}
+
+.story-quiz {
+  margin: 20px 0;
+}
+
+.story-questions {
+  padding-left: 1.4em;
+}
+
+.story-questions li {
+  margin-bottom: 14px;
+}
+
+.story-questions .quiz-options {
+  margin-top: 8px;
+}
+
 /* สมุดพันธุ์ไม้ */
 .herbarium-link {
   display: flex;

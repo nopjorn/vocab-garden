@@ -184,10 +184,11 @@ function validNotes(notes) {
 }
 
 // ของเล่นในสวนที่ไม่ใช่ความคืบหน้าของการ์ด เก็บรวมใน vg:garden
-//   bugs: { [คำ]: จำนวนครั้งที่ลืมตอนไล่แมลงได้ } คำที่ลืมเพิ่มหลังจากนั้นจะกลับมาเป็นแมลงอีก · caught: ไล่แมลงได้กี่ตัวแล้ว
-//   pressed: { [คำ]: วันที่เก็บลงสมุดพันธุ์ไม้ } คำที่โตเป็นต้นไม้ใหญ่แล้ว หน้าในสมุดไม่หายแม้ภายหลังลืม
-//   spotted: { [คำ]: จำนวนครั้งที่เจอในชีวิตจริง } · spottedOn: { [คำ]: วันล่าสุดที่กด } (กดได้คำละครั้งต่อวัน)
-//   visits: ["วัน-รอบ"] รอบที่นักเดินทางมาเยี่ยมแล้วตอบไปแล้ว (ล่าสุด VISIT_KEEP รอบ) · souvenirs: { [รหัสของฝาก]: จำนวน }
+//   bugs: { [คำ]: lapses ตอนไล่แมลงได้ } · caught: ไล่ได้กี่ตัว
+//   pressed: { [คำ]: วันที่เก็บลงสมุดพันธุ์ไม้ }
+//   spotted: { [คำ]: เจอในชีวิตจริงกี่ครั้ง } · spottedOn: { [คำ]: วันล่าสุดที่กด }
+//   storiesRead: { [รหัสเรื่อง]: วันที่อ่านจบครั้งแรก }
+//   visits: ["วัน-รอบ"] รอบที่ตอบนักเดินทางแล้ว · souvenirs: { [รหัสของฝาก]: จำนวน }
 const countOf = (value) => (Number.isInteger(value) && value >= 0 ? value : 0);
 const isWordKey = (key) => key !== "__proto__" && key.length > 0 && key.length <= 64;
 
@@ -220,6 +221,7 @@ function validGarden(garden) {
     pressed: validWordCounts(garden.pressed),
     spotted: validWordCounts(garden.spotted),
     spottedOn: validWordCounts(garden.spottedOn),
+    storiesRead: validWordCounts(garden.storiesRead),
   };
 }
 
@@ -249,6 +251,7 @@ export function mergeGarden(localGarden, incomingGarden) {
     pressed: minCounts(local.pressed, incoming.pressed), // เก็บลงสมุดวันไหน เอาวันที่เก่ากว่า
     spotted: maxCounts(local.spotted, incoming.spotted),
     spottedOn: maxCounts(local.spottedOn, incoming.spottedOn),
+    storiesRead: minCounts(local.storiesRead, incoming.storiesRead),
   };
 }
 
@@ -624,6 +627,14 @@ export function createStorage(store = globalThis.localStorage) {
       garden.spottedOn[headword] = today;
       write(KEYS.garden, garden);
       return garden.spotted[headword];
+    },
+    // อ่านเรื่องสั้นจบ: จำวันที่อ่านจบครั้งแรก คืน true ถ้าเพิ่งอ่านจบเป็นครั้งแรก
+    markStoryRead(id, today) {
+      const garden = this.loadGarden();
+      if (id in garden.storiesRead) return false;
+      garden.storiesRead[id] = today;
+      write(KEYS.garden, garden);
+      return true;
     },
     // นักเดินทางมาเยี่ยม: บันทึกว่ารอบนี้ตอบแล้ว ตอบถูกได้ของฝาก (giftId = null เมื่อตอบผิด) คืน false ถ้ารอบนี้ตอบไปแล้ว
     recordVisit(day, slot, giftId) {

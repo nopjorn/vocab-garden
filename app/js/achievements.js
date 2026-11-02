@@ -5,6 +5,7 @@
 //   notes                = จำนวนโน้ตช่วยจำที่เขียน
 //   gamePlays wordleWins matchBest(ms) scrambleBest = สถิติเกมในแท็บ เกม
 //   bugsCaught           = จำนวนแมลงที่ไล่ได้ (vg:garden)
+//   storiesRead          = จำนวนเรื่องสั้นที่อ่านจบ (vg:garden)
 //   spotted              = จำนวนครั้งที่กด "เจอคำนี้ในชีวิตจริง" รวมทุกคำ (vg:garden)
 //   examTier = ระดับเหรียญของการสอบปลายแปลงที่เพิ่งจบ (bronze / silver / gold ไม่ผ่าน = null)
 //   perfectRound earlyBird comeback = เหตุการณ์ตอนจบรอบ (ไม่เก็บถาวร ตัดสินตอนจบรอบเท่านั้น)
@@ -30,6 +31,7 @@ export const MEDALS = [
   { id: "exam-gold", emoji: "🥇", title: "ยอดเยี่ยม", desc: "สอบปลายแปลงได้เหรียญทอง", test: (c) => c.examTier === "gold" },
   { id: "bug-catcher", emoji: "🦋", title: "นักไล่แมลง", desc: "ไล่แมลงออกจากสวนครบ 10 ตัว", test: (c) => c.bugsCaught >= 10 },
   { id: "spotter", emoji: "🔭", title: "นักสังเกต", desc: "เจอคำที่ปลูกไว้ในชีวิตจริงครบ 10 ครั้ง", test: (c) => c.spotted >= 10 },
+  { id: "story-reader", emoji: "📖", title: "หนอนหนังสือ", desc: "อ่านเรื่องสั้นจบ 3 เรื่อง", test: (c) => c.storiesRead >= 3 },
   { id: "scramble-perfect", emoji: "🧠", title: "เรียงเก่ง", desc: "เรียงตัวอักษรได้เต็ม 10 แต้ม", test: (c) => c.scrambleBest >= 10 },
 ];
 
@@ -44,6 +46,7 @@ export const EMPTY_CONTEXT = {
   scrambleBest: 0,
   bugsCaught: 0,
   spotted: 0,
+  storiesRead: 0,
   examTier: null,
   perfectRound: false,
   earlyBird: false,

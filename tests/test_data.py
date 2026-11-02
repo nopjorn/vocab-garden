@@ -187,3 +187,46 @@ class ConfusablesTest(unittest.TestCase):
     def test_inflected_options_are_allowed(self):
         item = {"en": "She ___ me a bike.", "options": ["lent", "borrowed"], "answer": "lent", "th": "ไทย", "why": "ไทย"}
         self.assertEqual(self.check(self.pair(items=[item, item, item])), [])
+
+
+class StoriesTest(unittest.TestCase):
+    @classmethod
+    def setUpClass(cls):
+        cls.rows = ngsl_data.load_base_rows(ROOT)
+
+    def check(self, **changes):
+        import json
+
+        story = {
+            "id": "little-garden",
+            "level": "A1",
+            "emoji": "🌱",
+            "title_en": "The Little Garden",
+            "title_th": "สวนเล็ก ๆ",
+            "paragraphs": [{"en": "Mai has a small garden behind her house. She gives water to her plants every morning.", "th": "ใหม่มีสวนเล็ก ๆ"}],
+            "words": ["garden", "house", "water", "plant", "morning"],
+            "questions": [{"q": "ใหม่รดน้ำตอนไหน", "options": ["เช้า", "เย็น", "กลางคืน", "บ่าย"], "answer": 0}],
+        }
+        story.update(changes)
+        root = Path(tempfile.mkdtemp())
+        self.addCleanup(shutil.rmtree, root)
+        (root / "app/data").mkdir(parents=True)
+        (root / validate_data.STORIES_PATH).write_text(json.dumps({"stories": [story]}, ensure_ascii=False), encoding="utf-8")
+        return validate_data.check_stories(root, self.rows)
+
+    def test_the_committed_file_is_valid(self):
+        self.assertEqual(validate_data.check_stories(ROOT, self.rows), [])
+
+    def test_a_valid_story_passes(self):
+        self.assertEqual(self.check(), [])
+
+    def test_words_must_be_ngsl_headwords_used_in_the_story(self):
+        self.assertTrue(any("ไม่ใช่คำหลักของ NGSL" in e for e in self.check(words=["garden", "house", "water", "plant", "leaf"])))
+        self.assertTrue(any("ไม่พบ" in e for e in self.check(words=["garden", "house", "water", "plant", "car"])))
+        self.assertTrue(any("ไม่ใช่คำหลัก" in e for e in self.check(words=["garden", "house", "water", "plant", "MORNING"])), "spelling must match the data")
+
+    def test_paragraphs_and_questions_are_checked(self):
+        self.assertTrue(any("th ต้องเป็นภาษาไทย" in e for e in self.check(paragraphs=[{"en": "Mai has a garden, a house, water, plants and a morning.", "th": "no"}])))
+        self.assertTrue(any("4 ตัวเลือก" in e for e in self.check(questions=[{"q": "ถาม", "options": ["ก", "ข"], "answer": 0}])))
+        self.assertTrue(any("answer" in e for e in self.check(questions=[{"q": "ถาม", "options": ["ก", "ข", "ค", "ง"], "answer": 4}])))
+        self.assertTrue(any("level" in e for e in self.check(level="C2")))

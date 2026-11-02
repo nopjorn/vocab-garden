@@ -33,8 +33,8 @@ import { recallBetween } from "./recall.js";
 import { SUPPORT_LINKS } from "./support.js";
 import { isNewer, parseSwVersion } from "./update.js";
 
-const VIEWS = ["loading", "error", "home", "study", "done", "garden", "plot", "play", "match", "flash", "wordle", "scramble", "sentence", "blitz", "confuse", "listen", "dictation", "commute", "placement", "exam", "bugs", "herbarium", "settings", "about", "changelog"];
-const TAB_OF_VIEW = { plot: "garden", changelog: "about", match: "play", flash: "play", wordle: "play", scramble: "play", sentence: "play", blitz: "play", confuse: "play", listen: "play", dictation: "play", commute: "play", placement: "settings", exam: "garden", bugs: "garden", herbarium: "garden" }; // หน้าที่ไม่มีแท็บของตัวเอง ให้ไฮไลต์แท็บนี้แทน
+const VIEWS = ["loading", "error", "home", "study", "done", "garden", "plot", "play", "match", "flash", "wordle", "scramble", "sentence", "blitz", "confuse", "listen", "dictation", "commute", "placement", "exam", "bugs", "herbarium", "stories", "story", "settings", "about", "changelog"];
+const TAB_OF_VIEW = { plot: "garden", changelog: "about", match: "play", flash: "play", wordle: "play", scramble: "play", sentence: "play", blitz: "play", confuse: "play", listen: "play", dictation: "play", commute: "play", placement: "settings", exam: "garden", bugs: "garden", herbarium: "garden", stories: "play", story: "play" }; // หน้าที่ไม่มีแท็บของตัวเอง ให้ไฮไลต์แท็บนี้แทน
 const REQUEUE_GAP = 3; // คำที่ตอบ "ยังจำไม่ได้" จะกลับมาอีกครั้งหลังการ์ดใบอื่นอีก 3 ใบ
 const SWIPE_DISTANCE = 90; // ปัดเกินกี่ px ถึงนับเป็นการให้คะแนน
 const SWIPE_PREVIEW = 40; // ปัดเกินกี่ px ถึงเริ่มขึ้นป้ายบนการ์ด
@@ -447,17 +447,17 @@ function closeWelcome() {
   $("welcome").hidden = true;
 }
 
-// ---------- นักเดินทางมาเยี่ยมสวน (โหลดแยกใน visitor-card.js หน้าแรกจะได้ไม่หนักขึ้น) ----------
+// ---------- นักเดินทางมาเยี่ยมสวน (อยู่ใน visitor-card.js ที่โหลดทีหลัง) ----------
 
 const visitorCard = () => import("./visitor-card.js");
 const visitorContext = () => ({ $, el, fx, state, storage, translatedWords });
 
 function renderVisitor(today) {
-  const redraw = shownView === "home"; // วาดหน้าหลักซ้ำขณะอยู่หน้าหลัก (ต้องอ่านก่อนรอโหลดไฟล์ เพราะ show() ทำงานก่อนไฟล์โหลดเสร็จ)
+  const redraw = shownView === "home"; // อ่านก่อนรอโหลดไฟล์ เพราะ show() ทำงานก่อน
   visitorCard()
     .then((card) => card.render(visitorContext(), today, redraw))
     .catch(() => {
-      $("visitor").hidden = true; // โหลดไม่ได้ (เช่น offline ก่อนมีไฟล์ในเครื่อง) ก็แค่ไม่มีผู้มาเยี่ยมรอบนี้
+      $("visitor").hidden = true; // โหลดไม่ได้ก็แค่ไม่มีผู้มาเยี่ยม
     });
 }
 
@@ -1209,6 +1209,7 @@ function medalContext(events = {}) {
   const games = storage.loadGames();
   const frozen = storage.loadRest()?.frozen || [];
   const cards = translatedWords().map((word) => state.cards[word.headword]).filter(Boolean);
+  const garden = storage.loadGarden();
   return {
     planted: cards.length,
     trees: cards.filter((card) => stageOf(card).id === "tree").length,
@@ -1218,8 +1219,9 @@ function medalContext(events = {}) {
     wordleWins: games.wordleStats?.won || 0,
     matchBest: games.best.match ?? null,
     scrambleBest: games.best.scramble || 0,
-    bugsCaught: storage.loadGarden().caught,
-    spotted: Object.values(storage.loadGarden().spotted).reduce((sum, count) => sum + count, 0),
+    bugsCaught: garden.caught,
+    spotted: Object.values(garden.spotted).reduce((sum, count) => sum + count, 0),
+    storiesRead: Object.keys(garden.storiesRead).length,
     ...events,
   };
 }
@@ -1229,7 +1231,7 @@ function checkMedals(events = {}) {
   checkMissions();
   checkMonthly();
   checkFlowers();
-  // ต้นไม้ใหญ่ใหม่ได้หน้าในสมุดพันธุ์ไม้ (เขียนเหมือน treeHeadwords ใน herbarium.js แต่ไม่ import ไฟล์นั้น หน้าแรกจะได้ไม่หนักขึ้น)
+  // ต้นไม้ใหญ่ใหม่ได้หน้าในสมุดพันธุ์ไม้ (ไม่ import herbarium.js ให้หน้าแรกเบา)
   const trees = translatedWords().filter((word) => state.cards[word.headword] && stageOf(state.cards[word.headword]).id === "tree");
   storage.pressPages(trees.map((word) => word.headword), dayNumber());
   const fresh = newMedals(medalContext(events), storage.loadMedals());
@@ -1780,6 +1782,7 @@ const SCREEN_LOADERS = {
   garden: () => import("./screens/garden.js"),
   bugs: () => import("./screens/bugs.js"),
   herbarium: () => import("./screens/herbarium.js"),
+  stories: () => import("./screens/stories.js"),
 };
 const loaded = {};
 const pending = {};
@@ -1792,7 +1795,7 @@ const screenContext = () => ({
 });
 
 function screenFor(page, argument) {
-  if (page === "exam" || page === "placement" || page === "settings" || page === "garden" || page === "bugs" || page === "herbarium") return page;
+  if (page === "exam" || page === "placement" || page === "settings" || page === "garden" || page === "bugs" || page === "herbarium" || page === "stories") return page;
   if (page === "play" && argument === "duel") return "blitz"; // ท้าเพื่อนใช้หน้าเดียวกับท้าทาย 60 วินาที
   if (page === "play" && Object.hasOwn(SCREEN_LOADERS, argument)) return argument;
   return null;

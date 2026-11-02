@@ -1,0 +1,390 @@
+{
+ "version": 1,
+ "note": "เรื่องสั้นระดับ A1–A2 แต่งขึ้นเองทั้งหมดพร้อมคำแปลไทยและคำถาม เผยแพร่เป็น CC BY-SA 4.0 (ดู app/data/LICENSE) คำใน words เป็นคำหลักของ NGSL 1.2 ที่ใช้ในเรื่อง",
+ "stories": [
+  {
+   "id": "little-garden",
+   "level": "A1",
+   "emoji": "🌱",
+   "title_en": "The Little Garden",
+   "title_th": "สวนเล็ก ๆ",
+   "paragraphs": [
+    {
+     "en": "Mai has a small garden behind her house. Every morning, she gives water to her plants before school. Some plants are still very small, but she is patient.",
+     "th": "ใหม่มีสวนเล็ก ๆ อยู่หลังบ้าน ทุกเช้าเธอรดน้ำต้นไม้ก่อนไปโรงเรียน ต้นไม้บางต้นยังเล็กมาก แต่เธอก็อดทนรอ"
+    },
+    {
+     "en": "One day, her brother asks, \"Why do you work so hard for a few green leaves?\" Mai smiles and says, \"Because one day they will become big trees.\"",
+     "th": "วันหนึ่ง น้องชายถามว่า \"ทำไมพี่ถึงทำงานหนักเพื่อใบไม้สีเขียวไม่กี่ใบล่ะ\" ใหม่ยิ้มแล้วตอบว่า \"เพราะวันหนึ่งมันจะกลายเป็นต้นไม้ใหญ่\""
+    },
+    {
+     "en": "A year later, the garden is full of flowers. Now her brother wants to help her.",
+     "th": "หนึ่งปีต่อมา สวนเต็มไปด้วยดอกไม้ ตอนนี้น้องชายของเธออยากช่วยแล้ว"
+    }
+   ],
+   "words": [
+    "garden",
+    "house",
+    "morning",
+    "water",
+    "plant",
+    "school",
+    "small",
+    "patient",
+    "brother",
+    "work",
+    "green",
+    "become",
+    "tree",
+    "year",
+    "flower",
+    "help"
+   ],
+   "questions": [
+    {
+     "q": "ใหม่รดน้ำต้นไม้ตอนไหน",
+     "options": [
+      "ทุกเช้าก่อนไปโรงเรียน",
+      "ทุกเย็นหลังเลิกเรียน",
+      "เฉพาะวันหยุด",
+      "ตอนกลางคืน"
+     ],
+     "answer": 0
+    },
+    {
+     "q": "ตอนท้ายเรื่อง น้องชายอยากทำอะไร",
+     "options": [
+      "ช่วยพี่ทำสวน",
+      "ย้ายบ้าน",
+      "ปลูกต้นไม้ของตัวเองที่โรงเรียน",
+      "ขายดอกไม้"
+     ],
+     "answer": 0
+    }
+   ]
+  },
+  {
+   "id": "lost-phone",
+   "level": "A1",
+   "emoji": "📱",
+   "title_en": "The Lost Phone",
+   "title_th": "โทรศัพท์ที่หายไป",
+   "paragraphs": [
+    {
+     "en": "Tom could not find his phone. He looked under the bed, in his bag, and on the kitchen table. It was not there.",
+     "th": "ทอมหาโทรศัพท์ของเขาไม่เจอ เขาหาใต้เตียง ในกระเป๋า และบนโต๊ะในห้องครัว แต่ก็ไม่เจอ"
+    },
+    {
+     "en": "He asked his mother to call his number. They listened carefully. Then they heard a quiet sound from the car outside.",
+     "th": "เขาขอให้แม่โทรไปที่เบอร์ของเขา ทั้งคู่ตั้งใจฟัง แล้วก็ได้ยินเสียงเบา ๆ ดังมาจากรถที่จอดอยู่ข้างนอก"
+    },
+    {
+     "en": "The phone was on the back seat. Tom laughed and said, \"Next time, I will check the car first.\"",
+     "th": "โทรศัพท์อยู่บนเบาะหลัง ทอมหัวเราะแล้วพูดว่า \"คราวหน้า ผมจะดูในรถก่อนเลย\""
+    }
+   ],
+   "words": [
+    "find",
+    "phone",
+    "look",
+    "bed",
+    "bag",
+    "kitchen",
+    "table",
+    "mother",
+    "call",
+    "number",
+    "listen",
+    "hear",
+    "quiet",
+    "sound",
+    "car",
+    "seat",
+    "laugh",
+    "check"
+   ],
+   "questions": [
+    {
+     "q": "ก่อนจะเจอโทรศัพท์ ทอมหาที่ไหนบ้าง",
+     "options": [
+      "ใต้เตียง ในกระเป๋า และบนโต๊ะในครัว",
+      "ในห้องน้ำและในสวน",
+      "ที่โรงเรียน",
+      "ในรถของเพื่อน"
+     ],
+     "answer": 0
+    },
+    {
+     "q": "สุดท้ายเจอโทรศัพท์ที่ไหน",
+     "options": [
+      "บนเบาะหลังของรถ",
+      "ใต้เตียง",
+      "ในกระเป๋าของแม่",
+      "บนโต๊ะในครัว"
+     ],
+     "answer": 0
+    }
+   ]
+  },
+  {
+   "id": "rainy-day",
+   "level": "A1",
+   "emoji": "🌧️",
+   "title_en": "A Rainy Day",
+   "title_th": "วันฝนตก",
+   "paragraphs": [
+    {
+     "en": "It was raining hard on Saturday, so Lek could not play football with his friends. He felt bored and sat by the window.",
+     "th": "วันเสาร์ฝนตกหนัก เล็กจึงเล่นฟุตบอลกับเพื่อน ๆ ไม่ได้ เขารู้สึกเบื่อและนั่งอยู่ข้างหน้าต่าง"
+    },
+    {
+     "en": "His grandmother brought him an old book about animals. At first he did not want to read it, but the pictures were beautiful.",
+     "th": "คุณยายเอาหนังสือเก่าเกี่ยวกับสัตว์มาให้เขาเล่มหนึ่ง ตอนแรกเขาไม่อยากอ่าน แต่รูปภาพในเล่มสวยมาก"
+    },
+    {
+     "en": "Soon he forgot about the rain. When the sun came out, he still wanted to read one more page.",
+     "th": "ไม่นานเขาก็ลืมเรื่องฝนไปเลย พอพระอาทิตย์ออก เขาก็ยังอยากอ่านต่ออีกสักหน้า"
+    }
+   ],
+   "words": [
+    "rain",
+    "hard",
+    "Saturday",
+    "play",
+    "football",
+    "friend",
+    "feel",
+    "sit",
+    "window",
+    "bring",
+    "old",
+    "book",
+    "animal",
+    "read",
+    "picture",
+    "beautiful",
+    "forget",
+    "sun",
+    "page"
+   ],
+   "questions": [
+    {
+     "q": "ทำไมเล็กเล่นฟุตบอลไม่ได้",
+     "options": [
+      "ฝนตกหนัก",
+      "ขาเจ็บ",
+      "เพื่อนไม่ว่าง",
+      "ต้องทำการบ้าน"
+     ],
+     "answer": 0
+    },
+    {
+     "q": "คุณยายเอาอะไรมาให้เล็ก",
+     "options": [
+      "หนังสือเก่าเกี่ยวกับสัตว์",
+      "ลูกฟุตบอลลูกใหม่",
+      "ขนม",
+      "ร่ม"
+     ],
+     "answer": 0
+    }
+   ]
+  },
+  {
+   "id": "new-job",
+   "level": "A2",
+   "emoji": "💼",
+   "title_en": "The New Job",
+   "title_th": "งานใหม่",
+   "paragraphs": [
+    {
+     "en": "Today is Nina's first day at her new job. She wakes up early because she does not want to be late. She feels a little nervous.",
+     "th": "วันนี้เป็นวันแรกที่นีน่าเริ่มงานใหม่ เธอตื่นแต่เช้าเพราะไม่อยากไปสาย เธอรู้สึกประหม่านิดหน่อย"
+    },
+    {
+     "en": "At the office, a man with a kind face shows her where to sit. \"If you have any questions, just ask me,\" he says.",
+     "th": "ที่ออฟฟิศ ผู้ชายหน้าตาใจดีคนหนึ่งพาเธอไปดูที่นั่ง เขาบอกว่า \"ถ้ามีคำถามอะไร ถามผมได้เลยนะ\""
+    },
+    {
+     "en": "By the evening, Nina has learned many new things. On the bus home, she thinks, \"This is going to be a good place to work.\"",
+     "th": "พอถึงตอนเย็น นีน่าได้เรียนรู้เรื่องใหม่ ๆ มากมาย บนรถเมล์ขากลับบ้าน เธอคิดว่า \"ที่นี่น่าจะเป็นที่ทำงานที่ดี\""
+    }
+   ],
+   "words": [
+    "first",
+    "day",
+    "new",
+    "job",
+    "wake",
+    "early",
+    "late",
+    "nervous",
+    "office",
+    "kind",
+    "face",
+    "show",
+    "question",
+    "ask",
+    "evening",
+    "learn",
+    "thing",
+    "bus",
+    "think",
+    "place"
+   ],
+   "questions": [
+    {
+     "q": "ทำไมนีน่าตื่นแต่เช้า",
+     "options": [
+      "ไม่อยากไปทำงานสาย",
+      "ต้องไปส่งน้อง",
+      "นอนไม่หลับ",
+      "อยากออกกำลังกาย"
+     ],
+     "answer": 0
+    },
+    {
+     "q": "นีน่ากลับบ้านด้วยอะไร",
+     "options": [
+      "รถเมล์",
+      "รถไฟ",
+      "เดินกลับ",
+      "แท็กซี่"
+     ],
+     "answer": 0
+    }
+   ]
+  },
+  {
+   "id": "cooking-dad",
+   "level": "A2",
+   "emoji": "🍳",
+   "title_en": "Cooking with Dad",
+   "title_th": "ทำอาหารกับพ่อ",
+   "paragraphs": [
+    {
+     "en": "On Sunday, Ploy and her father decided to cook dinner together. They went to the market to buy fresh fish, rice, and some vegetables.",
+     "th": "วันอาทิตย์ พลอยกับพ่อตัดสินใจทำอาหารเย็นด้วยกัน ทั้งสองไปตลาดเพื่อซื้อปลาสด ข้าว และผักนิดหน่อย"
+    },
+    {
+     "en": "At home, her father cut the vegetables while Ploy washed the rice. The fish took a long time to cook, so they talked and listened to music.",
+     "th": "ที่บ้าน พ่อหั่นผักในขณะที่พลอยซาวข้าว ปลาใช้เวลาทำนาน ทั้งคู่จึงคุยกันและฟังเพลงไปด้วย"
+    },
+    {
+     "en": "The food was not perfect, but everyone in the family said it tasted great. Ploy felt proud.",
+     "th": "อาหารไม่ได้สมบูรณ์แบบ แต่ทุกคนในครอบครัวบอกว่ารสชาติดีมาก พลอยรู้สึกภูมิใจ"
+    }
+   ],
+   "words": [
+    "Sunday",
+    "father",
+    "decide",
+    "cook",
+    "dinner",
+    "together",
+    "market",
+    "buy",
+    "fresh",
+    "fish",
+    "rice",
+    "vegetable",
+    "cut",
+    "wash",
+    "talk",
+    "music",
+    "food",
+    "perfect",
+    "family",
+    "taste",
+    "proud"
+   ],
+   "questions": [
+    {
+     "q": "พลอยกับพ่อไปซื้ออะไรที่ตลาด",
+     "options": [
+      "ปลาสด ข้าว และผัก",
+      "ไก่และไข่",
+      "ผลไม้",
+      "ขนมปัง"
+     ],
+     "answer": 0
+    },
+    {
+     "q": "ครอบครัวบอกว่าอาหารเป็นอย่างไร",
+     "options": [
+      "รสชาติดีมาก",
+      "เค็มเกินไป",
+      "ไม่อยากกิน",
+      "ต้องทำใหม่"
+     ],
+     "answer": 0
+    }
+   ]
+  },
+  {
+   "id": "old-bicycle",
+   "level": "A2",
+   "emoji": "🚲",
+   "title_en": "The Old Bicycle",
+   "title_th": "จักรยานคันเก่า",
+   "paragraphs": [
+    {
+     "en": "Ben found an old bicycle in his uncle's garage. The wheels were flat and the chain was broken, but he loved its red color.",
+     "th": "เบนเจอจักรยานคันเก่าในโรงรถของลุง ล้อแบนและโซ่ก็ขาด แต่เขาชอบสีแดงของมันมาก"
+    },
+    {
+     "en": "Every weekend for a month, Ben worked on the bicycle. His uncle taught him how to fix each part. It was difficult, and sometimes Ben wanted to give up.",
+     "th": "ทุกสุดสัปดาห์ตลอดหนึ่งเดือน เบนลงมือซ่อมจักรยานคันนั้น ลุงสอนวิธีซ่อมแต่ละส่วนให้ มันยาก และบางครั้งเบนก็อยากยอมแพ้"
+    },
+    {
+     "en": "Finally, the bicycle was ready. Ben rode it to the park, and the wind on his face felt like a prize.",
+     "th": "ในที่สุดจักรยานก็พร้อมใช้ เบนปั่นไปที่สวนสาธารณะ ลมที่ปะทะหน้ารู้สึกเหมือนเป็นรางวัล"
+    }
+   ],
+   "words": [
+    "uncle",
+    "wheel",
+    "flat",
+    "chain",
+    "break",
+    "love",
+    "red",
+    "color",
+    "weekend",
+    "month",
+    "teach",
+    "fix",
+    "part",
+    "difficult",
+    "finally",
+    "ready",
+    "ride",
+    "park",
+    "wind",
+    "prize"
+   ],
+   "questions": [
+    {
+     "q": "เบนเจอจักรยานที่ไหน",
+     "options": [
+      "ในโรงรถของลุง",
+      "ที่ร้านขายจักรยาน",
+      "ในสวนสาธารณะ",
+      "หน้าโรงเรียน"
+     ],
+     "answer": 0
+    },
+    {
+     "q": "ใครสอนเบนซ่อมจักรยาน",
+     "options": [
+      "ลุง",
+      "พ่อ",
+      "ครู",
+      "เพื่อน"
+     ],
+     "answer": 0
+    }
+   ]
+  }
+ ]
+}

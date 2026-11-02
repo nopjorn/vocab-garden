@@ -124,6 +124,72 @@ def check_confusables(root: Path, base_rows=None) -> list[str]:
     return errors
 
 
+STORIES_PATH = "app/data/stories.json"
+STORY_LEVELS = {"A1", "A2", "B1"}
+STORY_OPTIONS = 4
+
+
+def check_stories(root: Path, base_rows=None) -> list[str]:
+    """ตรวจ app/data/stories.json: คำใน words เป็นคำหลักของ NGSL (สะกดตรงกัน) และปรากฏในเรื่อง ทุกย่อหน้ามีคำแปลไทย คำถามมี 4 ตัวเลือก"""
+    path = root / STORIES_PATH
+    if not path.is_file():
+        return []
+    try:
+        data = json.loads(path.read_text(encoding="utf-8"))
+    except ValueError as error:
+        return [f"{STORIES_PATH} อ่านเป็น JSON ไม่ได้ ({error})"]
+    rows = base_rows if base_rows is not None else ngsl_data.load_base_rows(root)
+    forms_of = {row.headword: [row.headword] + [form for form in row.forms.split(ngsl_data.FORMS_SEPARATOR) if form] for row in rows}
+    errors = []
+    seen_ids = set()
+    stories = data.get("stories", [])
+    if not stories:
+        errors.append(f"{STORIES_PATH}: ต้องมีอย่างน้อย 1 เรื่อง")
+    for story in stories:
+        label = f"{STORIES_PATH} ({story.get('id', '?')})"
+        if not re.fullmatch(r"[a-z]+(-[a-z]+)*", str(story.get("id", ""))):
+            errors.append(f"{label}: id ต้องเป็นภาษาอังกฤษพิมพ์เล็กคั่นด้วย -")
+        if story.get("id") in seen_ids:
+            errors.append(f"{label}: id ซ้ำ")
+        seen_ids.add(story.get("id"))
+        if story.get("level") not in STORY_LEVELS:
+            errors.append(f"{label}: level ต้องเป็น {' / '.join(sorted(STORY_LEVELS))}")
+        if not story.get("title_en", "").strip() or not THAI_RE.search(story.get("title_th", "")):
+            errors.append(f"{label}: ต้องมี title_en และ title_th (ภาษาไทย)")
+        if story.get("emoji") and not EMOJI_RE.fullmatch(story["emoji"]):
+            errors.append(f"{label}: emoji ต้องเป็นอีโมจิล้วน ๆ")
+        paragraphs = story.get("paragraphs", [])
+        if not paragraphs:
+            errors.append(f"{label}: ต้องมีอย่างน้อย 1 ย่อหน้า")
+        for number, paragraph in enumerate(paragraphs, start=1):
+            if not paragraph.get("en", "").strip() or THAI_RE.search(paragraph.get("en", "")):
+                errors.append(f"{label} ย่อหน้า {number}: en ต้องเป็นภาษาอังกฤษ")
+            if not THAI_RE.search(paragraph.get("th", "")):
+                errors.append(f"{label} ย่อหน้า {number}: th ต้องเป็นภาษาไทย")
+        text = " ".join(paragraph.get("en", "") for paragraph in paragraphs)
+        words = story.get("words", [])
+        if len(words) < 5 or len(set(words)) != len(words):
+            errors.append(f"{label}: words ต้องมีอย่างน้อย 5 คำและไม่ซ้ำกัน")
+        for word in words:
+            if word not in forms_of:
+                errors.append(f"{label}: {word} ไม่ใช่คำหลักของ NGSL 1.2 (ต้องสะกดตรงกับในชุดข้อมูล)")
+            elif not uses_word(text, forms_of[word]):
+                errors.append(f"{label}: ไม่พบ {word} หรือรูปคำของมันในเรื่อง")
+        questions = story.get("questions", [])
+        if not questions:
+            errors.append(f"{label}: ต้องมีคำถามอย่างน้อย 1 ข้อ")
+        for number, question in enumerate(questions, start=1):
+            where = f"{label} คำถาม {number}"
+            options = question.get("options", [])
+            if not THAI_RE.search(question.get("q", "")):
+                errors.append(f"{where}: q ต้องเป็นภาษาไทย")
+            if len(options) != STORY_OPTIONS or len(set(options)) != STORY_OPTIONS:
+                errors.append(f"{where}: ต้องมี {STORY_OPTIONS} ตัวเลือกที่ไม่ซ้ำกัน")
+            if not isinstance(question.get("answer"), int) or not 0 <= question["answer"] < len(options):
+                errors.append(f"{where}: answer ต้องเป็นลำดับของตัวเลือกที่ถูก")
+    return errors
+
+
 EXTRA_DIR = "app/data/extra"
 EXTRA_COLUMNS = ["headword", "example2_en", "example2_th", "collocations"]
 EXTRA_MAX_WORDS = 12
@@ -221,6 +287,7 @@ def validate(root: Path) -> tuple[list[str], int, int]:
             for problem in check_row(row):
                 errors.append(f"{rel} บรรทัด {line} ({row[1] if len(row) > 1 else '?'}): {problem}")
     errors += check_confusables(root)
+    errors += check_stories(root)
     errors += check_extra(root)
     return errors, translated, total
 

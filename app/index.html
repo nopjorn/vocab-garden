@@ -507,6 +507,12 @@
           </a>
         </li>
         <li>
+          <a class="game-card" href="#/stories">
+            <span class="game-emoji" aria-hidden="true">📖</span>
+            <span class="game-info"><strong>อ่านเรื่องสั้น</strong><span class="muted small">เรื่องสั้นภาษาอังกฤษง่าย ๆ ที่ใช้คำในสวนของคุณ แตะคำเพื่อดูความหมาย เปิดคำแปลไทยได้ และมีคำถามท้ายเรื่อง</span></span>
+          </a>
+        </li>
+        <li>
           <a class="game-card" href="#/play/confuse">
             <span class="game-emoji" aria-hidden="true">🔍</span>
             <span class="game-info"><strong>คู่คำที่ควรระวัง</strong><span class="muted small">borrow / lend, say / tell, hear / listen และอีกหลายคู่ที่คนไทยมักสับสน อ่านคำอธิบายแล้วฝึกเลือกคำ 8 ข้อ</span><span id="confuse-best" class="small"></span></span>
@@ -749,6 +755,34 @@
         <button type="button" id="placement-again" class="wide">🔁 ทำใหม่</button>
         <a href="#/settings" class="button wide">กลับไปหน้าตั้งค่า</a>
       </div>
+    </section>
+
+    <section id="view-stories" hidden>
+      <div class="study-top">
+        <a href="#/play" class="close" aria-label="กลับไปหน้าเกม">✕</a>
+        <strong class="game-title">📖 อ่านเรื่องสั้น</strong>
+        <span id="stories-count" class="muted small"></span>
+      </div>
+      <p class="muted small">เรื่องสั้นระดับ A1–A2 ที่แต่งขึ้นเองสำหรับแอปนี้ อ่านได้ทุกเรื่อง เรื่องที่ปลูกคำสำคัญไว้ครบแล้วจะอยู่บนสุด</p>
+      <ul id="stories-list" class="stories-list"></ul>
+    </section>
+
+    <section id="view-story" hidden>
+      <div class="study-top">
+        <a href="#/stories" class="close" aria-label="กลับไปรายการเรื่องสั้น">✕</a>
+        <strong id="story-heading" class="game-title"></strong>
+        <span id="story-level" class="muted small"></span>
+      </div>
+      <h2 id="story-title" class="story-title" lang="en"></h2>
+      <p id="story-title-th" class="muted"></p>
+      <p class="muted small">แตะคำที่ขีดเส้นใต้เพื่อดูความหมาย (สีเขียว = ปลูกแล้ว) · 🔊 ฟังทีละย่อหน้า</p>
+      <div id="story-body" class="story-body"></div>
+      <section class="story-quiz" aria-labelledby="story-quiz-title">
+        <h3 id="story-quiz-title">คำถามท้ายเรื่อง</h3>
+        <ol id="story-questions" class="story-questions"></ol>
+        <p id="story-result" class="quiz-feedback is-correct" role="status" hidden></p>
+      </section>
+      <a href="#/stories" class="button wide">กลับไปรายการเรื่องสั้น</a>
     </section>
 
     <section id="view-herbarium" hidden>

@@ -15,7 +15,7 @@ function fakeStore(initial = {}) {
 }
 
 test("the garden store starts empty and drops bad values", () => {
-  assert.deepEqual(createStorage(fakeStore()).loadGarden(), { bugs: {}, caught: 0, visits: [], souvenirs: {}, pressed: {}, spotted: {}, spottedOn: {} });
+  assert.deepEqual(createStorage(fakeStore()).loadGarden(), { bugs: {}, caught: 0, visits: [], souvenirs: {}, pressed: {}, spotted: {}, spottedOn: {}, storiesRead: {} });
   const messy = fakeStore({ "vg:garden": JSON.stringify({ bugs: { house: 3, bad: -1, odd: 1.5, ["x".repeat(65)]: 2 }, caught: "lots" }) });
   assert.deepEqual(bugsOf(createStorage(messy).loadGarden()), { bugs: { house: 3 }, caught: 0 });
   assert.deepEqual(bugsOf(createStorage(fakeStore({ "vg:garden": "[1,2]" })).loadGarden()), { bugs: {}, caught: 0 });

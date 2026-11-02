@@ -39,6 +39,10 @@ Changes made to the NGSL
 - Added confusables.json: original explanations and practice sentences for
   pairs of NGSL words that learners often confuse (all words are NGSL 1.2
   headwords).
+- Added stories.json: original short stories (CEFR A1-A2) with Thai
+  translations and comprehension questions, written for this app. Each
+  story lists the NGSL 1.2 headwords it uses so the app can highlight
+  them. The stories are our own writing and are not part of the NGSL.
 
 The full history of changes is recorded in CHANGELOG.md under
 "ข้อมูลคำศัพท์" (word data).

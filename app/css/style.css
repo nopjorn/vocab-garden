@@ -3375,6 +3375,15 @@ html[data-text-size="large"] {
   position: relative;
 }
 
+.spot-mark {
+  position: absolute;
+  top: -4px;
+  left: -4px;
+  font-size: 0.7rem;
+  line-height: 1;
+  pointer-events: none;
+}
+
 .bug-target {
   margin: 6px 0 0;
   text-align: center;

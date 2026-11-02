@@ -1219,6 +1219,7 @@ function medalContext(events = {}) {
     matchBest: games.best.match ?? null,
     scrambleBest: games.best.scramble || 0,
     bugsCaught: storage.loadGarden().caught,
+    spotted: Object.values(storage.loadGarden().spotted).reduce((sum, count) => sum + count, 0),
     ...events,
   };
 }
@@ -1533,6 +1534,18 @@ function renderWordNote(word) {
   $("word-edit-note").textContent = note ? "✏️ แก้โน้ตช่วยจำ" : "✏️ เพิ่มโน้ตช่วยจำ";
 }
 
+function renderWordStats(word) {
+  const card = state.cards[word.headword];
+  const garden = storage.loadGarden();
+  const spotted = garden.spotted[word.headword] || 0;
+  const parts = card ? [`ทวนไปแล้ว ${card.reps} ครั้ง`, `เคยลืม ${card.lapses} ครั้ง`] : [];
+  if (spotted) parts.push(`✨ เจอในชีวิตจริง ${spotted} ครั้ง`);
+  $("word-stats").textContent = parts.join(" · ");
+  const doneToday = garden.spottedOn[word.headword] === dayNumber();
+  $("word-spot").disabled = doneToday;
+  $("word-spot").textContent = doneToday ? "✨ วันนี้เจอคำนี้แล้ว" : "✨ เจอคำนี้ในชีวิตจริง!";
+}
+
 function openWordDialog(word) {
   const today = dayNumber();
   const card = state.cards[word.headword];
@@ -1552,11 +1565,21 @@ function openWordDialog(word) {
   $("word-example-en").textContent = word.exampleEn;
   $("word-example-th").textContent = word.exampleTh;
   renderExtra("word", word);
-  $("word-stats").textContent = card ? `ทวนไปแล้ว ${card.reps} ครั้ง · เคยลืม ${card.lapses} ครั้ง` : "";
+  renderWordStats(word);
   renderWordNote(word);
   $("word-edit-note").onclick = () => openNoteDialog(word);
   $("word-speak").hidden = !canSpeak();
   $("word-speak").onclick = () => speakWord(word.headword);
+  // เจอคำนี้ในชีวิตจริง: เฉพาะคำที่ปลูกแล้ว กดได้คำละครั้งต่อวัน ไม่เปลี่ยนวันทวน
+  $("word-spot").hidden = !card;
+  $("word-spot").onclick = () => {
+    const count = storage.spotWord(word.headword, dayNumber());
+    if (count === 0) return;
+    renderWordStats(word);
+    toast(count === 1 ? `✨ เก่งมาก! เจอ ${word.headword} ในชีวิตจริงครั้งแรก ต้นนี้ได้ดาวแล้ว` : `✨ เจอ ${word.headword} ในชีวิตจริงครั้งที่ ${count} แล้ว คำนี้กลายเป็นของเราจริง ๆ`);
+    fx("correct");
+    checkMedals();
+  };
   $("word-know").hidden = !canSkip(word);
   $("word-know").onclick = () => {
     $("word-dialog").hidden = true;

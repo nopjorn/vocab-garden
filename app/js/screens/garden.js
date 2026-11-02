@@ -168,6 +168,13 @@ function bugMark() {
   return mark;
 }
 
+// ดาว ✨ บนต้นที่เคยเจอในชีวิตจริง
+function spotMark() {
+  const mark = el("span", "spot-mark", "✨");
+  mark.setAttribute("aria-hidden", "true");
+  return mark;
+}
+
 function renderHerbariumLink() {
   storage.pressPages(treeHeadwords(translatedWords(), state.cards), dayNumber());
   const pages = Object.keys(storage.loadGarden().pressed).length;
@@ -198,16 +205,18 @@ function renderLeeches() {
 }
 
 // แปลงสวน: ด่านละแปลง คำละต้น ต้นที่ถึงเวลาทวนเหี่ยวจนกว่าจะรดน้ำ
-function plantButton(word, today, bugs) {
+function plantButton(word, today, bugs, spotted) {
   const info = plantInfo(state.cards[word.headword], today);
   const bug = bugs.has(word.headword);
+  const spot = spotted[word.headword] > 0;
   const button = el("button", `plant${info.planted ? "" : " seed"}${info.wilted ? " wilted" : ""}`);
   button.append(treeEl(info.stage.id, { wilted: info.wilted }));
   if (bug) button.append(bugMark());
+  if (spot) button.append(spotMark());
   button.type = "button";
   button.dataset.headword = word.headword;
   button.title = word.headword;
-  button.setAttribute("aria-label", `${word.headword} ${info.stage.label}${info.wilted ? " ต้องรดน้ำ" : ""}${bug ? " มีแมลงเกาะ" : ""}`);
+  button.setAttribute("aria-label", `${word.headword} ${info.stage.label}${info.wilted ? " ต้องรดน้ำ" : ""}${bug ? " มีแมลงเกาะ" : ""}${spot ? " เคยเจอในชีวิตจริง" : ""}`);
   return button;
 }
 
@@ -407,7 +416,8 @@ function renderPlotPage(level) {
   $("plot-grid").hidden = list;
   $("plot-list").hidden = !list;
   const bugs = currentBugs();
-  $("plot-grid").replaceChildren(...(list ? [] : shown.map((word) => plantButton(word, today, bugs))));
+  const { spotted } = storage.loadGarden();
+  $("plot-grid").replaceChildren(...(list ? [] : shown.map((word) => plantButton(word, today, bugs, spotted))));
   $("plot-list").replaceChildren(...(list ? shown.map((word) => wordRow(word, today, bugs)) : []));
   $("plot-select-bar").hidden = !list || !shown.some(canSkip);
   plotPage.shown = shown;

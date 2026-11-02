@@ -133,6 +133,11 @@
         <button type="button" id="wotd-shuffle" class="wotd-shuffle" aria-label="สุ่มคำใหม่">🎲</button>
       </div>
 
+      <section id="visitor" class="visitor" aria-label="นักเดินทางมาเยี่ยมสวน" hidden>
+        <p class="visitor-head"><span id="visitor-emoji" class="visitor-emoji" aria-hidden="true"></span><span id="visitor-text"></span></p>
+        <ul id="visitor-options" class="quiz-options visitor-options" aria-label="ตัวเลือกคำแปล"></ul>
+        <p id="visitor-reply" class="visitor-reply" role="status" hidden></p>
+      </section>
       <button type="button" id="home-gift" class="gift-btn wide" hidden>🎁 มีกล่องของขวัญจากสวนรอเปิดอยู่</button>
       <section id="missions" class="missions" aria-labelledby="missions-title" hidden>
         <h2 id="missions-title">🎯 ภารกิจวันนี้</h2>
@@ -300,6 +305,9 @@
         <ul id="decor-list" class="chips"></ul>
         <h3 class="fold-sub">ของขวัญจากสวน 🎁</h3>
         <ul id="gift-list" class="chips"></ul>
+        <h3 class="fold-sub">ของฝากจากนักเดินทาง 🧳</h3>
+        <p id="souvenir-empty" class="muted small">สัตว์แวะมาเยี่ยมสวนวันละ 2 รอบ (เช้าและบ่าย) ดูได้ที่หน้าหลัก ช่วยตอบคำถามให้ถูกแล้วจะได้ของฝาก</p>
+        <ul id="souvenir-list" class="chips"></ul>
       </details>
 
       </div>

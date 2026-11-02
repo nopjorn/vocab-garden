@@ -447,6 +447,20 @@ function closeWelcome() {
   $("welcome").hidden = true;
 }
 
+// ---------- นักเดินทางมาเยี่ยมสวน (โหลดแยกใน visitor-card.js หน้าแรกจะได้ไม่หนักขึ้น) ----------
+
+const visitorCard = () => import("./visitor-card.js");
+const visitorContext = () => ({ $, el, fx, state, storage, translatedWords });
+
+function renderVisitor(today) {
+  const redraw = shownView === "home"; // วาดหน้าหลักซ้ำขณะอยู่หน้าหลัก (ต้องอ่านก่อนรอโหลดไฟล์ เพราะ show() ทำงานก่อนไฟล์โหลดเสร็จ)
+  visitorCard()
+    .then((card) => card.render(visitorContext(), today, redraw))
+    .catch(() => {
+      $("visitor").hidden = true; // โหลดไม่ได้ (เช่น offline ก่อนมีไฟล์ในเครื่อง) ก็แค่ไม่มีผู้มาเยี่ยมรอบนี้
+    });
+}
+
 function renderHome() {
   const today = dayNumber();
   const queue = todayQueue(today);
@@ -456,6 +470,7 @@ function renderHome() {
   updateAppBadge();
   renderBackupReminder();
   renderWelcome();
+  renderVisitor(today);
   $("greeting").textContent = greeting();
   $("due-count").textContent = dueCount;
   $("new-count").textContent = queue.length - dueCount;
@@ -1273,6 +1288,7 @@ function renderDecor(unlocked) {
       chip(decoration.emoji, decoration.title, `ได้จากเหรียญ "${medalTitle(decoration.medal)}"`, decoration.medal in unlocked),
     ),
   );
+  visitorCard().then((card) => card.renderSouvenirs(visitorContext(), chip), () => {});
   // ของขวัญที่ยังไม่ได้ไม่บอกชื่อ ให้ลุ้นตอนเปิดกล่อง
   $("gift-list").replaceChildren(
     ...GIFTS.map((gift) => {
@@ -1838,6 +1854,10 @@ function route() {
 function bindEvents() {
   window.addEventListener("hashchange", route);
   $("retry").addEventListener("click", init);
+  $("visitor-options").addEventListener("click", (event) => {
+    const button = event.target.closest(".quiz-option");
+    if (button) visitorCard().then((card) => card.answer(visitorContext(), Number(button.dataset.index)));
+  });
   $("done-continue").addEventListener("click", continueRound);
 
   $("card").addEventListener("click", () => {

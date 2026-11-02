@@ -185,6 +185,7 @@ function validNotes(notes) {
 
 // ของเล่นในสวนที่ไม่ใช่ความคืบหน้าของการ์ด เก็บรวมใน vg:garden
 //   bugs: { [คำ]: จำนวนครั้งที่ลืมตอนไล่แมลงได้ } คำที่ลืมเพิ่มหลังจากนั้นจะกลับมาเป็นแมลงอีก · caught: ไล่แมลงได้กี่ตัวแล้ว
+//   visits: ["วัน-รอบ"] รอบที่นักเดินทางมาเยี่ยมแล้วตอบไปแล้ว (ล่าสุด VISIT_KEEP รอบ) · souvenirs: { [รหัสของฝาก]: จำนวน }
 const countOf = (value) => (Number.isInteger(value) && value >= 0 ? value : 0);
 const isWordKey = (key) => key !== "__proto__" && key.length > 0 && key.length <= 64;
 
@@ -198,9 +199,23 @@ function validWordCounts(value) {
   return clean;
 }
 
+const VISIT_KEEP = 60;
+const visitDay = (key) => Number(key.split("-")[0]);
+
+function validVisits(value) {
+  if (!Array.isArray(value)) return [];
+  const keys = [...new Set(value.filter((key) => typeof key === "string" && /^\d{1,6}-[01]$/.test(key)))];
+  return keys.sort((a, b) => visitDay(a) - visitDay(b) || a.localeCompare(b)).slice(-VISIT_KEEP);
+}
+
 function validGarden(garden) {
   if (garden === null || typeof garden !== "object" || Array.isArray(garden)) return null;
-  return { bugs: validWordCounts(garden.bugs), caught: countOf(garden.caught) };
+  return {
+    bugs: validWordCounts(garden.bugs),
+    caught: countOf(garden.caught),
+    visits: validVisits(garden.visits),
+    souvenirs: validWordCounts(garden.souvenirs),
+  };
 }
 
 const EMPTY_GARDEN = () => validGarden({});
@@ -213,7 +228,12 @@ function maxCounts(a, b) {
 }
 
 export function mergeGarden(local, incoming) {
-  return { bugs: maxCounts(local.bugs, incoming.bugs), caught: Math.max(local.caught, incoming.caught) };
+  return {
+    bugs: maxCounts(local.bugs, incoming.bugs),
+    caught: Math.max(local.caught, incoming.caught),
+    visits: validVisits([...local.visits, ...incoming.visits]),
+    souvenirs: maxCounts(local.souvenirs, incoming.souvenirs),
+  };
 }
 
 // เหรียญที่ได้แล้ว { [รหัสเหรียญ]: เลขวันที่ได้ } เหรียญไม่หาย แม้เงื่อนไขเปลี่ยนภายหลัง
@@ -568,6 +588,16 @@ export function createStorage(store = globalThis.localStorage) {
       garden.caught += 1;
       write(KEYS.garden, garden);
       return garden;
+    },
+    // นักเดินทางมาเยี่ยม: บันทึกว่ารอบนี้ตอบแล้ว ตอบถูกได้ของฝาก (giftId = null เมื่อตอบผิด) คืน false ถ้ารอบนี้ตอบไปแล้ว
+    recordVisit(day, slot, giftId) {
+      const garden = this.loadGarden();
+      const key = `${day}-${slot}`;
+      if (garden.visits.includes(key)) return false;
+      garden.visits = validVisits([...garden.visits, key]);
+      if (giftId) garden.souvenirs[giftId] = (garden.souvenirs[giftId] || 0) + 1;
+      write(KEYS.garden, garden);
+      return true;
     },
     // ผลการตอบแบบย่อ (ใช้คำนวณอัตราจำได้ ดู recall.js) เก็บล่าสุด ANSWER_KEEP ครั้ง
     loadAnswers() {

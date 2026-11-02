@@ -3225,6 +3225,52 @@ html[data-text-size="large"] {
   color: var(--link);
 }
 
+/* นักเดินทางมาเยี่ยมสวน */
+.visitor {
+  margin: 14px 0 16px;
+  padding: 14px 16px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-sm);
+}
+
+.visitor-head {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 0 0 10px;
+  font-weight: 700;
+}
+
+.visitor-emoji {
+  flex: none;
+  font-size: 2rem;
+  line-height: 1;
+  animation: visitor-hop 2.4s ease-in-out infinite;
+}
+
+@keyframes visitor-hop {
+  0%, 80%, 100% { transform: translateY(0); }
+  88% { transform: translateY(-6px); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .visitor-emoji {
+    animation: none;
+  }
+}
+
+.visitor-options {
+  margin-bottom: 0;
+}
+
+.visitor-reply {
+  margin: 10px 0 0;
+  font-weight: 700;
+  color: var(--link);
+}
+
 /* แมลงในสวน */
 .bug-box {
   display: flex;

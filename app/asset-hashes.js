@@ -1,7 +1,7 @@
 // สร้างโดย scripts/asset_hashes.py ห้ามแก้เอง: รัน python3 scripts/asset_hashes.py ทุกครั้งที่แก้ไฟล์ใน app/
 // service worker ใช้เทียบกับเวอร์ชันก่อน ไฟล์ที่ hash ไม่เปลี่ยนคัดลอกจาก cache เดิม ไม่ต้องโหลดใหม่
 self.VG_ASSETS = {
-  "css/style.css": "418bf0c2bbeecaae",
+  "css/style.css": "de558401d2cd03ca",
   "data/LICENSE": "c38060ca8190ae2f",
   "data/confusables.json": "3b89dc3f41368642",
   "data/extra/01.tsv": "b6d315733a8ad38a",
@@ -47,7 +47,7 @@ self.VG_ASSETS = {
   "icons/icon-maskable-512.png": "eac337e70be63317",
   "icons/icon.svg": "6f64c6f8257dfcfc",
   "icons/og-image.jpg": "278f86f10fa83b4a",
-  "index.html": "30342cc7bb5bba31",
+  "index.html": "35da1b68f18e5712",
   "js/achievements.js": "9d0d4430fa3ef9e0",
   "js/backup.js": "4dedccd18a03903c",
   "js/badge.js": "46f7e062ae273337",
@@ -91,7 +91,7 @@ self.VG_ASSETS = {
   "js/screens/dictation.js": "bc7e954a84f256e4",
   "js/screens/exam.js": "12f1357ab2521e3b",
   "js/screens/flash.js": "f818e80ec8168c5b",
-  "js/screens/garden.js": "4df0a53526626802",
+  "js/screens/garden.js": "508a9573fabd7920",
   "js/screens/herbarium.js": "66854306ca2a7d5c",
   "js/screens/listen.js": "bf03d6d8a1d4e837",
   "js/screens/match.js": "4a67f14e4ec30d71",
@@ -113,6 +113,7 @@ self.VG_ASSETS = {
   "js/update.js": "1a33769d0fe08a7e",
   "js/visitor-card.js": "e71bf588464ddbb8",
   "js/visitors.js": "1600b4da16b01d66",
+  "js/weather.js": "34c923c21091e960",
   "js/weekly.js": "09bbff6cac77a015",
   "js/wordle.js": "c85df41182ff4a20",
   "manifest.webmanifest": "55280200beadac52"

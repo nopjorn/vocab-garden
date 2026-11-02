@@ -12,6 +12,9 @@ import { recallStats } from "../recall.js";
 import { STAGES, dayNumber, stageOf } from "../srs.js";
 import { recentDays, stageCounts, streakOf, totalReviews } from "../stats.js";
 import { treeEl } from "../tree-art.js";
+import { goalProgress } from "../habit.js";
+import { skyOf } from "../sky.js";
+import { weatherNote, weatherOf } from "../weather.js";
 
 let $, canSkip, el, foldItem, FRESH_VISIBLE, isFreshOpen, openWordDialog, refreshHabit, renderMedals, show, skipWordsAsKnown, state, storage, takeGardenScroll, toast, translatedWords;
 
@@ -37,6 +40,10 @@ function renderGarden() {
   $("g-streak").textContent = current;
   $("g-best").textContent = best;
   $("g-total").textContent = totalReviews(days).toLocaleString();
+  const goal = goalProgress(days, today, state.settings.dailyGoal);
+  const weather = weatherOf({ goalReached: goal.reached, streak: current, sky: skyOf(new Date().getHours()) });
+  document.querySelector("#view-garden .sky").dataset.weather = weather;
+  $("weather-note").textContent = weatherNote(weather, { streak: current, left: goal.goal - goal.done });
 
   const stages = stageCounts(translatedWords(), state.cards);
   const total = stages.reduce((sum, stage) => sum + stage.count, 0);

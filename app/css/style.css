@@ -3777,8 +3777,8 @@ html[data-text-size="large"] {
   color: #fff;
 }
 
-#view-garden[data-tab="plots"] .garden-top > :not(.sky, .page-head, .garden-tabs),
-#view-garden[data-tab="stats"] .garden-top > :not(.sky, .page-head, .garden-tabs),
+#view-garden[data-tab="plots"] .garden-top > :not(.sky, .weather-note, .page-head, .garden-tabs),
+#view-garden[data-tab="stats"] .garden-top > :not(.sky, .weather-note, .page-head, .garden-tabs),
 #view-garden[data-tab="overview"] .garden-plots > *,
 #view-garden[data-tab="stats"] .garden-plots > *,
 #view-garden[data-tab="overview"] .garden-rest > *,
@@ -4535,6 +4535,106 @@ html[data-text-size="large"] {
   @keyframes sky-twinkle {
     to {
       opacity: 0.6;
+    }
+  }
+}
+
+/* สภาพอากาศในสวน (weather.js ตั้ง data-weather บน .sky) */
+.sky {
+  margin-bottom: 6px;
+}
+
+.weather-note {
+  margin: 0 0 14px;
+}
+
+.sky-rain,
+.sky-rainbow,
+.sky-meteor {
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* ฝน: เส้นเฉียงบาง ๆ ซ้อนกันสองชั้น */
+.sky-rain {
+  inset: 0;
+  background:
+    repeating-linear-gradient(105deg, transparent 0 14px, rgba(255, 255, 255, 0.55) 14px 15px, transparent 15px 31px),
+    repeating-linear-gradient(105deg, transparent 0 22px, rgba(255, 255, 255, 0.35) 22px 23px, transparent 23px 41px);
+  background-size: 100% 40px;
+}
+
+.sky[data-weather="rain"] .sky-rain {
+  opacity: 1;
+}
+
+.sky[data-weather="rain"] .sky-orb {
+  opacity: 0.35;
+}
+
+.sky[data-weather="rain"] .sky-cloud {
+  filter: grayscale(0.4) brightness(0.92);
+}
+
+/* รุ้ง: ครึ่งวงกลมหลายสีเหนือเนินเขา */
+.sky-rainbow {
+  left: 8%;
+  bottom: -64px;
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  background: radial-gradient(circle, transparent 54%, #a78bfa 54% 57%, #60a5fa 57% 60%, #34d399 60% 63%, #facc15 63% 66%, #fb923c 66% 69%, #f87171 69% 72%, transparent 72%);
+}
+
+.sky[data-weather="rainbow"] .sky-rainbow {
+  opacity: 0.85;
+}
+
+/* ดาวตก: เส้นแสงเฉียงสองเส้น */
+.sky-meteor {
+  top: 18px;
+  left: 30%;
+  width: 70px;
+  height: 2px;
+  border-radius: 2px;
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0), #fff);
+  transform: rotate(-20deg);
+  box-shadow: 90px 26px 0 0 rgba(255, 255, 255, 0.7);
+}
+
+.sky[data-weather="meteor"] .sky-meteor {
+  opacity: 1;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .sky[data-weather="rain"] .sky-rain {
+    animation: sky-rain 0.7s linear infinite;
+  }
+
+  .sky[data-weather="meteor"] .sky-meteor {
+    animation: sky-meteor 3.2s ease-in infinite;
+  }
+
+  @keyframes sky-rain {
+    to {
+      background-position: -12px 40px;
+    }
+  }
+
+  @keyframes sky-meteor {
+    0% {
+      opacity: 0;
+      translate: 0 0;
+    }
+
+    15% {
+      opacity: 1;
+    }
+
+    45%,
+    100% {
+      opacity: 0;
+      translate: 80px 28px;
     }
   }
 }

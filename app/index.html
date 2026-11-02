@@ -279,6 +279,12 @@
       <p class="tip small">วันพัก 🧊 ได้เพิ่ม 1 วันทุกครั้งที่ท่องติดกันครบ 7 วัน เก็บได้ไม่เกิน 2 วัน ถ้าพลาดไปหนึ่งวัน
         ระบบใช้ให้เองเพื่อให้สตรีคไม่หาย (วันพักไม่นับเป็นวันที่ท่อง)</p>
 
+      <a href="#/herbarium" class="herbarium-link">
+        <span class="herbarium-cover" aria-hidden="true">📔</span>
+        <span><strong>สมุดพันธุ์ไม้</strong><br><span id="herbarium-count" class="muted small">คำที่โตเป็นต้นไม้ใหญ่ 🌳 จะถูกเก็บไว้ที่นี่</span></span>
+        <span aria-hidden="true">›</span>
+      </a>
+
       <details class="fold">
         <summary>
           <strong>🏅 เหรียญของฉัน</strong>
@@ -739,6 +745,17 @@
         <button type="button" id="placement-again" class="wide">🔁 ทำใหม่</button>
         <a href="#/settings" class="button wide">กลับไปหน้าตั้งค่า</a>
       </div>
+    </section>
+
+    <section id="view-herbarium" hidden>
+      <div class="study-top">
+        <a href="#/garden" class="close" aria-label="กลับไปหน้าสวน">✕</a>
+        <strong class="game-title">📔 สมุดพันธุ์ไม้</strong>
+        <span id="herbarium-total" class="muted small"></span>
+      </div>
+      <p class="muted small">คำที่โตเป็นต้นไม้ใหญ่ 🌳 แล้วถูกเก็บเป็นหน้าในสมุดเล่มนี้ หน้าที่เก็บแล้วไม่หายไปไหน แม้ภายหลังจะลืมคำนั้นบ้าง แตะที่คำเพื่อดูรายละเอียด</p>
+      <p id="herbarium-empty" class="notice" hidden>ยังไม่มีหน้าในสมุดเลย ทวนคำไปเรื่อย ๆ พอคำไหนจำได้นานพอจนโตเป็นต้นไม้ใหญ่ 🌳 คำนั้นจะถูกเก็บลงสมุดเอง</p>
+      <div id="herbarium-pages"></div>
     </section>
 
     <section id="view-bugs" hidden>

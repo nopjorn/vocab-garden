@@ -3225,6 +3225,78 @@ html[data-text-size="large"] {
   color: var(--link);
 }
 
+/* สมุดพันธุ์ไม้ */
+.herbarium-link {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin: 0 0 14px;
+  padding: 12px 16px;
+  color: var(--text);
+  text-decoration: none;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-sm);
+}
+
+.herbarium-link > span:nth-child(2) {
+  flex: 1;
+}
+
+.herbarium-cover {
+  font-size: 1.9rem;
+  line-height: 1;
+}
+
+.herbarium-month {
+  margin: 20px 0 8px;
+  font-size: 1rem;
+}
+
+.herbarium-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 10px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.herbarium-page {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 2px;
+  width: 100%;
+  height: 100%;
+  padding: 12px;
+  text-align: left;
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: none;
+}
+
+.herbarium-page .page-emoji {
+  font-size: 1.5rem;
+  line-height: 1.2;
+}
+
+.herbarium-page .page-word {
+  font-size: 1.05rem;
+}
+
+.herbarium-page .page-note {
+  margin-top: 4px;
+  font-size: 0.78rem;
+  color: var(--muted);
+}
+
+.herbarium-page.faded {
+  opacity: 0.75;
+}
+
 /* นักเดินทางมาเยี่ยมสวน */
 .visitor {
   margin: 14px 0 16px;

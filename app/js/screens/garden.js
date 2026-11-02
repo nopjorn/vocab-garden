@@ -6,6 +6,7 @@ import { MILESTONES, coverageOfRanks, coverageOfTop, knownRanks, parseFrequency,
 import { levelTitle } from "../data.js";
 import { EXAM_COUNT, bestTier, examReady } from "../exam.js";
 import { bugSet } from "../bugs.js";
+import { treeHeadwords } from "../herbarium.js";
 import { PLOT_FILTERS, leechWords, matchesQuery, plantInfo, plantMatchesFilter, plotFilterCounts, plotSummary } from "../garden.js";
 import { recallStats } from "../recall.js";
 import { STAGES, dayNumber, stageOf } from "../srs.js";
@@ -71,6 +72,7 @@ function renderGarden() {
   renderCalendar(active, today, rest.frozen);
   renderPlots(today);
   renderLeeches();
+  renderHerbariumLink();
   renderMedals();
 }
 
@@ -164,6 +166,12 @@ function bugMark() {
   const mark = el("span", "bug-mark", "🐛");
   mark.setAttribute("aria-hidden", "true");
   return mark;
+}
+
+function renderHerbariumLink() {
+  storage.pressPages(treeHeadwords(translatedWords(), state.cards), dayNumber());
+  const pages = Object.keys(storage.loadGarden().pressed).length;
+  $("herbarium-count").textContent = pages > 0 ? `เก็บไว้แล้ว ${pages} หน้า` : "คำที่โตเป็นต้นไม้ใหญ่ 🌳 จะถูกเก็บไว้ที่นี่";
 }
 
 function renderLeeches() {

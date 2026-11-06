@@ -31,7 +31,7 @@ import { fsrsGrade } from "./fsrs.js";
 import { streakOf, totalReviews } from "./stats.js";
 import { recallBetween } from "./recall.js";
 import { SUPPORT_LINKS } from "./support.js";
-import { isNewer, parseSwVersion } from "./update.js";
+import { isNewer, isPatch, parseSwVersion } from "./update.js";
 
 const VIEWS = ["loading", "error", "home", "study", "done", "garden", "plot", "play", "match", "flash", "wordle", "scramble", "sentence", "blitz", "confuse", "listen", "dictation", "commute", "placement", "exam", "bugs", "herbarium", "stories", "story", "settings", "about", "changelog"];
 const TAB_OF_VIEW = { plot: "garden", changelog: "about", match: "play", flash: "play", wordle: "play", scramble: "play", sentence: "play", blitz: "play", confuse: "play", listen: "play", dictation: "play", commute: "play", placement: "settings", exam: "garden", bugs: "garden", herbarium: "garden", stories: "play", story: "play" }; // หน้าที่ไม่มีแท็บของตัวเอง ให้ไฮไลต์แท็บนี้แทน
@@ -132,7 +132,7 @@ function newLimit(day) {
   return Math.max(0, state.settings.newPerDay - storage.newCountToday(day));
 }
 
-// ทวนได้อีกกี่ครั้งในวันนี้ตามเพดานที่ตั้งไว้ (นับจากจำนวนครั้งที่ตอบไปแล้ววันนี้) 0 ในตั้งค่า = ไม่จำกัด
+// ทวนได้อีกกี่ครั้งวันนี้ตามเพดาน (0 = ไม่จำกัด)
 function reviewBudget(day) {
   const cap = state.settings.reviewCap;
   return cap ? Math.max(0, cap - (storage.loadHistory()[day] || 0)) : Infinity;
@@ -420,7 +420,7 @@ function revealGift() {
   fx(legendary ? "finish" : "grow");
 }
 
-// ตัวเลขบนไอคอนแอป = จำนวนคำที่ถึงเวลาทวนทั้งหมด (ไม่ถูกจำกัดด้วยเพดานต่อวัน) ล้างเมื่อปิดตัวเลือกหรือไม่มีคำค้าง
+// ตัวเลขบนไอคอนแอป = คำที่ถึงเวลาทวนทั้งหมด (ไม่จำกัดด้วยเพดานต่อวัน)
 function updateAppBadge() {
   if (!canBadge()) return;
   const today = dayNumber();
@@ -2079,8 +2079,15 @@ function showUpdateDialog(next, apply) {
   };
 }
 
-async function showUpdate(worker) {
-  showUpdateDialog(await workerVersion(worker), () => worker.postMessage("skip-waiting"));
+// PATCH ติดตั้งเงียบ ๆ ตอนเปิดแอปหรือตอนพับแอป
+let quietWorker = null;
+const applyQuiet = () => !state.session && quietWorker?.postMessage("skip-waiting");
+
+async function showUpdate(worker, opening) {
+  const next = await workerVersion(worker);
+  if (!next || !isPatch(next, self.VG_VERSION)) return showUpdateDialog(next, () => worker.postMessage("skip-waiting"));
+  quietWorker = worker;
+  if (opening) applyQuiet();
 }
 
 // ถามเลขเวอร์ชันล่าสุดจากเซิร์ฟเวอร์ตรง ๆ โดยไม่พึ่งการตรวจอัปเดตของ service worker
@@ -2116,7 +2123,7 @@ async function checkForNewVersion({ manual = false } = {}) {
   const latest = await fetchLatestVersion();
   if (!latest) {
     if (manual) toast("ตรวจเวอร์ชันไม่สำเร็จ ลองเช็คอินเทอร์เน็ตแล้วลองใหม่นะ");
-  } else if (isNewer(latest, self.VG_VERSION)) {
+  } else if (isNewer(latest, self.VG_VERSION) && (manual || !isPatch(latest, self.VG_VERSION))) {
     showUpdateDialog(latest, forceUpdate);
   } else if (manual) {
     toast(`ใช้เวอร์ชันล่าสุดแล้ว (v${self.VG_VERSION}) 🎉`);
@@ -2150,7 +2157,7 @@ async function registerServiceWorker() {
   try {
     // updateViaCache: "none" ให้เบราว์เซอร์โหลด sw.js และ version.js จาก server ทุกครั้งที่เช็ค ไม่ใช้ HTTP cache
     const registration = await navigator.serviceWorker.register("sw.js", { updateViaCache: "none" });
-    if (registration.waiting && navigator.serviceWorker.controller) showUpdate(registration.waiting);
+    if (registration.waiting && navigator.serviceWorker.controller) showUpdate(registration.waiting, true);
     // แอปที่เปิดจากหน้าจอโฮมมักถูกพักไว้แทนการเปิดใหม่ จึงต้องเช็คเวอร์ชันใหม่เองตอนกลับมาใช้
     const checkForUpdate = () => registration.update().catch(() => {});
     document.addEventListener("visibilitychange", () => {
@@ -2228,7 +2235,7 @@ document.addEventListener("visibilitychange", () => {
   if (document.visibilityState === "visible") {
     checkNewDay();
     checkForNewVersion();
-  }
+  } else applyQuiet();
 });
 setInterval(checkNewDay, 60 * 1000);
 setInterval(checkForNewVersion, UPDATE_CHECK_MS);

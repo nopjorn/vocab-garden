@@ -1,7 +1,7 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
 
-import { isNewer, parseSwVersion } from "../../app/js/update.js";
+import { isNewer, isPatch, parseSwVersion } from "../../app/js/update.js";
 
 test("parseSwVersion reads the sw-version line", () => {
   assert.equal(parseSwVersion("// x\n// sw-version: 0.3.4\n\nimportScripts()"), "0.3.4");
@@ -20,4 +20,13 @@ test("isNewer compares numerically, not as text", () => {
   assert.equal(isNewer("1.0.0", "0.99.99"), true);
   assert.equal(isNewer("0.3.3", "0.3.3"), false);
   assert.equal(isNewer("0.3.2", "0.3.3"), false);
+});
+
+test("isPatch is true only for a newer version with the same major.minor", () => {
+  assert.equal(isPatch("0.65.1", "0.65.0"), true);
+  assert.equal(isPatch("0.65.10", "0.65.9"), true);
+  assert.equal(isPatch("0.66.0", "0.65.3"), false);
+  assert.equal(isPatch("1.0.0", "0.65.0"), false);
+  assert.equal(isPatch("0.65.0", "0.65.0"), false);
+  assert.equal(isPatch("0.6.1", "0.65.0"), false);
 });

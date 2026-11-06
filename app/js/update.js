@@ -14,3 +14,7 @@ export function isNewer(latest, current) {
   }
   return false;
 }
+
+// PATCH = เลข major.minor เท่าเดิม (แก้บั๊ก แก้คำแปล) ติดตั้งเงียบ ๆ ได้โดยไม่ต้องถาม
+export const isPatch = (latest, current) =>
+  isNewer(latest, current) && latest.split(".").slice(0, 2).join() === current.split(".").slice(0, 2).join();

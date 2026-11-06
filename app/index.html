@@ -33,7 +33,7 @@
     try {
       var saved = JSON.parse(localStorage.getItem("vg:settings") || "{}");
       if (saved.theme === "light" || saved.theme === "dark") document.documentElement.dataset.theme = saved.theme;
-      if (saved.textSize === "large") document.documentElement.dataset.textSize = "large";
+      if (["large", "xlarge", "xxlarge"].includes(saved.textSize)) document.documentElement.dataset.textSize = saved.textSize;
       if (saved.menuPosition === "top" || saved.menuPosition === "dock") document.documentElement.dataset.menu = saved.menuPosition;
     } catch (error) {}
   </script>

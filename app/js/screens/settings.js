@@ -26,7 +26,7 @@ let translatedWords, playableLevels, levelSetOf, checkbox, wotdPool, resetWotdPi
 
 const SPEECH_RATE_LABELS = { 0.7: "ช้า", 0.9: "ปกติ", 1.1: "เร็ว" };
 const THEME_LABELS = { auto: "ตามเครื่อง", light: "สว่าง", dark: "มืด" };
-const TEXT_SIZE_LABELS = { normal: "ปกติ", large: "ใหญ่" };
+const TEXT_SIZE_LABELS = { normal: "ปกติ", large: "ใหญ่", xlarge: "ใหญ่มาก", xxlarge: "ใหญ่ที่สุด" };
 const MENU_POSITION_LABELS = { bottom: "ด้านล่าง (ลอย)", dock: "ด้านล่าง (ชิดขอบจอ)", top: "ด้านบน" };
 const SCHEDULER_LABELS = { sm2: "แบบเดิม (SM-2 ฉบับย่อ)", fsrs: "FSRS (ทดลอง)" };
 const QUIZ_MODE_LABELS = { flip: "พลิกการ์ด (แบบเดิม)", mixed: "ผสมหลายแบบ" };

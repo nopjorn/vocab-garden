@@ -98,7 +98,7 @@ function applyAppearance() {
   else delete root.dataset.menu;
   if (theme === "auto") delete root.dataset.theme;
   else root.dataset.theme = theme;
-  if (textSize === "large") root.dataset.textSize = "large";
+  if (textSize !== "normal") root.dataset.textSize = textSize;
   else delete root.dataset.textSize;
 
   const dark = theme === "dark" || (theme === "auto" && matchMedia("(prefers-color-scheme: dark)").matches);
@@ -138,7 +138,7 @@ function reviewBudget(day) {
   return cap ? Math.max(0, cap - (storage.loadHistory()[day] || 0)) : Infinity;
 }
 
-// ลำดับของด่านไว้เทียบกับ "เริ่มคำใหม่จากด่าน" (ด่านพิเศษถือว่าอยู่หลังสุด)
+// ลำดับด่านไว้เทียบกับ "เริ่มคำใหม่จากด่าน" (ด่านพิเศษอยู่หลังสุด)
 function levelNumber(level) {
   return level === "sup" ? Number.MAX_SAFE_INTEGER : Number(level);
 }
@@ -2230,6 +2230,7 @@ navigator.storage?.persist?.();
 applyAppearance();
 renderSupport();
 lockZoomInInstalledApp();
+import("./modal.js").then((modal) => modal.trapModals()).catch(() => {});
 $("check-update").onclick = () => checkForNewVersion({ manual: true });
 document.addEventListener("visibilitychange", () => {
   if (document.visibilityState === "visible") {

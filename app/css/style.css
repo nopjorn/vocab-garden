@@ -2401,6 +2401,14 @@ html[data-text-size="large"] {
   font-size: 118%;
 }
 
+html[data-text-size="xlarge"] {
+  font-size: 140%;
+}
+
+html[data-text-size="xxlarge"] {
+  font-size: 165%;
+}
+
 .check {
   display: flex;
   align-items: center;
@@ -3544,7 +3552,6 @@ html[data-text-size="large"] {
   box-shadow: var(--shadow-sm);
 }
 
-/* ชาเลนจ์ประจำเดือน อยู่ในการ์ดเดียวกับภารกิจวันนี้ */
 .missions .monthly {
   margin-top: 12px;
   padding-top: 12px;

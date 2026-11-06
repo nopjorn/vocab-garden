@@ -44,6 +44,7 @@ const PRECACHE = [
   "js/speech.js",
   "js/update.js",
   "js/modal.js",
+  "js/review.js",
   "js/stats.js",
   "js/weekly.js",
   "js/report.js",

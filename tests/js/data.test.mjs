@@ -78,3 +78,21 @@ test("the real extra files cover every translated word of their levels", () => {
     }
   }
 });
+
+import { REVIEWED_LEVELS, isDraft } from "../../app/js/data.js";
+import { reviewSummary } from "../../app/js/review.js";
+
+test("REVIEWED_LEVELS only lists real levels", () => {
+  for (const level of REVIEWED_LEVELS) assert.ok(LEVELS.includes(level), level);
+  assert.equal(isDraft(REVIEWED_LEVELS[0]), false);
+  assert.equal(isDraft("28"), !REVIEWED_LEVELS.includes("28"));
+});
+
+test("reviewSummary describes reviewed levels as ranges", () => {
+  assert.equal(reviewSummary(["01", "02", "03", "04"]), "ตรวจทานแล้ว: แปลง 1–4 · แปลงอื่นยังเป็นฉบับร่าง");
+  assert.equal(reviewSummary(["05", "01", "02", "07"]), "ตรวจทานแล้ว: แปลง 1–2, 5, 7 · แปลงอื่นยังเป็นฉบับร่าง");
+  assert.equal(reviewSummary(["01", "sup"]), "ตรวจทานแล้ว: แปลง 1 และ แปลงพิเศษ · แปลงอื่นยังเป็นฉบับร่าง");
+  assert.equal(reviewSummary(["sup"]), "ตรวจทานแล้ว: แปลงพิเศษ · แปลงอื่นยังเป็นฉบับร่าง");
+  assert.equal(reviewSummary([]), "ทุกแปลงยังเป็นฉบับร่างที่รอตรวจทาน");
+  assert.equal(reviewSummary(LEVELS), "ตรวจทานครบทุกแปลงแล้ว");
+});

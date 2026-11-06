@@ -1,4 +1,4 @@
-import { LEVELS, levelTitle, loadWords } from "./data.js";
+import { LEVELS, isDraft, levelTitle, loadWords } from "./data.js";
 import { comboMessage, growthSummary, nextCombo, recordGrowth, stageMove, wordList } from "./celebrate.js";
 import { launchConfetti } from "./confetti.js";
 import { canSpeak, speak } from "./speech.js";
@@ -590,7 +590,7 @@ function showCard() {
   const percent = Math.round((learned.size / total) * 100);
   $("study-bar").style.width = `${percent}%`;
   $("study-progressbar").setAttribute("aria-valuenow", percent);
-  $("card-level").textContent = `${levelTitle(word.level)} · อันดับ ${word.rank}`;
+  $("card-level").textContent = `${levelTitle(word.level)} · อันดับ ${word.rank}${isDraft(word.level) ? " · 📝 ฉบับร่าง" : ""}`;
   $("card-word").textContent = word.headword;
   $("card-hint").hidden = false;
   $("card-back").hidden = true;
@@ -614,6 +614,7 @@ function showCard() {
   $("card-note").hidden = !word.note;
   renderCardNote(word);
   $("report").href = issueUrl(word, self.VG_VERSION);
+  $("report").textContent = isDraft(word.level) ? "🚩 คำแปลนี้ยังเป็นฉบับร่าง เจอจุดผิดช่วยแจ้งได้เลย" : "🚩 แจ้งคำแปลผิด";
   $("card").focus({ preventScroll: true });
   state.session.quiz = quizFor(word);
   renderQuiz(word); // ข้อพิมพ์ย้ายโฟกัสไปที่ช่องพิมพ์
@@ -1881,6 +1882,7 @@ function route() {
     renderPlay();
     show("play");
   } else if (page === "about") {
+    import("./review.js").then((review) => ($("review-status").textContent = review.reviewSummary()), () => {});
     show("about");
   } else if (page === "changelog") {
     renderChangelog();

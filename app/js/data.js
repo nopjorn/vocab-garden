@@ -49,6 +49,10 @@ export function parseLevel(text, level) {
   });
 }
 
+// แปลงที่ตรวจทานคำแปลแล้ว (ที่เหลือมีป้าย 📝 ฉบับร่าง) ตรวจเสร็จเพิ่มเลขที่นี่
+export const REVIEWED_LEVELS = ["01", "02", "03", "04"];
+export const isDraft = (level) => !REVIEWED_LEVELS.includes(level);
+
 // ด่านที่มีไฟล์ข้อมูลเพิ่ม data/extra/NN.tsv (ประโยคตัวอย่างที่ 2 และคำที่มักใช้คู่กัน) เพิ่มเลขด่านที่นี่เมื่อเขียนเพิ่มและใส่ไฟล์ใน sw.js
 export const EXTRA_LEVELS = ["01", "02", "03", "04"];
 

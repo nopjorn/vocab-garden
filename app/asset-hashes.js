@@ -1,7 +1,7 @@
 // สร้างโดย scripts/asset_hashes.py ห้ามแก้เอง: รัน python3 scripts/asset_hashes.py ทุกครั้งที่แก้ไฟล์ใน app/
 // service worker ใช้เทียบกับเวอร์ชันก่อน ไฟล์ที่ hash ไม่เปลี่ยนคัดลอกจาก cache เดิม ไม่ต้องโหลดใหม่
 self.VG_ASSETS = {
-  "css/style.css": "d88e2f362eb720ff",
+  "css/style.css": "7bc79ae25da771e5",
   "data/LICENSE": "cfa60cc6df007ed6",
   "data/confusables.json": "3b89dc3f41368642",
   "data/extra/01.tsv": "b6d315733a8ad38a",
@@ -48,7 +48,7 @@ self.VG_ASSETS = {
   "icons/icon-maskable-512.png": "eac337e70be63317",
   "icons/icon.svg": "6f64c6f8257dfcfc",
   "icons/og-image.jpg": "278f86f10fa83b4a",
-  "index.html": "0a94b993451cf133",
+  "index.html": "77a8e3317444ebf3",
   "js/achievements.js": "1e4104ee72349849",
   "js/backup.js": "4dedccd18a03903c",
   "js/badge.js": "46f7e062ae273337",
@@ -74,7 +74,7 @@ self.VG_ASSETS = {
   "js/habit.js": "70f1386d44970923",
   "js/herbarium.js": "ecfc8b73c838b733",
   "js/listen.js": "d5a7229b4b948d3d",
-  "js/main.js": "1aaedf4914ac4ee3",
+  "js/main.js": "cbd425899577f123",
   "js/match.js": "e672a34d73e4a125",
   "js/missions.js": "9d6c8617244ade0b",
   "js/monthly.js": "f7a420374bddac47",

@@ -2239,8 +2239,16 @@ kbd {
   font-size: 1.2rem;
 }
 
+.welcome .fold {
+  margin: 10px 0 0;
+}
+
+.welcome .fold p {
+  margin: 0 14px 10px;
+}
+
 .welcome-steps {
-  margin: 10px 0;
+  margin: 0 14px 12px;
   padding-left: 1.3em;
   display: grid;
   gap: 8px;
@@ -2248,10 +2256,6 @@ kbd {
 
 .welcome-steps strong {
   display: block;
-}
-
-.welcome .tip p {
-  margin: 0 0 6px;
 }
 
 .welcome .button {

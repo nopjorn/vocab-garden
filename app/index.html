@@ -68,23 +68,29 @@
       <div class="home-side">
       <section id="welcome" class="panel welcome" aria-labelledby="welcome-title" hidden>
         <h2 id="welcome-title">ยินดีต้อนรับสู่ Vocab Garden 🌱</h2>
-        <p>สวนนี้ปลูกคำศัพท์ภาษาอังกฤษพื้นฐาน 2,861 คำจาก NGSL 1.2 คำละ 1 ต้น ใช้เวลาวันละไม่กี่นาที</p>
-        <ol class="welcome-steps">
-          <li><strong>ต้นไม้โตตามความจำ</strong> ทุกคำเริ่มจาก 🌰 เมล็ด ยิ่งทวนตามนัด ยิ่งโตเป็น 🌱 → 🌿 → 🌳 ต้นที่ถึงเวลาทวนจะเหี่ยวรอรดน้ำ แต่ไม่มีวันตาย</li>
-          <li><strong>นึกก่อน แล้วตอบตามจริง</strong> ดูคำแล้วนึกความหมาย แตะการ์ดเพื่อเฉลย แล้วเลือก
-            😵 ยังจำไม่ได้ (เดี๋ยวกลับมาอีก) · 🤔 พอจำได้ (นัดทวนเร็ว) · 😎 จำได้แม่น (นัดห่างขึ้น) หรือปัดซ้าย/ขวาก็ได้ ตอบผิดได้ไม่จำกัด กดพลาดก็ ↩️ ย้อนได้</li>
-          <li><strong>วันละ 10 คำใหม่</strong> พร้อมคำที่ถึงเวลาทวน ปรับจำนวนได้ในตั้งค่า</li>
-        </ol>
-        <div id="welcome-install" class="tip small">
-          <p><strong>📲 แนะนำให้ติดตั้งเป็นแอปก่อนเริ่ม</strong> เปิดได้จากไอคอน และใช้ได้แม้ไม่มีเน็ต</p>
-          <p>iPhone / iPad: แตะปุ่มแชร์ใน Safari → "เพิ่มไปยังหน้าจอโฮม" (ความคืบหน้าใน Safari กับในแอปที่ติดตั้งเก็บแยกกัน จึงควรติดตั้งก่อนเริ่มท่อง) · Android และคอม: เมนูของเบราว์เซอร์ → "ติดตั้งแอป"</p>
-          <button type="button" id="welcome-install-btn" hidden>📲 ติดตั้งแอปเลย</button>
+        <p>ปลูกคำศัพท์ภาษาอังกฤษพื้นฐาน 2,861 คำจาก NGSL 1.2 คำละ 1 ต้น วันละไม่กี่นาที ดูคำ นึกความหมาย แล้วตอบตามจริง ต้นไม้จะโตตามความจำของเรา</p>
+        <div id="welcome-install" class="welcome-install">
+          <details class="fold">
+            <summary><strong>📲 แนะนำให้ติดตั้งเป็นแอปก่อนเริ่ม</strong></summary>
+            <p class="small">เปิดได้จากไอคอน และใช้ได้แม้ไม่มีเน็ต ความคืบหน้าใน Safari กับในแอปที่ติดตั้งเก็บแยกกัน จึงควรติดตั้งก่อนเริ่มท่อง</p>
+            <p class="small">iPhone / iPad: แตะปุ่มแชร์ใน Safari → "เพิ่มไปยังหน้าจอโฮม" · Android และคอม: เมนูของเบราว์เซอร์ → "ติดตั้งแอป"</p>
+          </details>
+          <button type="button" id="welcome-install-btn" class="wide" hidden>📲 ติดตั้งแอปเลย</button>
         </div>
         <a href="#/study" id="welcome-start" class="button primary wide">เริ่มปลูกคำแรก 🌱</a>
         <a href="#/placement" id="welcome-placement" class="button wide">🧭 รู้ศัพท์อยู่บ้างแล้ว? ทดสอบวัดระดับก่อน</a>
+        <details class="fold welcome-how">
+          <summary><strong>🌱 วิธีปลูก</strong> <span class="muted small">อ่านก่อนก็ได้ ข้ามก็ได้</span></summary>
+          <ol class="welcome-steps">
+            <li><strong>ต้นไม้โตตามความจำ</strong> ทุกคำเริ่มจาก 🌰 เมล็ด ยิ่งทวนตามนัด ยิ่งโตเป็น 🌱 → 🌿 → 🌳 ต้นที่ถึงเวลาทวนจะเหี่ยวรอรดน้ำ แต่ไม่มีวันตาย</li>
+            <li><strong>นึกก่อน แล้วตอบตามจริง</strong> แตะการ์ดเพื่อเฉลย แล้วเลือก
+              😵 ยังจำไม่ได้ (เดี๋ยวกลับมาอีก) · 🤔 พอจำได้ (นัดทวนเร็ว) · 😎 จำได้แม่น (นัดห่างขึ้น) หรือปัดซ้าย/ขวาก็ได้ กดพลาดก็ ↩️ ย้อนได้</li>
+            <li><strong>วันละ 10 คำใหม่</strong> พร้อมคำที่ถึงเวลาทวน ปรับจำนวนได้ในตั้งค่า</li>
+          </ol>
+        </details>
         <button type="button" id="welcome-close" class="linklike small">ปิดการ์ดนี้</button>
       </section>
-      <div class="hero">
+      <div id="hero" class="hero">
         <div class="hero-top">
           <div>
             <p id="greeting" class="hero-greeting">สวัสดี 👋</p>

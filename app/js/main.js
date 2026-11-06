@@ -437,6 +437,8 @@ const isInstalled = () => window.matchMedia("(display-mode: standalone)").matche
 function renderWelcome() {
   const show = !state.settings.welcomed && Object.keys(state.cards).length === 0;
   $("welcome").hidden = !show;
+  // การ์ดต้อนรับมีปุ่มเริ่มของตัวเองแล้ว ซ่อนการ์ดเป้าวันนี้ (ยังเป็นศูนย์ทั้งหมด) ไม่ให้มีปุ่มเริ่มซ้ำ 2 ปุ่ม
+  $("hero").hidden = show;
   if (!show) return;
   $("welcome-install").hidden = isInstalled();
   $("welcome-install-btn").hidden = !installPrompt;
@@ -445,6 +447,7 @@ function renderWelcome() {
 function closeWelcome() {
   if (!state.settings.welcomed) updateSetting({ welcomed: true });
   $("welcome").hidden = true;
+  $("hero").hidden = false;
 }
 
 // ---------- นักเดินทางมาเยี่ยมสวน (อยู่ใน visitor-card.js ที่โหลดทีหลัง) ----------

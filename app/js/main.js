@@ -437,7 +437,6 @@ const isInstalled = () => window.matchMedia("(display-mode: standalone)").matche
 function renderWelcome() {
   const show = !state.settings.welcomed && Object.keys(state.cards).length === 0;
   $("welcome").hidden = !show;
-  // การ์ดต้อนรับมีปุ่มเริ่มของตัวเองแล้ว ซ่อนการ์ดเป้าวันนี้ (ยังเป็นศูนย์ทั้งหมด) ไม่ให้มีปุ่มเริ่มซ้ำ 2 ปุ่ม
   $("hero").hidden = show;
   if (!show) return;
   $("welcome-install").hidden = isInstalled();
@@ -464,6 +463,12 @@ function renderVisitor(today) {
     });
 }
 
+function startLabel(due, fresh) {
+  if (due > 0 && fresh > 0) return `🔁 ทวน ${due} คำ + ปลูกใหม่ ${fresh} คำ`;
+  if (due > 0) return `🔁 ทวน ${due} คำ`;
+  return `🌱 ปลูกคำใหม่ ${fresh} คำ`;
+}
+
 function renderHome() {
   const today = dayNumber();
   const queue = todayQueue(today);
@@ -478,7 +483,9 @@ function renderHome() {
   $("due-count").textContent = dueCount;
   $("new-count").textContent = queue.length - dueCount;
   $("start").hidden = queue.length === 0;
+  $("start").textContent = startLabel(dueCount, queue.length - dueCount);
   $("today-empty").hidden = queue.length > 0;
+  $("home-play").hidden = queue.length > 0 || Object.keys(state.cards).length === 0;
   $("today-empty").textContent =
     totalDue > 0
       ? `วันนี้ทวนครบโควตาแล้ว 🎉 เหลือคำรอทวน ${totalDue} คำ พรุ่งนี้ทยอยทวนต่อ (ปรับโควตาได้ที่ตั้งค่า)`
@@ -2087,8 +2094,6 @@ async function fetchLatestVersion() {
   }
 }
 
-// อัปเดตแบบบังคับ: ล้าง cache และ service worker เดิมของแอปนี้ ลงทะเบียนตัวใหม่ให้ดึงไฟล์สดจากเซิร์ฟเวอร์ แล้วค่อยโหลดหน้าใหม่
-// (ความคืบหน้าอยู่ใน localStorage ไม่หาย) ห้ามโหลดหน้าใหม่ทันที เพราะ GitHub Pages ให้เบราว์เซอร์จำไฟล์ไว้ 10 นาที จะได้ไฟล์เก่ากลับมา
 // อัปเดตแบบบังคับ: ล้าง cache และ service worker เดิมของแอปนี้ แล้วโหลดหน้าใหม่ (ความคืบหน้าอยู่ใน localStorage ไม่หาย)
 // หน้าที่โหลดใหม่จะลงทะเบียน service worker ตัวใหม่ซึ่งดึงไฟล์สดจากเซิร์ฟเวอร์ แล้วโหลดหน้าอีกรอบให้เอง (ดู registerServiceWorker)
 const FORCE_UPDATE_FLAG = "vg:force-update";

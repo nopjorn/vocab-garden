@@ -111,6 +111,7 @@
         </div>
         <a href="#/study" id="start" class="button hero-cta">🌱 เริ่มท่องศัพท์</a>
         <p id="today-empty" class="hero-done" hidden>วันนี้ทวนครบแล้ว 🎉 พรุ่งนี้มาดูสวนกันใหม่นะ</p>
+        <a href="#/play" id="home-play" class="button hero-cta" hidden>🎮 เล่นเกมฝึกคำที่ปลูกแล้ว</a>
       </div>
       <div id="backup-reminder" class="notice backup-reminder" hidden>
         <span id="backup-reminder-text"></span>
@@ -149,13 +150,12 @@
         <h2 id="missions-title">🎯 ภารกิจวันนี้</h2>
         <ul id="missions-list" class="missions-list"></ul>
         <p id="missions-note" class="muted small"></p>
-      </section>
-
-      <section id="monthly" class="missions monthly" aria-labelledby="monthly-title" hidden>
-        <h2 id="monthly-title">🏆 ชาเลนจ์ประจำเดือน</h2>
-        <p class="monthly-row"><span id="monthly-goal"></span><span id="monthly-count" class="muted small"></span></p>
-        <div id="monthly-bar" class="monthly-bar" role="progressbar" aria-labelledby="monthly-title" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><div id="monthly-fill"></div></div>
-        <p id="monthly-note" class="muted small"></p>
+        <div id="monthly" class="monthly" hidden>
+          <h3 id="monthly-title">🏆 ชาเลนจ์ประจำเดือน</h3>
+          <p class="monthly-row"><span id="monthly-goal"></span><span id="monthly-count" class="muted small"></span></p>
+          <div id="monthly-bar" class="monthly-bar" role="progressbar" aria-labelledby="monthly-title" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><div id="monthly-fill"></div></div>
+          <p id="monthly-note" class="muted small"></p>
+        </div>
       </section>
 
       </div>

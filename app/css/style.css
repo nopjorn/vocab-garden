@@ -3447,6 +3447,11 @@ html[data-text-size="large"] {
 
 .visitor-options {
   margin-bottom: 0;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.visitor-options .quiz-option {
+  height: 100%;
 }
 
 .visitor-reply {
@@ -3537,6 +3542,18 @@ html[data-text-size="large"] {
   border: 1px solid var(--border);
   border-radius: var(--radius);
   box-shadow: var(--shadow-sm);
+}
+
+/* ชาเลนจ์ประจำเดือน อยู่ในการ์ดเดียวกับภารกิจวันนี้ */
+.missions .monthly {
+  margin-top: 12px;
+  padding-top: 12px;
+  border-top: 1px solid var(--border);
+}
+
+.monthly h3 {
+  margin: 0 0 6px;
+  font-size: 0.95rem;
 }
 
 .monthly-row {
